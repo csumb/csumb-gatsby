@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-class PageTemplate extends React.Component() {
+class PageTemplate extends React.Component {
 
   render() {
     console.log(this.props);
