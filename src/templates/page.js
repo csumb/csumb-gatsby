@@ -1,6 +1,6 @@
 import React from 'react'
 //import Link from 'gatsby'
-//import Blocks from './blocks/index.js'
+import Layout from '../components/layouts/default'
 
 class PageTemplate extends React.Component {
 
@@ -14,7 +14,7 @@ class PageTemplate extends React.Component {
     if(this.pageContent) {
       return this.pageContent;
     }
-    this.pageContent = JSON.parse(this.props.pathContext.pageContent)
+    this.pageContent = JSON.parse(this.props.pageContext.pageContent)
     return this.pageContent;
   }
 

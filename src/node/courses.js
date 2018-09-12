@@ -1,8 +1,4 @@
 
-const path = require(`path`)
-const fs = require(`fs-extra`)
-require(`gatsby-source-filesystem`)
-
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
@@ -34,10 +30,11 @@ exports.createPages = ({ graphql, actions }) => {
         if (result.errors) {
           reject(result.errors)
         }
-        result.data.allCatalogCsv.edges.forEach(async edge => {
+        result.data.allFile.edges.forEach(async edge => {
           createPage({
-            path: `course/${edge.node.SUBJECT.toLowerCase()}/${edge.node.CATALOG_NBR.toLowerCase().trim()}`,
+            path: `${edge.node.SUBJECT.toLowerCase()}/${edge.node.CATALOG_NBR.toLowerCase()}`,
             component: courseTemplate,
+            layout: 'index',
             context: {
               course: edge.node
             }

@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from "gatsby"
 
 import Header from '../header'
 import '../styles/global'
+import { css } from 'emotion';
 
 const Layout = ({ children, data }) => (
   <div>
@@ -19,11 +20,15 @@ const Layout = ({ children, data }) => (
         render={data => (
                <>
                <Header siteTitle={data.site.siteMetadata.title} />
+               
                </>
                )}
     />
-    
+    <div className={css`
+    clear: both 
+    `}>
       {children}
+    </div>
   </div>
 )
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/layouts/default'
+import Layout from "../components/layouts/default"
 //import Link from 'gatsby-link'
 
 const IndexPage = () => (
