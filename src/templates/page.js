@@ -1,13 +1,32 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import Blocks from './blocks/index.js'
 
-class PageTemplate extends React.Component() {
+class PageTemplate extends React.Component {
+
+  pageContent = false
+
+  PageBlocks() {
+    return <div>BLOCKS</div>
+  }
+
+  content() {
+    if(this.pageContent) {
+      return this.pageContent;
+    }
+    this.pageContent = JSON.parse(this.props.pathContext.pageContent)
+    return this.pageContent;
+  }
 
   render() {
-    console.log(this.props);
-    return <h1>hi there</h1>
+    const content = this.content()
+    return (
+      <div>
+        <h1>hi there {content.title}</h1>
+        <PageBlocks />
+      </div>
+    )
   }
 }
-
 
 export default PageTemplate
