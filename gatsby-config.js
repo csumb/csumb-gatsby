@@ -17,5 +17,13 @@ module.exports = {
         path: `./_data`,
       },
     },
+    {
+      resolve: 'gatsby-source-google-sheets',
+      options: {
+          spreadsheetId: '1jtwi1CnRBt2JzfoZVSPngmkaucVpw0aZ_WSKIceXlMw',
+          worksheetTitle: 'Sheet1',
+          credentials: require('./drive-api.json')
+      }
+    }
   ],
 }
