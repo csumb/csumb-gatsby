@@ -1,6 +1,6 @@
 import React from 'react'
-import Link from 'gatsby-link'
-import Blocks from './blocks/index.js'
+//import Link from 'gatsby'
+//import Blocks from './blocks/index.js'
 
 class PageTemplate extends React.Component {
 
@@ -23,7 +23,7 @@ class PageTemplate extends React.Component {
     return (
       <div>
         <h1>hi there {content.title}</h1>
-        <PageBlocks />
+        
       </div>
     )
   }

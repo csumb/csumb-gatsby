@@ -6,11 +6,12 @@
   "dependencies": {
     "emotion": "^9.2.8",
     "facepaint": "^1.2.1",
-    "gatsby": "^1.9.277",
-    "gatsby-link": "^1.6.46",
+    "gatsby": "next",
+    "gatsby-link": "^2.0.0-rc.2",
     "gatsby-plugin-react-helmet": "^2.0.11",
     "gatsby-source-filesystem": "^1.5.39",
-    "gatsby-transformer-json": "^1.0.20",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
     "react-emotion": "^9.2.8",
     "react-helmet": "^5.2.0"
   },
