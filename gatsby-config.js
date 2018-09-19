@@ -24,6 +24,18 @@ module.exports = {
           worksheetTitle: 'Sheet1',
           credentials: require('./drive-api.json')
       }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Cal State Monterey Bay",
+        short_name: "CSUMB",
+        start_url: "/",
+        background_color: "#fff",
+        theme_color: "#fff",
+        display: "minimal-ui",
+        icon: "src/assets/images/icon.png", // This path is relative to the root of the site.
+      },
     }
   ],
 }

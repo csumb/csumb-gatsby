@@ -8,6 +8,7 @@
     "facepaint": "^1.2.1",
     "gatsby": "next",
     "gatsby-link": "^2.0.0-rc.2",
+    "gatsby-plugin-manifest": "^2.0.2",
     "gatsby-plugin-react-helmet": "^2.0.11",
     "gatsby-source-filesystem": "^1.5.39",
     "gatsby-source-google-sheets": "^1.1.1",
