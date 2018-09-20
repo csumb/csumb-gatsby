@@ -18,13 +18,32 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-google-sheets',
+      resolve: 'gatsby-source-http',
       options: {
-          spreadsheetId: '1jtwi1CnRBt2JzfoZVSPngmkaucVpw0aZ_WSKIceXlMw',
-          worksheetTitle: 'Sheet1',
-          credentials: require('./drive-api.json')
+        url: `https://spreadsheets.google.com/feeds/list/1jtwi1CnRBt2JzfoZVSPngmkaucVpw0aZ_WSKIceXlMw/od6/public/values?alt=json`,
+        id: `academicPrograms`,
+        json: true,
+        fetchOptions: {
+
+        }
       }
     },
+    `gatsby-transformer-json`,
+    /*
+    ENABLE BEFORE GO LIVE
+    {
+      resolve: "gatsby-plugin-guess-js",
+      options: {
+        // Find the view id in the GA admin in a section labeled "views"
+        GAViewID: `VIEW_ID`,
+        minimumThreshold: 0.03,
+        // The "period" for fetching analytic data.
+        period: {
+          startDate: new Date("2018-1-1"),
+          endDate: new Date(),
+        },
+      },
+    },*/
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
