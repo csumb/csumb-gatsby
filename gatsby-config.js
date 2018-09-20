@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Cal State Monterey Bay',
+    title: `Cal State Monterey Bay`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -18,17 +18,19 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-http',
+      resolve: `gatsby-source-google-public-sheet`,
       options: {
-        url: `https://spreadsheets.google.com/feeds/list/1jtwi1CnRBt2JzfoZVSPngmkaucVpw0aZ_WSKIceXlMw/od6/public/values?alt=json`,
+        sheet: `https://spreadsheets.google.com/feeds/list/1jtwi1CnRBt2JzfoZVSPngmkaucVpw0aZ_WSKIceXlMw/od6/public/values?alt=json`,
         id: `academicPrograms`,
-        json: true,
-        fetchOptions: {
-
-        }
+        fields: [
+          `type`,
+          `name`,
+          `program`,
+          `link`,
+          `description`
+        ]
       }
     },
-    `gatsby-transformer-json`,
     /*
     ENABLE BEFORE GO LIVE
     {

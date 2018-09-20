@@ -4,6 +4,7 @@ const fs = require(`fs-extra`)
 require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
+  return;
   const { createPage } = actions
   return new Promise((resolve, reject) => {
     const courseTemplate = path.resolve(`src/templates/course.js`)

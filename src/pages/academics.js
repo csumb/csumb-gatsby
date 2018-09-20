@@ -25,8 +25,8 @@ class AcademicsPage extends React.Component {
     }
     //Filter all the rows from the sheet and add them to the component's filteredItems state
     var filteredItems = []
-    this.props.data.allGoogleSheetSheet1Row.edges.map((row) => {
-      if(row.node.name.toLowerCase().search(this.state.filter) > -1) {
+    this.props.data.allGooglePublicSheet.edges.map((row) => {
+      if(row.node.row.name.toLowerCase().search(this.state.filter) > -1) {
         filteredItems.push(row.node)
       } 
       return filteredItems
@@ -46,14 +46,14 @@ class AcademicsPage extends React.Component {
     return (
       <ul>
       {items.map((result) => (
-        <li>{result.name}</li>
+        <li>{result.row.name}</li>
       ))}
       </ul>
     )
   }
   
   render() {
-    const sheets = this.props.data.allGoogleSheetSheet1Row;
+    const sheets = this.props.data.allGooglePublicSheet;
 
     return (
       <Layout>
@@ -66,12 +66,12 @@ class AcademicsPage extends React.Component {
           this.AcademicsResults(this.state.filteredItems) :
           null
         }
-        {sheets.edges.map((row) => (
-          <p key={row.node.id}>
-            <Link to={row.node.link.replace('https://csumb.edu/', '/')}>
-              {row.node.name}
+        {sheets.edges.map((program) => (
+          <p key={program.node.id}>
+            <Link to={program.node.row.link.replace('https://csumb.edu/', '/')}>
+              {program.node.row.name}
             </Link>
-            {row.node.description}
+            {program.node.row.description}
           </p>
         ))}
       </Layout>
@@ -83,15 +83,17 @@ export default AcademicsPage;
 
 export const query = graphql`
   {
-    allGoogleSheetSheet1Row {
+    allGooglePublicSheet {
       edges {
         node {
-          name
-          program
-          link
-          id
-          description
+          row {
+            name
+            program
+            link
+            description
+          }
         }
       }
     }
-  }`
+  }
+`
