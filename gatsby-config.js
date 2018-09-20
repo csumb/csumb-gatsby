@@ -1,6 +1,9 @@
+const footer =require('./src/config/footer')
+
 module.exports = {
   siteMetadata: {
     title: `Cal State Monterey Bay`,
+    footer: footer
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

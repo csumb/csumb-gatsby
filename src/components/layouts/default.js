@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-//import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from '../header'
 import '../styles/global'
-import { css } from 'emotion';
+import { css } from 'emotion'
+
+import Footer from './partials/footer'
 
 const Layout = ({ children, data }) => (
   <div>
@@ -29,6 +30,7 @@ const Layout = ({ children, data }) => (
     `}>
       {children}
     </div>
+    <Footer/>
   </div>
 )
 
