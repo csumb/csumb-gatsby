@@ -6,23 +6,19 @@ import Link from 'gatsby-link'
 
 import { css } from 'emotion';
 
-const footerStyle = css({
-  backgroundColor: colors.tan.light
-})
-
-const legalStyle = css({
-  backgroundColor: colors.tan.darkest,
-  a: {
-    color: colors.tan.light,
-    fontSize: '0.8rem',
-    marginRight: '1rem'
-  }
-})
-
 const Footer = ({ children, data }) => (
-  <footer className={footerStyle}>
+  <footer className={css`
+    background-color: ${colors.tan.light};
+    `}>
     THE FOOTER
-    <div className={legalStyle}>
+    <div className={css`
+      background-color: ${colors.tan.darkest};
+      a {
+        color: ${colors.tan.light};
+        cont-size: 0.8rem;
+        margin-right: 1rem;
+      }
+      `}>
       <Link to="/it/copyright-infringement">Website Copyright/DMCA Policy</Link>
       <Link to="/privacy">Privacy</Link>
       <Link to="/ati">Accessibility</Link>
