@@ -4,12 +4,13 @@ import { StaticQuery, graphql } from "gatsby"
 
 import '../styles/global'
 import { css } from 'emotion'
-
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './partials/header'
 import Footer from './partials/footer'
 
 const Layout = ({ children, data }) => (
   <div>
+    <CssBaseline />
     <StaticQuery
       query={graphql`{
           site {

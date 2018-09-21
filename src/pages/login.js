@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/layouts/default'
-import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
 import OktaSignIn from '@okta/okta-signin-widget'
 
@@ -30,7 +29,9 @@ class LoginPage extends React.Component {
 
   render(){
     return(
-     <div ref={(div) => {this.loginContainer = div; }} />
+      <Layout>
+        <div ref={(div) => {this.loginContainer = div; }} />
+      </Layout>
     );
   }
 }

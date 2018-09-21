@@ -18,7 +18,7 @@ const Footer = ({ children, data }) => (
       padding: 0;
     }
     `}>
-    <Grid container spacing={16}>
+    <Grid container justify="center" spacing={16}>
       <Grid item xs={12} md={4}>
       <h2>Popular</h2>
       <ul>
