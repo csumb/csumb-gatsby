@@ -3,7 +3,11 @@ const footer =require('./src/config/footer')
 module.exports = {
   siteMetadata: {
     title: `Cal State Monterey Bay`,
-    footer: footer
+    footer: footer,
+    okta: {
+      domain: `https://csumb.okta.com`,
+      clientId: `0oakn6rxbt8GOTb080x7`
+    }
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
