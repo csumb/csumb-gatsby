@@ -1,8 +1,8 @@
 import React from 'react'
-import Logo from '../assets/images/csumb-logo-blue.svg'
+import Logo from '../../../assets/images/csumb-logo-blue.svg'
 import { css } from 'emotion'
 import Link from 'gatsby-link'
-import bp from './styles/breakpoints.js';
+import bp from '../../styles/breakpoints';
 
 const imageClassName = css(bp({
   float: 'left',

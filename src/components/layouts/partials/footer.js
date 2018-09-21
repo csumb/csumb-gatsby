@@ -22,9 +22,9 @@ const Footer = ({ children, data }) => (
       <Box width={[
         1,
         1,
-        1/4,
         1/4
-      ]}>
+      ]}
+      px={2}>
       <h2>Popular</h2>
       <ul>
         <li><Link to="http://csumb.edu/jobs" title="">Jobs</Link></li>
@@ -37,9 +37,9 @@ const Footer = ({ children, data }) => (
       <Box width={[
         1,
         1,
-        1/4,
         1/4
-      ]}>
+      ]}
+      px={2}>
       <h2>Tools</h2>
       <ul>
         <li><Link to="/map" title="">Map</Link></li>
@@ -52,9 +52,9 @@ const Footer = ({ children, data }) => (
       <Box width={[
         1,
         1,
-        1/4,
         1/4
-      ]}>
+      ]}
+      px={2}>
       <h2>Links for</h2>
       <ul>
         <li><Link to="/families" title="">Parents</Link></li>
