@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "Kevin Miller <kevin@csumb.edu>",
   "dependencies": {
+    "@okta/okta-signin-widget": "^2.13.0",
     "emotion": "^9.2.10",
     "facepaint": "^1.2.1",
     "gatsby": "^2.0.6",
