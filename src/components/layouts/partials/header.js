@@ -2,6 +2,7 @@ import React from 'react'
 import Logo from '../../../assets/images/csumb-logo-blue.svg'
 import { css } from 'emotion'
 import Link from 'gatsby-link'
+import Container from '../../container'
 import bp from '../../styles/breakpoints';
 
 const imageClassName = css(bp({
@@ -11,9 +12,11 @@ const imageClassName = css(bp({
 
 const Header = ({ siteTitle }) => (
   <header>
-    <Link to="/">
-      <img src={Logo} alt={siteTitle} className={imageClassName}/>
-    </Link>
+    <Container>
+      <Link to="/">
+        <img src={Logo} alt={siteTitle} className={imageClassName}/>
+      </Link>
+    </Container>
     {siteTitle}
   </header>
 )

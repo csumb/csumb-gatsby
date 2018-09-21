@@ -7,6 +7,7 @@ import { css } from 'emotion'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './partials/header'
 import Footer from './partials/footer'
+import Container from '../container'
 
 const Layout = ({ children, data }) => (
   <div>
@@ -29,7 +30,9 @@ const Layout = ({ children, data }) => (
     <div className={css`
     clear: both 
     `}>
+    <Container>
       {children}
+    </Container>
     </div>
     <Footer/>
   </div>
