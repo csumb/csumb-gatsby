@@ -2,8 +2,8 @@
 
 ## Dev notes
 
-* Using @emotion-js to render CSS in components
-* Use https://ui.reach.tech
+* ~~Using @emotion-js to render CSS in components~~
+* ~~Use https://ui.reach.tech~~
 
 ## TODOs
 
