@@ -1,21 +1,9 @@
+
 const path = require(`path`)
 const fs = require(`fs-extra`)
 require(`gatsby-source-filesystem`)
-/*
-exports.onCreateNode = async ({ node, loadNodeContent, actions }) => {
-  const { createNodeField } = actions
-  if(node.internal.type !== 'File' || node.relativePath.search('.json') === -1) {
-    return;
-  }
-  const fileContent = await loadNodeContent(node)
-  createNodeField({
-    node,
-    name: `pageContent`,
-    value: fileContent
-  })
-};*/
-
-exports.createPages = ({ graphql, loadNodeContent, actions }) => {
+ 
+module.exports = (graphql, actions) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
     const pageTemplate = path.resolve(`src/templates/page.js`)

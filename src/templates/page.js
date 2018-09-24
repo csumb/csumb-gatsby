@@ -21,10 +21,9 @@ class PageTemplate extends React.Component {
   render() {
     const content = this.content()
     return (
-      <div>
-        <h1>hi there {content.title}</h1>
-        
-      </div>
+      <Layout title={content.title}>
+        <h1>hi there {content.title}</h1>  
+      </Layout>
     )
   }
 }
