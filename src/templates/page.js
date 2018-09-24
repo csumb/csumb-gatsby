@@ -14,7 +14,12 @@ class PageTemplate extends React.Component {
     if(this.pageContent) {
       return this.pageContent;
     }
-    this.pageContent = JSON.parse(this.props.pageContext.pageContent)
+    try{
+      this.pageContent = JSON.parse(this.props.pageContext.pageContent)
+    }
+    catch(e) {
+      console.log(`Error processing JSON in `, this.props.pageContext.filePath)
+    }
     return this.pageContent;
   }
 

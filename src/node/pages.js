@@ -14,6 +14,7 @@ module.exports = (graphql, actions) => {
         {
           allFile(filter: {
               relativePath: {regex: "/^(?!.git\/*)/"}
+              extension: {eq: "json"}
             }) {
             edges {
               node {
