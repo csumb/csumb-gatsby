@@ -5,6 +5,7 @@ import colors from '../../styles/colors'
 import Container from '../../container'
 import Link from 'gatsby-link'
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 import { css } from 'emotion';
 
@@ -50,6 +51,9 @@ const Footer = ({ children, data }) => (
           <li><Link to="/veterans" title="">Veterans</Link></li>
           <li><Link to="/employees" title="">Employees</Link></li>
         </ul>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Button component={Link} to="/giving" variant="outlined" color="primary">Give</Button>
         </Grid>
       </Grid>
     </Container>
