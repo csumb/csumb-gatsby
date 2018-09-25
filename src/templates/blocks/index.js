@@ -13,8 +13,14 @@ class Block extends React.Component {
   };
 
   render() {
+    if(typeof this.blockComponents[this.props.type] === 'undefined') {
+      return (
+        <div>
+          Block type doesn't exist
+        </div>
+      )
+    }
     const BlockType = this.blockComponents[this.props.type]
-    console.log(BlockType)
     return (
       <BlockType block={this.props.block}/>
     )
@@ -24,7 +30,13 @@ class Blocks extends React.Component {
 
   render() {
     let blocks = JSON.parse(this.props.blocks)
-    console.log(blocks)
+    if(typeof blocks.layout === 'undefined' || typeof blocks.layout.map === 'undefined') {
+      return (
+        <div>
+          Empty layout data
+        </div>
+      )
+    }
     return(
       <div>
         {blocks.layout.map((layout) => (
