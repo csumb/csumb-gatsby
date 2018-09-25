@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fs-walk": "0.0.2",
     "lodash": "^4.17.11",
     "walk": "^2.3.14"
   }
