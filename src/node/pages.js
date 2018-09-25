@@ -5,47 +5,69 @@ require(`gatsby-source-filesystem`)
  
 module.exports = (graphql, actions) => {
   const { createPage } = actions
-  return
   return new Promise((resolve, reject) => {
     const pageTemplate = path.resolve(`src/templates/page.js`)
-    // Query for JSON content nodes to use in creating pages. We filter out any .git files
+    var sites = {}
     resolve(
       graphql(
         `
         {
-          allFile(filter: {
-              relativePath: {regex: "/^(?!.git\/*)/"}
-              extension: {eq: "json"}
-            }) {
-            edges {
-              node {
-                relativePath
-                absolutePath
-              }
-            }
-          }
-        }
-    `
+          allCsumbContentSite {
+           edges {
+             node {
+               id
+               site
+               title
+             }
+           }
+         }     
+       }`
       ).then(result => {
         if (result.errors) {
           reject(result.errors)
         }
-        result.data.allFile.edges.forEach(async edge => {
-          const pagePath = edge.node.relativePath.replace('.json', '.html')
-          const fileContent = fs.readFileSync(edge.node.absolutePath, `utf-8`);
-          createPage({
-            path: pagePath,
-            component: pageTemplate,
-            layout: 'index',
-            context: {
-              filePath: edge.node.relativePath,
-              pageContent: fileContent
-            }
-          })
-          
+        result.data.allCsumbContentSite.edges.forEach(async edge => {
+          sites[edge.node.site] = edge.node
         })
+      }).then(() => {
+        graphql(
+          `
+          {
+            allCsumbContentPage {
+              edges {
+                node {
+                  id
+                  relativePath
+                  pageContent
+                  title
+                  site
+                }
+              }
+            }
+          }        
+      `
+        ).then(result => {
+          if (result.errors) {
+            reject(result.errors)
+          }
+          result.data.allCsumbContentPage.edges.forEach(async edge => {
+            
+            createPage({
+              path: edge.node.relativePath,
+              component: pageTemplate,
+              layout: 'index',
+              context: {
+                filePath: edge.node.relativePath,
+                title: edge.node.title,
+                site: sites[edge.node.site],
+                pageContent: edge.node.pageContent
+              }
+            })
+            
+          })
 
-        return
+          return
+        })
       })
     )
   })

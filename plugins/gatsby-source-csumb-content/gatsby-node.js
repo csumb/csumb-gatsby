@@ -14,31 +14,32 @@ exports.sourceNodes = async ({ actions , createNodeId }, configOptions) => {
       next()
       return
     }
-    var path = `${root}/${fileStats.name}`
+    let path = `${root}/${fileStats.name}`
     fs.readFile(path, 'utf8', function(err, data) {
-      const digest = crypto.createHash(`md5`)
+      let digest = crypto.createHash(`md5`)
         .update(data)
         .digest(`hex`)
-      const content = JSON.parse(data)
-      const nodeData = {
+      let content = JSON.parse(data)
+      
+      let nodeData = {
         id: createNodeId(path),
+        uuid: content.uuid,
         parent: null,
         children: [],
         title: content.title,
         site: content.site,
+        pageContent: JSON.stringify(content.pageContent),
         relativePath: path.replace('.json', '').replace(configOptions.path, ''),
-        content: data,
         internal: {
           type: `CsumbContentPage`,
           contentDigest: digest
         }
       }
-    
       createNode(nodeData)
       next()
     });
   });
-
+  
   const siteWalker = walk.walk(configOptions.path, {
     filters: ['.git']
   });
@@ -54,19 +55,24 @@ exports.sourceNodes = async ({ actions , createNodeId }, configOptions) => {
       const digest = crypto.createHash(`md5`)
         .update(data)
         .digest(`hex`)
+        
       const content = JSON.parse(data)
       const nodeData = {
         id: createNodeId(path),
         parent: null,
         children: [],
-        content: content,
         site: content.site,
         relativePath: path,
-        content: data,
         internal: {
           type: _.camelCase(`csumb content ${type}`),
           contentDigest: digest
         }
+      }
+      if(type == 'site') {
+        nodeData.title = content.title
+      }
+      if(type == 'navigation') {
+        nodeData.navigation = JSON.stringify(content.navigation)
       }
     
       createNode(nodeData)
