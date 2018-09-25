@@ -13,9 +13,9 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-csv`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-source-csumb-content`,
       options: {
-        path: `./_web-content`,
+        path: `_web-content`,
       },
     },
     {

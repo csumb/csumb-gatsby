@@ -5,6 +5,7 @@ require(`gatsby-source-filesystem`)
  
 module.exports = (graphql, actions) => {
   const { createPage } = actions
+  return
   return new Promise((resolve, reject) => {
     const pageTemplate = path.resolve(`src/templates/page.js`)
     // Query for JSON content nodes to use in creating pages. We filter out any .git files
