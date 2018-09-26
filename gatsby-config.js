@@ -5,8 +5,7 @@ module.exports = {
     title: `Cal State Monterey Bay`,
     footer: footer,
     okta: {
-      domain: `https://csumb.okta.com`,
-      clientId: `0oakn6rxbt8GOTb080x7`
+      login: `https://csumb.okta.com`
     }
   },
   plugins: [
