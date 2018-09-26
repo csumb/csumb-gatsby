@@ -1,11 +1,12 @@
 import React from 'react'
+import filterCourses from './filter-courses'
 import { css } from 'emotion'
 
 class BlockText extends React.Component {
   
   createMarkup(text) {
     return {
-      __html: text
+      __html: filterCourses(text)
     }
   }
 
