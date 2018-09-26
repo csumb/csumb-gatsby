@@ -4,6 +4,8 @@ import BlockText from './text'
 import BlockHeading from './heading'
 import BlockButton from './button'
 import BlockDocument from './document'
+import BlockImage from './image'
+import BlockQuote from './quote'
 import BlockDefinitionList from './definition-list'
 import { css } from 'emotion'
 
@@ -16,7 +18,9 @@ class Block extends React.Component {
     heading: BlockHeading,
     button: BlockButton,
     definitionlist: BlockDefinitionList,
-    document: BlockDocument
+    document: BlockDocument,
+    image: BlockImage,
+    quote: BlockQuote
   };
 
   render() {
