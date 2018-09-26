@@ -12,8 +12,8 @@ class BlockList extends React.Component {
     const ListTag = this.props.block.data.type
     return (
       <ListTag>
-        {this.props.block.data.list.map((item) => (
-          <li dangerouslySetInnerHTML={this.createMarkup(item.text)}>
+        {this.props.block.data.list.map((item, key) => (
+          <li dangerouslySetInnerHTML={this.createMarkup(item.text)} key={key}>
           </li>
         ))}
       </ListTag>

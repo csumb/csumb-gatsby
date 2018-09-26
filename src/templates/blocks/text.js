@@ -1,4 +1,5 @@
 import React from 'react'
+import { css } from 'emotion'
 
 class BlockText extends React.Component {
   
@@ -9,8 +10,14 @@ class BlockText extends React.Component {
   }
 
   render() {
+    let className = null
+    if(this.props.block.data.lead) {
+      className = css(`
+        font-size: 130%;
+      `)
+    }
     return (
-      <p dangerouslySetInnerHTML={this.createMarkup(this.props.block.data.text)}/>
+      <p className={className} dangerouslySetInnerHTML={this.createMarkup(this.props.block.data.text)}/>
     )
   }
 }
