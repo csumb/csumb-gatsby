@@ -1,6 +1,7 @@
 import React from 'react'
 import BlockList from './list'
 import BlockText from './text'
+import BlockHeading from './heading'
 import { css } from 'emotion'
 import _ from 'lodash'
 
@@ -9,7 +10,8 @@ class Block extends React.Component {
 
   blockComponents = {
     text: BlockText,
-    list: BlockList
+    list: BlockList,
+    heading: BlockHeading
   };
 
   render() {

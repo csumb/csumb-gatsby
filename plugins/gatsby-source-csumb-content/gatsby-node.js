@@ -2,6 +2,7 @@ const fs = require('fs')
 const crypto = require('crypto')
 const walk = require('walk')
 const _ = require('lodash')
+const report = require('gatsby-cli/lib/reporter')
 
 exports.sourceNodes = async ({ actions , createNodeId }, configOptions) => {
   const { createNode } = actions

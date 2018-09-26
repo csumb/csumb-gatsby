@@ -9,14 +9,14 @@ class BlockList extends React.Component {
   }
   
   render() {
-    const listType = this.props.block.data.type
+    const ListTag = this.props.block.data.type
     return (
-      <ul>
+      <ListTag>
         {this.props.block.data.list.map((item) => (
           <li dangerouslySetInnerHTML={this.createMarkup(item.text)}>
           </li>
         ))}
-      </ul>
+      </ListTag>
     )
   }
 }
