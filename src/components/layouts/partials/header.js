@@ -5,6 +5,7 @@ import Link from 'gatsby-link'
 import Container from '../../container'
 import bp from '../../styles/breakpoints'
 import { StaticQuery, graphql } from 'gatsby'
+import Search from './search'
 
 const imageClassName = css(bp({
   float: 'left',
@@ -72,6 +73,7 @@ class Header extends React.Component {
             <img src={Logo} alt={this.props.siteTitle} className={imageClassName}/>
           </Link>
           <User user={this.state.user}/>
+          <Search/>
         </Container>
         {this.props.siteTitle}
       </header>

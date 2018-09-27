@@ -6,7 +6,8 @@ module.exports = {
     footer: footer,
     okta: {
       login: `https://csumb.okta.com`
-    }
+    },
+    swiftypeId: `Gu7FdGTPV49T6dsYVBSV`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

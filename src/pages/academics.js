@@ -79,7 +79,7 @@ class AcademicsPage extends React.Component {
   }
 }
 
-export default AcademicsPage;
+export default AcademicsPage
 
 export const query = graphql`
   {
