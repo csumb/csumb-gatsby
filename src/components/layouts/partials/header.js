@@ -4,7 +4,6 @@ import { css } from 'emotion'
 import Link from 'gatsby-link'
 import Container from '../../container'
 import bp from '../../styles/breakpoints'
-import { StaticQuery, graphql } from 'gatsby'
 import Search from './search'
 
 const imageClassName = css(bp({
@@ -36,7 +35,7 @@ class Header extends React.Component {
   }
   
   render() {
-
+    const that = this
     const User = (props) => {
       if(props.user) {
         return (
@@ -46,23 +45,9 @@ class Header extends React.Component {
         )
       }
       return (
-        <StaticQuery
-          query={graphql`{
-              site {
-                siteMetadata {
-                  okta {
-                    login
-                  }
-                }
-              }
-            }`}
-            render={data => (
-                  <>
-                  <a href={data.site.siteMetadata.okta.login}>Log in</a>
-                  
-                  </>
-                  )}
-        />
+        <>
+        <a href={that.props.metadata.okta.login}>Log in</a>
+        </>
       )
     }
 
@@ -70,10 +55,11 @@ class Header extends React.Component {
       <header>
         <Container>
           <Link to="/">
-            <img src={Logo} alt={this.props.siteTitle} className={imageClassName}/>
+            <img src={Logo} alt={this.props.metadata.siteTitle} className={imageClassName}/>
           </Link>
           <User user={this.state.user}/>
-          <Search/>
+          <Search swiftypeId={that.props.metadata.swiftypeId}/>
+        />
         </Container>
         {this.props.siteTitle}
       </header>

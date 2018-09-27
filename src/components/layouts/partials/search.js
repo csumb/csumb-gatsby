@@ -1,8 +1,6 @@
 import React from 'react'
-import { css } from 'emotion'
+//import { css } from 'emotion'
 import Link from 'gatsby-link'
-import { StaticQuery, graphql } from 'gatsby'
-//import siteMetadata from '../../fragments/site-metadata'
 
 
 class Search extends React.Component {
@@ -17,13 +15,12 @@ class Search extends React.Component {
   }
 
   handleChange(event) {
-    const swiftype = 'Gu7FdGTPV49T6dsYVBSV'
     if(!event.target.value.trim().length || event.target.value.trim().length < 3) {
       this.setState({
         search: false
       });
     }
-    window.fetch(`https://api.swiftype.com/api/v1/public/engines/suggest?engine_key=${swiftype}&q=${event.target.value.trim().toLowerCase()}`).then(response => {
+    window.fetch(`https://api.swiftype.com/api/v1/public/engines/suggest?engine_key=${this.props.swiftypeId}&q=${event.target.value.trim().toLowerCase()}`).then(response => {
       return response.json()
     }).then(search => {
       this.setState({

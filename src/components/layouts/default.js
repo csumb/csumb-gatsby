@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from "gatsby"
-
+import { graphql, StaticQuery } from 'gatsby'
 import '../styles/global'
 import { css } from 'emotion'
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,13 +15,17 @@ const Layout = ({ children, data }) => (
       query={graphql`{
           site {
             siteMetadata {
+              swiftypeId
               title
+              okta {
+                login
+              }
             }
           }
         }`}
         render={data => (
                <>
-               <Header siteTitle={data.site.siteMetadata.title} />
+               <Header metadata={data.site.siteMetadata} />
                
                </>
                )}
