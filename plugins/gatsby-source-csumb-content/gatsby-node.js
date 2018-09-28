@@ -22,6 +22,12 @@ exports.sourceNodes = async ({ actions , createNodeId }, configOptions) => {
         .digest(`hex`)
       let content = JSON.parse(data)
       
+      path = path.replace('.json', '').replace(configOptions.path, '')
+      path = path.split('/')
+      if(path[path.length - 1] == 'index') {
+        path.pop()
+      }
+      
       let nodeData = {
         id: createNodeId(path),
         uuid: content.uuid,
@@ -30,7 +36,7 @@ exports.sourceNodes = async ({ actions , createNodeId }, configOptions) => {
         title: content.title,
         site: content.site,
         pageContent: JSON.stringify(content.pageContent),
-        relativePath: path.replace('.json', '').replace(configOptions.path, ''),
+        relativePath: path.join('/'),
         internal: {
           type: `CsumbContentPage`,
           contentDigest: digest
