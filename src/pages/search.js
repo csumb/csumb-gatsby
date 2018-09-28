@@ -15,11 +15,12 @@ class SearchPage extends React.Component {
       query: ''
     }
     this.existingQuery = null
-
-    let location = url.parse(window.location.href, true)
-    if(location.query && typeof location.query.q !== 'undefined') {
-      state.query = location.query.q
-      this.existingQuery = state.query
+    if(typeof window !== 'undefined') {
+      let location = url.parse(window.location.href, true)
+      if(location.query && typeof location.query.q !== 'undefined') {
+        state.query = location.query.q
+        this.existingQuery = state.query
+      }
     }
 
     this.state = state
