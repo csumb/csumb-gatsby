@@ -38,6 +38,7 @@ module.exports = (graphql, actions) => {
               pageContent
               title
               site
+              layout
             }
           }
         }
@@ -62,6 +63,7 @@ module.exports = (graphql, actions) => {
               filePath: edge.node.relativePath,
               title: edge.node.title,
               site: sites[edge.node.site],
+              layout: edge.node.layout,
               navigation: navigation[edge.node.site],
               pageContent: edge.node.pageContent
             }

@@ -29,11 +29,12 @@ exports.sourceNodes = async ({ actions , createNodeId }, configOptions) => {
       }
       
       let nodeData = {
-        id: createNodeId(path),
+        id: content.uuid,
         uuid: content.uuid,
         parent: null,
         children: [],
         title: content.title,
+        layout: content.layout,
         site: content.site,
         pageContent: JSON.stringify(content.pageContent),
         relativePath: path.join('/'),
