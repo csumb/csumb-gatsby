@@ -1,6 +1,7 @@
 import React from 'react'
 //import { css } from 'emotion'
 import Link from 'gatsby-link'
+import { navigate } from '@reach/router'
 
 
 class Search extends React.Component {
@@ -8,13 +9,18 @@ class Search extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      search: false
+      search: false,
+      query: false
     }
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
+    this.setState({
+      query: event.target.value.trim()
+    })
     if(!event.target.value.trim().length || event.target.value.trim().length < 3) {
       this.setState({
         search: false
@@ -31,6 +37,11 @@ class Search extends React.Component {
         search: false
       })
     })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    navigate(`/search?q=${this.state.query}`)
   }
   
   render() {
@@ -51,10 +62,10 @@ class Search extends React.Component {
     }
 
     return (
-      <>
+      <form onSubmit={this.handleSubmit}>
         <input type="text" onChange={this.handleChange}/>
         <SearchResults search={this.state.search}/>
-      </>
+      </form>
     )
   }
 }

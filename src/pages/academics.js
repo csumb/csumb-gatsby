@@ -53,8 +53,7 @@ class AcademicsPage extends React.Component {
   }
   
   render() {
-    const sheets = this.props.data.allGooglePublicSheet;
-
+    const sheets = this.props.data.allGooglePublicSheet
     return (
       <Layout>
         <h1>Academics</h1>
@@ -86,6 +85,7 @@ export const query = graphql`
     allGooglePublicSheet {
       edges {
         node {
+          id
           row {
             name
             program

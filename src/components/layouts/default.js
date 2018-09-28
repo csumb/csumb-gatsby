@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql, StaticQuery } from 'gatsby'
 import '../styles/global'
 import { css } from 'emotion'
@@ -40,9 +39,5 @@ const Layout = ({ children, data }) => (
     <Footer/>
   </div>
 )
-
-Layout.propTypes = {
-  children: PropTypes.object,
-}
 
 export default Layout
