@@ -58,8 +58,7 @@ class Header extends React.Component {
             <img src={Logo} alt={this.props.metadata.siteTitle} className={imageClassName}/>
           </Link>
           <User user={this.state.user}/>
-          <Search swiftypeId={that.props.metadata.swiftypeId}/>
-        />
+          <Search swiftypeId={this.props.metadata.swiftypeId}/>
         </Container>
         {this.props.siteTitle}
       </header>

@@ -24,7 +24,7 @@ const Layout = ({ children, data }) => (
         }`}
         render={data => (
                <>
-               <Header metadata={data.site.siteMetadata} />
+               <Header metadata={data.site.siteMetadata}/>
                
                </>
                )}
