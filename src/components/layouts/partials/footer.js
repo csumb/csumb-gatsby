@@ -1,5 +1,4 @@
 import React from 'react'
-//import { StaticQuery, graphql } from "gatsby"
 import srOnly from '../../styles/sronly'
 import colors from '../../styles/colors'
 import Container from '../../container'
@@ -66,9 +65,9 @@ const Footer = ({ children, data }) => (
       }
       `}>
       <Container>
-        <Link to="/it/copyright-infringement">Website Copyright/DMCA Policy</Link>
+        <Link to="/copyright">Website Copyright/DMCA Policy</Link>
         <Link to="/privacy">Privacy</Link>
-        <Link to="/ati">Accessibility</Link>
+        <Link to="/accessibility">Accessibility</Link>
         <Link to="https://cm.maxient.com/reportingform.php?CSUMontereyBay&amp;layout_id=0">Report concerning behavior</Link>
         <Link to="/titleix">Title <abbr title="nine">IX</abbr></Link>
         <Link to="/diversity">Diversity &amp; Inclusion</Link>
