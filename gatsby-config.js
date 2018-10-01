@@ -7,7 +7,11 @@ module.exports = {
     okta: {
       login: `https://csumb.okta.com`
     },
-    swiftypeId: `Gu7FdGTPV49T6dsYVBSV`
+    swiftypeId: `Gu7FdGTPV49T6dsYVBSV`,
+    schedule: {
+      currentTerm: 2184,
+      endpoint: `https://api.csumb.edu/schedule/`
+    }
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

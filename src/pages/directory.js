@@ -4,7 +4,7 @@ import Layout from "../components/layouts/default"
 
 const IndexPage = () => (
   <Layout>
-    <h1>Homepage deliberately left blank</h1>
+    <h1>Directory</h1>
   </Layout>
 )
 
