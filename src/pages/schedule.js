@@ -3,6 +3,7 @@ import Layout from '../components/layouts/default'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
 
+const termCode = '2184'
 class SchedulePage extends React.Component {
   
   constructor(props) {
@@ -31,10 +32,9 @@ class SchedulePage extends React.Component {
   }
   
   render() {
-    console.log(this.state)
     return (
       <Layout>
-        <h1>Schedule</h1>
+        <h1>{this.props.data.allTermCsv.edges[0].node.DESCR} Schedule</h1>
         <div>
           {this.state.subjects.map(subject => (
             <p>
@@ -67,6 +67,7 @@ export const query = graphql`
       }
     }
   }
+
   allGeCsv {
     edges {
       node {
@@ -75,10 +76,26 @@ export const query = graphql`
       }
     }
   }
+
   allScheduleCsv(filter: {STRM: {eq: "2184"}}) {
     edges {
       node {
         SUBJECT
+      }
+    }
+  }
+
+  allTermCsv(
+    filter:{
+      TERM:{eq:"2184"}
+      SESSION_CODE:{eq: "1"}
+    }
+  ) {
+    edges {
+      node {
+        TERM
+        DESCR
+        SESSION_CODE
       }
     }
   }
