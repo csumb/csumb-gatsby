@@ -2,6 +2,8 @@ const gulp = require('gulp')
 const git = require('gulp-git')
 const exec = require('gulp-exec')
 const del = require('del')
+const fs = require('fs')
+const _ = require('lodash')
 
 gulp.task('clone-content', function() {
   return git.clone('https://github.com/csumb/web-content', {
@@ -26,4 +28,15 @@ gulp.task('clean-data', function() {
   ])
 })
 
+gulp.task('copy-redirects', function(done) {
+  let redirects = JSON.parse(fs.readFileSync('./_web-content/_data/redirects.json'))
+  let results = []
+  _.each(redirects, (target, source) => {
+    results.push(`/${source} ${target}`)
+  })
+  fs.writeFileSync('./public/_redirects', results.join("\n"))
+  done()
+});
+
 gulp.task('default', gulp.series('clean-data', 'clone-content', 'clone-web-data'))
+gulp.task('after-build', gulp.series('copy-redirects'))
