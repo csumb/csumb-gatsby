@@ -12,6 +12,8 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-csv`,
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-source-csumb-content`,
       options: {
@@ -22,6 +24,13 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./_data`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/static`,
+        name: `static-content`
       },
     },
     {
