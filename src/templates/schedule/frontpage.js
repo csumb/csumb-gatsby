@@ -5,7 +5,6 @@ import Layout from '../../components/layouts/default'
 class ScheduleFront extends React.Component {
 
   render() {
-    console.log(this.props.pageContext)
     const term = this.props.pageContext.term
     return(
       <Layout>
@@ -31,9 +30,3 @@ class ScheduleFront extends React.Component {
 }
 
 export default ScheduleFront
-
-/*
-
-
-
-        */

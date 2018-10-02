@@ -31,6 +31,13 @@ module.exports = (graphql, actions) => {
               node {
                 SUBJECT
                 STRM
+                CRSE_ID
+                CATALOG_NBR
+                SECTION
+                TITLE
+                CRN
+                UNITS
+                DESCR
               }
             }
           }
@@ -51,10 +58,13 @@ module.exports = (graphql, actions) => {
           reject(result.errors)
         }
         let allSubjects = {}
+        let allTerms = {}
         result.data.allSubjectsCsv.edges.forEach(edge => {
           allSubjects[edge.node.code] = edge.node
         });
+
         result.data.allTermCsv.edges.forEach(async edge => {
+          allTerms[edge.node.TERM] = edge.node
           let termSubjects = {}
           const term = edge.node.TERM
           result.data.allScheduleCsv.edges.forEach(edge => {
@@ -70,6 +80,18 @@ module.exports = (graphql, actions) => {
               term: edge.node,
               ge: result.data.allGeCsv.edges,
               termSubjects: termSubjects
+            }
+          })
+        })
+
+        result.data.allScheduleCsv.edges.forEach(async edge => {
+          const term = allTerms[edge.node.STRM]
+          createPage({
+            path: `schedule/${term.DESCR.toLowerCase().replace(' ', '')}/${edge.node.CRN}`,
+            component: scheduleCourseTemplate,
+            context: {
+              term: term,
+              course: edge.node
             }
           })
         })
