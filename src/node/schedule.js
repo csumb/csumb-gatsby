@@ -5,6 +5,7 @@ module.exports = (graphql, actions) => {
   const { createPage } = actions
   const scheduleFrontpageTemplate = path.resolve(`src/templates/schedule/frontpage.js`)
   const scheduleCourseTemplate = path.resolve(`src/templates/schedule/course.js`)
+  const scheduleCourseListTemplate = path.resolve(`src/templates/schedule/course-list.js`)
   return new Promise((resolve, reject) => {
     resolve(
       graphql(
@@ -66,9 +67,10 @@ module.exports = (graphql, actions) => {
         result.data.allTermCsv.edges.forEach(async edge => {
           allTerms[edge.node.TERM] = edge.node
           let termSubjects = {}
-          const term = edge.node.TERM
+          let allTermCourses = []
+          const term = edge.node
           result.data.allScheduleCsv.edges.forEach(edge => {
-            if(edge.node.STRM == term) {
+            if(edge.node.STRM == term.TERM) {
               termSubjects[edge.node.SUBJECT] = allSubjects[edge.node.SUBJECT]
             }
           })
@@ -81,6 +83,17 @@ module.exports = (graphql, actions) => {
               ge: result.data.allGeCsv.edges,
               termSubjects: termSubjects
             }
+          })
+          termSubjects.forEach(subject => {
+
+            createPage({
+              path: `schedule/${edge.node.DESCR.toLowerCase().replace(' ', '')}/${subject.code.toLowerCase()}`,
+              component: scheduleCourseListTemplate,
+              context: {
+                term: edge.node,
+                subject: subject
+              }
+            })
           })
         })
 
