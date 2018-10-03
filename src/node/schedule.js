@@ -67,11 +67,17 @@ module.exports = (graphql, actions) => {
         result.data.allTermCsv.edges.forEach(async edge => {
           allTerms[edge.node.TERM] = edge.node
           let termSubjects = {}
-          let allTermCourses = []
+          let allTermCourses = {
+            subject: {}
+          }
           const term = edge.node
           result.data.allScheduleCsv.edges.forEach(edge => {
             if(edge.node.STRM == term.TERM) {
               termSubjects[edge.node.SUBJECT] = allSubjects[edge.node.SUBJECT]
+              if(typeof allTermCourses.subject[edge.node.SUBJECT] === 'undefined') {
+                allTermCourses.subject[edge.node.SUBJECT] = []
+              }
+              allTermCourses.subject[edge.node.SUBJECT].push(edge.node)
             }
           })
           termSubjects = Object.values(termSubjects)
@@ -91,7 +97,8 @@ module.exports = (graphql, actions) => {
               component: scheduleCourseListTemplate,
               context: {
                 term: edge.node,
-                subject: subject
+                subject: subject,
+                courses: allTermCourses.subject[subject.code]
               }
             })
           })
@@ -100,7 +107,7 @@ module.exports = (graphql, actions) => {
         result.data.allScheduleCsv.edges.forEach(async edge => {
           const term = allTerms[edge.node.STRM]
           createPage({
-            path: `schedule/${term.DESCR.toLowerCase().replace(' ', '')}/${edge.node.CRN}`,
+            path: `schedule/${term.DESCR.toLowerCase().replace(' ', '')}/course/${edge.node.CRN}`,
             component: scheduleCourseTemplate,
             context: {
               term: term,
