@@ -1,10 +1,9 @@
 import React from 'react'
 import srOnly from '../../styles/sronly'
 import colors from '../../styles/colors'
-import Container from '../../container'
 import Link from 'gatsby-link'
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import Button from '../../button'
+import { Container, Row, Col } from 'react-grid-system';
 
 import { css } from 'emotion';
 
@@ -20,8 +19,8 @@ const Footer = ({ children, data }) => (
     }
     `}>
     <Container>
-      <Grid container justify="center" spacing={16}>
-        <Grid item xs={12} md={4}>
+      <Row>
+        <Col md={3}>
         <h2>Popular</h2>
         <ul>
           <li><Link to="http://csumb.edu/jobs" title="">Jobs</Link></li>
@@ -30,8 +29,8 @@ const Footer = ({ children, data }) => (
           <li><Link to="http://csumb.edu/social" title="">Social media</Link></li>
           <li><Link to="/library" title="">Library</Link></li>
         </ul>
-        </Grid>
-        <Grid item xs={12} md={4}>
+        </Col>
+        <Col md={3}>
         <h2>Tools</h2>
         <ul>
           <li><Link to="/map" title="">Map</Link></li>
@@ -40,8 +39,8 @@ const Footer = ({ children, data }) => (
           <li><Link to="/catalog" title="">Catalog</Link></li>
           <li><Link to="/planning/schedule" title="">Class schedule</Link></li>
         </ul>
-        </Grid>
-        <Grid item xs={12} md={4}>
+        </Col>
+        <Col md={3}>
         <h2>Links for</h2>
         <ul>
           <li><Link to="/families" title="">Parents</Link></li>
@@ -50,11 +49,11 @@ const Footer = ({ children, data }) => (
           <li><Link to="/veterans" title="">Veterans</Link></li>
           <li><Link to="/employees" title="">Employees</Link></li>
         </ul>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Button component={Link} to="/giving" variant="outlined" color="primary">Give</Button>
-        </Grid>
-      </Grid>
+        </Col>
+        <Col md={3}>
+          <Button to="/giving">Give</Button>
+        </Col>
+      </Row>
     </Container>
     <div className={css`
       background-color: ${colors.tan.darkest};

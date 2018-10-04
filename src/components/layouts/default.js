@@ -2,14 +2,12 @@ import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import '../styles/global'
 import { css } from 'emotion'
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './partials/header'
 import Footer from './partials/footer'
 import Container from '../container'
 
 const Layout = ({ children, data }) => (
   <div>
-    <CssBaseline />
     <StaticQuery
       query={graphql`{
           site {
