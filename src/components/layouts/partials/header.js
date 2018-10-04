@@ -55,13 +55,13 @@ class Header extends React.Component {
     return (
       <header>
         <Container>
-          <Flex>
-           <Box width={[ 1, 1/2 ]} px={2}>
+          <Flex flexWrap="wrap">
+            <Box width={[ 1, 1, 1/2, 1/2 ]} px={2}>
               <Link to="/">
                 <img src={Logo} alt={this.props.metadata.siteTitle} className={imageClassName}/>
               </Link>
             </Box>
-            <Box width={[ 1, 1/2 ]} px={2}>
+            <Box width={[ 1, 1, 1/2, 1/2 ]} px={2}>
               <User user={this.state.user}/>
               <Search swiftypeId={this.props.metadata.swiftypeId}/>
             </Box>

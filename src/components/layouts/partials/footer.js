@@ -20,7 +20,7 @@ const Footer = ({ children, data }) => (
     }
     `}>
     <Container>
-      <Flex>
+      <Flex flexWrap="wrap">
         <Box width={[1, 1/4]}>
         <h2>Popular</h2>
         <ul>
