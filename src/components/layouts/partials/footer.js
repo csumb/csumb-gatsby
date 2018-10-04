@@ -51,7 +51,7 @@ const Footer = ({ children, data }) => (
         </ul>
         </Col>
         <Col md={3}>
-          <Button to="/giving">Give</Button>
+          <Button to="/giving" type="primary">Give</Button>
         </Col>
       </Row>
     </Container>
