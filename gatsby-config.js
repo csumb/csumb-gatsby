@@ -20,6 +20,21 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-catch-links`,
     {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Roboto`,
+            variants: [`400`, `700`]
+          },
+          {
+            family: `Open Sans`,
+            variants: [`400`, `700`]
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-source-csumb-content`,
       options: {
         path: `_web-content`,
