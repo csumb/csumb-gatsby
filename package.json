@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "Kevin Miller <kevin@csumb.edu>",
   "dependencies": {
+    "@rebass/grid": "^6.0.0-4",
     "del": "^3.0.0",
     "emotion": "^9.2.10",
     "facepaint": "^1.2.1",
@@ -30,7 +31,6 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-emotion": "^9.2.10",
-    "react-grid-system": "^4.3.1",
     "react-helmet": "^5.2.0",
     "walk": "^2.3.14"
   },

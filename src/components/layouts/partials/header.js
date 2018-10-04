@@ -5,6 +5,7 @@ import Link from 'gatsby-link'
 import Container from '../../container'
 import bp from '../../styles/breakpoints'
 import Search from './search'
+import { Flex, Box } from '@rebass/grid/emotion'
 
 const imageClassName = css(bp({
   float: 'left',
@@ -54,11 +55,17 @@ class Header extends React.Component {
     return (
       <header>
         <Container>
-          <Link to="/">
-            <img src={Logo} alt={this.props.metadata.siteTitle} className={imageClassName}/>
-          </Link>
-          <User user={this.state.user}/>
-          <Search swiftypeId={this.props.metadata.swiftypeId}/>
+          <Flex>
+           <Box width={[ 1, 1/2 ]} px={2}>
+              <Link to="/">
+                <img src={Logo} alt={this.props.metadata.siteTitle} className={imageClassName}/>
+              </Link>
+            </Box>
+            <Box width={[ 1, 1/2 ]} px={2}>
+              <User user={this.state.user}/>
+              <Search swiftypeId={this.props.metadata.swiftypeId}/>
+            </Box>
+          </Flex>
         </Container>
         {this.props.siteTitle}
       </header>

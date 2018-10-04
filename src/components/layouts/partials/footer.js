@@ -3,7 +3,8 @@ import srOnly from '../../styles/sronly'
 import colors from '../../styles/colors'
 import Link from 'gatsby-link'
 import Button from '../../button'
-import { Container, Row, Col } from 'react-grid-system';
+import Container from '../../container'
+import { Flex, Box } from '@rebass/grid/emotion'
 
 import { css } from 'emotion';
 
@@ -19,8 +20,8 @@ const Footer = ({ children, data }) => (
     }
     `}>
     <Container>
-      <Row>
-        <Col md={3}>
+      <Flex>
+        <Box width={[1, 1/4]}>
         <h2>Popular</h2>
         <ul>
           <li><Link to="http://csumb.edu/jobs" title="">Jobs</Link></li>
@@ -29,8 +30,8 @@ const Footer = ({ children, data }) => (
           <li><Link to="http://csumb.edu/social" title="">Social media</Link></li>
           <li><Link to="/library" title="">Library</Link></li>
         </ul>
-        </Col>
-        <Col md={3}>
+        </Box>
+        <Box width={[1, 1/4]}>
         <h2>Tools</h2>
         <ul>
           <li><Link to="/map" title="">Map</Link></li>
@@ -39,8 +40,8 @@ const Footer = ({ children, data }) => (
           <li><Link to="/catalog" title="">Catalog</Link></li>
           <li><Link to="/planning/schedule" title="">Class schedule</Link></li>
         </ul>
-        </Col>
-        <Col md={3}>
+        </Box>
+        <Box width={[1, 1/4]}>
         <h2>Links for</h2>
         <ul>
           <li><Link to="/families" title="">Parents</Link></li>
@@ -49,11 +50,11 @@ const Footer = ({ children, data }) => (
           <li><Link to="/veterans" title="">Veterans</Link></li>
           <li><Link to="/employees" title="">Employees</Link></li>
         </ul>
-        </Col>
-        <Col md={3}>
+        </Box>
+        <Box width={[1, 1/4]}>
           <Button to="/giving" type="primary">Give</Button>
-        </Col>
-      </Row>
+        </Box>
+      </Flex>
     </Container>
     <div className={css`
       background-color: ${colors.tan.darkest};
