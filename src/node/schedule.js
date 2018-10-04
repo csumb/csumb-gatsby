@@ -6,6 +6,22 @@ module.exports = (graphql, actions) => {
   const scheduleFrontpageTemplate = path.resolve(`src/templates/schedule/frontpage.js`)
   const scheduleCourseTemplate = path.resolve(`src/templates/schedule/course.js`)
   const scheduleCourseListTemplate = path.resolve(`src/templates/schedule/course-list.js`)
+
+  const processAttributes = (attributes) => {
+    let result = {}
+    if(!attributes.length) {
+      return result
+    }
+    attributes = attributes.split(',')
+    attributes.forEach(attribute => {
+      attribute = attribute.trim().split('=')
+      if(typeof result[attribute[0]] === 'undefined') {
+        result[attribute[0]] = []
+      }
+      result[attribute[0]].push(attribute[1])
+    })
+    return result
+  }
   return new Promise((resolve, reject) => {
     resolve(
       graphql(
@@ -39,6 +55,7 @@ module.exports = (graphql, actions) => {
                 CRN
                 UNITS
                 DESCR
+                ATTRIBUTES
               }
             }
           }
@@ -68,18 +85,29 @@ module.exports = (graphql, actions) => {
           allTerms[edge.node.TERM] = edge.node
           let termSubjects = {}
           let allTermCourses = {
-            subject: {}
+            subject: {},
+            ge: {}
           }
           const term = edge.node
           result.data.allScheduleCsv.edges.forEach(edge => {
+            let attributes = processAttributes(edge.node.ATTRIBUTES)
             if(edge.node.STRM == term.TERM) {
               termSubjects[edge.node.SUBJECT] = allSubjects[edge.node.SUBJECT]
               if(typeof allTermCourses.subject[edge.node.SUBJECT] === 'undefined') {
                 allTermCourses.subject[edge.node.SUBJECT] = []
               }
               allTermCourses.subject[edge.node.SUBJECT].push(edge.node)
+              if(typeof attributes.GE !== 'undefined') {
+                attributes.GE.forEach(ge => {
+                  if(typeof allTermCourses.ge[ge] === 'undefined') {
+                    allTermCourses.ge[ge] = []
+                  }
+                  allTermCourses.ge[ge].push(edge.node)
+                })
+              }
             }
           })
+
           termSubjects = Object.values(termSubjects)
           createPage({
             path: `schedule/${edge.node.DESCR.toLowerCase().replace(' ', '')}`,
@@ -90,6 +118,7 @@ module.exports = (graphql, actions) => {
               termSubjects: termSubjects
             }
           })
+
           termSubjects.forEach(subject => {
 
             createPage({
@@ -98,7 +127,21 @@ module.exports = (graphql, actions) => {
               context: {
                 term: edge.node,
                 subject: subject,
+                ge: false,
                 courses: allTermCourses.subject[subject.code]
+              }
+            })
+          })
+
+          result.data.allGeCsv.edges.forEach(ge => {
+            createPage({
+              path: `schedule/${edge.node.DESCR.toLowerCase().replace(' ', '')}/ge/${ge.node.code.toLowerCase()}`,
+              component: scheduleCourseListTemplate,
+              context: {
+                term: edge.node,
+                subject: false,
+                ge: ge.node,
+                courses: allTermCourses.ge[ge.code]
               }
             })
           })

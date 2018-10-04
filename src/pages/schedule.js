@@ -3,9 +3,9 @@ import Layout from '../components/layouts/default'
 import { graphql } from 'gatsby'
 class SchedulePage extends React.Component {
   
-  constructor(props) {
+  /*constructor(props) {
     super(props)
-/*
+
     let state = {
       subjects: []
     }
@@ -25,8 +25,8 @@ class SchedulePage extends React.Component {
     })
     state.subjects = Object.values(finalSubjects)
     
-    this.state = state*/
-  }
+    this.state = state
+  }*/
   
   render() {
     return (
