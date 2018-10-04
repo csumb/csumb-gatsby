@@ -5,7 +5,8 @@ module.exports = (graphql, actions) => {
   const { createPage } = actions
   const scheduleFrontpageTemplate = path.resolve(`src/templates/schedule/frontpage.js`)
   const scheduleCourseTemplate = path.resolve(`src/templates/schedule/course.js`)
-  const scheduleCourseListTemplate = path.resolve(`src/templates/schedule/course-list.js`)
+  const scheduleCourseListSubjectTemplate = path.resolve(`src/templates/schedule/course-list-subject.js`)
+  const scheduleCourseListGETemplate = path.resolve(`src/templates/schedule/course-list-ge.js`)
 
   const processAttributes = (attributes) => {
     let result = {}
@@ -123,11 +124,10 @@ module.exports = (graphql, actions) => {
 
             createPage({
               path: `schedule/${edge.node.DESCR.toLowerCase().replace(' ', '')}/${subject.code.toLowerCase()}`,
-              component: scheduleCourseListTemplate,
+              component: scheduleCourseListSubjectTemplate,
               context: {
                 term: edge.node,
                 subject: subject,
-                ge: false,
                 courses: allTermCourses.subject[subject.code]
               }
             })
@@ -136,12 +136,13 @@ module.exports = (graphql, actions) => {
           result.data.allGeCsv.edges.forEach(ge => {
             createPage({
               path: `schedule/${edge.node.DESCR.toLowerCase().replace(' ', '')}/ge/${ge.node.code.toLowerCase()}`,
-              component: scheduleCourseListTemplate,
+              component: scheduleCourseListGETemplate,
               context: {
                 term: edge.node,
-                subject: false,
                 ge: ge.node,
-                courses: allTermCourses.ge[ge.code]
+                courses: (typeof allTermCourses.ge[ge.node.code] !== 'undefined') ?
+                  allTermCourses.ge[ge.node.code] :
+                  []
               }
             })
           })

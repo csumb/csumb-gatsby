@@ -10,6 +10,7 @@ module.exports = {
     swiftypeId: `Gu7FdGTPV49T6dsYVBSV`,
     schedule: {
       currentTerm: 2184,
+      currentTermName: '2018fall',
       endpoint: `https://api.csumb.edu/schedule/`
     }
   },
@@ -66,6 +67,12 @@ module.exports = {
         },
       },
     },*/
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: "./src/assets/images/favicon.png",
+      }
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
