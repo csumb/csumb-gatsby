@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import Layout from '../../components/layouts/default'
 
 class ScheduleFront extends React.Component {
-
+  
   render() {
     const term = this.props.pageContext.term
     return(

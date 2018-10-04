@@ -7,7 +7,6 @@ class CourseList extends React.Component {
   render() {
     const subject = this.props.pageContext.subject
     const term = this.props.pageContext.term
-    console.log(this.props.pageContext)
     return(
       <Layout>
         <h1>{term.DESCR} Schedule Subject {subject.name}</h1>

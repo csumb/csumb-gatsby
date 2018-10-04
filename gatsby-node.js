@@ -4,6 +4,7 @@ const fs = require(`fs-extra`)
 const coursePages = require(`./src/node/courses`)
 const contentPages = require(`./src/node/pages`)
 const schedulePages = require(`./src/node/schedule`)
+const scheduleSearch = require(`./src/node/schedule-search`)
 require(`gatsby-source-filesystem`)
 
 
@@ -17,4 +18,13 @@ exports.createPages = ({ graphql, actions }) => {
       resolve()
     })
   })
+}
+
+exports.onPostBuild = ({ graphql }) => {
+  return new Promise((resolve, reject) => {
+    scheduleSearch(graphql, actions).then(() => {
+      resolve()
+    })
+  })
+  
 }

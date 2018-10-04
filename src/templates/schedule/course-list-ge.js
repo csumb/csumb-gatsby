@@ -7,7 +7,6 @@ class CourseList extends React.Component {
   render() {
     const ge = this.props.pageContext.ge
     const term = this.props.pageContext.term
-    console.log(this.props.pageContext)
     return(
       <Layout>
         <h1>{term.DESCR} General Education {ge.name}</h1>
