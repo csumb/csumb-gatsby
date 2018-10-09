@@ -55,7 +55,7 @@ class AcademicsPage extends React.Component {
   render() {
     const sheets = this.props.data.allGooglePublicSheet
     return (
-      <Layout>
+      <Layout pageTitle="Academics">
         <h1>Academics</h1>
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Search" onChange={this.handleChange}/>

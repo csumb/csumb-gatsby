@@ -6,8 +6,9 @@ class PageTemplate extends React.Component {
 
   render() {
     const course = this.props.pageContext.course;
+    const pageTitle = `${course.SUBJECT} ${course.CATALOG_NBR}`
     return (
-      <Layout title="{course.SUBJECT} {course.CATALOG_NBR}">
+      <Layout pageTitle={pageTitle}>
         <div>
           <h1>{course.SUBJECT} {course.CATALOG_NBR}: {course.COURSE_TITLE_LONG}</h1>
           <h2>Course description</h2>
