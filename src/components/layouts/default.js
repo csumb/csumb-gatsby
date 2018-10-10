@@ -10,11 +10,17 @@ import Helmet from 'react-helmet'
 class Layout extends React.Component {
   
   render() {
-
+    let pageTitle = []
+    pageTitle.push(
+      (typeof this.props.pageTitle !== 'undefined') ?
+        this.props.pageTitle :
+        null
+    )
+    pageTitle.push('Cal State Monterey Bay')
     return (
       <div>
         <Helmet>
-          <title>{typeof this.props.pageTitle !== 'undefined' ? this.props.pageTitle + ' | ' : null}Cal State Monterey Bay</title>
+          <title>{pageTitle.join(' | ')}</title>
         </Helmet>
         <StaticQuery
           query={graphql`{

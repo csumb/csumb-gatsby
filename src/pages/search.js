@@ -20,6 +20,7 @@ class SearchPage extends React.Component {
       if(location.query && typeof location.query.q !== 'undefined') {
         state.query = location.query.q
         this.existingQuery = state.query
+        this.search(state.query)
       }
     }
 
@@ -33,7 +34,11 @@ class SearchPage extends React.Component {
     event.preventDefault()
     navigate(`?q=${this.state.query}`)
 
-    window.fetch(`https://api.swiftype.com/api/v1/public/engines/search?engine_key=${this.props.data.site.siteMetadata.swiftypeId}&q=${this.state.query.trim().toLowerCase()}`).then(response => {
+    this.search(this.state.query)
+  }
+
+  search(query) {
+    window.fetch(`https://api.swiftype.com/api/v1/public/engines/search?engine_key=${this.props.data.site.siteMetadata.swiftypeId}&q=${query.trim().toLowerCase()}`).then(response => {
       return response.json()
     }).then(search => {
       this.setState({
