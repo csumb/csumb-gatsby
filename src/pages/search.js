@@ -39,7 +39,6 @@ class SearchPage extends React.Component {
       this.setState({
         search: search
       })
-      console.log(search)
     }).catch(error => {
       this.setState({
         search: false
