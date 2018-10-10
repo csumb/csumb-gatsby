@@ -1,6 +1,7 @@
 import React from 'react'
 //import { css } from 'emotion'
 import Link from 'gatsby-link'
+import SROnly from '../../../components/sronly'
 import { navigate } from '@reach/router'
 
 
@@ -65,7 +66,9 @@ class Search extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <input type="text" onChange={this.handleChange}/>
         <SearchResults search={this.state.search}/>
-        <input type="submit" value="Search"/>
+        <SROnly>
+          <input type="submit" value="Search"/>
+        </SROnly>
       </form>
     )
   }

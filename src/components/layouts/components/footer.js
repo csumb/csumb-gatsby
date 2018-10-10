@@ -1,5 +1,5 @@
 import React from 'react'
-import srOnly from '../../styles/sronly'
+import SROnly from '../../sronly'
 import colors from '../../styles/colors'
 import Link from 'gatsby-link'
 import Button from '../../button'
@@ -73,7 +73,9 @@ const Footer = ({ children, data }) => (
         <Link to="/diversity">Diversity &amp; Inclusion</Link>
         <Link to="/clery">Security report</Link>
         <Link to="/hr/form-801">Form 801</Link>
-        <Link to="/document-reader" className={srOnly}>Some links for may require a Document Reader.</Link>
+        <SROnly>
+          <Link to="/document-reader">Some links for may require a Document Reader.</Link>
+        </SROnly>
       </Container>
     </div>
   </footer>
