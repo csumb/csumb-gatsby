@@ -1,7 +1,7 @@
 const path = require(`path`)
 const fs = require(`fs-extra`)
 
-module.exports = (graphql, actions) => {
+module.exports = (graphql) => {
   return new Promise((resolve, reject) => {
     resolve(
       graphql(

@@ -20,6 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
   })
 }
 
+/*
 exports.onPostBuild = ({ graphql }) => {
   return new Promise((resolve, reject) => {
     scheduleSearch(graphql, actions).then(() => {
@@ -27,4 +28,4 @@ exports.onPostBuild = ({ graphql }) => {
     })
   })
   
-}
+}*/
