@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 
 const AccessibilityPage = (props) =>  {
   const page = props.data.allMarkdownRemark.edges[0].node
-  console.log(page)
   return (
     <Layout>
       <h1>{page.frontmatter.title}</h1>
