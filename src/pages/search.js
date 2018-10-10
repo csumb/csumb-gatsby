@@ -25,8 +25,8 @@ class SearchPage extends React.Component {
 
     this.state = state
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(event) {
@@ -74,9 +74,12 @@ class SearchPage extends React.Component {
                 {result.url}
               </Link>
             </div>
-            <p>
-              {result.highlight.body}
-            </p>
+            <p className={css`
+              em {
+                font-weight: bold;
+                font-style: normal;
+              }
+            `} dangerouslySetInnerHTML={{__html: result.highlight.body}}/>
 
           </div>
         ))}
