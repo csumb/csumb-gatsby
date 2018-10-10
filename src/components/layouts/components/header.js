@@ -1,16 +1,9 @@
 import React from 'react'
-import Logo from '../../../assets/images/csumb-logo-blue.svg'
-import { css } from 'emotion'
-import Link from 'gatsby-link'
+//import Link from 'gatsby-link'
+import Brand from './brand'
 import Container from '../../container'
-import bp from '../../styles/breakpoints'
 import Search from './search'
 import { Flex, Box } from '@rebass/grid/emotion'
-
-const imageClassName = css(bp({
-  float: 'left',
-  width: ['200px', '350px', '400px', '400px'],
-}))
 
 class Header extends React.Component {
 
@@ -57,9 +50,7 @@ class Header extends React.Component {
         <Container>
           <Flex flexWrap="wrap">
             <Box width={[ 1, 1, 1/2, 1/2 ]} px={2}>
-              <Link to="/">
-                <img src={Logo} alt={this.props.metadata.siteTitle} className={imageClassName}/>
-              </Link>
+              <Brand/>
             </Box>
             <Box width={[ 1, 1, 1/2, 1/2 ]} px={2}>
               <User user={this.state.user}/>

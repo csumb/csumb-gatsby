@@ -45,7 +45,6 @@
     "format": "prettier --write 'src/**/*.js'"
   },
   "devDependencies": {
-    "@storybook/react": "^3.4.11",
     "prettier": "^1.14.3"
   },
   "repository": {
