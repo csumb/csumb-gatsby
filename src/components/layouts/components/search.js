@@ -1,7 +1,7 @@
 import React from 'react'
 //import { css } from 'emotion'
 import Link from 'gatsby-link'
-import SROnly from '../../../components/sronly'
+import SROnly from '../../../components/utilities/sronly'
 import { navigate } from '@reach/router'
 
 
