@@ -39,7 +39,7 @@ class Layout extends React.Component {
         clear: both 
         `}>
         <Container>
-          {this.children}
+          {this.props.children}
         </Container>
         </div>
         <Footer/>

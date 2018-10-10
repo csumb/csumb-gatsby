@@ -85,7 +85,7 @@ class SearchPage extends React.Component {
     }
 
     return (
-      <Layout>
+      <Layout pageTitle="Search">
         <h1>Search</h1>
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Search" onChange={this.handleChange} value={this.existingQuery}/>
