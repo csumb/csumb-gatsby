@@ -47,14 +47,14 @@ module.exports = (graphql, actions) => {
         if (result.errors) {
           reject(result.errors)
         }
-        result.data.allCsumbContentSite.edges.forEach(async edge => {
+        result.data.allCsumbContentSite.edges.forEach(edge => {
           sites[edge.node.site] = edge.node
         })
-        result.data.allCsumbContentNavigation.edges.forEach(async edge => {
+        result.data.allCsumbContentNavigation.edges.forEach(edge => {
           navigation[edge.node.site] = edge.node
         })
         
-        result.data.allCsumbContentPage.edges.forEach(async edge => {
+        result.data.allCsumbContentPage.edges.forEach(edge => {
           console.log(`Created page ${edge.node.relativePath}`)
           createPage({
             path: edge.node.relativePath,
