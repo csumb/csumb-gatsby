@@ -55,6 +55,7 @@ module.exports = (graphql, actions) => {
         })
         
         result.data.allCsumbContentPage.edges.forEach(async edge => {
+          console.log(`Created page ${edge.node.relativePath}`)
           createPage({
             path: edge.node.relativePath,
             component: pageTemplate,
