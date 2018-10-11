@@ -6,6 +6,10 @@ import Header from './components/header'
 import Footer from './components/footer'
 import Container from '../container'
 import Helmet from 'react-helmet'
+import Shevy from 'shevyjs'
+
+const shevy = new Shevy()
+const { content } = shevy
 
 class Layout extends React.Component {
   
@@ -18,7 +22,7 @@ class Layout extends React.Component {
     )
     pageTitle.push('Cal State Monterey Bay')
     return (
-      <div>
+      <div className={css(content)}>
         <html lang="en"/>
         <Helmet>
           <title>{pageTitle.join(' | ')}</title>

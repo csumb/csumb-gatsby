@@ -45,8 +45,8 @@ exports.sourceNodes = async ({ actions , createNodeId }, configOptions) => {
       }
       createNode(nodeData)
       next()
-    });
-  });
+    })
+  })
   
   const siteWalker = walk.walk(configOptions.path, {
     filters: ['.git']
