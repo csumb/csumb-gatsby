@@ -7,19 +7,24 @@ class Button extends React.Component {
     if(!this.props.to) {
       return null
     }
-    const buttonClass = {
-      border: '3px solid #000',
-      color: '#000',
-      padding: '1rem',
-      display: 'inline-block',
-      textDecoration: 'none'
-    }
+    const buttonClass = css`{
+      border: 3px solid #000;
+      color: #000;
+      padding: 1rem;
+      display: inline-block;
+      text-decoration: none;
+    `
 
     const buttonTypes = {
-      primary: {
-        borderColor: 'blue',
-        color: 'blue'
-      }
+      primary: css`
+        border-color: blue;
+        color: blue;
+      `,
+      navigation: css`
+        border-color: black;
+        color: black;
+        font-weight: bold;
+      `
     }
 
     let extraClass = {}

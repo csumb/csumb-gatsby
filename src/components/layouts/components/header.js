@@ -1,8 +1,10 @@
 import React from 'react'
 //import Link from 'gatsby-link'
+import { css } from 'emotion'
 import Brand from './brand'
 import Container from '../../container'
 import Search from './search'
+import Button from '../../button'
 import { Flex, Box } from '@rebass/grid/emotion'
 
 class Header extends React.Component {
@@ -46,11 +48,17 @@ class Header extends React.Component {
     }
 
     return (
-      <header>
+      <header className={css`
+          border-bottom: 2px solid black;
+          padding: 1rem 0;    
+        `}>
         <Container>
           <Flex flexWrap="wrap">
-            <Box width={[ 1, 1, 1/2, 1/2 ]} px={2}>
+            <Box width={[ 1, 1, 1/4, 1/4 ]} px={2}>
               <Brand/>
+            </Box>
+            <Box width={[ 1, 1, 1/4, 1/4 ]} px={2}>
+              <Button to="/apply" type="navigation">Apply</Button>
             </Box>
             <Box width={[ 1, 1, 1/2, 1/2 ]} px={2}>
               <User user={this.state.user}/>

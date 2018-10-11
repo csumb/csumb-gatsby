@@ -10,10 +10,8 @@ import { css } from 'emotion';
 
 const Footer = ({ children, data }) => (
   <footer className={css`
-    background-color: ${colors.tan.light};
-    h2 {
-      color: ${colors.tan.dark};
-    }
+    border-top: 3px solid black;
+    padding: 1rem 0;
     ul {
       list-style-type: none;
       padding: 0;
@@ -57,9 +55,10 @@ const Footer = ({ children, data }) => (
       </Flex>
     </Container>
     <div className={css`
-      background-color: ${colors.tan.darkest};
+      background-color: #000;
+      padding: 0.5rem 0;
       a {
-        color: ${colors.tan.light};
+        color: #fff;
         cont-size: 0.8rem;
         margin-right: 1rem;
       }
