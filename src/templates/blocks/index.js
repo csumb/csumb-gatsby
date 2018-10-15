@@ -53,7 +53,7 @@ class Blocks extends React.Component {
     return(
       <div>
         {blocks.layout.map((layout) => (
-          <div className={css(``)} key={layout.id}>
+          <div key={layout.id}>
             <Block type={blocks.blocks[layout.id].type} block={blocks.blocks[layout.id]}/>
           </div>
         ))}

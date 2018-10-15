@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from 'emotion'
-import colors from '../../components/styles/colors'
 
 const Cite = (props) => {
   if(!props.source) {
@@ -18,8 +17,9 @@ class BlockQuote extends React.Component {
   render() {
     return (
       <div className={css`
-        padding: 1rem;
-        background: ${colors.tan.light}
+        padding-left: 1rem;
+        margin-left: 1rem;
+        border-left: 4px solid #000;
       `}>
         <blockquote>
           {this.props.block.data.quote}

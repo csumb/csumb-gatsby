@@ -8,7 +8,9 @@ import Container from '../container'
 import Helmet from 'react-helmet'
 import Shevy from 'shevyjs'
 
-const shevy = new Shevy()
+const shevy = new Shevy({
+  baseFontSize: '18px'
+})
 const { content } = shevy
 
 class Layout extends React.Component {
