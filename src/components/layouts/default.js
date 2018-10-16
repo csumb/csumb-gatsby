@@ -25,7 +25,6 @@ class Layout extends React.Component {
     pageTitle.push('Cal State Monterey Bay')
     return (
       <div className={css(content)}>
-        <html lang="en"/>
         <Helmet>
           <title>{pageTitle.join(' | ')}</title>
         </Helmet>

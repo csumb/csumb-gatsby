@@ -8,7 +8,6 @@ import BlockImage from './image'
 import BlockQuote from './quote'
 import BlockAddress from './address'
 import BlockDefinitionList from './definition-list'
-import { css } from 'emotion'
 
 
 class Block extends React.Component {

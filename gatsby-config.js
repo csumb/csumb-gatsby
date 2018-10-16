@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-transformer-csv`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-catch-links`,
+    `gatsby-transformer-csumb-content`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
@@ -35,15 +36,18 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-csumb-content`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        path: `_web-content`,
+        path: `./_data`,
+        ignore: [`**/\.*`]
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `./_data`,
+        path: `./_web-content`,
+        name: `web-content`,
+        ignore: [`**/\.*`]
       },
     },
     {

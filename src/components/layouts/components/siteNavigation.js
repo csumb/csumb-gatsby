@@ -30,7 +30,8 @@ class SiteNavigation extends React.Component {
       )
     }
 
-    let navigation = JSON.parse(this.props.navigation.navigation)
+    let navigation = JSON.parse(this.props.navigation)
+    console.log(navigation)
     return (
       <div>
         <Container>

@@ -6,71 +6,88 @@ require(`gatsby-source-filesystem`)
 module.exports = (graphql, actions) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
+    resolve()
     const pageTemplate = path.resolve(`src/templates/page.js`)
     let sites = {}
-    let navigation = {}
+    
     resolve(
       graphql(
-        `
-        {
+        `{
           allCsumbContentSite {
-           edges {
-             node {
-               id
-               site
-               title
-             }
-           }
-         }  
-         allCsumbContentNavigation {
-          edges {
-            node {
-              site
-              navigation
+            edges {
+              node {
+                site
+                title
+              }
             }
           }
-         }   
-         allCsumbContentPage {
-          edges {
-            node {
-              id
-              relativePath
-              pageContent
-              title
-              site
-              layout
+          
+          allCsumbContentNavigation {
+            edges {
+              node {
+                site
+                navigation
+              }
+            }
+          }
+            
+          allFile(filter: 
+            { sourceInstanceName: { eq: "web-content" } 
+              extension: { eq: "json"}
+            }) {
+            edges {
+              node {
+                relativePath
+                absolutePath
+                childCsumbContentPage {
+                  title
+                  site
+                  pageContent
+                }
+              }
             }
           }
         }
-       }`
-      ).then(result => {
-        if (result.errors) {
-          reject(result.errors)
+      `).then(result => {
+        if(!result.data) {
+          return
         }
+
         result.data.allCsumbContentSite.edges.forEach(edge => {
-          sites[edge.node.site] = edge.node
+          if(typeof sites[edge.node.site] === 'undefined') {
+            sites[edge.node.site] = {
+              site: edge.node,
+              navigation: null
+            }
+          }
         })
+
         result.data.allCsumbContentNavigation.edges.forEach(edge => {
-          navigation[edge.node.site] = edge.node
+          if(typeof sites[edge.node.site] !== 'undefined') {
+            sites[edge.node.site].navigation = JSON.stringify(edge.node.navigation)
+          }
         })
-        
-        result.data.allCsumbContentPage.edges.forEach(edge => {
+
+        result.data.allFile.edges.forEach(edge => {
+          if(edge.node.relativePath.search('_data') > -1) {
+            return
+          }
+          const content = edge.node.childCsumbContentPage
           createPage({
             path: edge.node.relativePath,
             component: pageTemplate,
             layout: 'index',
             context: {
               filePath: edge.node.relativePath,
-              title: edge.node.title,
-              site: sites[edge.node.site],
-              layout: edge.node.layout,
-              navigation: navigation[edge.node.site],
-              pageContent: edge.node.pageContent
+              title: content.title,
+              site: sites[content.site].site,
+              layout: content.layout,
+              navigation: JSON.stringify(sites[content.site].navigation),
+              pageContent: JSON.stringify(content.pageContent)
             }
           })
         })
-
-        return
+        resolve()
       })
     )
   })
