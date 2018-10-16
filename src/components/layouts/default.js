@@ -4,7 +4,6 @@ import '../styles/global'
 import { css } from 'emotion'
 import Header from './components/header'
 import Footer from './components/footer'
-import Container from '../container'
 import Helmet from 'react-helmet'
 import Shevy from 'shevyjs'
 
@@ -50,9 +49,7 @@ class Layout extends React.Component {
         <div className={css`
         clear: both 
         `}>
-        <Container>
-          {this.props.children}
-        </Container>
+        {this.props.children}
         </div>
         <Footer/>
       </div>

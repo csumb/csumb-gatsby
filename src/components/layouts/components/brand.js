@@ -9,7 +9,6 @@ const Brand = () => (
       color: #000;
       text-decoration: none;
       line-height: 80%;
-      margin: 10px 0;
       &:hover {
         text-decoration: underline;
       }
