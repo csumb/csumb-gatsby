@@ -10,12 +10,15 @@ require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
-    coursePages(graphql, actions).then(() => {
+    contentPages(graphql, actions).then(() => {
+      resolve()
+    })
+    /*coursePages(graphql, actions).then(() => {
       return contentPages(graphql, actions)
     }).then(() => {
       return schedulePages(graphql, actions)
     }).then(() => {
       resolve()
-    })
+    })*/
   })
 }

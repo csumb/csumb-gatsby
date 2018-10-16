@@ -64,7 +64,7 @@ module.exports = (graphql, actions) => {
 
         result.data.allCsumbContentNavigation.edges.forEach(edge => {
           if(typeof sites[edge.node.site] !== 'undefined') {
-            sites[edge.node.site].navigation = JSON.stringify(edge.node.navigation)
+            sites[edge.node.site].navigation = edge.node.navigation
           }
         })
 
@@ -73,8 +73,10 @@ module.exports = (graphql, actions) => {
             return
           }
           const content = edge.node.childCsumbContentPage
+          let path = edge.node.relativePath
+          path = path.replace('index.json', '').replace('.json', '')
           createPage({
-            path: edge.node.relativePath,
+            path: path,
             component: pageTemplate,
             layout: 'index',
             context: {
@@ -82,8 +84,8 @@ module.exports = (graphql, actions) => {
               title: content.title,
               site: sites[content.site].site,
               layout: content.layout,
-              navigation: JSON.stringify(sites[content.site].navigation),
-              pageContent: JSON.stringify(content.pageContent)
+              navigation: sites[content.site].navigation,
+              pageContent: content.pageContent
             }
           })
         })
