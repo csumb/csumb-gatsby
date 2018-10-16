@@ -2,6 +2,9 @@
 const courseFilter = /[A-Z]{2,} [0-9]{2,}(\/?)([A-Z]?)/g
 
 const filterCourses = (text) => {
+  if(!text) {
+    return
+  }
   const matches = text.match(courseFilter)
   if(!matches || !matches.length) {
     return text

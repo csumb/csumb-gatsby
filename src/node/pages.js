@@ -75,19 +75,21 @@ module.exports = (graphql, actions) => {
           const content = edge.node.childCsumbContentPage
           let path = edge.node.relativePath
           path = path.replace('index.json', '').replace('.json', '')
-          createPage({
-            path: path,
-            component: pageTemplate,
-            layout: 'index',
-            context: {
-              filePath: edge.node.relativePath,
-              title: content.title,
-              site: sites[content.site].site,
-              layout: content.layout,
-              navigation: sites[content.site].navigation,
-              pageContent: content.pageContent
-            }
-          })
+          if(typeof sites[content.site] !== 'undefined') {
+            createPage({
+              path: path,
+              component: pageTemplate,
+              layout: 'index',
+              context: {
+                filePath: edge.node.relativePath,
+                title: content.title,
+                site: sites[content.site].site,
+                layout: content.layout,
+                navigation: sites[content.site].navigation,
+                pageContent: content.pageContent
+              }
+            })
+          }
         })
         resolve()
       })
