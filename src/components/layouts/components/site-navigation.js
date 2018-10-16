@@ -6,7 +6,6 @@ import { css } from 'emotion';
 
 class SiteNavigation extends React.Component {
   
-
   render() {
     if(!this.props.navigation) {
       return null

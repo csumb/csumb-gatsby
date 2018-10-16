@@ -16,6 +16,9 @@ const Footer = ({ children, data }) => (
       list-style-type: none;
       padding: 0;
     }
+    h2 {
+      margin-top: 0;
+    }
     `}>
     <Container>
       <Flex flexWrap="wrap">
