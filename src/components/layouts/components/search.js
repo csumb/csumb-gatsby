@@ -3,6 +3,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import SROnly from '../../../components/utilities/sronly'
 import { navigate } from '@reach/router'
+import { css } from 'emotion'
 
 
 class Search extends React.Component {
@@ -63,8 +64,11 @@ class Search extends React.Component {
     }
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" onChange={this.handleChange}/>
+      <form onSubmit={this.handleSubmit} className={css`
+        margin-left: 1rem;
+        display: inline-block;
+        `}>
+        <input type="text" onChange={this.handleChange} placeholder="Search"/>
         <SearchResults search={this.state.search}/>
         <SROnly>
           <input type="submit" value="Search"/>

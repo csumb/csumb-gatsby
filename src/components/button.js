@@ -33,16 +33,20 @@ class Button extends React.Component {
     }
 
     let to = this.props.to.replace('https://csumb.edu/', '')
+    let finalClass = cx(css(buttonClass), css(extraClass))
+    if(typeof this.props.addStyle !== 'undefined') {
+      finalClass = cx(finalClass, this.props.addStyle)
+    }
     if(to.search(/http(s?):/) > -1) {
       return (
         <>
-          <a href={to} className={cx(css(buttonClass), css(extraClass))}>{this.props.children}</a>
+          <a href={to} className={finalClass}>{this.props.children}</a>
         </>
       )
     }
     return (
       <>
-        <Link to={to} className={cx(css(buttonClass), css(extraClass))}>{this.props.children}</Link>
+        <Link to={to} className={finalClass}>{this.props.children}</Link>
       </>
     )
   } 
