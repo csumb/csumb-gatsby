@@ -5,6 +5,7 @@ import { css } from 'emotion'
 import { graphql } from 'gatsby'
 import { navigate } from '@reach/router'
 import url from 'url'
+import Container from '../components/container'
 
 class SearchPage extends React.Component {
   constructor(props) {
@@ -94,12 +95,14 @@ class SearchPage extends React.Component {
 
     return (
       <Layout pageTitle="Search">
-        <h1>Search</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Search" onChange={this.handleChange} value={this.existingQuery}/>
-          <input type="submit" value="Search"/>
-        </form>
-        <ListResults results={this.state.search}/>
+        <Container>
+          <h1>Search</h1>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" placeholder="Search" onChange={this.handleChange} value={this.existingQuery}/>
+            <input type="submit" value="Search"/>
+          </form>
+          <ListResults results={this.state.search}/>
+        </Container>
       </Layout>
     );
   }

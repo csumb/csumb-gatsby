@@ -3,6 +3,7 @@ import Layout from '../components/layouts/default'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
 import { navigate } from '@reach/router'
+import Container from '../components/container'
 
 class AcademicsPage extends React.Component {
   constructor(props) {
@@ -56,23 +57,25 @@ class AcademicsPage extends React.Component {
     const sheets = this.props.data.allGooglePublicSheet
     return (
       <Layout pageTitle="Academics">
-        <h1>Academics</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Search" onChange={this.handleChange}/>
-          <input type="submit" value="Search"/>
-        </form>
-        {this.state.filteredItems.length ?
-          this.AcademicsResults(this.state.filteredItems) :
-          null
-        }
-        {sheets.edges.map((program) => (
-          <p key={program.node.id}>
-            <Link to={program.node.row.link.replace('https://csumb.edu/', '/')}>
-              {program.node.row.name}
-            </Link>
-            {program.node.row.description}
-          </p>
-        ))}
+        <Container>
+          <h1>Academics</h1>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" placeholder="Search" onChange={this.handleChange}/>
+            <input type="submit" value="Search"/>
+          </form>
+          {this.state.filteredItems.length ?
+            this.AcademicsResults(this.state.filteredItems) :
+            null
+          }
+          {sheets.edges.map((program) => (
+            <p key={program.node.id}>
+              <Link to={program.node.row.link.replace('https://csumb.edu/', '/')}>
+                {program.node.row.name}
+              </Link>
+              {program.node.row.description}
+            </p>
+          ))}
+        </Container>
       </Layout>
     );
   }

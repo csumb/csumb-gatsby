@@ -4,6 +4,8 @@ import Link from 'gatsby-link'
 import SROnly from '../../../components/utilities/sronly'
 import { navigate } from '@reach/router'
 import { css } from 'emotion'
+import Container from '../../container'
+import { Flex, Box } from '@rebass/grid/emotion'
 
 
 class Search extends React.Component {
@@ -64,16 +66,36 @@ class Search extends React.Component {
     }
 
     return (
-      <form onSubmit={this.handleSubmit} className={css`
-        margin-left: 1rem;
-        display: inline-block;
+      <div className={css`</Container>
+          color: #fff;
+          background: #000;
+          padding: 1rem 0;
         `}>
-        <input type="text" onChange={this.handleChange} placeholder="Search"/>
-        <SearchResults search={this.state.search}/>
-        <SROnly>
-          <input type="submit" value="Search"/>
-        </SROnly>
-      </form>
+        <Container>
+          <form onSubmit={this.handleSubmit}>
+            <Flex flexWrap="wrap">
+              <Box width={ 4/5 } px={2}>
+                <input type="text" onChange={this.handleChange} placeholder="Search"  className={css`
+                  color: #fff;
+                  width: 100%;
+                  font-size: 3rem;
+                  background: 000;
+                  border: 0;
+                  border-bottom: 1px solid #fff;
+                `}/>
+              </Box>
+              <Box width={ 1/5 } px={2}>
+                🔍
+              </Box>
+            </Flex>
+            
+            <SearchResults search={this.state.search}/>
+            <SROnly>
+              <input type="submit" value="Search"/>
+            </SROnly>
+          </form>
+        </Container>
+      </div>
     )
   }
 }

@@ -18,8 +18,17 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: false
+      user: false,
+      showSearch: false
     }
+    this.handleShowSearch = this.handleShowSearch.bind(this)
+  }
+
+  handleShowSearch(event) {
+    event.preventDefault()
+    this.setState({
+      showSearch: !this.state.showSearch
+    })
   }
 
   componentDidMount() {
@@ -38,6 +47,16 @@ class Header extends React.Component {
   
   render() {
     const that = this
+
+    const SearchForm = (props) => {
+      if(!props.show) {
+        return null
+      }
+      return (
+        <Search swiftypeId={props.swiftypeId}/>
+      )
+    }
+
     const User = (props) => {
       if(props.user) {
         return (
@@ -58,46 +77,55 @@ class Header extends React.Component {
     }
 
     return (
-      <header className={headerClass}>
-        <Container>
-          <Flex flexWrap="wrap">
-            <Box width={[ 1, 1, 1/4, 1/4 ]} px={2}>
-              <Brand/>
-            </Box>
-            <Box width={[ 1, 1, 3/4, 3/4 ]} px={2}>
-              <Flex flexWrap="wrap">
-                <Box width={[1, 1, 4/5, 4/5]} px={2} className={css`text-align: right;`}>
-                  <div>
-                    <User user={this.state.user}/>
-                    <Search swiftypeId={this.props.metadata.swiftypeId}/>
-                  </div>
-                  <div className={css` 
-                    margin-top: 1rem;
-                  `}>
-                    <ul className={css`
-                      margin: 0;
-                      list-style: none;
+      <>
+        <header className={headerClass}>
+          <Container>
+            <Flex flexWrap="wrap">
+              <Box width={[ 1, 1, 1/4, 1/4 ]} px={2}>
+                <Brand/>
+              </Box>
+              <Box width={[ 1, 1, 3/4, 3/4 ]} px={2}>
+                <Flex flexWrap="wrap">
+                  <Box width={[1, 1, 4/5, 4/5]} px={2} className={css`text-align: right;`}>
+                    <div>
+                      <User user={this.state.user}/>
+                      <a href="#search" onClick={this.handleShowSearch} className={css`
+                        color: #000;
+                        margin-left: 1rem;
+                      `}>Search</a>
+                    </div>
+                    <div className={css` 
+                      margin-top: 1rem;
                     `}>
-                      <NavigationLink to="/academics">Academics</NavigationLink>
-                      <NavigationLink to="/cost">Cost &amp; Aid</NavigationLink>
-                      <NavigationLink to="/about">About</NavigationLink>
-                    </ul>
-                  </div>
-                </Box>
-                <Box width={[1, 1, 1/5, 1/5]} px={2}>
-                  <Button to="/apply" type="navigation" addStyle={css`
-                    border-color: red;
-                    color: red;
-                    float: right;
-                `}>Apply</Button>
-                </Box>
-              </Flex>
-              
-            </Box>
-          </Flex>
-        </Container>
-        {this.props.siteTitle}
-      </header>
+                      <ul className={css`
+                        margin: 0;
+                        list-style: none;
+                      `}>
+                        <NavigationLink to="/academics">Academics</NavigationLink>
+                        <NavigationLink to="/cost">Cost &amp; Aid</NavigationLink>
+                        <NavigationLink to="/about">About</NavigationLink>
+                      </ul>
+                    </div>
+                  </Box>
+                  <Box width={[1, 1, 1/5, 1/5]} px={2}>
+                    <Button to="/apply" type="navigation" addStyle={css`
+                      border-color: red;
+                      color: red;
+                      float: right;
+                      &:hover {
+                        background: red;
+                        color: #fff;
+                      }
+                  `}>Apply</Button>
+                  </Box>
+                </Flex>
+                
+              </Box>
+            </Flex>
+          </Container>
+        </header>
+        <SearchForm show={this.state.showSearch} switftypeId={this.props.metadata.swiftypeId}/>
+      </>
     )
   }
 }
