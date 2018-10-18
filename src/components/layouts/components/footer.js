@@ -1,6 +1,5 @@
 import React from 'react'
 import SROnly from '../../utilities/sronly'
-import colors from '../../styles/colors'
 import Link from 'gatsby-link'
 import Button from '../../button'
 import Container from '../../container'

@@ -1,4 +1,3 @@
-const { GraphQLString, GraphQLJSON } = require(`gatsby/graphql`)
 const crypto = require(`crypto`)
 
 exports.onCreateNode = async ({ node, loadNodeContent, actions, createNodeId }) => {
@@ -11,6 +10,9 @@ exports.onCreateNode = async ({ node, loadNodeContent, actions, createNodeId }) 
 
   let contentNode = false
   if(typeof content.pageContent !== 'undefined') {
+    const breadcrumbs = (typeof content.breadcrumb !== 'undefined') ?
+      JSON.stringify(content.breadcrumb) :
+      false
     contentNode = {
       id: createNodeId(`${node.id} >>> CsumbContentPage`),
       children: [],
@@ -18,6 +20,7 @@ exports.onCreateNode = async ({ node, loadNodeContent, actions, createNodeId }) 
       title: content.title,
       layout: content.layout,
       site: content.site,
+      breadcrumbs: breadcrumbs,
       pageContent: JSON.stringify(content.pageContent),
       internal: {
         type: `CsumbContentPage`,
@@ -60,8 +63,8 @@ exports.onCreateNode = async ({ node, loadNodeContent, actions, createNodeId }) 
       .update(JSON.stringify(contentNode))
       .digest(`hex`)
 
-    createNode(contentNode)
-    if(contentNode.parent) {
-      createParentChildLink({ parent: node, child: contentNode })
-    }
+  createNode(contentNode)
+  if(contentNode.parent) {
+    createParentChildLink({ parent: node, child: contentNode })
+  }
 }

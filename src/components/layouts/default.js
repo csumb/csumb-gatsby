@@ -6,6 +6,8 @@ import { Header } from './components/header'
 import Footer from './components/footer'
 import Helmet from 'react-helmet'
 import Shevy from 'shevyjs'
+import { ThemeProvider } from 'emotion-theming'
+import theme from '../styles/theme'
 
 const shevy = new Shevy({
   baseFontSize: '18px'
@@ -23,36 +25,38 @@ class Layout extends React.Component {
     )
     pageTitle.push('Cal State Monterey Bay')
     return (
-      <div className={css(content)}>
-        <Helmet>
-          <title>{pageTitle.join(' | ')}</title>
-        </Helmet>
-        <StaticQuery
-          query={graphql`{
-              site {
-                siteMetadata {
-                  swiftypeId
-                  title
-                  okta {
-                    login
+      <ThemeProvider theme={theme}>
+        <div className={css(content)}>
+          <Helmet>
+            <title>{pageTitle.join(' | ')}</title>
+          </Helmet>
+          <StaticQuery
+            query={graphql`{
+                site {
+                  siteMetadata {
+                    swiftypeId
+                    title
+                    okta {
+                      login
+                    }
                   }
                 }
-              }
-            }`}
-            render={data => (
-                  <>
-                  <Header metadata={data.site.siteMetadata}/>
-                  
-                  </>
-                  )}
-        />
-        <div className={css`
-        clear: both 
-        `}>
-        {this.props.children}
+              }`}
+              render={data => (
+                    <>
+                    <Header metadata={data.site.siteMetadata}/>
+                    
+                    </>
+                    )}
+          />
+          <div className={css`
+          clear: both 
+          `}>
+          {this.props.children}
+          </div>
+          <Footer/>
         </div>
-        <Footer/>
-      </div>
+      </ThemeProvider>
     )
   }
 }

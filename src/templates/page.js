@@ -5,6 +5,8 @@ import Layout from '../components/layouts/default'
 import SiteNavigation from '../components/layouts/components/site-navigation'
 import SiteHeader from '../components/layouts/components/site-header'
 import Container from '../components/container'
+import PageTitle from '../components/page-title'
+import Breadcrumbs from '../components/breadcrumbs'
 
 class PageTemplate extends React.Component {
   render() {
@@ -13,7 +15,8 @@ class PageTemplate extends React.Component {
         <SiteHeader title={this.props.pageContext.site.title} path={this.props.pageContext.site.site}/>
         <SiteNavigation navigation={this.props.pageContext.navigation}/>
         <Container>
-          <h1>hi there {this.props.pageContext.title} in site </h1>
+          <Breadcrumbs breadcrumbs={this.props.pageContext.breadcrumbs}/>
+          <PageTitle layout={this.props.pageContext.layout}>{this.props.pageContext.title}</PageTitle>
           <Blocks blocks={this.props.pageContext.pageContent}/> 
         </Container>
       </Layout>

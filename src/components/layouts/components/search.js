@@ -85,7 +85,7 @@ class Search extends React.Component {
                 `}/>
               </Box>
               <Box width={ 1/5 } px={2}>
-                🔍
+                Search
               </Box>
             </Flex>
             
