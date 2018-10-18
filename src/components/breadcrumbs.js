@@ -17,7 +17,6 @@ const Breadcrumbs = (props) => {
     return null
   }
   const breadcrumbs = JSON.parse(props.breadcrumbs)
-  console.log(props)
   return (
     <ul className={css`
       margin: 0;
