@@ -40,7 +40,7 @@ class Header extends React.Component {
       })
     }).catch(error => {
       this.setState({
-        user: false
+        user: 'anonymous'
       })
     })
   }
@@ -58,7 +58,10 @@ class Header extends React.Component {
     }
 
     const User = (props) => {
-      if(props.user) {
+      if(!props.user) {
+        return null
+      }
+      if(props.user !== 'anonymous') {
         return (
           <>
             <Link to="/dashboard" className={css`
