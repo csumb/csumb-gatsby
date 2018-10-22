@@ -8,10 +8,6 @@ import Button from '../../button'
 import NavigationLink from './navigation-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 
-const headerClass = css`
-border-bottom: 2px solid black;
-padding: 1rem 0;    
-`
 
 class Header extends React.Component {
 
@@ -69,7 +65,10 @@ class Header extends React.Component {
 
     return (
       <>
-        <header className={headerClass}>
+        <header className={css`
+        border-bottom: 2px solid black;
+        padding: 1rem 0;    
+        `}>
           <Container>
             <Flex flexWrap="wrap">
               <Box width={[ 1, 1, 1/4, 1/4 ]} px={2}>
@@ -121,4 +120,4 @@ class Header extends React.Component {
   }
 }
 
-export { Header, headerClass }
+export { Header }

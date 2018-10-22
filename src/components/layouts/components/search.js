@@ -15,14 +15,14 @@ class SearchResults extends React.Component {
     }
     return (
       <div>
-      {this.props.search.records.page.map(item => (
-        <div key={item.id}>
-          <Link className={css`
-            color: #fff;
-            text-decoration: none;
-          `} to={item.url.replace('https://csumb.edu', '')}>{item.title}</Link>
-        </div>
-      ))}
+        {this.props.search.records.page.map(item => (
+          <div key={item.id}>
+            <Link className={css`
+              color: #fff;
+              text-decoration: none;
+            `} to={item.url.replace('https://csumb.edu', '')}>{item.title}</Link>
+          </div>
+        ))}
       </div>
     )
   }
