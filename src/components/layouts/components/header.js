@@ -48,15 +48,6 @@ class Header extends React.Component {
   render() {
     const that = this
 
-    const SearchForm = (props) => {
-      if(!props.show) {
-        return null
-      }
-      return (
-        <Search swiftypeId={props.swiftypeId}/>
-      )
-    }
-
     const User = (props) => {
       if(props.user) {
         return (
@@ -124,7 +115,7 @@ class Header extends React.Component {
             </Flex>
           </Container>
         </header>
-        <SearchForm show={this.state.showSearch} switftypeId={this.props.metadata.swiftypeId}/>
+        <Search show={this.state.showSearch} swiftypeId={this.props.metadata.swiftypeId}/>
       </>
     )
   }

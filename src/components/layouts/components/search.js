@@ -7,7 +7,26 @@ import { css } from 'emotion'
 import Container from '../../container'
 import { Flex, Box } from '@rebass/grid/emotion'
 
+class SearchResults extends React.Component {
 
+  render () {
+    if(!this.props.search || !this.props.search.record_count) {
+      return null
+    }
+    return (
+      <div>
+      {this.props.search.records.page.map(item => (
+        <div key={item.id}>
+          <Link className={css`
+            color: #fff;
+            text-decoration: none;
+          `} to={item.url.replace('https://csumb.edu', '')}>{item.title}</Link>
+        </div>
+      ))}
+      </div>
+    )
+  }
+}
 class Search extends React.Component {
 
   constructor(props) {
@@ -25,6 +44,7 @@ class Search extends React.Component {
     this.setState({
       query: event.target.value.trim()
     })
+    
     if(!event.target.value.trim().length || event.target.value.trim().length < 3) {
       this.setState({
         search: false
@@ -49,22 +69,9 @@ class Search extends React.Component {
   }
   
   render() {
-    
-    const SearchResults = (props) => {
-      if(!props.search || !props.search.record_count) {
-        return null
-      }
-      return (
-        <div>
-        {props.search.records.page.map(item => (
-          <div key={item.id}>
-            <Link to={item.url.replace('https://csumb.edu', '')}>{item.title}</Link>
-          </div>
-        ))}
-        </div>
-      )
+    if(!this.props.show) {
+      return null
     }
-
     return (
       <div className={css`</Container>
           color: #fff;
@@ -85,7 +92,9 @@ class Search extends React.Component {
                 `}/>
               </Box>
               <Box width={ 1/5 } px={2}>
-                🔍
+                <span role="img" aria-label="Search">
+                  🔍
+                </span>
               </Box>
             </Flex>
             
