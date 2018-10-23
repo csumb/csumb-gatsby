@@ -29,6 +29,8 @@ class SearchResults extends React.Component {
 }
 class Search extends React.Component {
 
+  inputRef = React.createRef();
+
   constructor(props) {
     super(props)
     this.state = {
@@ -67,6 +69,12 @@ class Search extends React.Component {
     event.preventDefault()
     navigate(`/search?q=${this.state.query}`)
   }
+
+  componentDidUpdate() {
+    if(this.props.show) {
+      this.inputRef.current.focus()
+    }
+  }
   
   render() {
     if(!this.props.show) {
@@ -82,13 +90,18 @@ class Search extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <Flex flexWrap="wrap">
               <Box width={ 4/5 } px={2}>
-                <input type="text" onChange={this.handleChange} placeholder="Search"  className={css`
-                  color: #fff;
-                  width: 100%;
-                  font-size: 3rem;
-                  background: 000;
-                  border: 0;
-                  border-bottom: 1px solid #fff;
+                <input 
+                  ref={this.inputRef} 
+                  type="text" 
+                  onChange={this.handleChange} 
+                  placeholder="Search" 
+                  className={css`
+                    color: #fff;
+                    width: 100%;
+                    font-size: 3rem;
+                    background: 000;
+                    border: 0;
+                    border-bottom: 1px solid #fff;
                 `}/>
               </Box>
               <Box width={ 1/5 } px={2}>

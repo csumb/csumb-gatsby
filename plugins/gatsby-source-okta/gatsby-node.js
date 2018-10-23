@@ -14,7 +14,7 @@ exports.sourceNodes = async ({ actions , createNodeId }, configOptions) => {
     const digest = crypto.createHash(`md5`)
       .update(JSON.stringify(user))
       .digest(`hex`)
-    
+    /// can we limit the fields we query in seasrch? yes?
     let profile = {}
     configOptions.fields.map(field => {
       if(typeof user.profile[field] === 'undefined') {

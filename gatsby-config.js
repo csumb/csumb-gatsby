@@ -20,7 +20,7 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-csumb-content`,
-    {
+    /*{
       resolve: `gatsby-source-okta`,
       options : {
         filter: {
@@ -33,7 +33,7 @@ module.exports = {
           'email'
         ]
       }
-    },
+    },*/
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
