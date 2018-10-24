@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "author": "Kevin Miller <kevin@csumb.edu>",
   "dependencies": {
+    "@reach/skip-nav": "^0.1.1",
+    "@reach/visually-hidden": "^0.1.1",
     "@rebass/grid": "^6.0.0-4",
     "del": "^3.0.0",
     "emotion": "^9.2.10",
@@ -28,10 +30,12 @@
     "gulp-exec": "^3.0.2",
     "gulp-git": "^2.8.0",
     "normalize.css": "^8.0.0",
+    "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-emotion": "^9.2.10",
     "react-helmet": "^5.2.0",
+    "react-id-generator": "^0.1.6",
     "shevyjs": "^1.1.0",
     "walk": "^2.3.14"
   },

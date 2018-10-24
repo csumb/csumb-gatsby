@@ -8,10 +8,6 @@ import Button from '../../button'
 import NavigationLink from './navigation-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 
-const headerClass = css`
-border-bottom: 2px solid black;
-padding: 1rem 0;    
-`
 
 class Header extends React.Component {
 
@@ -21,14 +17,6 @@ class Header extends React.Component {
       user: false,
       showSearch: false
     }
-    this.handleShowSearch = this.handleShowSearch.bind(this)
-  }
-
-  handleShowSearch(event) {
-    event.preventDefault()
-    this.setState({
-      showSearch: !this.state.showSearch
-    })
   }
 
   componentDidMount() {
@@ -47,15 +35,6 @@ class Header extends React.Component {
   
   render() {
     const that = this
-
-    const SearchForm = (props) => {
-      if(!props.show) {
-        return null
-      }
-      return (
-        <Search swiftypeId={props.swiftypeId}/>
-      )
-    }
 
     const User = (props) => {
       if(!props.user) {
@@ -81,7 +60,10 @@ class Header extends React.Component {
 
     return (
       <>
-        <header className={headerClass}>
+        <header className={css`
+        border-bottom: 2px solid black;
+        padding: 1rem 0;    
+        `}>
           <Container>
             <Flex flexWrap="wrap">
               <Box width={[ 1, 1, 1/4, 1/4 ]} px={2}>
@@ -92,10 +74,7 @@ class Header extends React.Component {
                   <Box width={[1, 1, 4/5, 4/5]} px={2} className={css`text-align: right;`}>
                     <div>
                       <User user={this.state.user}/>
-                      <a href="#search" onClick={this.handleShowSearch} className={css`
-                        color: #000;
-                        margin-left: 1rem;
-                      `}>Search</a>
+                      <Search/>
                     </div>
                     <div className={css` 
                       margin-top: 1rem;
@@ -127,10 +106,9 @@ class Header extends React.Component {
             </Flex>
           </Container>
         </header>
-        <SearchForm show={this.state.showSearch} switftypeId={this.props.metadata.swiftypeId}/>
       </>
     )
   }
 }
 
-export { Header, headerClass }
+export { Header }

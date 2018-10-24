@@ -1,5 +1,5 @@
 import React from 'react'
-import SROnly from '../../utilities/sronly'
+import VisuallyHidden from "@reach/visually-hidden"
 import Link from 'gatsby-link'
 import Button from '../../button'
 import Container from '../../container'
@@ -74,9 +74,9 @@ const Footer = ({ children, data }) => (
         <Link to="/diversity">Diversity &amp; Inclusion</Link>
         <Link to="/clery">Security report</Link>
         <Link to="/hr/form-801">Form 801</Link>
-        <SROnly>
+        <VisuallyHidden>
           <Link to="/document-reader">Some links for may require a Document Reader.</Link>
-        </SROnly>
+        </VisuallyHidden>
       </Container>
     </div>
   </footer>

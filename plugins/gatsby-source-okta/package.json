@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@okta/okta-sdk-nodejs": "^1.2.0"
+  }
+}

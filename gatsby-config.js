@@ -20,6 +20,20 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-csumb-content`,
+    /*{
+      resolve: `gatsby-source-okta`,
+      options : {
+        filter: {
+          limit: 10,
+          search: 'profile.cmsRole eq "employee_staff"',
+        },
+        fields: [
+          'firstName',
+          'lastName',
+          'email'
+        ]
+      }
+    },*/
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
