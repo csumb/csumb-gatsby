@@ -6,10 +6,11 @@ import { navigate } from '@reach/router'
 import { css } from 'emotion'
 import Portal from '../../portal'
 import Rect from '@reach/rect'
+import { InputText } from '../../forms'
 
 /** A11Y
  *
- * The autocomplete doesn't∏
+ * The autocomplete doesn't
  */
 class SearchResults extends React.Component {
   state = {
@@ -58,8 +59,6 @@ class SearchResults extends React.Component {
 }
 
 class Search extends React.Component {
-  inputRef = React.createRef()
-
   state = {
     search: false,
     query: false,
@@ -111,10 +110,10 @@ class Search extends React.Component {
       <Rect>
         {({ rect, ref }) => (
           <>
-            <input
-              type="text"
-              ref={ref}
-              aria-label="Search"
+            <InputText
+              label="Search"
+              name="search"
+              forwardedRef={ref}
               onChange={this.handleChange}
             />
             <Portal>

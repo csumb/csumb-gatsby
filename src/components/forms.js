@@ -52,6 +52,7 @@ class InputText extends FormElement {
     let props = Object.assign({}, this.props)
     delete props.isRequired
     delete props.hideLabel
+    delete props.forwardedRef
     return props
   }
 
@@ -68,6 +69,7 @@ class InputText extends FormElement {
         <input
           type="text"
           {...this.cleanProps()}
+          ref={this.props.forwardedRef}
           className={css`
             border: 1px solid #000;
             padding: 0.3rem;
