@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "Kevin Miller <kevin@csumb.edu>",
   "dependencies": {
+    "@reach/rect": "^0.1.1",
     "@reach/skip-nav": "^0.1.1",
     "@reach/visually-hidden": "^0.1.1",
     "@rebass/grid": "^6.0.0-4",

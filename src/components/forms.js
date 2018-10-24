@@ -19,7 +19,7 @@ class Label extends React.Component {
 
     return (
       <LabelWrapper>
-        <label for={this.props.labelId}>
+        <label htmlFor={this.props.labelId}>
           {this.props.children}
           {(this.props.isRequired) ? 
             <VisuallyHidden>Required</VisuallyHidden> : null 
@@ -45,7 +45,7 @@ class FormElement extends React.Component {
 }
 
 FormElement.propTypes = {
-  name: PropTypes.string.isRequried,
+  name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string,
   isRequired: PropTypes.bool,
@@ -53,9 +53,17 @@ FormElement.propTypes = {
 }
 
 class InputText extends FormElement {
+
+  cleanProps() {
+    let props = Object.assign({}, this.props)
+    delete props.isRequired
+    delete props.hideLabel
+    return props
+  }
+
   render() {
     return (
-      <>
+      <span>
         <Label
           labelId={this.htmlId}
           isRequired={this.props.isRequired}
@@ -64,22 +72,16 @@ class InputText extends FormElement {
         </Label>
         <input 
           type="text" 
-          name={this.props.name} 
-          value={this.props.value} 
-          placeholder={this.props.placeholder}
+          {...this.cleanProps()} 
           className={css`
             border: 1px solid #000;
             padding: 0.3rem;
           `}
         />
-      </>
+      </span>
     )
   }
 }
-
-
-
-
 
 
 

@@ -74,7 +74,7 @@ class Header extends React.Component {
                   <Box width={[1, 1, 4/5, 4/5]} px={2} className={css`text-align: right;`}>
                     <div>
                       <User user={this.state.user}/>
-                      <Search/>
+                      <Search swiftypeId={this.props.metadata.swiftypeId}/>
                     </div>
                     <div className={css` 
                       margin-top: 1rem;
