@@ -4,6 +4,7 @@ import Link from 'gatsby-link'
 import Button from '../../button'
 import Container from '../../container'
 import { Flex, Box } from '@rebass/grid/emotion'
+import logo from '../../../assets/images/csumb-logo-blue.svg'
 
 import { css } from 'emotion'
 
@@ -114,9 +115,17 @@ const Footer = ({ children, data }) => (
           </ul>
         </Box>
         <Box width={[1, 1 / 4]}>
-          <Button to="/giving" type="primary">
-            Give
-          </Button>
+          <img src={logo} alt="Cal State Monterey Bay" />
+          <div
+            className={css`
+              text-align: right;
+              margin-top: 1rem;
+            `}
+          >
+            <Button to="/giving" type="primary">
+              Give
+            </Button>
+          </div>
         </Box>
       </Flex>
     </Container>
