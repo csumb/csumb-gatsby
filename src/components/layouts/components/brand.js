@@ -3,7 +3,9 @@ import { css } from 'emotion'
 import Link from 'gatsby-link'
 
 const Brand = () => (
-  <Link to="/" className={css`
+  <Link
+    to="/"
+    className={css`
       font-weight: bold;
       font-size: 150%;
       color: #000;
@@ -12,8 +14,10 @@ const Brand = () => (
       &:hover {
         text-decoration: underline;
       }
-    `}>
-    Cal State<br/>
+    `}
+  >
+    Cal State
+    <br />
     Monterey Bay
   </Link>
 )
