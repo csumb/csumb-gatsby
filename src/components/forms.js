@@ -45,6 +45,7 @@ FormElement.propTypes = {
   value: PropTypes.string,
   isRequired: PropTypes.bool,
   hideLabel: PropTypes.bool,
+  forwardedRef: PropTypes.func,
 }
 
 class InputText extends FormElement {
