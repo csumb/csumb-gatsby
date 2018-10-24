@@ -4,8 +4,7 @@ import Link from 'gatsby-link'
 import VisuallyHidden from "@reach/visually-hidden";
 import { navigate } from '@reach/router'
 import { css } from 'emotion'
-import Container from '../../container'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { InputText } from '../../forms'
 
 class SearchResults extends React.Component {
 
@@ -77,47 +76,14 @@ class Search extends React.Component {
   }
   
   render() {
-    if(!this.props.show) {
-      return null
-    }
     return (
-      <div className={css`</Container>
-          color: #fff;
-          background: #000;
-          padding: 1rem 0;
-        `}>
-        <Container>
-          <form onSubmit={this.handleSubmit}>
-            <Flex flexWrap="wrap">
-              <Box width={ 4/5 } px={2}>
-                <input 
-                  ref={this.inputRef} 
-                  type="text" 
-                  onChange={this.handleChange} 
-                  placeholder="Search" 
-                  className={css`
-                    color: #fff;
-                    width: 100%;
-                    font-size: 3rem;
-                    background: 000;
-                    border: 0;
-                    border-bottom: 1px solid #fff;
-                `}/>
-              </Box>
-              <Box width={ 1/5 } px={2}>
-                <span role="img" aria-label="Search">
-                  🔍
-                </span>
-              </Box>
-            </Flex>
-            
-            <SearchResults search={this.state.search}/>
-            <VisuallyHidden>
-              <input type="submit" value="Search"/>
-            </VisuallyHidden>
-          </form>
-        </Container>
-      </div>
+      <>
+        <InputText name="search" label="Search" hideLabel={true}/>  
+        <SearchResults search={this.state.search}/>
+        <VisuallyHidden>
+          <input type="submit" value="Search"/>
+        </VisuallyHidden>
+      </>
     )
   }
 }

@@ -17,14 +17,6 @@ class Header extends React.Component {
       user: false,
       showSearch: false
     }
-    this.handleShowSearch = this.handleShowSearch.bind(this)
-  }
-
-  handleShowSearch(event) {
-    event.preventDefault()
-    this.setState({
-      showSearch: !this.state.showSearch
-    })
   }
 
   componentDidMount() {
@@ -79,10 +71,7 @@ class Header extends React.Component {
                   <Box width={[1, 1, 4/5, 4/5]} px={2} className={css`text-align: right;`}>
                     <div>
                       <User user={this.state.user}/>
-                      <a href="#search" onClick={this.handleShowSearch} className={css`
-                        color: #000;
-                        margin-left: 1rem;
-                      `}>Search</a>
+                      <Search/>
                     </div>
                     <div className={css` 
                       margin-top: 1rem;
@@ -114,7 +103,6 @@ class Header extends React.Component {
             </Flex>
           </Container>
         </header>
-        <Search show={this.state.showSearch} swiftypeId={this.props.metadata.swiftypeId}/>
       </>
     )
   }
