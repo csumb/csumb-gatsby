@@ -1,7 +1,7 @@
 import React from 'react'
 //import { css } from 'emotion'
 import Link from 'gatsby-link'
-import SROnly from '../../../components/utilities/sronly'
+import VisuallyHidden from "@reach/visually-hidden";
 import { navigate } from '@reach/router'
 import { css } from 'emotion'
 import Container from '../../container'
@@ -112,9 +112,9 @@ class Search extends React.Component {
             </Flex>
             
             <SearchResults search={this.state.search}/>
-            <SROnly>
+            <VisuallyHidden>
               <input type="submit" value="Search"/>
-            </SROnly>
+            </VisuallyHidden>
           </form>
         </Container>
       </div>
