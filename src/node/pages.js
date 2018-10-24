@@ -1,82 +1,85 @@
-
 const path = require(`path`)
 const fs = require(`fs-extra`)
 require(`gatsby-source-filesystem`)
- 
+
 module.exports = (graphql, actions) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
     resolve()
     const pageTemplate = path.resolve(`src/templates/page.js`)
     let sites = {}
-    
+
     resolve(
       graphql(
-        `{
-          allCsumbContentSite {
-            edges {
-              node {
-                site
-                title
-              }
-            }
-          }
-          
-          allCsumbContentNavigation {
-            edges {
-              node {
-                site
-                navigation
-              }
-            }
-          }
-            
-          allFile(filter: 
-            { sourceInstanceName: { eq: "web-content" } 
-              extension: { eq: "json"}
-            }) {
-            edges {
-              node {
-                relativePath
-                absolutePath
-                childCsumbContentPage {
-                  title
+        `
+          {
+            allCsumbContentSite {
+              edges {
+                node {
                   site
-                  pageContent
-                  breadcrumbs
+                  title
+                }
+              }
+            }
+
+            allCsumbContentNavigation {
+              edges {
+                node {
+                  site
+                  navigation
+                }
+              }
+            }
+
+            allFile(
+              filter: {
+                sourceInstanceName: { eq: "web-content" }
+                extension: { eq: "json" }
+              }
+            ) {
+              edges {
+                node {
+                  relativePath
+                  absolutePath
+                  childCsumbContentPage {
+                    title
+                    site
+                    pageContent
+                    breadcrumbs
+                  }
                 }
               }
             }
           }
-        }
-      `).then(result => {
-        if(!result.data) {
+        `
+      ).then(result => {
+        if (!result.data) {
           return
         }
 
         result.data.allCsumbContentSite.edges.forEach(edge => {
-          if(typeof sites[edge.node.site] === 'undefined') {
+          if (typeof sites[edge.node.site] === 'undefined') {
             sites[edge.node.site] = {
               site: edge.node,
-              navigation: null
+              navigation: null,
             }
           }
         })
 
         result.data.allCsumbContentNavigation.edges.forEach(edge => {
-          if(typeof sites[edge.node.site] !== 'undefined') {
+          if (typeof sites[edge.node.site] !== 'undefined') {
             sites[edge.node.site].navigation = edge.node.navigation
           }
         })
 
         result.data.allFile.edges.forEach(edge => {
-          if(edge.node.relativePath.search('_data') > -1) {
+          if (edge.node.relativePath.search('_data') > -1) {
             return
           }
           const content = edge.node.childCsumbContentPage
           let path = edge.node.relativePath
           path = path.replace('index.json', '').replace('.json', '')
-          if(typeof sites[content.site] !== 'undefined') {
+          if (typeof sites[content.site] !== 'undefined') {
             createPage({
               path: path,
               component: pageTemplate,
@@ -88,8 +91,8 @@ module.exports = (graphql, actions) => {
                 breadcrumbs: content.breadcrumbs,
                 layout: content.layout,
                 navigation: sites[content.site].navigation,
-                pageContent: content.pageContent
-              }
+                pageContent: content.pageContent,
+              },
             })
           }
         })

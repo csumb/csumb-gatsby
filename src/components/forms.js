@@ -5,14 +5,10 @@ import idGenerator from 'react-id-generator'
 import { css } from 'emotion'
 
 class Label extends React.Component {
-
   render() {
-
-    const LabelWrapper = (props) => {
-      if(this.props.isHidden) {
-        return (
-          <VisuallyHidden>{props.children}</VisuallyHidden>
-        )
+    const LabelWrapper = props => {
+      if (this.props.isHidden) {
+        return <VisuallyHidden>{props.children}</VisuallyHidden>
       }
       return <>{props.children}</>
     }
@@ -21,14 +17,13 @@ class Label extends React.Component {
       <LabelWrapper>
         <label htmlFor={this.props.labelId}>
           {this.props.children}
-          {(this.props.isRequired) ? 
-            <VisuallyHidden>Required</VisuallyHidden> : null 
-          }
+          {this.props.isRequired ? (
+            <VisuallyHidden>Required</VisuallyHidden>
+          ) : null}
         </label>
       </LabelWrapper>
     )
   }
-
 }
 
 Label.propTypes = {
@@ -49,11 +44,10 @@ FormElement.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string,
   isRequired: PropTypes.bool,
-  hideLabel: PropTypes.bool
+  hideLabel: PropTypes.bool,
 }
 
 class InputText extends FormElement {
-
   cleanProps() {
     let props = Object.assign({}, this.props)
     delete props.isRequired
@@ -67,12 +61,13 @@ class InputText extends FormElement {
         <Label
           labelId={this.htmlId}
           isRequired={this.props.isRequired}
-          isHidden={this.props.hideLabel}>
+          isHidden={this.props.hideLabel}
+        >
           {this.props.label}
         </Label>
-        <input 
-          type="text" 
-          {...this.cleanProps()} 
+        <input
+          type="text"
+          {...this.cleanProps()}
           className={css`
             border: 1px solid #000;
             padding: 0.3rem;
@@ -82,7 +77,5 @@ class InputText extends FormElement {
     )
   }
 }
-
-
 
 export { Label, InputText }

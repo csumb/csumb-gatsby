@@ -1,13 +1,13 @@
 import React from 'react'
-import { createPortal } from "react-dom"
+import { createPortal } from 'react-dom'
 
 class Portal extends React.Component {
   state = {
-    mounted: false
+    mounted: false,
   }
 
   componentDidMount() {
-    this.node = document.createElement("div")
+    this.node = document.createElement('div')
     document.body.appendChild(this.node)
     this.setState({ mounted: true })
   }

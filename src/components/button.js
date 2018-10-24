@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 
 class Button extends React.Component {
   render() {
-    if(!this.props.to) {
+    if (!this.props.to) {
       return null
     }
     const buttonClass = css`{
@@ -24,32 +24,39 @@ class Button extends React.Component {
         border-color: black;
         color: black;
         font-weight: bold;
-      `
+      `,
     }
 
     let extraClass = {}
-    if(typeof this.props.type !== 'undefined' && typeof buttonTypes[this.props.type] !== 'undefined') {
+    if (
+      typeof this.props.type !== 'undefined' &&
+      typeof buttonTypes[this.props.type] !== 'undefined'
+    ) {
       extraClass = buttonTypes[this.props.type]
     }
 
     let to = this.props.to.replace('https://csumb.edu/', '')
     let finalClass = cx(css(buttonClass), css(extraClass))
-    if(typeof this.props.addStyle !== 'undefined') {
+    if (typeof this.props.addStyle !== 'undefined') {
       finalClass = cx(finalClass, this.props.addStyle)
     }
-    if(to.search(/http(s?):/) > -1) {
+    if (to.search(/http(s?):/) > -1) {
       return (
         <>
-          <a href={to} className={finalClass}>{this.props.children}</a>
+          <a href={to} className={finalClass}>
+            {this.props.children}
+          </a>
         </>
       )
     }
     return (
       <>
-        <Link to={to} className={finalClass}>{this.props.children}</Link>
+        <Link to={to} className={finalClass}>
+          {this.props.children}
+        </Link>
       </>
     )
-  } 
+  }
 }
 
 export default Button

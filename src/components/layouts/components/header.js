@@ -8,100 +8,135 @@ import Button from '../../button'
 import NavigationLink from './navigation-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 
-
 class Header extends React.Component {
-
   constructor(props) {
     super(props)
     this.state = {
       user: false,
-      showSearch: false
+      showSearch: false,
     }
   }
 
   componentDidMount() {
-    window.fetch('https://csumb.okta.com/api/v1/users/me', {credentials: 'include'}).then(response => {
-      return response.json()
-    }).then(user => {
-      this.setState({
-        user: user
+    window
+      .fetch('https://csumb.okta.com/api/v1/users/me', {
+        credentials: 'include',
       })
-    }).catch(error => {
-      this.setState({
-        user: 'anonymous'
+      .then(response => {
+        return response.json()
       })
-    })
+      .then(user => {
+        this.setState({
+          user: user,
+        })
+      })
+      .catch(error => {
+        this.setState({
+          user: 'anonymous',
+        })
+      })
   }
-  
+
   render() {
     const that = this
 
-    const User = (props) => {
-      if(!props.user) {
+    const User = props => {
+      if (!props.user) {
         return null
       }
-      if(props.user !== 'anonymous') {
+      if (props.user !== 'anonymous') {
         return (
           <>
-            <Link to="/dashboard" className={css`
-              color: #000;
-            `}>Dashboard</Link>
+            <Link
+              to="/dashboard"
+              className={css`
+                color: #000;
+              `}
+            >
+              Dashboard
+            </Link>
           </>
         )
       }
       return (
         <>
-        <a href={that.props.metadata.okta.login} className={css`
-          color: #000;
-        `}>Log in</a>
+          <a
+            href={that.props.metadata.okta.login}
+            className={css`
+              color: #000;
+            `}
+          >
+            Log in
+          </a>
         </>
       )
     }
 
     return (
       <>
-        <header className={css`
-        border-bottom: 2px solid black;
-        padding: 1rem 0;    
-        `}>
+        <header
+          className={css`
+            border-bottom: 2px solid black;
+            padding: 1rem 0;
+          `}
+        >
           <Container>
             <Flex flexWrap="wrap">
-              <Box width={[ 1, 1, 1/4, 1/4 ]} px={2}>
-                <Brand/>
+              <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+                <Brand />
               </Box>
-              <Box width={[ 1, 1, 3/4, 3/4 ]} px={2}>
+              <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
                 <Flex flexWrap="wrap">
-                  <Box width={[1, 1, 4/5, 4/5]} px={2} className={css`text-align: right;`}>
+                  <Box
+                    width={[1, 1, 4 / 5, 4 / 5]}
+                    px={2}
+                    className={css`
+                      text-align: right;
+                    `}
+                  >
                     <div>
-                      <User user={this.state.user}/>
-                      <Search swiftypeId={this.props.metadata.swiftypeId}/>
+                      <User user={this.state.user} />
+                      <Search swiftypeId={this.props.metadata.swiftypeId} />
                     </div>
-                    <div className={css` 
-                      margin-top: 1rem;
-                    `}>
-                      <ul className={css`
-                        margin: 0;
-                        list-style: none;
-                      `}>
-                        <NavigationLink to="/academics">Academics</NavigationLink>
-                        <NavigationLink to="/cost">Cost &amp; Aid</NavigationLink>
+                    <div
+                      className={css`
+                        margin-top: 1rem;
+                      `}
+                    >
+                      <ul
+                        className={css`
+                          margin: 0;
+                          list-style: none;
+                        `}
+                      >
+                        <NavigationLink to="/academics">
+                          Academics
+                        </NavigationLink>
+                        <NavigationLink to="/cost">
+                          Cost &amp; Aid
+                        </NavigationLink>
                         <NavigationLink to="/about">About</NavigationLink>
                       </ul>
                     </div>
                   </Box>
-                  <Box width={[1, 1, 1/5, 1/5]} px={2}>
-                    <Button to="/apply" type="navigation" addStyle={css`
-                      border-color: red;
-                      color: red;
-                      float: right;
-                      &:hover {
-                        background: red;
-                        color: #fff;
-                      }
-                  `}>Apply</Button>
+                  <Box width={[1, 1, 1 / 5, 1 / 5]} px={2}>
+                    <Button
+                      to="/apply"
+                      type="navigation"
+                      addStyle={css`
+                        border-color: red;
+                        color: red;
+                        float: right;
+                        &:hover {
+                          background: red;
+                          color: #fff;
+                        }
+                      `}
+                    >
+                      Apply
+                    </Button>
                   </Box>
                 </Flex>
-                
               </Box>
             </Flex>
           </Container>

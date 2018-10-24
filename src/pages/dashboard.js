@@ -14,13 +14,12 @@ const DashboardPage = () => (
   <Layout pageTitle="Dashboard">
     <Container>
       <Flex flexWrap="wrap">
-        <Box width={[ 1, 1, 1/2, 1/2 ]} px={2} className={dashboardCard}>
+        <Box width={[1, 1, 1 / 2, 1 / 2]} px={2} className={dashboardCard}>
           sta
         </Box>
-        <Box width={[ 1, 1, 1/2, 1/2 ]} px={2} className={dashboardCard}>
+        <Box width={[1, 1, 1 / 2, 1 / 2]} px={2} className={dashboardCard}>
           we
         </Box>
-        
       </Flex>
     </Container>
   </Layout>

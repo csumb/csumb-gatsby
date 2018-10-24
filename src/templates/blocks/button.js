@@ -1,7 +1,6 @@
 import React from 'react'
 import Button from '../../components/button'
 
-
 class BlockButton extends React.Component {
   render() {
     return (

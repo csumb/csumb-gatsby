@@ -12,12 +12,17 @@ class PageTemplate extends React.Component {
   render() {
     return (
       <Layout pageTitle={this.props.pageContext.title}>
-        <SiteHeader title={this.props.pageContext.site.title} path={this.props.pageContext.site.site}/>
-        <SiteNavigation navigation={this.props.pageContext.navigation}/>
+        <SiteHeader
+          title={this.props.pageContext.site.title}
+          path={this.props.pageContext.site.site}
+        />
+        <SiteNavigation navigation={this.props.pageContext.navigation} />
         <Container>
-          <Breadcrumbs breadcrumbs={this.props.pageContext.breadcrumbs}/>
-          <PageTitle layout={this.props.pageContext.layout}>{this.props.pageContext.title}</PageTitle>
-          <Blocks blocks={this.props.pageContext.pageContent}/> 
+          <Breadcrumbs breadcrumbs={this.props.pageContext.breadcrumbs} />
+          <PageTitle layout={this.props.pageContext.layout}>
+            {this.props.pageContext.title}
+          </PageTitle>
+          <Blocks blocks={this.props.pageContext.pageContent} />
         </Container>
       </Layout>
     )

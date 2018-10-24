@@ -1,18 +1,18 @@
-const footer =require('./src/config/footer')
+const footer = require('./src/config/footer')
 
 module.exports = {
   siteMetadata: {
     title: `Cal State Monterey Bay`,
     footer: footer,
     okta: {
-      login: `https://csumb.okta.com`
+      login: `https://csumb.okta.com`,
     },
     swiftypeId: `Gu7FdGTPV49T6dsYVBSV`,
     schedule: {
       currentTerm: 2184,
       currentTermName: '2018fall',
-      endpoint: `https://api.csumb.edu/schedule/`
-    }
+      endpoint: `https://api.csumb.edu/schedule/`,
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -40,11 +40,11 @@ module.exports = {
         fonts: [
           {
             family: `Roboto`,
-            variants: [`400`, `700`]
+            variants: [`400`, `700`],
           },
           {
             family: `Open Sans`,
-            variants: [`400`, `700`]
+            variants: [`400`, `700`],
           },
         ],
       },
@@ -53,7 +53,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./_data`,
-        ignore: [`**/\.*`]
+        ignore: [`**/\.*`],
       },
     },
     {
@@ -61,14 +61,14 @@ module.exports = {
       options: {
         path: `./_web-content`,
         name: `web-content`,
-        ignore: [`**/\.*`]
+        ignore: [`**/\.*`],
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./src/static`,
-        name: `static-content`
+        name: `static-content`,
       },
     },
     {
@@ -76,14 +76,8 @@ module.exports = {
       options: {
         sheet: `https://spreadsheets.google.com/feeds/list/1jtwi1CnRBt2JzfoZVSPngmkaucVpw0aZ_WSKIceXlMw/od6/public/values?alt=json`,
         id: `academicPrograms`,
-        fields: [
-          `type`,
-          `name`,
-          `program`,
-          `link`,
-          `description`
-        ]
-      }
+        fields: [`type`, `name`, `program`, `link`, `description`],
+      },
     },
     /*
     ENABLE BEFORE GO LIVE
@@ -103,20 +97,20 @@ module.exports = {
     {
       resolve: `gatsby-plugin-favicon`,
       options: {
-        logo: "./src/assets/images/favicon.png",
-      }
+        logo: './src/assets/images/favicon.png',
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "Cal State Monterey Bay",
-        short_name: "CSUMB",
-        start_url: "/",
-        background_color: "#fff",
-        theme_color: "#fff",
-        display: "minimal-ui",
-        icon: "src/assets/images/icon.png", // This path is relative to the root of the site.
+        name: 'Cal State Monterey Bay',
+        short_name: 'CSUMB',
+        start_url: '/',
+        background_color: '#fff',
+        theme_color: '#fff',
+        display: 'minimal-ui',
+        icon: 'src/assets/images/icon.png', // This path is relative to the root of the site.
       },
-    }
+    },
   ],
 }

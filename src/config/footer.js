@@ -1,32 +1,33 @@
 module.exports = {
-  legal : [
+  legal: [
     {
       name: 'Copyright',
-      link: '/it/copyright-infringement'
+      link: '/it/copyright-infringement',
     },
     {
       name: 'Privacy',
-      link: '/privacy'
+      link: '/privacy',
     },
     {
       name: 'Accessibility',
-      link: '/ati'
+      link: '/ati',
     },
     {
       name: 'Report concerning behavior',
-      link: 'https://cm.maxient.com/reportingform.php?CSUMontereyBay&layout_id=0'
+      link:
+        'https://cm.maxient.com/reportingform.php?CSUMontereyBay&layout_id=0',
     },
     {
       name: 'Title IX',
-      link: '/titleix'
+      link: '/titleix',
     },
     {
       name: 'Security report',
-      link: '/clery'
+      link: '/clery',
     },
     {
       name: 'Form 801',
-      link: '/hr/form-801'
-    }
-  ]
+      link: '/hr/form-801',
+    },
+  ],
 }

@@ -5,7 +5,7 @@ export default {
       dark: '#002a4e',
       mid: '#4c6b83',
       light: '#d0dfe4',
-      neon: '#1DD2FF'
+      neon: '#1DD2FF',
     },
     tan: {
       darkest: '#39351b',
@@ -13,7 +13,7 @@ export default {
       mid: '#CABD9C',
       bright: '#dddac7',
       light: '#F8F7E9',
-      highlight: '#eceade'
-    }
-  }
+      highlight: '#eceade',
+    },
+  },
 }

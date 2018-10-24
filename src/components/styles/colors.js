@@ -4,7 +4,7 @@ const colors = {
     dark: '#002a4e',
     mid: '#4c6b83',
     light: '#d0dfe4',
-    neon: '#1DD2FF'
+    neon: '#1DD2FF',
   },
   tan: {
     darkest: '#39351b',
@@ -12,8 +12,8 @@ const colors = {
     mid: '#CABD9C',
     bright: '#dddac7',
     light: '#F8F7E9',
-    highlight: '#eceade'
-  }
+    highlight: '#eceade',
+  },
 }
 
 export default colors

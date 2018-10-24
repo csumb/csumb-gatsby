@@ -1,24 +1,24 @@
 const path = require(`path`)
 const fs = require(`fs-extra`)
 
-module.exports = (graphql) => {
+module.exports = graphql => {
   return new Promise((resolve, reject) => {
     resolve(
       graphql(
         `
-        {
-          allScheduleCsv {
-            edges {
-              node {
-                SUBJECT
-                STRM
-                CATALOG_NBR
-                SECTION
+          {
+            allScheduleCsv {
+              edges {
+                node {
+                  SUBJECT
+                  STRM
+                  CATALOG_NBR
+                  SECTION
+                }
               }
             }
           }
-        }
-    `
+        `
       ).then(result => {
         if (result.errors) {
           reject(result.errors)
@@ -28,10 +28,9 @@ module.exports = (graphql) => {
             path: `course/${edge.node.SUBJECT.toLowerCase()}/${edge.node.CATALOG_NBR.toLowerCase().trim()}`,
             component: courseTemplate,
             context: {
-              course: edge.node
-            }
+              course: edge.node,
+            },
           })
-          
         })
 
         return

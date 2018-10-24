@@ -3,22 +3,24 @@ import filterCourses from './filter-courses'
 import { css } from 'emotion'
 
 class BlockText extends React.Component {
-  
   createMarkup(text) {
     return {
-      __html: filterCourses(text)
+      __html: filterCourses(text),
     }
   }
 
   render() {
     let className = null
-    if(this.props.block.data.lead) {
+    if (this.props.block.data.lead) {
       className = css(`
         font-size: 130%;
       `)
     }
     return (
-      <p className={className} dangerouslySetInnerHTML={this.createMarkup(this.props.block.data.text)}/>
+      <p
+        className={className}
+        dangerouslySetInnerHTML={this.createMarkup(this.props.block.data.text)}
+      />
     )
   }
 }

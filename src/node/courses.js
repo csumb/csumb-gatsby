@@ -10,25 +10,25 @@ module.exports = (graphql, actions) => {
     resolve(
       graphql(
         `
-        {
-          allCatalogCsv {
-            edges {
-              node{
-                CRSE_ID
-                SUBJECT
-                CATALOG_NBR
-                COURSE_TITLE_LONG
-                DESCRLONG
-                UNITS_MINIMUM
-                UNITS_MAXIMUM
-                CRSE_OFFER_NBR
-                TERM
-                CRSE_ATTR_LIST
+          {
+            allCatalogCsv {
+              edges {
+                node {
+                  CRSE_ID
+                  SUBJECT
+                  CATALOG_NBR
+                  COURSE_TITLE_LONG
+                  DESCRLONG
+                  UNITS_MINIMUM
+                  UNITS_MAXIMUM
+                  CRSE_OFFER_NBR
+                  TERM
+                  CRSE_ATTR_LIST
+                }
               }
             }
           }
-        }
-    `
+        `
       ).then(result => {
         if (result.errors) {
           reject(result.errors)
@@ -38,10 +38,9 @@ module.exports = (graphql, actions) => {
             path: `course/${edge.node.SUBJECT.toLowerCase()}/${edge.node.CATALOG_NBR.toLowerCase().trim()}`,
             component: courseTemplate,
             context: {
-              course: edge.node
-            }
+              course: edge.node,
+            },
           })
-          
         })
 
         return
