@@ -10,6 +10,7 @@ import BlockQuote from './quote'
 import BlockAddress from './address'
 import BlockDefinitionList from './definition-list'
 import BlockColumns from './columns'
+import BlockVideo from './video'
 
 class Block extends React.Component {
   blockComponents = {
@@ -23,6 +24,7 @@ class Block extends React.Component {
     quote: BlockQuote,
     address: BlockAddress,
     columns: BlockColumns,
+    video: BlockVideo,
   }
 
   render() {
