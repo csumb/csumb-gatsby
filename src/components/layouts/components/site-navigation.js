@@ -1,7 +1,13 @@
 import React from 'react'
 import LinkInspect from '../../link-inspect'
 import Container from '../../container'
-import { css } from 'emotion'
+import styled from 'react-emotion'
+import theme from '../../styles/theme'
+
+const SiteNavigationToggle = styled('span')`
+  color: ${theme.colors.primary.dark};
+  font-weight: bold;
+`
 
 class SiteNavigation extends React.Component {
   render() {
@@ -17,16 +23,7 @@ class SiteNavigation extends React.Component {
           </>
         )
       }
-      return (
-        <span
-          className={css`
-            color: blue;
-            font-weight: bold;
-          `}
-        >
-          {props.children}
-        </span>
-      )
+      return <SiteNavigationToggle>{props.children}</SiteNavigationToggle>
     }
 
     const navigation = JSON.parse(this.props.navigation)

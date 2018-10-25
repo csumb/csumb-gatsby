@@ -1,19 +1,17 @@
 import React from 'react'
-import { css } from 'emotion'
+import styled from 'react-emotion'
+import theme from './styles/theme'
+
+const PageTitleHeader = styled('h1')`
+  border-bottom: 1px solid ${theme.colors.primary.dark};
+  color: ${theme.colors.primary.dark};
+`
 
 const PageTitle = props => {
   if (props.layout === 'site') {
     return null
   }
-  return (
-    <h1
-      className={css`
-        border-bottom: 1px solid #000;
-      `}
-    >
-      {props.children}
-    </h1>
-  )
+  return <PageTitleHeader>{props.children}</PageTitleHeader>
 }
 
 export default PageTitle

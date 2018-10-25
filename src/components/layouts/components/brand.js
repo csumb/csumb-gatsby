@@ -1,25 +1,24 @@
 import React from 'react'
-import { css } from 'emotion'
+import theme from '../../styles/theme'
 import Link from 'gatsby-link'
+import styled from 'react-emotion'
 
+const BrandLink = styled(Link)`
+  font-weight: bold;
+  font-size: 150%;
+  color: ${theme.colors.primary.dark};
+  text-decoration: none;
+  line-height: 80%;
+  &:hover {
+    text-decoration: underline;
+  }
+`
 const Brand = () => (
-  <Link
-    to="/"
-    className={css`
-      font-weight: bold;
-      font-size: 150%;
-      color: #000;
-      text-decoration: none;
-      line-height: 80%;
-      &:hover {
-        text-decoration: underline;
-      }
-    `}
-  >
+  <BrandLink to="/">
     Cal State
     <br />
     Monterey Bay
-  </Link>
+  </BrandLink>
 )
 
 export default Brand

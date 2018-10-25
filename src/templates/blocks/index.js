@@ -1,4 +1,5 @@
 import React from 'react'
+import { Flex, Box } from '@rebass/grid/emotion'
 import BlockList from './list'
 import BlockText from './text'
 import BlockHeading from './heading'
@@ -8,6 +9,7 @@ import BlockImage from './image'
 import BlockQuote from './quote'
 import BlockAddress from './address'
 import BlockDefinitionList from './definition-list'
+import BlockColumns from './columns'
 
 class Block extends React.Component {
   blockComponents = {
@@ -20,6 +22,7 @@ class Block extends React.Component {
     image: BlockImage,
     quote: BlockQuote,
     address: BlockAddress,
+    columns: BlockColumns,
   }
 
   render() {
@@ -40,16 +43,20 @@ class Blocks extends React.Component {
       return <div>Empty layout data</div>
     }
     return (
-      <div>
+      <>
         {blocks.layout.map(layout => (
           <div key={layout.id}>
-            <Block
-              type={blocks.blocks[layout.id].type}
-              block={blocks.blocks[layout.id]}
-            />
+            {layout._children ? (
+              <Flex flexWrap="wrap" />
+            ) : (
+              <Block
+                type={blocks.blocks[layout.id].type}
+                block={blocks.blocks[layout.id]}
+              />
+            )}
           </div>
         ))}
-      </div>
+      </>
     )
   }
 }

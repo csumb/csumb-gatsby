@@ -1,30 +1,27 @@
 import React from 'react'
-import { css } from 'emotion'
+import theme from '../../styles/theme'
 import Link from 'gatsby-link'
+import styled from 'react-emotion'
+
+const NavigationLinkList = styled('li')`
+  margin-left: 0.5rem;
+  display: inline-block;
+  a {
+    font-weight: bold;
+    text-decoration: none;
+    color: ${theme.colors.primary.dark};
+    padding: 0.75rem;
+    &:hover {
+      background: ${theme.colors.primary.dark};
+      color: #fff;
+    }
+  }
+`
 
 const NavigationLink = props => (
-  <li
-    className={css`
-      margin-left: 0.5rem;
-      display: inline-block;
-    `}
-  >
-    <Link
-      to={props.to}
-      className={css`
-        font-weight: bold;
-        text-decoration: none;
-        color: #000;
-        padding: 0.75rem;
-        &:hover {
-          background: #000;
-          color: #fff;
-        }
-      `}
-    >
-      {props.children}
-    </Link>
-  </li>
+  <NavigationLinkList>
+    <Link to={props.to}>{props.children}</Link>
+  </NavigationLinkList>
 )
 
 export default NavigationLink

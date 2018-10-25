@@ -10,13 +10,17 @@ class LinkInspect extends React.Component {
     if (to.search(/http(s?):/) > -1) {
       return (
         <>
-          <a href={to}>{this.props.children}</a>
+          <a href={to} {...this.props}>
+            {this.props.children}
+          </a>
         </>
       )
     }
     return (
       <>
-        <Link to={to}>{this.props.children}</Link>
+        <Link to={to} {...this.props}>
+          {this.props.children}
+        </Link>
       </>
     )
   }

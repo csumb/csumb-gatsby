@@ -1,17 +1,34 @@
 import React from 'react'
-//import { css } from 'emotion'
 import Link from 'gatsby-link'
 import VisuallyHidden from '@reach/visually-hidden'
 import { navigate } from '@reach/router'
-import { css } from 'emotion'
 import Portal from '../../portal'
 import Rect from '@reach/rect'
 import { InputText } from '../../forms'
+import styled from 'react-emotion'
+import theme from '../../styles/theme'
 
 /** A11Y
  *
  * The autocomplete doesn't
  */
+
+const SearchResultsAutocomplete = styled('div')`
+  position: absolute;
+  background: ${theme.colors.white};
+  border: 1px solid ${theme.colors.black};
+  a {
+    display: block;
+    text-decoration: none;
+    padding: 0.5rem;
+    :focus,
+    :hover {
+      background: ${theme.colors.primary.dark};
+      color: ${theme.colors.white};
+    }
+  }
+`
+
 class SearchResults extends React.Component {
   state = {
     selected: false,
@@ -22,12 +39,7 @@ class SearchResults extends React.Component {
       return null
     }
     return (
-      <div
-        className={css`
-          position: absolute;
-          background: #fff;
-          border: 1px solid #000;
-        `}
+      <SearchResultsAutocomplete
         style={{
           top: this.props.rect.top + this.props.rect.height,
           left: this.props.rect.left,
@@ -36,24 +48,12 @@ class SearchResults extends React.Component {
       >
         {this.props.search.records.page.map(item => (
           <div key={item.id}>
-            <Link
-              className={css`
-                display: block;
-                text-decoration: none;
-                padding: 0.5rem;
-                :focus,
-                :hover {
-                  background: blue;
-                  color: #fff;
-                }
-              `}
-              to={item.url.replace('https://csumb.edu', '')}
-            >
+            <Link to={item.url.replace('https://csumb.edu', '')}>
               {item.title}
             </Link>
           </div>
         ))}
-      </div>
+      </SearchResultsAutocomplete>
     )
   }
 }
@@ -114,6 +114,7 @@ class Search extends React.Component {
               label="Search"
               name="search"
               forwardedRef={ref}
+              hideLabel={true}
               onChange={this.handleChange}
             />
             <Portal>

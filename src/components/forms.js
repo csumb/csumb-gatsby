@@ -2,7 +2,7 @@ import React from 'react'
 import VisuallyHidden from '@reach/visually-hidden'
 import PropTypes from 'prop-types'
 import idGenerator from 'react-id-generator'
-import { css } from 'emotion'
+import styled from 'react-emotion'
 
 class Label extends React.Component {
   render() {
@@ -37,6 +37,19 @@ class FormElement extends React.Component {
     super(props)
     this.htmlId = idGenerator()
   }
+
+  cleanProps(additional) {
+    let props = Object.assign({}, this.props)
+    delete props.isRequired
+    delete props.hideLabel
+    delete props.forwardedRef
+    if (typeof additional !== 'undefined') {
+      additional.forEach(prop => {
+        delete props[prop]
+      })
+    }
+    return props
+  }
 }
 
 FormElement.propTypes = {
@@ -48,18 +61,14 @@ FormElement.propTypes = {
   forwardedRef: PropTypes.func,
 }
 
+const InputTextElemnt = styled('input')`
+  border: 1px solid #000;
+  padding: 0.3rem;
+`
 class InputText extends FormElement {
-  cleanProps() {
-    let props = Object.assign({}, this.props)
-    delete props.isRequired
-    delete props.hideLabel
-    delete props.forwardedRef
-    return props
-  }
-
   render() {
     return (
-      <span>
+      <>
         <Label
           labelId={this.htmlId}
           isRequired={this.props.isRequired}
@@ -67,18 +76,110 @@ class InputText extends FormElement {
         >
           {this.props.label}
         </Label>
-        <input
+        <InputTextElemnt
           type="text"
           {...this.cleanProps()}
-          ref={this.props.forwardedRef}
-          className={css`
-            border: 1px solid #000;
-            padding: 0.3rem;
-          `}
+          innerRef={this.props.forwardedRef}
         />
-      </span>
+      </>
     )
   }
 }
 
-export { Label, InputText }
+const InputTextareaElement = styled('textarea')`
+  border: 1px solid #000;
+  padding: 0.3rem;
+`
+
+class InputTextarea extends FormElement {
+  render() {
+    return (
+      <>
+        <Label
+          labelId={this.htmlId}
+          isRequired={this.props.isRequired}
+          isHidden={this.props.hideLabel}
+        >
+          {this.props.label}
+        </Label>
+        <InputTextareaElement
+          type="text"
+          {...this.cleanProps(['value'])}
+          ref={this.props.forwardedRef}
+        >
+          {this.props.value}
+        </InputTextareaElement>
+      </>
+    )
+  }
+}
+
+class InputCheckbox extends FormElement {
+  render() {
+    return (
+      <>
+        <Label
+          labelId={this.htmlId}
+          isRequired={this.props.isRequired}
+          isHidden={this.props.hideLabel}
+        >
+          <input
+            type="checkbox"
+            {...this.cleanProps()}
+            ref={this.props.forwardedRef}
+          />
+          {this.props.label}
+        </Label>
+      </>
+    )
+  }
+}
+
+class InputRadio extends FormElement {
+  render() {
+    return (
+      <>
+        <Label
+          labelId={this.htmlId}
+          isRequired={this.props.isRequired}
+          isHidden={this.props.hideLabel}
+        >
+          <input
+            type="radio"
+            {...this.cleanProps()}
+            ref={this.props.forwardedRef}
+          />
+          {this.props.label}
+        </Label>
+      </>
+    )
+  }
+}
+
+class InputSelect extends FormElement {
+  render() {
+    return (
+      <>
+        <Label
+          labelId={this.htmlId}
+          isRequired={this.props.isRequired}
+          isHidden={this.props.hideLabel}
+        >
+          {this.props.label}
+        </Label>
+        <select {...this.cleanProps()} ref={this.props.forwardedRef}>
+          {this.props.children}
+        </select>
+      </>
+    )
+  }
+}
+
+export {
+  Label,
+  InputText,
+  InputTextarea,
+  InputCheckbox,
+  InputRadio,
+  InputSelect,
+}

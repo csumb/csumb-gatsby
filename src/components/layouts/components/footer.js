@@ -5,23 +5,34 @@ import Button from '../../button'
 import Container from '../../container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import logo from '../../../assets/images/csumb-logo-blue.svg'
+import styled from 'react-emotion'
+import theme from '../../styles/theme'
 
-import { css } from 'emotion'
+const FooterElement = styled('footer')`
+  border-top: 3px solid ${theme.colors.primary.dark};
+  padding-top: 1rem;
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  h2 {
+    margin-top: 0;
+  }
+`
+
+const Legal = styled('div')`
+  background-color: ${theme.colors.primary.dark};
+  padding: 0.5rem 0;
+  text-align: right;
+  a {
+    color: ${theme.colors.white};
+    font-size: 0.8rem;
+    margin-right: 1rem;
+  }
+`
 
 const Footer = ({ children, data }) => (
-  <footer
-    className={css`
-      border-top: 3px solid black;
-      padding: 1rem 0;
-      ul {
-        list-style-type: none;
-        padding: 0;
-      }
-      h2 {
-        margin-top: 0;
-      }
-    `}
-  >
+  <FooterElement>
     <Container>
       <Flex flexWrap="wrap">
         <Box width={[1, 1 / 4]}>
@@ -116,30 +127,15 @@ const Footer = ({ children, data }) => (
         </Box>
         <Box width={[1, 1 / 4]}>
           <img src={logo} alt="Cal State Monterey Bay" />
-          <div
-            className={css`
-              text-align: right;
-              margin-top: 1rem;
-            `}
-          >
-            <Button to="/giving" type="primary">
+          <div>
+            <Button to="/giving" buttonType="primary">
               Give
             </Button>
           </div>
         </Box>
       </Flex>
     </Container>
-    <div
-      className={css`
-        background-color: #000;
-        padding: 0.5rem 0;
-        a {
-          color: #fff;
-          cont-size: 0.8rem;
-          margin-right: 1rem;
-        }
-      `}
-    >
+    <Legal>
       <Container>
         <Link to="/copyright">Website Copyright/DMCA Policy</Link>
         <Link to="/privacy">Privacy</Link>
@@ -159,8 +155,8 @@ const Footer = ({ children, data }) => (
           </Link>
         </VisuallyHidden>
       </Container>
-    </div>
-  </footer>
+    </Legal>
+  </FooterElement>
 )
 
 export default Footer

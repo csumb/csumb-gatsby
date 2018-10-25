@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from 'emotion'
+import theme from './styles/theme'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
 
@@ -8,8 +8,13 @@ const BreadcrumbItem = styled('li')`
   margin-right: 1rem;
   font-size: 80%;
   a {
-    color: ${props => props.theme.colors.blue.dark};
+    color: ${theme.colors.primary.dark};
   }
+`
+
+const BreadcrumbList = styled('ul')`
+  margin: 0;
+  padding: 0;
 `
 
 const Breadcrumbs = props => {
@@ -18,18 +23,13 @@ const Breadcrumbs = props => {
   }
   const breadcrumbs = JSON.parse(props.breadcrumbs)
   return (
-    <ul
-      className={css`
-        margin: 0;
-        padding: 0;
-      `}
-    >
+    <BreadcrumbList>
       {breadcrumbs.map(crumb => (
         <BreadcrumbItem key={crumb.href}>
           <Link to={crumb.href}>{crumb.title}</Link>
         </BreadcrumbItem>
       ))}
-    </ul>
+    </BreadcrumbList>
   )
 }
 

@@ -20,6 +20,10 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-csumb-content`,
+    {
+      resolve: `gatsby-plugin-emotion`,
+      options: {},
+    },
     /*{
       resolve: `gatsby-source-okta`,
       options : {
