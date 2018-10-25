@@ -4,6 +4,7 @@ import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
 import { navigate } from '@reach/router'
 import Container from '../components/container'
+import PageTitle from '../components/page-title'
 
 class AcademicsPage extends React.Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class AcademicsPage extends React.Component {
     return (
       <Layout pageTitle="Academics">
         <Container>
-          <h1>Academics</h1>
+          <PageTitle>Academics</PageTitle>
           <form onSubmit={this.handleSubmit}>
             <input
               type="text"
