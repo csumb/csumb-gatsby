@@ -18,10 +18,24 @@ const NavigationLinkList = styled('li')`
   }
 `
 
+const MobileNavigationLinkList = styled('li')`
+  padding: 0.5rem 1rem;
+  a {
+    text-decoration: none;
+    color: ${theme.colors.white};
+  }
+`
+
 const NavigationLink = props => (
   <NavigationLinkList>
     <Link to={props.to}>{props.children}</Link>
   </NavigationLinkList>
 )
 
-export default NavigationLink
+const MobileNavigationLink = props => (
+  <MobileNavigationLinkList>
+    <Link to={props.to}>{props.children}</Link>
+  </MobileNavigationLinkList>
+)
+
+export { NavigationLink, MobileNavigationLink }

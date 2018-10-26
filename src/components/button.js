@@ -3,15 +3,23 @@ import LinkInspect from './link-inspect'
 import styled from 'react-emotion'
 import theme from './styles/theme'
 
-const ButtonLink = styled(LinkInspect)`
+const ButtonLink = styled(LinkInspect, {
+  shouldForwardProp: 'buttonType',
+})`
   padding: 1rem;
   display: inline-block;
   text-decoration: none;
+  &:hover {
+    color: ${theme.colors.white};
+  }
   ${props =>
     props.buttonType === 'default'
       ? `
-      color: ${theme.colors.black};
-      border: 3px solid ${theme.colors.black};
+      color: ${theme.colors.primary.dark};
+      border: 3px solid ${theme.colors.primary.dark};
+      &:hover {
+        background: ${theme.colors.primary.dark};
+      }
     `
       : ``} 
   ${props =>
@@ -19,6 +27,9 @@ const ButtonLink = styled(LinkInspect)`
       ? `
       color: ${theme.colors.primary.dark};
       border: 3px solid ${theme.colors.primary.dark};
+      &:hover {
+        background: ${theme.colors.primary.dark};
+      }
     `
       : ``} 
   ${props =>
@@ -28,7 +39,6 @@ const ButtonLink = styled(LinkInspect)`
       border: 3px solid ${theme.colors.indicators.high};
       &:hover {
         background: ${theme.colors.indicators.high};
-        color: ${theme.colors.white};
       }
     `
       : ``};
@@ -36,6 +46,7 @@ const ButtonLink = styled(LinkInspect)`
 
 class Button extends React.Component {
   render() {
+    const { buttonType } = this.props
     if (!this.props.to) {
       return null
     }
@@ -43,7 +54,7 @@ class Button extends React.Component {
       <>
         <ButtonLink
           to={this.props.to}
-          buttonType={this.props.buttonType ? this.props.buttonType : 'default'}
+          buttonType={buttonType ? buttonType : 'default'}
         >
           {this.props.children}
         </ButtonLink>

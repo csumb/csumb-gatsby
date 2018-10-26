@@ -115,6 +115,7 @@ class Search extends React.Component {
               name="search"
               forwardedRef={ref}
               hideLabel={true}
+              placeholder="Search"
               onChange={this.handleChange}
             />
             <Portal>

@@ -7,10 +7,11 @@ class LinkInspect extends React.Component {
       return null
     }
     let to = this.props.to.replace('https://csumb.edu/', '')
+    const { buttonType, ...props } = this.props
     if (to.search(/http(s?):/) > -1) {
       return (
         <>
-          <a href={to} {...this.props}>
+          <a href={to} {...props}>
             {this.props.children}
           </a>
         </>
@@ -18,7 +19,7 @@ class LinkInspect extends React.Component {
     }
     return (
       <>
-        <Link to={to} {...this.props}>
+        <Link to={to} {...props}>
           {this.props.children}
         </Link>
       </>
