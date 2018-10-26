@@ -1,15 +1,14 @@
 import React from 'react'
-import { css } from 'emotion'
+import styled from 'react-emotion'
 
+const Address = styled('div')`
+  font-style: italic;
+`
 class BlockAddress extends React.Component {
   render() {
     const data = this.props.block.data
     return (
-      <div
-        className={css`
-          font-style: italic;
-        `}
-      >
+      <Address>
         <address>
           {data.address1 ? data.address1 : null}
           {data.address2 ? data.address2 : null}
@@ -19,7 +18,7 @@ class BlockAddress extends React.Component {
           {data.city}, {data.state} &nbsp;
           {data.zip}
         </address>
-      </div>
+      </Address>
     )
   }
 }

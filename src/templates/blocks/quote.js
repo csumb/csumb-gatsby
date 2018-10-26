@@ -1,36 +1,27 @@
 import React from 'react'
-import { css } from 'emotion'
+import styled from 'react-emotion'
 
-const Cite = props => {
-  if (!props.source) {
-    return null
-  }
-  return (
-    <cite
-      className={css`
-        display: block;
-      `}
-    >
-      {props.source}
-    </cite>
-  )
-}
+const Cite = styled('cite')`
+  display: block;
+`
+
+const Quote = styled('div')`
+  padding-left: 1rem;
+  margin-left: 1rem;
+  border-left: 4px solid #000;
+`
 
 class BlockQuote extends React.Component {
   render() {
     return (
-      <div
-        className={css`
-          padding-left: 1rem;
-          margin-left: 1rem;
-          border-left: 4px solid #000;
-        `}
-      >
+      <Quote>
         <blockquote>
           {this.props.block.data.quote}
-          <Cite source={this.props.block.data.source} />
+          {this.props.block.data.source && (
+            <Cite>{this.props.block.data.source}></Cite>
+          )}
         </blockquote>
-      </div>
+      </Quote>
     )
   }
 }

@@ -1,17 +1,16 @@
 import React from 'react'
-import { css } from 'emotion'
+import styled from 'react-emotion'
+
+const Document = styled('a')`
+  font-weight: bold;
+`
 
 class BlockDocument extends React.Component {
   render() {
     return (
-      <a
-        className={css`
-          font-weight: bold;
-        `}
-        href={this.props.block.data.document.url}
-      >
+      <Document href={this.props.block.data.document.url}>
         {this.props.block.data.name}
-      </a>
+      </Document>
     )
   }
 }
