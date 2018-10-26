@@ -46,14 +46,14 @@ class HeaderMobile extends React.Component {
     hasSearch: false,
   }
 
-  mobileToggle = event => {
+  mobileToggle(event) {
     event.preventDefault()
     this.setState({
       hasNavigation: !this.state.hasNavigation,
     })
   }
 
-  searchToggle = event => {
+  searchToggle(event) {
     event.preventDefault()
     this.setState({
       hasSearch: !this.state.hasSearch,
@@ -78,7 +78,7 @@ class HeaderMobile extends React.Component {
             </Box>
             <MenuBox width={[2 / 3]} px={2}>
               <HeaderMobileSearchToggle
-                onClick={this.searchToggle}
+                onClick={this.searchToggle.bind(this)}
                 ref={node => {
                   this.searchButtonRef = node
                 }}
@@ -87,7 +87,7 @@ class HeaderMobile extends React.Component {
                 🔍
               </HeaderMobileSearchToggle>
               <HeaderMobileToggle
-                onClick={this.mobileToggle}
+                onClick={this.mobileToggle.bind(this)}
                 ref={node => {
                   this.navButtonRef = node
                 }}

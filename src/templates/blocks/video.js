@@ -12,8 +12,7 @@ class BlockVideo extends React.Component {
       <>
         <VideoIframe
           src="//www.youtube.com/embed/{this.props.block.data.id}"
-          frameborder="0"
-          allowfullscreen
+          allowFullScreen
         />
       </>
     )
