@@ -18,7 +18,7 @@ const HeaderWrapper = styled('header')`
 `
 class Header extends React.Component {
   state = {
-    isMobile: window.innerWidth < 700,
+    isMobile: typeof window !== 'undefined' ? window.innerWidth < 700 : false,
   }
 
   componentDidMount() {

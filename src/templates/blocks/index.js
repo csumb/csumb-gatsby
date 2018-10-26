@@ -21,7 +21,7 @@ class Block extends React.Component {
     button: BlockButton,
     definitionlist: BlockDefinitionList,
     document: BlockDocument,
-    //image: BlockImage,
+    image: BlockImage,
     quote: BlockQuote,
     address: BlockAddress,
     columns: BlockColumns,
@@ -57,6 +57,7 @@ class Blocks extends React.Component {
               <Flex flexWrap="wrap" />
             ) : (
               <Block
+                key={layout.id}
                 type={blocks.blocks[layout.id].type}
                 block={blocks.blocks[layout.id]}
               />
