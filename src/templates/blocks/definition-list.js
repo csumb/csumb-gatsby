@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'react-emotion'
+import { ContainerContext } from './container-context'
 
 const DefinitionList = styled('dl')`
-  dt {
+  ${props => props.container} dt {
     font-weight: bold;
   }
 `
@@ -10,14 +11,18 @@ const DefinitionList = styled('dl')`
 class BlockDefinitionList extends React.Component {
   render() {
     return (
-      <DefinitionList>
-        {this.props.block.data.list.map(item => (
-          <>
-            <dt>{item.term}</dt>
-            <dd>{item.definition}</dd>
-          </>
-        ))}
-      </DefinitionList>
+      <ContainerContext.Consumer>
+        {container => (
+          <DefinitionList container={container}>
+            {this.props.block.data.list.map(item => (
+              <>
+                <dt>{item.term}</dt>
+                <dd>{item.definition}</dd>
+              </>
+            ))}
+          </DefinitionList>
+        )}
+      </ContainerContext.Consumer>
     )
   }
 }

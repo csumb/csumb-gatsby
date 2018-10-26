@@ -1,9 +1,21 @@
 import React from 'react'
+import styled from 'react-emotion'
+import { ContainerContext } from './container-context'
 
 class BlockHeading extends React.Component {
   render() {
-    const HeadingTag = `h${this.props.block.data.level}`
-    return <HeadingTag>{this.props.block.data.text}</HeadingTag>
+    let HeadingTag = styled(`h${this.props.block.data.level}`)`
+      ${props => props.container};
+    `
+    return (
+      <ContainerContext.Consumer>
+        {container => (
+          <HeadingTag container={container}>
+            {this.props.block.data.text}
+          </HeadingTag>
+        )}
+      </ContainerContext.Consumer>
+    )
   }
 }
 

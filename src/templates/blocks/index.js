@@ -11,6 +11,7 @@ import BlockAddress from './address'
 import BlockDefinitionList from './definition-list'
 import BlockColumns from './columns'
 import BlockVideo from './video'
+import { ContainerContext, containerStyle } from './container-context'
 
 class Block extends React.Component {
   blockComponents = {
@@ -20,7 +21,7 @@ class Block extends React.Component {
     button: BlockButton,
     definitionlist: BlockDefinitionList,
     document: BlockDocument,
-    image: BlockImage,
+    //image: BlockImage,
     quote: BlockQuote,
     address: BlockAddress,
     columns: BlockColumns,
@@ -29,10 +30,14 @@ class Block extends React.Component {
 
   render() {
     if (typeof this.blockComponents[this.props.type] === 'undefined') {
-      return <div>Block type doesn't exist</div>
+      return null
     }
-    const BlockType = this.blockComponents[this.props.type]
-    return <BlockType block={this.props.block} />
+    let BlockType = this.blockComponents[this.props.type]
+    return (
+      <ContainerContext.Provider value={containerStyle.wide}>
+        <BlockType block={this.props.block} />
+      </ContainerContext.Provider>
+    )
   }
 }
 class Blocks extends React.Component {

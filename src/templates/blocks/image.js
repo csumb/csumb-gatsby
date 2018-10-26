@@ -1,21 +1,22 @@
 import React from 'react'
 import styled from 'react-emotion'
 
-const Image = styled('img')`
-  ${props => (props.pullRight ? ` float: right;` : ``)} img {
+const ImageContainer = styled('img')`
+  img {
     width: 100%;
   }
+  ${props => (props.pullRight ? ` float: right;` : ``)};
 `
 
 class BlockImage extends React.Component {
   render() {
     return (
-      <Image pullRight={this.props.block.data.pullRight}>
+      <ImageContainer pullRight={this.props.block.data.pullRight}>
         <img
           src={this.props.block.data.image.url.replace('http://', 'https://')}
           alt={this.props.block.data.description}
         />
-      </Image>
+      </ImageContainer>
     )
   }
 }

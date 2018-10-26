@@ -6,12 +6,6 @@ import Footer from './components/footer'
 import Helmet from 'react-helmet'
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
-/*
-const shevy = new Shevy({
-  baseFontSize: '18px',
-  addMarginBottom: false,
-})
-const { content } = shevy*/
 
 class Layout extends React.Component {
   render() {
