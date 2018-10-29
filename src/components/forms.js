@@ -186,6 +186,7 @@ const LegendElement = styled('legend')`
   float: left;
   font-size: 1.51572rem;
   font-weight: 700;
+  margin-bottom: 1rem;
 `
 
 const Fieldset = props => (

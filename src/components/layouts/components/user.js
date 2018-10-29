@@ -56,7 +56,7 @@ class UserDropdown extends React.Component {
 class User extends React.Component {
   state = {
     user: false,
-    checkedUser: false,
+    didLoad: false,
   }
 
   componentDidMount() {
@@ -70,17 +70,19 @@ class User extends React.Component {
       .then(user => {
         this.setState({
           user: user,
+          didLoad: true,
         })
       })
       .catch(error => {
         this.setState({
-          user: 'anonymous',
+          user: false,
+          didLoad: true,
         })
       })
   }
 
   render() {
-    if (!this.state.user) {
+    if (!this.state.didLoad) {
       return null
     }
     return (

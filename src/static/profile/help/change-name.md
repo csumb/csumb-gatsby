@@ -10,7 +10,7 @@ Your name is important, so let's make sure to get it right. Most people have at 
 When you create or update your preferred name, remember:
 
 - It might take several days for that name change to appear in systems across campus. The change is not immediate.
-- Your email address will not change. If you want your email address to change, complete an IT workorder and we can add an "alias" to your account.
+- Your email address will not change. If you want your email address to change, complete an IT ticket and we can add an "alias" to your account.
 - Your preferred name **always** takes prescedence, so if you change your legal name and want that reflected, you need to also update your preferred name.
 
 ##If you are a student
