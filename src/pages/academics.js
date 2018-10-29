@@ -1,10 +1,10 @@
 import React from 'react'
-import Layout from '../components/layouts/default'
+import Layout from 'components/layouts/default'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
 import { navigate } from '@reach/router'
-import Container from '../components/container'
-import PageTitle from '../components/page-title'
+import Container from 'components/container'
+import PageTitle from 'components/page-title'
 
 class AcademicsPage extends React.Component {
   constructor(props) {

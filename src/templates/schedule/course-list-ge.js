@@ -1,7 +1,7 @@
 import React from 'react'
-import Layout from '../../components/layouts/default'
+import Layout from 'components/layouts/default'
 import CourseListItem from './course-list-item'
-import Container from '../../components/container'
+import Container from 'components/container'
 class CourseList extends React.Component {
   render() {
     const ge = this.props.pageContext.ge

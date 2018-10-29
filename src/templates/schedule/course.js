@@ -1,7 +1,7 @@
 import React from 'react'
 //import Link from 'gatsby-link'
-import Layout from '../../components/layouts/default'
-import Container from '../../components/container'
+import Layout from 'components/layouts/default'
+import Container from 'components/container'
 
 class CoursePage extends React.Component {
   render() {

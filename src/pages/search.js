@@ -1,12 +1,12 @@
 import React from 'react'
-import Layout from '../components/layouts/default'
+import Layout from 'components/layouts/default'
 import Link from 'gatsby-link'
 import { css } from 'emotion'
 import { graphql } from 'gatsby'
 import { navigate } from '@reach/router'
 import url from 'url'
-import PageTitle from '../components/page-title'
-import Container from '../components/container'
+import PageTitle from 'components/page-title'
+import Container from 'components/container'
 
 class SearchPage extends React.Component {
   constructor(props) {

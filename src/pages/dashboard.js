@@ -1,8 +1,8 @@
 import React from 'react'
-import Container from '../components/container'
+import Container from 'components/container'
 import { css } from 'emotion'
 import { Flex, Box } from '@rebass/grid/emotion'
-import Layout from '../components/layouts/default'
+import Layout from 'components/layouts/default'
 //import Link from 'gatsby-link'
 
 const dashboardCard = css`

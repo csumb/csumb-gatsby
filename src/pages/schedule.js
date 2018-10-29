@@ -1,32 +1,29 @@
 import React from 'react'
-import Layout from '../components/layouts/default'
+import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
-import { navigate } from '@reach/router';
+import { navigate } from '@reach/router'
 class SchedulePage extends React.Component {
-  
   componentDidMount() {
-    navigate(`/schedule/${this.props.data.site.siteMetadata.schedule.currentTermName}`)
+    navigate(
+      `/schedule/${this.props.data.site.siteMetadata.schedule.currentTermName}`
+    )
   }
-  
+
   render() {
-    return (
-      <Layout>
-        
-      </Layout>
-    );
+    return <Layout />
   }
 }
 
 export default SchedulePage
 
 export const query = graphql`
-{
-  site {
-    siteMetadata {
-      schedule {
-        currentTermName
+  {
+    site {
+      siteMetadata {
+        schedule {
+          currentTermName
+        }
       }
     }
   }
-}
 `

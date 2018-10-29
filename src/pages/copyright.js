@@ -1,8 +1,8 @@
 import React from 'react'
-import Layout from '../components/layouts/default'
+import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
-import PageTitle from '../components/page-title'
-import Container from '../components/container'
+import PageTitle from 'components/page-title'
+import Container from 'components/container'
 
 const CopyrightPage = props => {
   const page = props.data.allMarkdownRemark.edges[0].node

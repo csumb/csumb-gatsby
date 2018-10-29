@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
-import Container from '../../components/container'
+import Container from 'components/container'
 
 const VideoIframe = styled('iframe')`
   width: 580px;

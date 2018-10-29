@@ -1,12 +1,12 @@
 import React from 'react'
-import Layout from '../components/layouts/default'
-import PageTitle from '../components/page-title'
-import Container from '../components/container'
+import Layout from 'components/layouts/default'
+import PageTitle from 'components/page-title'
+import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
-import theme from '../components/styles/theme'
-import { InputText, Fieldset } from '../components/forms'
+import theme from 'components/styles/theme'
+import { InputText, Fieldset } from 'components/forms'
 
 const ProfileSidebarOptions = styled('ul')`
   list-style-type: none;
