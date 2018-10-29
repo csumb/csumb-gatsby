@@ -9,18 +9,18 @@ import Search from './search'
 
 const HeaderMobileWrapper = styled('div')`
   padding: 0.5 0.25rem;
-  border-bottom: 2px solid ${theme.colors.primary.dark};
+  border-bottom: 2px solid ${theme.colors.primary.darkest};
 `
 
 const HeaderMobileToggle = styled('button')`
-  border: 3px solid ${theme.colors.primary.dark};
+  border: 3px solid ${theme.colors.primary.darkest};
   padding: 0.3rem;
 `
 
 const HeaderMobileSearchToggle = styled('button')`
   border: 3px solid ${theme.colors.muted.bright};
   background: ${theme.colors.muted.bright};
-  color: ${theme.colors.primary.dark};
+  color: ${theme.colors.primary.darkest};
   padding: 0.3rem;
 `
 
@@ -28,7 +28,7 @@ const HeaderMobileNavigation = styled('ul')`
   margin: 0;
   list-style: none;
   margin-top: 1rem;
-  background: ${theme.colors.primary.dark};
+  background: ${theme.colors.primary.darkest};
 `
 
 const HeaderMobileSearch = styled('div')`

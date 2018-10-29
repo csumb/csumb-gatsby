@@ -9,10 +9,10 @@ const NavigationLinkList = styled('li')`
   a {
     font-weight: bold;
     text-decoration: none;
-    color: ${theme.colors.primary.dark};
+    color: ${theme.colors.primary.darkest};
     padding: 0.75rem;
     &:hover {
-      background: ${theme.colors.primary.dark};
+      background: ${theme.colors.primary.darkest};
       color: #fff;
     }
   }

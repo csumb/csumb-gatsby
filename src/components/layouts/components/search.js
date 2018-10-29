@@ -23,7 +23,7 @@ const SearchResultsAutocomplete = styled('div')`
     padding: 0.5rem;
     :focus,
     :hover {
-      background: ${theme.colors.primary.dark};
+      background: ${theme.colors.primary.darkest};
       color: ${theme.colors.white};
     }
   }

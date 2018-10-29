@@ -6,7 +6,7 @@ import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import '@reach/menu-button/styles.css'
 
 const UserLoginLink = styled('a')`
-  color: ${theme.colors.primary.dark};
+  color: ${theme.colors.primary.darkest};
   margin-right: 1rem;
 `
 
@@ -25,7 +25,7 @@ const UserDropdownMenuLink = styled(MenuLink)`
   padding: 0.5rem;
   &:hover,
   &:focus {
-    background: ${theme.colors.primary.dark};
+    background: ${theme.colors.primary.darkest};
     color: ${theme.colors.white};
   }
 `

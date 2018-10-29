@@ -5,7 +5,7 @@ import styled from 'react-emotion'
 import theme from '../../styles/theme'
 
 const SiteNavigationToggle = styled('span')`
-  color: ${theme.colors.primary.dark};
+  color: ${theme.colors.primary.darkest};
   font-weight: bold;
 `
 

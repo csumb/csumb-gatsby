@@ -13,7 +13,7 @@ import theme from '../../styles/theme'
 import styled from 'react-emotion'
 
 const HeaderWrapper = styled('header')`
-  border-bottom: 2px solid ${theme.colors.primary.dark};
+  border-bottom: 2px solid ${theme.colors.primary.darkest};
   padding: 1rem 0;
 `
 class Header extends React.Component {

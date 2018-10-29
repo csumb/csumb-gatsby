@@ -9,7 +9,7 @@ import styled from 'react-emotion'
 import theme from '../../styles/theme'
 
 const FooterElement = styled('footer')`
-  border-top: 3px solid ${theme.colors.primary.dark};
+  border-top: 3px solid ${theme.colors.primary.darkest};
   padding-top: 1rem;
   ul {
     list-style-type: none;
@@ -20,8 +20,12 @@ const FooterElement = styled('footer')`
   }
 `
 
+const FooterHeader = styled('h3')`
+  margin-bottom: 0.5rem;
+`
+
 const Legal = styled('div')`
-  background-color: ${theme.colors.primary.dark};
+  background-color: ${theme.colors.primary.darkest};
   padding: 0.5rem 0;
   text-align: right;
   a {
@@ -43,7 +47,7 @@ const Footer = ({ children, data }) => (
     <Container>
       <Flex flexWrap="wrap">
         <Box width={[1, 1 / 4]}>
-          <h2>Popular</h2>
+          <FooterHeader>Popular</FooterHeader>
           <FooterList>
             <li>
               <Link to="http://csumb.edu/jobs" title="">
@@ -73,7 +77,7 @@ const Footer = ({ children, data }) => (
           </FooterList>
         </Box>
         <Box width={[1, 1 / 4]}>
-          <h2>Tools</h2>
+          <FooterHeader>Tools</FooterHeader>
           <FooterList>
             <li>
               <Link to="/map" title="">
@@ -103,7 +107,7 @@ const Footer = ({ children, data }) => (
           </FooterList>
         </Box>
         <Box width={[1, 1 / 4]}>
-          <h2>Links for</h2>
+          <FooterHeader>Links for</FooterHeader>
           <FooterList>
             <li>
               <Link to="/families" title="">

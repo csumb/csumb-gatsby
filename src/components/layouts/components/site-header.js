@@ -5,7 +5,7 @@ import Container from '../../container'
 import theme from '../../styles/theme'
 
 const SiteHeaderWrapper = styled('div')`
-  background: ${theme.colors.primary.dark};
+  background: ${theme.colors.primary.darkest};
   padding: 0.5rem 0;
   h2 {
     margin: 0;
