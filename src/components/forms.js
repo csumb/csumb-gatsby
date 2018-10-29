@@ -3,6 +3,8 @@ import VisuallyHidden from '@reach/visually-hidden'
 import PropTypes from 'prop-types'
 import idGenerator from 'react-id-generator'
 import styled from 'react-emotion'
+import theme from './styles/theme'
+import { css } from 'emotion'
 
 class Label extends React.Component {
   render() {
@@ -62,7 +64,7 @@ FormElement.propTypes = {
 }
 
 const InputTextElemnt = styled('input')`
-  border: 1px solid #000;
+  border: 1px solid ${theme.colors.gray.deafult};
   padding: 0.3rem;
 `
 class InputText extends FormElement {
@@ -87,7 +89,7 @@ class InputText extends FormElement {
 }
 
 const InputTextareaElement = styled('textarea')`
-  border: 1px solid #000;
+  border: 1px solid ${theme.colors.gray.deafult};
   padding: 0.3rem;
 `
 
@@ -175,8 +177,36 @@ class InputSelect extends FormElement {
   }
 }
 
+const FieldsetElement = styled('fieldset')`
+  border: 1px solid ${theme.colors.gray.light};
+  padding: 1rem;
+`
+
+const LegendElement = styled('legend')`
+  float: left;
+  font-size: 1.51572rem;
+  font-weight: 700;
+`
+
+const Fieldset = props => (
+  <FieldsetElement>
+    <LegendElement>{props.legend}</LegendElement>
+    <div
+      className={css`
+        clear: both;
+      `}
+    />
+    {props.children}
+  </FieldsetElement>
+)
+
+Fieldset.propTypes = {
+  legend: PropTypes.string.isRequired,
+}
+
 export {
   Label,
+  Fieldset,
   InputText,
   InputTextarea,
   InputCheckbox,

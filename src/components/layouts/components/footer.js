@@ -31,13 +31,20 @@ const Legal = styled('div')`
   }
 `
 
+const FooterList = styled('ul')`
+  margin: 0;
+  li {
+    margin-bottom: 0.5rem;
+  }
+`
+
 const Footer = ({ children, data }) => (
   <FooterElement>
     <Container>
       <Flex flexWrap="wrap">
         <Box width={[1, 1 / 4]}>
           <h2>Popular</h2>
-          <ul>
+          <FooterList>
             <li>
               <Link to="http://csumb.edu/jobs" title="">
                 Jobs
@@ -63,11 +70,11 @@ const Footer = ({ children, data }) => (
                 Library
               </Link>
             </li>
-          </ul>
+          </FooterList>
         </Box>
         <Box width={[1, 1 / 4]}>
           <h2>Tools</h2>
-          <ul>
+          <FooterList>
             <li>
               <Link to="/map" title="">
                 Map
@@ -93,11 +100,11 @@ const Footer = ({ children, data }) => (
                 Class schedule
               </Link>
             </li>
-          </ul>
+          </FooterList>
         </Box>
         <Box width={[1, 1 / 4]}>
           <h2>Links for</h2>
-          <ul>
+          <FooterList>
             <li>
               <Link to="/families" title="">
                 Parents
@@ -123,7 +130,7 @@ const Footer = ({ children, data }) => (
                 Employees
               </Link>
             </li>
-          </ul>
+          </FooterList>
         </Box>
         <Box width={[1, 1 / 4]}>
           <img src={logo} alt="Cal State Monterey Bay" />

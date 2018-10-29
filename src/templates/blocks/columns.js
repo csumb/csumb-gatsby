@@ -5,7 +5,6 @@ import { Flex, Box } from '@rebass/grid/emotion'
 class BlockColumns extends React.Component {
   render() {
     const data = this.props.block.data
-    console.log(data)
     return (
       <Flex flexWrap="wrap">
         {data.columns.map(column => (

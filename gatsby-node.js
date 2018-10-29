@@ -20,3 +20,17 @@ exports.createPages = ({ graphql, actions }) => {
       })
   })
 }
+
+exports.onCreateWebpackConfig = ({
+  stage,
+  rules,
+  loaders,
+  plugins,
+  actions,
+}) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve('./src'), path.resolve('./node_modules')],
+    },
+  })
+}

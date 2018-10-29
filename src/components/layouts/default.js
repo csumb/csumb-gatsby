@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import '../styles/global'
 import Header from './components/header'
 import Footer from './components/footer'
 import Helmet from 'react-helmet'

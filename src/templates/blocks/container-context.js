@@ -6,13 +6,15 @@ import styled from 'react-emotion'
 const containerStyle = {
   wide: css(
     bp({
-      margin: [0, 'auto'],
+      marginLeft: ['1rem', 'auto'],
+      marginRight: ['1rem', 'auto'],
       width: ['auto', 'auto', 'auto', 1100],
     })
   ),
   narrow: css(
     bp({
-      margin: [0, 'auto'],
+      marginLeft: ['1rem', 'auto'],
+      marginRight: ['1rem', 'auto'],
       width: ['auto', 'auto', 'auto', 800],
     })
   ),
