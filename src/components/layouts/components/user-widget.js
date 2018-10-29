@@ -42,6 +42,9 @@ class UserDropdown extends React.Component {
           <UserDropdownMenuLink component="a" href="/profile">
             Your profile
           </UserDropdownMenuLink>
+          <UserDropdownMenuLink component="a" href="/profile/print">
+            Print balance
+          </UserDropdownMenuLink>
           <UserDropdownMenuLink
             component="a"
             href="https://csumb.okta.com/logout"

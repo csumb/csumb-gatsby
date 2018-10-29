@@ -15,34 +15,7 @@ import User from 'components/user'
 const pricePerPage = 0.08
 
 class ProfilePrintPage extends React.Component {
-  state = {
-    user: false,
-  }
-
-  componentDidMount() {
-    window
-      .fetch('https://csumb.okta.com/api/v1/users/me', {
-        credentials: 'include',
-      })
-      .then(response => {
-        return response.json()
-      })
-      .then(user => {
-        this.setState({
-          user: user,
-        })
-      })
-      .catch(error => {
-        this.setState({
-          user: 'anonymous',
-        })
-      })
-  }
-
   render() {
-    if (!this.state.user) {
-      return null
-    }
     return (
       <User>
         {user => (

@@ -143,6 +143,11 @@ class UserProfileForm extends React.Component {
             </>
           )}
         </ProfileGroup>
+        <ProfileGroup legend="Employee or student number">
+          <p>Your employee or student number is:</p>
+          <ProfileData>{user.profile.employeeNumber}</ProfileData>
+          <p>This is used on some forms around campus.</p>
+        </ProfileGroup>
       </>
     )
   }

@@ -38,10 +38,7 @@ const ProfileSidebar = props => (
     <ProfileSidebarLink to="/profile/print" active={props.active === 'print'}>
       Printer paper
     </ProfileSidebarLink>
-    <ProfileSidebarLink
-      to="/profile/ottercard"
-      active={props.active === 'ottercard'}
-    >
+    <ProfileSidebarLink to="/profile/card" active={props.active === 'card'}>
       Otter Card
     </ProfileSidebarLink>
   </ProfileSidebarOptions>
