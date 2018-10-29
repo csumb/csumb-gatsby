@@ -4,7 +4,7 @@ import { css } from 'emotion'
 import Brand from './brand'
 import Container from '../../container'
 import Search from './search'
-import User from './user'
+import UserWidget from './user-widget'
 import HeaderMobile from './header-mobile'
 import Button from '../../button'
 import { NavigationLink } from './navigation-link'
@@ -52,7 +52,9 @@ class Header extends React.Component {
                       `}
                     >
                       <div>
-                        <User loginLink={this.props.metadata.okta.login} />
+                        <UserWidget
+                          loginLink={this.props.metadata.okta.login}
+                        />
                         <Search swiftypeId={this.props.metadata.swiftypeId} />
                       </div>
                       <div

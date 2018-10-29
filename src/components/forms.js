@@ -6,6 +6,13 @@ import styled from 'react-emotion'
 import theme from './styles/theme'
 import { css } from 'emotion'
 
+const LabelElement = styled('label')`
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+`
+
 class Label extends React.Component {
   render() {
     const LabelWrapper = props => {
@@ -17,12 +24,12 @@ class Label extends React.Component {
 
     return (
       <LabelWrapper>
-        <label htmlFor={this.props.labelId}>
+        <LabelElement htmlFor={this.props.labelId}>
           {this.props.children}
           {this.props.isRequired ? (
             <VisuallyHidden>Required</VisuallyHidden>
           ) : null}
-        </label>
+        </LabelElement>
       </LabelWrapper>
     )
   }
@@ -63,7 +70,7 @@ FormElement.propTypes = {
   forwardedRef: PropTypes.func,
 }
 
-const InputTextElemnt = styled('input')`
+const InputTextElement = styled('input')`
   border: 1px solid ${theme.colors.gray.deafult};
   padding: 0.3rem;
 `
@@ -78,9 +85,10 @@ class InputText extends FormElement {
         >
           {this.props.label}
         </Label>
-        <InputTextElemnt
+        <InputTextElement
           type="text"
           {...this.cleanProps()}
+          id={this.htmlId}
           innerRef={this.props.forwardedRef}
         />
       </>
@@ -205,8 +213,24 @@ Fieldset.propTypes = {
   legend: PropTypes.string.isRequired,
 }
 
+const SubmitButton = styled('input')`
+  padding: 1rem;
+  display: inline-block;
+  text-decoration: none;
+  margin: 1.5rem 0;
+  color: ${theme.colors.primary.dark};
+  border: 3px solid ${theme.colors.primary.dark};
+  &:hover {
+    color: ${theme.colors.white};
+    background: ${theme.colors.primary.dark};
+  }
+`
+
+const Submit = props => <SubmitButton type="submit" value={props.value} />
+
 export {
   Label,
+  Submit,
   Fieldset,
   InputText,
   InputTextarea,

@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'react-emotion'
-import theme from '../../styles/theme'
+import theme from 'components/styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
+import User from 'components/user'
 
 import '@reach/menu-button/styles.css'
 
@@ -53,48 +54,32 @@ class UserDropdown extends React.Component {
   }
 }
 
-class User extends React.Component {
-  state = {
-    user: false,
-    didLoad: false,
-  }
-
-  componentDidMount() {
-    window
-      .fetch('https://csumb.okta.com/api/v1/users/me', {
-        credentials: 'include',
-      })
-      .then(response => {
-        return response.json()
-      })
-      .then(user => {
-        this.setState({
-          user: user,
-          didLoad: true,
-        })
-      })
-      .catch(error => {
-        this.setState({
-          user: false,
-          didLoad: true,
-        })
-      })
-  }
-
+class UserWidget extends React.Component {
   render() {
-    if (!this.state.didLoad) {
-      return null
-    }
     return (
       <>
-        {this.state.user ? (
-          <UserDropdown user={this.state.user} />
-        ) : (
-          <UserLoginLink href={this.props.loginLink}>Log in</UserLoginLink>
-        )}
+        <User>
+          {user => (
+            <>
+              {user === false ? (
+                <></>
+              ) : (
+                <>
+                  {user === 'anonymous' ? (
+                    <UserLoginLink href={this.props.loginLink}>
+                      Log in
+                    </UserLoginLink>
+                  ) : (
+                    <UserDropdown user={user} />
+                  )}
+                </>
+              )}
+            </>
+          )}
+        </User>
       </>
     )
   }
 }
 
-export default User
+export default UserWidget
