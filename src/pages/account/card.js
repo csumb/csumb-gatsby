@@ -3,12 +3,12 @@ import Layout from 'components/layouts/default'
 import PageTitle from 'components/page-title'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { ProfileGroup, ProfileTitle, ProfileSidebar } from 'components/profile'
+import { AccountGroup, AccountTitle, AccountSidebar } from 'components/account'
 import User from 'components/user'
 import { Table, TableRow, TableHeader, TableCell } from 'components/table'
 import Button from 'components/button'
 
-class ProfileCardPage extends React.Component {
+class AccountCardPage extends React.Component {
   render() {
     return (
       <User>
@@ -28,14 +28,14 @@ class ProfileCardPage extends React.Component {
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
-                      <ProfileSidebar active="print" />
+                      <AccountSidebar active="print" />
                     </Box>
                     <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
                       {user === 'anonymous' ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
                         <>
-                          <ProfileTitle>Otter Card</ProfileTitle>
+                          <AccountTitle>Otter Card</AccountTitle>
                           <UserCardForm user={user} />
                         </>
                       )}
@@ -87,7 +87,7 @@ class UserCardForm extends React.Component {
     const { balance, error } = this.state.card
     return (
       <>
-        <ProfileGroup legend="Otter Card balance">
+        <AccountGroup legend="Otter Card balance">
           {!this.state.isReady && <p>Loading Otter Card balance...</p>}
           {this.state.isReady && (
             <>
@@ -113,8 +113,8 @@ class UserCardForm extends React.Component {
               )}
             </>
           )}
-        </ProfileGroup>
-        <ProfileGroup legend="Add more meals">
+        </AccountGroup>
+        <AccountGroup legend="Add more meals">
           <p>You can add several kinds of pre-paid meal plans.</p>
           <Button
             to={`https://api.csumb.edu/cashnet/${
@@ -124,10 +124,10 @@ class UserCardForm extends React.Component {
           >
             Add more meals
           </Button>
-        </ProfileGroup>
+        </AccountGroup>
       </>
     )
   }
 }
 
-export default ProfileCardPage
+export default AccountCardPage

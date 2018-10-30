@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import PageTitle from 'components/page-title'
 import Container from 'components/container'
 
-const PrivacyPage = props => {
+const ChangeNamePage = props => {
   const page = props.data.allMarkdownRemark.edges[0].node
   return (
     <Layout pageTitle={page.frontmatter.title}>
@@ -16,7 +16,7 @@ const PrivacyPage = props => {
   )
 }
 
-export default PrivacyPage
+export default ChangeNamePage
 
 export const query = graphql`
   {

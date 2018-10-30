@@ -39,10 +39,13 @@ class UserDropdown extends React.Component {
           Your account <span aria-hidden>▾</span>
         </UserDropdownButton>
         <UserDropdownMenuList>
-          <UserDropdownMenuLink component="a" href="/profile">
-            Your profile
+          <UserDropdownMenuLink component="a" href="/account">
+            Manage Account
           </UserDropdownMenuLink>
-          <UserDropdownMenuLink component="a" href="/profile/print">
+          <UserDropdownMenuLink component="a" href="/account/card">
+            OtterCard
+          </UserDropdownMenuLink>
+          <UserDropdownMenuLink component="a" href="/account/print">
             Print balance
           </UserDropdownMenuLink>
           <UserDropdownMenuLink

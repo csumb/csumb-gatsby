@@ -12,7 +12,7 @@ const Cashnet = props => {
               user !== 'anonymous' && (
                 <>
                   <p>Redirecting you to CashNet...</p>
-                  <div style={{ display: none }}>
+                  <div style={{ display: 'none' }}>
                     {
                       (window.location = `https://api.csumb.edu/cashnet/${
                         user.profile.employeeNumber
