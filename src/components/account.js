@@ -33,23 +33,14 @@ const AccountData = styled('p')`
 
 const AccountSidebar = props => (
   <AccountSidebarOptions>
-    <AccountSidebarLink to="/account" active={props.active === 'account'}>
-      Your account
-    </AccountSidebarLink>
+    <AccountSidebarLink to="/account">Your account</AccountSidebarLink>
     {props.user._isEmployee && (
-      <AccountSidebarLink
-        to="/account/profile"
-        active={props.active === 'profile'}
-      >
+      <AccountSidebarLink to="/account/profile">
         Your public profile
       </AccountSidebarLink>
     )}
-    <AccountSidebarLink to="/account/card" active={props.active === 'card'}>
-      Otter Card
-    </AccountSidebarLink>
-    <AccountSidebarLink to="/account/print" active={props.active === 'print'}>
-      Printer paper
-    </AccountSidebarLink>
+    <AccountSidebarLink to="/account/card">Otter Card</AccountSidebarLink>
+    <AccountSidebarLink to="/account/print">Printer paper</AccountSidebarLink>
   </AccountSidebarOptions>
 )
 

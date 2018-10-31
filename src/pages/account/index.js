@@ -58,7 +58,7 @@ class AccountPage extends React.Component {
 
 class UserAccountForm extends React.Component {
   render() {
-    const user = this.props.user
+    const { user } = this.props
     return (
       <>
         <AccountGroup legend="Username &amp; password">

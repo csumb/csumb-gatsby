@@ -9,6 +9,7 @@ const ButtonLink = styled(LinkInspect, {
   padding: 1rem;
   display: inline-block;
   text-decoration: none;
+  cursor: pointer;
   &:hover {
     color: ${theme.colors.white};
   }

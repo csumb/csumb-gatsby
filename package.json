@@ -15,6 +15,8 @@
     "emotion-server": "^9.2.12",
     "emotion-theming": "^9.2.9",
     "facepaint": "^1.2.1",
+    "filestack-js": "^1.7.7",
+    "filestack-react": "^2.0.0",
     "gatsby": "^2.0.6",
     "gatsby-cli": "^2.4.1",
     "gatsby-link": "^2.0.1",
