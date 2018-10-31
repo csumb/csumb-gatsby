@@ -4,17 +4,17 @@ import PageTitle from 'components/page-title'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import {
-  ProfileGroup,
-  ProfileTitle,
-  ProfileData,
-  ProfileSidebar,
-} from 'components/profile'
+  AccountGroup,
+  AccountTitle,
+  AccountData,
+  AccountSidebar,
+} from 'components/account'
 import { InputText, Submit } from 'components/forms'
 import User from 'components/user'
 
 const pricePerPage = 0.08
 
-class ProfilePrintPage extends React.Component {
+class AccountPrintPage extends React.Component {
   render() {
     return (
       <User>
@@ -34,14 +34,14 @@ class ProfilePrintPage extends React.Component {
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
-                      <ProfileSidebar active="print" />
+                      <AccountSidebar active="print" />
                     </Box>
                     <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
                       {user === 'anonymous' ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
                         <>
-                          <ProfileTitle>Print balance</ProfileTitle>
+                          <AccountTitle>Print balance</AccountTitle>
                           <UserPrintForm user={user} />
                         </>
                       )}
@@ -92,7 +92,7 @@ class UserPrintForm extends React.Component {
   render() {
     return (
       <>
-        <ProfileGroup legend="Print balance">
+        <AccountGroup legend="Print balance">
           {!this.state.isReady && <p>Loading print balance...</p>}
           {this.state.isReady && (
             <>
@@ -103,15 +103,15 @@ class UserPrintForm extends React.Component {
               ) : (
                 <>
                   <p>You can print:</p>
-                  <ProfileData>
+                  <AccountData>
                     {this.state.balance.pages_left} pages
-                  </ProfileData>
+                  </AccountData>
                 </>
               )}
             </>
           )}
-        </ProfileGroup>
-        <ProfileGroup legend="Buy more prints">
+        </AccountGroup>
+        <AccountGroup legend="Buy more prints">
           {!this.state.isReady && <p>Loading print balance...</p>}
           {this.state.isReady && (
             <>
@@ -125,18 +125,18 @@ class UserPrintForm extends React.Component {
                     Buy more prints online.{' '}
                     <strong>Each page costs {pricePerPage * 100} cents.</strong>
                   </p>
-                  <ProfilePrintBuyPrintsForm user={this.props.user} />
+                  <AccountPrintBuyPrintsForm user={this.props.user} />
                 </>
               )}
             </>
           )}
-        </ProfileGroup>
+        </AccountGroup>
       </>
     )
   }
 }
 
-class ProfilePrintBuyPrintsForm extends React.Component {
+class AccountPrintBuyPrintsForm extends React.Component {
   state = {
     quantity: 0,
   }
@@ -226,4 +226,4 @@ class ProfilePrintBuyPrintsForm extends React.Component {
   }
 }
 
-export default ProfilePrintPage
+export default AccountPrintPage

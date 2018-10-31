@@ -6,14 +6,14 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import User from 'components/user'
 import Link from 'gatsby-link'
 import {
-  ProfileGroup,
-  ProfileTitle,
-  ProfileData,
-  ProfileSidebar,
-} from 'components/profile'
+  AccountGroup,
+  AccountTitle,
+  AccountData,
+  AccountSidebar,
+} from 'components/account'
 import Button from 'components/button'
 
-class ProfilePage extends React.Component {
+class AccountPage extends React.Component {
   render() {
     return (
       <User>
@@ -24,7 +24,7 @@ class ProfilePage extends React.Component {
                 <Container>
                   <PageTitle>
                     {user === 'anonymous' ? (
-                      <h3>Your profile</h3>
+                      <h3>Your account</h3>
                     ) : (
                       <>
                         {user.profile.firstName} {user.profile.lastName}
@@ -33,7 +33,7 @@ class ProfilePage extends React.Component {
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
-                      <ProfileSidebar active="profile" />
+                      <AccountSidebar active="account" />
                     </Box>
                     <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
                       {user === 'anonymous' ? (
@@ -56,12 +56,12 @@ class ProfilePage extends React.Component {
   }
 }
 
-class UserProfileForm extends React.Component {
+class UserAccountForm extends React.Component {
   render() {
     const user = this.props.user
     return (
       <>
-        <ProfileGroup legend="Username &amp; password">
+        <AccountGroup legend="Username &amp; password">
           <p>
             Your username and password are used in every online service on
             campus, including logging into computers.
@@ -70,7 +70,7 @@ class UserProfileForm extends React.Component {
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h3>Username</h3>
               <p>Your CSUMB username is:</p>
-              <ProfileData>{user.profile.login.split('@').shift()}</ProfileData>
+              <AccountData>{user.profile.login.split('@').shift()}</AccountData>
               <p>You cannot change your CSUMB username.</p>
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
@@ -83,12 +83,12 @@ class UserProfileForm extends React.Component {
               </Button>
             </Box>
           </Flex>
-        </ProfileGroup>
-        <ProfileGroup legend="Name">
+        </AccountGroup>
+        <AccountGroup legend="Name">
           <p>Your name is:</p>
-          <ProfileData>
+          <AccountData>
             {user.profile.firstName} {user.profile.lastName}
-          </ProfileData>
+          </AccountData>
           <p>
             <strong>Changing your name:</strong> You may have many names: a
             legal name, a nick name, or a preferred name.{' '}
@@ -96,12 +96,12 @@ class UserProfileForm extends React.Component {
               Learn how to change your name.
             </Link>
           </p>
-        </ProfileGroup>
-        <ProfileGroup legend="Email">
+        </AccountGroup>
+        <AccountGroup legend="Email">
           {user.profile.email.search('@csumb.edu') > -1 ? (
             <>
               <p>You have an official CSUMB email address: </p>
-              <ProfileData>{user.profile.email}</ProfileData>
+              <AccountData>{user.profile.email}</AccountData>
               <p>
                 <strong>Changing your email:</strong> You can change your email
                 address by filing a ticket with IT.
@@ -114,11 +114,11 @@ class UserProfileForm extends React.Component {
                 address we have on file is:
               </p>
 
-              <ProfileData>{user.profile.email}</ProfileData>
+              <AccountData>{user.profile.email}</AccountData>
             </>
           )}
-        </ProfileGroup>
-        <ProfileGroup legend="Secondary email">
+        </AccountGroup>
+        <AccountGroup legend="Secondary email">
           <p>
             Your secondary email is used in case you forget your CSUMB password
             or cannot get into your account.
@@ -126,7 +126,7 @@ class UserProfileForm extends React.Component {
           {user.profile.secondEmail ? (
             <>
               <p>Your secondary email is: </p>
-              <ProfileData>{user.profile.secondEmail}</ProfileData>
+              <AccountData>{user.profile.secondEmail}</AccountData>
               <Button to="https://csumb.okta.com/settings" buttonType="primary">
                 Change your secondary email
               </Button>
@@ -142,15 +142,15 @@ class UserProfileForm extends React.Component {
               </Button>
             </>
           )}
-        </ProfileGroup>
-        <ProfileGroup legend="Employee or student number">
+        </AccountGroup>
+        <AccountGroup legend="Employee or student number">
           <p>Your employee or student number is:</p>
-          <ProfileData>{user.profile.employeeNumber}</ProfileData>
+          <AccountData>{user.profile.employeeNumber}</AccountData>
           <p>This is used on some forms around campus.</p>
-        </ProfileGroup>
+        </AccountGroup>
       </>
     )
   }
 }
 
-export default ProfilePage
+export default AccountPage
