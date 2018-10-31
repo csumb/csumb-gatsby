@@ -58,9 +58,15 @@ const SiteNavigationItem = props => {
       {props.to ? (
         <SiteNavigationLink to={props.to}>{props.children}</SiteNavigationLink>
       ) : (
-        <SiteNavigationSubMenu navigationChildren={props.navigationChildren}>
-          {props.children}
-        </SiteNavigationSubMenu>
+        <>
+          {props.navigationChildren && (
+            <SiteNavigationSubMenu
+              navigationChildren={props.navigationChildren}
+            >
+              {props.children}
+            </SiteNavigationSubMenu>
+          )}
+        </>
       )}
     </>
   )
