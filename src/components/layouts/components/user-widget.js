@@ -20,6 +20,9 @@ const UserDropdownButton = styled(MenuButton)`
 const UserDropdownMenuList = styled(MenuList)`
   border: 1px solid ${theme.colors.black};
   padding: 0;
+  a {
+    color: ${theme.colors.primary.darkest};
+  }
 `
 
 const UserDropdownMenuLink = styled(MenuLink)`
@@ -42,6 +45,13 @@ class UserDropdown extends React.Component {
           <UserDropdownMenuLink component="a" href="/account">
             Manage account
           </UserDropdownMenuLink>
+          {this.props.user._isEmployee ? (
+            <UserDropdownMenuLink component="a" href="/account/profile">
+              Public profile
+            </UserDropdownMenuLink>
+          ) : (
+            <></>
+          )}
           <UserDropdownMenuLink component="a" href="/account/card">
             OtterCard
           </UserDropdownMenuLink>

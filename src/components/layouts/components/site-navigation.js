@@ -43,7 +43,7 @@ const SiteNavigationMenuButton = styled(MenuButton)`
 
 const SiteNavigationBar = styled('nav')`
   background: ${theme.colors.primary.darkest};
-  padding: 0.5rem 0;
+  padding-bottom: 0.5rem;
 `
 
 const SiteNavigationItem = props => {
@@ -66,8 +66,8 @@ const SiteNavigationSubMenu = props => (
       {props.children} <span aria-hidden>▾</span>
     </SiteNavigationMenuButton>
     <SiteNavigationSubList>
-      {props.navigationChildren.map(child => (
-        <SiteNavigationSubLink component="a" href={child.url}>
+      {props.navigationChildren.map((child, key) => (
+        <SiteNavigationSubLink key={key} component="a" href={child.url}>
           {child.name}
         </SiteNavigationSubLink>
       ))}

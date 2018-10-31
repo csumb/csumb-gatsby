@@ -35,9 +35,14 @@ const AccountSidebar = props => (
     <AccountSidebarLink to="/account" active={props.active === 'account'}>
       Your account
     </AccountSidebarLink>
-    <AccountSidebarLink to="/account/profile" active={props.active === 'profile'}>
-      Your public profile
-    </AccountSidebarLink>
+    {props.user._isEmployee && (
+      <AccountSidebarLink
+        to="/account/profile"
+        active={props.active === 'profile'}
+      >
+        Your public profile
+      </AccountSidebarLink>
+    )}
     <AccountSidebarLink to="/account/card" active={props.active === 'card'}>
       Otter Card
     </AccountSidebarLink>

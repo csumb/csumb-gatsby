@@ -33,7 +33,7 @@ class AccountPage extends React.Component {
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
-                      <AccountSidebar active="account" />
+                      <AccountSidebar active="account" user={user} />
                     </Box>
                     <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
                       {user === 'anonymous' ? (

@@ -28,7 +28,7 @@ class AccountCardPage extends React.Component {
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
-                      <AccountSidebar active="card" />
+                      <AccountSidebar active="card" user={user} />
                     </Box>
                     <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
                       {user === 'anonymous' ? (
@@ -98,16 +98,20 @@ class UserCardForm extends React.Component {
               ) : (
                 <>
                   <Table>
-                    <TableRow>
-                      <TableHeader>Tender type</TableHeader>
-                      <TableHeader>Balance</TableHeader>
-                    </TableRow>
-                    {Object.keys(balance).map(key => (
+                    <thead>
                       <TableRow>
-                        <TableCell>{balance[key].tender}</TableCell>
-                        <TableCell>{balance[key].balance}</TableCell>
+                        <TableHeader>Tender type</TableHeader>
+                        <TableHeader>Balance</TableHeader>
                       </TableRow>
-                    ))}
+                    </thead>
+                    <tbody>
+                      {Object.keys(balance).map(key => (
+                        <TableRow key={key}>
+                          <TableCell>{balance[key].tender}</TableCell>
+                          <TableCell>{balance[key].balance}</TableCell>
+                        </TableRow>
+                      ))}
+                    </tbody>
                   </Table>
                 </>
               )}

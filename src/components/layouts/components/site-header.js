@@ -6,9 +6,10 @@ import theme from '../../styles/theme'
 
 const SiteHeaderWrapper = styled('div')`
   background: ${theme.colors.primary.darkest};
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   h2 {
     margin: 0;
+    font-size: 2.5rem;
   }
   a {
     color: #fff;
