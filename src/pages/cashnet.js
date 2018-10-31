@@ -4,27 +4,25 @@ import Layout from 'components/layouts/default'
 
 const Cashnet = props => {
   return (
-    <Layout>
-      <User>
-        {user => (
-          <>
-            {user &&
-              user !== 'anonymous' && (
-                <>
-                  <p>Redirecting you to CashNet...</p>
-                  <div style={{ display: none }}>
-                    {
-                      (window.location = `https://api.csumb.edu/cashnet/${
-                        user.profile.employeeNumber
-                      }/RMBRD`)
-                    }
-                  </div>
-                </>
-              )}
-          </>
-        )}
-      </User>
-    </Layout>
+    <User>
+      {user => (
+        <>
+          {user &&
+            user !== 'anonymous' && (
+              <>
+                <h1>One sec, we're redirecting you to CashNet...</h1>
+                <div style={{ display: 'none' }}>
+                  {
+                    (window.location = `https://api.csumb.edu/cashnet/${
+                      user.profile.employeeNumber
+                    }/RMBRD`)
+                  }
+                </div>
+              </>
+            )}
+        </>
+      )}
+    </User>
   )
 }
 

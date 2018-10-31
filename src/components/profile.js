@@ -32,14 +32,14 @@ const ProfileData = styled('p')`
 
 const ProfileSidebar = props => (
   <ProfileSidebarOptions>
-    <ProfileSidebarLink to="/profile" active={props.active === 'profile'}>
-      Your profile
+    <ProfileSidebarLink to="/account" active={props.active === 'profile'}>
+      Manage account
     </ProfileSidebarLink>
-    <ProfileSidebarLink to="/profile/print" active={props.active === 'print'}>
-      Printer paper
-    </ProfileSidebarLink>
-    <ProfileSidebarLink to="/profile/card" active={props.active === 'card'}>
+    <ProfileSidebarLink to="/account/card" active={props.active === 'card'}>
       Otter Card
+    </ProfileSidebarLink>
+    <ProfileSidebarLink to="/account/print" active={props.active === 'print'}>
+      Printer paper
     </ProfileSidebarLink>
   </ProfileSidebarOptions>
 )

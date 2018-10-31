@@ -40,7 +40,7 @@ class ProfilePage extends React.Component {
                         <h3>You must be logged in first.</h3>
                       ) : (
                         <>
-                          <ProfileTitle>Your profile</ProfileTitle>
+                          <ProfileTitle>Your account</ProfileTitle>
                           <UserProfileForm user={user} />
                         </>
                       )}
@@ -92,7 +92,7 @@ class UserProfileForm extends React.Component {
           <p>
             <strong>Changing your name:</strong> You may have many names: a
             legal name, a nick name, or a preferred name.{' '}
-            <Link to="/profile/help/change-name">
+            <Link to="/account/help/change-name">
               Learn how to change your name.
             </Link>
           </p>

@@ -68,11 +68,12 @@ class Header extends React.Component {
                           `}
                         >
                           <NavigationLink to="/academics">
-                            Academics
+                            Majors &amp; Programs
                           </NavigationLink>
                           <NavigationLink to="/cost">
-                            Cost &amp; Aid
+                            Tuition &amp; Aid
                           </NavigationLink>
+                          <NavigationLink to="/map">Map</NavigationLink>
                           <NavigationLink to="/about">About</NavigationLink>
                         </ul>
                       </div>
