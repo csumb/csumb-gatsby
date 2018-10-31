@@ -4,6 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `Cal State Monterey Bay`,
     footer: footer,
+    fileStack: `A3ttdsdUR8aGvjvUnJBWUz`,
     okta: {
       login: `https://csumb.okta.com`,
     },

@@ -10,6 +10,7 @@ import ReactFilestack from 'filestack-react'
 import theme from 'components/styles/theme'
 import { css } from 'emotion'
 import { InputText, InputSubmit } from 'components/forms'
+import { StaticQuery } from 'gatsby'
 import {
   AccountGroup,
   AccountTitle,
@@ -167,38 +168,51 @@ class UserAccountProfilePhoto extends React.Component {
             />
           </AccountData>
         )}
-        <ReactFilestack
-          apikey="A3ttdsdUR8aGvjvUnJBWUz"
-          onSuccess={this.savePhoto}
-          options={{
-            accept: 'image/*',
-            maxFiles: 1,
-            storeTo: {
-              location: 's3',
-            },
-          }}
-          render={({ onPick }) => (
-            <div>
-              <button
-                onClick={onPick}
-                className={css`
-                  padding: 1rem;
-                  display: inline-block;
-                  text-decoration: none;
-                  cursor: pointer;
-                  &:hover {
-                    color: ${theme.colors.white};
-                  }
-                  color: ${theme.colors.primary.dark};
-                  border: 3px solid ${theme.colors.primary.dark};
-                  &:hover {
-                    background: ${theme.colors.primary.dark};
-                  }
-                `}
-              >
-                Change profile photo
-              </button>
-            </div>
+        <StaticQuery
+          query={graphql`
+            {
+              site {
+                siteMetadata {
+                  fileStack
+                }
+              }
+            }
+          `}
+          render={data => (
+            <ReactFilestack
+              apikey={data.site.siteMetadata.fileStack}
+              onSuccess={this.savePhoto}
+              options={{
+                accept: 'image/*',
+                maxFiles: 1,
+                storeTo: {
+                  location: 's3',
+                },
+              }}
+              render={({ onPick }) => (
+                <div>
+                  <button
+                    onClick={onPick}
+                    className={css`
+                      padding: 1rem;
+                      display: inline-block;
+                      text-decoration: none;
+                      cursor: pointer;
+                      &:hover {
+                        color: ${theme.colors.white};
+                      }
+                      color: ${theme.colors.primary.dark};
+                      border: 3px solid ${theme.colors.primary.dark};
+                      &:hover {
+                        background: ${theme.colors.primary.dark};
+                      }
+                    `}
+                  >
+                    Change profile photo
+                  </button>
+                </div>
+              )}
+            />
           )}
         />
       </AccountGroup>
