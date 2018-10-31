@@ -15,6 +15,7 @@ const UserDropdownButton = styled(MenuButton)`
   border: none;
   background: transparent;
   cursor: pointer;
+  margin-right: 1rem;
 `
 
 const UserDropdownMenuList = styled(MenuList)`

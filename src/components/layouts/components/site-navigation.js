@@ -12,7 +12,7 @@ const SiteNavigationList = styled('ul')`
   margin: 0;
   li {
     display: inline-block;
-    margin: 0 1rem 0 0;
+    margin: 0;
   }
   a {
     color: ${theme.colors.white};
@@ -21,6 +21,10 @@ const SiteNavigationList = styled('ul')`
 
 const SiteNavigationLink = styled(LinkInspect)`
   text-decoration: none;
+  padding: 1rem;
+  &[aria-current='page'] {
+    background: ${theme.colors.primary.dark};
+  }
 `
 
 const SiteNavigationSubLink = styled(MenuLink)`
@@ -39,11 +43,13 @@ const SiteNavigationMenuButton = styled(MenuButton)`
   background: transparent;
   color: ${theme.colors.white};
   border: none;
+  cursor: pointer;
 `
 
 const SiteNavigationBar = styled('nav')`
   background: ${theme.colors.primary.darkest};
   padding-bottom: 0.5rem;
+  overflow: hidden;
 `
 
 const SiteNavigationItem = props => {

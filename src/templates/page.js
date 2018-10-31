@@ -10,6 +10,7 @@ import Breadcrumbs from 'components/breadcrumbs'
 
 class PageTemplate extends React.Component {
   render() {
+    console.log(this.props.pageContext)
     return (
       <Layout pageTitle={this.props.pageContext.title}>
         <SiteHeader
@@ -19,9 +20,11 @@ class PageTemplate extends React.Component {
         <SiteNavigation navigation={this.props.pageContext.navigation} />
         <Container>
           <Breadcrumbs breadcrumbs={this.props.pageContext.breadcrumbs} />
-          <PageTitle layout={this.props.pageContext.layout}>
-            {this.props.pageContext.title}
-          </PageTitle>
+          {this.props.pageContext.layout !== 'site' && (
+            <PageTitle layout={this.props.pageContext.layout}>
+              {this.props.pageContext.title}
+            </PageTitle>
+          )}
         </Container>
         <Blocks blocks={this.props.pageContext.pageContent} />
       </Layout>

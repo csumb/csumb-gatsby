@@ -13,11 +13,12 @@ const AccountSidebarLink = styled(Link)`
   display: block;
   padding: 0.5rem;
   border-bottom: 1px solid ${theme.colors.black};
-  ${props =>
-    props.active
-      ? `background: ${theme.colors.primary.dark};
-    color: ${theme.colors.white} !important;`
-      : `color: ${theme.colors.primary.dark};`};
+  text-decoration: none;
+  color: ${theme.colors.primary.dark};
+  &[aria-current='page'] {
+    background: ${theme.colors.primary.dark};
+    color: ${theme.colors.white};
+  }
 `
 
 const AccountTitle = styled('h2')`

@@ -13,7 +13,11 @@ const NavigationLinkList = styled('li')`
     padding: 0.75rem;
     &:hover {
       background: ${theme.colors.primary.darkest};
-      color: #fff;
+      color: ${theme.colors.white};
+    }
+    &[aria-current='page'] {
+      background: ${theme.colors.primary.dark};
+      color: ${theme.colors.white};
     }
   }
 `

@@ -5,8 +5,8 @@ import styled from 'react-emotion'
 
 const BrandLink = styled(Link)`
   font-weight: bold;
-  font-size: 150%;
-  color: ${theme.colors.primary.darkest};
+  font-size: 2rem;
+  color: ${theme.colors.primary.darkest} !important;
   text-decoration: none;
   line-height: 80%;
   &:hover {

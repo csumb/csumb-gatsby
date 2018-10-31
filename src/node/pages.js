@@ -46,6 +46,7 @@ module.exports = (graphql, actions) => {
                     site
                     pageContent
                     breadcrumbs
+                    layout
                   }
                 }
               }
