@@ -40,8 +40,8 @@ class AccountPage extends React.Component {
                         <h3>You must be logged in first.</h3>
                       ) : (
                         <>
-                          <ProfileTitle>Your account</ProfileTitle>
-                          <UserProfileForm user={user} />
+                          <AccountTitle>Your account</AccountTitle>
+                          <UserAccountForm user={user} />
                         </>
                       )}
                     </Box>
