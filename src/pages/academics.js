@@ -4,6 +4,7 @@ import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
 import { navigate } from '@reach/router'
 import Container from 'components/container'
+import SiteHeader from 'components/layouts/components/site-header'
 import PageTitle from 'components/page-title'
 
 class AcademicsPage extends React.Component {
@@ -58,8 +59,9 @@ class AcademicsPage extends React.Component {
     const sheets = this.props.data.allGooglePublicSheet
     return (
       <Layout pageTitle="Academics">
+        <SiteHeader path="/academics">Academics</SiteHeader>
         <Container>
-          <PageTitle>Academics</PageTitle>
+          <PageTitle layout="page">Majors &amp; Programs</PageTitle>
           <form onSubmit={this.handleSubmit}>
             <input
               type="text"

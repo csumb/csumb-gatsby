@@ -1,10 +1,10 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-//import Link from 'gatsby-link'
+import SiteHeader from 'components/layouts/components/site-header'
 
 const IndexPage = () => (
   <Layout>
-    <h1>Directory</h1>
+    <SiteHeader path="/directory">Directory</SiteHeader>
   </Layout>
 )
 

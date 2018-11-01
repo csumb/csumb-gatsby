@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from 'components/button'
+import { ButtonLink } from 'components/button'
 import { ContainerContext, ContainerElement } from './container-context'
 
 class BlockButton extends React.Component {
@@ -8,9 +8,9 @@ class BlockButton extends React.Component {
       <ContainerContext.Consumer>
         {container => (
           <ContainerElement container={container}>
-            <Button href={this.props.block.data.url} buttonType="default">
+            <ButtonLink href={this.props.block.data.url} buttonType="default">
               {this.props.block.data.text}
-            </Button>
+            </ButtonLink>
           </ContainerElement>
         )}
       </ContainerContext.Consumer>

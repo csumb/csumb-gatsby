@@ -24,7 +24,7 @@ const SiteHeader = props => (
   <SiteHeaderWrapper>
     <Container>
       <h2>
-        <Link to={props.path}>{props.title}</Link>
+        <Link to={props.path}>{props.children}</Link>
       </h2>
     </Container>
   </SiteHeaderWrapper>

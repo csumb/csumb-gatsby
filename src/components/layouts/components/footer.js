@@ -1,12 +1,12 @@
 import React from 'react'
 import VisuallyHidden from '@reach/visually-hidden'
 import Link from 'gatsby-link'
-import Button from '../../button'
-import Container from '../../container'
+import { ButtonLink } from 'components/button'
+import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
-import logo from '../../../assets/images/csumb-logo-blue.svg'
+import logo from 'assets/images/csumb-logo-blue.svg'
 import styled from 'react-emotion'
-import theme from '../../styles/theme'
+import theme from 'components/styles/theme'
 
 const FooterElement = styled('footer')`
   border-top: 3px solid ${theme.colors.primary.darkest};
@@ -139,9 +139,9 @@ const Footer = ({ children, data }) => (
         <Box width={[1, 1 / 4]}>
           <img src={logo} alt="Cal State Monterey Bay" />
           <div>
-            <Button to="/giving" buttonType="primary">
+            <ButtonLink to="/giving" buttonType="primary">
               Give
-            </Button>
+            </ButtonLink>
           </div>
         </Box>
       </Flex>

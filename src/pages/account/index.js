@@ -11,7 +11,7 @@ import {
   AccountData,
   AccountSidebar,
 } from 'components/account'
-import Button from 'components/button'
+import { ButtonLink } from 'components/button'
 
 class AccountPage extends React.Component {
   render() {
@@ -75,12 +75,12 @@ class UserAccountForm extends React.Component {
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h3>Password</h3>
-              <Button
+              <ButtonLink
                 to="https://csumb.okta.com/enduser/settings"
                 buttonType="primary"
               >
                 Change your password
-              </Button>
+              </ButtonLink>
             </Box>
           </Flex>
         </AccountGroup>
@@ -127,9 +127,12 @@ class UserAccountForm extends React.Component {
             <>
               <p>Your secondary email is: </p>
               <AccountData>{user.profile.secondEmail}</AccountData>
-              <Button to="https://csumb.okta.com/settings" buttonType="primary">
+              <ButtonLink
+                to="https://csumb.okta.com/settings"
+                buttonType="primary"
+              >
                 Change your secondary email
-              </Button>
+              </ButtonLink>
             </>
           ) : (
             <>
@@ -137,9 +140,12 @@ class UserAccountForm extends React.Component {
                 You do not have a secondary email set up. You should setup one
                 now to make sure you are never locked out of your account.
               </p>
-              <Button to="https://csumb.okta.com/settings" buttonType="primary">
+              <ButtonLink
+                to="https://csumb.okta.com/settings"
+                buttonType="primary"
+              >
                 Setup your secondary email
-              </Button>
+              </ButtonLink>
             </>
           )}
         </AccountGroup>

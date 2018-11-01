@@ -1,14 +1,14 @@
 import React from 'react'
 import { css } from 'emotion'
 import Brand from './brand'
-import Container from '../../container'
+import Container from 'components/container'
 import Search from './search'
 import UserWidget from './user-widget'
 import HeaderMobile from './header-mobile'
-import Button from '../../button'
+import { ButtonLink } from 'components/button'
 import { NavigationLink } from './navigation-link'
 import { Flex, Box } from '@rebass/grid/emotion'
-import theme from '../../styles/theme'
+import theme from 'components/styles/theme'
 import styled from 'react-emotion'
 
 const HeaderWrapper = styled('header')`
@@ -79,9 +79,9 @@ class Header extends React.Component {
                       </div>
                     </Box>
                     <Box width={[1, 1, 1 / 5, 1 / 5]} px={2}>
-                      <Button to="/apply" buttonType="highImpact">
+                      <ButtonLink to="/apply" buttonType="highImpact">
                         Apply
-                      </Button>
+                      </ButtonLink>
                     </Box>
                   </Flex>
                 </Box>

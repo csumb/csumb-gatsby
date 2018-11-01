@@ -1,6 +1,5 @@
 import React from 'react'
 import User from 'components/user'
-import Layout from 'components/layouts/default'
 
 const Cashnet = props => {
   return (

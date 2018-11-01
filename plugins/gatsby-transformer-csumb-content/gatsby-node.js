@@ -1,6 +1,11 @@
 const crypto = require(`crypto`)
 
-exports.onCreateNode = async ({ node, loadNodeContent, actions, createNodeId }) => {
+exports.onCreateNode = async ({
+  node,
+  loadNodeContent,
+  actions,
+  createNodeId,
+}) => {
   const { createNode, createParentChildLink } = actions
   if (node.extension !== `json` || node.sourceInstanceName !== 'web-content') {
     return
@@ -9,10 +14,11 @@ exports.onCreateNode = async ({ node, loadNodeContent, actions, createNodeId }) 
   content = JSON.parse(content)
 
   let contentNode = false
-  if(typeof content.pageContent !== 'undefined') {
-    const breadcrumbs = (typeof content.breadcrumb !== 'undefined') ?
-      JSON.stringify(content.breadcrumb) :
-      false
+  if (typeof content.pageContent !== 'undefined') {
+    const breadcrumbs =
+      typeof content.breadcrumb !== 'undefined'
+        ? JSON.stringify(content.breadcrumb)
+        : false
     contentNode = {
       id: createNodeId(`${node.id} >>> CsumbContentPage`),
       children: [],
@@ -28,7 +34,7 @@ exports.onCreateNode = async ({ node, loadNodeContent, actions, createNodeId }) 
     }
   }
 
-  if(node.relativePath.search('_site.json') > -1) {
+  if (node.relativePath.search('_site.json') > -1) {
     contentNode = {
       id: createNodeId(`${node.id} >>> CsumbContentSite`),
       children: [],
@@ -41,7 +47,7 @@ exports.onCreateNode = async ({ node, loadNodeContent, actions, createNodeId }) 
     }
   }
 
-  if(node.relativePath.search('_navigation.json') > -1) {
+  if (node.relativePath.search('_navigation.json') > -1) {
     contentNode = {
       id: createNodeId(`${node.id} >>> CsumbContentNavigation`),
       children: [],
@@ -54,17 +60,37 @@ exports.onCreateNode = async ({ node, loadNodeContent, actions, createNodeId }) 
     }
   }
 
-  if(!contentNode) {
+  if (node.relativePath.search('_data/buildings.json') > -1) {
+    Object.values(content).forEach(building => {
+      const buildingNode = {
+        id: createNodeId(`${building.code} >>> CsumbBuilding`),
+        children: [],
+        parent: null,
+        code: building.code,
+        buildingName: building.name,
+        internal: {
+          type: `CsumbBuilding`,
+        },
+      }
+      buildingNode.internal.contentDigest = crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(buildingNode))
+        .digest(`hex`)
+      createNode(buildingNode)
+    })
+  }
+
+  if (!contentNode) {
     return
   }
 
   contentNode.internal.contentDigest = crypto
-      .createHash(`md5`)
-      .update(JSON.stringify(contentNode))
-      .digest(`hex`)
+    .createHash(`md5`)
+    .update(JSON.stringify(contentNode))
+    .digest(`hex`)
 
   createNode(contentNode)
-  if(contentNode.parent) {
+  if (contentNode.parent) {
     createParentChildLink({ parent: node, child: contentNode })
   }
 }

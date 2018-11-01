@@ -10,13 +10,11 @@ import Breadcrumbs from 'components/breadcrumbs'
 
 class PageTemplate extends React.Component {
   render() {
-    console.log(this.props.pageContext)
     return (
       <Layout pageTitle={this.props.pageContext.title}>
-        <SiteHeader
-          title={this.props.pageContext.site.title}
-          path={this.props.pageContext.site.site}
-        />
+        <SiteHeader path={this.props.pageContext.site.site}>
+          {this.props.pageContext.site.title}
+        </SiteHeader>
         <SiteNavigation navigation={this.props.pageContext.navigation} />
         <Container>
           <Breadcrumbs breadcrumbs={this.props.pageContext.breadcrumbs} />

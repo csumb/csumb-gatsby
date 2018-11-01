@@ -7,17 +7,15 @@ import User from 'components/user'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
 import ReactFilestack from 'filestack-react'
-import theme from 'components/styles/theme'
-import { css } from 'emotion'
-import { InputText, InputSubmit } from 'components/forms'
-import { StaticQuery } from 'gatsby'
+import { InputText, InputSelect, Submit } from 'components/forms'
+import { StaticQuery, graphql } from 'gatsby'
 import {
   AccountGroup,
   AccountTitle,
   AccountData,
   AccountSidebar,
 } from 'components/account'
-import Button from 'components/button'
+import { Button } from 'components/button'
 
 const AccountPhoto = styled('img')`
   max-width: 150px;
@@ -87,32 +85,115 @@ class UserAccountProfileForm extends React.Component {
             title are controled by your human resources department.
           </p>
         </AccountGroup>
-        <AccountGroup legend="Office location">
-          <p>
-            Your office location is shown on the{' '}
-            <Link to="/directory">public campus directory.</Link>
-          </p>
-          <AccountData>
-            {user.profile.directoryBuilding}
-            <br />
-            {user.profile.campusRoomNumber.length && (
-              <em>Room {user.profile.campusRoomNumber}</em>
-            )}
-          </AccountData>
-          <p>
-            <Button to="/account/profile/change/office">
-              Change office location
-            </Button>
-          </p>
-        </AccountGroup>
-        <UserAccountprofilePhone user={user} />
+        <UserAccountProfileOffice user={user} />
+        <UserAccountProfilePhone user={user} />
         <UserAccountProfilePhoto user={user} />
       </>
     )
   }
 }
 
-class UserAccountprofilePhone extends React.Component {
+class UserAccountProfileOffice extends React.Component {
+  state = {
+    showForm: false,
+  }
+
+  handleShowForm(event) {
+    event.preventDefault()
+    this.setState({
+      showForm: !this.state.showForm,
+    })
+  }
+  render() {
+    const { user } = this.props
+    return (
+      <AccountGroup legend="Office location">
+        <p>
+          Your office location is shown on the{' '}
+          <Link to="/directory">public campus directory.</Link>
+        </p>
+        <AccountData>
+          {user.profile.directoryBuilding}
+          <br />
+          {user.profile.campusRoomNumber.length && (
+            <em>Room {user.profile.campusRoomNumber}</em>
+          )}
+        </AccountData>
+        <p>
+          <Button onClick={this.handleShowForm.bind(this)}>
+            Change office location
+          </Button>
+        </p>
+        {this.state.showForm && <UserAccountProfileOfficeForm user={user} />}
+      </AccountGroup>
+    )
+  }
+}
+
+class UserAccountProfileOfficeForm extends React.Component {
+  state = {
+    building: false,
+    room: false,
+  }
+  handleSubmit(event) {
+    event.preventDefault()
+  }
+  handleRoomChange(event) {
+    this.setState({
+      room: event.target.value,
+    })
+  }
+  handleBuildingChange(event) {
+    this.setState({
+      building: event.target.value,
+    })
+  }
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <InputSelect
+          onChange={this.handleBuildingChange.bind(this)}
+          label="Building"
+          name="building"
+        >
+          <StaticQuery
+            query={graphql`
+              {
+                allCsumbBuilding {
+                  edges {
+                    node {
+                      buildingName
+                      code
+                    }
+                  }
+                }
+              }
+            `}
+            render={data => (
+              <>
+                {data.allCsumbBuilding.edges.map(building => (
+                  <option value={building.node.code}>
+                    {building.node.buildingName} ({building.node.code})
+                  </option>
+                ))}
+              </>
+            )}
+          />
+        </InputSelect>
+        <InputText
+          onKeyUp={this.handleRoomChange.bind(this)}
+          label="Room number"
+          name="room"
+          defaultValue="100"
+          small
+        />
+        <Submit value="Update office information" />
+      </form>
+    )
+  }
+}
+
+class UserAccountProfilePhone extends React.Component {
   state = {
     showForm: false,
   }
@@ -138,13 +219,37 @@ class UserAccountprofilePhone extends React.Component {
             Change phone number
           </Button>
         </p>
-        {this.state.showForm && (
-          <form>
-            <InputText label="Phone number" />
-            <InputSubmit value="Update phone" />
-          </form>
-        )}
+        {this.state.showForm && <UserAccountProfilePhoneForm user={user} />}
       </AccountGroup>
+    )
+  }
+}
+
+class UserAccountProfilePhoneForm extends React.Component {
+  state = {
+    phone: 0,
+  }
+  handleSubmit(event) {
+    event.preventDefault()
+    console.log(this.state.phone)
+  }
+
+  handleChange(event) {
+    this.setState({
+      phone: event.target.value.trim(),
+    })
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <InputText
+          onKeyUp={this.handleChange.bind(this)}
+          label="Phone number"
+          small
+        />
+        <Submit value="Update phone" />
+      </form>
     )
   }
 }
@@ -168,51 +273,20 @@ class UserAccountProfilePhoto extends React.Component {
             />
           </AccountData>
         )}
-        <StaticQuery
-          query={graphql`
-            {
-              site {
-                siteMetadata {
-                  fileStack
-                }
-              }
-            }
-          `}
-          render={data => (
-            <ReactFilestack
-              apikey={data.site.siteMetadata.fileStack}
-              onSuccess={this.savePhoto}
-              options={{
-                accept: 'image/*',
-                maxFiles: 1,
-                storeTo: {
-                  location: 's3',
-                },
-              }}
-              render={({ onPick }) => (
-                <div>
-                  <button
-                    onClick={onPick}
-                    className={css`
-                      padding: 1rem;
-                      display: inline-block;
-                      text-decoration: none;
-                      cursor: pointer;
-                      &:hover {
-                        color: ${theme.colors.white};
-                      }
-                      color: ${theme.colors.primary.dark};
-                      border: 3px solid ${theme.colors.primary.dark};
-                      &:hover {
-                        background: ${theme.colors.primary.dark};
-                      }
-                    `}
-                  >
-                    Change profile photo
-                  </button>
-                </div>
-              )}
-            />
+        <ReactFilestack
+          apikey="A3ttdsdUR8aGvjvUnJBWUz"
+          onSuccess={this.savePhoto}
+          options={{
+            accept: 'image/*',
+            maxFiles: 1,
+            storeTo: {
+              location: 's3',
+            },
+          }}
+          render={({ onPick }) => (
+            <div>
+              <Button onClick={onPick}>Change profile photo</Button>
+            </div>
           )}
         />
       </AccountGroup>

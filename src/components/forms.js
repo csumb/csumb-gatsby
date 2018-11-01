@@ -6,6 +6,10 @@ import styled from 'react-emotion'
 import theme from './styles/theme'
 import { css } from 'emotion'
 
+const FormGroup = styled('div')`
+  margin-bottom: 0.5rem;
+`
+
 const LabelElement = styled('label')`
   font-size: 1.5rem;
   font-weight: bold;
@@ -73,11 +77,12 @@ FormElement.propTypes = {
 const InputTextElement = styled('input')`
   border: 1px solid ${theme.colors.gray.deafult};
   padding: 0.3rem;
+  width: ${props => (props.small ? '30%' : '100%')};
 `
 class InputText extends FormElement {
   render() {
     return (
-      <>
+      <FormGroup>
         <Label
           labelId={this.htmlId}
           isRequired={this.props.isRequired}
@@ -91,7 +96,7 @@ class InputText extends FormElement {
           id={this.htmlId}
           innerRef={this.props.forwardedRef}
         />
-      </>
+      </FormGroup>
     )
   }
 }

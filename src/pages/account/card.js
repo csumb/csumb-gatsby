@@ -6,7 +6,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { AccountGroup, AccountTitle, AccountSidebar } from 'components/account'
 import User from 'components/user'
 import { Table, TableRow, TableHeader, TableCell } from 'components/table'
-import Button from 'components/button'
+import { ButtonLink } from 'components/button'
 
 class AccountCardPage extends React.Component {
   render() {
@@ -120,14 +120,14 @@ class UserCardForm extends React.Component {
         </AccountGroup>
         <AccountGroup legend="Add more meals">
           <p>You can add several kinds of pre-paid meal plans.</p>
-          <Button
+          <ButtonLink
             to={`https://api.csumb.edu/cashnet/${
               this.props.user.profile.employeeNumber
             }/RMBRD`}
             buttonType="default"
           >
             Add more meals
-          </Button>
+          </ButtonLink>
         </AccountGroup>
       </>
     )
