@@ -110,7 +110,7 @@ const InputTextareaElement = styled('textarea')`
 class InputTextarea extends FormElement {
   render() {
     return (
-      <>
+      <FormGroup inline={this.props.inline}>
         <Label
           labelId={this.htmlId}
           isRequired={this.props.isRequired}
@@ -125,7 +125,7 @@ class InputTextarea extends FormElement {
         >
           {this.props.value}
         </InputTextareaElement>
-      </>
+      </FormGroup>
     )
   }
 }
@@ -133,7 +133,7 @@ class InputTextarea extends FormElement {
 class InputCheckbox extends FormElement {
   render() {
     return (
-      <>
+      <FormGroup inline={this.props.inline}>
         <Label
           labelId={this.htmlId}
           isRequired={this.props.isRequired}
@@ -146,7 +146,7 @@ class InputCheckbox extends FormElement {
           />
           {this.props.label}
         </Label>
-      </>
+      </FormGroup>
     )
   }
 }
@@ -154,7 +154,7 @@ class InputCheckbox extends FormElement {
 class InputRadio extends FormElement {
   render() {
     return (
-      <>
+      <FormGroup inline={this.props.inline}>
         <Label
           labelId={this.htmlId}
           isRequired={this.props.isRequired}
@@ -167,7 +167,7 @@ class InputRadio extends FormElement {
           />
           {this.props.label}
         </Label>
-      </>
+      </FormGroup>
     )
   }
 }
@@ -175,7 +175,7 @@ class InputRadio extends FormElement {
 class InputSelect extends FormElement {
   render() {
     return (
-      <>
+      <FormGroup inline={this.props.inline}>
         <Label
           labelId={this.htmlId}
           isRequired={this.props.isRequired}
@@ -186,7 +186,7 @@ class InputSelect extends FormElement {
         <select {...this.cleanProps()} ref={this.props.forwardedRef}>
           {this.props.children}
         </select>
-      </>
+      </FormGroup>
     )
   }
 }
