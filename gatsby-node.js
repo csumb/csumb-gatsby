@@ -21,7 +21,19 @@ exports.createPages = ({ stage, graphql, actions }) => {
   })
 }
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === 'build-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /filestack-js/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    })
+  }
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve('./src'), path.resolve('./node_modules')],

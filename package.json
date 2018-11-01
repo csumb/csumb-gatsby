@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "Kevin Miller <kevin@csumb.edu>",
   "dependencies": {
+    "@okta/okta-sdk-nodejs": "^1.2.0",
     "@reach/menu-button": "^0.1.7",
     "@reach/rect": "^0.1.1",
     "@reach/skip-nav": "^0.1.1",
