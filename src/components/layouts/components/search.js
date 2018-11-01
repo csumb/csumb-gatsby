@@ -117,6 +117,7 @@ class Search extends React.Component {
               hideLabel={true}
               placeholder="Search"
               onChange={this.handleChange}
+              inline
             />
             <Portal>
               {this.state.search ? (

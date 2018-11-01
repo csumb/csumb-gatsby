@@ -8,6 +8,7 @@ import { css } from 'emotion'
 
 const FormGroup = styled('div')`
   margin-bottom: 0.5rem;
+  ${props => (props.inline ? `display: inline-block;` : ``)};
 `
 
 const LabelElement = styled('label')`
@@ -82,7 +83,7 @@ const InputTextElement = styled('input')`
 class InputText extends FormElement {
   render() {
     return (
-      <FormGroup>
+      <FormGroup inline={this.props.inline}>
         <Label
           labelId={this.htmlId}
           isRequired={this.props.isRequired}
