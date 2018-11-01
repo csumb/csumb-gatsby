@@ -79,6 +79,13 @@ const InputTextElement = styled('input')`
   border: 1px solid ${theme.colors.gray.deafult};
   padding: 0.3rem;
   width: ${props => (props.small ? '30%' : '100%')};
+  ${props =>
+    props.huge
+      ? `
+    padding: 0.6rem;
+    font-size: 2rem;
+  `
+      : ``};
 `
 class InputText extends FormElement {
   render() {
@@ -223,16 +230,27 @@ const SubmitButton = styled('input')`
   padding: 1rem;
   display: inline-block;
   text-decoration: none;
-  margin: 1.5rem 0;
+  ${props =>
+    props.nomargin
+      ? `
+    `
+      : `margin: 1.5rem 0;`}
   color: ${theme.colors.primary.dark};
   border: 3px solid ${theme.colors.primary.dark};
   &:hover {
     color: ${theme.colors.white};
     background: ${theme.colors.primary.dark};
   }
+  ${props =>
+    props.huge
+      ? `
+    font-size: 2rem;
+    padding: 0.6rem;
+  `
+      : ``};
 `
 
-const Submit = props => <SubmitButton type="submit" value={props.value} />
+const Submit = props => <SubmitButton type="submit" {...props} />
 
 export {
   Label,
