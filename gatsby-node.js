@@ -3,6 +3,7 @@ const fs = require(`fs-extra`)
 const coursePages = require(`./src/node/courses`)
 const contentPages = require(`./src/node/pages`)
 const schedulePages = require(`./src/node/schedule`)
+const buildingPages = require(`./src/node/buildings`)
 const scheduleSearch = require(`./src/node/schedule-search`)
 require(`gatsby-source-filesystem`)
 
@@ -11,6 +12,9 @@ exports.createPages = ({ stage, graphql, actions }) => {
     coursePages(graphql, actions)
       .then(() => {
         return contentPages(graphql, actions)
+      })
+      .then(() => {
+        return buildingPages(graphql, actions)
       })
       .then(() => {
         return schedulePages(graphql, actions)

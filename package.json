@@ -63,6 +63,7 @@
     "format": "prettier --write 'src/**/*.js'"
   },
   "devDependencies": {
+    "netlify-lambda": "^1.0.2",
     "prettier": "^1.14.3"
   },
   "repository": {
