@@ -32,6 +32,9 @@ const Legal = styled('div')`
     color: ${theme.colors.white};
     font-size: 0.8rem;
     margin-right: 1rem;
+    &:last-child {
+      margin-right: 0;
+    }
   }
 `
 
@@ -160,12 +163,13 @@ const Footer = ({ children, data }) => (
         <Link to="/diversity">Diversity &amp; Inclusion</Link>
         <Link to="/clery">Security report</Link>
         <Link to="/hr/form-801">Form 801</Link>
-        <VisuallyHidden>
-          <Link to="/document-reader">
-            Some links for may require a Document Reader.
-          </Link>
-        </VisuallyHidden>
       </Container>
+
+      <VisuallyHidden>
+        <Link to="/document-reader">
+          Some links for may require a Document Reader.
+        </Link>
+      </VisuallyHidden>
     </Legal>
   </FooterElement>
 )
