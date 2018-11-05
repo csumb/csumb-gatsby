@@ -9,10 +9,17 @@ const NavigationLinkList = styled('li')`
   a {
     font-weight: bold;
     text-decoration: none;
-    color: ${theme.colors.primary.darkest};
     padding: 0.75rem;
-    &:hover {
-      background: ${theme.colors.primary.darkest};
+    ${props =>
+      props.apply
+        ? `color: ${theme.colors.indicators.high};
+        border: 3px solid ${theme.colors.indicators.high};`
+        : `color: ${theme.colors.primary.darkest};`} &:hover {
+          ${props =>
+            props.apply
+              ? `background: ${theme.colors.indicators.high};`
+              : `background: ${theme.colors.primary.darkest};`}
+              
       color: ${theme.colors.white};
     }
     &[aria-current='page'] {
@@ -42,4 +49,10 @@ const MobileNavigationLink = props => (
   </MobileNavigationLinkList>
 )
 
-export { NavigationLink, MobileNavigationLink }
+const NavigationLinkApply = props => (
+  <NavigationLinkList apply>
+    <Link to={props.to}>{props.children}</Link>
+  </NavigationLinkList>
+)
+
+export { NavigationLink, MobileNavigationLink, NavigationLinkApply }
