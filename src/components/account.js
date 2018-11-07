@@ -39,6 +39,7 @@ const AccountSidebar = props => (
         Your public profile
       </AccountSidebarLink>
     )}
+    <AccountSidebarLink to="/account/messages">Messages</AccountSidebarLink>
     <AccountSidebarLink to="/account/card">Otter Card</AccountSidebarLink>
     <AccountSidebarLink to="/account/print">Printer paper</AccountSidebarLink>
   </AccountSidebarOptions>
