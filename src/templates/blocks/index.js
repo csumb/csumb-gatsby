@@ -1,25 +1,29 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
-import BlockList from './list'
-import BlockText from './text'
-import BlockHeading from './heading'
-import BlockButton from './button'
-import BlockDocument from './document'
-import BlockImage from './image'
-import BlockQuote from './quote'
-import BlockAddress from './address'
-import BlockDefinitionList from './definition-list'
-import BlockColumns from './columns'
-import BlockVideo from './video'
-import BlockHeroImage from './heroimage'
-import { ContainerContext, containerStyle } from './container-context'
+import BlockList from './blocks/list'
+import BlockText from './blocks/text'
+import BlockHeading from './blocks/heading'
+import BlockButton from './blocks/button'
+import BlockDocument from './blocks/document'
+import BlockImage from './blocks/image'
+import BlockCalendar from './blocks/calendar'
+import BlockQuote from './blocks/quote'
+import BlockAddress from './blocks/address'
+import BlockDefinitionList from './blocks/definition-list'
+import BlockColumns from './blocks/columns'
+import BlockVideo from './blocks/video'
+import BlockByline from './blocks/byline'
+import BlockHeroImage from './blocks/heroimage'
+import { ContainerContext, containerStyle } from './blocks/container-context'
 
 class Block extends React.Component {
   blockComponents = {
     text: BlockText,
     list: BlockList,
     heading: BlockHeading,
+    calendar: BlockCalendar,
     heroimage: BlockHeroImage,
+    byline: BlockByline,
     button: BlockButton,
     definitionlist: BlockDefinitionList,
     document: BlockDocument,
