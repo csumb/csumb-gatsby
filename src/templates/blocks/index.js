@@ -11,6 +11,7 @@ import BlockAddress from './address'
 import BlockDefinitionList from './definition-list'
 import BlockColumns from './columns'
 import BlockVideo from './video'
+import BlockHeroImage from './heroimage'
 import { ContainerContext, containerStyle } from './container-context'
 
 class Block extends React.Component {
@@ -18,6 +19,7 @@ class Block extends React.Component {
     text: BlockText,
     list: BlockList,
     heading: BlockHeading,
+    heroimage: BlockHeroImage,
     button: BlockButton,
     definitionlist: BlockDefinitionList,
     document: BlockDocument,

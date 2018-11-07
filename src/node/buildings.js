@@ -23,6 +23,7 @@ module.exports = (graphql, actions) => {
       ).then(result => {
         if (result.errors) {
           reject(result.errors)
+          return
         }
         result.data.allCsumbBuilding.edges.forEach(async edge => {
           createPage({
