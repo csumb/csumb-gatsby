@@ -5,6 +5,7 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import User from 'components/user'
 import Link from 'gatsby-link'
+import { css } from 'emotion'
 import {
   AccountGroup,
   AccountTitle,
@@ -84,6 +85,17 @@ class UserAccountForm extends React.Component {
             </Box>
           </Flex>
         </AccountGroup>
+        <AccountGroup legend="Role">
+          <p>
+            You may have one or many roles on campus. These determine what you
+            have access to :
+          </p>
+          <UserAccountFormRole roles={user.profile.cmsRole} />
+          <p>
+            <strong>Changing your role:</strong> Your role is automatically
+            determined based on your employment, applicantion, and enrollment.
+          </p>
+        </AccountGroup>
         <AccountGroup legend="Name">
           <p>Your name is:</p>
           <AccountData>
@@ -154,6 +166,93 @@ class UserAccountForm extends React.Component {
           <AccountData>{user.profile.employeeNumber}</AccountData>
           <p>This is used on some forms around campus.</p>
         </AccountGroup>
+      </>
+    )
+  }
+}
+
+class UserAccountFormRole extends React.Component {
+  roles = {
+    employee_staff: {
+      name: 'Staff',
+      email: true,
+    },
+    employee_executive: {
+      name: 'The President',
+      email: true,
+    },
+    employee_faculty: {
+      name: 'Faculty',
+      email: true,
+    },
+    poi: {
+      name: 'Person of interest',
+      email: false,
+    },
+    corporation: {
+      name: 'Corporation employee',
+      email: true,
+    },
+    employee_management: {
+      name: 'Manager',
+      email: true,
+    },
+    employee_temp_lecturer: {
+      name: 'Lecturer',
+      email: true,
+    },
+    csumb_aa_life_member: {
+      name: 'Alumni',
+      email: true,
+    },
+    student_applicant: {
+      name: 'Applicant',
+      email: false,
+    },
+    student_continuing_education: {
+      name: 'Student',
+      email: true,
+    },
+    student_graduate: {
+      name: 'Graduated student',
+      email: true,
+    },
+    student_matriculated: {
+      name: 'Student',
+      email: true,
+    },
+  }
+
+  render() {
+    let email = false
+    this.props.roles.forEach(role => {
+      if (typeof this.roles[role] !== 'undefined' && this.roles[role].email) {
+        email = true
+      }
+    })
+    return (
+      <>
+        {this.props.roles.length == 1 ? (
+          <AccountData>{this.roles[this.props.roles[0]].name}</AccountData>
+        ) : (
+          <AccountData>
+            <ul
+              className={css`
+                list-style-type: none;
+                margin-left: 0;
+              `}
+            >
+              {this.props.roles.map(role => (
+                <li>{this.roles[role].name}</li>
+              ))}
+            </ul>
+          </AccountData>
+        )}
+        {email ? (
+          <p>You get a campus email account.</p>
+        ) : (
+          <p>You do not get a campus email account.</p>
+        )}
       </>
     )
   }
