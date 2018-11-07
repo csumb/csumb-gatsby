@@ -39,11 +39,11 @@ class Header extends React.Component {
           <HeaderWrapper>
             <Container>
               <Flex flexWrap="wrap">
-                <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+                <Box width={[1, 1, 1 / 3, 1 / 3]} px={2}>
                   <Brand />
                 </Box>
                 <Box
-                  width={[1, 1, 3 / 4, 3 / 4]}
+                  width={[1, 1, 2 / 3, 2 / 3]}
                   px={2}
                   className={css`
                     text-align: right;
