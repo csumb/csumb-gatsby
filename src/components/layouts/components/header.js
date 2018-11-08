@@ -4,6 +4,7 @@ import Brand from './brand'
 import Container from 'components/container'
 import Search from './search'
 import UserWidget from './user-widget'
+import Applicant from './applicant'
 import HeaderMobile from './header-mobile'
 import { ButtonLink } from 'components/button'
 import { NavigationLink, NavigationLinkApply } from './navigation-link'
@@ -50,6 +51,7 @@ class Header extends React.Component {
                   `}
                 >
                   <div>
+                    <Applicant />
                     <UserWidget loginLink={this.props.metadata.okta.login} />
                     <Search swiftypeId={this.props.metadata.swiftypeId} />
                   </div>
