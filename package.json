@@ -63,9 +63,13 @@
     "build": "gatsby build",
     "netlify": "gulp; gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write 'src/**/*.js'"
+    "format": "prettier --write 'src/**/*.js'",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^4.0.4",
+    "@storybook/addon-links": "^4.0.4",
+    "@storybook/react": "^4.0.4",
     "netlify-lambda": "^1.0.2",
     "prettier": "^1.14.3"
   },
