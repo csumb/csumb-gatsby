@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
 import Link from 'gatsby-link'
+import { Flex, Box } from '@rebass/grid/emotion'
 
 const ScheduleList = styled('ul')`
   list-style-type: none;
@@ -38,4 +39,20 @@ const GEListItem = props => (
   </GEListItemElement>
 )
 
-export { ScheduleList, ScheduleListItem, GEList, GEListItem }
+const CourseList = props => (
+  <section>
+    {props.courses.map(course => (
+      <CourseListItem course={course} term={props.term} />
+    ))}
+  </section>
+)
+
+const CourseListItem = props => (
+  <Flex>
+    <Box width={[1, 1, 1 / 9, 1 / 9]} px={2}>
+      {props.course.subject} {props.course.catalog_nbr}
+    </Box>
+  </Flex>
+)
+
+export { ScheduleList, ScheduleListItem, GEList, GEListItem, CourseList }

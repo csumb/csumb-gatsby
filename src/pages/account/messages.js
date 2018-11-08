@@ -4,15 +4,9 @@ import PageTitle from 'components/page-title'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { UserContext } from 'components/contexts/user'
-import Link from 'gatsby-link'
 import styled from 'react-emotion'
 import theme from 'components/styles/theme'
-import {
-  AccountGroup,
-  AccountTitle,
-  AccountData,
-  AccountSidebar,
-} from 'components/account'
+import { AccountTitle, AccountSidebar } from 'components/account'
 import { ButtonLink } from 'components/button'
 
 class AccountMessagesPage extends React.Component {

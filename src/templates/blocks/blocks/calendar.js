@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'react-emotion'
 import { ContainerContext, ContainerElement } from './container-context'
 
 class BlockCalendar extends React.Component {

@@ -3,7 +3,6 @@ import styled from 'react-emotion'
 import { ContainerContext } from './container-context'
 import theme from 'components/styles/theme'
 import Link from 'gatsby-link'
-import { css } from 'emotion'
 
 const HeroImage = styled('div')`
   width: 100%;

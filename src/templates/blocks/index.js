@@ -60,7 +60,9 @@ class Blocks extends React.Component {
         {blocks.layout.map(layout => (
           <div key={layout.id}>
             {layout._children ? (
-              <Flex flexWrap="wrap" />
+              <Flex flexWrap="wrap">
+                <Box />
+              </Flex>
             ) : (
               <Block
                 key={layout.id}

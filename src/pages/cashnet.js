@@ -1,5 +1,4 @@
 import React from 'react'
-import { UserContext } from 'components/contexts/user'
 
 class CashnetPage extends React.Component {
   state = {

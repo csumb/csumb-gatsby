@@ -233,7 +233,7 @@ class UserAccountFormRole extends React.Component {
     })
     return (
       <>
-        {this.props.roles.length == 1 ? (
+        {this.props.roles.length === 1 ? (
           <AccountData>{this.roles[this.props.roles[0]].name}</AccountData>
         ) : (
           <AccountData>

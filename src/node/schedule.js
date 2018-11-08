@@ -119,6 +119,16 @@ module.exports = (graphql, actions) => {
           })
 
           termSubjects = Object.values(termSubjects)
+          termSubjects.sort((a, b) => {
+            if (a.code < b.code) {
+              return -1
+            }
+            if (a.code > b.code) {
+              return 1
+            }
+            return 0
+          })
+
           createPage({
             path: `schedule/${edge.node.DESCR.toLowerCase().replace(' ', '')}`,
             component: scheduleFrontpageTemplate,

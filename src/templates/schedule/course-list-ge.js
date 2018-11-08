@@ -1,8 +1,8 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import CourseListItem from './course-list-item'
+import { CourseList } from 'components/schedule'
 import Container from 'components/container'
-class CourseList extends React.Component {
+class GECourseList extends React.Component {
   render() {
     const ge = this.props.pageContext.ge
     const term = this.props.pageContext.term
@@ -12,13 +12,11 @@ class CourseList extends React.Component {
           <h1>
             {term.DESCR} General Education {ge.name}
           </h1>
-          {this.props.pageContext.courses.map(course => (
-            <CourseListItem course={course} term={term} key={course.CRN} />
-          ))}
+          <CourseList {...this.props.pageContext} />
         </Container>
       </Layout>
     )
   }
 }
 
-export default CourseList
+export default GECourseList

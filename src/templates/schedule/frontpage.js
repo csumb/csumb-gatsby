@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'

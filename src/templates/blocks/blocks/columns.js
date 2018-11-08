@@ -1,5 +1,4 @@
 import React from 'react'
-import { css } from 'emotion'
 import { Flex, Box } from '@rebass/grid/emotion'
 
 class BlockColumns extends React.Component {

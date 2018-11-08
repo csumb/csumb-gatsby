@@ -3,9 +3,8 @@ import Layout from 'components/layouts/default'
 import PageTitle from 'components/page-title'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { AccountGroup, AccountTitle, AccountSidebar } from 'components/account'
+import { AccountGroup } from 'components/account'
 import { UserContext } from 'components/contexts/user'
-import { ButtonLink } from 'components/button'
 import url from 'url'
 import { LeadParagraph } from 'components/type'
 import Link from 'gatsby-link'
@@ -114,7 +113,8 @@ class ApplicantStatus extends React.Component {
             applications.forEach((application, index) => {
               console.log(application.application)
               if (
-                application.application.application_number == location.query.app
+                application.application.application_number ===
+                location.query.app
               ) {
                 current = index
               }
