@@ -1,6 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { ButtonLink } from '../src/components/button'
+import typography from '../src/utils/typography'
+
+typography.injectStyles()
 
 storiesOf('ButtonLink', module)
   .add('with text', () => (
