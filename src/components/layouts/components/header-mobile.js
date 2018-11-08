@@ -6,24 +6,28 @@ import { MobileNavigationLink } from './navigation-link'
 import VisuallyHidden from '@reach/visually-hidden'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Search from './search'
+import { css } from 'react-emotion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
 
 const HeaderMobileWrapper = styled('div')`
-  padding: 0.5 0.25rem;
+  padding: 0.5rem 0.25rem;
   border-bottom: 2px solid ${theme.colors.primary.darkest};
 `
 
-const HeaderMobileToggle = styled('button')`
-  border: 3px solid ${theme.colors.primary.darkest};
+const mobileButton = css`
+  border: 0;
   padding: 0.3rem;
+  font-size: 1.8rem;
+`
+
+const HeaderMobileToggle = styled('button')`
+  ${mobileButton};
 `
 
 const HeaderMobileSearchToggle = styled('button')`
-  border: 3px solid ${theme.colors.muted.bright};
-  background: ${theme.colors.muted.bright};
-  color: ${theme.colors.primary.darkest};
-  padding: 0.3rem;
+  ${mobileButton};
+  margin-right: 1.5rem;
 `
 
 const HeaderMobileNavigation = styled('ul')`
@@ -75,10 +79,10 @@ class HeaderMobile extends React.Component {
       <header>
         <HeaderMobileWrapper>
           <Flex flexWrap="wrap">
-            <Box width={[1 / 3]} px={2}>
+            <Box width={[1 / 2]} px={2}>
               <Brand />
             </Box>
-            <MenuBox width={[2 / 3]} px={2}>
+            <MenuBox width={[1 / 2]} px={2}>
               <HeaderMobileSearchToggle
                 onClick={this.searchToggle.bind(this)}
                 ref={node => {
@@ -94,8 +98,8 @@ class HeaderMobile extends React.Component {
                   this.navButtonRef = node
                 }}
               >
-                Menu
-                <VisuallyHidden>Main menu</VisuallyHidden>
+                <FontAwesomeIcon icon={faBars} />
+                <VisuallyHidden>Menu</VisuallyHidden>
               </HeaderMobileToggle>
             </MenuBox>
           </Flex>
