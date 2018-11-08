@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
 import theme from 'components/styles/theme'
-import User from 'components/user'
+import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
 
 const ApplicantLink = styled(Link)`
@@ -14,14 +14,14 @@ class Applicant extends React.Component {
   render() {
     return (
       <>
-        <User>
-          {user => (
+        <UserContext.Consumer>
+          {context => (
             <>
-              {user === false ? (
+              {context.user === false ? (
                 <></>
               ) : (
                 <>
-                  {user === 'anonymous' ? (
+                  {context.user === 'anonymous' ? (
                     <></>
                   ) : (
                     <ApplicantLink to="/account/applicant-status">
@@ -32,7 +32,7 @@ class Applicant extends React.Component {
               )}
             </>
           )}
-        </User>
+        </UserContext.Consumer>
       </>
     )
   }

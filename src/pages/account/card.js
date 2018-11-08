@@ -4,39 +4,40 @@ import PageTitle from 'components/page-title'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { AccountGroup, AccountTitle, AccountSidebar } from 'components/account'
-import User from 'components/user'
+import { UserContext } from 'components/contexts/user'
 import { Table, TableRow, TableHeader, TableCell } from 'components/table'
 import { ButtonLink } from 'components/button'
 
 class AccountCardPage extends React.Component {
   render() {
     return (
-      <User>
-        {user => (
-          <Layout pageTitle="Otter card">
+      <Layout pageTitle="Otter card">
+        <UserContext.Consumer>
+          {context => (
             <Container>
-              {user && (
+              {context.user && (
                 <>
                   <PageTitle>
-                    {user === 'anonymous' ? (
+                    {context.user === 'anonymous' ? (
                       <h3>Your profile</h3>
                     ) : (
                       <>
-                        {user.profile.firstName} {user.profile.lastName}
+                        {context.user.profile.firstName}{' '}
+                        {context.user.profile.lastName}
                       </>
                     )}
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
-                      <AccountSidebar active="card" user={user} />
+                      <AccountSidebar active="card" user={context.user} />
                     </Box>
                     <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
-                      {user === 'anonymous' ? (
+                      {context.user === 'anonymous' ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
                         <>
                           <AccountTitle>Otter Card</AccountTitle>
-                          <UserCardForm user={user} />
+                          <UserCardForm user={context.user} />
                         </>
                       )}
                     </Box>
@@ -44,9 +45,9 @@ class AccountCardPage extends React.Component {
                 </>
               )}
             </Container>
-          </Layout>
-        )}
-      </User>
+          )}
+        </UserContext.Consumer>
+      </Layout>
     )
   }
 }

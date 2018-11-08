@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'react-emotion'
 import theme from 'components/styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
-import User from 'components/user'
+import { UserContext } from 'components/contexts/user'
 
 import '@reach/menu-button/styles.css'
 
@@ -75,25 +75,25 @@ class UserWidget extends React.Component {
   render() {
     return (
       <>
-        <User>
-          {user => (
+        <UserContext.Consumer>
+          {context => (
             <>
-              {user === false ? (
+              {context.user === false ? (
                 <></>
               ) : (
                 <>
-                  {user === 'anonymous' ? (
+                  {context.user === 'anonymous' ? (
                     <UserLoginLink href={this.props.loginLink}>
                       Log in
                     </UserLoginLink>
                   ) : (
-                    <UserDropdown user={user} />
+                    <UserDropdown user={context.user} />
                   )}
                 </>
               )}
             </>
           )}
-        </User>
+        </UserContext.Consumer>
       </>
     )
   }

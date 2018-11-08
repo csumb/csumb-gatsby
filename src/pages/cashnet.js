@@ -1,19 +1,19 @@
 import React from 'react'
-import User from 'components/user'
+import { UserContext } from 'components/contexts/user'
 
 const Cashnet = props => {
   return (
-    <User>
-      {user => (
+    <UserContext.Consumer>
+      {context => (
         <>
-          {user &&
-            user !== 'anonymous' && (
+          {context.user &&
+            context.user !== 'anonymous' && (
               <>
                 <h1>One sec, we're redirecting you to CashNet...</h1>
                 <div style={{ display: 'none' }}>
                   {
                     (window.location = `https://api.csumb.edu/cashnet/${
-                      user.profile.employeeNumber
+                      context.user.profile.employeeNumber
                     }/RMBRD`)
                   }
                 </div>
@@ -21,7 +21,7 @@ const Cashnet = props => {
             )}
         </>
       )}
-    </User>
+    </UserContext.Consumer>
   )
 }
 
