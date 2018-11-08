@@ -6,6 +6,8 @@ import { MobileNavigationLink } from './navigation-link'
 import VisuallyHidden from '@reach/visually-hidden'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Search from './search'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const HeaderMobileWrapper = styled('div')`
   padding: 0.5 0.25rem;
@@ -84,7 +86,7 @@ class HeaderMobile extends React.Component {
                 }}
               >
                 <VisuallyHidden>Search</VisuallyHidden>
-                🔍
+                <FontAwesomeIcon icon={faSearch} />
               </HeaderMobileSearchToggle>
               <HeaderMobileToggle
                 onClick={this.mobileToggle.bind(this)}

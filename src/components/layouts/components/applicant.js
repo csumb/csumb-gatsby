@@ -25,7 +25,7 @@ class Applicant extends React.Component {
                     <></>
                   ) : (
                     <ApplicantLink to="/account/applicant-status">
-                      Your application status
+                      Your application
                     </ApplicantLink>
                   )}
                 </>
