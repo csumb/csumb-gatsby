@@ -5,7 +5,7 @@ import User from 'components/user'
 import Link from 'gatsby-link'
 
 const ApplicantLink = styled(Link)`
-  color: ${theme.colors.primary.darkest};
+  color: ${theme.colors.primary.darkest} !important;
   margin-right: 1rem;
   text-decoration: none;
 `

@@ -51,7 +51,13 @@ class AccountApplicantStatusPage extends React.Component {
 }
 
 const Application = props => (
-  <AccountGroup legend={props.term.gsx$name}>{props.children}</AccountGroup>
+  <AccountGroup
+    legend={`${props.term.gsx$name} - ${props.application.academic_plan_descr}`}
+  >
+    {props.status.map(status => (
+      <div dangerouslySetInnerHTML={{ __html: status.message }} />
+    ))}
+  </AccountGroup>
 )
 
 class ApplicantStatus extends React.Component {
@@ -65,9 +71,9 @@ class ApplicantStatus extends React.Component {
       .then(response => {
         return response.json()
       })
-      .then(application => {
+      .then(applications => {
         this.setState({
-          application: application,
+          application: this.processApplications(applications),
         })
       })
       .catch(error => {
@@ -76,18 +82,35 @@ class ApplicantStatus extends React.Component {
         })
       })
   }
+
+  processApplications(apps) {
+    let applications = []
+
+    Object.values(apps._data.applications).forEach(application => {
+      const term = apps.terms[application.application.admit_term]
+      let app = {
+        term: term,
+        application: application.application,
+        status:
+          apps.applicant_status[application.application.application_number],
+        transcripts:
+          apps.transcript_checklist[application.application.application_number],
+      }
+
+      applications.push(app)
+    })
+    return applications
+  }
+
   render() {
-    console.log(this.state.application)
     return (
       <>
         {!this.state.application ? (
           <p>Loading applications</p>
         ) : (
           <>
-            {Object.values(this.state.application.terms).map(term => (
-              <Application key={term.gsx$code} term={term}>
-                <p>Thing</p>
-              </Application>
+            {this.state.application.map(application => (
+              <Application {...application} />
             ))}
           </>
         )}
