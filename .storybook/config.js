@@ -1,6 +1,5 @@
 import { configure, addDecorator } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import { withNotes } from '@storybook/addon-notes'
 
 // Gatsby's Link overrides:
 // Gatsby defines a global called ___loader to prevent its method calls from creating console errors we override it here
@@ -22,5 +21,3 @@ function loadStories() {
 }
 
 configure(loadStories, module)
-
-addDecorator(withNotes)
