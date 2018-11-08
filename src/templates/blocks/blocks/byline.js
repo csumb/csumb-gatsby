@@ -10,7 +10,7 @@ class BlockByline extends React.Component {
       <ContainerContext.Consumer>
         {container => (
           <ContainerElement container={container}>
-            <Byline>{this.props.blocks.data.dateFormat}</Byline>
+            <Byline>{this.props.block.data.dateFormat}</Byline>
           </ContainerElement>
         )}
       </ContainerContext.Consumer>
