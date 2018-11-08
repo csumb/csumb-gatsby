@@ -47,14 +47,30 @@ class AccountApplicantStatusPage extends React.Component {
 }
 
 const Application = props => (
-  <AccountGroup
-    legend={`${props.term.gsx$name} - ${props.application.academic_plan_descr}`}
-  >
-    {props.status.map(status => (
-      <div dangerouslySetInnerHTML={{ __html: status.message }} />
-    ))}
-  </AccountGroup>
+  <>
+    <AccountGroup
+      legend={`${props.term.gsx$name} - ${
+        props.application.academic_plan_descr
+      }`}
+    >
+      {props.status.map((status, key) => (
+        <div key={key} dangerouslySetInnerHTML={{ __html: status.message }} />
+      ))}
+    </AccountGroup>
+    <Flex flexWrap="wrap">
+      <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+        <ApplicationChecklist checklist={props.checklist} />
+      </Box>
+      <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+        <ApplicationTranscripts checklist={props.transcripts} />
+      </Box>
+    </Flex>
+  </>
 )
+
+const ApplicationChecklist = props => <AccountGroup legend="Checklist" />
+
+const ApplicationTranscripts = props => <AccountGroup legend="Transcripts" />
 
 const ApplicationMultipleMessage = props => (
   <>
@@ -125,6 +141,7 @@ class ApplicantStatus extends React.Component {
       let app = {
         term: term,
         application: application.application,
+        checklist: [],
         status:
           apps.applicant_status[application.application.application_number],
         transcripts:
