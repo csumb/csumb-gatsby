@@ -1,3 +1,5 @@
+const path = require(`path`)
+
 module.exports = (baseConfig, env, defaultConfig) => {
   // Transpile Gatsby module because Gastby includes un-transpiled ES6 code.
   defaultConfig.module.rules[0].exclude = [/node_modules\/(?!(gatsby)\/)/]
@@ -14,6 +16,10 @@ module.exports = (baseConfig, env, defaultConfig) => {
   defaultConfig.module.rules[0].use[0].options.plugins = [
     require.resolve('@babel/plugin-proposal-class-properties'),
   ]
+
+  defaultConfig.resolve = {
+    modules: [path.resolve('./src'), path.resolve('./node_modules')],
+  }
 
   return defaultConfig
 }

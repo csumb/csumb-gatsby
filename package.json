@@ -69,6 +69,7 @@
   "devDependencies": {
     "@storybook/addon-actions": "^4.0.4",
     "@storybook/addon-links": "^4.0.4",
+    "@storybook/addon-notes": "^4.0.4",
     "@storybook/react": "^4.0.4",
     "netlify-lambda": "^1.0.2",
     "prettier": "^1.14.3"
