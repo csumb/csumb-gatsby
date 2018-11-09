@@ -60,6 +60,7 @@ const CourseList = props => {
 
   return (
     <section>
+      <CourseListItemHeader />
       {props.courses.map((course, key) => (
         <CourseListItem key={key} course={course} term={props.term} />
       ))}
@@ -84,18 +85,50 @@ const MeetingList = styled('ul')`
 `
 
 const MeetingItem = props => {
+  const weekDays = [
+    {
+      short: 'MON',
+      day: 'Monday',
+    },
+    {
+      short: 'TUES',
+      day: 'Tuesday',
+    },
+    {
+      short: 'WED',
+      day: 'Wednesday',
+    },
+    {
+      short: 'THURS',
+      day: 'Thursday',
+    },
+    {
+      short: 'FRI',
+      day: 'Friday',
+    },
+    {
+      short: 'SAT',
+      day: 'Saturday',
+    },
+    {
+      short: 'SUN',
+      day: 'Sunday',
+    },
+  ]
+
+  let meetingDays = []
+  weekDays.forEach(day => {
+    if (props[day.short] === 'Y') {
+      meetingDays.push(day.day)
+    }
+  })
+
   const start = moment(props.MEETING_TIME_START)
   const end = moment(props.MEETING_TIME_END)
   return (
     <li>
-      {props.MON === 'Y' && <>Monday </>}
-      {props.TUES === 'Y' && <>Tuesday </>}
-      {props.WED === 'Y' && <>Wednesday </>}
-      {props.THURS === 'Y' && <>Thursday </>}
-      {props.FRI === 'Y' && <>Friday </>}
-      {props.SAT === 'Y' && <>Saturday </>}
-      {props.SUN === 'Y' && <>Sunday </>}
-      {start.format('h:mma')} to {end.format('h:mma')}
+      {meetingDays.length && meetingDays.join(', ')} {start.format('h:mma')} to{' '}
+      {end.format('h:mma')}
     </li>
   )
 }
@@ -109,29 +142,31 @@ const CourseListItem = props => {
   return (
     <CourseListItemRow>
       <Flex flexWrap="wrap">
-        <Box width={[1, 1, 1 / 10, 1 / 10]} px={2}>
+        <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
           <Link to={link}>
-            {props.course.SUBJECT} {props.course.CATALOG_NBR} -{' '}
-            {parseInt(props.course.SECTION)}
+            {props.course.SUBJECT} {props.course.CATALOG_NBR}
           </Link>
         </Box>
-        <Box width={[1, 1, 3 / 10, 3 / 10]} px={2}>
+        <Box width={[1, 1, 3 / 12, 3 / 12]} px={2}>
           <Link to={link}>{props.course.TITLE}</Link>
         </Box>
-        <Box width={[1, 1, 1 / 10, 1 / 10]} px={2}>
+        <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+          {parseInt(props.course.SECTION)}
+        </Box>
+        <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
           {props.course.CRN}
         </Box>
-        <Box width={[1, 1, 1 / 10, 1 / 10]} px={2}>
+        <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
           {props.course.UNITS}
         </Box>
-        <Box width={[1, 1, 1 / 10, 1 / 10]} px={2}>
+        <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
           {props.course.ENRL_TOT}/{props.course.ENRL_MAX}
         </Box>
-        <Box width={[1, 1, 3 / 10, 3 / 10]} px={2}>
+        <Box width={[1, 1, 3 / 12, 4 / 12]} px={2}>
           {props.course._meetingPattern && (
             <MeetingList>
-              {props.course._meetingPattern.map(meeting => (
-                <MeetingItem {...meeting} />
+              {props.course._meetingPattern.map((meeting, key) => (
+                <MeetingItem key={key} {...meeting} />
               ))}
             </MeetingList>
           )}
@@ -140,5 +175,42 @@ const CourseListItem = props => {
     </CourseListItemRow>
   )
 }
+
+const CourseListItemHeaderFlex = styled(Flex)`
+  background: ${theme.colors.primary.darkest};
+  color: ${theme.colors.white};
+  margin-bottom: 0.5rem;
+`
+
+const CourseListItemHeaderBox = styled(Box)`
+  padding: 0.5rem;
+`
+
+const CourseListItemHeader = () => (
+  <CourseListItemHeaderFlex flexWrap="wrap">
+    <CourseListItemHeaderBox width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+      Course
+    </CourseListItemHeaderBox>
+    <CourseListItemHeaderBox width={[1, 1, 3 / 12, 3 / 12]} px={2}>
+      Title
+    </CourseListItemHeaderBox>
+    <CourseListItemHeaderBox width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+      Section
+    </CourseListItemHeaderBox>
+    <CourseListItemHeaderBox width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+      Number
+    </CourseListItemHeaderBox>
+
+    <CourseListItemHeaderBox width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+      Units
+    </CourseListItemHeaderBox>
+    <CourseListItemHeaderBox width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+      Seats
+    </CourseListItemHeaderBox>
+    <CourseListItemHeaderBox width={[1, 1, 3 / 12, 3 / 12]} px={2}>
+      Day &amp; time
+    </CourseListItemHeaderBox>
+  </CourseListItemHeaderFlex>
+)
 
 export { ScheduleList, ScheduleListItem, GEList, GEListItem, CourseList }

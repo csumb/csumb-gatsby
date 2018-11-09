@@ -2,6 +2,7 @@ import React from 'react'
 //import Link from 'gatsby-link'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
+import SiteHeader from 'components/layouts/components/site-header'
 
 class CoursePage extends React.Component {
   render() {
@@ -9,7 +10,8 @@ class CoursePage extends React.Component {
     const course = this.props.pageContext.course
     return (
       <Layout>
-        <Container>
+        <SiteHeader path="/schedule">Class Schedule</SiteHeader>
+        <Container topPadding>
           <h1>{term.DESCR} Schedule</h1>
           <h2>
             {course.SUBJECT} {course.CATALOG_NBR}: {course.TITLE}

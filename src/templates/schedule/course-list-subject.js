@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import { CourseList } from 'components/schedule'
+import SiteHeader from 'components/layouts/components/site-header'
 
 class SubjectCourseList extends React.Component {
   render() {
@@ -9,7 +10,8 @@ class SubjectCourseList extends React.Component {
     const term = this.props.pageContext.term
     return (
       <Layout>
-        <Container>
+        <SiteHeader path="/schedule">Class Schedule</SiteHeader>
+        <Container topPadding>
           <h1>
             {term.DESCR} Schedule Subject {subject.name}
           </h1>

@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
+import SiteHeader from 'components/layouts/components/site-header'
 import {
   ScheduleList,
   ScheduleListItem,
@@ -14,7 +15,8 @@ class ScheduleFront extends React.Component {
     const term = this.props.pageContext.term
     return (
       <Layout>
-        <Container>
+        <SiteHeader path="/schedule">Class Schedule</SiteHeader>
+        <Container topPadding>
           <h1>{term.DESCR} Schedule</h1>
           <Flex flexWrap="wrap">
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
