@@ -8,11 +8,11 @@ class BlockHeading extends React.Component {
     let HeadingTag = styled(`h${this.props.level}`)`
       ${props => props.container};
     `
-    const { url, text } = this.props
+    const { url, text, uuid } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (
-          <HeadingTag container={container}>
+          <HeadingTag id={`heading-${uuid}`} container={container}>
             {url ? <LinkInspect to={url}>{text}</LinkInspect> : <>{text}</>}
           </HeadingTag>
         )}

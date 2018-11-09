@@ -149,6 +149,7 @@ storiesOf('Blocks/Headings', module)
         {...{
           level: 2,
           text: shortSampleText,
+          uuid: Math.random(),
         }}
       />
       <BlockHeading
@@ -156,6 +157,7 @@ storiesOf('Blocks/Headings', module)
           level: 2,
           text: shortSampleText,
           url: '#link',
+          uuid: Math.random(),
         }}
       />
     </ContainerContext.Provider>
@@ -166,6 +168,7 @@ storiesOf('Blocks/Headings', module)
         {...{
           level: 3,
           text: shortSampleText,
+          uuid: Math.random(),
         }}
       />
       <BlockHeading
@@ -173,6 +176,7 @@ storiesOf('Blocks/Headings', module)
           level: 3,
           text: shortSampleText,
           url: '#link',
+          uuid: Math.random(),
         }}
       />
     </ContainerContext.Provider>
@@ -183,6 +187,7 @@ storiesOf('Blocks/Headings', module)
         {...{
           level: 4,
           text: shortSampleText,
+          uuid: Math.random(),
         }}
       />
       <BlockHeading
@@ -190,6 +195,7 @@ storiesOf('Blocks/Headings', module)
           level: 4,
           text: shortSampleText,
           url: '#link',
+          uuid: Math.random(),
         }}
       />
     </ContainerContext.Provider>
