@@ -28,7 +28,8 @@ const Legal = styled('div')`
   background-color: ${theme.colors.primary.darkest};
   padding: 0.5rem 0;
   text-align: right;
-  a {
+  a,
+  a:visited {
     color: ${theme.colors.white};
     font-size: 0.8rem;
     margin-right: 1rem;
