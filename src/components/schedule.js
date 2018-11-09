@@ -74,10 +74,6 @@ const CourseListItemRow = styled('div')`
   border-bottom: 1px solid ${theme.colors.muted.bright};
 `
 
-const processTime = time => {
-  return time.replace('1900-01-01 ', '').replace(':00.0', '')
-}
-
 const MeetingList = styled('ul')`
   list-style-type: none;
   margin: 0;
@@ -129,6 +125,15 @@ const MeetingItem = props => {
     <li>
       {meetingDays.length && meetingDays.join(', ')} {start.format('h:mma')} to{' '}
       {end.format('h:mma')}
+      {props.showLocation && (
+        <>
+          <br />
+          <Link to={`building/${parseInt(props.MEETING_BLDG)}`}>
+            {parseInt(props.MEETING_BLDG)}
+          </Link>
+          - Room {props.MEETING_RM}
+        </>
+      )}
     </li>
   )
 }
@@ -213,4 +218,29 @@ const CourseListItemHeader = () => (
   </CourseListItemHeaderFlex>
 )
 
-export { ScheduleList, ScheduleListItem, GEList, GEListItem, CourseList }
+const CourseSectionElement = styled('div')`
+  border: 1px solid ${theme.colors.gray.light};
+  padding: 1rem;
+  margin-bottom: 1rem;
+`
+
+const CourseSectionLegend = styled('h3')`
+  font-size: 1rem;
+`
+
+const CourseSection = ({ legend, children }) => (
+  <CourseSectionElement>
+    <CourseSectionLegend>{legend}</CourseSectionLegend>
+    {children}
+  </CourseSectionElement>
+)
+
+export {
+  ScheduleList,
+  ScheduleListItem,
+  GEList,
+  GEListItem,
+  CourseList,
+  CourseSection,
+  MeetingItem,
+}

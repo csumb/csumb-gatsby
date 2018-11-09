@@ -70,6 +70,7 @@
   "devDependencies": {
     "@storybook/addon-a11y": "^4.0.4",
     "@storybook/addon-actions": "^4.0.4",
+    "@storybook/addon-info": "^4.0.4",
     "@storybook/addon-links": "^4.0.4",
     "@storybook/addon-notes": "^4.0.4",
     "@storybook/react": "^4.0.4",

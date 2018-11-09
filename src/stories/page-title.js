@@ -5,6 +5,8 @@ import typography from 'utils/typography'
 
 typography.injectStyles()
 
-storiesOf('Page title', module).add('Page title', () => (
-  <PageTitle>The Pequod</PageTitle>
-))
+storiesOf('Page title', module)
+  .add('Plain', () => <PageTitle>The Pequod</PageTitle>)
+  .add('With subtitle', () => (
+    <PageTitle sub="A true leviathan!">The Whale</PageTitle>
+  ))

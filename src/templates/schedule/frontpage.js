@@ -3,6 +3,7 @@ import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import SiteHeader from 'components/layouts/components/site-header'
+import PageTitle from 'components/page-title'
 import {
   ScheduleList,
   ScheduleListItem,
@@ -17,7 +18,7 @@ class ScheduleFront extends React.Component {
       <Layout>
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
         <Container topPadding>
-          <h1>{term.DESCR} Schedule</h1>
+          <PageTitle>{term.DESCR} Schedule</PageTitle>
           <Flex flexWrap="wrap">
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h3>Subjects</h3>

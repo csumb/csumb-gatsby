@@ -19,70 +19,89 @@ import {
   ContainerContext,
   containerStyle,
 } from 'templates/blocks/blocks/container-context'
+import { sampleText, shortSampleText } from './sample-text'
 
 typography.injectStyles()
 
-const sampleText =
-  '"There go flukes! 🐳" was the cry, an announcement immediately followed by Stubb’s producing his match and igniting his pipe, for now a respite was granted. After the full interval of his sounding had elapsed, the whale rose again, and being now in advance of the smoker’s boat, and much nearer to it than to any of the others, Stubb counted upon the honor of the capture.'
+storiesOf('Blocks', module)
 
-const shortSampleText = "The Pequod's three boats now began"
+storiesOf('Blocks/Address').add(
+  'Address',
+  () => (
+    <ContainerContext.Provider value={containerStyle.wide}>
+      <BlockAddress
+        block={{
+          data: {
+            address1: '100 Campus Center',
+            address2: 'Building 43',
+            city: 'Seaside',
+            state: 'CA',
+            zip: '93955',
+          },
+        }}
+      />
+    </ContainerContext.Provider>
+  ),
+  {
+    info:
+      'Uses a native `<address>` element to render a mailing address. Can also be configured with phone, fax, email for a general contact form',
+  }
+)
+storiesOf('Blocks/Button', module).add(
+  'Button',
+  () => (
+    <ContainerContext.Provider value={containerStyle.wide}>
+      <BlockButton
+        block={{
+          data: {
+            text: 'This is a button',
+            url: '#url',
+          },
+        }}
+      />
+    </ContainerContext.Provider>
+  ),
+  {
+    info: 'Renders a button using the `ButtonLink` component.',
+  }
+)
+storiesOf('Blocks/Byline', module).add(
+  'Byline',
+  () => (
+    <ContainerContext.Provider value={containerStyle.wide}>
+      <BlockByline
+        block={{
+          data: {
+            dateFormat: 'November 1, 2018',
+          },
+        }}
+      />
+    </ContainerContext.Provider>
+  ),
+  {
+    info: 'Used for tagging news articles with a consistent byline.',
+  }
+)
 
-storiesOf('Blocks', module).add('About', () => (
-  <p>Blocks are content imported from the campus website.</p>
-))
-
-storiesOf('Blocks/Address').add('Address', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
-    <BlockAddress
-      block={{
-        data: {
-          address1: '100 Campus Center',
-          address2: 'Building 43',
-          city: 'Seaside',
-          state: 'CA',
-          zip: '93955',
-        },
-      }}
-    />
-  </ContainerContext.Provider>
-))
-storiesOf('Blocks/Button', module).add('Button', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
-    <BlockButton
-      block={{
-        data: {
-          text: 'This is a button',
-          url: '#url',
-        },
-      }}
-    />
-  </ContainerContext.Provider>
-))
-storiesOf('Blocks/Byline', module).add('Byline', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
-    <BlockByline
-      block={{
-        data: {
-          dateFormat: 'November 1, 2018',
-        },
-      }}
-    />
-  </ContainerContext.Provider>
-))
-
-storiesOf('Blocks/Calendar', module).add('Calendar', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
-    <BlockCalendar
-      block={{
-        data: {
-          format: 'week',
-          calendar:
-            'csumb.edu_l26qls3tik5cgfq262kc5tu6fs@group.calendar.google.com',
-        },
-      }}
-    />
-  </ContainerContext.Provider>
-))
+storiesOf('Blocks/Calendar', module).add(
+  'Calendar',
+  () => (
+    <ContainerContext.Provider value={containerStyle.wide}>
+      <BlockCalendar
+        block={{
+          data: {
+            format: 'week',
+            calendar:
+              'csumb.edu_l26qls3tik5cgfq262kc5tu6fs@group.calendar.google.com',
+          },
+        }}
+      />
+    </ContainerContext.Provider>
+  ),
+  {
+    info: 'Embeds a google calendar in month, week, or agenda format.',
+  }
+)
 
 storiesOf('Blocks/Callout', module).add('Callout', () => (
   <ContainerContext.Provider value={containerStyle.wide}>

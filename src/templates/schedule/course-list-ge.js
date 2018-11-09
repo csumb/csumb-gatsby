@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from 'components/layouts/default'
 import { CourseList } from 'components/schedule'
 import Container from 'components/container'
+import PageTitle from 'components/page-title'
 import SiteHeader from 'components/layouts/components/site-header'
 class GECourseList extends React.Component {
   render() {
@@ -11,9 +12,7 @@ class GECourseList extends React.Component {
       <Layout>
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
         <Container topPadding>
-          <h1>
-            {term.DESCR} General Education {ge.name}
-          </h1>
+          <PageTitle sub={ge.name}>{term.DESCR}</PageTitle>
           <CourseList {...this.props.pageContext} />
         </Container>
       </Layout>

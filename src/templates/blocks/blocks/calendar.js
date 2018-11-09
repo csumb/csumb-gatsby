@@ -1,6 +1,7 @@
 import React from 'react'
 import { ContainerContext, ContainerElement } from './container-context'
 import styled from 'react-emotion'
+import PropTypes from 'prop-types'
 
 const Iframe = styled('iframe')`
   width: 100%;
@@ -24,6 +25,15 @@ class BlockCalendar extends React.Component {
       </ContainerContext.Consumer>
     )
   }
+}
+
+BlockCalendar.propTypes = {
+  block: PropTypes.shape({
+    data: PropTypes.shape({
+      format: PropTypes.string.isRequired,
+      calendar: PropTypes.string.isRequired,
+    }),
+  }),
 }
 
 export default BlockCalendar
