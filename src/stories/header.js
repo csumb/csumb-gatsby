@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 import Brand from 'components/layouts/components/header/brand'
 import Applicant from 'components/layouts/components/header/applicant'
 import Header from 'components/layouts/components/header'
+import SiteHeader from 'components/layouts/components/site-header'
 import {
   NavigationLink,
   NavigationLinkApply,
@@ -43,4 +44,7 @@ storiesOf('Header', module)
   ))
   .add('Apply Navigation Link', () => (
     <NavigationLinkApply to="/apply">Apply</NavigationLinkApply>
+  ))
+  .add('Site header', () => (
+    <SiteHeader path="/it">Information Technology</SiteHeader>
   ))
