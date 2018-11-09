@@ -4,12 +4,13 @@ import { ContainerContext, ContainerElement } from './container-context'
 
 class BlockButton extends React.Component {
   render() {
+    const { url, text } = this.props.block.data
     return (
       <ContainerContext.Consumer>
         {container => (
           <ContainerElement container={container}>
-            <ButtonLink href={this.props.block.data.url} buttonType="default">
-              {this.props.block.data.text}
+            <ButtonLink to={url} buttonType="default">
+              {text}
             </ButtonLink>
           </ContainerElement>
         )}

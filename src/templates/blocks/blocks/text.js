@@ -13,14 +13,15 @@ const Paragraph = styled('p')`
 `
 class BlockText extends React.Component {
   render() {
+    const { lead, text } = this.props.block.data
     return (
       <ContainerContext.Consumer>
         {container => (
           <Paragraph
-            lead={this.props.block.data.lead}
+            lead={lead}
             container={container}
             dangerouslySetInnerHTML={{
-              __html: filterCourses(this.props.block.data.text),
+              __html: filterCourses(text),
             }}
           />
         )}

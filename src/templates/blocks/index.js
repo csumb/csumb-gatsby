@@ -13,7 +13,7 @@ import BlockDefinitionList from './blocks/definition-list'
 import BlockColumns from './blocks/columns'
 import BlockVideo from './blocks/video'
 import BlockByline from './blocks/byline'
-import BlockHeroImage from './blocks/heroimage'
+import BlockHeroImage from './blocks/hero-image'
 import { ContainerContext, containerStyle } from './blocks/container-context'
 
 class Block extends React.Component {

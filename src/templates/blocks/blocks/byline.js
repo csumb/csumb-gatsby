@@ -1,8 +1,13 @@
 import React from 'react'
 import styled from 'react-emotion'
+import theme from 'components/styles/theme'
 import { ContainerContext, ContainerElement } from './container-context'
 
-const Byline = styled('p')``
+const Byline = styled('div')`
+  background: ${theme.colors.muted.light};
+  padding: 0.4rem;
+  display: inline-block;
+`
 
 class BlockByline extends React.Component {
   render() {

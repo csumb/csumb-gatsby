@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'react-emotion'
+import theme from 'components/styles/theme'
 import { ContainerContext, ContainerElement } from './container-context'
 import VisuallyHidden from '@reach/visually-hidden'
+import Link from 'gatsby-link'
 
 const Callout = styled('div')`
   background: ${theme.colors.primary.darkest};
@@ -35,4 +37,4 @@ class BlockCallout extends React.Component {
   }
 }
 
-export default BlockCalendar
+export default BlockCallout

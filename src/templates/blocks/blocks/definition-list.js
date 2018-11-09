@@ -10,11 +10,12 @@ const DefinitionList = styled('dl')`
 
 class BlockDefinitionList extends React.Component {
   render() {
+    const { list } = this.props.block.data
     return (
       <ContainerContext.Consumer>
         {container => (
           <DefinitionList container={container}>
-            {this.props.block.data.list.map(item => (
+            {list.map(item => (
               <>
                 <dt>{item.term}</dt>
                 <dd>{item.definition}</dd>

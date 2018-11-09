@@ -15,7 +15,8 @@ const HeroImage = styled('div')`
 `
 
 const HeroImageTextWrapper = styled('div')`
-  margin-top: 20px;
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
   position: relative;
 `
 
@@ -42,10 +43,11 @@ const HeroImageText = styled('p')`
 
 class BlockHeroImage extends React.Component {
   render() {
+    const { image, buttonUrl, headline } = this.props.block.data
     return (
       <HeroImage
         style={{
-          backgroundImage: `url('${this.props.block.data.image.url}')`,
+          backgroundImage: `url('${image.url}')`,
         }}
       >
         <ContainerContext.Consumer>
@@ -53,12 +55,10 @@ class BlockHeroImage extends React.Component {
             <div className={container}>
               <HeroImageTextWrapper>
                 <HeroImageText>
-                  {this.props.block.data.buttonUrl ? (
-                    <Link to={this.props.block.data.buttonUrl}>
-                      {this.props.block.data.headline}
-                    </Link>
+                  {buttonUrl ? (
+                    <Link to={buttonUrl}>{headline}</Link>
                   ) : (
-                    <>{this.props.block.data.headline}</>
+                    <>{headline}</>
                   )}
                 </HeroImageText>
               </HeroImageTextWrapper>

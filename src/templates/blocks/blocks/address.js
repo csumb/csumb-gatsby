@@ -14,11 +14,24 @@ class BlockAddress extends React.Component {
         {container => (
           <Address container={container}>
             <address>
-              {data.address1 ? data.address1 : null}
-              {data.address2 ? data.address2 : null}
-              <br />
-              {data.address3 ? data.address3 : null}
-              <br />
+              {data.address1 ? (
+                <>
+                  {data.address1}
+                  <br />
+                </>
+              ) : null}
+              {data.address2 ? (
+                <>
+                  {data.address2}
+                  <br />
+                </>
+              ) : null}
+              {data.address3 ? (
+                <>
+                  {data.address3}
+                  <br />
+                </>
+              ) : null}
               {data.city}, {data.state} &nbsp;
               {data.zip}
             </address>

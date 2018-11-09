@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
+import LinkInspect from 'components/link-inspect'
 import { ContainerContext } from './container-context'
 
 class BlockHeading extends React.Component {
@@ -7,11 +8,12 @@ class BlockHeading extends React.Component {
     let HeadingTag = styled(`h${this.props.block.data.level}`)`
       ${props => props.container};
     `
+    const { url, text } = this.props.block.data
     return (
       <ContainerContext.Consumer>
         {container => (
           <HeadingTag container={container}>
-            {this.props.block.data.text}
+            {url ? <LinkInspect to={url}>{text}</LinkInspect> : <>{text}</>}
           </HeadingTag>
         )}
       </ContainerContext.Consumer>

@@ -10,14 +10,23 @@ class BlockList extends React.Component {
   }
 
   render() {
-    const ListTag = styled(this.props.block.data.type)`
-      ${props => props.container};
-    `
+    const { type, list } = this.props.block.data
+
+    const ListTag =
+      type == 'list-unstyled'
+        ? styled('ul')`
+            ${props => props.container};
+            list-style-type: none;
+            margin-left: 0;
+          `
+        : styled(type)`
+            ${props => props.container};
+          `
     return (
       <ContainerContext.Consumer>
         {container => (
           <ListTag container={container}>
-            {this.props.block.data.list.map((item, key) => (
+            {list.map((item, key) => (
               <li
                 dangerouslySetInnerHTML={this.createMarkup(item.text)}
                 key={key}

@@ -12,19 +12,14 @@ const ImageContainer = styled('div')`
 
 class BlockImage extends React.Component {
   render() {
+    const { image, description, pullRight } = this.props.block.data
     return (
       <ContainerContext.Consumer>
         {container => (
-          <ImageContainer
-            container={container}
-            pullRight={this.props.block.data.pullRight}
-          >
+          <ImageContainer container={container} pullRight={pullRight}>
             <img
-              src={this.props.block.data.image.url.replace(
-                'http://',
-                'https://'
-              )}
-              alt={this.props.block.data.description}
+              src={image.url.replace('http://', 'https://')}
+              alt={description}
             />
           </ImageContainer>
         )}

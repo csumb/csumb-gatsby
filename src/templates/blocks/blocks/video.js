@@ -5,14 +5,16 @@ import Container from 'components/container'
 const VideoIframe = styled('iframe')`
   width: 580px;
   height: 320px;
+  border: 0;
 `
 
 class BlockVideo extends React.Component {
   render() {
+    const { provider } = this.props.block.data
     return (
       <Container>
         <VideoIframe
-          src="//www.youtube.com/embed/{this.props.block.data.id}"
+          src={`https://www.youtube.com/embed/${provider.id}`}
           allowFullScreen
         />
       </Container>
