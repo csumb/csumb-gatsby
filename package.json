@@ -62,10 +62,11 @@
   "scripts": {
     "setup": "gulp",
     "build": "gatsby build",
-    "netlify": "gulp; gatsby build",
+    "netlify": "gulp; gatsby build, npm run storybookbuild",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybookbuild": "build-storybook -c .storybook -o ./public/_storybook"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^4.0.4",
