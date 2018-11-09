@@ -5,10 +5,10 @@ import { ContainerContext } from './container-context'
 
 class BlockHeading extends React.Component {
   render() {
-    let HeadingTag = styled(`h${this.props.block.data.level}`)`
+    let HeadingTag = styled(`h${this.props.level}`)`
       ${props => props.container};
     `
-    const { url, text } = this.props.block.data
+    const { url, text } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (

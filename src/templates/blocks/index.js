@@ -41,7 +41,7 @@ class Block extends React.Component {
     let BlockType = this.blockComponents[this.props.type]
     return (
       <ContainerContext.Provider value={containerStyle.wide}>
-        <BlockType block={this.props.block} />
+        <BlockType {...this.props.block.data} uuid={this.props.block.uuid} />
       </ContainerContext.Provider>
     )
   }

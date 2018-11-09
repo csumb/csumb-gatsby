@@ -12,7 +12,7 @@ const ImageContainer = styled('div')`
 
 class BlockImage extends React.Component {
   render() {
-    const { image, description, pullRight } = this.props.block.data
+    const { image, description, pullRight } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (

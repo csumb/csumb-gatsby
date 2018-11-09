@@ -17,15 +17,16 @@ const CalloutHeader = styled('h3')`
 
 class BlockCallout extends React.Component {
   render() {
+    const { title, text, url } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (
           <ContainerElement container={container}>
             <Callout>
-              <CalloutHeader>{this.props.block.data.title}</CalloutHeader>
-              <p>{this.props.block.data.text}</p>
-              {this.props.block.data.url && (
-                <Link to={this.props.block.data.url}>
+              <CalloutHeader>{title}</CalloutHeader>
+              <p>{text}</p>
+              {url && (
+                <Link to={url}>
                   Read more <VisuallyHidden>about this message</VisuallyHidden>
                 </Link>
               )}

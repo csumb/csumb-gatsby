@@ -8,32 +8,32 @@ const Address = styled('div')`
 `
 class BlockAddress extends React.Component {
   render() {
-    const data = this.props.block.data
+    const { address1, address2, address3, city, state, zip } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (
           <Address container={container}>
             <address>
-              {data.address1 ? (
+              {address1 ? (
                 <>
-                  {data.address1}
+                  {address1}
                   <br />
                 </>
               ) : null}
-              {data.address2 ? (
+              {address2 ? (
                 <>
-                  {data.address2}
+                  {address2}
                   <br />
                 </>
               ) : null}
-              {data.address3 ? (
+              {address3 ? (
                 <>
-                  {data.address3}
+                  {address3}
                   <br />
                 </>
               ) : null}
-              {data.city}, {data.state} &nbsp;
-              {data.zip}
+              {city}, {state} &nbsp;
+              {zip}
             </address>
           </Address>
         )}

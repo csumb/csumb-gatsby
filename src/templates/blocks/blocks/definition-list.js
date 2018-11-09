@@ -10,7 +10,7 @@ const DefinitionList = styled('dl')`
 
 class BlockDefinitionList extends React.Component {
   render() {
-    const { list } = this.props.block.data
+    const { list } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (

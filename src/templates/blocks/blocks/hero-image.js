@@ -43,7 +43,7 @@ const HeroImageText = styled('p')`
 
 class BlockHeroImage extends React.Component {
   render() {
-    const { image, buttonUrl, headline } = this.props.block.data
+    const { image, buttonUrl, headline } = this.props
     return (
       <HeroImage
         style={{

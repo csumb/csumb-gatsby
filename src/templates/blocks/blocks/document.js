@@ -16,7 +16,7 @@ const DocumentIcon = styled(FontAwesomeIcon)`
 
 class BlockDocument extends React.Component {
   render() {
-    const { url, name } = this.props.block.data
+    const { url, name } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (

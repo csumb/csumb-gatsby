@@ -4,7 +4,7 @@ import { ContainerContext, ContainerElement } from './container-context'
 
 class BlockButton extends React.Component {
   render() {
-    const { url, text } = this.props.block.data
+    const { url, text } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (

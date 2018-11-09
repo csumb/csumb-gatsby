@@ -16,7 +16,7 @@ const Blockquote = styled('blockquote')``
 
 class BlockQuote extends React.Component {
   render() {
-    const { quote, source, url } = this.props.block.data
+    const { quote, source, url } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (

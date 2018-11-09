@@ -10,7 +10,7 @@ const VideoIframe = styled('iframe')`
 
 class BlockVideo extends React.Component {
   render() {
-    const { provider } = this.props.block.data
+    const { provider } = this.props
     return (
       <Container>
         <VideoIframe

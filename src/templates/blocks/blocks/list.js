@@ -10,7 +10,7 @@ class BlockList extends React.Component {
   }
 
   render() {
-    const { type, list } = this.props.block.data
+    const { type, list } = this.props
 
     const ListTag =
       type == 'list-unstyled'

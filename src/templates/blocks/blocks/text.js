@@ -13,7 +13,7 @@ const Paragraph = styled('p')`
 `
 class BlockText extends React.Component {
   render() {
-    const { lead, text } = this.props.block.data
+    const { lead, text } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (

@@ -10,7 +10,7 @@ const Iframe = styled('iframe')`
 `
 class BlockCalendar extends React.Component {
   render() {
-    const { format, calendar } = this.props.block.data
+    const { format, calendar } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (
@@ -28,12 +28,8 @@ class BlockCalendar extends React.Component {
 }
 
 BlockCalendar.propTypes = {
-  block: PropTypes.shape({
-    data: PropTypes.shape({
-      format: PropTypes.string.isRequired,
-      calendar: PropTypes.string.isRequired,
-    }),
-  }),
+  format: PropTypes.string,
+  calendar: PropTypes.string.isRequired,
 }
 
 export default BlockCalendar
