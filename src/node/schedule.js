@@ -65,6 +65,29 @@ module.exports = (graphql, actions) => {
                   UNITS
                   DESCR
                   ATTRIBUTES
+                  ENRL_TOT
+                  ENRL_MAX
+                }
+              }
+            }
+            allMeetingPatCsv {
+              edges {
+                node {
+                  CRN
+                  STRM
+                  SESSION_CODE
+                  SECTION
+                  MON
+                  TUES
+                  WED
+                  THURS
+                  FRI
+                  SAT
+                  SUN
+                  MEETING_TIME_START
+                  MEETING_TIME_END
+                  MEETING_BLDG
+                  MEETING_RM
                 }
               }
             }
@@ -85,6 +108,33 @@ module.exports = (graphql, actions) => {
         }
         let allSubjects = {}
         let allTerms = {}
+        let allMeetingPatterns = {}
+
+        result.data.allMeetingPatCsv.edges.forEach(edge => {
+          if (typeof allMeetingPatterns[edge.node.STRM] === 'undefined') {
+            allMeetingPatterns[edge.node.STRM] = {}
+          }
+          if (
+            typeof allMeetingPatterns[edge.node.STRM][edge.node.CRN] ===
+            'undefined'
+          ) {
+            allMeetingPatterns[edge.node.STRM][edge.node.CRN] = []
+          }
+          allMeetingPatterns[edge.node.STRM][edge.node.CRN].push(edge.node)
+        })
+
+        let allCourses = result.data.allScheduleCsv.edges.map(edge => {
+          edge.node._meetingPattern = false
+          if (
+            typeof allMeetingPatterns[edge.node.STRM][edge.node.CRN] !==
+            'undefined'
+          ) {
+            edge.node._meetingPattern =
+              allMeetingPatterns[edge.node.STRM][edge.node.CRN]
+          }
+          return edge
+        })
+
         result.data.allSubjectsCsv.edges.forEach(edge => {
           allSubjects[edge.node.code] = edge.node
         })
@@ -97,7 +147,7 @@ module.exports = (graphql, actions) => {
             ge: {},
           }
           const term = edge.node
-          result.data.allScheduleCsv.edges.forEach(edge => {
+          allCourses.forEach(edge => {
             let attributes = processAttributes(edge.node.ATTRIBUTES)
             if (edge.node.STRM == term.TERM) {
               termSubjects[edge.node.SUBJECT] = allSubjects[edge.node.SUBJECT]
@@ -173,7 +223,7 @@ module.exports = (graphql, actions) => {
           })
         })
 
-        result.data.allScheduleCsv.edges.forEach(async edge => {
+        allCourses.forEach(async edge => {
           const term = allTerms[edge.node.STRM]
           createPage({
             path: `schedule/${term.DESCR.toLowerCase().replace(
