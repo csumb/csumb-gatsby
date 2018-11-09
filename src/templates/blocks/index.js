@@ -10,7 +10,6 @@ import BlockCalendar from './blocks/calendar'
 import BlockQuote from './blocks/quote'
 import BlockAddress from './blocks/address'
 import BlockDefinitionList from './blocks/definition-list'
-import BlockColumns from './blocks/columns'
 import BlockVideo from './blocks/video'
 import BlockByline from './blocks/byline'
 import BlockHeroImage from './blocks/hero-image'
@@ -30,7 +29,6 @@ class Block extends React.Component {
     image: BlockImage,
     quote: BlockQuote,
     address: BlockAddress,
-    columns: BlockColumns,
     video: BlockVideo,
   }
 
