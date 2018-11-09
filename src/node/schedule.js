@@ -62,6 +62,7 @@ module.exports = (graphql, actions) => {
                   SECTION
                   TITLE
                   CRN
+                  CONSENT
                   UNITS
                   DESCR
                   ATTRIBUTES
@@ -91,6 +92,14 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
+            allCsumbBuilding {
+              edges {
+                node {
+                  buildingName
+                  code
+                }
+              }
+            }
             allTermCsv(filter: { SESSION_CODE: { eq: "1" } }) {
               edges {
                 node {
@@ -109,6 +118,11 @@ module.exports = (graphql, actions) => {
         let allSubjects = {}
         let allTerms = {}
         let allMeetingPatterns = {}
+        let allBuildings = {}
+
+        result.data.allCsumbBuilding.edges.forEach(edge => {
+          allBuildings[edge.node.code] = edge.node
+        })
 
         result.data.allMeetingPatCsv.edges.forEach(edge => {
           if (typeof allMeetingPatterns[edge.node.STRM] === 'undefined') {
@@ -119,6 +133,11 @@ module.exports = (graphql, actions) => {
             'undefined'
           ) {
             allMeetingPatterns[edge.node.STRM][edge.node.CRN] = []
+          }
+          //Have to strip out leading zeros in the meeting pattern.
+          const buildingNumber = edge.node.MEETING_BLDG.replace(/^0*/, '')
+          if (typeof allBuildings[buildingNumber] !== 'undefined') {
+            edge.node._building = allBuildings[buildingNumber]
           }
           allMeetingPatterns[edge.node.STRM][edge.node.CRN].push(edge.node)
         })

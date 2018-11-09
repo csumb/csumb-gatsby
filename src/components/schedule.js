@@ -125,15 +125,16 @@ const MeetingItem = props => {
     <li>
       {meetingDays.length && meetingDays.join(', ')} {start.format('h:mma')} to{' '}
       {end.format('h:mma')}
-      {props.showLocation && (
-        <>
-          <br />
-          <Link to={`building/${parseInt(props.MEETING_BLDG)}`}>
-            {parseInt(props.MEETING_BLDG)}
-          </Link>
-          - Room {props.MEETING_RM}
-        </>
-      )}
+      {props.showLocation &&
+        props._building && (
+          <>
+            <br />
+            <Link to={`building/${props._building.code}`}>
+              {props._building.buildingName}
+            </Link>{' '}
+            - Room {props.MEETING_RM}
+          </>
+        )}
     </li>
   )
 }

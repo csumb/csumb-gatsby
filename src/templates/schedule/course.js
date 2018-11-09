@@ -25,6 +25,10 @@ const EnrollmentList = styled('dl')`
 const CourseTitle = styled('h2')`
   margin-top: 0;
 `
+
+const CourseNumber = styled('pre')`
+  font-size: 2rem;
+`
 class CoursePage extends React.Component {
   render() {
     const { term, course } = this.props.pageContext
@@ -62,6 +66,33 @@ class CoursePage extends React.Component {
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <p>{course.DESCR}</p>
+              <CourseSection legend="How to register">
+                {course.CONSENT === 'I' && (
+                  <p>
+                    To register, you need permission from the instructor.
+                    <Link to="/permission-codes">
+                      Learn more about permission codes.
+                    </Link>
+                  </p>
+                )}
+                {course.CONSENT === 'D' && (
+                  <p>
+                    To register, you need permission from the department.
+                    <Link to="/permission-codes">
+                      Learn more about permission codes.
+                    </Link>
+                  </p>
+                )}
+                <p>
+                  Use this number to{' '}
+                  <Link to="/registration-process">
+                    register for the course in CMS
+                  </Link>
+                  .
+                </p>
+
+                <CourseNumber>{course.CRN}</CourseNumber>
+              </CourseSection>
             </Box>
           </Flex>
         </Container>
