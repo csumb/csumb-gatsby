@@ -1,12 +1,12 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Brand from 'components/layouts/components/brand'
-import Applicant from 'components/layouts/components/applicant'
+import Brand from 'components/layouts/components/header/brand'
+import Applicant from 'components/layouts/components/header/applicant'
 import Header from 'components/layouts/components/header'
 import {
   NavigationLink,
   NavigationLinkApply,
-} from 'components/layouts/components/navigation-link'
+} from 'components/layouts/components/header/navigation-link'
 import typography from 'utils/typography'
 import { UserContext } from 'components/contexts/user'
 

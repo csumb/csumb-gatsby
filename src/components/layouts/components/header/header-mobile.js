@@ -1,6 +1,6 @@
 import React from 'react'
 import Brand from './brand'
-import theme from '../../styles/theme'
+import theme from 'components/styles/theme'
 import styled from 'react-emotion'
 import { MobileNavigationLink } from './navigation-link'
 import VisuallyHidden from '@reach/visually-hidden'

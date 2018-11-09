@@ -2,11 +2,11 @@ import React from 'react'
 import Link from 'gatsby-link'
 import VisuallyHidden from '@reach/visually-hidden'
 import { navigate } from '@reach/router'
-import Portal from '../../portal'
+import Portal from 'components/portal'
 import Rect from '@reach/rect'
-import { InputText } from '../../forms'
+import { InputText } from '../../../forms'
 import styled from 'react-emotion'
-import theme from '../../styles/theme'
+import theme from 'components/styles/theme'
 
 /** A11Y
  *
