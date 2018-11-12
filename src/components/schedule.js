@@ -19,10 +19,10 @@ const ScheduleListItemElement = styled('li')`
   }
 `
 
-const ScheduleListItem = props => (
+const ScheduleListItem = ({ to, children, subject }) => (
   <ScheduleListItemElement>
-    <Link to={props.to}>{props.subject}</Link>
-    {props.children}
+    <Link to={to}>{subject}</Link>
+    {children}
   </ScheduleListItemElement>
 )
 
@@ -35,14 +35,14 @@ const GEListItemElement = styled('li')`
   margin-bottom: 0;
 `
 
-const GEListItem = props => (
+const GEListItem = ({ to, children }) => (
   <GEListItemElement>
-    <Link to={props.to}>{props.children}</Link>
+    <Link to={to}>{children}</Link>
   </GEListItemElement>
 )
 
-const CourseList = props => {
-  props.courses.sort((a, b) => {
+const CourseList = ({ courses, term }) => {
+  courses.sort((a, b) => {
     if (a.CATALOG_NBR === b.CATALOG_NBR && a.SECTION > b.SECTION) {
       return 1
     }
@@ -61,8 +61,8 @@ const CourseList = props => {
   return (
     <section>
       <CourseListItemHeader />
-      {props.courses.map((course, key) => (
-        <CourseListItem key={key} course={course} term={props.term} />
+      {courses.map((course, key) => (
+        <CourseListItem key={key} course={course} term={term} />
       ))}
     </section>
   )
@@ -139,39 +139,38 @@ const MeetingItem = props => {
   )
 }
 
-const CourseListItem = props => {
-  const link = `/schedule/${props.term.DESCR.toLowerCase().replace(
-    ' ',
-    ''
-  )}/course/${props.course.CRN}`
+const CourseListItem = ({ course, term }) => {
+  const link = `/schedule/${term.DESCR.toLowerCase().replace(' ', '')}/course/${
+    course.CRN
+  }`
 
   return (
     <CourseListItemRow>
       <Flex flexWrap="wrap">
         <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
           <Link to={link}>
-            {props.course.SUBJECT} {props.course.CATALOG_NBR}
+            {course.SUBJECT} {course.CATALOG_NBR}
           </Link>
         </Box>
         <Box width={[1, 1, 3 / 12, 3 / 12]} px={2}>
-          <Link to={link}>{props.course.TITLE}</Link>
+          <Link to={link}>{course.TITLE}</Link>
         </Box>
         <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
-          {parseInt(props.course.SECTION)}
+          {parseInt(course.SECTION)}
         </Box>
         <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
-          {props.course.CRN}
+          {course.CRN}
         </Box>
         <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
-          {props.course.UNITS}
+          {course.UNITS}
         </Box>
         <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
-          {props.course.ENRL_TOT}/{props.course.ENRL_MAX}
+          {course.ENRL_TOT}/{course.ENRL_MAX}
         </Box>
         <Box width={[1, 1, 3 / 12, 4 / 12]} px={2}>
-          {props.course._meetingPattern && (
+          {course._meetingPattern && (
             <MeetingList>
-              {props.course._meetingPattern.map((meeting, key) => (
+              {course._meetingPattern.map((meeting, key) => (
                 <MeetingItem key={key} {...meeting} />
               ))}
             </MeetingList>

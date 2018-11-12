@@ -3,16 +3,16 @@ import Link from 'gatsby-link'
 
 class LinkInspect extends React.Component {
   render() {
-    if (!this.props.to) {
+    let { to, children, buttonType, ...props } = this.props
+    if (!to) {
       return null
     }
-    let to = this.props.to.replace('https://csumb.edu/', '')
-    const { buttonType, ...props } = this.props
+    to = to.replace('https://csumb.edu/', '')
     if (to.search(/http(s?):/) > -1) {
       return (
         <>
           <a href={to} {...props}>
-            {this.props.children}
+            {children}
           </a>
         </>
       )

@@ -14,14 +14,14 @@ const PageTitleSubHeader = styled('small')`
   color: ${colors.primary.dark};
 `
 
-const PageTitle = props => {
-  if (props.layout === 'site') {
+const PageTitle = ({ layout, children, sub }) => {
+  if (layout === 'site') {
     return null
   }
   return (
     <PageTitleHeader>
-      {props.children}
-      {props.sub && <PageTitleSubHeader>{props.sub}</PageTitleSubHeader>}
+      {children}
+      {sub && <PageTitleSubHeader>{sub}</PageTitleSubHeader>}
     </PageTitleHeader>
   )
 }
