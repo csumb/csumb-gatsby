@@ -3,6 +3,7 @@ import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import { UserContext } from 'components/contexts/user'
+import { IronDB } from 'iron-db'
 
 import '@reach/menu-button/styles.css'
 
@@ -36,6 +37,10 @@ const UserDropdownMenuLink = styled(MenuLink)`
 `
 
 class UserDropdown extends React.Component {
+  handleLogout() {
+    IronDB.remove('user')
+  }
+
   render() {
     const { user } = this.props
     return (
@@ -62,6 +67,7 @@ class UserDropdown extends React.Component {
           </UserDropdownMenuLink>
           <UserDropdownMenuLink
             component="a"
+            onClick={this.handleLogout.bind(this)}
             href="https://csumb.okta.com/logout"
           >
             Log out
