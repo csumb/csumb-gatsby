@@ -1,104 +1,21 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import SiteHeader from 'components/layouts/components/site-header'
-import PageTitle from 'components/page-title'
-import { CourseSection, MeetingItem } from 'components/schedule'
-import { Flex, Box } from '@rebass/grid/emotion'
-import styled from 'react-emotion'
+import { CoursePage } from 'components/schedule'
 
-const CourseMeetingList = styled('ul')`
-  list-style-type: none;
-  margin-left: 0;
-`
-
-const EnrollmentList = styled('dl')`
-  dt,
-  dd {
-    display: inline-block;
-    width: 50%;
-    margin-bottom: 0.3rem;
-  }
-`
-
-const CourseTitle = styled('h2')`
-  margin-top: 0;
-`
-
-const CourseNumber = styled('pre')`
-  font-size: 2rem;
-`
-class CoursePage extends React.Component {
+class CoursePageTemplate extends React.Component {
   render() {
     const { term, course } = this.props.pageContext
     return (
       <Layout>
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
         <Container topPadding>
-          <PageTitle
-            sub={`${course.SUBJECT} ${course.CATALOG_NBR} Section ${
-              course.SECTION
-            }, ${course.UNITS} units`}
-          >
-            {term.DESCR}
-          </PageTitle>
-          <CourseTitle>{course.TITLE}</CourseTitle>
-          <Flex flexWrap="wrap">
-            <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-              <CourseSection legend="Days, times, and locations">
-                <CourseMeetingList>
-                  {course._meetingPattern.map((meeting, key) => (
-                    <MeetingItem key={key} {...meeting} showLocation />
-                  ))}
-                </CourseMeetingList>
-              </CourseSection>
-              <CourseSection legend="Enrollment">
-                <EnrollmentList>
-                  <dt>Open seats</dt>
-                  <dd>{course.ENRL_MAX - course.ENRL_TOT}</dd>
-                  <dt>Total enrolled</dt>
-                  <dd>{course.ENRL_TOT}</dd>
-                  <dt>Maximum enrollment</dt>
-                  <dd>{course.ENRL_MAX}</dd>
-                </EnrollmentList>
-              </CourseSection>
-            </Box>
-            <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-              <p>{course.DESCR}</p>
-              <CourseSection legend="How to register">
-                {course.CONSENT === 'I' && (
-                  <p>
-                    To register, you need permission from the instructor.
-                    <Link to="/permission-codes">
-                      Learn more about permission codes.
-                    </Link>
-                  </p>
-                )}
-                {course.CONSENT === 'D' && (
-                  <p>
-                    To register, you need permission from the department.
-                    <Link to="/permission-codes">
-                      Learn more about permission codes.
-                    </Link>
-                  </p>
-                )}
-                <p>
-                  Use this number to{' '}
-                  <Link to="/registration-process">
-                    register for the course in CMS
-                  </Link>
-                  .
-                </p>
-
-                <CourseNumber>{course.CRN}</CourseNumber>
-              </CourseSection>
-            </Box>
-          </Flex>
+          <CoursePage term={term} course={course} />
         </Container>
       </Layout>
     )
   }
 }
 
-export default CoursePage
+export default CoursePageTemplate
