@@ -1,6 +1,6 @@
 import React from 'react'
 import Brand from './brand'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import styled from 'react-emotion'
 import { MobileNavigationLink } from './navigation-link'
 import VisuallyHidden from '@reach/visually-hidden'
@@ -12,7 +12,7 @@ import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
 
 const HeaderMobileWrapper = styled('div')`
   padding: 0.5rem 0.25rem;
-  border-bottom: 2px solid ${theme.colors.primary.darkest};
+  border-bottom: 2px solid ${colors.primary.darkest};
 `
 
 const mobileButton = css`
@@ -34,7 +34,7 @@ const HeaderMobileNavigation = styled('ul')`
   margin: 0;
   list-style: none;
   margin-top: 1rem;
-  background: ${theme.colors.primary.darkest};
+  background: ${colors.primary.darkest};
 `
 
 const HeaderMobileSearch = styled('div')`

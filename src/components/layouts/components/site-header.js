@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'react-emotion'
 import Link from 'gatsby-link'
 import Container from '../../container'
-import theme from '../../styles/theme'
+import { colors } from '../../styles/theme'
 
 const SiteHeaderWrapper = styled('div')`
-  background: ${theme.colors.primary.darkest};
+  background: ${colors.primary.darkest};
   padding: 1rem 0;
   h2 {
     margin: 0;
@@ -20,11 +20,11 @@ const SiteHeaderWrapper = styled('div')`
   }
 `
 
-const SiteHeader = props => (
+const SiteHeader = ({ path, children }) => (
   <SiteHeaderWrapper>
     <Container>
       <h2>
-        <Link to={props.path}>{props.children}</Link>
+        <Link to={path}>{children}</Link>
       </h2>
     </Container>
   </SiteHeaderWrapper>

@@ -1,5 +1,5 @@
 import React from 'react'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
 
@@ -12,19 +12,19 @@ const NavigationLinkList = styled('li')`
     padding: 0.75rem;
     ${props =>
       props.apply
-        ? `color: ${theme.colors.indicators.high};
-        border: 3px solid ${theme.colors.indicators.high};`
-        : `color: ${theme.colors.primary.darkest};`} &:hover {
+        ? `color: ${colors.indicators.high};
+        border: 3px solid ${colors.indicators.high};`
+        : `color: ${colors.primary.darkest};`} &:hover {
           ${props =>
             props.apply
-              ? `background: ${theme.colors.indicators.high};`
-              : `background: ${theme.colors.primary.darkest};`}
+              ? `background: ${colors.indicators.high};`
+              : `background: ${colors.primary.darkest};`}
               
-      color: ${theme.colors.white};
+      color: ${colors.white};
     }
     &[aria-current='page'] {
-      background: ${theme.colors.primary.dark};
-      color: ${theme.colors.white};
+      background: ${colors.primary.dark};
+      color: ${colors.white};
     }
   }
 `
@@ -33,7 +33,7 @@ const MobileNavigationLinkList = styled('li')`
   padding: 0.5rem 1rem;
   a {
     text-decoration: none;
-    color: ${theme.colors.white};
+    color: ${colors.white};
   }
 `
 

@@ -2,7 +2,7 @@ import React from 'react'
 import LinkInspect from '../../link-inspect'
 import Container from '../../container'
 import styled from 'react-emotion'
-import theme from '../../styles/theme'
+import { colors } from '../../styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 
 import '@reach/menu-button/styles.css'
@@ -15,7 +15,7 @@ const SiteNavigationList = styled('ul')`
     margin: 0;
   }
   a {
-    color: ${theme.colors.white};
+    color: ${colors.white};
   }
 `
 
@@ -23,47 +23,45 @@ const SiteNavigationLink = styled(LinkInspect)`
   text-decoration: none;
   padding: 1rem;
   &[aria-current='page'] {
-    background: ${theme.colors.primary.dark};
+    background: ${colors.primary.dark};
   }
 `
 
 const SiteNavigationSubLink = styled(MenuLink)`
   text-decoration: none;
-  color: ${theme.colors.white};
+  color: ${colors.white};
 `
 
 const SiteNavigationSubList = styled(MenuList)`
-  background: ${theme.colors.primary.dark};
+  background: ${colors.primary.dark};
   a {
-    color: ${theme.colors.white};
+    color: ${colors.white};
   }
 `
 
 const SiteNavigationMenuButton = styled(MenuButton)`
   background: transparent;
-  color: ${theme.colors.white};
+  color: ${colors.white};
   border: none;
   cursor: pointer;
 `
 
 const SiteNavigationBar = styled('nav')`
-  background: ${theme.colors.primary.darkest};
+  background: ${colors.primary.darkest};
   padding-bottom: 0.5rem;
   overflow: hidden;
 `
 
-const SiteNavigationItem = props => {
+const SiteNavigationItem = ({ to, children, navigationChildren }) => {
   return (
     <>
-      {props.to ? (
-        <SiteNavigationLink to={props.to}>{props.children}</SiteNavigationLink>
+      {to ? (
+        <SiteNavigationLink to={to}>{children}</SiteNavigationLink>
       ) : (
         <>
-          {props.navigationChildren && (
-            <SiteNavigationSubMenu
-              navigationChildren={props.navigationChildren}
-            >
-              {props.children}
+          {navigationChildren && (
+            <SiteNavigationSubMenu navigationChildren={navigationChildren}>
+              {children}
             </SiteNavigationSubMenu>
           )}
         </>
@@ -72,13 +70,13 @@ const SiteNavigationItem = props => {
   )
 }
 
-const SiteNavigationSubMenu = props => (
+const SiteNavigationSubMenu = ({ children, navigationChildren }) => (
   <Menu>
     <SiteNavigationMenuButton>
-      {props.children} <span aria-hidden>▾</span>
+      {children} <span aria-hidden>▾</span>
     </SiteNavigationMenuButton>
     <SiteNavigationSubList>
-      {props.navigationChildren.map((child, key) => (
+      {navigationChildren.map((child, key) => (
         <SiteNavigationSubLink key={key} component="a" href={child.url}>
           {child.name}
         </SiteNavigationSubLink>

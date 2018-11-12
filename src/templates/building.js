@@ -6,11 +6,12 @@ import PageTitle from 'components/page-title'
 
 class BuildingTemplate extends React.Component {
   render() {
+    const { title, building } = this.props.pageContext
     return (
-      <Layout pageTitle={this.props.pageContext.title}>
+      <Layout pageTitle={title}>
         <SiteHeader path="/directory">Directory</SiteHeader>
         <Container>
-          <PageTitle>{this.props.pageContext.building.buildingName}</PageTitle>
+          <PageTitle>{building.buildingName}</PageTitle>
         </Container>
       </Layout>
     )

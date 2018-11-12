@@ -7,8 +7,7 @@ import SiteHeader from 'components/layouts/components/site-header'
 
 class SubjectCourseList extends React.Component {
   render() {
-    const subject = this.props.pageContext.subject
-    const term = this.props.pageContext.term
+    const { subject, term } = this.props.pageContext
     return (
       <Layout>
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>

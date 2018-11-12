@@ -6,8 +6,7 @@ import PageTitle from 'components/page-title'
 import SiteHeader from 'components/layouts/components/site-header'
 class GECourseList extends React.Component {
   render() {
-    const ge = this.props.pageContext.ge
-    const term = this.props.pageContext.term
+    const { ge, term } = this.props.pageContext
     return (
       <Layout>
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>

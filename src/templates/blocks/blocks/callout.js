@@ -1,18 +1,18 @@
 import React from 'react'
 import styled from 'react-emotion'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import { ContainerContext, ContainerElement } from './container-context'
 import VisuallyHidden from '@reach/visually-hidden'
 import Link from 'gatsby-link'
 
 const Callout = styled('div')`
-  background: ${theme.colors.primary.darkest};
-  color: ${theme.colors.white};
+  background: ${colors.primary.darkest};
+  color: ${colors.white};
   padding: 0.5rem;
 `
 
 const CalloutHeader = styled('h3')`
-  color: ${theme.colors.white};
+  color: ${colors.white};
 `
 
 class BlockCallout extends React.Component {

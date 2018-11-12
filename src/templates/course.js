@@ -5,7 +5,7 @@ import Container from 'components/container'
 
 class PageTemplate extends React.Component {
   render() {
-    const course = this.props.pageContext.course
+    const { course } = this.props.pageContext
     const pageTitle = `${course.SUBJECT} ${course.CATALOG_NBR}`
     return (
       <Layout pageTitle={pageTitle}>

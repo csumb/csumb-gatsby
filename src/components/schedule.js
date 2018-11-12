@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'react-emotion'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import moment from 'moment'
 
 const ScheduleList = styled('ul')`
@@ -71,7 +71,7 @@ const CourseList = props => {
 const CourseListItemRow = styled('div')`
   margin-bottom: 0.7rem;
   padding-bottom: 0.7rem;
-  border-bottom: 1px solid ${theme.colors.muted.bright};
+  border-bottom: 1px solid ${colors.muted.bright};
 `
 
 const MeetingList = styled('ul')`
@@ -183,8 +183,8 @@ const CourseListItem = props => {
 }
 
 const CourseListItemHeaderFlex = styled(Flex)`
-  background: ${theme.colors.primary.darkest};
-  color: ${theme.colors.white};
+  background: ${colors.primary.darkest};
+  color: ${colors.white};
   margin-bottom: 0.5rem;
 `
 
@@ -220,7 +220,7 @@ const CourseListItemHeader = () => (
 )
 
 const CourseSectionElement = styled('div')`
-  border: 1px solid ${theme.colors.gray.light};
+  border: 1px solid ${colors.gray.light};
   padding: 1rem;
   margin-bottom: 1rem;
 `

@@ -1,6 +1,6 @@
 import LinkInspect from './link-inspect'
 import styled from 'react-emotion'
-import theme from './styles/theme'
+import { colors } from './styles/theme'
 
 const ButtonStyle = props => {
   if (typeof props.buttonType === 'undefined') {
@@ -12,15 +12,15 @@ const ButtonStyle = props => {
   text-decoration: none;
   cursor: pointer;
   &:hover {
-    color: ${theme.colors.white};
+    color: ${colors.white};
   }
   ${
     props.buttonType === 'default'
       ? `
-      color: ${theme.colors.primary.dark};
-      border: 3px solid ${theme.colors.primary.dark};
+      color: ${colors.primary.dark};
+      border: 3px solid ${colors.primary.dark};
       &:hover {
-        background: ${theme.colors.primary.dark};
+        background: ${colors.primary.dark};
       }
     `
       : ``
@@ -28,10 +28,10 @@ const ButtonStyle = props => {
   ${
     props.buttonType === 'primary'
       ? `
-      color: ${theme.colors.primary.dark};
-      border: 3px solid ${theme.colors.primary.dark};
+      color: ${colors.primary.dark};
+      border: 3px solid ${colors.primary.dark};
       &:hover {
-        background: ${theme.colors.primary.dark};
+        background: ${colors.primary.dark};
       }
     `
       : ``
@@ -39,10 +39,10 @@ const ButtonStyle = props => {
   ${
     props.buttonType === 'highImpact'
       ? `
-      color: ${theme.colors.indicators.high};
-      border: 3px solid ${theme.colors.indicators.high};
+      color: ${colors.indicators.high};
+      border: 3px solid ${colors.indicators.high};
       &:hover {
-        background: ${theme.colors.indicators.high};
+        background: ${colors.indicators.high};
       }
     `
       : ``

@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'react-emotion'
-import theme from './styles/theme'
+import { colors } from './styles/theme'
 
 const PageTitleHeader = styled('h1')`
-  border-bottom: 1px solid ${theme.colors.primary.darkest};
-  color: ${theme.colors.primary.darkest};
+  border-bottom: 1px solid ${colors.primary.darkest};
+  color: ${colors.primary.darkest};
   margin-top: 1rem;
 `
 
 const PageTitleSubHeader = styled('small')`
   font-size: 80%;
   margin-left: 1rem;
-  color: ${theme.colors.primary.dark};
+  color: ${colors.primary.dark};
 `
 
 const PageTitle = props => {

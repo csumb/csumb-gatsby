@@ -3,7 +3,7 @@ import VisuallyHidden from '@reach/visually-hidden'
 import PropTypes from 'prop-types'
 import idGenerator from 'react-id-generator'
 import styled from 'react-emotion'
-import theme from './styles/theme'
+import { colors } from './styles/theme'
 import { css } from 'emotion'
 
 const FormGroup = styled('div')`
@@ -76,7 +76,7 @@ FormElement.propTypes = {
 }
 
 const InputTextElement = styled('input')`
-  border: 1px solid ${theme.colors.gray.deafult};
+  border: 1px solid ${colors.gray.deafult};
   padding: 0.3rem;
   width: ${props => (props.small ? '30%' : '100%')};
   ${props =>
@@ -110,7 +110,7 @@ class InputText extends FormElement {
 }
 
 const InputTextareaElement = styled('textarea')`
-  border: 1px solid ${theme.colors.gray.deafult};
+  border: 1px solid ${colors.gray.deafult};
   padding: 0.3rem;
 `
 
@@ -199,7 +199,7 @@ class InputSelect extends FormElement {
 }
 
 const FieldsetElement = styled('fieldset')`
-  border: 1px solid ${theme.colors.gray.light};
+  border: 1px solid ${colors.gray.light};
   padding: 1rem;
 `
 
@@ -235,11 +235,11 @@ const SubmitButton = styled('input')`
       ? `
     `
       : `margin: 1.5rem 0;`}
-  color: ${theme.colors.primary.dark};
-  border: 3px solid ${theme.colors.primary.dark};
+  color: ${colors.primary.dark};
+  border: 3px solid ${colors.primary.dark};
   &:hover {
-    color: ${theme.colors.white};
-    background: ${theme.colors.primary.dark};
+    color: ${colors.white};
+    background: ${colors.primary.dark};
   }
   ${props =>
     props.huge

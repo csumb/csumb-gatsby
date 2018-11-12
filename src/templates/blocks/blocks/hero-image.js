@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
 import { ContainerContext } from './container-context'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import Link from 'gatsby-link'
 
 const HeroImage = styled('div')`
@@ -24,16 +24,16 @@ const HeroImageText = styled('p')`
   font-size: 2rem;
   line-height: 2.8rem;
   font-weight: bold;
-  color: ${theme.colors.primary.darkest};
+  color: ${colors.primary.darkest};
   display: inline;
   white-space: pre-wrap;
-  border: 0.25em solid ${theme.colors.white};
-  background: ${theme.colors.white};
+  border: 0.25em solid ${colors.white};
+  background: ${colors.white};
   &:after {
-    background-color: ${theme.colors.white};
+    background-color: ${colors.white};
   }
   a {
-    color: ${theme.colors.primary.darkest};
+    color: ${colors.primary.darkest};
     text-decoration: none;
     &:hover {
       text-decoration: underline;

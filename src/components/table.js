@@ -1,5 +1,5 @@
 import styled from 'react-emotion'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 
 const Table = styled('table')`
   th,
@@ -9,20 +9,20 @@ const Table = styled('table')`
   ${props =>
     props.bordered
       ? `
-      border-bottom: 1px solid ${theme.colors.primary.dark};
+      border-bottom: 1px solid ${colors.primary.dark};
   td,th {
-    border: 1px solid ${theme.colors.primary.dark};
+    border: 1px solid ${colors.primary.dark};
   } 
   `
       : `
   tr {
-    border-bottom: 1px solid ${theme.colors.primary.dark};
+    border-bottom: 1px solid ${colors.primary.dark};
   }    
   `};
 `
 
 const TableHeader = styled('th')`
-  background: ${theme.colors.muted.bright};
+  background: ${colors.muted.bright};
 `
 
 const TableCell = styled('td')``

@@ -5,7 +5,7 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { UserContext } from 'components/contexts/user'
 import styled from 'react-emotion'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import { AccountTitle, AccountSidebar } from 'components/account'
 import { ButtonLink } from 'components/button'
 
@@ -54,7 +54,7 @@ class AccountMessagesPage extends React.Component {
 }
 
 const Message = styled('div')`
-  border: 1px solid ${theme.colors.gray.light};
+  border: 1px solid ${colors.gray.light};
   padding: 1rem;
   margin-bottom: 1rem;
 `

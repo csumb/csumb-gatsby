@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'react-emotion'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import { ContainerContext, ContainerElement } from './container-context'
 
 const Byline = styled('div')`
-  background: ${theme.colors.muted.light};
+  background: ${colors.muted.light};
   padding: 0.4rem;
   display: inline-block;
 `

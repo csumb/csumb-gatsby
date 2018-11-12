@@ -6,10 +6,10 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import logo from 'assets/images/csumb-logo-blue.svg'
 import styled from 'react-emotion'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 
 const FooterElement = styled('footer')`
-  border-top: 3px solid ${theme.colors.primary.darkest};
+  border-top: 3px solid ${colors.primary.darkest};
   padding-top: 1rem;
   ul {
     list-style-type: none;
@@ -25,12 +25,12 @@ const FooterHeader = styled('h3')`
 `
 
 const Legal = styled('div')`
-  background-color: ${theme.colors.primary.darkest};
+  background-color: ${colors.primary.darkest};
   padding: 0.5rem 0;
   text-align: right;
   a,
   a:visited {
-    color: ${theme.colors.white};
+    color: ${colors.white};
     font-size: 0.8rem;
     margin-right: 1rem;
     &:last-child {
@@ -54,12 +54,12 @@ const Footer = ({ children, data }) => (
           <FooterHeader>Popular</FooterHeader>
           <FooterList>
             <li>
-              <Link to="http://csumb.edu/jobs" title="">
+              <Link to="/jobs" title="">
                 Jobs
               </Link>
             </li>
             <li>
-              <Link to="https://csumb.edu/admissions/visit" title="">
+              <Link to="/admissions/visit" title="">
                 Tours
               </Link>
             </li>
@@ -69,7 +69,7 @@ const Footer = ({ children, data }) => (
               </Link>
             </li>
             <li>
-              <Link to="http://csumb.edu/social" title="">
+              <Link to="/social" title="">
                 Social media
               </Link>
             </li>
@@ -155,7 +155,7 @@ const Footer = ({ children, data }) => (
         <Link to="/copyright">Website Copyright/DMCA Policy</Link>
         <Link to="/privacy">Privacy</Link>
         <Link to="/accessibility">Accessibility</Link>
-        <Link to="https://cm.maxient.com/reportingform.php?CSUMontereyBay&amp;layout_id=0">
+        <Link to="https:/cm.maxient.com/reportingform.php?CSUMontereyBay&amp;layout_id=0">
           Report concerning behavior
         </Link>
         <Link to="/titleix">

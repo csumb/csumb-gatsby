@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'react-emotion'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
 
 const ApplicantLink = styled(Link)`
-  color: ${theme.colors.primary.darkest} !important;
+  color: ${colors.primary.darkest} !important;
   margin-right: 1rem;
   text-decoration: none;
 `

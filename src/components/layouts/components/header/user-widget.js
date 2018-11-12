@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'react-emotion'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import { UserContext } from 'components/contexts/user'
 
 import '@reach/menu-button/styles.css'
 
 const UserLoginLink = styled('a')`
-  color: ${theme.colors.primary.darkest};
+  color: ${colors.primary.darkest};
   margin-right: 1rem;
 `
 
@@ -19,10 +19,10 @@ const UserDropdownButton = styled(MenuButton)`
 `
 
 const UserDropdownMenuList = styled(MenuList)`
-  border: 1px solid ${theme.colors.black};
+  border: 1px solid ${colors.black};
   padding: 0;
   a {
-    color: ${theme.colors.primary.darkest};
+    color: ${colors.primary.darkest};
   }
 `
 
@@ -30,13 +30,14 @@ const UserDropdownMenuLink = styled(MenuLink)`
   padding: 0.5rem;
   &:hover,
   &:focus {
-    background: ${theme.colors.primary.darkest};
-    color: ${theme.colors.white};
+    background: ${colors.primary.darkest};
+    color: ${colors.white};
   }
 `
 
 class UserDropdown extends React.Component {
   render() {
+    const { user } = this.props
     return (
       <Menu>
         <UserDropdownButton>
@@ -46,7 +47,7 @@ class UserDropdown extends React.Component {
           <UserDropdownMenuLink component="a" href="/account">
             Manage account
           </UserDropdownMenuLink>
-          {this.props.user._isEmployee ? (
+          {user._isEmployee ? (
             <UserDropdownMenuLink component="a" href="/account/profile">
               Public profile
             </UserDropdownMenuLink>

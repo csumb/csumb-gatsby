@@ -13,7 +13,7 @@ class BlockList extends React.Component {
     const { type, list } = this.props
 
     const ListTag =
-      type == 'list-unstyled'
+      type === 'list-unstyled'
         ? styled('ul')`
             ${props => props.container};
             list-style-type: none;

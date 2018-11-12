@@ -8,11 +8,11 @@ import Applicant from './applicant'
 import HeaderMobile from './header-mobile'
 import { NavigationLink, NavigationLinkApply } from './navigation-link'
 import { Flex, Box } from '@rebass/grid/emotion'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import styled from 'react-emotion'
 
 const HeaderWrapper = styled('header')`
-  border-bottom: 2px solid ${theme.colors.primary.darkest};
+  border-bottom: 2px solid ${colors.primary.darkest};
   padding: 1rem 0;
 `
 

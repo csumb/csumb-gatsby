@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
 import Link from 'gatsby-link'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 import PropTypes from 'prop-types'
 
 const AccountSidebarOptions = styled('ul')`
@@ -12,12 +12,12 @@ const AccountSidebarOptions = styled('ul')`
 const AccountSidebarLink = styled(Link)`
   display: block;
   padding: 0.5rem;
-  border-bottom: 1px solid ${theme.colors.black};
+  border-bottom: 1px solid ${colors.black};
   text-decoration: none;
-  color: ${theme.colors.primary.dark};
+  color: ${colors.primary.dark};
   &[aria-current='page'] {
-    background: ${theme.colors.primary.dark};
-    color: ${theme.colors.white};
+    background: ${colors.primary.dark};
+    color: ${colors.white};
   }
 `
 
@@ -31,15 +31,15 @@ const AccountData = styled('p')`
   margin-left: 1rem;
 `
 
-const AccountSidebar = props => (
+const AccountSidebar = ({ user }) => (
   <AccountSidebarOptions>
     <AccountSidebarLink to="/account">Your account</AccountSidebarLink>
-    {props.user._isEmployee && (
+    {user._isEmployee && (
       <AccountSidebarLink to="/account/profile">
         Your public profile
       </AccountSidebarLink>
     )}
-    {props.user._isApplicant && (
+    {user._isApplicant && (
       <AccountSidebarLink to="/account/applicant-status">
         Your application status
       </AccountSidebarLink>
@@ -51,7 +51,7 @@ const AccountSidebar = props => (
 )
 
 const AccountGroupWrapper = styled('div')`
-  border: 1px solid ${theme.colors.gray.light};
+  border: 1px solid ${colors.gray.light};
   padding: 1rem;
   margin-bottom: 1rem;
 `
@@ -60,10 +60,10 @@ const AccountGroupLegend = styled('h3')`
   font-size: 1.5rem;
 `
 
-const AccountGroup = props => (
+const AccountGroup = ({ legend, children }) => (
   <AccountGroupWrapper>
-    <AccountGroupLegend>{props.legend}</AccountGroupLegend>
-    {props.children}
+    <AccountGroupLegend>{legend}</AccountGroupLegend>
+    {children}
   </AccountGroupWrapper>
 )
 

@@ -6,7 +6,7 @@ import Portal from 'components/portal'
 import Rect from '@reach/rect'
 import { InputText } from '../../../forms'
 import styled from 'react-emotion'
-import theme from 'components/styles/theme'
+import { colors } from 'components/styles/theme'
 
 /** A11Y
  *
@@ -15,16 +15,16 @@ import theme from 'components/styles/theme'
 
 const SearchResultsAutocomplete = styled('div')`
   position: absolute;
-  background: ${theme.colors.white};
-  border: 1px solid ${theme.colors.black};
+  background: ${colors.white};
+  border: 1px solid ${colors.black};
   a {
     display: block;
     text-decoration: none;
     padding: 0.5rem;
     :focus,
     :hover {
-      background: ${theme.colors.primary.darkest};
-      color: ${theme.colors.white};
+      background: ${colors.primary.darkest};
+      color: ${colors.white};
     }
   }
 `
@@ -35,18 +35,19 @@ class SearchResults extends React.Component {
   }
 
   render() {
-    if (!this.props.search || !this.props.search.record_count) {
+    const { search, rect } = this.props
+    if (!search || !search.record_count) {
       return null
     }
     return (
       <SearchResultsAutocomplete
         style={{
-          top: this.props.rect.top + this.props.rect.height,
-          left: this.props.rect.left,
-          width: this.props.rect.width,
+          top: rect.top + rect.height,
+          left: rect.left,
+          width: rect.width,
         }}
       >
-        {this.props.search.records.page.map(item => (
+        {search.records.page.map(item => (
           <div key={item.id}>
             <Link to={item.url.replace('https://csumb.edu', '')}>
               {item.title}

@@ -13,7 +13,7 @@ import {
 
 class ScheduleFront extends React.Component {
   render() {
-    const term = this.props.pageContext.term
+    const { term } = this.props.pageContext
     return (
       <Layout>
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
