@@ -17,28 +17,21 @@ const LabelElement = styled('label')`
   margin-bottom: 0.5rem;
   display: block;
 `
-
-class Label extends React.Component {
-  render() {
-    const LabelWrapper = props => {
-      if (this.props.isHidden) {
-        return <VisuallyHidden>{props.children}</VisuallyHidden>
-      }
-      return <>{props.children}</>
-    }
-
-    return (
-      <LabelWrapper>
-        <LabelElement htmlFor={this.props.labelId}>
-          {this.props.children}
-          {this.props.isRequired ? (
-            <VisuallyHidden>Required</VisuallyHidden>
-          ) : null}
-        </LabelElement>
-      </LabelWrapper>
-    )
+const LabelWrapper = ({ isHidden, children }) => {
+  if (isHidden) {
+    return <VisuallyHidden>{children}</VisuallyHidden>
   }
+  return <>{children}</>
 }
+
+const Label = ({ labelId, children, isRequired, isHidden }) => (
+  <LabelWrapper isHidden={isHidden}>
+    <LabelElement htmlFor={labelId}>
+      {children}
+      {isRequired ? <VisuallyHidden>Required</VisuallyHidden> : null}
+    </LabelElement>
+  </LabelWrapper>
+)
 
 Label.propTypes = {
   labelId: PropTypes.string.isRequired,
@@ -89,20 +82,29 @@ const InputTextElement = styled('input')`
 `
 class InputText extends FormElement {
   render() {
+    const {
+      inline,
+      value,
+      isRequired,
+      hideLabel,
+      label,
+      forwardedRef,
+    } = this.props
     return (
-      <FormGroup inline={this.props.inline}>
+      <FormGroup inline={inline}>
         <Label
           labelId={this.htmlId}
-          isRequired={this.props.isRequired}
-          isHidden={this.props.hideLabel}
+          isRequired={isRequired}
+          isHidden={hideLabel}
         >
-          {this.props.label}
+          {label}
         </Label>
         <InputTextElement
           type="text"
+          value={value}
           {...this.cleanProps()}
           id={this.htmlId}
-          innerRef={this.props.forwardedRef}
+          innerRef={forwardedRef}
         />
       </FormGroup>
     )
@@ -116,21 +118,30 @@ const InputTextareaElement = styled('textarea')`
 
 class InputTextarea extends FormElement {
   render() {
+    const {
+      inline,
+      value,
+      isRequired,
+      hideLabel,
+      label,
+      forwardedRef,
+    } = this.props
+
     return (
-      <FormGroup inline={this.props.inline}>
+      <FormGroup inline={inline}>
         <Label
           labelId={this.htmlId}
-          isRequired={this.props.isRequired}
-          isHidden={this.props.hideLabel}
+          isRequired={isRequired}
+          isHidden={hideLabel}
         >
-          {this.props.label}
+          {label}
         </Label>
         <InputTextareaElement
           type="text"
           {...this.cleanProps(['value'])}
-          ref={this.props.forwardedRef}
+          ref={forwardedRef}
         >
-          {this.props.value}
+          {value}
         </InputTextareaElement>
       </FormGroup>
     )
@@ -139,19 +150,16 @@ class InputTextarea extends FormElement {
 
 class InputCheckbox extends FormElement {
   render() {
+    const { inline, isRequired, hideLabel, label, forwardedRef } = this.props
     return (
-      <FormGroup inline={this.props.inline}>
+      <FormGroup inline={inline}>
         <Label
           labelId={this.htmlId}
-          isRequired={this.props.isRequired}
-          isHidden={this.props.hideLabel}
+          isRequired={isRequired}
+          isHidden={hideLabel}
         >
-          <input
-            type="checkbox"
-            {...this.cleanProps()}
-            ref={this.props.forwardedRef}
-          />
-          {this.props.label}
+          <input type="checkbox" {...this.cleanProps()} ref={forwardedRef} />
+          {label}
         </Label>
       </FormGroup>
     )
@@ -160,19 +168,16 @@ class InputCheckbox extends FormElement {
 
 class InputRadio extends FormElement {
   render() {
+    const { inline, isRequired, hideLabel, label, forwardedRef } = this.props
     return (
-      <FormGroup inline={this.props.inline}>
+      <FormGroup inline={inline}>
         <Label
           labelId={this.htmlId}
-          isRequired={this.props.isRequired}
-          isHidden={this.props.hideLabel}
+          isRequired={isRequired}
+          isHidden={hideLabel}
         >
-          <input
-            type="radio"
-            {...this.cleanProps()}
-            ref={this.props.forwardedRef}
-          />
-          {this.props.label}
+          <input type="radio" {...this.cleanProps()} ref={forwardedRef} />
+          {label}
         </Label>
       </FormGroup>
     )
@@ -181,17 +186,25 @@ class InputRadio extends FormElement {
 
 class InputSelect extends FormElement {
   render() {
+    const {
+      inline,
+      isRequired,
+      hideLabel,
+      label,
+      forwardedRef,
+      children,
+    } = this.props
     return (
-      <FormGroup inline={this.props.inline}>
+      <FormGroup inline={inline}>
         <Label
           labelId={this.htmlId}
-          isRequired={this.props.isRequired}
-          isHidden={this.props.hideLabel}
+          isRequired={isRequired}
+          isHidden={hideLabel}
         >
-          {this.props.label}
+          {label}
         </Label>
-        <select {...this.cleanProps()} ref={this.props.forwardedRef}>
-          {this.props.children}
+        <select {...this.cleanProps()} ref={forwardedRef}>
+          {children}
         </select>
       </FormGroup>
     )
@@ -210,15 +223,15 @@ const LegendElement = styled('legend')`
   margin-bottom: 1rem;
 `
 
-const Fieldset = props => (
+const Fieldset = ({ legend, children }) => (
   <FieldsetElement>
-    <LegendElement>{props.legend}</LegendElement>
+    <LegendElement>{legend}</LegendElement>
     <div
       className={css`
         clear: both;
       `}
     />
-    {props.children}
+    {children}
   </FieldsetElement>
 )
 
