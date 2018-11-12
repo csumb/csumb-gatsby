@@ -24,11 +24,18 @@ const LabelWrapper = ({ isHidden, children }) => {
   return <>{children}</>
 }
 
+const Required = styled('strong')`
+  font-size: 1rem;
+  display: inline-block;
+  margin-left: 1rem;
+  color: ${colors.indicators.high};
+`
+
 const Label = ({ labelId, children, isRequired, isHidden }) => (
   <LabelWrapper isHidden={isHidden}>
     <LabelElement htmlFor={labelId}>
       {children}
-      {isRequired ? <VisuallyHidden>Required</VisuallyHidden> : null}
+      {isRequired ? <Required>Required</Required> : null}
     </LabelElement>
   </LabelWrapper>
 )

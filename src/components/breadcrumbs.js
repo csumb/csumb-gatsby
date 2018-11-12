@@ -2,6 +2,7 @@ import React from 'react'
 import { colors } from './styles/theme'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
+import PropTypes from 'prop-types'
 
 const BreadcrumbItem = styled('li')`
   display: inline-block;
@@ -31,6 +32,11 @@ const Breadcrumbs = ({ breadcrumbs }) => {
       ))}
     </BreadcrumbList>
   )
+}
+
+Breadcrumbs.propTypes = {
+  /** A JSON-string of the page's breadcrumbs */
+  breadcrumbs: PropTypes.string.isRequired,
 }
 
 export default Breadcrumbs
