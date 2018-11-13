@@ -12,10 +12,16 @@ const FormGroup = styled('div')`
 `
 
 const LabelElement = styled('label')`
-  font-size: 1.5rem;
-  font-weight: bold;
   margin-bottom: 0.5rem;
   display: block;
+  ${props =>
+    props.smallText
+      ? `
+      cursor: pointer;
+    `
+      : `
+    font-weight: bold;
+    font-size: 1.5rem;`};
 `
 const LabelWrapper = ({ isHidden, children }) => {
   if (isHidden) {
@@ -31,9 +37,9 @@ const Required = styled('strong')`
   color: ${colors.indicators.high};
 `
 
-const Label = ({ labelId, children, isRequired, isHidden }) => (
+const Label = ({ labelId, children, isRequired, smallText, isHidden }) => (
   <LabelWrapper isHidden={isHidden}>
-    <LabelElement htmlFor={labelId}>
+    <LabelElement htmlFor={labelId} smallText={smallText}>
       {children}
       {isRequired ? <Required>Required</Required> : null}
     </LabelElement>
@@ -44,6 +50,7 @@ Label.propTypes = {
   labelId: PropTypes.string.isRequired,
   isHidden: PropTypes.bool,
   isRequired: PropTypes.bool,
+  smallText: PropTypes.bool,
 }
 
 class FormElement extends React.Component {
@@ -121,6 +128,7 @@ class InputText extends FormElement {
 const InputTextareaElement = styled('textarea')`
   border: 1px solid ${colors.gray.deafult};
   padding: 0.3rem;
+  width: ${props => (props.small ? '30%' : '100%')};
 `
 
 class InputTextarea extends FormElement {
@@ -155,17 +163,21 @@ class InputTextarea extends FormElement {
   }
 }
 
+const InputCheckboxRadio = styled('input')`
+  margin-right: 1rem;
+`
 class InputCheckbox extends FormElement {
   render() {
-    const { inline, isRequired, hideLabel, label, forwardedRef } = this.props
+    const { inline, isRequired, label, forwardedRef } = this.props
     return (
       <FormGroup inline={inline}>
-        <Label
-          labelId={this.htmlId}
-          isRequired={isRequired}
-          isHidden={hideLabel}
-        >
-          <input type="checkbox" {...this.cleanProps()} ref={forwardedRef} />
+        <Label labelId={this.htmlId} isRequired={isRequired} smallText={true}>
+          <InputCheckboxRadio
+            type="checkbox"
+            id={this.htmlId}
+            {...this.cleanProps()}
+            ref={forwardedRef}
+          />
           {label}
         </Label>
       </FormGroup>
@@ -182,8 +194,14 @@ class InputRadio extends FormElement {
           labelId={this.htmlId}
           isRequired={isRequired}
           isHidden={hideLabel}
+          smallText={true}
         >
-          <input type="radio" {...this.cleanProps()} ref={forwardedRef} />
+          <InputCheckboxRadio
+            type="radio"
+            id={this.htmlId}
+            {...this.cleanProps()}
+            ref={forwardedRef}
+          />
           {label}
         </Label>
       </FormGroup>
@@ -250,6 +268,7 @@ const SubmitButton = styled('input')`
   padding: 1rem;
   display: inline-block;
   text-decoration: none;
+  cursor: pointer;
   ${props =>
     props.nomargin
       ? `
