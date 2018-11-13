@@ -244,7 +244,7 @@ class UserAccountFormRole extends React.Component {
               `}
             >
               {this.props.roles.map(role => (
-                <li>{this.roles[role].name}</li>
+                <li key={role}>{this.roles[role].name}</li>
               ))}
             </ul>
           </AccountData>
