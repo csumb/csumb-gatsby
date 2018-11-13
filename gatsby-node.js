@@ -4,7 +4,8 @@ const coursePages = require(`./src/node/courses`)
 const contentPages = require(`./src/node/pages`)
 const schedulePages = require(`./src/node/schedule`)
 const buildingPages = require(`./src/node/buildings`)
-const scheduleSearch = require(`./src/node/schedule-search`)
+const directoryPages = require(`./src/node/directory`)
+
 require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ stage, graphql, actions }) => {
@@ -12,6 +13,9 @@ exports.createPages = ({ stage, graphql, actions }) => {
     coursePages(graphql, actions)
       .then(() => {
         return contentPages(graphql, actions)
+      })
+      .then(() => {
+        return directoryPages(graphql, actions)
       })
       .then(() => {
         return buildingPages(graphql, actions)
@@ -32,6 +36,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         rules: [
           {
             test: /filestack-js/,
+            use: loaders.null(),
+          },
+          {
+            test: /iron-db/,
             use: loaders.null(),
           },
         ],

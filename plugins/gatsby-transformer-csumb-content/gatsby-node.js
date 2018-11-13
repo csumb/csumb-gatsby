@@ -60,6 +60,25 @@ exports.onCreateNode = async ({
     }
   }
 
+  if (node.relativePath.search('_data/directory.json') > -1) {
+    content.forEach(user => {
+      const directoryNode = {
+        id: createNodeId(`${user.email} >>> CsumbDirectory`),
+        children: [],
+        parent: null,
+        user: user,
+        internal: {
+          type: `CsumbDirectory`,
+        },
+      }
+      directoryNode.internal.contentDigest = crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(directoryNode))
+        .digest(`hex`)
+      createNode(directoryNode)
+    })
+  }
+
   if (node.relativePath.search('_data/buildings.json') > -1) {
     Object.values(content).forEach(building => {
       const buildingNode = {
