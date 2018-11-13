@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { colors } from 'components/styles/theme'
+import { colors, fonts } from 'components/styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import { UserContext } from 'components/contexts/user'
 import { IronDB } from 'iron-db'
@@ -22,6 +22,7 @@ const UserDropdownButton = styled(MenuButton)`
 const UserDropdownMenuList = styled(MenuList)`
   border: 1px solid ${colors.black};
   padding: 0;
+  font-family: ${fonts.sansSerif};
   a {
     color: ${colors.primary.darkest};
   }

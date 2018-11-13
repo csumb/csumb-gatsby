@@ -16,7 +16,7 @@ class Layout extends React.Component {
     const localUser = await IronDB.get('user', false)
     if (localUser) {
       this.setState({
-        user: JSON.parse(localUser),
+        user: localUser === 'anonymous' ? localUser : JSON.parse(localUser),
       })
       return
     }

@@ -37,4 +37,9 @@ const colors = {
   },
 }
 
-export { colors }
+const fonts = {
+  sansSerif: '"Source Sans Pro",sans-serif',
+  serif: '"Merriweather",serif',
+}
+
+export { colors, fonts }

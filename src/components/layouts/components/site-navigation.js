@@ -2,7 +2,7 @@ import React from 'react'
 import LinkInspect from '../../link-inspect'
 import Container from '../../container'
 import styled from 'react-emotion'
-import { colors } from '../../styles/theme'
+import { colors, fonts } from '../../styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 
 import '@reach/menu-button/styles.css'
@@ -34,8 +34,10 @@ const SiteNavigationSubLink = styled(MenuLink)`
 
 const SiteNavigationSubList = styled(MenuList)`
   background: ${colors.primary.dark};
+  padding: 0;
   a {
     color: ${colors.white};
+    font-family: ${fonts.sansSerif};
   }
 `
 
