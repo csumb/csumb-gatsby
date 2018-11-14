@@ -1,0 +1,60 @@
+import React from 'react'
+import styled from 'react-emotion'
+import { colors } from 'components/styles/theme'
+import LinkInspect from 'components/link-inspect'
+import VisuallyHidden from '@reach/visually-hidden'
+import bp from 'components/styles/breakpoints'
+import { css } from 'emotion'
+import { ContainerContext, ContainerElement } from './container-context'
+
+const relatedBreakpoints = css(
+  bp({
+    margin: ['0.5rem 0', '0.5rem 0 0.5rem 0.5rem'],
+    width: ['auto', '30%'],
+  })
+)
+
+const RelatedContent = styled('div')`
+  ${relatedBreakpoints};
+  float: right;
+  border-top: 1px solid ${colors.muted.bright};
+  border-bottom: 1px solid ${colors.muted.bright};
+  padding: 0.25rem;
+`
+
+const RelatedContentSource = styled('p')`
+  margin-bottom: 0;
+  font-weight: 700;
+`
+
+const RelatedContentTitle = styled('h5')`
+  margin: 0.25rem 0;
+`
+
+const RelatedContentDescription = styled('p')``
+
+class BlockRelated extends React.Component {
+  render() {
+    const { source, title, description, url } = this.props
+    return (
+      <ContainerContext.Consumer>
+        {container => (
+          <ContainerElement container={container}>
+            <RelatedContent>
+              <VisuallyHidden>Related content</VisuallyHidden>
+              <RelatedContentSource>{source}</RelatedContentSource>
+              <RelatedContentTitle>
+                <LinkInspect to={url}>{title}</LinkInspect>
+              </RelatedContentTitle>
+              <RelatedContentDescription>
+                {description}
+              </RelatedContentDescription>
+            </RelatedContent>
+          </ContainerElement>
+        )}
+      </ContainerContext.Consumer>
+    )
+  }
+}
+
+export default BlockRelated

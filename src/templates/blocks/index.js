@@ -13,11 +13,25 @@ import BlockDefinitionList from './blocks/definition-list'
 import BlockVideo from './blocks/video'
 import BlockByline from './blocks/byline'
 import BlockHeroImage from './blocks/hero-image'
-import BlockPerson from './blocks/person'
+import BlockSound from './blocks/sound'
+import BlockFeed from './blocks/feed'
+import BlockForm from './blocks/form'
+import BlockImageGrid from './blocks/image-grid'
+import BlockMap from './blocks/map'
+import BlockPathway from './blocks/pathway'
+import BlockRelated from './blocks/related'
+import BlockTable from './blocks/table'
 import { ContainerContext, containerStyle } from './blocks/container-context'
 
 class Block extends React.Component {
   blockComponents = {
+    feed: BlockFeed,
+    form: BlockForm,
+    imagegrid: BlockImageGrid,
+    map: BlockMap,
+    pathway: BlockPathway,
+    related: BlockRelated,
+    table: BlockTable,
     text: BlockText,
     list: BlockList,
     heading: BlockHeading,
@@ -31,7 +45,7 @@ class Block extends React.Component {
     quote: BlockQuote,
     address: BlockAddress,
     video: BlockVideo,
-    person: BlockPerson,
+    sound: BlockSound,
   }
 
   render() {
@@ -48,7 +62,7 @@ class Block extends React.Component {
 }
 class Blocks extends React.Component {
   render() {
-    let { people, blocks } = this.props
+    let { blocks } = this.props
     blocks = JSON.parse(blocks)
 
     if (
@@ -70,7 +84,6 @@ class Blocks extends React.Component {
                 key={layout.id}
                 type={blocks.blocks[layout.id].type}
                 block={blocks.blocks[layout.id]}
-                people={people}
               />
             )}
           </div>

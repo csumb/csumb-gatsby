@@ -4,7 +4,8 @@ import styled from 'react-emotion'
 import { ContainerContext } from './container-context'
 
 const Paragraph = styled('p')`
-  ${props => props.container} ${props =>
+  ${props => props.container};
+  ${props =>
     props.lead
       ? `
     font-size: 130%;
