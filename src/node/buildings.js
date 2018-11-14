@@ -1,6 +1,5 @@
 const path = require(`path`)
-const fs = require(`fs-extra`)
-require(`gatsby-source-filesystem`)
+const report = require(`gatsby-cli/lib/reporter`)
 
 module.exports = (graphql, actions) => {
   const { createPage } = actions
@@ -34,6 +33,7 @@ module.exports = (graphql, actions) => {
             },
           })
         })
+        report.success(`built building pages.`)
 
         return
       })

@@ -1,6 +1,5 @@
 const path = require(`path`)
-const fs = require(`fs-extra`)
-require(`gatsby-source-filesystem`)
+const report = require(`gatsby-cli/lib/reporter`)
 
 module.exports = (graphql, actions) => {
   const { createPage } = actions
@@ -57,6 +56,7 @@ module.exports = (graphql, actions) => {
         if (!result.data) {
           return
         }
+        let count = 0
 
         result.data.allCsumbContentSite.edges.forEach(edge => {
           if (typeof sites[edge.node.site] === 'undefined') {
@@ -81,6 +81,7 @@ module.exports = (graphql, actions) => {
           let path = edge.node.relativePath
           path = path.replace('index.json', '').replace('.json', '')
           if (typeof sites[content.site] !== 'undefined') {
+            count++
             createPage({
               path: path,
               component: pageTemplate,
@@ -97,6 +98,7 @@ module.exports = (graphql, actions) => {
             })
           }
         })
+        report.success(`built ${count} web pages`)
         resolve()
       })
     )
