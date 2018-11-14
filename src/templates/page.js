@@ -17,6 +17,7 @@ class PageTemplate extends React.Component {
       breadcrumbs,
       layout,
       pageContent,
+      people,
     } = this.props.pageContext
 
     return (
@@ -27,7 +28,7 @@ class PageTemplate extends React.Component {
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
         </Container>
-        <Blocks blocks={pageContent} />
+        <Blocks blocks={pageContent} people={people} />
       </Layout>
     )
   }

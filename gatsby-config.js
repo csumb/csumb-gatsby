@@ -18,6 +18,7 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-csumb-content`,
+    `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-plugin-emotion`,
       options: {},

@@ -13,6 +13,7 @@ import BlockDefinitionList from './blocks/definition-list'
 import BlockVideo from './blocks/video'
 import BlockByline from './blocks/byline'
 import BlockHeroImage from './blocks/hero-image'
+import BlockPerson from './blocks/person'
 import { ContainerContext, containerStyle } from './blocks/container-context'
 
 class Block extends React.Component {
@@ -30,6 +31,7 @@ class Block extends React.Component {
     quote: BlockQuote,
     address: BlockAddress,
     video: BlockVideo,
+    person: BlockPerson,
   }
 
   render() {
@@ -46,7 +48,9 @@ class Block extends React.Component {
 }
 class Blocks extends React.Component {
   render() {
-    let blocks = JSON.parse(this.props.blocks)
+    let { people, blocks } = this.props
+    blocks = JSON.parse(blocks)
+
     if (
       typeof blocks.layout === 'undefined' ||
       typeof blocks.layout.map === 'undefined'
@@ -66,6 +70,7 @@ class Blocks extends React.Component {
                 key={layout.id}
                 type={blocks.blocks[layout.id].type}
                 block={blocks.blocks[layout.id]}
+                people={people}
               />
             )}
           </div>

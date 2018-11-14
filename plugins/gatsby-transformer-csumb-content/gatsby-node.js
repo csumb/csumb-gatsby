@@ -99,6 +99,26 @@ exports.onCreateNode = async ({
     })
   }
 
+  if (node.relativePath.search('_data/redirects.json') > -1) {
+    for (path in content) {
+      const redirectNode = {
+        id: createNodeId(`${path} >>> CsumbRedirects`),
+        children: [],
+        parent: null,
+        path: path,
+        target: content[path],
+        internal: {
+          type: `CsumbRedirects`,
+        },
+      }
+      redirectNode.internal.contentDigest = crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(redirectNode))
+        .digest(`hex`)
+      createNode(redirectNode)
+    }
+  }
+
   if (!contentNode) {
     return
   }

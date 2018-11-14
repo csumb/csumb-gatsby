@@ -35,18 +35,6 @@ gulp.task('clean-data', function() {
   return del(['./_data/**', './_web-content/**'])
 })
 
-gulp.task('copy-redirects', function(done) {
-  let redirects = JSON.parse(
-    fs.readFileSync('./_web-content/_data/redirects.json')
-  )
-  let results = []
-  _.each(redirects, (target, source) => {
-    results.push(`/${source} ${target}`)
-  })
-  fs.writeFileSync('./public/_redirects', results.join('\n'))
-  done()
-})
-
 gulp.task(
   'default',
   gulp.series('clean-data', 'clone-content', 'clone-web-data')

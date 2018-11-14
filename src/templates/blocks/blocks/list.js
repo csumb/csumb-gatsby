@@ -3,12 +3,6 @@ import { ContainerContext } from './container-context'
 import styled from 'react-emotion'
 
 class BlockList extends React.Component {
-  createMarkup(text) {
-    return {
-      __html: text,
-    }
-  }
-
   render() {
     const { type, list } = this.props
 
@@ -27,10 +21,7 @@ class BlockList extends React.Component {
         {container => (
           <ListTag container={container}>
             {list.map((item, key) => (
-              <li
-                dangerouslySetInnerHTML={this.createMarkup(item.text)}
-                key={key}
-              />
+              <li dangerouslySetInnerHTML={{ __html: item.text }} key={key} />
             ))}
           </ListTag>
         )}
