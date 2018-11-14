@@ -13,6 +13,7 @@ gulp.task('clone-content', function() {
     },
     err => {
       if (err) throw err
+      process.exit(1)
     }
   )
 })
@@ -25,6 +26,7 @@ gulp.task('clone-web-data', function() {
     },
     err => {
       if (err) throw err
+      process.exit(1)
     }
   )
 })
