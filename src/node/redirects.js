@@ -23,7 +23,7 @@ module.exports = (graphql, actions) => {
         }
         result.data.allCsumbRedirects.edges.forEach(async edge => {
           createRedirect({
-            fromPath: edge.node.path,
+            fromPath: `/${edge.node.path}`,
             toPath: edge.node.target,
             isPermanent: true,
           })
