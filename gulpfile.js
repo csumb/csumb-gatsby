@@ -39,4 +39,3 @@ gulp.task(
   'default',
   gulp.series('clean-data', 'clone-content', 'clone-web-data')
 )
-gulp.task('after-build', gulp.series('copy-redirects'))
