@@ -4,10 +4,10 @@ const exec = require('gulp-exec')
 const del = require('del')
 const fs = require('fs')
 const _ = require('lodash')
-
+console.log(process.env.GITHUB_TOKEN)
 gulp.task('clone-content', function() {
   return git.clone(
-    `https://${process.env.GITHUB_TOKEN}github.com/csumb/web-content`,
+    `https://${process.env.GITHUB_TOKEN}@github.com/csumb/web-content.git`,
     {
       args: '_web-content --depth 1',
     },
@@ -19,7 +19,7 @@ gulp.task('clone-content', function() {
 
 gulp.task('clone-web-data', function() {
   return git.clone(
-    `https://${process.env.GITHUB_TOKEN}github.com/csumb/web-data`,
+    `https://${process.env.GITHUB_TOKEN}@github.com/csumb/web-data.git`,
     {
       args: '_data --depth 1',
     },
