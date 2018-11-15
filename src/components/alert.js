@@ -5,6 +5,7 @@ import { css } from 'emotion'
 import { colors } from 'components/styles/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import color from 'color'
+import VisuallyHidden from '@reach/visually-hidden'
 import {
   faCheckCircle,
   faExclamationTriangle,
@@ -22,6 +23,7 @@ const baseStyle = css`
 
 const AlertIcon = styled(FontAwesomeIcon)`
   font-size: 2.8rem;
+  margin-top: 0.5rem;
 `
 
 const AlertContent = ({ icon, children }) => (
@@ -45,6 +47,7 @@ const AlertDangerElement = styled(Alert)`
 
 const AlertDanger = props => (
   <AlertDangerElement {...props}>
+    <VisuallyHidden>Danger</VisuallyHidden>
     <AlertContent icon={faExclamationCircle}>{props.children}</AlertContent>
   </AlertDangerElement>
 )
@@ -58,6 +61,7 @@ const AlertWarningElement = styled(Alert)`
 `
 const AlertWarning = props => (
   <AlertWarningElement {...props}>
+    <VisuallyHidden>Warning</VisuallyHidden>
     <AlertContent icon={faExclamationTriangle}>{props.children}</AlertContent>
   </AlertWarningElement>
 )
@@ -72,6 +76,7 @@ const AlertInfoElement = styled(Alert)`
 
 const AlertInfo = props => (
   <AlertInfoElement {...props}>
+    <VisuallyHidden>For your information</VisuallyHidden>
     <AlertContent icon={faCheckCircle}>{props.children}</AlertContent>
   </AlertInfoElement>
 )

@@ -47,11 +47,25 @@ const FooterList = styled('ul')`
   }
 `
 
+const FooterAddressList = styled('ul')`
+  margin: 0;
+  list-style-type: none;
+`
+
+const FooterAddressListItem = styled('li')`
+  margin-bottom: 0;
+`
+
+const Logo = styled('img')`
+  margin-bottom: 0.5rem;
+  max-width: 300px;
+`
+
 const Footer = ({ children, data }) => (
   <FooterElement>
     <Container>
       <Flex flexWrap="wrap">
-        <Box width={[1, 1 / 4]}>
+        <Box width={[1, 2 / 12]}>
           <FooterHeader>Popular</FooterHeader>
           <FooterList>
             <li>
@@ -81,7 +95,7 @@ const Footer = ({ children, data }) => (
             </li>
           </FooterList>
         </Box>
-        <Box width={[1, 1 / 4]}>
+        <Box width={[1, 2 / 12]}>
           <FooterHeader>Tools</FooterHeader>
           <FooterList>
             <li>
@@ -111,7 +125,7 @@ const Footer = ({ children, data }) => (
             </li>
           </FooterList>
         </Box>
-        <Box width={[1, 1 / 4]}>
+        <Box width={[1, 3 / 12]}>
           <FooterHeader>Links for</FooterHeader>
           <FooterList>
             <li>
@@ -141,13 +155,19 @@ const Footer = ({ children, data }) => (
             </li>
           </FooterList>
         </Box>
-        <Box width={[1, 1 / 4]}>
-          <img src={logo} alt="Cal State Monterey Bay" />
-          <div>
-            <ButtonLink to="/giving" buttonType="primary">
-              Give
-            </ButtonLink>
-          </div>
+        <Box width={[1, 5 / 12]}>
+          <Logo src={logo} alt="Cal State Monterey Bay" />
+          <FooterAddressList>
+            <FooterAddressListItem>
+              <strong>Call:</strong> 831-582-3000
+            </FooterAddressListItem>
+            <FooterAddressListItem>
+              <strong>Visit:</strong> 5108 Fourth Avenue, Marina, CA 93933
+            </FooterAddressListItem>
+            <FooterAddressListItem>
+              <strong>Mail:</strong> 100 Campus Center, Seaside, CA 93955
+            </FooterAddressListItem>
+          </FooterAddressList>
         </Box>
       </Flex>
     </Container>
