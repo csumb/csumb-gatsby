@@ -87,6 +87,8 @@ exports.onCreateNode = async ({
         parent: null,
         code: building.code,
         buildingName: building.name,
+        center: building.center,
+        outline: building.outline,
         internal: {
           type: `CsumbBuilding`,
         },

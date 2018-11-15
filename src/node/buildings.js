@@ -14,6 +14,14 @@ module.exports = (graphql, actions) => {
                 node {
                   buildingName
                   code
+                  center {
+                    lat
+                    lng
+                  }
+                  outline {
+                    type
+                    coordinates
+                  }
                 }
               }
             }
