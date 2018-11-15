@@ -10,6 +10,7 @@ import { colors } from 'components/styles/theme'
 
 const FooterElement = styled('footer')`
   border-top: 3px solid ${colors.primary.darkest};
+  margin-top: 1rem;
   padding-top: 1rem;
   ul {
     list-style-type: none;
