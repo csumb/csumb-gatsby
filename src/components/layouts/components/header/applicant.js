@@ -17,7 +17,7 @@ class Applicant extends React.Component {
         <UserContext.Consumer>
           {context => (
             <>
-              {context.user === false ? (
+              {context.user === false || !context.user._isApplicant ? (
                 <></>
               ) : (
                 <>

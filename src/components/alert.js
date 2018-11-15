@@ -40,7 +40,7 @@ const AlertDangerElement = styled(Alert)`
   background: ${color(colors.indicators.high)
     .lighten(0.8)
     .hex()};
-  border-left: 4px solid ${colors.indicators.high};
+  border-left: 8px solid ${colors.indicators.high};
 `
 
 const AlertDanger = props => (
@@ -54,7 +54,7 @@ const AlertWarningElement = styled(Alert)`
   background: ${color(colors.indicators.medium)
     .lighten(0.95)
     .hex()};
-  border-left: 4px solid ${colors.indicators.medium};
+  border-left: 8px solid ${colors.indicators.medium};
 `
 const AlertWarning = props => (
   <AlertWarningElement {...props}>
@@ -65,9 +65,9 @@ const AlertWarning = props => (
 const AlertInfoElement = styled(Alert)`
   ${baseStyle};
   background: ${color(colors.indicators.low)
-    .lighten(0.98)
+    .lighten(1.5)
     .hex()};
-  border-left: 4px solid ${colors.indicators.low};
+  border-left: 8px solid ${colors.indicators.low};
 `
 
 const AlertInfo = props => (
