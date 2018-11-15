@@ -1,8 +1,10 @@
 const path = require(`path`)
 const fs = require(`fs-extra`)
 
-module.exports = graphql => {
+module.exports = (graphql, actions) => {
+  const { createPage } = actions
   return new Promise((resolve, reject) => {
+    const jsonTemplate = path.resolve(`src/templates/json.js`)
     resolve(
       graphql(
         `
@@ -13,6 +15,7 @@ module.exports = graphql => {
                   SUBJECT
                   STRM
                   CATALOG_NBR
+                  CRN
                   SECTION
                 }
               }
@@ -23,15 +26,26 @@ module.exports = graphql => {
         if (result.errors) {
           reject(result.errors)
         }
-        result.data.allCatalogCsv.edges.forEach(async edge => {
-          createPage({
-            path: `course/${edge.node.SUBJECT.toLowerCase()}/${edge.node.CATALOG_NBR.toLowerCase().trim()}`,
-            component: courseTemplate,
-            context: {
-              course: edge.node,
-            },
-          })
+        let courses = {}
+        result.data.allScheduleCsv.edges.forEach(async edge => {
+          if (typeof courses[edge.node.STRM] === 'undefined') {
+            courses[edge.node.STRM] = []
+          }
+          courses[edge.node.STRM].push(
+            `${edge.node.SUBJECT} ${edge.node.CATALOG_NBR}`
+          )
         })
+        for (let term in courses) {
+          if (courses.hasOwnProperty(term)) {
+            createPage({
+              path: `schedule/search/${term}.json`,
+              component: jsonTemplate,
+              context: {
+                json: JSON.stringify(courses[term]),
+              },
+            })
+          }
+        }
 
         return
       })

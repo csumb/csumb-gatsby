@@ -10,7 +10,7 @@ import { colors } from 'components/styles/theme'
 
 /** A11Y
  *
- * The autocomplete doesn't
+ * The autocomplete needs work
  */
 
 const SearchResultsAutocomplete = styled('div')`

@@ -6,6 +6,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { AccountGroup } from 'components/account'
 import { UserContext } from 'components/contexts/user'
 import url from 'url'
+import { AlertWarning } from 'components/alert'
 import { LeadParagraph } from 'components/type'
 import Link from 'gatsby-link'
 
@@ -74,7 +75,7 @@ const ApplicationTranscripts = props => <AccountGroup legend="Transcripts" />
 const ApplicationMultipleMessage = props => (
   <>
     {props.applications &&
-      props.applications.length && (
+      props.applications.length > 1 && (
         <LeadParagraph>
           You have more than one application:{' '}
           {props.applications.map(application => (
@@ -96,15 +97,28 @@ class ApplicantStatus extends React.Component {
   state = {
     applications: false,
     currentApplication: false,
+    noApplication: false,
   }
 
   componentDidMount() {
     window
-      .fetch(`https://csumb-applicant-api-staging.herokuapp.com/?user=esqu6485`)
+      .fetch(
+        `https://csumb-applicant-api-staging.herokuapp.com/?user=${this.props.user.profile.login.replace(
+          '@csumb.edu',
+          ''
+        )}`
+      )
       .then(response => {
         return response.json()
       })
       .then(applications => {
+        if (applications._data.length === 0) {
+          this.setState({
+            noApplication: true,
+            applications: true,
+          })
+          return
+        }
         applications = this.processApplications(applications)
         let current = 0
         if (applications && window.location.search.search('app=') > -1) {
@@ -128,7 +142,7 @@ class ApplicantStatus extends React.Component {
       })
       .catch(error => {
         this.setState({
-          applications: 'empty',
+          noApplication: true,
         })
       })
   }
@@ -160,12 +174,20 @@ class ApplicantStatus extends React.Component {
           <p>Loading applications</p>
         ) : (
           <>
-            <ApplicationMultipleMessage
-              applications={this.state.applications}
-            />
-            <Application
-              {...this.state.applications[this.state.currentApplication]}
-            />
+            {this.state.noApplication ? (
+              <AlertWarning type="polite">
+                You do not have any applications.
+              </AlertWarning>
+            ) : (
+              <>
+                <ApplicationMultipleMessage
+                  applications={this.state.applications}
+                />
+                <Application
+                  {...this.state.applications[this.state.currentApplication]}
+                />
+              </>
+            )}
           </>
         )}
       </>
