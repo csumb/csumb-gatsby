@@ -22,6 +22,7 @@ import BlockPathway from './blocks/pathway'
 import BlockRelated from './blocks/related'
 import BlockTable from './blocks/table'
 import { ContainerContext, containerStyle } from './blocks/container-context'
+import { css } from 'emotion'
 
 class Block extends React.Component {
   blockComponents = {
@@ -53,8 +54,9 @@ class Block extends React.Component {
       return null
     }
     let BlockType = this.blockComponents[this.props.type]
+    const containerWidth = this.props.noContainer ? '' : containerStyle.wide
     return (
-      <ContainerContext.Provider value={containerStyle.wide}>
+      <ContainerContext.Provider value={containerWidth}>
         <BlockType {...this.props.block.data} uuid={this.props.block.uuid} />
       </ContainerContext.Provider>
     )
@@ -76,8 +78,23 @@ class Blocks extends React.Component {
         {blocks.layout.map(layout => (
           <div key={layout.id}>
             {layout._children ? (
-              <Flex flexWrap="wrap">
-                <Box />
+              <Flex flexWrap="wrap" className={css(containerStyle.wide)}>
+                {blocks.blocks[layout.id].data.columns.map((width, key) => (
+                  <Box
+                    key={`column-${layout.id}-${key}`}
+                    width={[1, 1, width / 12, width / 12]}
+                    px={2}
+                  >
+                    {layout._children[key + 1].map(blockId => (
+                      <Block
+                        key={blockId.id}
+                        type={blocks.blocks[blockId.id].type}
+                        block={blocks.blocks[blockId.id]}
+                        noContainer={true}
+                      />
+                    ))}
+                  </Box>
+                ))}
               </Flex>
             ) : (
               <Block
