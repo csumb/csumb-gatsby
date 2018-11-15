@@ -507,35 +507,94 @@ storiesOf('Blocks/Text', module)
     </ContainerContext.Provider>
   ))
 
-storiesOf('Blocks/Map', module).add('Single point', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
-    <BlockMap
-      {...{
-        zoom: 17,
-        center: {
-          lat: 36.649733780134,
-          lng: -121.79177284241,
-        },
-        features: {
-          type: 'FeatureCollection',
-          features: [
-            {
-              type: 'Feature',
-              properties: {},
-              geometry: {
-                type: 'Point',
-                coordinates: [-121.79263651371, 36.649771941251],
+storiesOf('Blocks/Map', module)
+  .add('Single point', () => (
+    <ContainerContext.Provider value={containerStyle.wide}>
+      <BlockMap
+        {...{
+          zoom: 17,
+          center: {
+            lat: 36.649733780134,
+            lng: -121.79177284241,
+          },
+          features: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-121.79263651371, 36.649771941251],
+                },
               },
-            },
-          ],
-        },
-        kml: false,
-        tall: false,
-        fullscreen: false,
-      }}
-    />
-  </ContainerContext.Provider>
-))
+            ],
+          },
+          kml: false,
+          tall: false,
+          fullscreen: false,
+        }}
+      />
+    </ContainerContext.Provider>
+  ))
+  .add('Complex', () => (
+    <ContainerContext.Provider value={containerStyle.wide}>
+      <BlockMap
+        {...{
+          zoom: 17,
+          center: {
+            lat: 36.649733780134,
+            lng: -121.79177284241,
+          },
+          features: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                  type: 'Polygon',
+                  coordinates: [
+                    [
+                      [-121.7948305606842, 36.64964770267248],
+                      [-121.79481983184816, 36.648984902999665],
+                      [-121.79274916648863, 36.648390960784305],
+                      [-121.79269552230835, 36.64922592172253],
+                      [-121.79088234901428, 36.64920009832402],
+                      [-121.79057121276855, 36.649992011939425],
+                      [-121.7917513847351, 36.65022441982434],
+                      [-121.79285645484924, 36.6505084729534],
+                      [-121.7948305606842, 36.64964770267248],
+                    ],
+                  ],
+                },
+              },
+              {
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                  type: 'Polygon',
+                  coordinates: [
+                    [
+                      [-121.79240584373474, 36.65055151121491],
+                      [-121.79036736488342, 36.650009227362354],
+                      [-121.79090380668639, 36.64901933429197],
+                      [-121.78900480270384, 36.64833931341866],
+                      [-121.78873658180238, 36.65056011886431],
+                      [-121.79240584373474, 36.65055151121491],
+                    ],
+                  ],
+                },
+              },
+            ],
+          },
+          kml: false,
+          tall: false,
+          fullscreen: false,
+        }}
+      />
+    </ContainerContext.Provider>
+  ))
 
 storiesOf('Blocks/Quote', module)
   .add('Quote', () => (
