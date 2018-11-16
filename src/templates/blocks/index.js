@@ -85,7 +85,7 @@ class Blocks extends React.Component {
                     width={[1, 1, width / 12, width / 12]}
                     px={2}
                   >
-                    {layout._children[key + 1] && (
+                    {Array.isArray(layout._children[key + 1]) && (
                       <>
                         {layout._children[key + 1].map(blockId => (
                           <Block
