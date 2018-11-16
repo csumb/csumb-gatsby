@@ -10,4 +10,9 @@ const HelpParagraph = styled('p')`
   color: ${colors.muted.dark};
 `
 
-export { LeadParagraph, HelpParagraph }
+const UnstyledList = styled('ul')`
+  list-style-type: none;
+  margin-left: 0;
+`
+
+export { LeadParagraph, HelpParagraph, UnstyledList }
