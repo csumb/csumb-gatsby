@@ -105,37 +105,31 @@ const AllPrograms = () => (
       <h2>Graduate degrees</h2>
       <UnstyledList>
         <li>
-          <a href="https://csumb.edu/amws" class="">
-            Environmental Science M.S.{' '}
-          </a>
+          <a href="https://csumb.edu/amws">Environmental Science M.S. </a>
         </li>
         <li>
-          <a href="https://csumb.edu/educationma" class="">
-            Education M.A.{' '}
-          </a>
+          <a href="https://csumb.edu/educationma">Education M.A. </a>
         </li>
         <li>
-          <a href="https://mba.csumb.edu/" class="">
+          <a href="https://mba.csumb.edu/">
             Master of Business Administration{' '}
           </a>
         </li>
         <li>
-          <a href="https://csumb.edu/mist" class="">
+          <a href="https://csumb.edu/mist">
             Instructional Science &amp; Technology, M.S.{' '}
           </a>
         </li>
         <li>
-          <a href="https://csumb.edu/sep/marine-science-ms" class="">
+          <a href="https://csumb.edu/sep/marine-science-ms">
             Marine Science M.S.{' '}
           </a>
         </li>
         <li>
-          <a href="http://csumb.edu/msw" class="">
-            Master of Social Work{' '}
-          </a>
+          <a href="http://csumb.edu/msw">Master of Social Work </a>
         </li>
         <li>
-          <a href="https://csumb.edu/mspa" class="">
+          <a href="https://csumb.edu/mspa">
             Master of Science Physician Assistant{' '}
           </a>
         </li>
@@ -143,17 +137,17 @@ const AllPrograms = () => (
       <h2>Teaching credentials</h2>
       <UnstyledList>
         <li>
-          <a href="https://csumb.edu/teach/single-subject-high-school" class="">
+          <a href="https://csumb.edu/teach/single-subject-high-school">
             Single Subject
           </a>
         </li>
         <li>
-          <a href="http://csumb.edu/teach/multiple-subject-elementary" class="">
+          <a href="http://csumb.edu/teach/multiple-subject-elementary">
             Multiple Subject
           </a>
         </li>
         <li>
-          <a href="http://csumb.edu/teach/special-education" class="">
+          <a href="http://csumb.edu/teach/special-education">
             Special Education
           </a>
         </li>

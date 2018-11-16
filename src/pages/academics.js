@@ -98,6 +98,7 @@ class AcademicsPage extends React.Component {
                   placeholder="Search"
                   label="Search majors and programs"
                   hideLabel={true}
+                  name="program-search"
                   onChange={this.handleChange}
                   huge
                 />
