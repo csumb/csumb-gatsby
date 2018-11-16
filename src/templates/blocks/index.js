@@ -85,14 +85,18 @@ class Blocks extends React.Component {
                     width={[1, 1, width / 12, width / 12]}
                     px={2}
                   >
-                    {layout._children[key + 1].map(blockId => (
-                      <Block
-                        key={blockId.id}
-                        type={blocks.blocks[blockId.id].type}
-                        block={blocks.blocks[blockId.id]}
-                        noContainer={true}
-                      />
-                    ))}
+                    {layout._children[key + 1] && (
+                      <>
+                        {layout._children[key + 1].map(blockId => (
+                          <Block
+                            key={blockId.id}
+                            type={blocks.blocks[blockId.id].type}
+                            block={blocks.blocks[blockId.id]}
+                            noContainer={true}
+                          />
+                        ))}
+                      </>
+                    )}
                   </Box>
                 ))}
               </Flex>
