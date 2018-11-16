@@ -65,6 +65,9 @@ class Block extends React.Component {
 
 const Columns = ({ layout, blocks }) => {
   const block = blocks[layout.id]
+  if (typeof block.data.columns === 'undefined') {
+    return <></>
+  }
   return (
     <Flex flexWrap="wrap" className={css(containerStyle.wide)}>
       {block.data.columns.map((width, key) => (
