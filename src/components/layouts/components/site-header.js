@@ -11,7 +11,8 @@ const SiteHeaderWrapper = styled('div')`
     margin: 0;
     font-size: 2.5rem;
   }
-  a {
+  a,
+  a:visited {
     color: #fff;
     text-decoration: none;
     &:hover {
