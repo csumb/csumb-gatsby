@@ -1,23 +1,41 @@
 import React from 'react'
 import styled from 'react-emotion'
-import Container from 'components/container'
+import bp from 'components/styles/breakpoints'
+import { css } from 'react-emotion'
 
+const responsiveWidth = css(
+  bp({
+    width: ['100%', '100%', '75%', '75%'],
+  })
+)
+const VideoWrapper = styled('div')`
+  position: relative;
+  padding-bottom: 44.25%; /* 16:9 */
+  padding-top: 1rem;
+  height: 0;
+  margin: 0.5rem auto;
+  clear: both;
+  ${responsiveWidth};
+`
 const VideoIframe = styled('iframe')`
-  width: 580px;
-  height: 320px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   border: 0;
+  height: 100%;
 `
 
 class BlockVideo extends React.Component {
   render() {
     const { provider } = this.props
     return (
-      <Container>
+      <VideoWrapper>
         <VideoIframe
           src={`https://www.youtube.com/embed/${provider.id}`}
           allowFullScreen
         />
-      </Container>
+      </VideoWrapper>
     )
   }
 }
