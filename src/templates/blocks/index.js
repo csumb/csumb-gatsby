@@ -62,59 +62,68 @@ class Block extends React.Component {
     )
   }
 }
-class Blocks extends React.Component {
-  render() {
-    let { blocks } = this.props
-    blocks = JSON.parse(blocks)
 
-    if (
-      typeof blocks.layout === 'undefined' ||
-      typeof blocks.layout.map === 'undefined'
-    ) {
-      return <div>Empty layout data</div>
-    }
-    return (
-      <>
-        {blocks.layout.map(layout => (
-          <div key={layout.id}>
-            {layout._children ? (
-              <Flex flexWrap="wrap" className={css(containerStyle.wide)}>
-                {blocks.blocks[layout.id].data.columns.map((width, key) => (
-                  <Box
-                    key={`column-${layout.id}-${key}`}
-                    width={[1, 1, width / 12, width / 12]}
-                    px={2}
-                  >
-                    {Array.isArray(layout._children[key + 1]) && (
-                      <>
-                        {layout._children[key + 1].map(blockId => (
-                          <>
-                            {blocks.blocks[blockId.id] && (
-                              <Block
-                                key={blockId.id}
-                                type={blocks.blocks[blockId.id].type}
-                                block={blocks.blocks[blockId.id]}
-                                noContainer={true}
-                              />
-                            )}
-                          </>
-                        ))}
-                      </>
-                    )}
-                  </Box>
-                ))}
-              </Flex>
-            ) : (
-              <Block
-                key={layout.id}
-                type={blocks.blocks[layout.id].type}
-                block={blocks.blocks[layout.id]}
-              />
-            )}
-          </div>
-        ))}
-      </>
-    )
-  }
+const Columns = ({ layout, blocks }) => {
+  const block = blocks[layout.id]
+  return (
+    <Flex flexWrap="wrap" className={css(containerStyle.wide)}>
+      {block.data.columns.map((width, key) => (
+        <Box
+          key={`column-${layout.id}-${key}`}
+          width={[1, 1, width / 12, width / 12]}
+          px={2}
+        >
+          {Array.isArray(layout._children[key + 1]) && (
+            <>
+              {layout._children[key + 1].map(blockId => (
+                <>
+                  {blocks[blockId.id] && (
+                    <Block
+                      key={blockId.id}
+                      type={blocks[blockId.id].type}
+                      block={blocks[blockId.id]}
+                      noContainer={true}
+                    />
+                  )}
+                </>
+              ))}
+            </>
+          )}
+        </Box>
+      ))}
+    </Flex>
+  )
 }
+const Blocks = ({ blocks }) => {
+  blocks = JSON.parse(blocks)
+
+  if (
+    typeof blocks.layout === 'undefined' ||
+    typeof blocks.layout.map === 'undefined'
+  ) {
+    return <div>Empty layout data</div>
+  }
+  return (
+    <>
+      {blocks.layout.map(layout => (
+        <div key={layout.id}>
+          {blocks.blocks[layout.id] && (
+            <>
+              {layout._children ? (
+                <Columns layout={layout} blocks={blocks.blocks} />
+              ) : (
+                <Block
+                  key={layout.id}
+                  type={blocks.blocks[layout.id].type}
+                  block={blocks.blocks[layout.id]}
+                />
+              )}
+            </>
+          )}
+        </div>
+      ))}
+    </>
+  )
+}
+
 export default Blocks
