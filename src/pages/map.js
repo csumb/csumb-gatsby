@@ -6,16 +6,22 @@ import Container from 'components/container'
 import styled from 'react-emotion'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import { graphql } from 'gatsby'
+import { colors } from 'components/styles/theme'
 
 const MapMap = styled(Map)`
   width: 100%;
   position: relative !important;
-  height: 75vh !important;
+  height: 80vh !important;
   min-height: 300px;
 `
 
 class MapPage extends React.Component {
   onReady(mapProps, map) {
+    map.data.setStyle({
+      fillColor: colors.primary.dark,
+      fillOpacity: 0.9,
+      strokeWeight: 0,
+    })
     this.props.data.allCsumbBuilding.edges.forEach(edge => {
       map.data.addGeoJson({
         type: 'FeatureCollection',
@@ -45,7 +51,13 @@ class MapPage extends React.Component {
           }}
           onReady={this.onReady.bind(this)}
         />
-        <Container />
+        <Container topPadding>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.props.data.allMarkdownRemark.edges[0].node.html,
+            }}
+          />
+        </Container>
       </Layout>
     )
   }
@@ -70,6 +82,13 @@ export const query = graphql`
             type
             coordinates
           }
+        }
+      }
+    }
+    allMarkdownRemark(filter: { frontmatter: { name: { eq: "map" } } }) {
+      edges {
+        node {
+          html
         }
       }
     }
