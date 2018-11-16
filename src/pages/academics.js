@@ -43,15 +43,9 @@ const AcademicsResults = ({ results }) => (
   </UnstyledList>
 )
 class AcademicsPage extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      filter: '',
-      filteredItems: [],
-    }
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+  state = {
+    filter: '',
+    filteredItems: false,
   }
 
   handleSubmit(event) {
@@ -70,7 +64,7 @@ class AcademicsPage extends React.Component {
       return filteredItems
     })
     this.setState({
-      filteredItems: filteredItems,
+      filteredItems: filteredItems.length ? filteredItems : false,
     })
   }
 
@@ -91,7 +85,7 @@ class AcademicsPage extends React.Component {
             Some of our majors have unusual names, if you don't see what you are
             looking for, try searching below.
           </LeadParagraph>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit.bind(this)}>
             <Flex flexWrap="wrap">
               <Box width={[1, 8 / 10]} px={2}>
                 <InputText
@@ -99,7 +93,7 @@ class AcademicsPage extends React.Component {
                   label="Search majors and programs"
                   hideLabel={true}
                   name="program-search"
-                  onChange={this.handleChange}
+                  onChange={this.handleChange.bind(this)}
                   huge
                 />
               </Box>
@@ -108,7 +102,7 @@ class AcademicsPage extends React.Component {
               </Box>
             </Flex>
           </form>
-          {this.state.filteredItems.length && (
+          {this.state.filteredItems && (
             <AcademicsResults results={this.state.filteredItems} />
           )}
         </Container>
