@@ -88,12 +88,16 @@ class Blocks extends React.Component {
                     {Array.isArray(layout._children[key + 1]) && (
                       <>
                         {layout._children[key + 1].map(blockId => (
-                          <Block
-                            key={blockId.id}
-                            type={blocks.blocks[blockId.id].type}
-                            block={blocks.blocks[blockId.id]}
-                            noContainer={true}
-                          />
+                          <>
+                            {blocks.blocks[blockId.id] && (
+                              <Block
+                                key={blockId.id}
+                                type={blocks.blocks[blockId.id].type}
+                                block={blocks.blocks[blockId.id]}
+                                noContainer={true}
+                              />
+                            )}
+                          </>
                         ))}
                       </>
                     )}
