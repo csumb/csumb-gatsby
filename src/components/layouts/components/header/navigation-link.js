@@ -6,7 +6,7 @@ import styled from 'react-emotion'
 const NavigationLinkList = styled('li')`
   margin-left: 0.5rem;
   display: inline-block;
-  a {
+  a, a:visited {
     font-weight: bold;
     text-decoration: none;
     padding: 0.75rem;
