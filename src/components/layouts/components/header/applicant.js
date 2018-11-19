@@ -9,6 +9,9 @@ const ApplicantLink = styled(Link)`
   margin-right: 1rem;
   text-decoration: none;
   font-weight: bold;
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
 class Applicant extends React.Component {

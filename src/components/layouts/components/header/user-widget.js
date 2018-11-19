@@ -3,6 +3,7 @@ import styled from 'react-emotion'
 import { colors, fonts } from 'components/styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import { UserContext } from 'components/contexts/user'
+import Link from 'gatsby-link'
 import { IronDB } from 'iron-db'
 
 import '@reach/menu-button/styles.css'
@@ -35,6 +36,16 @@ const UserDropdownMenuLink = styled(MenuLink)`
   &:focus {
     background: ${colors.primary.darkest};
     color: ${colors.white};
+  }
+`
+
+const UserDashboardLink = styled(Link)`
+  color: ${colors.primary.darkest} !important;
+  margin-right: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    text-decoration: underline;
   }
 `
 
@@ -96,7 +107,12 @@ class UserWidget extends React.Component {
                       Log in
                     </UserLoginLink>
                   ) : (
-                    <UserDropdown user={context.user} />
+                    <>
+                      <UserDashboardLink to="/dashboard">
+                        Dashboard
+                      </UserDashboardLink>
+                      <UserDropdown user={context.user} />
+                    </>
                   )}
                 </>
               )}
