@@ -8,6 +8,7 @@ const ApplicantLink = styled(Link)`
   color: ${colors.primary.darkest} !important;
   margin-right: 1rem;
   text-decoration: none;
+  font-weight: bold;
 `
 
 class Applicant extends React.Component {
