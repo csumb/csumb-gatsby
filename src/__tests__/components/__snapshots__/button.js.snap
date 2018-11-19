@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders default button type correctly 1`] = `
+<button
+  className="css-1jliyzu"
+>
+  A button!
+</button>
+`;
+
+exports[`Button renders default button type correctly 2`] = `
+<button
+  className="css-1l9edgb"
+>
+  A button!
+</button>
+`;
+
+exports[`Button renders default button type correctly 3`] = `
+<button
+  className="css-fhm1yz"
+>
+  A button!
+</button>
+`;
+
+exports[`Button renders native button correctly 1`] = `
+<button
+  className="css-1jliyzu"
+>
+  A button!
+</button>
+`;
+
+exports[`ButtonLink renders link button correctly 1`] = `
+<a
+  className="css-1jliyzu"
+  href="/home"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  A link button!
+</a>
+`;

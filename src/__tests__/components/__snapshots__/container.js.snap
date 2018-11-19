@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container renders container correctly 1`] = `
+<div
+  className="css-5jivu3"
+>
+  The children!
+</div>
+`;
+
+exports[`Container renders container correctly with top padding 1`] = `
+<div
+  className="css-snktv4"
+>
+  The children!
+</div>
+`;

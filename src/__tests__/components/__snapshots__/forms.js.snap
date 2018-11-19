@@ -1,0 +1,558 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fieldset renders fieldsets correctly 1`] = `
+<fieldset
+  className="css-1bktrpy"
+>
+  <legend
+    className="css-1wlm920"
+  >
+    This is the legend
+  </legend>
+  <div
+    className="css-h5wlmy"
+  />
+  Some content
+</fieldset>
+`;
+
+exports[`InputCheckbox renders checkboxes correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1x1mugq"
+    htmlFor="id12"
+  >
+    <input
+      className="css-kepzzb"
+      id="id12"
+      label="Checkbox input"
+      name="checkbox"
+      type="checkbox"
+    />
+    Checkbox input
+  </label>
+</div>
+`;
+
+exports[`InputCheckbox renders checkboxes with preset values correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1x1mugq"
+    htmlFor="id14"
+  >
+    <input
+      checked="checked"
+      className="css-kepzzb"
+      id="id14"
+      label="Checkbox input"
+      name="checkbox"
+      type="checkbox"
+    />
+    Checkbox input
+  </label>
+</div>
+`;
+
+exports[`InputCheckbox renders required checkboxes correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1x1mugq"
+    htmlFor="id13"
+  >
+    <input
+      className="css-kepzzb"
+      id="id13"
+      label="Checkbox input"
+      name="checkbox"
+      type="checkbox"
+    />
+    Checkbox input
+    <strong
+      className="css-1xev6mj"
+    >
+      Required
+    </strong>
+  </label>
+</div>
+`;
+
+exports[`InputRadio renders radios correctly 1`] = `
+Array [
+  <div
+    className="css-1ycul8i"
+  >
+    <label
+      className="css-1x1mugq"
+      htmlFor="id15"
+    >
+      <input
+        className="css-kepzzb"
+        id="id15"
+        label="Radio input"
+        name="radio"
+        type="radio"
+      />
+      Radio input
+    </label>
+  </div>,
+  <div
+    className="css-1ycul8i"
+  >
+    <label
+      className="css-1x1mugq"
+      htmlFor="id16"
+    >
+      <input
+        className="css-kepzzb"
+        id="id16"
+        label="Radio input2"
+        name="radio"
+        type="radio"
+      />
+      Radio input2
+    </label>
+  </div>,
+]
+`;
+
+exports[`InputRadio renders radios with preset values correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1x1mugq"
+    htmlFor="id18"
+  >
+    <input
+      checked="checked"
+      className="css-kepzzb"
+      id="id18"
+      label="Radio input"
+      name="radio"
+      type="radio"
+    />
+    Radio input
+  </label>
+</div>
+`;
+
+exports[`InputRadio renders required radios correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1x1mugq"
+    htmlFor="id17"
+  >
+    <input
+      className="css-kepzzb"
+      id="id17"
+      label="Radio input"
+      name="radio"
+      type="radio"
+    />
+    Radio input
+    <strong
+      className="css-1xev6mj"
+    >
+      Required
+    </strong>
+  </label>
+</div>
+`;
+
+exports[`InputSelect renders required selects correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id20"
+  >
+    Select input
+    <strong
+      className="css-1xev6mj"
+    >
+      Required
+    </strong>
+  </label>
+  <select
+    label="Select input"
+    name="select"
+  >
+    <option
+      value="1"
+    >
+      One
+    </option>
+    <option
+      value="2"
+    >
+      Two
+    </option>
+    <option
+      value="3"
+    >
+      Three
+    </option>
+  </select>
+</div>
+`;
+
+exports[`InputSelect renders selects correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id19"
+  >
+    Select input
+  </label>
+  <select
+    label="Select input"
+    name="select"
+  >
+    <option
+      value="1"
+    >
+      One
+    </option>
+    <option
+      value="2"
+    >
+      Two
+    </option>
+    <option
+      value="3"
+    >
+      Three
+    </option>
+  </select>
+</div>
+`;
+
+exports[`InputText renders hidden labels correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <div
+    style={
+      Object {
+        "border": 0,
+        "clip": "rect(0 0 0 0)",
+        "height": "1px",
+        "margin": "-1px",
+        "overflow": "hidden",
+        "padding": 0,
+        "position": "absolute",
+        "width": "1px",
+      }
+    }
+  >
+    <label
+      className="css-1n1cms9"
+      htmlFor="id7"
+    >
+      Text input
+    </label>
+  </div>
+  <input
+    className="css-6i6yak"
+    id="id7"
+    label="Text input"
+    name="text"
+    type="text"
+  />
+</div>
+`;
+
+exports[`InputText renders huge text input correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id4"
+  >
+    Text input
+  </label>
+  <input
+    className="css-7xllnv"
+    id="id4"
+    label="Text input"
+    name="text"
+    type="text"
+  />
+</div>
+`;
+
+exports[`InputText renders inline text input correctly 1`] = `
+<div
+  className="css-s7vocb"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id3"
+  >
+    Text input
+  </label>
+  <input
+    className="css-6i6yak"
+    id="id3"
+    label="Text input"
+    name="text"
+    type="text"
+  />
+</div>
+`;
+
+exports[`InputText renders required text input correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id2"
+  >
+    Text input
+    <strong
+      className="css-1xev6mj"
+    >
+      Required
+    </strong>
+  </label>
+  <input
+    className="css-6i6yak"
+    id="id2"
+    label="Text input"
+    name="text"
+    type="text"
+  />
+</div>
+`;
+
+exports[`InputText renders small text input correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id5"
+  >
+    Text input
+  </label>
+  <input
+    className="css-ugf4r7"
+    id="id5"
+    label="Text input"
+    name="text"
+    type="text"
+  />
+</div>
+`;
+
+exports[`InputText renders small text placeholders correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id6"
+  >
+    Text input
+  </label>
+  <input
+    className="css-6i6yak"
+    id="id6"
+    label="Text input"
+    name="text"
+    placeholder="placeholder"
+    type="text"
+  />
+</div>
+`;
+
+exports[`InputText renders text input correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id1"
+  >
+    Text input
+  </label>
+  <input
+    className="css-6i6yak"
+    id="id1"
+    label="Text input"
+    name="text"
+    type="text"
+  />
+</div>
+`;
+
+exports[`InputTextarea renders hidden labels correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <div
+    style={
+      Object {
+        "border": 0,
+        "clip": "rect(0 0 0 0)",
+        "height": "1px",
+        "margin": "-1px",
+        "overflow": "hidden",
+        "padding": 0,
+        "position": "absolute",
+        "width": "1px",
+      }
+    }
+  >
+    <label
+      className="css-1n1cms9"
+      htmlFor="id11"
+    >
+      Text input
+    </label>
+  </div>
+  <textarea
+    className="css-mok24b"
+    label="Text input"
+    name="text"
+    type="text"
+  />
+</div>
+`;
+
+exports[`InputTextarea renders required text input correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id9"
+  >
+    Text input
+    <strong
+      className="css-1xev6mj"
+    >
+      Required
+    </strong>
+  </label>
+  <textarea
+    className="css-mok24b"
+    label="Text input"
+    name="text"
+    type="text"
+  />
+</div>
+`;
+
+exports[`InputTextarea renders small text input correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id10"
+  >
+    Text input
+  </label>
+  <textarea
+    className="css-1vglsvm"
+    label="Text input"
+    name="text"
+    type="text"
+  />
+</div>
+`;
+
+exports[`InputTextarea renders text input correctly 1`] = `
+<div
+  className="css-1ycul8i"
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="id8"
+  >
+    Text input
+  </label>
+  <textarea
+    className="css-mok24b"
+    label="Text input"
+    name="text"
+    type="text"
+  />
+</div>
+`;
+
+exports[`Label renders hidden labels correctly 1`] = `
+<div
+  style={
+    Object {
+      "border": 0,
+      "clip": "rect(0 0 0 0)",
+      "height": "1px",
+      "margin": "-1px",
+      "overflow": "hidden",
+      "padding": 0,
+      "position": "absolute",
+      "width": "1px",
+    }
+  }
+>
+  <label
+    className="css-1n1cms9"
+    htmlFor="label"
+  >
+    A form label
+  </label>
+</div>
+`;
+
+exports[`Label renders labels correctly 1`] = `
+<label
+  className="css-1n1cms9"
+  htmlFor="label"
+>
+  A form label
+  <strong
+    className="css-1xev6mj"
+  >
+    Required
+  </strong>
+</label>
+`;
+
+exports[`Submit renders huge buttons correctly 1`] = `
+<input
+  className="css-j31ii0"
+  type="submit"
+  value="Submit"
+/>
+`;
+
+exports[`Submit renders marginless buttons correctly 1`] = `
+<input
+  className="css-12c2xt4"
+  type="submit"
+  value="Submit"
+/>
+`;
+
+exports[`Submit renders submit buttons correctly 1`] = `
+<input
+  className="css-1sogz2k"
+  type="submit"
+  value="Submit"
+/>
+`;

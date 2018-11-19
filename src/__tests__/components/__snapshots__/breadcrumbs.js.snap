@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders breadcrumbs correctly 1`] = `
+<ul
+  className="css-1sct6h1"
+>
+  <li
+    className="css-e3hzvr"
+  >
+    <a
+      aria-current="page"
+      className=""
+      href="/"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      style={Object {}}
+    >
+      CSUMB Home
+    </a>
+  </li>
+  <li
+    className="css-e3hzvr"
+  >
+    <a
+      href="/about"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      About CSUMB
+    </a>
+  </li>
+</ul>
+`;
