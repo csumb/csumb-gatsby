@@ -16,4 +16,9 @@ describe('LinkInspect', () => {
       .toJSON()
     expect(tree).toMatchSnapshot()
   })
+
+  it('renders nothing if there is no "to" prop', () => {
+    const tree = renderer.create(<LinkInspect>A link</LinkInspect>).toJSON()
+    expect(tree).toBeNull()
+  })
 })
