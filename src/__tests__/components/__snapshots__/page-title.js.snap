@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders a page title 1`] = `
+<h1
+  className="css-bbl1j1"
+>
+  The page title
+</h1>
+`;
+
+exports[`Breadcrumbs renders sub titles for sites 1`] = `
+<h1
+  className="css-bbl1j1"
+>
+  The page title
+  <small
+    className="css-1e4qcvf"
+  >
+    Sub title
+  </small>
+</h1>
+`;
