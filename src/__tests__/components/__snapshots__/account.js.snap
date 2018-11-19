@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountData renders account data correctly 1`] = `
+<p
+  className="css-h9i116"
+>
+  Some data
+</p>
+`;
+
+exports[`AccountGroup renders account data groups correctly 1`] = `
+<div
+  className="css-i9b2qu"
+>
+  <h3
+    className="css-1kiihh0"
+  >
+    This is a legend
+  </h3>
+  Some data
+</div>
+`;
+
+exports[`AccountSidebar renders the sidebar for Applicants 1`] = `
+<ul
+  className="css-1rp3yp7"
+>
+  <a
+    className="css-rvxwuc"
+    href="/account"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Your account
+  </a>
+  <a
+    className="css-rvxwuc"
+    href="/account/applicant-status"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Your application status
+  </a>
+  <a
+    className="css-rvxwuc"
+    href="/account/messages"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Messages
+  </a>
+  <a
+    className="css-rvxwuc"
+    href="/account/card"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Otter Card
+  </a>
+  <a
+    className="css-rvxwuc"
+    href="/account/print"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Printer paper
+  </a>
+</ul>
+`;
+
+exports[`AccountSidebar renders the sidebar for Staff 1`] = `
+<ul
+  className="css-1rp3yp7"
+>
+  <a
+    className="css-rvxwuc"
+    href="/account"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Your account
+  </a>
+  <a
+    className="css-rvxwuc"
+    href="/account/profile"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Your public profile
+  </a>
+  <a
+    className="css-rvxwuc"
+    href="/account/messages"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Messages
+  </a>
+  <a
+    className="css-rvxwuc"
+    href="/account/card"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Otter Card
+  </a>
+  <a
+    className="css-rvxwuc"
+    href="/account/print"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Printer paper
+  </a>
+</ul>
+`;
+
+exports[`AccountTitle renders account title correctly 1`] = `
+<h2
+  className="css-jk6p7n"
+>
+  The title
+</h2>
+`;

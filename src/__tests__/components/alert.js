@@ -2,7 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { AlertDanger, AlertInfo, AlertWarning } from '../../components/alert'
 
-describe('LinkInspect', () => {
+describe('Alert', () => {
   it('renders a danger alert correctly', () => {
     const tree = renderer
       .create(

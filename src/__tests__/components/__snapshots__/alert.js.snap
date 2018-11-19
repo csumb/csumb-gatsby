@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LinkInspect renders a danger alert correctly 1`] = `
+exports[`Alert renders a danger alert correctly 1`] = `
 <div
   className="css-k51ohx"
   data-reach-alert={true}
@@ -69,7 +69,7 @@ exports[`LinkInspect renders a danger alert correctly 1`] = `
 </div>
 `;
 
-exports[`LinkInspect renders a warning alert correctly 1`] = `
+exports[`Alert renders a warning alert correctly 1`] = `
 <div
   className="css-12r1kpa"
   data-reach-alert={true}
@@ -138,7 +138,7 @@ exports[`LinkInspect renders a warning alert correctly 1`] = `
 </div>
 `;
 
-exports[`LinkInspect renders an info alert correctly 1`] = `
+exports[`Alert renders an info alert correctly 1`] = `
 <div
   className="css-17dits6"
   data-reach-alert={true}
