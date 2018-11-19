@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkInspect renders correctly 1`] = `
+<a
+  href="/location"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  A link
+</a>
+`;

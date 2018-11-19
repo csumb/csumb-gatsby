@@ -20,7 +20,7 @@ class LinkInspect extends React.Component {
     return (
       <>
         <Link to={to} {...props}>
-          {this.props.children}
+          {children}
         </Link>
       </>
     )

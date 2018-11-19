@@ -71,18 +71,26 @@
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "storybookbuild": "build-storybook -c .storybook -o ./public/_storybook"
+    "storybookbuild": "build-storybook -c .storybook -o ./public/_storybook",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.6",
     "@storybook/addon-a11y": "^4.0.4",
     "@storybook/addon-actions": "^4.0.4",
     "@storybook/addon-info": "^4.0.4",
     "@storybook/addon-links": "^4.0.4",
     "@storybook/addon-notes": "^4.0.4",
     "@storybook/react": "^4.0.4",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-preset-gatsby": "^0.1.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
     "netlify-lambda": "^1.0.2",
     "prettier": "^1.14.3",
-    "react-docgen": "^2.21.0"
+    "react-docgen": "^2.21.0",
+    "react-test-renderer": "^16.6.3"
   },
   "repository": {
     "type": "git",
