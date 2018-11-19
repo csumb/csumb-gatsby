@@ -1,10 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LinkInspect renders correctly 1`] = `
+exports[`LinkInspect renders a base relative URL correctly 1`] = `
 <a
   href="/location"
   onClick={[Function]}
   onMouseEnter={[Function]}
+>
+  A link
+</a>
+`;
+
+exports[`LinkInspect renders an absolute relative URL correctly 1`] = `
+<a
+  href="https://google.com"
 >
   A link
 </a>
