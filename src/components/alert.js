@@ -71,6 +71,7 @@ const AlertInfoElement = styled(Alert)`
   background: ${color(colors.indicators.low)
     .lighten(1.5)
     .hex()};
+
   border-left: 8px solid ${colors.indicators.low};
 `
 
