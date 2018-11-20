@@ -140,7 +140,7 @@ exports[`Alert renders a warning alert correctly 1`] = `
 
 exports[`Alert renders an info alert correctly 1`] = `
 <div
-  className="css-17dits6"
+  className="css-16a9wz5"
   data-reach-alert={true}
 >
   <div
