@@ -5,10 +5,12 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'components/styles/theme'
 import Layout from 'components/layouts/default'
 import styled from 'react-emotion'
+import Loading from 'components/loading'
 import { UserContext } from 'components/contexts/user'
 import { ButtonLink } from 'components/button'
 import { AlertInfo } from 'components/alert'
 import VisuallyHidden from '@reach/visually-hidden'
+import Link from 'gatsby-link'
 
 const dashboardCard = css`
   background: #fff;
@@ -165,7 +167,7 @@ class DashboardMessages extends React.Component {
             )}
           </>
         ) : (
-          <AlertInfo>Loading messages</AlertInfo>
+          <Loading>Loading messages</Loading>
         )}
       </>
     )
@@ -235,6 +237,90 @@ class DashboardMessage extends React.Component {
   }
 }
 
+class DashboardEvents extends React.Component {
+  state = {
+    events: false,
+    didLoad: false,
+  }
+
+  getRoles() {
+    const { user } = this.props
+    let roles = []
+    if (user._isStaff) {
+      roles.push('employee_staff')
+    }
+    if (user._isFaculty) {
+      roles.push('employee_faculty')
+    }
+    if (user._isStudent) {
+      roles.push('student_matriculated')
+    }
+    if (user._isApplicant) {
+      roles.push('student_applicant')
+    }
+    return roles.join(',')
+  }
+
+  componentDidMount() {
+    window
+      .fetch(
+        `https://test.csumb.edu/public/api/dashboard/events?role=${this.getRoles()}`
+      )
+      .then(response => {
+        return response.json()
+      })
+      .then(events => {
+        this.setState({
+          events: events,
+          didLoad: true,
+        })
+      })
+      .catch(error => {
+        this.setState({
+          events: false,
+          didLoad: true,
+        })
+      })
+  }
+  render() {
+    return (
+      <>
+        {this.state.didLoad ? (
+          <>
+            {this.state.events ? (
+              <>
+                {this.state.events.map((event, key) => (
+                  <DashboardEvent key={key} event={event} />
+                ))}
+              </>
+            ) : (
+              <AlertInfo>No events</AlertInfo>
+            )}
+          </>
+        ) : (
+          <Loading>Loading events</Loading>
+        )}
+      </>
+    )
+  }
+}
+
+const DashboardEventElement = styled('div')`
+  border: 1px solid ${colors.muted.light};
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+`
+
+const DashboardEvent = ({ event }) => (
+  <DashboardEventElement>
+    <Link to={event.link}>
+      <h3>{event.headline}</h3>
+    </Link>
+    <h4>{event.date}</h4>
+    <p>{event.description}</p>
+  </DashboardEventElement>
+)
+
 const DashboardPage = () => (
   <Layout pageTitle="Dashboard">
     <DashboardApps />
@@ -250,7 +336,7 @@ const DashboardPage = () => (
                     px={2}
                     className={dashboardCard}
                   >
-                    sta
+                    <DashboardEvents user={context.user} />
                   </Box>
                   <Box
                     width={[1, 1, 1 / 2, 1 / 2]}

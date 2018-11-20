@@ -1,0 +1,36 @@
+import React from 'react'
+import { colors } from 'components/styles/theme'
+import styled from 'react-emotion'
+import ReactLoading from 'react-loading'
+
+const LoadingWrapper = styled('div')`
+  text-align: center;
+  margin: 2rem; 0;
+  span {
+    display: inline-block;
+    padding-bottom: 0.3rem;
+  }
+  div {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+`
+
+const Loading = ({ children }) => {
+  if (!children) {
+    children = 'Loading...'
+  }
+  return (
+    <LoadingWrapper>
+      <span>{children}</span>
+      <ReactLoading
+        type="spin"
+        color={colors.primary.darkest}
+        height={30}
+        width={30}
+      />
+    </LoadingWrapper>
+  )
+}
+
+export default Loading
