@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardMessage renders messages correctly 1`] = `
+<div
+  className="css-tb7oa0"
+>
+  <button
+    className="css-2p2q71"
+    onClick={[Function]}
+  >
+    ×
+    <div
+      style={
+        Object {
+          "border": 0,
+          "clip": "rect(0 0 0 0)",
+          "height": "1px",
+          "margin": "-1px",
+          "overflow": "hidden",
+          "padding": 0,
+          "position": "absolute",
+          "width": "1px",
+        }
+      }
+    >
+      Archive message
+    </div>
+  </button>
+  <h3>
+    the title
+  </h3>
+  <p>
+    message
+  </p>
+</div>
+`;
