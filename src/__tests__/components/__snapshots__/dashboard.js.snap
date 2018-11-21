@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DashboardEvent renders messages correctly 1`] = `
+<div
+  className="css-14pshc8"
+>
+  <a
+    href="/#link"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <h3>
+      the title
+    </h3>
+  </a>
+  <h4>
+    October 23, 2018
+  </h4>
+  <p />
+</div>
+`;
+
 exports[`DashboardMessage renders messages correctly 1`] = `
 <div
   className="css-tb7oa0"

@@ -28,7 +28,7 @@ describe('DashboardEvent', () => {
     const tree = renderer
       .create(
         <DashboardEvent
-          message={{
+          event={{
             headline: 'the title',
             dashboard: 'message',
             date: 'October 23, 2018',
