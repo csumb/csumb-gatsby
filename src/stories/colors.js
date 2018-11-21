@@ -79,10 +79,18 @@ storiesOf('Colors', module)
       info: 'Used for high-visibility elements, alerts.',
     }
   )
-storiesOf('Colors/Secondary', module).add('Highlight', () => (
-  <>
-    {Object.keys(colors.secondary.highlight).map(name => (
-      <Color name={name} color={colors.secondary.highlight[name]} />
-    ))}
-  </>
-))
+storiesOf('Colors/Secondary', module)
+  .add('Highlight', () => (
+    <>
+      {Object.keys(colors.secondary.highlight).map(name => (
+        <Color name={name} color={colors.secondary.highlight[name]} />
+      ))}
+    </>
+  ))
+  .add('Saturated', () => (
+    <>
+      {Object.keys(colors.secondary.saturated).map(name => (
+        <Color name={name} color={colors.secondary.saturated[name]} />
+      ))}
+    </>
+  ))
