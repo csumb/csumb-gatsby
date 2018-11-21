@@ -243,28 +243,13 @@ class DashboardEvents extends React.Component {
     didLoad: false,
   }
 
-  getRoles() {
-    const { user } = this.props
-    let roles = []
-    if (user._isStaff) {
-      roles.push('employee_staff')
-    }
-    if (user._isFaculty) {
-      roles.push('employee_faculty')
-    }
-    if (user._isStudent) {
-      roles.push('student_matriculated')
-    }
-    if (user._isApplicant) {
-      roles.push('student_applicant')
-    }
-    return roles.join(',')
-  }
-
   componentDidMount() {
+    const { user } = this.props
     window
       .fetch(
-        `https://test.csumb.edu/public/api/dashboard/events?role=${this.getRoles()}`
+        `https://csumb.edu/public/api/dashboard/events?role=${user.profile.cmsRole.join(
+          ','
+        )}`
       )
       .then(response => {
         return response.json()
