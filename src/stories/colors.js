@@ -28,6 +28,20 @@ const ColorFlex = styled(Flex)`
   margin-bottom: 1rem;
 `
 
+const ColorLabel = () => (
+  <Flex flexWRap="wrap">
+    <Box width={[1 / 3]} px={2}>
+      <h3>Swatch</h3>
+    </Box>
+    <Box width={[1 / 3]} px={2}>
+      <h3>Hex code</h3>
+    </Box>
+    <Box width={[1 / 3]} px={2}>
+      <h3>Name</h3>
+    </Box>
+  </Flex>
+)
+
 const Color = ({ name, color }) => (
   <ColorFlex flexWrap="wrap">
     <ColorBox width={[1 / 3]} px={2}>
@@ -49,10 +63,21 @@ const Color = ({ name, color }) => (
 typography.injectStyles()
 
 storiesOf('Colors', module)
-  .add('White', () => <Color name="white" color={colors.white} />)
-  .add('Black', () => <Color name="black" color={colors.black} />)
+  .add('White', () => (
+    <>
+      <ColorLabel />
+      <Color name="white" color={colors.white} />
+    </>
+  ))
+  .add('Black', () => (
+    <>
+      <ColorLabel />
+      <Color name="black" color={colors.black} />
+    </>
+  ))
   .add('Primary', () => (
     <>
+      <ColorLabel />
       {Object.keys(colors.primary).map(name => (
         <Color name={name} color={colors.primary[name]} />
       ))}
@@ -60,6 +85,7 @@ storiesOf('Colors', module)
   ))
   .add('Muted', () => (
     <>
+      <ColorLabel />
       {Object.keys(colors.muted).map(name => (
         <Color name={name} color={colors.muted[name]} />
       ))}
@@ -70,6 +96,7 @@ storiesOf('Colors', module)
     'Indicators',
     () => (
       <>
+        <ColorLabel />
         {Object.keys(colors.indicators).map(name => (
           <Color name={name} color={colors.indicators[name]} />
         ))}
@@ -82,6 +109,7 @@ storiesOf('Colors', module)
 storiesOf('Colors/Secondary', module)
   .add('Highlight', () => (
     <>
+      <ColorLabel />
       {Object.keys(colors.secondary.highlight).map(name => (
         <Color name={name} color={colors.secondary.highlight[name]} />
       ))}
@@ -89,6 +117,7 @@ storiesOf('Colors/Secondary', module)
   ))
   .add('Saturated', () => (
     <>
+      <ColorLabel />
       {Object.keys(colors.secondary.saturated).map(name => (
         <Color name={name} color={colors.secondary.saturated[name]} />
       ))}
