@@ -2,6 +2,7 @@ import React from 'react'
 import { colors } from 'components/styles/theme'
 import styled from 'react-emotion'
 import ReactLoading from 'react-loading'
+import VisuallyHidden from '@reach/visually-hidden'
 
 const LoadingWrapper = styled('div')`
   text-align: center;
@@ -18,7 +19,7 @@ const LoadingWrapper = styled('div')`
 
 const Loading = ({ children }) => {
   if (!children) {
-    children = 'Loading...'
+    children = <VisuallyHidden>Loading</VisuallyHidden>
   }
   return (
     <LoadingWrapper>
