@@ -5,9 +5,51 @@ import { css } from 'emotion'
 import { graphql } from 'gatsby'
 import { navigate } from '@reach/router'
 import url from 'url'
+import { Flex, Box } from '@rebass/grid/emotion'
+import { InputText, Submit } from 'components/forms'
 import PageTitle from 'components/page-title'
 import Container from 'components/container'
 
+const ListResults = ({ results }) => {
+  if (
+    typeof results.records === 'undefined' ||
+    typeof results.records.page === 'undefined'
+  ) {
+    return null
+  }
+  return (
+    <>
+      {results.records.page.map(result => (
+        <div
+          key={result.id}
+          className={css`
+            margin-top: 1rem;
+          `}
+        >
+          <h3>
+            <Link to={result.url.replace('https://csumb.edu/', '/')}>
+              {result.title}
+            </Link>
+          </h3>
+          <div>
+            <Link to={result.url.replace('https://csumb.edu/', '/')}>
+              {result.url}
+            </Link>
+          </div>
+          <p
+            className={css`
+              em {
+                font-weight: bold;
+                font-style: normal;
+              }
+            `}
+            dangerouslySetInnerHTML={{ __html: result.highlight.body }}
+          />
+        </div>
+      ))}
+    </>
+  )
+}
 class SearchPage extends React.Component {
   constructor(props) {
     super(props)
@@ -68,59 +110,27 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    const ListResults = props => {
-      if (
-        typeof props.results.records === 'undefined' ||
-        typeof props.results.records.page === 'undefined'
-      ) {
-        return null
-      }
-      return (
-        <>
-          {props.results.records.page.map(result => (
-            <div
-              key={result.id}
-              className={css`
-                margin-top: 1rem;
-              `}
-            >
-              <h3>
-                <Link to={result.url.replace('https://csumb.edu/', '/')}>
-                  {result.title}
-                </Link>
-              </h3>
-              <div>
-                <Link to={result.url.replace('https://csumb.edu/', '/')}>
-                  {result.url}
-                </Link>
-              </div>
-              <p
-                className={css`
-                  em {
-                    font-weight: bold;
-                    font-style: normal;
-                  }
-                `}
-                dangerouslySetInnerHTML={{ __html: result.highlight.body }}
-              />
-            </div>
-          ))}
-        </>
-      )
-    }
-
     return (
       <Layout pageTitle="Search">
         <Container>
           <PageTitle>Search</PageTitle>
           <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              placeholder="Search"
-              onChange={this.handleChange}
-              value={this.existingQuery}
-            />
-            <input type="submit" value="Search" />
+            <Flex flexWrap="wrap">
+              <Box width={[1, 2 / 3]} px={2}>
+                <InputText
+                  name="search"
+                  label="Search"
+                  huge
+                  hideLabel
+                  placeholder="Search"
+                  onChange={this.handleChange}
+                  value={this.existingQuery}
+                />
+              </Box>
+              <Box width={[1, 1 / 3]} px={2}>
+                <Submit value="Search" huge nomargin />
+              </Box>
+            </Flex>
           </form>
           <ListResults results={this.state.search} />
         </Container>
