@@ -20,6 +20,13 @@ const colors = {
       light: '#9bdaf1',
       lightest: '#e1f3f8',
     },
+    saturated: {
+      default: '#e31c3d',
+      darkest: '#981b1e',
+      dark: '#cd2026',
+      light: '#e59393',
+      lightest: '#f9dede',
+    },
   },
   muted: {
     //Currently tans
