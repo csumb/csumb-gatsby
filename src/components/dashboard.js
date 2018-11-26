@@ -4,7 +4,7 @@ import { colors } from 'components/styles/theme'
 import styled from 'react-emotion'
 import Loading from 'components/loading'
 import { ButtonLink } from 'components/button'
-import Alert from '@reach/alert'
+import { AlertEmpty } from 'components/alert'
 import VisuallyHidden from '@reach/visually-hidden'
 import Link from 'gatsby-link'
 
@@ -32,11 +32,6 @@ const EditOrderButton = styled(ButtonLink)`
   border: 1px solid ${colors.white};
 `
 
-const DashboardAlert = styled(Alert)`
-  display: block;
-  padding: 0.5rem;
-  margin-top: 1.5rem;
-`
 class DashboardApps extends React.Component {
   state = {
     apps: false,
@@ -159,7 +154,7 @@ class DashboardMessages extends React.Component {
                 ))}
               </>
             ) : (
-              <DashboardAlert>You do not have any messages</DashboardAlert>
+              <AlertEmpty>You do not have any messages</AlertEmpty>
             )}
           </>
         ) : (
@@ -290,7 +285,7 @@ class DashboardEvents extends React.Component {
                 ))}
               </>
             ) : (
-              <DashboardAlert>No events</DashboardAlert>
+              <AlertEmpty>No events</AlertEmpty>
             )}
           </>
         ) : (
