@@ -25,10 +25,10 @@ exports[`Alert renders a danger alert correctly 1`] = `
     className="css-11ltxe6"
   >
     <div
-      className="css-1rdo5l1"
+      className="css-t1u8ln"
       width={
         Array [
-          1,
+          0,
           0.16666666666666666,
           0.1,
         ]
@@ -52,7 +52,7 @@ exports[`Alert renders a danger alert correctly 1`] = `
       </svg>
     </div>
     <div
-      className="css-epm7zj"
+      className="css-1rmp463"
       width={
         Array [
           1,
@@ -94,10 +94,10 @@ exports[`Alert renders a warning alert correctly 1`] = `
     className="css-11ltxe6"
   >
     <div
-      className="css-1rdo5l1"
+      className="css-t1u8ln"
       width={
         Array [
-          1,
+          0,
           0.16666666666666666,
           0.1,
         ]
@@ -121,7 +121,7 @@ exports[`Alert renders a warning alert correctly 1`] = `
       </svg>
     </div>
     <div
-      className="css-epm7zj"
+      className="css-1rmp463"
       width={
         Array [
           1,
@@ -163,10 +163,10 @@ exports[`Alert renders an info alert correctly 1`] = `
     className="css-11ltxe6"
   >
     <div
-      className="css-1rdo5l1"
+      className="css-t1u8ln"
       width={
         Array [
-          1,
+          0,
           0.16666666666666666,
           0.1,
         ]
@@ -190,7 +190,7 @@ exports[`Alert renders an info alert correctly 1`] = `
       </svg>
     </div>
     <div
-      className="css-epm7zj"
+      className="css-1rmp463"
       width={
         Array [
           1,
