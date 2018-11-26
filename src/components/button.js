@@ -8,11 +8,27 @@ const ButtonStyle = props => {
   }
   return `
   padding: 0.75rem;
-  display: inline-block;
   text-decoration: none;
   cursor: pointer;
   &:hover {
     color: ${colors.white};
+  }
+  ${props.huge &&
+    `
+    font-size: 4rem;
+    padding: 1rem;
+  `}
+
+  ${
+    props.block
+      ? `
+    display: block;
+    width: 100%;
+  `
+      : `
+  
+  display: inline-block;
+  `
   }
   ${
     props.buttonType === 'default'
