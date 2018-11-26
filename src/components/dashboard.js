@@ -4,7 +4,7 @@ import { colors } from 'components/styles/theme'
 import styled from 'react-emotion'
 import Loading from 'components/loading'
 import { ButtonLink } from 'components/button'
-import { AlertInfo } from 'components/alert'
+import Alert from '@reach/alert'
 import VisuallyHidden from '@reach/visually-hidden'
 import Link from 'gatsby-link'
 
@@ -32,6 +32,11 @@ const EditOrderButton = styled(ButtonLink)`
   border: 1px solid ${colors.white};
 `
 
+const DashboardAlert = styled(Alert)`
+  display: block;
+  padding: 0.5rem;
+  margin-top: 1.5rem;
+`
 class DashboardApps extends React.Component {
   state = {
     apps: false,
@@ -143,7 +148,7 @@ class DashboardMessages extends React.Component {
       <>
         {didLoad ? (
           <>
-            {messages ? (
+            {messages && messages.length ? (
               <>
                 {messages.map((message, key) => (
                   <DashboardMessage
@@ -154,7 +159,7 @@ class DashboardMessages extends React.Component {
                 ))}
               </>
             ) : (
-              <AlertInfo>You do not have any messages</AlertInfo>
+              <DashboardAlert>You do not have any messages</DashboardAlert>
             )}
           </>
         ) : (
@@ -255,7 +260,7 @@ class DashboardEvents extends React.Component {
   componentDidMount() {
     window
       .fetch(
-        `https://test.csumb.edu/public/api/dashboard/events?role=${this.getRoles()}`
+        `https://csumb.edu/public/api/dashboard/events?role=${this.getRoles()}`
       )
       .then(response => {
         return response.json()
@@ -285,7 +290,7 @@ class DashboardEvents extends React.Component {
                 ))}
               </>
             ) : (
-              <AlertInfo>No events</AlertInfo>
+              <DashboardAlert>No events</DashboardAlert>
             )}
           </>
         ) : (
