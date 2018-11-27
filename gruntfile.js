@@ -21,6 +21,16 @@ module.exports = function(grunt) {
           depth: 1,
         },
       },
+      local: {
+        options: {
+          branch: 'local',
+          repository: `https://${
+            process.env.GITHUB_TOKEN
+          }@github.com/csumb/web-content.git`,
+          directory: '_web-content',
+          depth: 1,
+        },
+      },
     },
   })
 
@@ -29,5 +39,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean')
 
   // Default task(s).
-  grunt.registerTask('default', ['clean', 'gitclone'])
+  grunt.registerTask('default', ['clean', 'gitclone:data', 'gitclone:content'])
+  grunt.registerTask('local', ['clean', 'gitclone:data', 'gitclone:local'])
 }
