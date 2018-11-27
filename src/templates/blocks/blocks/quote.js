@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
 import LinkInspect from 'components/link-inspect'
-import { ContainerContext } from './container-context'
+import { ContainerElement, containerStyle } from '../container-context'
 
 const Cite = styled('cite')`
   display: block;
@@ -18,24 +18,22 @@ class BlockQuote extends React.Component {
   render() {
     const { quote, source, url } = this.props
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <Quote container={container}>
-            <Blockquote>
-              {quote}
-              {source && (
-                <Cite>
-                  {url ? (
-                    <LinkInspect to={url}>{source}</LinkInspect>
-                  ) : (
-                    <>{source}</>
-                  )}
-                </Cite>
-              )}
-            </Blockquote>
-          </Quote>
-        )}
-      </ContainerContext.Consumer>
+      <ContainerElement container={containerStyle.slightlyLarger}>
+        <Quote>
+          <Blockquote>
+            {quote}
+            {source && (
+              <Cite>
+                {url ? (
+                  <LinkInspect to={url}>{source}</LinkInspect>
+                ) : (
+                  <>{source}</>
+                )}
+              </Cite>
+            )}
+          </Blockquote>
+        </Quote>
+      </ContainerElement>
     )
   }
 }

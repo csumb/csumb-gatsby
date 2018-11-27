@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { ContainerContext } from './container-context'
+import { ContainerContext, ContainerElement } from '../container-context'
 
 const ImageContainer = styled('div')`
   img {
@@ -16,12 +16,14 @@ class BlockImage extends React.Component {
     return (
       <ContainerContext.Consumer>
         {container => (
-          <ImageContainer container={container} pullRight={pullRight}>
-            <img
-              src={image.url.replace('http://', 'https://')}
-              alt={description}
-            />
-          </ImageContainer>
+          <ContainerElement container={container}>
+            <ImageContainer pullRight={pullRight}>
+              <img
+                src={image.url.replace('http://', 'https://')}
+                alt={description}
+              />
+            </ImageContainer>
+          </ContainerElement>
         )}
       </ContainerContext.Consumer>
     )

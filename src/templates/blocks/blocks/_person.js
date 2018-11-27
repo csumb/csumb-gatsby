@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContainerContext } from './container-context'
+import { ContainerContext } from '../container-context'
 import styled from 'react-emotion'
 
 const Person = styled('div')`

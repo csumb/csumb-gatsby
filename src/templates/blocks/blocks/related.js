@@ -5,7 +5,7 @@ import LinkInspect from 'components/link-inspect'
 import VisuallyHidden from '@reach/visually-hidden'
 import bp from 'components/styles/breakpoints'
 import { css } from 'emotion'
-import { ContainerContext, ContainerElement } from './container-context'
+import { ContainerElement, containerStyle } from '../container-context'
 
 const relatedBreakpoints = css(
   bp({
@@ -37,22 +37,16 @@ class BlockRelated extends React.Component {
   render() {
     const { source, title, description, url } = this.props
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            <RelatedContent>
-              <VisuallyHidden>Related content</VisuallyHidden>
-              <RelatedContentSource>{source}</RelatedContentSource>
-              <RelatedContentTitle>
-                <LinkInspect to={url}>{title}</LinkInspect>
-              </RelatedContentTitle>
-              <RelatedContentDescription>
-                {description}
-              </RelatedContentDescription>
-            </RelatedContent>
-          </ContainerElement>
-        )}
-      </ContainerContext.Consumer>
+      <ContainerElement container={containerStyle.slightlyLarger}>
+        <RelatedContent>
+          <VisuallyHidden>Related content</VisuallyHidden>
+          <RelatedContentSource>{source}</RelatedContentSource>
+          <RelatedContentTitle>
+            <LinkInspect to={url}>{title}</LinkInspect>
+          </RelatedContentTitle>
+          <RelatedContentDescription>{description}</RelatedContentDescription>
+        </RelatedContent>
+      </ContainerElement>
     )
   }
 }

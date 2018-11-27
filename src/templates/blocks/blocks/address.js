@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { ContainerContext } from './container-context'
+import { ContainerContext } from '../container-context'
 
-const Address = styled('div')`
+const Address = styled('address')`
   font-style: italic;
   ${props => props.container};
 `
@@ -13,28 +13,26 @@ class BlockAddress extends React.Component {
       <ContainerContext.Consumer>
         {container => (
           <Address container={container}>
-            <address>
-              {address1 ? (
-                <>
-                  {address1}
-                  <br />
-                </>
-              ) : null}
-              {address2 ? (
-                <>
-                  {address2}
-                  <br />
-                </>
-              ) : null}
-              {address3 ? (
-                <>
-                  {address3}
-                  <br />
-                </>
-              ) : null}
-              {city}, {state} &nbsp;
-              {zip}
-            </address>
+            {address1 ? (
+              <>
+                {address1}
+                <br />
+              </>
+            ) : null}
+            {address2 ? (
+              <>
+                {address2}
+                <br />
+              </>
+            ) : null}
+            {address3 ? (
+              <>
+                {address3}
+                <br />
+              </>
+            ) : null}
+            {city}, {state} &nbsp;
+            {zip}
           </Address>
         )}
       </ContainerContext.Consumer>

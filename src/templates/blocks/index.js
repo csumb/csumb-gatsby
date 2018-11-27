@@ -21,7 +21,7 @@ import BlockMap from './blocks/map'
 import BlockPathway from './blocks/pathway'
 import BlockRelated from './blocks/related'
 import BlockTable from './blocks/table'
-import { ContainerContext, containerStyle } from './blocks/container-context'
+import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
 
 class Block extends React.Component {
@@ -50,14 +50,17 @@ class Block extends React.Component {
   }
 
   render() {
-    if (typeof this.blockComponents[this.props.type] === 'undefined') {
+    const { type, block, inColumn } = this.props
+    if (typeof this.blockComponents[type] === 'undefined') {
       return null
     }
-    let BlockType = this.blockComponents[this.props.type]
-    const containerWidth = this.props.noContainer ? '' : containerStyle.wide
+    let BlockType = this.blockComponents[type]
+    const containerWidth = inColumn
+      ? containerStyle.column
+      : containerStyle.normal
     return (
       <ContainerContext.Provider value={containerWidth}>
-        <BlockType {...this.props.block.data} uuid={this.props.block.uuid} />
+        <BlockType {...block.data} uuid={block.uuid} />
       </ContainerContext.Provider>
     )
   }
@@ -69,7 +72,7 @@ const Columns = ({ layout, blocks }) => {
     return <></>
   }
   return (
-    <Flex flexWrap="wrap" className={css(containerStyle.wide)}>
+    <Flex flexWrap="wrap" className={css(containerStyle.normal)}>
       {block.data.columns.map((width, key) => (
         <Box
           key={`column-${layout.id}-${key}`}
@@ -85,7 +88,7 @@ const Columns = ({ layout, blocks }) => {
                       key={blockId.id}
                       type={blocks[blockId.id].type}
                       block={blocks[blockId.id]}
-                      noContainer={true}
+                      inColumn
                     />
                   )}
                 </>
