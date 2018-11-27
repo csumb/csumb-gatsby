@@ -33,6 +33,7 @@ class BlockVideo extends React.Component {
       <VideoWrapper>
         <VideoIframe
           src={`https://www.youtube.com/embed/${provider.id}`}
+          title="Video"
           allowFullScreen
         />
       </VideoWrapper>
