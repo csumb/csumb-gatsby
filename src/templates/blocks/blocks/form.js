@@ -19,7 +19,11 @@ class BlockForm extends React.Component {
     }
     return (
       <ContainerElement isFull>
-        <FormIframe style={{ height: height + 'px' }} src={formUrl} />
+        <FormIframe
+          style={{ height: height + 'px' }}
+          src={formUrl}
+          title="Form"
+        />
       </ContainerElement>
     )
   }
