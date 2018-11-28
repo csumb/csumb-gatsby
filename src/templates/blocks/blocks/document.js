@@ -16,12 +16,12 @@ const DocumentIcon = styled(FontAwesomeIcon)`
 
 class BlockDocument extends React.Component {
   render() {
-    const { url, name } = this.props
+    const { document, name } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (
           <ContainerElement container={container}>
-            <Document href={url}>
+            <Document href={document.url}>
               <DocumentIcon icon={faFileDownload} />
               {name}
               <VisuallyHidden>Download document</VisuallyHidden>
