@@ -72,26 +72,25 @@ const Columns = ({ layout, blocks }) => {
     return <></>
   }
   return (
-    <Flex flexWrap="wrap" className={css(containerStyle.normal)}>
+    <Flex flexWrap="wrap" className={css(containerStyle.full)}>
       {block.data.columns.map((width, key) => (
         <Box
-          key={`column-${layout.id}-${key}`}
           width={[1, 1, width / 12, width / 12]}
+          key={`column-${layout.id}-${key}`}
           px={2}
         >
           {Array.isArray(layout._children[key + 1]) && (
             <>
               {layout._children[key + 1].map(blockId => (
-                <>
+                <React.Fragment key={blockId.id}>
                   {blocks[blockId.id] && (
                     <Block
-                      key={blockId.id}
                       type={blocks[blockId.id].type}
                       block={blocks[blockId.id]}
                       inColumn
                     />
                   )}
-                </>
+                </React.Fragment>
               ))}
             </>
           )}
@@ -112,7 +111,7 @@ const Blocks = ({ blocks }) => {
   return (
     <>
       {blocks.layout.map(layout => (
-        <div key={layout.id}>
+        <React.Fragment key={layout.id}>
           {blocks.blocks[layout.id] && (
             <>
               {layout._children ? (
@@ -126,7 +125,7 @@ const Blocks = ({ blocks }) => {
               )}
             </>
           )}
-        </div>
+        </React.Fragment>
       ))}
     </>
   )
