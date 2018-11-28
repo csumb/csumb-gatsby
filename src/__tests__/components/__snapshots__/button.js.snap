@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button renders block button type correctly 1`] = `
+<button
+  className="css-1xxoedu"
+>
+  A block button!
+</button>
+`;
+
 exports[`Button renders default button type correctly 1`] = `
 <button
   className="css-1y290ax"
@@ -21,6 +29,14 @@ exports[`Button renders default button type correctly 3`] = `
   className="css-eehbu"
 >
   A button!
+</button>
+`;
+
+exports[`Button renders huge button type correctly 1`] = `
+<button
+  className="css-1eyhu3w"
+>
+  A huge button!
 </button>
 `;
 
