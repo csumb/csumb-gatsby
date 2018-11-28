@@ -14,7 +14,8 @@ const SiteNavigationList = styled('ul')`
     display: inline-block;
     margin: 0;
   }
-  a {
+  a,
+  a:visited {
     color: ${colors.white};
   }
 `
@@ -23,7 +24,7 @@ const SiteNavigationLink = styled(LinkInspect)`
   text-decoration: none;
   padding: 1rem;
   &[aria-current='page'] {
-    background: ${colors.primary.dark};
+    text-decoration: underline;
   }
 `
 
