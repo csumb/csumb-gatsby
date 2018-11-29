@@ -101,6 +101,26 @@ exports.onCreateNode = async ({
     })
   }
 
+  if (node.relativePath.search('_data/apps.json') > -1) {
+    content.forEach(app => {
+      const appNode = {
+        id: createNodeId(`${app.url} >>> CsumbApp`),
+        children: [],
+        parent: null,
+        name: app.name,
+        url: app.url,
+        internal: {
+          type: `CsumbApp`,
+        },
+      }
+      appNode.internal.contentDigest = crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(appNode))
+        .digest(`hex`)
+      createNode(appNode)
+    })
+  }
+
   if (node.relativePath.search('_data/redirects.json') > -1) {
     for (path in content) {
       const redirectNode = {
