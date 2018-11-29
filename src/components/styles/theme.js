@@ -7,7 +7,6 @@ const colors = {
     light: '#aeb0b5',
   },
   primary: {
-    //Currently Blue
     default: '#0071bc',
     dark: '#205493',
     darkest: '#112e51',
