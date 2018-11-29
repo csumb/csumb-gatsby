@@ -21,7 +21,8 @@ const DashboardApp = styled('a')`
   text-decoration: none;
   display: inline-block;
   margin-right: 0.8rem;
-  padding-bottom: 0.4rem;
+  margin-top: 0.5rem;
+  padding: 0.2rem;
   &:hover {
     text-decoration: underline;
   }
@@ -31,24 +32,22 @@ const DashboardApp = styled('a')`
 `
 
 const appToolsStyle = `
-
-padding: 0.2rem;
-border: 1px solid ${colors.white};
-margin-top: 0.5rem;
-display: block;
-background: transparent;
-color: ${colors.white};
-text-align: center;
-cursor: pointer;
-width: 100%;
-&:hover {
-  background: ${colors.primary.darkest};
-}
-&:link,
-&:visited {
+  padding: 0.2rem;
+  border: 1px solid ${colors.white};
+  margin-top: 0.5rem;
+  display: block;
+  background: transparent;
   color: ${colors.white};
-}
-
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  &:hover {
+    background: ${colors.primary.darkest};
+  }
+  &:link,
+  &:visited {
+    color: ${colors.white};
+  }
 `
 
 const EditOrderButton = styled(ButtonLink)`
