@@ -33,34 +33,42 @@ class BlockPerson extends React.Component {
             <>
               {people[email] && (
                 <Person>
-                  <Flex flexWrap="wrap">
-                    <Box width={[1, 3 / 4]} pr={2}>
-                      <h3>
-                        <Link
-                          to={`/directory/person/${email.split('@').shift()}`}
-                        >
-                          {people[email].firstName} {people[email].lastName}
-                        </Link>
-                      </h3>
-                      {people[email].directoryTitle.map((title, key) => (
-                        <PersonPosition>
-                          <PersonPositionTitle>{title}</PersonPositionTitle>
-                          <Link>{people[email].directoryDepartment[key]}</Link>
-                        </PersonPosition>
-                      ))}
-                      <a href={`mailto:${people[email].email}`}>
-                        {people[email].email}
-                      </a>
-                    </Box>
-                    <Box width={[1, 1 / 4]}>
-                      {people[email].directoryPhoto && (
-                        <PersonPhoto
-                          src={people[email].directoryPhoto}
-                          alt=""
-                        />
-                      )}
-                    </Box>
-                  </Flex>
+                  {compact ? (
+                    <p>
+                      {people[email].firstName} {people[email].lastName}
+                    </p>
+                  ) : (
+                    <Flex flexWrap="wrap">
+                      <Box width={[1, 3 / 4]} pr={2}>
+                        <h3>
+                          <Link
+                            to={`/directory/person/${email.split('@').shift()}`}
+                          >
+                            {people[email].firstName} {people[email].lastName}
+                          </Link>
+                        </h3>
+                        {people[email].directoryTitle.map((title, key) => (
+                          <PersonPosition>
+                            <PersonPositionTitle>{title}</PersonPositionTitle>
+                            <Link>
+                              {people[email].directoryDepartment[key]}
+                            </Link>
+                          </PersonPosition>
+                        ))}
+                        <a href={`mailto:${people[email].email}`}>
+                          {people[email].email}
+                        </a>
+                      </Box>
+                      <Box width={[1, 1 / 4]}>
+                        {people[email].directoryPhoto && (
+                          <PersonPhoto
+                            src={people[email].directoryPhoto}
+                            alt=""
+                          />
+                        )}
+                      </Box>
+                    </Flex>
+                  )}
                 </Person>
               )}
             </>
