@@ -6,6 +6,7 @@ import SiteNavigation from 'components/layouts/components/site-navigation'
 import SiteHeader from 'components/layouts/components/site-header'
 import Container from 'components/container'
 import PageTitle from 'components/page-title'
+import { EventPage } from 'components/event'
 import Breadcrumbs from 'components/breadcrumbs'
 import PeopleContext from './blocks/people-context'
 
@@ -17,6 +18,7 @@ class PageTemplate extends React.Component {
       navigation,
       breadcrumbs,
       layout,
+      event,
       pageContent,
       people,
     } = this.props.pageContext
@@ -30,6 +32,7 @@ class PageTemplate extends React.Component {
           {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
         </Container>
         <PeopleContext.Provider value={people}>
+          {event && <EventPage {...event} />}
           <Blocks blocks={pageContent} />
         </PeopleContext.Provider>
       </Layout>

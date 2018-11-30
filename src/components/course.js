@@ -4,7 +4,6 @@ import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import PageTitle from 'components/page-title'
 import Link from 'gatsby-link'
-import { colors } from 'components/styles/theme'
 
 const CouseListWrapper = styled('div')`
   margin-bottom: 1rem;

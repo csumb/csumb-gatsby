@@ -32,6 +32,9 @@ exports.onCreateNode = async ({
         type: `CsumbContentPage`,
       },
     }
+    if (content.event) {
+      contentNode.event = content.event
+    }
   }
 
   if (node.relativePath.search('_site.json') > -1) {

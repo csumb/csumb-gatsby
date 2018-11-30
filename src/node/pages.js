@@ -46,6 +46,25 @@ module.exports = (graphql, actions) => {
                     pageContent
                     breadcrumbs
                     layout
+                    event {
+                      dates {
+                        start
+                        end
+                      }
+                      times {
+                        start
+                        end
+                      }
+                      description
+                      ticket {
+                        url
+                        title
+                      }
+                      cost_message
+                      location {
+                        type
+                      }
+                    }
                   }
                 }
               }
