@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { ContainerContext } from './container-context'
+import { ContainerContext, ContainerElement } from '../container-context'
 import VisuallyHidden from '@reach/visually-hidden'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
@@ -16,15 +16,17 @@ const DocumentIcon = styled(FontAwesomeIcon)`
 
 class BlockDocument extends React.Component {
   render() {
-    const { url, name } = this.props
+    const { document, name } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (
-          <Document container={container} href={url}>
-            <DocumentIcon icon={faFileDownload} />
-            {name}
-            <VisuallyHidden>Download document</VisuallyHidden>
-          </Document>
+          <ContainerElement container={container}>
+            <Document href={document.url}>
+              <DocumentIcon icon={faFileDownload} />
+              {name}
+              <VisuallyHidden>Download document</VisuallyHidden>
+            </Document>
+          </ContainerElement>
         )}
       </ContainerContext.Consumer>
     )

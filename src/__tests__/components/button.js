@@ -28,6 +28,28 @@ describe('Button', () => {
       .toJSON()
     expect(tree).toMatchSnapshot()
   })
+
+  it('renders huge button type correctly', () => {
+    const tree = renderer
+      .create(
+        <Button buttonType="highImpact" huge>
+          A huge button!
+        </Button>
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('renders block button type correctly', () => {
+    const tree = renderer
+      .create(
+        <Button buttonType="highImpact" block>
+          A block button!
+        </Button>
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 })
 
 describe('ButtonLink', () => {

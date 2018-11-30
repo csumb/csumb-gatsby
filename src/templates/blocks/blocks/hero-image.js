@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { ContainerContext } from './container-context'
+import { ContainerContext, ContainerElement } from '../container-context'
 import { colors } from 'components/styles/theme'
 import Link from 'gatsby-link'
 
@@ -52,7 +52,7 @@ class BlockHeroImage extends React.Component {
       >
         <ContainerContext.Consumer>
           {container => (
-            <div className={container}>
+            <ContainerElement container={container}>
               <HeroImageTextWrapper>
                 <HeroImageText>
                   {buttonUrl ? (
@@ -62,7 +62,7 @@ class BlockHeroImage extends React.Component {
                   )}
                 </HeroImageText>
               </HeroImageTextWrapper>
-            </div>
+            </ContainerElement>
           )}
         </ContainerContext.Consumer>
       </HeroImage>

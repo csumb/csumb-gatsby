@@ -52,6 +52,7 @@ class Layout extends React.Component {
       <UserContext.Provider value={this.state}>
         <SkipNavLink />
         <Helmet>
+          <html lang="en" />
           <title>{pageTitle.join(' | ')}</title>
         </Helmet>
         <StaticQuery

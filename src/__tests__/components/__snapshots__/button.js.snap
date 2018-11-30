@@ -1,8 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button renders block button type correctly 1`] = `
+<button
+  className="css-1xxoedu"
+>
+  A block button!
+</button>
+`;
+
 exports[`Button renders default button type correctly 1`] = `
 <button
-  className="css-1jliyzu"
+  className="css-1y290ax"
 >
   A button!
 </button>
@@ -10,7 +18,7 @@ exports[`Button renders default button type correctly 1`] = `
 
 exports[`Button renders default button type correctly 2`] = `
 <button
-  className="css-1l9edgb"
+  className="css-f90nh2"
 >
   A button!
 </button>
@@ -18,15 +26,23 @@ exports[`Button renders default button type correctly 2`] = `
 
 exports[`Button renders default button type correctly 3`] = `
 <button
-  className="css-fhm1yz"
+  className="css-eehbu"
 >
   A button!
 </button>
 `;
 
+exports[`Button renders huge button type correctly 1`] = `
+<button
+  className="css-1eyhu3w"
+>
+  A huge button!
+</button>
+`;
+
 exports[`Button renders native button correctly 1`] = `
 <button
-  className="css-1jliyzu"
+  className="css-1y290ax"
 >
   A button!
 </button>
@@ -34,7 +50,7 @@ exports[`Button renders native button correctly 1`] = `
 
 exports[`ButtonLink renders link button correctly 1`] = `
 <a
-  className="css-1jliyzu"
+  className="css-1y290ax"
   href="/home"
   onClick={[Function]}
   onMouseEnter={[Function]}

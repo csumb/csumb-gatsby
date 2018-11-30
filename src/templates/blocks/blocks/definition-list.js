@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { ContainerContext } from './container-context'
+import { ContainerContext } from '../container-context'
 
 const DefinitionList = styled('dl')`
-  ${props => props.container} dt {
+  ${props => props.container};
+  dt {
     font-weight: bold;
   }
 `

@@ -10,8 +10,10 @@ import {
   faCheckCircle,
   faExclamationTriangle,
   faExclamationCircle,
+  faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons'
 import { Flex, Box } from '@rebass/grid/emotion'
+import bp from './styles/breakpoints'
 
 const baseStyle = css`
   display: block;
@@ -26,12 +28,18 @@ const AlertIcon = styled(FontAwesomeIcon)`
   margin-top: 0.5rem;
 `
 
+const AlertIconBox = styled(Box)`
+  ${bp({
+    display: ['none', 'block', 'block', 'block'],
+  })};
+`
+
 const AlertContent = ({ icon, children }) => (
   <Flex flexWrap="wrap">
-    <Box width={[1, 1 / 6, 1 / 10]} px={2}>
+    <AlertIconBox width={[0, 1 / 6, 1 / 10]} px={2}>
       <AlertIcon icon={icon} />
-    </Box>
-    <Box width={[1, 5 / 6, 9 / 10]} px={2}>
+    </AlertIconBox>
+    <Box width={[1, 5 / 6, 9 / 10]} px={4}>
       {children}
     </Box>
   </Flex>
@@ -82,4 +90,16 @@ const AlertInfo = props => (
   </AlertInfoElement>
 )
 
-export { AlertDanger, AlertInfo, AlertWarning }
+const AlertEmptyElement = styled(Alert)`
+  ${baseStyle};
+  border: 1px solid ${colors.muted.bright};
+`
+
+const AlertEmpty = props => (
+  <AlertEmptyElement {...props}>
+    <VisuallyHidden>For your information</VisuallyHidden>
+    <AlertContent icon={faTimesCircle}>{props.children}</AlertContent>
+  </AlertEmptyElement>
+)
+
+export { AlertDanger, AlertInfo, AlertWarning, AlertEmpty }

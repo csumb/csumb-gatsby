@@ -4,7 +4,7 @@ import { colors } from 'components/styles/theme'
 import bp from 'components/styles/breakpoints'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { css } from 'emotion'
-import { ContainerContext, ContainerElement } from './container-context'
+import { ContainerElement } from '../container-context'
 import filterCourses from './filter-courses'
 
 const PathwayLabel = styled('span')`
@@ -37,43 +37,39 @@ class BlockPathway extends React.Component {
   render() {
     const { pathways } = this.props
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            <Flex flexWrap="wrap">
-              <PathwayHeading width={[1, 1 / 3]} px={2}>
-                Course
-              </PathwayHeading>
-              <PathwayHeading width={[1, 1 / 3]} px={2}>
-                Units
-              </PathwayHeading>
-              <PathwayHeading width={[1, 1 / 3]} px={2}>
-                Requirements
-              </PathwayHeading>
-            </Flex>
-            {pathways.map(pathway => (
-              <PathwayRow flexWrap="wrap">
-                <PathwayItem width={[1, 1 / 3]} px={2}>
-                  <PathwayLabel>Course</PathwayLabel>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: filterCourses(pathway.course),
-                    }}
-                  />
-                </PathwayItem>
-                <PathwayItem width={[1, 1 / 3]} px={2}>
-                  <PathwayLabel>Units</PathwayLabel>
-                  {pathway.units}
-                </PathwayItem>
-                <PathwayItem width={[1, 1 / 3]} px={2}>
-                  <PathwayLabel>Requirements</PathwayLabel>
-                  {pathway.requirements}
-                </PathwayItem>
-              </PathwayRow>
-            ))}
-          </ContainerElement>
-        )}
-      </ContainerContext.Consumer>
+      <ContainerElement isFull>
+        <Flex flexWrap="wrap">
+          <PathwayHeading width={[1, 1 / 3]} px={2}>
+            Course
+          </PathwayHeading>
+          <PathwayHeading width={[1, 1 / 3]} px={2}>
+            Units
+          </PathwayHeading>
+          <PathwayHeading width={[1, 1 / 3]} px={2}>
+            Requirements
+          </PathwayHeading>
+        </Flex>
+        {pathways.map(pathway => (
+          <PathwayRow flexWrap="wrap">
+            <PathwayItem width={[1, 1 / 3]} px={2}>
+              <PathwayLabel>Course</PathwayLabel>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: filterCourses(pathway.course),
+                }}
+              />
+            </PathwayItem>
+            <PathwayItem width={[1, 1 / 3]} px={2}>
+              <PathwayLabel>Units</PathwayLabel>
+              {pathway.units}
+            </PathwayItem>
+            <PathwayItem width={[1, 1 / 3]} px={2}>
+              <PathwayLabel>Requirements</PathwayLabel>
+              {pathway.requirements}
+            </PathwayItem>
+          </PathwayRow>
+        ))}
+      </ContainerElement>
     )
   }
 }

@@ -38,6 +38,13 @@ module.exports = {
       }
     },*/
     {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CSUMB_NAV_CONTENTFUL_SPACE,
+        accessToken: process.env.CSUMB_NAV_CONTENTFUL_TOKEN,
+      },
+    },
+    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,

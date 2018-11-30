@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { ContainerContext, ContainerElement } from './container-context'
+import { ContainerElement } from '../container-context'
 
 const FormIframe = styled('iframe')`
   width: 100%;
@@ -18,13 +18,13 @@ class BlockForm extends React.Component {
       }/viewform?embedded=true`
     }
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            <FormIframe style={{ height: height + 'px' }} src={formUrl} />
-          </ContainerElement>
-        )}
-      </ContainerContext.Consumer>
+      <ContainerElement isFull>
+        <FormIframe
+          style={{ height: height + 'px' }}
+          src={formUrl}
+          title="Form"
+        />
+      </ContainerElement>
     )
   }
 }

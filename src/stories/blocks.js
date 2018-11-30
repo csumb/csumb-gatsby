@@ -26,7 +26,7 @@ import typography from 'utils/typography'
 import {
   ContainerContext,
   containerStyle,
-} from 'templates/blocks/blocks/container-context'
+} from 'templates/blocks/container-context'
 import { sampleText, shortSampleText } from './sample-text'
 
 typography.injectStyles()
@@ -36,7 +36,7 @@ storiesOf('Blocks', module)
 storiesOf('Blocks/Address').add(
   'Address',
   () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockAddress
         {...{
           address1: '100 Campus Center',
@@ -56,7 +56,7 @@ storiesOf('Blocks/Address').add(
 storiesOf('Blocks/Button', module).add(
   'Button',
   () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockButton
         {...{
           text: 'This is a button',
@@ -72,7 +72,7 @@ storiesOf('Blocks/Button', module).add(
 storiesOf('Blocks/Byline', module).add(
   'Byline',
   () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockByline
         {...{
           dateFormat: 'November 1, 2018',
@@ -88,7 +88,7 @@ storiesOf('Blocks/Byline', module).add(
 storiesOf('Blocks/Calendar', module).add(
   'Calendar',
   () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockCalendar
         {...{
           format: 'week',
@@ -104,7 +104,7 @@ storiesOf('Blocks/Calendar', module).add(
 )
 
 storiesOf('Blocks/Callout', module).add('Callout', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
+  <ContainerContext.Provider value={containerStyle.normal}>
     <BlockCallout
       {...{
         title: shortSampleText,
@@ -116,7 +116,7 @@ storiesOf('Blocks/Callout', module).add('Callout', () => (
 ))
 
 storiesOf('Blocks/Definition List', module).add('Definition List', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
+  <ContainerContext.Provider value={containerStyle.normal}>
     <BlockDefinitionList
       {...{
         list: [
@@ -139,7 +139,7 @@ storiesOf('Blocks/Definition List', module).add('Definition List', () => (
 ))
 
 storiesOf('Blocks/Document', module).add('Document', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
+  <ContainerContext.Provider value={containerStyle.normal}>
     <BlockDocument
       {...{
         name: 'List of souls aboard the Pequod',
@@ -174,7 +174,7 @@ const sampleFeed = [
 
 storiesOf('Blocks/Feed', module)
   .add('Regular', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockFeed
         {...{
           limit: '5',
@@ -187,7 +187,7 @@ storiesOf('Blocks/Feed', module)
     </ContainerContext.Provider>
   ))
   .add('Short display', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockFeed
         {...{
           limit: '5',
@@ -201,7 +201,7 @@ storiesOf('Blocks/Feed', module)
   ))
 
 storiesOf('Blocks/Form', module).add('Google Form', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
+  <ContainerContext.Provider value={containerStyle.normal}>
     <BlockForm
       {...{
         provider: {
@@ -215,7 +215,7 @@ storiesOf('Blocks/Form', module).add('Google Form', () => (
 
 storiesOf('Blocks/Headings', module)
   .add('Main', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockHeading
         {...{
           level: 2,
@@ -234,7 +234,7 @@ storiesOf('Blocks/Headings', module)
     </ContainerContext.Provider>
   ))
   .add('Sub', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockHeading
         {...{
           level: 3,
@@ -253,7 +253,7 @@ storiesOf('Blocks/Headings', module)
     </ContainerContext.Provider>
   ))
   .add('Sub sub', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockHeading
         {...{
           level: 4,
@@ -273,7 +273,7 @@ storiesOf('Blocks/Headings', module)
   ))
 
 storiesOf('Blocks/Hero Image', module).add('Hero Image', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
+  <ContainerContext.Provider value={containerStyle.normal}>
     <BlockHeroImage
       {...{
         buttonUrl: '#here',
@@ -288,7 +288,7 @@ storiesOf('Blocks/Hero Image', module).add('Hero Image', () => (
 
 storiesOf('Blocks/Image', module)
   .add('Image', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockImage
         {...{
           image: {
@@ -300,7 +300,7 @@ storiesOf('Blocks/Image', module)
     </ContainerContext.Provider>
   ))
   .add('Pull right', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockImage
         {...{
           image: {
@@ -315,7 +315,7 @@ storiesOf('Blocks/Image', module)
 
 storiesOf('Blocks/Image Grid', module)
   .add('2 wide', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockImageGrid
         {...{
           images: [
@@ -342,7 +342,7 @@ storiesOf('Blocks/Image Grid', module)
     </ContainerContext.Provider>
   ))
   .add('3 wide', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockImageGrid
         {...{
           images: [
@@ -377,7 +377,7 @@ storiesOf('Blocks/Image Grid', module)
     </ContainerContext.Provider>
   ))
   .add('4 wide', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockImageGrid
         {...{
           images: [
@@ -435,7 +435,7 @@ const listItems = [
 
 storiesOf('Blocks/List', module)
   .add('Unordered', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockList
         {...{
           type: 'ul',
@@ -445,7 +445,7 @@ storiesOf('Blocks/List', module)
     </ContainerContext.Provider>
   ))
   .add('Ordered', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockList
         {...{
           type: 'ol',
@@ -455,7 +455,7 @@ storiesOf('Blocks/List', module)
     </ContainerContext.Provider>
   ))
   .add('Unstyled', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockList
         {...{
           type: 'list-unstyled',
@@ -466,7 +466,7 @@ storiesOf('Blocks/List', module)
   ))
 
 storiesOf('Blocks/Pathway', module).add('Pathway', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
+  <ContainerContext.Provider value={containerStyle.normal}>
     <BlockPathway
       {...{
         pathways: [
@@ -497,19 +497,19 @@ storiesOf('Blocks/Pathway', module).add('Pathway', () => (
 ))
 storiesOf('Blocks/Text', module)
   .add('Regular', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockText text={sampleText} />
     </ContainerContext.Provider>
   ))
   .add('Lead paragraph', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockText {...{ lead: true, text: sampleText }} />
     </ContainerContext.Provider>
   ))
 
 storiesOf('Blocks/Map', module)
   .add('Single point', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockMap
         {...{
           zoom: 17,
@@ -538,7 +538,7 @@ storiesOf('Blocks/Map', module)
     </ContainerContext.Provider>
   ))
   .add('Complex', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockMap
         {...{
           zoom: 17,
@@ -598,7 +598,7 @@ storiesOf('Blocks/Map', module)
 
 storiesOf('Blocks/Quote', module)
   .add('Quote', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockQuote
         {...{
           quote: sampleText,
@@ -607,7 +607,7 @@ storiesOf('Blocks/Quote', module)
     </ContainerContext.Provider>
   ))
   .add('With source', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockQuote
         {...{
           quote: sampleText,
@@ -617,7 +617,7 @@ storiesOf('Blocks/Quote', module)
     </ContainerContext.Provider>
   ))
   .add('With source & url', () => (
-    <ContainerContext.Provider value={containerStyle.wide}>
+    <ContainerContext.Provider value={containerStyle.normal}>
       <BlockQuote
         {...{
           quote: sampleText,
@@ -629,7 +629,7 @@ storiesOf('Blocks/Quote', module)
   ))
 
 storiesOf('Blocks/Related', module).add('Related content', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
+  <ContainerContext.Provider value={containerStyle.normal}>
     <BlockRelated
       {...{
         source: 'Herman Melville',
@@ -644,7 +644,7 @@ storiesOf('Blocks/Related', module).add('Related content', () => (
 ))
 
 storiesOf('Blocks/Sound', module).add('Soundcloud', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
+  <ContainerContext.Provider value={containerStyle.normal}>
     <BlockSound
       {...{
         id: 59713385,
@@ -654,7 +654,7 @@ storiesOf('Blocks/Sound', module).add('Soundcloud', () => (
 ))
 
 storiesOf('Blocks/Table', module).add('Table', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
+  <ContainerContext.Provider value={containerStyle.normal}>
     <BlockTable
       {...{
         layout: {
@@ -671,7 +671,7 @@ storiesOf('Blocks/Table', module).add('Table', () => (
 ))
 
 storiesOf('Blocks/Video', module).add('YouTube', () => (
-  <ContainerContext.Provider value={containerStyle.wide}>
+  <ContainerContext.Provider value={containerStyle.normal}>
     <BlockVideo
       {...{
         provider: {

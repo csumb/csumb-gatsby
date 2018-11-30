@@ -21,7 +21,8 @@ import BlockMap from './blocks/map'
 import BlockPathway from './blocks/pathway'
 import BlockRelated from './blocks/related'
 import BlockTable from './blocks/table'
-import { ContainerContext, containerStyle } from './blocks/container-context'
+import BlockPerson from './blocks/person'
+import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
 
 class Block extends React.Component {
@@ -47,17 +48,21 @@ class Block extends React.Component {
     address: BlockAddress,
     video: BlockVideo,
     sound: BlockSound,
+    person: BlockPerson,
   }
 
   render() {
-    if (typeof this.blockComponents[this.props.type] === 'undefined') {
+    const { type, block, inColumn } = this.props
+    if (typeof this.blockComponents[type] === 'undefined') {
       return null
     }
-    let BlockType = this.blockComponents[this.props.type]
-    const containerWidth = this.props.noContainer ? '' : containerStyle.wide
+    let BlockType = this.blockComponents[type]
+    const containerWidth = inColumn
+      ? containerStyle.column
+      : containerStyle.normal
     return (
       <ContainerContext.Provider value={containerWidth}>
-        <BlockType {...this.props.block.data} uuid={this.props.block.uuid} />
+        <BlockType {...block.data} uuid={block.uuid} />
       </ContainerContext.Provider>
     )
   }
@@ -69,26 +74,25 @@ const Columns = ({ layout, blocks }) => {
     return <></>
   }
   return (
-    <Flex flexWrap="wrap" className={css(containerStyle.wide)}>
+    <Flex flexWrap="wrap" className={css(containerStyle.full)}>
       {block.data.columns.map((width, key) => (
         <Box
-          key={`column-${layout.id}-${key}`}
           width={[1, 1, width / 12, width / 12]}
+          key={`column-${layout.id}-${key}`}
           px={2}
         >
           {Array.isArray(layout._children[key + 1]) && (
             <>
               {layout._children[key + 1].map(blockId => (
-                <>
+                <React.Fragment key={blockId.id}>
                   {blocks[blockId.id] && (
                     <Block
-                      key={blockId.id}
                       type={blocks[blockId.id].type}
                       block={blocks[blockId.id]}
-                      noContainer={true}
+                      inColumn
                     />
                   )}
-                </>
+                </React.Fragment>
               ))}
             </>
           )}
@@ -109,7 +113,7 @@ const Blocks = ({ blocks }) => {
   return (
     <>
       {blocks.layout.map(layout => (
-        <div key={layout.id}>
+        <React.Fragment key={layout.id}>
           {blocks.blocks[layout.id] && (
             <>
               {layout._children ? (
@@ -123,7 +127,7 @@ const Blocks = ({ blocks }) => {
               )}
             </>
           )}
-        </div>
+        </React.Fragment>
       ))}
     </>
   )

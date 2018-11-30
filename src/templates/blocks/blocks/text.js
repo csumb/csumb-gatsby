@@ -1,10 +1,9 @@
 import React from 'react'
 import filterCourses from './filter-courses'
 import styled from 'react-emotion'
-import { ContainerContext } from './container-context'
+import { ContainerContext, ContainerElement } from '../container-context'
 
 const Paragraph = styled('p')`
-  ${props => props.container};
   ${props =>
     props.lead
       ? `
@@ -18,13 +17,15 @@ class BlockText extends React.Component {
     return (
       <ContainerContext.Consumer>
         {container => (
-          <Paragraph
-            lead={lead}
-            container={container}
-            dangerouslySetInnerHTML={{
-              __html: filterCourses(text),
-            }}
-          />
+          <ContainerElement container={container}>
+            <Paragraph
+              lead={lead}
+              container={container}
+              dangerouslySetInnerHTML={{
+                __html: filterCourses(text),
+              }}
+            />
+          </ContainerElement>
         )}
       </ContainerContext.Consumer>
     )

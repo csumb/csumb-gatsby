@@ -1,15 +1,19 @@
 import React from 'react'
 import Container from 'components/container'
-import { colors } from 'components/styles/theme'
+import { colors, fonts } from 'components/styles/theme'
 import styled from 'react-emotion'
 import Loading from 'components/loading'
+import { Flex, Box } from '@rebass/grid/emotion'
 import { ButtonLink } from 'components/button'
-import { AlertInfo } from 'components/alert'
+import { AlertEmpty } from 'components/alert'
 import VisuallyHidden from '@reach/visually-hidden'
+import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import Link from 'gatsby-link'
 
+import '@reach/menu-button/styles.css'
 const DashboardAppsWrapper = styled('div')`
-  background: ${colors.primary.darkest};
+  background: ${colors.primary.dark};
+  padding: 0.5rem 0 0.4rem 0;
 `
 
 const DashboardApp = styled('a')`
@@ -17,7 +21,8 @@ const DashboardApp = styled('a')`
   text-decoration: none;
   display: inline-block;
   margin-right: 0.8rem;
-  padding: 0.4rem 0;
+  margin-top: 0.5rem;
+  padding: 0.2rem;
   &:hover {
     text-decoration: underline;
   }
@@ -26,10 +31,54 @@ const DashboardApp = styled('a')`
   }
 `
 
-const EditOrderButton = styled(ButtonLink)`
+const appToolsStyle = `
   padding: 0.2rem;
-  color: ${colors.white};
   border: 1px solid ${colors.white};
+  margin-top: 0.5rem;
+  display: block;
+  background: transparent;
+  color: ${colors.white};
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  &:hover {
+    background: ${colors.primary.darkest};
+  }
+  &:link,
+  &:visited {
+    color: ${colors.white};
+  }
+`
+
+const EditOrderButton = styled(ButtonLink)`
+  ${appToolsStyle};
+`
+
+const AppTools = styled(Box)`
+  text-align: right;
+`
+
+const AppsDropdownButton = styled(MenuButton)`
+  ${appToolsStyle};
+`
+
+const AppsDropdownMenuList = styled(MenuList)`
+  border: 1px solid ${colors.black};
+  padding: 0;
+  font-family: ${fonts.sansSerif};
+  a {
+    color: ${colors.primary.darkest};
+  }
+`
+
+const AppsDropdownMenuLink = styled(MenuLink)`
+  padding: 0.5rem;
+  color: ${colors.primary.darkest};
+  &:hover,
+  &:focus {
+    background: ${colors.primary.darkest};
+    color: ${colors.white};
+  }
 `
 
 class DashboardApps extends React.Component {
@@ -58,28 +107,45 @@ class DashboardApps extends React.Component {
   }
 
   render() {
+    const { apps } = this.props
     return (
       <DashboardAppsWrapper>
         <Container>
           {this.state.apps && (
-            <>
-              {this.state.apps.map(app => (
-                <span key={app.linkUrl}>
-                  {app.label.search('CSUMB Website') === -1 && (
-                    <DashboardApp
-                      href={app.linkUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {app.label.replace('Google Apps ', '')}
-                    </DashboardApp>
-                  )}
-                </span>
-              ))}
-              <EditOrderButton to="https://csumb.okta.com/">
-                Edit order
-              </EditOrderButton>
-            </>
+            <Flex flexWrap="wrap">
+              <Box width={[1, 10 / 12]} pr={2}>
+                {this.state.apps.map(app => (
+                  <React.Fragment key={app.linkUrl}>
+                    {app.label.search('CSUMB Website') === -1 && (
+                      <DashboardApp
+                        href={app.linkUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {app.label.replace('Google Apps ', '')}
+                      </DashboardApp>
+                    )}
+                  </React.Fragment>
+                ))}
+              </Box>
+              <AppTools width={[1, 2 / 12]}>
+                <EditOrderButton to="https://csumb.okta.com/">
+                  Edit order
+                </EditOrderButton>
+                <Menu>
+                  <AppsDropdownButton>
+                    More apps <span aria-hidden>▾</span>
+                  </AppsDropdownButton>
+                  <AppsDropdownMenuList>
+                    {apps.map(app => (
+                      <AppsDropdownMenuLink component="a" href={app.node.url}>
+                        {app.node.name}
+                      </AppsDropdownMenuLink>
+                    ))}
+                  </AppsDropdownMenuList>
+                </Menu>
+              </AppTools>
+            </Flex>
           )}
         </Container>
       </DashboardAppsWrapper>
@@ -143,7 +209,7 @@ class DashboardMessages extends React.Component {
       <>
         {didLoad ? (
           <>
-            {messages ? (
+            {messages && messages.length ? (
               <>
                 {messages.map((message, key) => (
                   <DashboardMessage
@@ -154,7 +220,7 @@ class DashboardMessages extends React.Component {
                 ))}
               </>
             ) : (
-              <AlertInfo>You do not have any messages</AlertInfo>
+              <AlertEmpty>You do not have any messages</AlertEmpty>
             )}
           </>
         ) : (
@@ -255,7 +321,7 @@ class DashboardEvents extends React.Component {
   componentDidMount() {
     window
       .fetch(
-        `https://test.csumb.edu/public/api/dashboard/events?role=${this.getRoles()}`
+        `https://csumb.edu/public/api/dashboard/events?role=${this.getRoles()}`
       )
       .then(response => {
         return response.json()
@@ -285,7 +351,7 @@ class DashboardEvents extends React.Component {
                 ))}
               </>
             ) : (
-              <AlertInfo>No events</AlertInfo>
+              <AlertEmpty>No events</AlertEmpty>
             )}
           </>
         ) : (

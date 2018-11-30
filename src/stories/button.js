@@ -21,6 +21,11 @@ storiesOf('ButtonLink', module)
       High impact
     </ButtonLink>
   ))
+  .add('Huge', () => (
+    <ButtonLink to="#here" buttonType="primary" huge>
+      A huge button
+    </ButtonLink>
+  ))
 
 storiesOf('Button', module)
   .add('Default', () => <Button>A native button</Button>, {
@@ -30,4 +35,9 @@ storiesOf('Button', module)
   .add('Primary', () => <Button buttonType="primary">A primary button</Button>)
   .add('High Impact', () => (
     <Button buttonType="highImpact">High impact</Button>
+  ))
+  .add('Huge', () => (
+    <Button to="#here" buttonType="primary" huge>
+      A huge button
+    </Button>
   ))

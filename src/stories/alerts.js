@@ -2,7 +2,12 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import typography from 'utils/typography'
-import { AlertDanger, AlertInfo, AlertWarning } from 'components/alert'
+import {
+  AlertDanger,
+  AlertInfo,
+  AlertWarning,
+  AlertEmpty,
+} from 'components/alert'
 
 typography.injectStyles()
 
@@ -49,4 +54,19 @@ storiesOf('Alerts', module)
       </AlertInfo>
     ),
     alertInfo
+  )
+  .add(
+    'Empty',
+    () => (
+      <AlertEmpty type="polite">
+        <p>
+          Besides, it has been divined by other continental commentators, that
+          when Jonah was thrown overboard from the Joppa ship, he straightway
+          effected his escape to another vessel near by
+        </p>
+      </AlertEmpty>
+    ),
+    {
+      info: 'Use for when there are no search results, messages, events, etc.',
+    }
   )

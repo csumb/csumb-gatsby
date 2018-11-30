@@ -1,6 +1,5 @@
 import React from 'react'
-//import styled from 'react-emotion'
-import { ContainerContext, ContainerElement } from './container-context'
+import { ContainerElement } from '../container-context'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 
 class BlockMap extends React.Component {
@@ -12,18 +11,14 @@ class BlockMap extends React.Component {
     const { zoom, center } = this.props
 
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            <Map
-              google={this.props.google}
-              zoom={zoom}
-              initialCenter={center}
-              onReady={this.onReady.bind(this)}
-            />
-          </ContainerElement>
-        )}
-      </ContainerContext.Consumer>
+      <ContainerElement isFull>
+        <Map
+          google={this.props.google}
+          zoom={zoom}
+          initialCenter={center}
+          onReady={this.onReady.bind(this)}
+        />
+      </ContainerElement>
     )
   }
 }
