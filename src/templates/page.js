@@ -7,6 +7,7 @@ import SiteHeader from 'components/layouts/components/site-header'
 import Container from 'components/container'
 import PageTitle from 'components/page-title'
 import Breadcrumbs from 'components/breadcrumbs'
+import PeopleContext from './blocks/people-context'
 
 class PageTemplate extends React.Component {
   render() {
@@ -28,7 +29,9 @@ class PageTemplate extends React.Component {
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
         </Container>
-        <Blocks blocks={pageContent} people={people} />
+        <PeopleContext.Provider value={people}>
+          <Blocks blocks={pageContent} />
+        </PeopleContext.Provider>
       </Layout>
     )
   }
