@@ -11,7 +11,15 @@ exports.onCreateNode = async ({
     return
   }
   let content = await loadNodeContent(node)
-  content = JSON.parse(content)
+  try {
+    content = JSON.parse(content)
+  } catch (e) {
+    console.log(`JSON error in file ${node.relativePath}`)
+    content = false
+  }
+  if (!content) {
+    return
+  }
 
   let contentNode = false
   if (typeof content.pageContent !== 'undefined') {
