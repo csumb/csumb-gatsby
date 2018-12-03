@@ -69,9 +69,6 @@ class SearchPage extends React.Component {
     }
 
     this.state = state
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(event) {
@@ -123,8 +120,8 @@ class SearchPage extends React.Component {
                   huge
                   hideLabel
                   placeholder="Search"
-                  onChange={this.handleChange}
-                  value={this.existingQuery}
+                  onChange={this.handleChange.bind(this)}
+                  value={this.existingQuery.bind(this)}
                 />
               </Box>
               <Box width={[1, 1 / 3]} px={2}>
