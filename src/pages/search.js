@@ -57,13 +57,14 @@ class SearchPage extends React.Component {
     let state = {
       search: false,
       query: '',
+      existingQuery: false,
     }
     this.existingQuery = null
     if (typeof window !== 'undefined') {
       let location = url.parse(window.location.href, true)
       if (location.query && typeof location.query.q !== 'undefined') {
         state.query = location.query.q
-        this.existingQuery = state.query
+        state.existingQuery = state.query
         this.search(state.query)
       }
     }
@@ -107,6 +108,7 @@ class SearchPage extends React.Component {
   }
 
   render() {
+    const { existingQuery } = this.state
     return (
       <Layout pageTitle="Search">
         <Container>
@@ -121,7 +123,7 @@ class SearchPage extends React.Component {
                   hideLabel
                   placeholder="Search"
                   onChange={this.handleChange.bind(this)}
-                  value={this.existingQuery.bind(this)}
+                  value={existingQuery ? existingQuery : null}
                 />
               </Box>
               <Box width={[1, 1 / 3]} px={2}>

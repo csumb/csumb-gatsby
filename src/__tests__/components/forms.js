@@ -209,21 +209,21 @@ describe('InputRadio', () => {
   })
 })
 
-const SampleSelect = () => (
-  <>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </>
-)
+const sampleSelect = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+]
 
 describe('InputSelect', () => {
   it('renders selects correctly', () => {
     const tree = renderer
       .create(
-        <InputSelect name="select" label="Select input">
-          <SampleSelect />
-        </InputSelect>
+        <InputSelect
+          name="select"
+          label="Select input"
+          options={sampleSelect}
+        />
       )
       .toJSON()
     expect(tree).toMatchSnapshot()
@@ -231,9 +231,24 @@ describe('InputSelect', () => {
   it('renders required selects correctly', () => {
     const tree = renderer
       .create(
-        <InputSelect name="select" label="Select input" isRequired={true}>
-          <SampleSelect />
-        </InputSelect>
+        <InputSelect
+          name="select"
+          label="Select input"
+          options={sampleSelect}
+        />
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+  it('renders huge selects correctly', () => {
+    const tree = renderer
+      .create(
+        <InputSelect
+          name="select"
+          huge
+          label="Select input"
+          options={sampleSelect}
+        />
       )
       .toJSON()
     expect(tree).toMatchSnapshot()
