@@ -5,6 +5,7 @@ import idGenerator from 'react-id-generator'
 import styled from 'react-emotion'
 import { colors } from './styles/theme'
 import { css } from 'emotion'
+import Select from 'react-select'
 
 const FormGroup = styled('div')`
   margin-bottom: 0.5rem;
@@ -37,9 +38,20 @@ const Required = styled('strong')`
   color: ${colors.indicators.high};
 `
 
-const Label = ({ labelId, children, isRequired, smallText, isHidden }) => (
+const Label = ({
+  labelId,
+  children,
+  isRequired,
+  smallText,
+  isHidden,
+  isAriaLabel,
+}) => (
   <LabelWrapper isHidden={isHidden}>
-    <LabelElement htmlFor={labelId} smallText={smallText}>
+    <LabelElement
+      htmlFor={labelId}
+      smallText={smallText}
+      id={isAriaLabel && labelId}
+    >
       {children}
       {isRequired ? <Required>Required</Required> : null}
     </LabelElement>
@@ -209,6 +221,23 @@ class InputRadio extends FormElement {
   }
 }
 
+const SelectElement = styled(Select)`
+  .react-select__control {
+    border: 1px solid ${colors.gray.deafult};
+    border-radius: 0;
+
+    padding: 0.1rem;
+    width: ${props => (props.small ? '30%' : '100%')};
+    ${props =>
+      props.huge
+        ? `
+  padding: 0.3rem;
+  font-size: 2rem;
+`
+        : ``};
+  }
+`
+
 class InputSelect extends FormElement {
   render() {
     const {
@@ -217,7 +246,7 @@ class InputSelect extends FormElement {
       hideLabel,
       label,
       forwardedRef,
-      children,
+      options,
     } = this.props
     return (
       <FormGroup inline={inline}>
@@ -225,12 +254,17 @@ class InputSelect extends FormElement {
           labelId={this.htmlId}
           isRequired={isRequired}
           isHidden={hideLabel}
+          isAriaLabel={true}
         >
           {label}
         </Label>
-        <select {...this.cleanProps()} ref={forwardedRef}>
-          {children}
-        </select>
+        <SelectElement
+          {...this.cleanProps()}
+          classNamePrefix="react-select"
+          aria-labelledby={this.htmlId}
+          options={options}
+          ref={forwardedRef}
+        />
       </FormGroup>
     )
   }

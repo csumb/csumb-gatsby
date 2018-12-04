@@ -95,37 +95,30 @@ storiesOf('Forms/Radio')
     <InputRadio label="Radio input" checked="checked" />
   ))
 
-const SampleSelect = () => (
-  <>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </>
-)
+const SampleSelectOptions = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+]
 
 storiesOf('Forms/Select')
   .add(
     'Regular',
-    () => (
-      <InputSelect label="Select input">
-        <SampleSelect />
-      </InputSelect>
-    ),
+    () => <InputSelect label="Select input" options={SampleSelectOptions} />,
     {
-      info: 'You have to set the native `option` elements yourself.',
+      info: 'Uses  (React Select)[https://react-select.com].',
     }
   )
-  .add(
-    'Required',
-    () => (
-      <InputSelect label="Select input" isRequired={true}>
-        <SampleSelect />
-      </InputSelect>
-    ),
-    {
-      info: 'You have to set the native `option` elements yourself.',
-    }
-  )
+  .add('Huge', () => (
+    <InputSelect label="Select input" options={SampleSelectOptions} huge />
+  ))
+  .add('Required', () => (
+    <InputSelect
+      label="Select input"
+      isRequired={true}
+      options={SampleSelectOptions}
+    />
+  ))
 
 storiesOf('Forms/Fieldset').add(
   'Fieldset',
