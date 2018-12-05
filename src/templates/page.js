@@ -32,7 +32,7 @@ class PageTemplate extends React.Component {
           {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
         </Container>
         <PeopleContext.Provider value={people}>
-          {event && <EventPage {...event} />}
+          {event && <EventPage event={event} />}
           <Blocks blocks={pageContent} />
         </PeopleContext.Provider>
       </Layout>
