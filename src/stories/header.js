@@ -13,6 +13,11 @@ import { UserContext } from 'components/contexts/user'
 
 typography.injectStyles()
 
+const sampleUser = {
+  profile: {
+    login: 'otter@csumb.edu',
+  },
+}
 storiesOf('Header', module)
   .add('About', () => (
     <p>
@@ -21,7 +26,7 @@ storiesOf('Header', module)
     </p>
   ))
   .add('Complete Header', () => (
-    <UserContext.Provider value={{ user: true }}>
+    <UserContext.Provider value={{ user: sampleUser }}>
       <Header
         metadata={{
           title: `Cal State Monterey Bay`,
@@ -35,7 +40,7 @@ storiesOf('Header', module)
   ))
   .add('Brand', () => <Brand />)
   .add('Applicant link', () => (
-    <UserContext.Provider value={{ user: true }}>
+    <UserContext.Provider value={{ user: trsampleUserue }}>
       <Applicant />
     </UserContext.Provider>
   ))
