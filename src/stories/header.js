@@ -1,13 +1,13 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Brand from 'components/layouts/components/header/brand'
-import Applicant from 'components/layouts/components/header/applicant'
-import Header from 'components/layouts/components/header'
-import SiteHeader from 'components/layouts/components/site-header'
+import Brand from 'components/header/brand'
+import Applicant from 'components/header/applicant'
+import Header from 'components/header'
+import SiteHeader from 'components/site-header'
 import {
   NavigationLink,
   NavigationLinkApply,
-} from 'components/layouts/components/header/navigation-link'
+} from 'components/header/navigation-link'
 import typography from 'utils/typography'
 import { UserContext } from 'components/contexts/user'
 

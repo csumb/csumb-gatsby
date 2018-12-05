@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import SiteHeader from 'components/layouts/components/site-header'
+import SiteHeader from 'components/site-header'
 import styled from 'react-emotion'
 import { InputText, Submit } from 'components/forms'
 import Container from 'components/container'

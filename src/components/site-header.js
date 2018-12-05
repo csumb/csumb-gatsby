@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'react-emotion'
 import Link from 'gatsby-link'
-import Container from '../../container'
-import { colors } from '../../styles/theme'
+import Container from './container'
+import { colors } from './styles/theme'
 
 const SiteHeaderWrapper = styled('div')`
   background: ${colors.primary.darkest};
