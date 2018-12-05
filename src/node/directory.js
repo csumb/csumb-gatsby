@@ -48,6 +48,7 @@ module.exports = (graphql, actions) => {
       ).then(result => {
         if (result.errors) {
           reject(result.errors)
+          return
         }
         result.data.allCsumbDirectory.edges.forEach(async edge => {
           const emailPrefix = edge.node.user.email.split('@').shift()

@@ -4,7 +4,7 @@ import VisuallyHidden from '@reach/visually-hidden'
 import { navigate } from '@reach/router'
 import Portal from 'components/portal'
 import Rect from '@reach/rect'
-import { InputText } from '../../../forms'
+import { InputText } from 'components/forms'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
 

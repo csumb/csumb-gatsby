@@ -10,7 +10,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { LeadParagraph } from 'components/type'
 import { UnstyledList } from 'components/type'
 import Container from 'components/container'
-import SiteHeader from 'components/layouts/components/site-header'
+import SiteHeader from 'components/site-header'
 import PageTitle from 'components/page-title'
 import AllPrograms from 'static/all-programs.js'
 

@@ -3,7 +3,7 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
-import SiteHeader from 'components/layouts/components/site-header'
+import SiteHeader from 'components/site-header'
 import { graphql } from 'gatsby'
 import {
   DashboardEvents,
