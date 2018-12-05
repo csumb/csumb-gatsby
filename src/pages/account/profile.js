@@ -8,7 +8,7 @@ import Link from 'gatsby-link'
 import styled from 'react-emotion'
 import ReactFilestack from 'filestack-react'
 import { InputText, InputSelect, Submit } from 'components/forms'
-import { StaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import {
   AccountGroup,
   AccountTitle,
@@ -49,7 +49,10 @@ class AccountProfilePage extends React.Component {
                       ) : (
                         <>
                           <AccountTitle>Your public profile</AccountTitle>
-                          <UserAccountProfileForm user={context.user} />
+                          <UserAccountProfileForm
+                            user={context.user}
+                            buildings={this.props.data.allCsumbBuilding.edges}
+                          />
                         </>
                       )}
                     </Box>
@@ -66,7 +69,7 @@ class AccountProfilePage extends React.Component {
 
 class UserAccountProfileForm extends React.Component {
   render() {
-    const { user } = this.props
+    const { user, buildings } = this.props
     return (
       <>
         <AccountGroup legend="Job title">
@@ -86,7 +89,7 @@ class UserAccountProfileForm extends React.Component {
             title are controled by your human resources department.
           </p>
         </AccountGroup>
-        <UserAccountProfileOffice user={user} />
+        <UserAccountProfileOffice user={user} buildings={buildings} />
         <UserAccountProfilePhone user={user} />
         <UserAccountProfilePhoto user={user} />
       </>
@@ -106,7 +109,7 @@ class UserAccountProfileOffice extends React.Component {
     })
   }
   render() {
-    const { user } = this.props
+    const { user, buildings } = this.props
     return (
       <AccountGroup legend="Office location">
         <p>
@@ -125,7 +128,9 @@ class UserAccountProfileOffice extends React.Component {
             Change office location
           </Button>
         </p>
-        {this.state.showForm && <UserAccountProfileOfficeForm user={user} />}
+        {this.state.showForm && (
+          <UserAccountProfileOfficeForm buildings={buildings} user={user} />
+        )}
       </AccountGroup>
     )
   }
@@ -146,41 +151,26 @@ class UserAccountProfileOfficeForm extends React.Component {
   }
   handleBuildingChange(event) {
     this.setState({
-      building: event.target.value,
+      building: event.value,
     })
   }
   render() {
+    const { buildings } = this.props
+    const buildingOptions = []
+    buildings.forEach(building => {
+      buildingOptions.push({
+        value: building.node.code,
+        label: building.node.buildingName,
+      })
+    })
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <InputSelect
           onChange={this.handleBuildingChange.bind(this)}
           label="Building"
           name="building"
-        >
-          <StaticQuery
-            query={graphql`
-              {
-                allCsumbBuilding {
-                  edges {
-                    node {
-                      buildingName
-                      code
-                    }
-                  }
-                }
-              }
-            `}
-            render={data => (
-              <>
-                {data.allCsumbBuilding.edges.map(building => (
-                  <option value={building.node.code}>
-                    {building.node.buildingName} ({building.node.code})
-                  </option>
-                ))}
-              </>
-            )}
-          />
-        </InputSelect>
+          options={buildingOptions}
+        />
         <InputText
           onKeyUp={this.handleRoomChange.bind(this)}
           label="Room number"
@@ -296,3 +286,16 @@ class UserAccountProfilePhoto extends React.Component {
 }
 
 export default AccountProfilePage
+
+export const query = graphql`
+  {
+    allCsumbBuilding {
+      edges {
+        node {
+          buildingName
+          code
+        }
+      }
+    }
+  }
+`
