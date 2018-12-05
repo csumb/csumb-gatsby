@@ -71,7 +71,7 @@
   "scripts": {
     "setup": "grunt",
     "build": "gatsby build",
-    "netlify": "grunt; gatsby build; ./check-build.sh; npm run storybookbuild",
+    "netlify": "./netlify.sh",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "storybook": "start-storybook -p 9001 -c .storybook",
