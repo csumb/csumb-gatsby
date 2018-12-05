@@ -139,7 +139,7 @@ module.exports = (graphql, actions) => {
           path = path.replace('index.json', '').replace('.json', '')
           if (typeof sites[content.site] !== 'undefined') {
             count++
-            createPage({
+            let pageNode = {
               path: path,
               component: pageTemplate,
               layout: 'index',
@@ -153,7 +153,11 @@ module.exports = (graphql, actions) => {
                 people: directory,
                 pageContent: content.pageContent,
               },
-            })
+            }
+            if (typeof content.event !== 'undefined') {
+              pageNode.context.event = content.event
+            }
+            createPage(pageNode)
           }
         })
         report.success(`built ${count} web pages`)
