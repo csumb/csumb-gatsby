@@ -7,6 +7,12 @@ import { colors } from './styles/theme'
 import { css } from 'emotion'
 import Select from 'react-select'
 
+const focusStyle = css`
+  &:focus {
+    outline: 0.25rem solid ${colors.primary.default} !important;
+  }
+`
+
 const FormGroup = styled('div')`
   margin-bottom: 0.5rem;
   ${props => (props.inline ? `display: inline-block;` : ``)};
@@ -95,6 +101,7 @@ FormElement.propTypes = {
 }
 
 const InputTextElement = styled('input')`
+  ${focusStyle};
   border: 1px solid ${colors.gray.deafult};
   padding: 0.3rem;
   width: ${props => (props.small ? '30%' : '100%')};
@@ -138,6 +145,7 @@ class InputText extends FormElement {
 }
 
 const InputTextareaElement = styled('textarea')`
+  ${focusStyle};
   border: 1px solid ${colors.gray.deafult};
   padding: 0.3rem;
   width: ${props => (props.small ? '30%' : '100%')};
@@ -223,6 +231,7 @@ class InputRadio extends FormElement {
 
 const SelectElement = styled(Select)`
   .react-select__control {
+    ${focusStyle};
     border: 1px solid ${colors.gray.deafult};
     border-radius: 0;
 
