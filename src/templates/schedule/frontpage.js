@@ -13,7 +13,7 @@ import {
 
 class ScheduleFront extends React.Component {
   render() {
-    const { term } = this.props.pageContext
+    const { term, termSubjects, allGe } = this.props.pageContext
     return (
       <Layout>
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
@@ -23,7 +23,7 @@ class ScheduleFront extends React.Component {
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h3>Subjects</h3>
               <ScheduleList>
-                {this.props.pageContext.termSubjects.map(subject => (
+                {termSubjects.map(subject => (
                   <ScheduleListItem
                     key={subject.code}
                     subject={subject.code}
@@ -40,7 +40,7 @@ class ScheduleFront extends React.Component {
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h3>General Education</h3>
               <GEList>
-                {this.props.pageContext.ge.map(ge => (
+                {allGe.map(ge => (
                   <GEListItem
                     key={ge.node.code}
                     to={`/schedule/${term.DESCR.toLowerCase().replace(

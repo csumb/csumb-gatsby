@@ -203,7 +203,7 @@ module.exports = (graphql, actions) => {
             component: scheduleFrontpageTemplate,
             context: {
               term: edge.node,
-              ge: result.data.allGeCsv.edges,
+              allGe: result.data.allGeCsv.edges,
               termSubjects: termSubjects,
             },
           })
