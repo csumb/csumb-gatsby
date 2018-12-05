@@ -19,25 +19,26 @@ const sampleUser = {
   },
 }
 storiesOf('Header', module)
-  .add('About', () => (
-    <p>
-      The header uses state to change the layout of the design based on screen
-      size.
-    </p>
-  ))
-  .add('Complete Header', () => (
-    <UserContext.Provider value={{ user: sampleUser }}>
-      <Header
-        metadata={{
-          title: `Cal State Monterey Bay`,
-          okta: {
-            login: `https://csumb.okta.com`,
-          },
-          swiftypeId: `Gu7FdGTPV49T6dsYVBSV`,
-        }}
-      />
-    </UserContext.Provider>
-  ))
+  .add(
+    'Complete Header',
+    () => (
+      <UserContext.Provider value={{ user: sampleUser }}>
+        <Header
+          metadata={{
+            title: `Cal State Monterey Bay`,
+            okta: {
+              login: `https://csumb.okta.com`,
+            },
+            swiftypeId: `Gu7FdGTPV49T6dsYVBSV`,
+          }}
+        />
+      </UserContext.Provider>
+    ),
+    {
+      info:
+        'The header uses state to change the layout of the design based on screen size.',
+    }
+  )
   .add('Brand', () => <Brand />)
   .add('Applicant link', () => (
     <UserContext.Provider value={{ user: trsampleUserue }}>
