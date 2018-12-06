@@ -90,6 +90,25 @@ exports.onCreateNode = async ({
     })
   }
 
+  if (node.relativePath.search('_data/swiftype-redirects.json') > -1) {
+    content.forEach(redirect => {
+      const redirectNode = {
+        id: createNodeId(`${redirect.name} >>> CsumbSwiftypeRedirect`),
+        children: [],
+        parent: null,
+        redirect: redirect,
+        internal: {
+          type: `CsumbSwiftypeRedirect`,
+        },
+      }
+      redirectNode.internal.contentDigest = crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(redirectNode))
+        .digest(`hex`)
+      createNode(redirectNode)
+    })
+  }
+
   if (node.relativePath.search('_data/buildings.json') > -1) {
     Object.values(content).forEach(building => {
       const buildingNode = {
