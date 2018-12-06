@@ -6,6 +6,7 @@ const schedulePages = require(`./src/node/schedule`)
 const buildingPages = require(`./src/node/buildings`)
 const directoryPages = require(`./src/node/directory`)
 const redirects = require('./src/node/redirects')
+const swiftypeRedirects = require('./src/node/swiftype-redirects')
 const scheduleSearch = require('./src/node/schedule-search')
 
 require(`gatsby-source-filesystem`)
@@ -21,6 +22,9 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return redirects(graphql, actions)
+      })
+      .then(() => {
+        return swiftypeRedirects(graphql, actions)
       })
       .then(() => {
         return buildingPages(graphql, actions)
