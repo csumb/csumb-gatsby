@@ -16,6 +16,8 @@ import {
   AccountSidebar,
 } from 'components/account'
 import { Button } from 'components/button'
+import SimpleMDE from 'react-simplemde-editor'
+import 'simplemde/dist/simplemde.min.css'
 
 const AccountPhoto = styled('img')`
   max-width: 150px;
@@ -91,6 +93,7 @@ class UserAccountProfileForm extends React.Component {
         </AccountGroup>
         <UserAccountProfileOffice user={user} buildings={buildings} />
         <UserAccountProfilePhone user={user} />
+        <UserAccountProfileBio user={user} />
         <UserAccountProfilePhoto user={user} />
       </>
     )
@@ -240,6 +243,86 @@ class UserAccountProfilePhoneForm extends React.Component {
           small
         />
         <Submit value="Update phone" />
+      </form>
+    )
+  }
+}
+
+class UserAccountProfileBio extends React.Component {
+  state = {
+    showForm: false,
+  }
+
+  handleShowForm(event) {
+    event.preventDefault()
+    this.setState({
+      showForm: !this.state.showForm,
+    })
+  }
+
+  render() {
+    const { user } = this.props
+    return (
+      <AccountGroup legend="Biography">
+        <p>
+          Your biography is shown on the{' '}
+          <Link to="/directory">public campus directory.</Link>
+        </p>
+        <AccountData>{user.profile.profileBio}</AccountData>
+        <p>
+          <Button onClick={this.handleShowForm.bind(this)} to="#phone">
+            Update biography
+          </Button>
+        </p>
+        {this.state.showForm && <UserAccountProfileBioForm user={user} />}
+      </AccountGroup>
+    )
+  }
+}
+
+class UserAccountProfileBioForm extends React.Component {
+  state = {
+    biography: false,
+  }
+  handleSubmit(event) {
+    event.preventDefault()
+    console.log(this.state.biography)
+  }
+
+  handleChange(value) {
+    this.setState({
+      biography: value,
+    })
+  }
+
+  render() {
+    //YOU SHOULD EVENTUALLY SET value=profile field in SimpleMDE
+    return (
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <p>
+          Your biography is edited in{' '}
+          <a href="https://daringfireball.net/projects/markdown/">
+            Markdown format
+          </a>
+          .
+        </p>
+        <SimpleMDE
+          onChange={this.handleChange.bind(this)}
+          options={{
+            status: false,
+            spellChecker: false,
+            toolbar: [
+              'bold',
+              'link',
+              'heading-2',
+              'heading-3',
+              'quote',
+              'unordered-list',
+              'ordered-list',
+            ],
+          }}
+        />
+        <Submit value="Update biography" />
       </form>
     )
   }

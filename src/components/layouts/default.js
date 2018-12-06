@@ -53,6 +53,7 @@ class Layout extends React.Component {
         <SkipNavLink />
         <Helmet>
           <html lang="en" />
+          <meta charset="utf-8" />
           <title>{pageTitle.join(' | ')}</title>
         </Helmet>
         <StaticQuery
