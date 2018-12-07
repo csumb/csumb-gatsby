@@ -50,6 +50,7 @@ module.exports = (graphql, actions) => {
           reject(result.errors)
           return
         }
+        let files = {}
         result.data.allCsumbDirectory.edges.forEach(async edge => {
           const emailPrefix = edge.node.user.email.split('@').shift()
           createPage({

@@ -21,9 +21,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
-        headers: {
-          '/_storybook/*': ['X-Frame-Options: sameorigin'],
-        },
+        mergeSecurityHeaders: false,
       },
     },
     {
