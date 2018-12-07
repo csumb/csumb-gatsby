@@ -32,16 +32,19 @@ const ShortPersonList = styled('ul')`
   margin-top: 1rem;
 `
 
-const ShortPersonListing = props => (
-  <li>
-    <Link to={`/directory/person/${props.external_id}`}>
-      <ShortPersonName>
-        {props.given_name} {props.family_name}
-      </ShortPersonName>
-    </Link>
-    {props.phone && <ShortPersonPhone>{props.phone}</ShortPersonPhone>}
-  </li>
-)
+const ShortPersonListing = ({ firstName, lastName, phone, email }) => {
+  const link = email.split('@').shift()
+  return (
+    <li>
+      <Link to={`/directory/person/${link}`}>
+        <ShortPersonName>
+          {firstName} {lastName}
+        </ShortPersonName>
+      </Link>
+      {phone && <ShortPersonPhone>{phone}</ShortPersonPhone>}
+    </li>
+  )
+}
 
 class DirectoryForm extends React.Component {
   state = {
