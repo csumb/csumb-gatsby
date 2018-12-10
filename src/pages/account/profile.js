@@ -229,9 +229,9 @@ class UserAccountProfilePhoneForm extends React.Component {
     const { user } = this.props
     event.preventDefault()
     fetch(
-      `/.netlify/functions/okta-profile-phone?user=${user.id}&phone=${
-        this.state.phone
-      }`
+      `/.netlify/functions/okta-profile-field?user=${
+        user.id
+      }&field=directoryPhone&value=${this.state.phone}`
     )
     this.setState({
       updated: true,
