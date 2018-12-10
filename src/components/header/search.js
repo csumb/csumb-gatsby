@@ -115,6 +115,7 @@ class Search extends React.Component {
               label="Search"
               name="search"
               forwardedRef={ref}
+              autocomplete="false"
               hideLabel={true}
               placeholder="Search"
               onChange={this.handleChange}
