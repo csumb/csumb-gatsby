@@ -13,6 +13,51 @@ const DirectoryPage = () => (
     <SiteHeader path="/directory">Directory</SiteHeader>
     <Container>
       <DirectoryForm />
+      <Flex flexWrap="wrap">
+        <Box width={[1, 1 / 2]} px={2}>
+          <h3>Important numbers</h3>
+          <ul class="intro">
+            <li>
+              <strong>
+                <a href="/csc">Campus Service Center</a>
+              </strong>{' '}
+              (831) 582-5100
+            </li>
+            <li>
+              <strong>
+                <a href="/financialaid">Financial Aid</a>
+              </strong>{' '}
+              (831) 582-5100
+            </li>
+            <li>
+              <strong>
+                <a href="/admissions">Admissions</a>
+              </strong>{' '}
+              (831) 582-3738
+            </li>
+            <li>
+              <strong>
+                <a href="/housing">Student Housing</a>
+              </strong>{' '}
+              (831) 582-3378
+            </li>
+          </ul>
+        </Box>
+        <Box width={[1, 1 / 2]} px={2}>
+          <h3>University police</h3>
+          <ul>
+            <li>
+              <strong>Emergency:</strong> 911
+            </li>
+            <li>
+              <strong>Non-emergency:</strong> (831) 655-0268
+            </li>
+            <li>
+              <strong>Emergency conditions:</strong> (831) 582-5044
+            </li>
+          </ul>
+        </Box>
+      </Flex>
     </Container>
   </Layout>
 )
