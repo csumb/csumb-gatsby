@@ -25,6 +25,7 @@ const Legal = styled('div')`
   background-color: ${colors.primary.darkest};
   padding: 0.5rem 0;
   text-align: right;
+  margin-top: 1rem;
   a,
   a:visited {
     color: ${colors.white};
