@@ -23,6 +23,14 @@ import 'simplemde/dist/simplemde.min.css'
 const AccountPhoto = styled('img')`
   max-width: 150px;
 `
+
+const updateOktaField = (user, field, value) => {
+  fetch(
+    `/.netlify/functions/okta-profile-field?user=${
+      user.id
+    }&field=${field}&value=${value}`
+  )
+}
 class AccountProfilePage extends React.Component {
   render() {
     return (
@@ -144,9 +152,16 @@ class UserAccountProfileOfficeForm extends React.Component {
   state = {
     building: false,
     room: false,
+    updated: false,
   }
   handleSubmit(event) {
+    const { user } = this.props
     event.preventDefault()
+    updateOktaField(user, 'directoryBuildingCode', this.state.building)
+    updateOktaField(user, 'campusRoomNumber', this.state.room)
+    this.setState({
+      updated: true,
+    })
   }
   handleRoomChange(event) {
     this.setState({
@@ -159,7 +174,7 @@ class UserAccountProfileOfficeForm extends React.Component {
     })
   }
   render() {
-    const { buildings } = this.props
+    const { buildings, user } = this.props
     const buildingOptions = []
     buildings.forEach(building => {
       buildingOptions.push({
@@ -173,16 +188,23 @@ class UserAccountProfileOfficeForm extends React.Component {
           onChange={this.handleBuildingChange.bind(this)}
           label="Building"
           name="building"
+          defaultValue={user.profile.directoryBuildingCode}
           options={buildingOptions}
         />
         <InputText
           onKeyUp={this.handleRoomChange.bind(this)}
           label="Room number"
           name="room"
-          defaultValue="100"
+          defaultValue={user.profile.campusRoomNumber}
           small
         />
         <Submit value="Update office information" />
+        {this.state.updated && (
+          <AlertInfo>
+            Your building and room have been updated. It might take a few hours
+            for the change to make it to the public directory.
+          </AlertInfo>
+        )}
       </form>
     )
   }
@@ -228,11 +250,7 @@ class UserAccountProfilePhoneForm extends React.Component {
   handleSubmit(event) {
     const { user } = this.props
     event.preventDefault()
-    fetch(
-      `/.netlify/functions/okta-profile-field?user=${
-        user.id
-      }&field=directoryPhone&value=${this.state.phone}`
-    )
+    updateOktaField(user, 'directoryPhone', this.state.phone)
     this.setState({
       updated: true,
     })
@@ -300,10 +318,16 @@ class UserAccountProfileBio extends React.Component {
 class UserAccountProfileBioForm extends React.Component {
   state = {
     biography: false,
+    updated: false,
   }
   handleSubmit(event) {
+    const { user } = this.props
     event.preventDefault()
-    console.log(this.state.biography)
+
+    updateOktaField(user, 'profileBio', this.state.biography)
+    this.setState({
+      updated: true,
+    })
   }
 
   handleChange(value) {
@@ -313,7 +337,7 @@ class UserAccountProfileBioForm extends React.Component {
   }
 
   render() {
-    //YOU SHOULD EVENTUALLY SET value=profile field in SimpleMDE
+    const { user } = this.props
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <p>
@@ -325,6 +349,7 @@ class UserAccountProfileBioForm extends React.Component {
         </p>
         <SimpleMDE
           onChange={this.handleChange.bind(this)}
+          value={user.profile.profileBio}
           options={{
             status: false,
             spellChecker: false,
@@ -340,6 +365,12 @@ class UserAccountProfileBioForm extends React.Component {
           }}
         />
         <Submit value="Update biography" />
+        {this.state.updated && (
+          <AlertInfo>
+            Your biography has been updated. It might take a few hours before
+            your changes appear on the public directory.
+          </AlertInfo>
+        )}
       </form>
     )
   }
