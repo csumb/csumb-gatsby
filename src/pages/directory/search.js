@@ -8,13 +8,22 @@ import url from 'url'
 import Link from 'gatsby-link'
 import SiteHeader from 'components/site-header'
 
-const PersonListing = props => (
+const PersonListing = ({ firstName, lastName, email }) => {
+  const link = email.split('@').shift()
+  return (
+    <div>
+      <h3>
+        <Link to={`/directory/person/${link}`}>
+          {firstName} {lastName}
+        </Link>
+      </h3>
+    </div>
+  )
+}
+
+const DepartmentListing = ({ name }) => (
   <div>
-    <h3>
-      <Link to={`/directory/person/${props.external_id}`}>
-        {props.given_name} {props.family_name}
-      </Link>
-    </h3>
+    <h3>{name}</h3>
   </div>
 )
 
@@ -35,8 +44,8 @@ class DirectorySearchResults extends React.Component {
     const data = {
       engine_key: '8MdTPLsyGLNeTpxVBD9e',
       q: query,
-      document_types: ['person'],
-      sort_field: { person: 'family_name' },
+      document_types: ['person', 'department'],
+      sort_field: { person: 'familyName', department: 'name' },
       sort_direction: { person: 'asc' },
     }
     fetch('https://search-api.swiftype.com/api/v1/public/engines/search.json', {
@@ -64,6 +73,9 @@ class DirectorySearchResults extends React.Component {
       <>
         {search && (
           <>
+            {search.records.department.map(result => (
+              <DepartmentListing key={result.external_id} {...result} />
+            ))}
             {search.records.person.map(result => (
               <PersonListing key={result.external_id} {...result} />
             ))}
