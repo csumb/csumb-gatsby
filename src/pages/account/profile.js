@@ -9,6 +9,7 @@ import styled from 'react-emotion'
 import ReactFilestack from 'filestack-react'
 import { InputText, InputSelect, Submit } from 'components/forms'
 import { graphql } from 'gatsby'
+import { AlertInfo } from 'components/alert'
 import {
   AccountGroup,
   AccountTitle,
@@ -222,10 +223,19 @@ class UserAccountProfilePhone extends React.Component {
 class UserAccountProfilePhoneForm extends React.Component {
   state = {
     phone: 0,
+    updated: false,
   }
   handleSubmit(event) {
+    const { user } = this.props
     event.preventDefault()
-    console.log(this.state.phone)
+    fetch(
+      `/.netlify/functions/okta-profile-phone?user=${user.id}&phone=${
+        this.state.phone
+      }`
+    )
+    this.setState({
+      updated: true,
+    })
   }
 
   handleChange(event) {
@@ -240,9 +250,16 @@ class UserAccountProfilePhoneForm extends React.Component {
         <InputText
           onKeyUp={this.handleChange.bind(this)}
           label="Phone number"
+          name="phone"
           small
         />
         <Submit value="Update phone" />
+        {this.state.updated && (
+          <AlertInfo>
+            Your phone number has been updated. It might take a few hours for
+            the change to make it to the public directory.
+          </AlertInfo>
+        )}
       </form>
     )
   }
