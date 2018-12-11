@@ -7,6 +7,7 @@ import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 import { UserContext, setUserRole } from 'components/contexts/user'
 import { IronDB } from 'iron-db'
+import Emergency from 'components/emergency'
 class Layout extends React.Component {
   state = {
     user: false,
@@ -50,6 +51,7 @@ class Layout extends React.Component {
     pageTitle.push('Cal State Monterey Bay')
     return (
       <UserContext.Provider value={this.state}>
+        <Emergency />
         <SkipNavLink />
         <Helmet>
           <html lang="en" />
