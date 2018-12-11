@@ -1,9 +1,0 @@
-{
-  "name": "csumb-gatsby-functions",
-  "description": "Lambda functions",
-  "version": "0.1.0",
-  "author": "Kevin Miller <kevin@csumb.edu>",
-  "dependencies": {
-    "@okta/okta-sdk-nodejs": "^1.2.0",
-  }
-}
