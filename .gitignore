@@ -11,4 +11,5 @@ coverage
 #CSUMB files
 _web-content
 _data
+_functions
 drive-api.json
