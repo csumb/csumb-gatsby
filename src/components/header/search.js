@@ -5,7 +5,9 @@ import Rect from '@reach/rect'
 import { css } from 'emotion'
 import { InputText } from 'components/forms'
 import styled from 'react-emotion'
+import Portal from 'components/portal'
 import { colors } from 'components/styles/theme'
+import { navigate } from '@reach/router'
 
 /** A11Y
  *
@@ -47,6 +49,14 @@ class Search extends React.Component {
     search: false,
     query: false,
     selected: 0,
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    navigate(`/search?q=${this.state.query}`)
+    this.setState({
+      query: false,
+    })
   }
 
   handleChange(event) {
@@ -103,6 +113,7 @@ class Search extends React.Component {
           <form
             method="GET"
             action="/search"
+            onSubmit={this.handleSubmit.bind(this)}
             className={css`
               display: inline-block;
             `}
@@ -118,32 +129,34 @@ class Search extends React.Component {
               onKeyDown={this.handleKeyDown.bind(this)}
               inline
             />
-            {search ? (
-              <SearchResultsAutocomplete
-                onKeyDown={this.handleAutocompleteKeyDown.bind(this)}
-                forwardedRef={node => {
-                  this.autocompleteRef = node
-                }}
-                style={{
-                  top: rect.top + rect.height,
-                  left: rect.left,
-                  width: rect.width,
-                }}
-              >
-                {search.records.page.map(item => (
-                  <div key={item.id}>
-                    <Link to={item.url.replace('https://csumb.edu', '')}>
-                      <SearchAutocompleteItemTitle>
-                        {item.title}
-                      </SearchAutocompleteItemTitle>
-                      <SearchAutocompleteItemSite>
-                        {item.site_name}
-                      </SearchAutocompleteItemSite>
-                    </Link>
-                  </div>
-                ))}
-              </SearchResultsAutocomplete>
-            ) : null}
+            <Portal>
+              {search ? (
+                <SearchResultsAutocomplete
+                  onKeyDown={this.handleAutocompleteKeyDown.bind(this)}
+                  forwardedRef={node => {
+                    this.autocompleteRef = node
+                  }}
+                  style={{
+                    top: rect.top + rect.height,
+                    left: rect.left,
+                    width: rect.width,
+                  }}
+                >
+                  {search.records.page.map(item => (
+                    <div key={item.id}>
+                      <Link to={item.url.replace('https://csumb.edu', '')}>
+                        <SearchAutocompleteItemTitle>
+                          {item.title}
+                        </SearchAutocompleteItemTitle>
+                        <SearchAutocompleteItemSite>
+                          {item.site_name}
+                        </SearchAutocompleteItemSite>
+                      </Link>
+                    </div>
+                  ))}
+                </SearchResultsAutocomplete>
+              ) : null}
+            </Portal>
             <VisuallyHidden>
               <input type="submit" value="Search" />
             </VisuallyHidden>
