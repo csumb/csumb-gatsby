@@ -231,8 +231,8 @@ class DashboardMessages extends React.Component {
   }
 }
 
-const DashboardMessageElement = styled('div')`
-  background: ${colors.secondary.highlight.light};
+const DashboardCard = styled('div')`
+  background: ${colors.white};
   padding: 0.5rem;
   margin-bottom: 1rem;
   position: relative;
@@ -280,14 +280,14 @@ class DashboardMessage extends React.Component {
     return (
       <>
         {!this.state.archived && (
-          <DashboardMessageElement>
+          <DashboardCard>
             <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
               &times;
               <VisuallyHidden>Archive message</VisuallyHidden>
             </DashboardMessageClose>
             <h3>{title}</h3>
             <p>{message}</p>
-          </DashboardMessageElement>
+          </DashboardCard>
         )}
       </>
     )
@@ -362,20 +362,14 @@ class DashboardEvents extends React.Component {
   }
 }
 
-const DashboardEventElement = styled('div')`
-  border: 1px solid ${colors.muted.light};
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-`
-
 const DashboardEvent = ({ event }) => (
-  <DashboardEventElement>
+  <DashboardCard>
     <Link to={event.link}>
       <h3>{event.headline}</h3>
     </Link>
     <h4>{event.date}</h4>
     <p>{event.description}</p>
-  </DashboardEventElement>
+  </DashboardCard>
 )
 
 export {
