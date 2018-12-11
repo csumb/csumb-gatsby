@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import VisuallyHidden from '@reach/visually-hidden'
-import { navigate } from '@reach/router'
 import Rect from '@reach/rect'
+import { css } from 'emotion'
 import { InputText } from 'components/forms'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
@@ -83,11 +83,6 @@ class Search extends React.Component {
       })
   }
 
-  handleSubmit(event) {
-    event.preventDefault()
-    navigate(`/search?q=${this.state.query}`)
-  }
-
   handleKeyDown(event) {
     if (event.key === 'Escape') {
       this.setState({ search: false })
@@ -105,10 +100,16 @@ class Search extends React.Component {
     return (
       <Rect>
         {({ rect, ref }) => (
-          <>
+          <form
+            method="GET"
+            action="/search"
+            className={css`
+              display: inline-block;
+            `}
+          >
             <InputText
               label="Search"
-              name="search"
+              name="q"
               forwardedRef={ref}
               autoComplete="off"
               hideLabel={true}
@@ -146,7 +147,7 @@ class Search extends React.Component {
             <VisuallyHidden>
               <input type="submit" value="Search" />
             </VisuallyHidden>
-          </>
+          </form>
         )}
       </Rect>
     )
