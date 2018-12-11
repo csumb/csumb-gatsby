@@ -116,6 +116,7 @@ class Search extends React.Component {
             onSubmit={this.handleSubmit.bind(this)}
             className={css`
               display: inline-block;
+              margin-bottom: 0;
             `}
           >
             <InputText

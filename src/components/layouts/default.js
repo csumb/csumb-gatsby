@@ -6,7 +6,6 @@ import Helmet from 'react-helmet'
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 import { UserContext, setUserRole } from 'components/contexts/user'
-import { IronDB } from 'iron-db'
 import Emergency from 'components/emergency'
 class Layout extends React.Component {
   state = {
@@ -14,13 +13,6 @@ class Layout extends React.Component {
   }
 
   async componentDidMount() {
-    const localUser = await IronDB.get('user', false)
-    if (localUser) {
-      this.setState({
-        user: localUser === 'anonymous' ? localUser : JSON.parse(localUser),
-      })
-      return
-    }
     window
       .fetch('https://csumb.okta.com/api/v1/users/me', {
         credentials: 'include',
@@ -33,13 +25,11 @@ class Layout extends React.Component {
         this.setState({
           user: user,
         })
-        IronDB.set('user', JSON.stringify(user))
       })
       .catch(error => {
         this.setState({
           user: 'anonymous',
         })
-        IronDB.set('user', 'anonymous')
       })
   }
 
