@@ -5,11 +5,17 @@ import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
 import SiteHeader from 'components/site-header'
 import { graphql } from 'gatsby'
+import styled from 'react-emotion'
+import { colors } from 'components/styles/theme'
 import {
   DashboardEvents,
   DashboardMessages,
   DashboardApps,
 } from 'components/dashboard'
+
+const DashboardContainer = styled('section')`
+  background: ${colors.primary.lightest};
+`
 
 const DashboardPage = ({ data }) => (
   <Layout pageTitle="Dashboard">
@@ -20,7 +26,7 @@ const DashboardPage = ({ data }) => (
       {context => (
         <>
           {context.user && (
-            <>
+            <DashboardContainer>
               <Container topPadding>
                 <Flex flexWrap="wrap">
                   <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
@@ -33,7 +39,7 @@ const DashboardPage = ({ data }) => (
                   </Box>
                 </Flex>
               </Container>
-            </>
+            </DashboardContainer>
           )}
         </>
       )}
