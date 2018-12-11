@@ -255,6 +255,7 @@ const DashboardMessageClose = styled('button')`
   right: 0.5rem;
   cursor: pointer;
   font-size: 1.5rem;
+  line-height: 1rem;
   font-weight: bold;
   color: ${colors.muted.dark};
 `
