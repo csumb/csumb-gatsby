@@ -2,18 +2,22 @@
 
 exports[`DashboardEvent renders messages correctly 1`] = `
 <div
-  className="css-14pshc8"
+  className="css-6k3zio"
 >
   <a
     href="/#link"
     onClick={[Function]}
     onMouseEnter={[Function]}
   >
-    <h3>
+    <h3
+      className="css-1rzmm22"
+    >
       the title
     </h3>
   </a>
-  <h4>
+  <h4
+    className="css-1e7emdq"
+  >
     October 23, 2018
   </h4>
   <p />
@@ -22,10 +26,10 @@ exports[`DashboardEvent renders messages correctly 1`] = `
 
 exports[`DashboardMessage renders messages correctly 1`] = `
 <div
-  className="css-tb7oa0"
+  className="css-6k3zio"
 >
   <button
-    className="css-2p2q71"
+    className="css-1c6yazm"
     onClick={[Function]}
   >
     ×
@@ -46,7 +50,9 @@ exports[`DashboardMessage renders messages correctly 1`] = `
       Archive message
     </div>
   </button>
-  <h3>
+  <h3
+    className="css-tnh6dy"
+  >
     the title
   </h3>
   <p>
