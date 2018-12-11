@@ -79,7 +79,8 @@
     "format": "prettier --write 'src/**/*.js'",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybookbuild": "build-storybook -c .storybook -o ./public/_storybook",
-    "test": "jest"
+    "test": "jest",
+    "now-start": "npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",

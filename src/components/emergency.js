@@ -10,6 +10,7 @@ const EmergencyDialog = styled(Dialog)`
   background: ${color(colors.indicators.high)
     .lighten(0.8)
     .hex()};
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 20px 30px 0px;
 `
 
 const EmergencyDialogClose = styled('button')`
