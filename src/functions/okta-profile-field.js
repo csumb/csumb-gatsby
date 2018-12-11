@@ -1,4 +1,4 @@
-import okta from '@okta/okta-sdk-nodejs'
+const okta = require('@okta/okta-sdk-nodejs')
 
 const allowedFields = [
   'directoryPhone',
