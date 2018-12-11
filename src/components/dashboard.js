@@ -238,6 +238,15 @@ const DashboardCard = styled('div')`
   position: relative;
 `
 
+const DashboardCardHeader = styled('h3')`
+  font-family: ${fonts.sansSerif};
+  ${props =>
+    props.noMargin &&
+    `
+    margin-bottom: 0;
+  `};
+`
+
 const DashboardMessageClose = styled('button')`
   border: 0;
   background: transparent;
@@ -245,6 +254,9 @@ const DashboardMessageClose = styled('button')`
   top: 0.5rem;
   right: 0.5rem;
   cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: ${colors.muted.dark};
 `
 class DashboardMessage extends React.Component {
   state = {
@@ -285,7 +297,7 @@ class DashboardMessage extends React.Component {
               &times;
               <VisuallyHidden>Archive message</VisuallyHidden>
             </DashboardMessageClose>
-            <h3>{title}</h3>
+            <DashboardCardHeader>{title}</DashboardCardHeader>
             <p>{message}</p>
           </DashboardCard>
         )}
@@ -362,12 +374,16 @@ class DashboardEvents extends React.Component {
   }
 }
 
+const DashboardEventDate = styled('h4')`
+  font-family: ${fonts.sansSerif};
+`
+
 const DashboardEvent = ({ event }) => (
   <DashboardCard>
     <Link to={event.link}>
-      <h3>{event.headline}</h3>
+      <DashboardCardHeader noMargin>{event.headline}</DashboardCardHeader>
     </Link>
-    <h4>{event.date}</h4>
+    <DashboardEventDate>{event.date}</DashboardEventDate>
     <p>{event.description}</p>
   </DashboardCard>
 )
