@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'gatsby-link'
 import VisuallyHidden from '@reach/visually-hidden'
 import { navigate } from '@reach/router'
-import Portal from 'components/portal'
 import Rect from '@reach/rect'
 import { InputText } from 'components/forms'
 import styled from 'react-emotion'
@@ -17,8 +16,11 @@ const SearchResultsAutocomplete = styled('div')`
   position: absolute;
   background: ${colors.white};
   border: 1px solid ${colors.black};
+  text-align: left;
+  z-index: 1000;
   a {
     display: block;
+    color: ${colors.black};
     text-decoration: none;
     padding: 0.5rem;
     :focus,
@@ -29,43 +31,23 @@ const SearchResultsAutocomplete = styled('div')`
   }
 `
 
-class SearchResults extends React.Component {
-  state = {
-    selected: false,
-  }
+const SearchAutocompleteItemTitle = styled('span')`
+  font-weight: bold;
+  font-size: 80%;
+`
 
-  render() {
-    const { search, rect } = this.props
-    if (!search || !search.record_count) {
-      return null
-    }
-    return (
-      <SearchResultsAutocomplete
-        style={{
-          top: rect.top + rect.height,
-          left: rect.left,
-          width: rect.width,
-        }}
-      >
-        {search.records.page.map(item => (
-          <div key={item.id}>
-            <Link to={item.url.replace('https://csumb.edu', '')}>
-              {item.title}
-            </Link>
-          </div>
-        ))}
-      </SearchResultsAutocomplete>
-    )
-  }
-}
+const SearchAutocompleteItemSite = styled('span')`
+  font-size: 60%;
+  color: ${colors.muted.dark};
+  display: block;
+`
 
 class Search extends React.Component {
   state = {
     search: false,
     query: false,
+    selected: 0,
   }
-  handleChange = this.handleChange.bind(this)
-  handleSubmit = this.handleSubmit.bind(this)
 
   handleChange(event) {
     this.setState({
@@ -106,7 +88,20 @@ class Search extends React.Component {
     navigate(`/search?q=${this.state.query}`)
   }
 
+  handleKeyDown(event) {
+    if (event.key === 'Escape') {
+      this.setState({ search: false })
+    }
+  }
+
+  handleAutocompleteKeyDown(event) {
+    if (event.key === 'Escape') {
+      this.setState({ search: false })
+    }
+  }
+
   render() {
+    const { search } = this.state
     return (
       <Rect>
         {({ rect, ref }) => (
@@ -115,17 +110,39 @@ class Search extends React.Component {
               label="Search"
               name="search"
               forwardedRef={ref}
-              autocomplete="false"
+              autoComplete="off"
               hideLabel={true}
               placeholder="Search"
-              onChange={this.handleChange}
+              onChange={this.handleChange.bind(this)}
+              onKeyDown={this.handleKeyDown.bind(this)}
               inline
             />
-            <Portal>
-              {this.state.search ? (
-                <SearchResults search={this.state.search} rect={rect} />
-              ) : null}
-            </Portal>
+            {search ? (
+              <SearchResultsAutocomplete
+                onKeyDown={this.handleAutocompleteKeyDown.bind(this)}
+                forwardedRef={node => {
+                  this.autocompleteRef = node
+                }}
+                style={{
+                  top: rect.top + rect.height,
+                  left: rect.left,
+                  width: rect.width,
+                }}
+              >
+                {search.records.page.map(item => (
+                  <div key={item.id}>
+                    <Link to={item.url.replace('https://csumb.edu', '')}>
+                      <SearchAutocompleteItemTitle>
+                        {item.title}
+                      </SearchAutocompleteItemTitle>
+                      <SearchAutocompleteItemSite>
+                        {item.site_name}
+                      </SearchAutocompleteItemSite>
+                    </Link>
+                  </div>
+                ))}
+              </SearchResultsAutocomplete>
+            ) : null}
             <VisuallyHidden>
               <input type="submit" value="Search" />
             </VisuallyHidden>
