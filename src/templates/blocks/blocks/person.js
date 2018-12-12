@@ -8,7 +8,6 @@ import Link from 'gatsby-link'
 const Person = styled('div')`
   margin: 0.5rem 0;
   padding: 0.5rem;
-  background: ${colors.muted.light};
 `
 
 const PersonPosition = styled('p')``
@@ -58,7 +57,11 @@ class BlockPerson extends React.Component {
           <Person>
             {compact ? (
               <p>
-                {person.firstName} {person.lastName}
+                <Link
+                  to={`/directory/person/${person.email.split('@').shift()}`}
+                >
+                  {person.firstName} {person.lastName}
+                </Link>
               </p>
             ) : (
               <Flex flexWrap="wrap">
