@@ -48,7 +48,7 @@ class Block extends React.Component {
     address: BlockAddress,
     video: BlockVideo,
     sound: BlockSound,
-    //person: BlockPerson,
+    person: BlockPerson,
   }
 
   render() {
