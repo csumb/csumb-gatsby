@@ -37,8 +37,12 @@ jobs:
       - run: npm run test
 
       - run:
+          name: Pull site content
+          command: ./node_modules/.bin/grunt local
+
+      - run:
           name: Build gatsby site
-          command: gatsby build
+          command: ./node_modules/.bin/gatsby build
 
       - run:
           name: Build storybook
@@ -46,4 +50,4 @@ jobs:
 
       - run:
           name: Firebase deploy
-          command: firebase deploy --token=$FIREBASE_TOKEN
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
