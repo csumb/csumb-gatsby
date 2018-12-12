@@ -4,7 +4,6 @@ import styled from 'react-emotion'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'components/styles/theme'
 import Link from 'gatsby-link'
-import PeopleContext from '../people-context'
 
 const Person = styled('div')`
   margin: 0.5rem 0;
@@ -26,7 +25,8 @@ const PersonPhoto = styled('img')`
 class BlockPerson extends React.Component {
   render() {
     const { email, compact } = this.props
-    return (
+    return <p>PERSON</p>
+    /*return (
       <ContainerElement isFull>
         <PeopleContext.Consumer>
           {people => (
@@ -75,7 +75,7 @@ class BlockPerson extends React.Component {
           )}
         </PeopleContext.Consumer>
       </ContainerElement>
-    )
+    )*/
   }
 }
 

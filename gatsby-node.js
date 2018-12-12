@@ -6,8 +6,6 @@ const schedulePages = require(`./src/node/schedule`)
 const buildingPages = require(`./src/node/buildings`)
 const directoryPages = require(`./src/node/directory`)
 const redirects = require('./src/node/redirects')
-const scheduleSearch = require('./src/node/schedule-search')
-
 require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ stage, graphql, actions }) => {
@@ -27,9 +25,6 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return schedulePages(graphql, actions)
-      })
-      .then(() => {
-        return scheduleSearch(graphql, actions)
       })
       .then(() => {
         resolve()
