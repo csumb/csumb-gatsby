@@ -69,39 +69,6 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-            allCsumbDirectory(
-              filter: {
-                user: {
-                  directoryJobClass: { ne: "1800" }
-                  directoryJobClass: { ne: "4660" }
-                  directoryJobClass: { ne: "2403" }
-                  directoryJobClass: { ne: "1870" }
-                  directoryJobClass: { ne: "1871" }
-                  directoryJobClass: { ne: "1868" }
-                  directoryJobClass: { ne: "1872" }
-                  directoryJobClass: { ne: "1874" }
-                  directoryJobClass: { ne: "1875" }
-                  directoryJobClass: { ne: "1876" }
-                }
-              }
-            ) {
-              edges {
-                node {
-                  user {
-                    firstName
-                    lastName
-                    directoryBuilding
-                    directoryBuildingCode
-                    directoryJobClass
-                    directoryTitle
-                    directoryDepartment
-                    directoryPhone
-                    email
-                    directoryPhoto
-                  }
-                }
-              }
-            }
           }
         `
       ).then(result => {
@@ -109,11 +76,6 @@ module.exports = (graphql, actions) => {
           return
         }
         let count = 0
-
-        let directory = {}
-        result.data.allCsumbDirectory.edges.forEach(edge => {
-          directory[edge.node.user.email] = edge.node.user
-        })
 
         result.data.allCsumbContentSite.edges.forEach(edge => {
           if (typeof sites[edge.node.site] === 'undefined') {
@@ -150,7 +112,6 @@ module.exports = (graphql, actions) => {
                 breadcrumbs: content.breadcrumbs,
                 layout: content.layout,
                 navigation: sites[content.site].navigation,
-                people: directory,
                 pageContent: content.pageContent,
               },
             }

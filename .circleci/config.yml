@@ -45,6 +45,10 @@ jobs:
           command: ./node_modules/.bin/gatsby build
 
       - run:
+          name: Build directory JSON files
+          command: npm run directoryJson
+
+      - run:
           name: Build storybook
           command: npm run storybookbuild
 

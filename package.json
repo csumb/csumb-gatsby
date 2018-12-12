@@ -81,7 +81,8 @@
     "storybookbuild": "build-storybook -c .storybook -o ./public/_storybook",
     "test": "jest",
     "now-start": "npm run build",
-    "firebase": "gatsby build; npm run storybookbuild; firebase deploy;"
+    "firebase": "gatsby build; npm run storybookbuild; firebase deploy;",
+    "directoryJson": "node src/custom-build/directory-json.js"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
