@@ -23,59 +23,74 @@ const PersonPhoto = styled('img')`
 `
 
 class BlockPerson extends React.Component {
+  state = {
+    person: false,
+  }
+
+  componentDidMount() {
+    const { email } = this.props
+    const link = email
+      .split('@')
+      .shift()
+      .toLowerCase()
+    fetch(`/directory/json/${link}.json`)
+      .then(response => {
+        return response.json()
+      })
+      .then(person => {
+        this.setState({
+          person: person,
+        })
+      })
+      .catch(error => {
+        this.setState({
+          person: false,
+        })
+      })
+  }
+
   render() {
-    const { email, compact } = this.props
-    return <p>PERSON</p>
-    /*return (
+    const { person } = this.state
+    const { compact } = this.props
+    return (
       <ContainerElement isFull>
-        <PeopleContext.Consumer>
-          {people => (
-            <>
-              {people[email] && (
-                <Person>
-                  {compact ? (
-                    <p>
-                      {people[email].firstName} {people[email].lastName}
-                    </p>
-                  ) : (
-                    <Flex flexWrap="wrap">
-                      <Box width={[1, 3 / 4]} pr={2}>
-                        <h3>
-                          <Link
-                            to={`/directory/person/${email.split('@').shift()}`}
-                          >
-                            {people[email].firstName} {people[email].lastName}
-                          </Link>
-                        </h3>
-                        {people[email].directoryTitle.map((title, key) => (
-                          <PersonPosition>
-                            <PersonPositionTitle>{title}</PersonPositionTitle>
-                            <Link>
-                              {people[email].directoryDepartment[key]}
-                            </Link>
-                          </PersonPosition>
-                        ))}
-                        <a href={`mailto:${people[email].email}`}>
-                          {people[email].email}
-                        </a>
-                      </Box>
-                      <Box width={[1, 1 / 4]}>
-                        {people[email].directoryPhoto && (
-                          <PersonPhoto
-                            src={people[email].directoryPhoto}
-                            alt=""
-                          />
-                        )}
-                      </Box>
-                    </Flex>
+        {person && (
+          <Person>
+            {compact ? (
+              <p>
+                {person.firstName} {person.lastName}
+              </p>
+            ) : (
+              <Flex flexWrap="wrap">
+                <Box width={[1, 3 / 4]} pr={2}>
+                  <h3>
+                    <Link
+                      to={`/directory/person/${person.email
+                        .split('@')
+                        .shift()}`}
+                    >
+                      {person.firstName} {person.lastName}
+                    </Link>
+                  </h3>
+                  {person.directoryTitle.map((title, key) => (
+                    <PersonPosition>
+                      <PersonPositionTitle>{title}</PersonPositionTitle>
+                      <Link>{person.directoryDepartment[key]}</Link>
+                    </PersonPosition>
+                  ))}
+                  <a href={`mailto:${person.email}`}>{person.email}</a>
+                </Box>
+                <Box width={[1, 1 / 4]}>
+                  {person.directoryPhoto && (
+                    <PersonPhoto src={person.directoryPhoto} alt="" />
                   )}
-                </Person>
-              )}
-            </>
-          )}
-        </PeopleContext.Consumer>
+                </Box>
+              </Flex>
+            )}
+          </Person>
+        )}
       </ContainerElement>
-    )*/
+    )
   }
 }
 
