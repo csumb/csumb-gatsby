@@ -53,5 +53,9 @@ jobs:
           command: npm run storybookbuild
 
       - run:
+          name: Check canary files exist
+          command: npm run canary
+
+      - run:
           name: Firebase deploy
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
