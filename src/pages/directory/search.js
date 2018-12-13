@@ -6,57 +6,47 @@ import Container from 'components/container'
 import Layout from 'components/layouts/default'
 import url from 'url'
 import Link from 'gatsby-link'
-import SiteHeader from 'components/layouts/components/site-header'
+import SiteHeader from 'components/site-header'
+import { graphql } from 'gatsby'
 
-const PersonListing = props => (
+const PersonListing = ({ firstName, lastName, email }) => {
+  const link = email.split('@').shift()
+  return (
+    <div>
+      <h3>
+        <Link to={`/directory/person/${link}`}>
+          {firstName} {lastName}
+        </Link>
+      </h3>
+    </div>
+  )
+}
+
+const DepartmentListing = ({ name }) => (
   <div>
-    <h3>
-      <Link to={`/directory/person/${props.external_id}`}>
-        {props.given_name} {props.family_name}
-      </Link>
-    </h3>
+    <h3>{name}</h3>
   </div>
 )
 
 class DirectorySearchResults extends React.Component {
   state = {
     search: false,
-    query: false,
   }
   componentDidMount() {
-    let query = false
-    let location = url.parse(window.location.href, true)
-    if (location.query && typeof location.query.q !== 'undefined') {
-      query = location.query.q
+    const { query, people } = this.props
+    let search = {
+      people: [],
+      departments: [],
     }
+    people.forEach(person => {
+      const name = `${person.node.user.firstName} ${person.node.user.lastName}`
+      if (name.toLowerCase().search(query.toLowerCase()) > -1) {
+        search.people.push(person.node.user)
+      }
+    })
     this.setState({
-      query: query,
+      search: search,
     })
-    const data = {
-      engine_key: '8MdTPLsyGLNeTpxVBD9e',
-      q: query,
-      document_types: ['person'],
-      sort_field: { person: 'family_name' },
-      sort_direction: { person: 'asc' },
-    }
-    fetch('https://search-api.swiftype.com/api/v1/public/engines/search.json', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(response => {
-        return response.json()
-      })
-      .then(search => {
-        this.setState({
-          search: search,
-        })
-      })
-      .catch(error => {
-        console.log(error)
-      })
   }
   render() {
     const { search } = this.state
@@ -64,8 +54,11 @@ class DirectorySearchResults extends React.Component {
       <>
         {search && (
           <>
-            {search.records.person.map(result => (
-              <PersonListing key={result.external_id} {...result} />
+            {/*{search.departments.map(result => (
+              <DepartmentListing key={result.email} {...result} />
+            ))}*/}
+            {search.people.map(result => (
+              <PersonListing key={result.email} {...result} />
             ))}
           </>
         )}
@@ -77,6 +70,17 @@ class DirectorySearchResults extends React.Component {
 class DirectorySearchPage extends React.Component {
   state = {
     query: false,
+  }
+
+  componentDidMount() {
+    let query = null
+    let location = url.parse(window.location.href, true)
+    if (location.query && typeof location.query.q !== 'undefined') {
+      query = location.query.q
+    }
+    this.setState({
+      query: query,
+    })
   }
 
   handleSubmit(event) {
@@ -103,6 +107,7 @@ class DirectorySearchPage extends React.Component {
                   name="search"
                   label="Search the directory"
                   onChange={this.handleChange.bind(this)}
+                  value={this.state.query}
                   huge
                   hideLabel
                 />
@@ -112,7 +117,12 @@ class DirectorySearchPage extends React.Component {
               </Box>
             </Flex>
           </form>
-          <DirectorySearchResults />
+          {this.state.query && (
+            <DirectorySearchResults
+              query={this.state.query}
+              people={this.props.data.allCsumbDirectory.edges}
+            />
+          )}
         </Container>
       </Layout>
     )
@@ -120,3 +130,42 @@ class DirectorySearchPage extends React.Component {
 }
 
 export default DirectorySearchPage
+
+export const query = graphql`
+  {
+    allCsumbDirectory(
+      sort: { fields: [user___lastName, user___firstName] }
+      filter: {
+        user: {
+          directoryJobClass: { ne: "1800" }
+          directoryJobClass: { ne: "4660" }
+          directoryJobClass: { ne: "2403" }
+          directoryJobClass: { ne: "1870" }
+          directoryJobClass: { ne: "1871" }
+          directoryJobClass: { ne: "1868" }
+          directoryJobClass: { ne: "1872" }
+          directoryJobClass: { ne: "1874" }
+          directoryJobClass: { ne: "1875" }
+          directoryJobClass: { ne: "1876" }
+        }
+      }
+    ) {
+      edges {
+        node {
+          user {
+            firstName
+            lastName
+            directoryBuilding
+            directoryBuildingCode
+            directoryJobClass
+            directoryTitle
+            directoryDepartment
+            directoryPhone
+            email
+            directoryPhoto
+          }
+        }
+      }
+    }
+  }
+`

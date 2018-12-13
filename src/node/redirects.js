@@ -20,6 +20,7 @@ module.exports = (graphql, actions) => {
       ).then(result => {
         if (result.errors) {
           reject(result.errors)
+          return
         }
         result.data.allCsumbRedirects.edges.forEach(async edge => {
           createRedirect({

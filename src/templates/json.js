@@ -2,7 +2,7 @@ import React from 'react'
 
 class JsonTemplate extends React.Component {
   render() {
-    return <>{this.props.pageContext.json}</>
+    return <>{JSON.stringify(this.props.pageContext.content)}</>
   }
 }
 

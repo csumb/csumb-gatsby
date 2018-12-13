@@ -165,16 +165,8 @@ class UnreadMessages extends React.Component {
     return roles.join(',')
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const login = this.props.user.profile.login.split('@').shift()
-    const messageCount = await IronDB.get('messageCount', false)
-
-    if (messageCount !== false) {
-      this.setState({
-        unread: messageCount,
-      })
-      return
-    }
     window
       .fetch(
         `https://messaging-staging.herokuapp.com/api/unread/${login}/${this.getRoles()}`

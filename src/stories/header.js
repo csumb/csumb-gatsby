@@ -1,41 +1,47 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Brand from 'components/layouts/components/header/brand'
-import Applicant from 'components/layouts/components/header/applicant'
-import Header from 'components/layouts/components/header'
-import SiteHeader from 'components/layouts/components/site-header'
+import Brand from 'components/header/brand'
+import Applicant from 'components/header/applicant'
+import Header from 'components/header'
+import SiteHeader from 'components/site-header'
 import {
   NavigationLink,
   NavigationLinkApply,
-} from 'components/layouts/components/header/navigation-link'
+} from 'components/header/navigation-link'
 import typography from 'utils/typography'
 import { UserContext } from 'components/contexts/user'
 
 typography.injectStyles()
 
+const sampleUser = {
+  profile: {
+    login: 'otter@csumb.edu',
+  },
+}
 storiesOf('Header', module)
-  .add('About', () => (
-    <p>
-      The header uses state to change the layout of the design based on screen
-      size.
-    </p>
-  ))
-  .add('Complete Header', () => (
-    <UserContext.Provider value={{ user: true }}>
-      <Header
-        metadata={{
-          title: `Cal State Monterey Bay`,
-          okta: {
-            login: `https://csumb.okta.com`,
-          },
-          swiftypeId: `Gu7FdGTPV49T6dsYVBSV`,
-        }}
-      />
-    </UserContext.Provider>
-  ))
+  .add(
+    'Complete Header',
+    () => (
+      <UserContext.Provider value={{ user: sampleUser }}>
+        <Header
+          metadata={{
+            title: `Cal State Monterey Bay`,
+            okta: {
+              login: `https://csumb.okta.com`,
+            },
+            swiftypeId: `Gu7FdGTPV49T6dsYVBSV`,
+          }}
+        />
+      </UserContext.Provider>
+    ),
+    {
+      info:
+        'The header uses state to change the layout of the design based on screen size.',
+    }
+  )
   .add('Brand', () => <Brand />)
   .add('Applicant link', () => (
-    <UserContext.Provider value={{ user: true }}>
+    <UserContext.Provider value={{ user: trsampleUserue }}>
       <Applicant />
     </UserContext.Provider>
   ))
