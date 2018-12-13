@@ -8,7 +8,7 @@ module.exports = {
       '<rootDir>/__mocks__/fileMock.js',
     '^components/(.*)': '<rootDir>/src/components/$1',
   },
-  testPathIgnorePatterns: ['node_modules', '.cache'],
+  testPathIgnorePatterns: ['node_modules', '.cache', 'src/custom-build'],
   transformIgnorePatterns: ['node_modules/(?!(gatsby)/)'],
   globals: {
     __PATH_PREFIX__: '',
