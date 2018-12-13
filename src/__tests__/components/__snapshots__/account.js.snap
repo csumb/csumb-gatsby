@@ -43,14 +43,6 @@ exports[`AccountSidebar renders the sidebar for Applicants 1`] = `
   </a>
   <a
     className="css-rvxwuc"
-    href="/account/messages"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-  >
-    Messages
-  </a>
-  <a
-    className="css-rvxwuc"
     href="/account/card"
     onClick={[Function]}
     onMouseEnter={[Function]}
@@ -87,14 +79,6 @@ exports[`AccountSidebar renders the sidebar for Staff 1`] = `
     onMouseEnter={[Function]}
   >
     Your public profile
-  </a>
-  <a
-    className="css-rvxwuc"
-    href="/account/messages"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-  >
-    Messages
   </a>
   <a
     className="css-rvxwuc"

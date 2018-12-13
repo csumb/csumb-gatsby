@@ -9,6 +9,7 @@ import styled from 'react-emotion'
 import ReactFilestack from 'filestack-react'
 import { InputText, InputSelect, Submit } from 'components/forms'
 import { graphql } from 'gatsby'
+import { AlertInfo } from 'components/alert'
 import {
   AccountGroup,
   AccountTitle,
@@ -16,10 +17,20 @@ import {
   AccountSidebar,
 } from 'components/account'
 import { Button } from 'components/button'
+import SimpleMDE from 'react-simplemde-editor'
+import 'simplemde/dist/simplemde.min.css'
 
 const AccountPhoto = styled('img')`
   max-width: 150px;
 `
+
+const updateOktaField = (user, field, value) => {
+  fetch(
+    `/.netlify/functions/okta-profile-field?user=${
+      user.id
+    }&field=${field}&value=${value}`
+  )
+}
 class AccountProfilePage extends React.Component {
   render() {
     return (
@@ -91,6 +102,7 @@ class UserAccountProfileForm extends React.Component {
         </AccountGroup>
         <UserAccountProfileOffice user={user} buildings={buildings} />
         <UserAccountProfilePhone user={user} />
+        <UserAccountProfileBio user={user} />
         <UserAccountProfilePhoto user={user} />
       </>
     )
@@ -140,9 +152,16 @@ class UserAccountProfileOfficeForm extends React.Component {
   state = {
     building: false,
     room: false,
+    updated: false,
   }
   handleSubmit(event) {
+    const { user } = this.props
     event.preventDefault()
+    updateOktaField(user, 'directoryBuildingCode', this.state.building)
+    updateOktaField(user, 'campusRoomNumber', this.state.room)
+    this.setState({
+      updated: true,
+    })
   }
   handleRoomChange(event) {
     this.setState({
@@ -155,7 +174,7 @@ class UserAccountProfileOfficeForm extends React.Component {
     })
   }
   render() {
-    const { buildings } = this.props
+    const { buildings, user } = this.props
     const buildingOptions = []
     buildings.forEach(building => {
       buildingOptions.push({
@@ -169,16 +188,23 @@ class UserAccountProfileOfficeForm extends React.Component {
           onChange={this.handleBuildingChange.bind(this)}
           label="Building"
           name="building"
+          defaultValue={user.profile.directoryBuildingCode}
           options={buildingOptions}
         />
         <InputText
           onKeyUp={this.handleRoomChange.bind(this)}
           label="Room number"
           name="room"
-          defaultValue="100"
+          defaultValue={user.profile.campusRoomNumber}
           small
         />
         <Submit value="Update office information" />
+        {this.state.updated && (
+          <AlertInfo>
+            Your building and room have been updated. It might take a few hours
+            for the change to make it to the public directory.
+          </AlertInfo>
+        )}
       </form>
     )
   }
@@ -219,10 +245,15 @@ class UserAccountProfilePhone extends React.Component {
 class UserAccountProfilePhoneForm extends React.Component {
   state = {
     phone: 0,
+    updated: false,
   }
   handleSubmit(event) {
+    const { user } = this.props
     event.preventDefault()
-    console.log(this.state.phone)
+    updateOktaField(user, 'directoryPhone', this.state.phone)
+    this.setState({
+      updated: true,
+    })
   }
 
   handleChange(event) {
@@ -237,9 +268,109 @@ class UserAccountProfilePhoneForm extends React.Component {
         <InputText
           onKeyUp={this.handleChange.bind(this)}
           label="Phone number"
+          name="phone"
           small
         />
         <Submit value="Update phone" />
+        {this.state.updated && (
+          <AlertInfo>
+            Your phone number has been updated. It might take a few hours for
+            the change to make it to the public directory.
+          </AlertInfo>
+        )}
+      </form>
+    )
+  }
+}
+
+class UserAccountProfileBio extends React.Component {
+  state = {
+    showForm: false,
+  }
+
+  handleShowForm(event) {
+    event.preventDefault()
+    this.setState({
+      showForm: !this.state.showForm,
+    })
+  }
+
+  render() {
+    const { user } = this.props
+    return (
+      <AccountGroup legend="Biography">
+        <p>
+          Your biography is shown on the{' '}
+          <Link to="/directory">public campus directory.</Link>
+        </p>
+        <AccountData>{user.profile.profileBio}</AccountData>
+        <p>
+          <Button onClick={this.handleShowForm.bind(this)} to="#phone">
+            Update biography
+          </Button>
+        </p>
+        {this.state.showForm && <UserAccountProfileBioForm user={user} />}
+      </AccountGroup>
+    )
+  }
+}
+
+class UserAccountProfileBioForm extends React.Component {
+  state = {
+    biography: false,
+    updated: false,
+  }
+  handleSubmit(event) {
+    const { user } = this.props
+    event.preventDefault()
+
+    updateOktaField(user, 'profileBio', this.state.biography)
+    this.setState({
+      updated: true,
+    })
+  }
+
+  handleChange(value) {
+    this.setState({
+      biography: value,
+    })
+  }
+
+  render() {
+    const { user } = this.props
+    return (
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <p>
+          Your biography is edited in{' '}
+          <a href="https://daringfireball.net/projects/markdown/">
+            Markdown format
+          </a>
+          .
+        </p>
+        <SimpleMDE
+          onChange={this.handleChange.bind(this)}
+          value={user.profile.profileBio}
+          options={{
+            status: false,
+            spellChecker: false,
+            toolbar: [
+              'bold',
+              'link',
+              'heading-2',
+              'heading-3',
+              'quote',
+              'unordered-list',
+              'ordered-list',
+            ],
+          }}
+        />
+        <Submit value="Update biography" />
+        {this.state.updated && (
+          <AlertInfo>
+            Your biography has been updated. It might take a few hours before
+            your changes appear on the public directory.
+          </AlertInfo>
+        )}
       </form>
     )
   }

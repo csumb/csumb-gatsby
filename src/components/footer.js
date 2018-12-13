@@ -6,6 +6,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import logo from 'assets/images/csumb-logo-blue.svg'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
+import bp from 'components/styles/breakpoints'
 
 const FooterElement = styled('footer')`
   border-top: 3px solid ${colors.primary.darkest};
@@ -20,14 +21,11 @@ const FooterElement = styled('footer')`
   }
 `
 
-const FooterHeader = styled('h3')`
-  margin-bottom: 0.5rem;
-`
-
 const Legal = styled('div')`
   background-color: ${colors.primary.darkest};
   padding: 0.5rem 0;
   text-align: right;
+  margin-top: 1rem;
   a,
   a:visited {
     color: ${colors.white};
@@ -57,7 +55,13 @@ const FooterAddressListItem = styled('li')`
 
 const Logo = styled('img')`
   margin-bottom: 0.5rem;
-  max-width: 300px;
+  max-width: 250px;
+`
+
+const RightFooter = styled(Box)`
+  ${bp({
+    textAlign: ['normal', 'right'],
+  })}
 `
 
 const Footer = ({ children, data }) => (
@@ -65,7 +69,6 @@ const Footer = ({ children, data }) => (
     <Container>
       <Flex flexWrap="wrap">
         <Box width={[1, 2 / 12]}>
-          <FooterHeader>Popular</FooterHeader>
           <FooterList>
             <li>
               <Link to="/jobs" title="">
@@ -82,21 +85,15 @@ const Footer = ({ children, data }) => (
                 Majors
               </Link>
             </li>
-            <li>
-              <Link to="/social" title="">
-                Social media
-              </Link>
-            </li>
+          </FooterList>
+        </Box>
+        <Box width={[1, 2 / 12]}>
+          <FooterList>
             <li>
               <Link to="/library" title="">
                 Library
               </Link>
             </li>
-          </FooterList>
-        </Box>
-        <Box width={[1, 2 / 12]}>
-          <FooterHeader>Tools</FooterHeader>
-          <FooterList>
             <li>
               <Link to="/map" title="">
                 Map
@@ -107,6 +104,10 @@ const Footer = ({ children, data }) => (
                 Calendar
               </Link>
             </li>
+          </FooterList>
+        </Box>
+        <Box width={[1, 3 / 12]}>
+          <FooterList>
             <li>
               <Link to="/directory" title="">
                 Directory
@@ -124,37 +125,7 @@ const Footer = ({ children, data }) => (
             </li>
           </FooterList>
         </Box>
-        <Box width={[1, 3 / 12]}>
-          <FooterHeader>Links for</FooterHeader>
-          <FooterList>
-            <li>
-              <Link to="/families" title="">
-                Parents
-              </Link>
-            </li>
-            <li>
-              <Link to="/international" title="">
-                International students
-              </Link>
-            </li>
-            <li>
-              <Link to="/locals" title="">
-                Locals
-              </Link>
-            </li>
-            <li>
-              <Link to="/veterans" title="">
-                Veterans
-              </Link>
-            </li>
-            <li>
-              <Link to="/employees" title="">
-                Employees
-              </Link>
-            </li>
-          </FooterList>
-        </Box>
-        <Box width={[1, 5 / 12]}>
+        <RightFooter width={[1, 5 / 12]}>
           <Logo src={logo} alt="Cal State Monterey Bay" />
           <FooterAddressList>
             <FooterAddressListItem>
@@ -167,7 +138,7 @@ const Footer = ({ children, data }) => (
               <strong>Mail:</strong> 100 Campus Center, Seaside, CA 93955
             </FooterAddressListItem>
           </FooterAddressList>
-        </Box>
+        </RightFooter>
       </Flex>
     </Container>
     <Legal>

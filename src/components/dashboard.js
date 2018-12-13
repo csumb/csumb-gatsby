@@ -231,11 +231,20 @@ class DashboardMessages extends React.Component {
   }
 }
 
-const DashboardMessageElement = styled('div')`
-  background: ${colors.secondary.highlight.light};
+const DashboardCard = styled('div')`
+  background: ${colors.white};
   padding: 0.5rem;
   margin-bottom: 1rem;
   position: relative;
+`
+
+const DashboardCardHeader = styled('h3')`
+  font-family: ${fonts.sansSerif};
+  ${props =>
+    props.noMargin &&
+    `
+    margin-bottom: 0;
+  `};
 `
 
 const DashboardMessageClose = styled('button')`
@@ -245,6 +254,10 @@ const DashboardMessageClose = styled('button')`
   top: 0.5rem;
   right: 0.5rem;
   cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1rem;
+  font-weight: bold;
+  color: ${colors.muted.dark};
 `
 class DashboardMessage extends React.Component {
   state = {
@@ -280,14 +293,14 @@ class DashboardMessage extends React.Component {
     return (
       <>
         {!this.state.archived && (
-          <DashboardMessageElement>
+          <DashboardCard>
             <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
               &times;
               <VisuallyHidden>Archive message</VisuallyHidden>
             </DashboardMessageClose>
-            <h3>{title}</h3>
+            <DashboardCardHeader>{title}</DashboardCardHeader>
             <p>{message}</p>
-          </DashboardMessageElement>
+          </DashboardCard>
         )}
       </>
     )
@@ -362,20 +375,18 @@ class DashboardEvents extends React.Component {
   }
 }
 
-const DashboardEventElement = styled('div')`
-  border: 1px solid ${colors.muted.light};
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+const DashboardEventDate = styled('h4')`
+  font-family: ${fonts.sansSerif};
 `
 
 const DashboardEvent = ({ event }) => (
-  <DashboardEventElement>
+  <DashboardCard>
     <Link to={event.link}>
-      <h3>{event.headline}</h3>
+      <DashboardCardHeader noMargin>{event.headline}</DashboardCardHeader>
     </Link>
-    <h4>{event.date}</h4>
+    <DashboardEventDate>{event.date}</DashboardEventDate>
     <p>{event.description}</p>
-  </DashboardEventElement>
+  </DashboardCard>
 )
 
 export {

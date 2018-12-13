@@ -10,6 +10,8 @@ const colors = {
     default: '#0071bc',
     dark: '#205493',
     darkest: '#112e51',
+    light: '#d9ebf7',
+    lightest: '#eaf3f9',
   },
   secondary: {
     highlight: {

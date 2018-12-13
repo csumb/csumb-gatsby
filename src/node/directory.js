@@ -5,6 +5,7 @@ module.exports = (graphql, actions) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
     const directoryTemplate = path.resolve(`src/templates/directory/person.js`)
+    const jsonTemplate = path.resolve(`src/templates/json.js`)
     // Query for CSV content from catalog
     resolve(
       graphql(
@@ -48,7 +49,9 @@ module.exports = (graphql, actions) => {
       ).then(result => {
         if (result.errors) {
           reject(result.errors)
+          return
         }
+        let files = {}
         result.data.allCsumbDirectory.edges.forEach(async edge => {
           const emailPrefix = edge.node.user.email.split('@').shift()
           createPage({
@@ -56,6 +59,14 @@ module.exports = (graphql, actions) => {
             component: directoryTemplate,
             context: {
               user: edge.node.user,
+            },
+          })
+          createPage({
+            path: `directory/person/json/${emailPrefix}`,
+            component: jsonTemplate,
+            isJson: true,
+            context: {
+              content: edge.node.user,
             },
           })
         })

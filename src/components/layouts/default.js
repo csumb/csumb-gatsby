@@ -1,25 +1,18 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import Header from 'components/layouts/components/header'
-import Footer from 'components/layouts/components/footer'
+import Header from 'components/header'
+import Footer from 'components/footer'
 import Helmet from 'react-helmet'
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 import { UserContext, setUserRole } from 'components/contexts/user'
-import { IronDB } from 'iron-db'
+import Emergency from 'components/emergency'
 class Layout extends React.Component {
   state = {
     user: false,
   }
 
   async componentDidMount() {
-    const localUser = await IronDB.get('user', false)
-    if (localUser) {
-      this.setState({
-        user: localUser === 'anonymous' ? localUser : JSON.parse(localUser),
-      })
-      return
-    }
     window
       .fetch('https://csumb.okta.com/api/v1/users/me', {
         credentials: 'include',
@@ -32,13 +25,11 @@ class Layout extends React.Component {
         this.setState({
           user: user,
         })
-        IronDB.set('user', JSON.stringify(user))
       })
       .catch(error => {
         this.setState({
           user: 'anonymous',
         })
-        IronDB.set('user', 'anonymous')
       })
   }
 
@@ -50,9 +41,11 @@ class Layout extends React.Component {
     pageTitle.push('Cal State Monterey Bay')
     return (
       <UserContext.Provider value={this.state}>
+        <Emergency />
         <SkipNavLink />
         <Helmet>
           <html lang="en" />
+          <meta charset="utf-8" />
           <title>{pageTitle.join(' | ')}</title>
         </Helmet>
         <StaticQuery

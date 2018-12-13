@@ -5,8 +5,9 @@ import styled from 'react-emotion'
 
 const containerClass = css(
   bp({
-    margin: [0, 'auto'],
     width: ['auto', 'auto', 'auto', 1100],
+    marginLeft: ['1rem', '0.5rem', '0.5rem', 'auto'],
+    marginRight: ['1rem', '0.5rem', '0.5rem', 'auto'],
   })
 )
 
