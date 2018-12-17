@@ -19,12 +19,6 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-csumb-content`,
     {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        mergeSecurityHeaders: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-emotion`,
       options: {},
     },
