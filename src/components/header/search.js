@@ -29,6 +29,9 @@ const SearchResultsAutocomplete = styled('div')`
     :hover {
       background: ${colors.primary.darkest};
       color: ${colors.white};
+      span {
+        color: ${colors.white};
+      }
     }
   }
 `
@@ -75,7 +78,7 @@ class Search extends React.Component {
     window
       .fetch(
         `https://api.swiftype.com/api/v1/public/engines/suggest?engine_key=${
-          this.props.swiftypeId
+        this.props.swiftypeId
         }&q=${event.target.value.trim().toLowerCase()}`
       )
       .then(response => {
