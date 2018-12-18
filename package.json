@@ -88,11 +88,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
-    "@storybook/addon-a11y": "^4.0.9",
     "@storybook/addon-actions": "^4.0.9",
     "@storybook/addon-info": "^4.0.9",
     "@storybook/addon-links": "^4.0.9",
-    "@storybook/addon-notes": "^4.0.8",
     "@storybook/react": "^4.0.9",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",

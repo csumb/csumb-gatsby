@@ -30,12 +30,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./_data`,
@@ -80,6 +74,26 @@ module.exports = {
         },
       },
     },*/
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Merriweather`
+          },
+          {
+            family: `Source Sans Pro`
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+        // omitGoogleFont: true   <--- turn back on for production!
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
