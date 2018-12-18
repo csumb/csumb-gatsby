@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { InputText, Submit } from 'components/forms'
-import { navigate } from '@reach/router'
+import styled from 'react-emotion'
 import Container from 'components/container'
 import Layout from 'components/layouts/default'
 import url from 'url'
@@ -9,23 +9,56 @@ import Link from 'gatsby-link'
 import SiteHeader from 'components/site-header'
 import { graphql } from 'gatsby'
 
+const DirectoryItem = styled('div')`
+  margin-bottom: 1rem;
+`
+
+const DirectoryDetail = styled('p')`
+  margin: 0;
+  ${props => props.small && (`
+    font-size: 80%;
+  `)};
+`
+
+const DirectoryTitle = styled('h3')`
+  margin-bottom: 0.2rem;
+`
+
 const PersonListing = ({ firstName, lastName, email }) => {
   const link = email.split('@').shift()
   return (
-    <div>
-      <h3>
-        <Link to={`/directory/person/${link}`}>
-          {firstName} {lastName}
-        </Link>
-      </h3>
-    </div>
+    <DirectoryItem>
+      <Flex flexWrap="wrap">
+        <Box width={[1, 1 / 2]} px={2}>
+          <DirectoryTitle>
+            <Link to={`/directory/person/${link}`}>
+              {firstName} {lastName}
+            </Link>
+          </DirectoryTitle>
+        </Box>
+      </Flex>
+    </DirectoryItem>
   )
 }
 
-const DepartmentListing = ({ name }) => (
-  <div>
-    <h3>{name}</h3>
-  </div>
+const DepartmentListing = ({ name, phone, fax, email }) => (
+  <DirectoryItem>
+    <Flex flexWrap="wrap">
+      <Box width={[1, 1 / 2]} px={2}>
+        <DirectoryTitle>{name}</DirectoryTitle>
+        {email && (
+          <DirectoryDetail><a href={`mailto:${email}`}>{email}</a></DirectoryDetail>
+        )}
+        {phone && (
+          <DirectoryDetail>{phone}</DirectoryDetail>
+        )}
+        {fax && (
+          <DirectoryDetail small><strong>Fax:</strong>{fax}</DirectoryDetail>
+        )}
+      </Box>
+      <Box width={[1, 1 / 2]} px={2}>
+      </Box>
+    </Flex></DirectoryItem>
 )
 
 class DirectorySearchResults extends React.Component {
@@ -110,7 +143,7 @@ class DirectorySearchPage extends React.Component {
                   name="q"
                   label="Search the directory"
                   onChange={this.handleChange.bind(this)}
-                  value={this.state.query}
+                  value={query && query}
                   huge
                   hideLabel
                 />
