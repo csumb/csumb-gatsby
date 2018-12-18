@@ -22,20 +22,6 @@ module.exports = {
       resolve: `gatsby-plugin-emotion`,
       options: {},
     },
-    /*{
-      resolve: `gatsby-source-okta`,
-      options : {
-        filter: {
-          limit: 10,
-          search: 'profile.cmsRole eq "employee_staff"',
-        },
-        fields: [
-          'firstName',
-          'lastName',
-          'email'
-        ]
-      }
-    },*/
     {
       resolve: `gatsby-source-contentful`,
       options: {
