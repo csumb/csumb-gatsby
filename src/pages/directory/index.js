@@ -6,7 +6,6 @@ import { InputText, Submit } from 'components/forms'
 import Container from 'components/container'
 import Link from 'gatsby-link'
 import { Box, Flex } from '@rebass/grid/emotion'
-import { navigate } from '@reach/router'
 import { graphql } from 'gatsby'
 
 const DirectoryPage = ({ data }) => (
