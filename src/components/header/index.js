@@ -11,7 +11,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import styled from 'react-emotion'
 
 const HeaderWrapper = styled('header')`
-  padding: 1rem 0;
+  padding: 0.8rem 0;
 `
 
 class Header extends React.Component {
