@@ -38,7 +38,7 @@ jobs:
 
       - run:
           name: Pull site content
-          command: ./node_modules/.bin/grunt local
+          command: ./node_modules/.bin/grunt
 
       - run:
           name: Build gatsby site
@@ -47,6 +47,10 @@ jobs:
       - run:
           name: Build directory JSON files
           command: npm run directoryJson
+
+      - run:
+          name: Setup firebase configuration
+          command: npm run configFirebase
 
       - run:
           name: Build storybook
@@ -58,4 +62,4 @@ jobs:
 
       - run:
           name: Firebase deploy
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $CIRCLE_BRANCH

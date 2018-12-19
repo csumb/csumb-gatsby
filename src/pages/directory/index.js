@@ -6,7 +6,6 @@ import { InputText, Submit } from 'components/forms'
 import Container from 'components/container'
 import Link from 'gatsby-link'
 import { Box, Flex } from '@rebass/grid/emotion'
-import { navigate } from '@reach/router'
 import { graphql } from 'gatsby'
 
 const DirectoryPage = ({ data }) => (
@@ -97,10 +96,6 @@ class DirectoryForm extends React.Component {
     search: false,
     query: false,
   }
-  handleSubmit(event) {
-    event.preventDefault()
-    navigate(`/directory/search?q=${this.state.query}`)
-  }
 
   handleChange(event) {
     const { directory } = this.props
@@ -128,12 +123,12 @@ class DirectoryForm extends React.Component {
   render() {
     const { search } = this.state
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form method="get" action="/directory/search">
         <h2>Search people and departments</h2>
         <Flex flexWrap="wrap">
           <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
             <InputText
-              name="search"
+              name="q"
               label="Search the directory"
               onChange={this.handleChange.bind(this)}
               huge

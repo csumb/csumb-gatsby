@@ -27,11 +27,11 @@ class AccountPrintPage extends React.Component {
                     {context.user === 'anonymous' ? (
                       <h3>Your profile</h3>
                     ) : (
-                      <>
-                        {context.user.profile.firstName}{' '}
-                        {context.user.profile.lastName}
-                      </>
-                    )}
+                        <>
+                          {context.user.profile.firstName}{' '}
+                          {context.user.profile.lastName}
+                        </>
+                      )}
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
@@ -41,11 +41,11 @@ class AccountPrintPage extends React.Component {
                       {context.user === 'anonymous' ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
-                        <>
-                          <AccountTitle>Print balance</AccountTitle>
-                          <UserPrintForm user={context.user} />
-                        </>
-                      )}
+                          <>
+                            <AccountTitle>Print balance</AccountTitle>
+                            <UserPrintForm user={context.user} />
+                          </>
+                        )}
                     </Box>
                   </Flex>
                 </>
@@ -65,12 +65,13 @@ class UserPrintForm extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.user) {
+    const { user } = this.props
+    if (!user) {
       return
     }
     window
       .fetch(
-        `https://winservices.csumb.edu/print/balance.php?u=${this.props.user.profile.login
+        `https://winservices.csumb.edu/print/balance.php?u=${user.profile.login
           .split('@')
           .shift()}`
       )
@@ -91,44 +92,46 @@ class UserPrintForm extends React.Component {
   }
 
   render() {
+    const { isReady, balance } = this.state
+    const { user } = this.props
     return (
       <>
         <AccountGroup legend="Print balance">
-          {!this.state.isReady && <p>Loading print balance...</p>}
-          {this.state.isReady && (
+          {!isReady && <p>Loading print balance...</p>}
+          {isReady && (
             <>
-              {this.state.balance.error ? (
+              {balance.error ? (
                 <>
                   <p>Your print account has not been set up.</p>
                 </>
               ) : (
-                <>
-                  <p>You can print:</p>
-                  <AccountData>
-                    {this.state.balance.pages_left} pages
+                  <>
+                    <p>You can print:</p>
+                    <AccountData>
+                      {balance.pages_left} pages
                   </AccountData>
-                </>
-              )}
+                  </>
+                )}
             </>
           )}
         </AccountGroup>
         <AccountGroup legend="Buy more prints">
-          {!this.state.isReady && <p>Loading print balance...</p>}
-          {this.state.isReady && (
+          {!isReady && <p>Loading print balance...</p>}
+          {isReady && (
             <>
-              {this.state.balance.error ? (
+              {balance.error ? (
                 <>
                   <p>Your print account has not been set up.</p>
                 </>
               ) : (
-                <>
-                  <p>
-                    Buy more prints online.{' '}
-                    <strong>Each page costs {pricePerPage * 100} cents.</strong>
-                  </p>
-                  <AccountPrintBuyPrintsForm user={this.props.user} />
-                </>
-              )}
+                  <>
+                    <p>
+                      Buy more prints online.{' '}
+                      <strong>Each page costs {pricePerPage * 100} cents.</strong>
+                    </p>
+                    <AccountPrintBuyPrintsForm user={user} />
+                  </>
+                )}
             </>
           )}
         </AccountGroup>
@@ -149,6 +152,8 @@ class AccountPrintBuyPrintsForm extends React.Component {
   }
 
   render() {
+    const { quantity } = this.state
+    const { user } = this.props
     return (
       <form
         action="https://commerce.cashnet.com/csumb_ubempay?virtual="
@@ -176,13 +181,13 @@ class AccountPrintBuyPrintsForm extends React.Component {
           type="hidden"
           name="amount1"
           id="edit-amount1"
-          value={(this.state.quantity * pricePerPage).toFixed(2)}
+          value={(quantity * pricePerPage).toFixed(2)}
         />
         <input
           type="hidden"
           name="qty1"
           id="edit-qty1"
-          value={this.state.quantity}
+          value={quantity}
         />
         <input
           type="hidden"
@@ -194,9 +199,9 @@ class AccountPrintBuyPrintsForm extends React.Component {
           type="hidden"
           name="ref1val1"
           id="edit-ref1val1"
-          value={`${this.props.user.profile.firstName} ${
-            this.props.user.profile.lastName
-          }`}
+          value={`${user.profile.firstName} ${
+            user.profile.lastName
+            }`}
         />
         <input
           type="hidden"
@@ -208,7 +213,7 @@ class AccountPrintBuyPrintsForm extends React.Component {
           type="hidden"
           name="ref2val1"
           id="edit-ref22val1"
-          value={this.props.user.profile.email}
+          value={user.profile.email}
         />
         <input
           type="hidden"
@@ -218,7 +223,7 @@ class AccountPrintBuyPrintsForm extends React.Component {
         />
         <input type="hidden" name="ref3val1" id="edit-ref3val1" value="" />
 
-        <p>Total charge: ${(this.state.quantity * pricePerPage).toFixed(2)}</p>
+        <p>Total charge: ${(quantity * pricePerPage).toFixed(2)}</p>
         <div>
           <Submit value="Buy more pages" />
         </div>

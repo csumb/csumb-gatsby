@@ -19,40 +19,14 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-csumb-content`,
     {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        mergeSecurityHeaders: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-emotion`,
       options: {},
     },
-    /*{
-      resolve: `gatsby-source-okta`,
-      options : {
-        filter: {
-          limit: 10,
-          search: 'profile.cmsRole eq "employee_staff"',
-        },
-        fields: [
-          'firstName',
-          'lastName',
-          'email'
-        ]
-      }
-    },*/
     {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CSUMB_NAV_CONTENTFUL_SPACE,
         accessToken: process.env.CSUMB_NAV_CONTENTFUL_TOKEN,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
       },
     },
     {
@@ -100,6 +74,26 @@ module.exports = {
         },
       },
     },*/
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Merriweather`
+          },
+          {
+            family: `Source Sans Pro`
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+        // omitGoogleFont: true   <--- turn back on for production!
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

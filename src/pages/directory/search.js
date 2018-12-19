@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { InputText, Submit } from 'components/forms'
-import { navigate } from '@reach/router'
+import styled from 'react-emotion'
 import Container from 'components/container'
 import Layout from 'components/layouts/default'
 import url from 'url'
@@ -9,23 +9,56 @@ import Link from 'gatsby-link'
 import SiteHeader from 'components/site-header'
 import { graphql } from 'gatsby'
 
+const DirectoryItem = styled('div')`
+  margin-bottom: 1rem;
+`
+
+const DirectoryDetail = styled('p')`
+  margin: 0;
+  ${props => props.small && (`
+    font-size: 80%;
+  `)};
+`
+
+const DirectoryTitle = styled('h3')`
+  margin-bottom: 0.2rem;
+`
+
 const PersonListing = ({ firstName, lastName, email }) => {
   const link = email.split('@').shift()
   return (
-    <div>
-      <h3>
-        <Link to={`/directory/person/${link}`}>
-          {firstName} {lastName}
-        </Link>
-      </h3>
-    </div>
+    <DirectoryItem>
+      <Flex flexWrap="wrap">
+        <Box width={[1, 1 / 2]} px={2}>
+          <DirectoryTitle>
+            <Link to={`/directory/person/${link}`}>
+              {firstName} {lastName}
+            </Link>
+          </DirectoryTitle>
+        </Box>
+      </Flex>
+    </DirectoryItem>
   )
 }
 
-const DepartmentListing = ({ name }) => (
-  <div>
-    <h3>{name}</h3>
-  </div>
+const DepartmentListing = ({ name, phone, fax, email }) => (
+  <DirectoryItem>
+    <Flex flexWrap="wrap">
+      <Box width={[1, 1 / 2]} px={2}>
+        <DirectoryTitle>{name}</DirectoryTitle>
+        {email && (
+          <DirectoryDetail><a href={`mailto:${email}`}>{email}</a></DirectoryDetail>
+        )}
+        {phone && (
+          <DirectoryDetail>{phone}</DirectoryDetail>
+        )}
+        {fax && (
+          <DirectoryDetail small><strong>Fax:</strong>{fax}</DirectoryDetail>
+        )}
+      </Box>
+      <Box width={[1, 1 / 2]} px={2}>
+      </Box>
+    </Flex></DirectoryItem>
 )
 
 class DirectorySearchResults extends React.Component {
@@ -33,7 +66,7 @@ class DirectorySearchResults extends React.Component {
     search: false,
   }
   componentDidMount() {
-    const { query, people } = this.props
+    const { query, people, departments } = this.props
     let search = {
       people: [],
       departments: [],
@@ -42,6 +75,12 @@ class DirectorySearchResults extends React.Component {
       const name = `${person.node.user.firstName} ${person.node.user.lastName}`
       if (name.toLowerCase().search(query.toLowerCase()) > -1) {
         search.people.push(person.node.user)
+      }
+    })
+    departments.forEach(department => {
+
+      if (department.node.name && department.node.name.toLowerCase().search(query.toLowerCase()) > -1) {
+        search.departments.push(department.node)
       }
     })
     this.setState({
@@ -54,9 +93,9 @@ class DirectorySearchResults extends React.Component {
       <>
         {search && (
           <>
-            {/*{search.departments.map(result => (
-              <DepartmentListing key={result.email} {...result} />
-            ))}*/}
+            {search.departments.map(result => (
+              <DepartmentListing key={result.name} {...result} />
+            ))}
             {search.people.map(result => (
               <PersonListing key={result.email} {...result} />
             ))}
@@ -83,11 +122,6 @@ class DirectorySearchPage extends React.Component {
     })
   }
 
-  handleSubmit(event) {
-    event.preventDefault()
-    navigate(`/directory/search/?q=${this.state.query}`)
-  }
-
   handleChange(event) {
     this.setState({
       query: event.target.value.toLowerCase(),
@@ -95,19 +129,21 @@ class DirectorySearchPage extends React.Component {
   }
 
   render() {
+    const { query } = this.state
+    const { data } = this.props
     return (
       <Layout>
         <SiteHeader path="/directory">Directory</SiteHeader>
         <Container>
-          <form onSubmit={this.handleSubmit.bind(this)}>
+          <form method="get" action="/directory/search">
             <h2>Search people and departments</h2>
             <Flex flexWrap="wrap">
               <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
                 <InputText
-                  name="search"
+                  name="q"
                   label="Search the directory"
                   onChange={this.handleChange.bind(this)}
-                  value={this.state.query}
+                  value={query && query}
                   huge
                   hideLabel
                 />
@@ -117,10 +153,11 @@ class DirectorySearchPage extends React.Component {
               </Box>
             </Flex>
           </form>
-          {this.state.query && (
+          {query && (
             <DirectorySearchResults
-              query={this.state.query}
-              people={this.props.data.allCsumbDirectory.edges}
+              query={query}
+              people={data.allCsumbDirectory.edges}
+              departments={data.allCsumbDepartment.edges}
             />
           )}
         </Container>
@@ -164,6 +201,19 @@ export const query = graphql`
             email
             directoryPhoto
           }
+        }
+      }
+    }
+    allCsumbDepartment(sort: {fields: name}) {
+      edges {
+        node {
+          name
+          phone
+          fax
+          email
+          floor
+          suite
+          short_name
         }
       }
     }
