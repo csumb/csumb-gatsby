@@ -30,10 +30,12 @@ class Header extends React.Component {
   }
 
   render() {
+    const { isMobile } = this.state
+    const { metadata } = this.props
     return (
       <>
-        {this.state.isMobile ? (
-          <HeaderMobile swiftypeId={this.props.metadata.swiftypeId} />
+        {isMobile ? (
+          <HeaderMobile swiftypeId={metadata.swiftypeId} />
         ) : (
             <HeaderWrapper>
               <Container>
@@ -50,8 +52,8 @@ class Header extends React.Component {
                   >
                     <div>
                       <Applicant />
-                      <UserWidget loginLink={this.props.metadata.okta.login} />
-                      <Search swiftypeId={this.props.metadata.swiftypeId} />
+                      <UserWidget loginLink={metadata.okta.login} />
+                      <Search swiftypeId={metadata.swiftypeId} />
                     </div>
                     <div
                       className={css`
@@ -66,10 +68,10 @@ class Header extends React.Component {
                       >
                         <NavigationLink to="/academics">
                           Majors &amp; Programs
-                      </NavigationLink>
+                        </NavigationLink>
                         <NavigationLink to="/cost">
                           Tuition &amp; Aid
-                      </NavigationLink>
+                        </NavigationLink>
                         <NavigationLink to="/map">Map</NavigationLink>
                         <NavigationLink to="/about">About</NavigationLink>
                         <NavigationLinkApply to="/apply">
