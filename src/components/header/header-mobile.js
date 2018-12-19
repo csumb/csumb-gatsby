@@ -6,7 +6,9 @@ import { MobileNavigationLink } from './navigation-link'
 import VisuallyHidden from '@reach/visually-hidden'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Search from './search'
+import Container from 'components/container'
 import { css } from 'react-emotion'
+import UserWidget from './user-widget'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
 
@@ -113,23 +115,28 @@ class HeaderMobile extends React.Component {
           </HeaderMobileSearch>
         )}
         {hasNavigation && (
-          <HeaderMobileNavigation
-            tabIndex="-1"
-            role="navigation"
-            ref={node => {
-              this.navRef = node
-            }}
-          >
-            <MobileNavigationLink to="/academics">
-              Majors &amp; Programs
+          <>
+            <Container>
+              <UserWidget />
+            </Container>
+            <HeaderMobileNavigation
+              tabIndex="-1"
+              role="navigation"
+              ref={node => {
+                this.navRef = node
+              }}
+            >
+              <MobileNavigationLink to="/academics">
+                Majors &amp; Programs
             </MobileNavigationLink>
-            <MobileNavigationLink to="/cost">
-              Tuition &amp; Aid
+              <MobileNavigationLink to="/cost">
+                Tuition &amp; Aid
             </MobileNavigationLink>
-            <MobileNavigationLink to="/map">Map</MobileNavigationLink>
-            <MobileNavigationLink to="/about">About</MobileNavigationLink>
-            <MobileNavigationLink to="/admissions">Apply</MobileNavigationLink>
-          </HeaderMobileNavigation>
+              <MobileNavigationLink to="/map">Map</MobileNavigationLink>
+              <MobileNavigationLink to="/about">About</MobileNavigationLink>
+              <MobileNavigationLink to="/admissions">Apply</MobileNavigationLink>
+            </HeaderMobileNavigation>
+          </>
         )}
       </header>
     )
