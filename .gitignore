@@ -14,3 +14,4 @@ _data
 _functions
 drive-api.json
 .firebase
+firebase.json
