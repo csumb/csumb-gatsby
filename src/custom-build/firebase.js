@@ -17,5 +17,6 @@ fs.readJson('./_web-content/_data/redirects.json', (err, redirects) => {
       })
     }
   })
+  console.log(`Wrote ${firebase.hosting.redirects.length} redirects`)
   fs.outputJson('./firebase.json', firebase, { spaces: 2 })
 })
