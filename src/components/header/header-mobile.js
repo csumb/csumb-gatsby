@@ -56,6 +56,7 @@ class HeaderMobile extends React.Component {
     event.preventDefault()
     this.setState({
       hasNavigation: !this.state.hasNavigation,
+      hasSearch: false
     })
   }
 
@@ -63,6 +64,7 @@ class HeaderMobile extends React.Component {
     event.preventDefault()
     this.setState({
       hasSearch: !this.state.hasSearch,
+      hasNavigation: false
     })
   }
 
@@ -81,7 +83,7 @@ class HeaderMobile extends React.Component {
         <HeaderMobileWrapper>
           <Flex flexWrap="wrap">
             <Box width={[1 / 2]} px={2}>
-              <Brand mobile />
+              <Brand mobile={true} />
             </Box>
             <MenuBox width={[1 / 2]} px={2}>
               <HeaderMobileSearchToggle
@@ -107,7 +109,7 @@ class HeaderMobile extends React.Component {
         </HeaderMobileWrapper>
         {hasSearch && (
           <HeaderMobileSearch>
-            <Search swiftypeId={this.props.swiftypeId} />
+            <Search swiftypeId={this.props.swiftypeId} fullWidth />
           </HeaderMobileSearch>
         )}
         {hasNavigation && (
