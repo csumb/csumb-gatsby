@@ -91,9 +91,9 @@ exports.onCreateNode = async ({
   }
 
   if (node.relativePath.search('_data/departments.json') > -1) {
-    Object.values(content).forEach(department => {
+    content.forEach(department => {
       let departmentNode = {
-        id: createNodeId(`${department.name} >>> CsumbDepartment`),
+        id: createNodeId(`${department.uuid} >>> CsumbDepartment`),
         children: [],
         parent: null,
         internal: {
