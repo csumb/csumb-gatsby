@@ -84,6 +84,7 @@
     "now-start": "npm run build",
     "firebase": "gatsby build; npm run storybookbuild; firebase deploy;",
     "directoryJson": "node src/custom-build/directory-json.js",
+    "redirects": "node src/custom-build/redirects.js",
     "buildTrace": "gatsby build --open-tracing-config-file node_modules/gatsby/dist/utils/tracer/zipkin-local.js",
     "canary": "jest --testPathIgnorePatterns node_modules,.cache -- src/custom-build/__tests__/canary.js"
   },

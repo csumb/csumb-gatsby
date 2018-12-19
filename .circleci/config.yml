@@ -49,6 +49,10 @@ jobs:
           command: npm run directoryJson
 
       - run:
+          name: Setup firebase redirects
+          command: npm run redirects
+
+      - run:
           name: Build storybook
           command: npm run storybookbuild
 
