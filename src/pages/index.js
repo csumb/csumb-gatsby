@@ -41,21 +41,22 @@ class IndexPage extends React.Component {
 
   render() {
     const { featured, notFeatured, nuggets } = this.stories
+    const colPadding = [0, 0, 3, 3]
     return (
       <Layout>
-        <Container>
+        <Container topPadding>
           <Flex flexWrap="wrap">
-            <Box width={[1, 1, 1 / 2, 3 / 12]} px={3}>
+            <Box width={[1, 1, 1 / 2, 3 / 12]} pr={colPadding}>
               {notFeatured.map(item => (
                 <NonFeaturedStory {...item} />
               ))}
             </Box>
-            <Box width={[1, 1, 1 / 2, 6 / 12]} px={3}>
+            <Box width={[1, 1, 1 / 2, 6 / 12]} pl={colPadding} pr={colPadding}>
               {featured.map(item => (
                 <FeaturedStory {...item} />
               ))}
             </Box>
-            <Box width={[1, 1, 1, 3 / 12]} px={3}>
+            <Box width={[1, 1, 1, 3 / 12]} pl={colPadding}>
               <Nuggets nuggets={nuggets} />
             </Box>
           </Flex>
