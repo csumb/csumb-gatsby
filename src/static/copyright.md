@@ -5,19 +5,16 @@ title: "Copyright/DMCA Notice and Procedure"
 
 It is our policy to respond to allegations of copyright violations in accordance with the Digital Millennium Copyright Act (“DMCA”). If you believe that your copyrighted work has been copied and is accessible on the Website in a way that constitutes copyright infringement, please notify the University’s designated Copyright Agent at:
 
-#### Mailing Address[](#heading-442081f1-8d16-4be9-a410-e8425bed204e)
-
+**Mailing Address**
 Chip Lenno, Chief Information Officer  
 California State University, Monterey Bay  
 100 Campus Center  
 Seaside, CA 93955
 
-#### Phone[](#heading-0e179472-0b88-4171-a1a0-163cc6a55f9c)
-
+**Phone**
 (831) 582-4700
 
-#### Email[](#heading-df10a6fb-c0d9-470a-a617-9901e451e532)
-
+**Email**
 [abuse@csumb.edu](mailto:abuse@csumb.edu)
 
 Please note that you may be liable for damages (including costs and attorneys’ fees) if you materially misrepresent that material is infringing.

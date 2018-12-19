@@ -21,11 +21,11 @@ class AccountCardPage extends React.Component {
                     {context.user === 'anonymous' ? (
                       <h3>Your profile</h3>
                     ) : (
-                      <>
-                        {context.user.profile.firstName}{' '}
-                        {context.user.profile.lastName}
-                      </>
-                    )}
+                        <>
+                          {context.user.profile.firstName}{' '}
+                          {context.user.profile.lastName}
+                        </>
+                      )}
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
@@ -35,11 +35,11 @@ class AccountCardPage extends React.Component {
                       {context.user === 'anonymous' ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
-                        <>
-                          <AccountTitle>Otter Card</AccountTitle>
-                          <UserCardForm user={context.user} />
-                        </>
-                      )}
+                          <>
+                            <AccountTitle>Otter Card</AccountTitle>
+                            <UserCardForm user={context.user} />
+                          </>
+                        )}
                     </Box>
                   </Flex>
                 </>
@@ -59,13 +59,14 @@ class UserCardForm extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.user) {
+    const { user } = this.props
+    if (!user) {
       return
     }
     window
       .fetch(
         `https://winservices.csumb.edu/cbord/balance.php?e=${
-          this.props.user.profile.employeeNumber
+        user.profile.employeeNumber
         }`
       )
       .then(response => {
@@ -86,36 +87,38 @@ class UserCardForm extends React.Component {
 
   render() {
     const { balance, error } = this.state.card
+    const { isReady } = this.state
+    const { user } = this.props
     return (
       <>
         <AccountGroup legend="Otter Card balance">
-          {!this.state.isReady && <p>Loading Otter Card balance...</p>}
-          {this.state.isReady && (
+          {!isReady && <p>Loading Otter Card balance...</p>}
+          {isReady && (
             <>
               {error ? (
                 <>
                   <p>There was an error reading your Otter Card.</p>
                 </>
               ) : (
-                <>
-                  <Table>
-                    <thead>
-                      <TableRow>
-                        <TableHeader>Tender type</TableHeader>
-                        <TableHeader>Balance</TableHeader>
-                      </TableRow>
-                    </thead>
-                    <tbody>
-                      {Object.keys(balance).map(key => (
-                        <TableRow key={key}>
-                          <TableCell>{balance[key].tender}</TableCell>
-                          <TableCell>{balance[key].balance}</TableCell>
+                  <>
+                    <Table>
+                      <thead>
+                        <TableRow>
+                          <TableHeader>Tender type</TableHeader>
+                          <TableHeader>Balance</TableHeader>
                         </TableRow>
-                      ))}
-                    </tbody>
-                  </Table>
-                </>
-              )}
+                      </thead>
+                      <tbody>
+                        {Object.keys(balance).map(key => (
+                          <TableRow key={key}>
+                            <TableCell>{balance[key].tender}</TableCell>
+                            <TableCell>{balance[key].balance}</TableCell>
+                          </TableRow>
+                        ))}
+                      </tbody>
+                    </Table>
+                  </>
+                )}
             </>
           )}
         </AccountGroup>
@@ -123,8 +126,8 @@ class UserCardForm extends React.Component {
           <p>You can add several kinds of pre-paid meal plans.</p>
           <ButtonLink
             to={`https://api.csumb.edu/cashnet/${
-              this.props.user.profile.employeeNumber
-            }/RMBRD`}
+              user.profile.employeeNumber
+              }/RMBRD`}
             buttonType="default"
           >
             Add more meals

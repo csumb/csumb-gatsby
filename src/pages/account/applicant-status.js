@@ -23,19 +23,19 @@ class AccountApplicantStatusPage extends React.Component {
                     {context.user === 'anonymous' ? (
                       <h3>Your applicaion status</h3>
                     ) : (
-                      <>
-                        {context.user.profile.firstName}{' '}
-                        {context.user.profile.lastName}
-                      </>
-                    )}
+                        <>
+                          {context.user.profile.firstName}{' '}
+                          {context.user.profile.lastName}
+                        </>
+                      )}
                   </PageTitle>
                   {context.user === 'anonymous' ? (
                     <h3>You must be logged in first.</h3>
                   ) : (
-                    <>
-                      <ApplicantStatus user={context.user} />
-                    </>
-                  )}
+                      <>
+                        <ApplicantStatus user={context.user} />
+                      </>
+                    )}
                 </>
               )}
             </Container>
@@ -46,23 +46,23 @@ class AccountApplicantStatusPage extends React.Component {
   }
 }
 
-const Application = props => (
+const Application = ({ term, status, application, checklist, transcripts }) => (
   <>
     <AccountGroup
-      legend={`${props.term.gsx$name} - ${
-        props.application.academic_plan_descr
-      }`}
+      legend={`${term.gsx$name} - ${
+        application.academic_plan_descr
+        }`}
     >
-      {props.status.map((status, key) => (
+      {status.map((status, key) => (
         <div key={key} dangerouslySetInnerHTML={{ __html: status.message }} />
       ))}
     </AccountGroup>
     <Flex flexWrap="wrap">
       <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-        <ApplicationChecklist checklist={props.checklist} />
+        <ApplicationChecklist checklist={checklist} />
       </Box>
       <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-        <ApplicationTranscripts checklist={props.transcripts} />
+        <ApplicationTranscripts checklist={transcripts} />
       </Box>
     </Flex>
   </>
@@ -72,18 +72,18 @@ const ApplicationChecklist = props => <AccountGroup legend="Checklist" />
 
 const ApplicationTranscripts = props => <AccountGroup legend="Transcripts" />
 
-const ApplicationMultipleMessage = props => (
+const ApplicationMultipleMessage = ({ applications }) => (
   <>
-    {props.applications &&
-      props.applications.length > 1 && (
+    {applications &&
+      applications.length > 1 && (
         <LeadParagraph>
           You have more than one application:{' '}
-          {props.applications.map(application => (
+          {applications.map(application => (
             <Link
               key={application.application.application_number}
               to={`account/applicant-status?app=${
                 application.application.application_number
-              }`}
+                }`}
             >
               {application.term.gsx$name}{' '}
             </Link>
@@ -173,23 +173,23 @@ class ApplicantStatus extends React.Component {
         {!this.state.applications ? (
           <p>Loading applications</p>
         ) : (
-          <>
-            {this.state.noApplication ? (
-              <AlertWarning type="polite">
-                You do not have any applications.
+            <>
+              {this.state.noApplication ? (
+                <AlertWarning type="polite">
+                  You do not have any applications.
               </AlertWarning>
-            ) : (
-              <>
-                <ApplicationMultipleMessage
-                  applications={this.state.applications}
-                />
-                <Application
-                  {...this.state.applications[this.state.currentApplication]}
-                />
-              </>
-            )}
-          </>
-        )}
+              ) : (
+                  <>
+                    <ApplicationMultipleMessage
+                      applications={this.state.applications}
+                    />
+                    <Application
+                      {...this.state.applications[this.state.currentApplication]}
+                    />
+                  </>
+                )}
+            </>
+          )}
       </>
     )
   }

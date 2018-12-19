@@ -26,8 +26,8 @@ const AccountPhoto = styled('img')`
 
 const updateOktaField = (user, field, value) => {
   fetch(
-    `/.netlify/functions/okta-profile-field?user=${
-      user.id
+    `https://api.csumb.edu/okta/profile?user=${user.id}&token=${
+      user.profile.authToken
     }&field=${field}&value=${value}`
   )
 }

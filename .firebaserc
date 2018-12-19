@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "csumb-gatsby"
+    "master": "csumb-gatsby",
+    "develop": "csumb-gatsby-develop"
   }
 }

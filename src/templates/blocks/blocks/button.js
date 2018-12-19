@@ -1,6 +1,11 @@
 import React from 'react'
 import { ButtonLink } from 'components/button'
 import { ContainerContext, ContainerElement } from '../container-context'
+import styled from 'react-emotion'
+
+const ButtonContainer = styled(ContainerElement)`
+  margin-bottom: 1.5rem;
+`
 
 class BlockButton extends React.Component {
   render() {
@@ -8,11 +13,11 @@ class BlockButton extends React.Component {
     return (
       <ContainerContext.Consumer>
         {container => (
-          <ContainerElement container={container}>
+          <ButtonContainer container={container}>
             <ButtonLink to={url} buttonType="default">
               {text}
             </ButtonLink>
-          </ContainerElement>
+          </ButtonContainer>
         )}
       </ContainerContext.Consumer>
     )
