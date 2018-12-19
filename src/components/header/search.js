@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'gatsby-link'
 import VisuallyHidden from '@reach/visually-hidden'
 import Rect from '@reach/rect'
-import { css } from 'emotion'
 import { InputText } from 'components/forms'
 import styled from 'react-emotion'
 import Portal from 'components/portal'
@@ -46,6 +45,11 @@ const SearchAutocompleteItemSite = styled('span')`
   font-size: 60%;
   color: ${colors.muted.dark};
   display: block;
+`
+
+const SearchForm = styled('form')`
+  ${props => props.inline ? `display: inline-block;` : `display: block;`}
+  margin-bottom: 0;
 `
 
 class Search extends React.Component {
@@ -114,14 +118,11 @@ class Search extends React.Component {
     return (
       <Rect>
         {({ rect, ref }) => (
-          <form
+          <SearchForm
             method="GET"
             action="/search"
             onSubmit={this.handleSubmit.bind(this)}
-            className={css`
-              display: inline-block;
-              margin-bottom: 0;
-            `}
+            inline={!this.props.fullWidth}
           >
             <InputText
               label="Search"
@@ -132,7 +133,7 @@ class Search extends React.Component {
               placeholder="Search"
               onChange={this.handleChange.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)}
-              inline
+              inline={!this.props.fullWidth}
             />
             <Portal>
               {search ? (
@@ -165,7 +166,7 @@ class Search extends React.Component {
             <VisuallyHidden>
               <input type="submit" value="Search" />
             </VisuallyHidden>
-          </form>
+          </SearchForm>
         )}
       </Rect>
     )
