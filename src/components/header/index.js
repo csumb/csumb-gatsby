@@ -8,11 +8,9 @@ import Applicant from './applicant'
 import HeaderMobile from './header-mobile'
 import { NavigationLink, NavigationLinkApply } from './navigation-link'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { colors } from 'components/styles/theme'
 import styled from 'react-emotion'
 
 const HeaderWrapper = styled('header')`
-  border-bottom: 2px solid ${colors.primary.darkest};
   padding: 1rem 0;
 `
 
@@ -36,53 +34,53 @@ class Header extends React.Component {
         {this.state.isMobile ? (
           <HeaderMobile swiftypeId={this.props.metadata.swiftypeId} />
         ) : (
-          <HeaderWrapper>
-            <Container>
-              <Flex flexWrap="wrap">
-                <Box width={[1, 1, 1 / 3, 1 / 3]} px={2}>
-                  <Brand />
-                </Box>
-                <Box
-                  width={[1, 1, 2 / 3, 2 / 3]}
-                  px={2}
-                  className={css`
+            <HeaderWrapper>
+              <Container>
+                <Flex flexWrap="wrap">
+                  <Box width={[1, 1, 1 / 3, 1 / 3]} px={2}>
+                    <Brand />
+                  </Box>
+                  <Box
+                    width={[1, 1, 2 / 3, 2 / 3]}
+                    px={2}
+                    className={css`
                     text-align: right;
                   `}
-                >
-                  <div>
-                    <Applicant />
-                    <UserWidget loginLink={this.props.metadata.okta.login} />
-                    <Search swiftypeId={this.props.metadata.swiftypeId} />
-                  </div>
-                  <div
-                    className={css`
+                  >
+                    <div>
+                      <Applicant />
+                      <UserWidget loginLink={this.props.metadata.okta.login} />
+                      <Search swiftypeId={this.props.metadata.swiftypeId} />
+                    </div>
+                    <div
+                      className={css`
                       margin-top: 1rem;
                     `}
-                  >
-                    <ul
-                      className={css`
+                    >
+                      <ul
+                        className={css`
                         margin: 0;
                         list-style: none;
                       `}
-                    >
-                      <NavigationLink to="/academics">
-                        Majors &amp; Programs
+                      >
+                        <NavigationLink to="/academics">
+                          Majors &amp; Programs
                       </NavigationLink>
-                      <NavigationLink to="/cost">
-                        Tuition &amp; Aid
+                        <NavigationLink to="/cost">
+                          Tuition &amp; Aid
                       </NavigationLink>
-                      <NavigationLink to="/map">Map</NavigationLink>
-                      <NavigationLink to="/about">About</NavigationLink>
-                      <NavigationLinkApply to="/apply">
-                        Apply
+                        <NavigationLink to="/map">Map</NavigationLink>
+                        <NavigationLink to="/about">About</NavigationLink>
+                        <NavigationLinkApply to="/apply">
+                          Apply
                       </NavigationLinkApply>
-                    </ul>
-                  </div>
-                </Box>
-              </Flex>
-            </Container>
-          </HeaderWrapper>
-        )}
+                      </ul>
+                    </div>
+                  </Box>
+                </Flex>
+              </Container>
+            </HeaderWrapper>
+          )}
       </>
     )
   }
