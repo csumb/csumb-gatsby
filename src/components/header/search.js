@@ -21,6 +21,7 @@ const SearchResultsAutocomplete = styled('div')`
   text-align: left;
   z-index: 1000;
   a {
+    line-height: normal;
     display: block;
     color: ${colors.black};
     text-decoration: none;
