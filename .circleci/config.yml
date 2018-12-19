@@ -58,4 +58,4 @@ jobs:
 
       - run:
           name: Firebase deploy
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $CIRCLE_BRANCH
