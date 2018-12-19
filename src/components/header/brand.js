@@ -8,7 +8,6 @@ const BrandLink = styled(Link)`
   ${props => props.mobile ?
     `font-size: 1.4rem;` :
     `font-size: 2rem;`}
-    
   color: ${colors.primary.darkest} !important;
   text-decoration: none;
   line-height: 80%;
