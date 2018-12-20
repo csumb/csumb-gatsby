@@ -21998,6 +21998,11 @@
         "react-side-effect": "^1.1.0"
       }
     },
+    "react-hero-video": {
+      "version": "0.1.1",
+      "resolved": "https://registry.npmjs.org/react-hero-video/-/react-hero-video-0.1.1.tgz",
+      "integrity": "sha512-1kZor+vl9dNYcGQ5NRGfEAcC1eGi+GnKMwhUz1AQXRO1Sn+u5a9K0enKeKY2sb2i3rLkM3BzTWftnEZT9eZmjA=="
+    },
     "react-hot-loader": {
       "version": "4.3.12",
       "resolved": "https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-4.3.12.tgz",
