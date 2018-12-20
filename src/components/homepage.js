@@ -168,8 +168,8 @@ const Nuggets = ({ nuggets }) => (
       From around campus
     </NuggetsHeader>
     <NuggetsList>
-      {nuggets.map(({ link, title }) => (
-        <li>
+      {nuggets.map(({ contentful_id, link, title }) => (
+        <li key={contentful_id}>
           <a href={link}>
             {title}
           </a>

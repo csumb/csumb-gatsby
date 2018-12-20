@@ -4,6 +4,7 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import moment from 'moment'
+import HomepageHero from 'components/homepages/samples/map'
 import { HomepageNavigation, NonFeaturedStory, FeaturedStory, Nuggets } from 'components/homepage'
 //import Link from 'gatsby-link'
 
@@ -44,6 +45,7 @@ class IndexPage extends React.Component {
     const colPadding = [0, 0, 3, 3]
     return (
       <Layout>
+        <HomepageHero />
         <Container topPadding>
           <HomepageNavigation items={this.props.data.allContentfulHomepageNavigation.edges} />
         </Container>
@@ -51,12 +53,12 @@ class IndexPage extends React.Component {
           <Flex flexWrap="wrap">
             <Box width={[1, 1, 1 / 2, 3 / 12]} pr={colPadding}>
               {notFeatured.map(item => (
-                <NonFeaturedStory {...item} />
+                <NonFeaturedStory key={item.contentful_id} {...item} />
               ))}
             </Box>
             <Box width={[1, 1, 1 / 2, 6 / 12]} pl={colPadding} pr={colPadding}>
               {featured.map(item => (
-                <FeaturedStory {...item} />
+                <FeaturedStory key={item.contentful_id} {...item} />
               ))}
             </Box>
             <Box width={[1, 1, 1, 3 / 12]} pl={colPadding}>
@@ -106,6 +108,7 @@ export const query = graphql`
         goLiveDate
         eventDate
         unpbulishDate
+        contentful_id
         childContentfulEventDescriptionTextNode {
           description
         }
@@ -129,6 +132,7 @@ export const query = graphql`
         link
         goLiveDate
         unpublishDate
+        contentful_id
       }
     }
   }
@@ -136,6 +140,7 @@ export const query = graphql`
     edges {
       node {
         items {
+          contentful_id
           title
           link
           childContentfulHomepageNavigationItemDescriptionTextNode {
