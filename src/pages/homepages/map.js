@@ -4,7 +4,7 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import moment from 'moment'
-import HomepageHero from 'components/homepages/samples/lazy-hero'
+import HomepageHero from 'components/homepages/samples/map'
 import { HomepageNavigation, NonFeaturedStory, FeaturedStory, Nuggets } from 'components/homepage'
 //import Link from 'gatsby-link'
 

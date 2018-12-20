@@ -15628,6 +15628,11 @@
       "resolved": "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz",
       "integrity": "sha1-khi5srkoojixPcT7a21XbyMUU+o="
     },
+    "in-viewport": {
+      "version": "3.6.0",
+      "resolved": "https://registry.npmjs.org/in-viewport/-/in-viewport-3.6.0.tgz",
+      "integrity": "sha512-MhaJ7Pr3NhUyAfpULysTZZBUAYfJAX1O8PccW2gvXlbQduMrJz7qQQ5yzC7SAr/0g5LbeRk432yNjsLMCnYzJg=="
+    },
     "indent-string": {
       "version": "2.1.0",
       "resolved": "https://registry.npmjs.org/indent-string/-/indent-string-2.1.0.tgz",
@@ -21993,6 +21998,11 @@
         "react-side-effect": "^1.1.0"
       }
     },
+    "react-hero-video": {
+      "version": "0.1.1",
+      "resolved": "https://registry.npmjs.org/react-hero-video/-/react-hero-video-0.1.1.tgz",
+      "integrity": "sha512-1kZor+vl9dNYcGQ5NRGfEAcC1eGi+GnKMwhUz1AQXRO1Sn+u5a9K0enKeKY2sb2i3rLkM3BzTWftnEZT9eZmjA=="
+    },
     "react-hot-loader": {
       "version": "4.3.12",
       "resolved": "https://registry.npmjs.org/react-hot-loader/-/react-hot-loader-4.3.12.tgz",
@@ -22034,6 +22044,16 @@
       "version": "16.6.3",
       "resolved": "https://registry.npmjs.org/react-is/-/react-is-16.6.3.tgz",
       "integrity": "sha512-u7FDWtthB4rWibG/+mFbVd5FvdI20yde86qKGx4lVUTWmPlSWQ4QxbBIrrs+HnXGbxOUlUzTAP/VDmvCwaP2yA=="
+    },
+    "react-lazy-hero": {
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/react-lazy-hero/-/react-lazy-hero-2.0.0.tgz",
+      "integrity": "sha512-P1oKvIFNnV0yKuQwWEF/UnapLxjkuTdUJfoPaeOEKIWIhKbaGqGnNJ6nrwtuJJTxR0seiVFx4NHJOAdnImLs5Q==",
+      "requires": {
+        "color": "^3.1.0",
+        "in-viewport": "^3.6.0",
+        "prop-types": "^15.6.2"
+      }
     },
     "react-lifecycles-compat": {
       "version": "3.0.4",

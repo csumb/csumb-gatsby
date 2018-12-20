@@ -29,6 +29,14 @@ module.exports = {
         accessToken: process.env.CSUMB_NAV_CONTENTFUL_TOKEN,
       },
     },
+
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CSUMB_HOME_CONTENTFUL_SPACE,
+        accessToken: process.env.CSUMB_HOME_CONTENTFUL_TOKEN,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

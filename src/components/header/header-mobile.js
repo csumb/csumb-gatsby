@@ -6,13 +6,14 @@ import { MobileNavigationLink } from './navigation-link'
 import VisuallyHidden from '@reach/visually-hidden'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Search from './search'
+import Container from 'components/container'
 import { css } from 'react-emotion'
+import UserWidget from './user-widget'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
 
 const HeaderMobileWrapper = styled('div')`
   padding: 0.5rem 0.25rem;
-  border-bottom: 2px solid ${colors.primary.darkest};
 `
 
 const mobileButton = css`
@@ -34,6 +35,7 @@ const HeaderMobileNavigation = styled('ul')`
   margin: 0;
   list-style: none;
   margin-top: 1rem;
+  padding: 0;
   background: ${colors.primary.darkest};
 `
 
@@ -56,6 +58,7 @@ class HeaderMobile extends React.Component {
     event.preventDefault()
     this.setState({
       hasNavigation: !this.state.hasNavigation,
+      hasSearch: false
     })
   }
 
@@ -63,6 +66,7 @@ class HeaderMobile extends React.Component {
     event.preventDefault()
     this.setState({
       hasSearch: !this.state.hasSearch,
+      hasNavigation: false
     })
   }
 
@@ -75,12 +79,13 @@ class HeaderMobile extends React.Component {
   }*/
 
   render() {
+    const { hasSearch, hasNavigation } = this.state
     return (
       <header>
         <HeaderMobileWrapper>
           <Flex flexWrap="wrap">
             <Box width={[1 / 2]} px={2}>
-              <Brand />
+              <Brand mobile={true} />
             </Box>
             <MenuBox width={[1 / 2]} px={2}>
               <HeaderMobileSearchToggle
@@ -104,27 +109,34 @@ class HeaderMobile extends React.Component {
             </MenuBox>
           </Flex>
         </HeaderMobileWrapper>
-        {this.state.hasSearch && (
+        {hasSearch && (
           <HeaderMobileSearch>
-            <Search swiftypeId={this.props.swiftypeId} />
+            <Search swiftypeId={this.props.swiftypeId} fullWidth />
           </HeaderMobileSearch>
         )}
-        {this.state.hasNavigation && (
-          <HeaderMobileNavigation
-            tabIndex="-1"
-            role="navigation"
-            ref={node => {
-              this.navRef = node
-            }}
-          >
-            <MobileNavigationLink to="/academics">
-              Academics
+        {hasNavigation && (
+          <>
+            <Container>
+              <UserWidget />
+            </Container>
+            <HeaderMobileNavigation
+              tabIndex="-1"
+              role="navigation"
+              ref={node => {
+                this.navRef = node
+              }}
+            >
+              <MobileNavigationLink to="/academics">
+                Majors &amp; Programs
             </MobileNavigationLink>
-            <MobileNavigationLink to="/cost">
-              Cost &amp; Aid
+              <MobileNavigationLink to="/cost">
+                Tuition &amp; Aid
             </MobileNavigationLink>
-            <MobileNavigationLink to="/about">About</MobileNavigationLink>
-          </HeaderMobileNavigation>
+              <MobileNavigationLink to="/map">Map</MobileNavigationLink>
+              <MobileNavigationLink to="/about">About</MobileNavigationLink>
+              <MobileNavigationLink to="/admissions">Apply</MobileNavigationLink>
+            </HeaderMobileNavigation>
+          </>
         )}
       </header>
     )

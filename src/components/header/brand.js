@@ -5,7 +5,9 @@ import { colors } from 'components/styles/theme'
 
 const BrandLink = styled(Link)`
   font-weight: bold;
-  font-size: 2rem;
+  ${props => props.mobile ?
+    `font-size: 1.4rem;` :
+    `font-size: 2rem;`}
   color: ${colors.primary.darkest} !important;
   text-decoration: none;
   line-height: 80%;
@@ -13,8 +15,8 @@ const BrandLink = styled(Link)`
     text-decoration: underline;
   }
 `
-const Brand = () => (
-  <BrandLink to="/">
+const Brand = (props) => (
+  <BrandLink {...props} to="/">
     Cal State
     <br />
     Monterey Bay
