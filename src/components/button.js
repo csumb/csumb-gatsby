@@ -29,7 +29,7 @@ const ButtonStyle = props => {
   
   display: inline-block;
   `
-  }
+    }
   ${
     props.buttonType === 'default'
       ? `
@@ -40,7 +40,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-  } 
+    } 
   ${
     props.buttonType === 'primary'
       ? `
@@ -51,7 +51,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-  } 
+    } 
   ${
     props.buttonType === 'highImpact'
       ? `
@@ -62,7 +62,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-  };
+    };
 `
 }
 
@@ -78,4 +78,15 @@ const Button = styled('button', {
   ${props => ButtonStyle(props)};
 `
 
-export { Button, ButtonLink }
+const LinkyButton = styled('button')`
+  background: transparent;
+  border: none;
+  color: ${colors.primary.dark};
+  text-decoration: underline;
+  cursor: pointer;
+  ${props => props.small && (
+    `font-size: 80%;`
+  )}
+`
+
+export { Button, ButtonLink, LinkyButton }
