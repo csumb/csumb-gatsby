@@ -6,7 +6,7 @@ import PageTitle from 'components/page-title'
 import SiteNavigation from 'components/site-navigation'
 import { LeadParagraph, HeroParagraph } from 'components/type'
 import { graphql } from 'gatsby'
-import { Button } from 'components/button'
+import { Button, LinkyButton } from 'components/button'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
 import { InputText, Submit } from 'components/forms'
@@ -74,6 +74,7 @@ const fees = [
     fee: 127,
   },
 ]
+
 
 const nonResidentPerUnitFee = 396
 
@@ -176,7 +177,8 @@ const SpecificUnitsQuestion = ({ handler, handleChange }) => (
   </>
 )
 
-const CostResults = ({ resident, undergraduate, moreThanSixUnits, units }) => {
+
+const CostResults = ({ resident, undergraduate, moreThanSixUnits, units, startOver }) => {
   let totalTuition = 0
   let total = 0
   fees.forEach(fee => {
@@ -199,6 +201,7 @@ const CostResults = ({ resident, undergraduate, moreThanSixUnits, units }) => {
     <>
       <HeroParagraph>
         Your semester tuition is ${total.toFixed(2)}
+
       </HeroParagraph>
       <Table>
         <thead>
@@ -242,6 +245,9 @@ const CostResults = ({ resident, undergraduate, moreThanSixUnits, units }) => {
           A’viands)
         </li>
       </ul>
+      <p>
+        <LinkyButton onClick={startOver}>Start over</LinkyButton>
+      </p>
     </>
   )
 }
@@ -286,6 +292,18 @@ class CostPageForm extends React.Component {
     })
   }
 
+  startOver(event) {
+    event.preventDefault()
+    this.setState({
+      resident: false,
+      undergraduate: false,
+      moreThanSixUnits: false,
+      units: false,
+      specificUnits: false,
+    })
+
+  }
+
   render() {
     const { resident, undergraduate, moreThanSixUnits, units } = this.state
     return (
@@ -293,39 +311,39 @@ class CostPageForm extends React.Component {
         {!resident ? (
           <ResidencyQuestion handler={this.handleResidency.bind(this)} />
         ) : (
-          <>
-            {!undergraduate ? (
-              <UndergraduateQuestion
-                handler={this.handleUndergraduates.bind(this)}
-              />
-            ) : (
-              <>
-                {!(moreThanSixUnits || units) ? (
+            <>
+              {!undergraduate ? (
+                <UndergraduateQuestion
+                  handler={this.handleUndergraduates.bind(this)}
+                />
+              ) : (
                   <>
-                    {resident !== 'no' ? (
+                    {!(moreThanSixUnits || units) ? (
                       <>
-                        <UnitsQuestion handler={this.handleUnits.bind(this)} />
+                        {resident !== 'no' ? (
+                          <>
+                            <UnitsQuestion handler={this.handleUnits.bind(this)} />
+                          </>
+                        ) : (
+                            <>
+                              <SpecificUnitsQuestion
+                                handleChange={this.handleSpecificUnitsChange.bind(
+                                  this
+                                )}
+                                handler={this.handleSpecificUnits.bind(this)}
+                              />
+                            </>
+                          )}
                       </>
                     ) : (
-                      <>
-                        <SpecificUnitsQuestion
-                          handleChange={this.handleSpecificUnitsChange.bind(
-                            this
-                          )}
-                          handler={this.handleSpecificUnits.bind(this)}
-                        />
-                      </>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <CostResults {...this.state} />
+                        <>
+                          <CostResults {...this.state} startOver={this.startOver.bind(this)} />
+                        </>
+                      )}
                   </>
                 )}
-              </>
-            )}
-          </>
-        )}
+            </>
+          )}
       </>
     )
   }
