@@ -11,14 +11,14 @@ const NavigationLinkList = styled('li')`
     text-decoration: none;
     padding: 0.75rem;
     ${props =>
-      props.apply
-        ? `color: ${colors.indicators.high};
+    props.apply
+      ? `color: ${colors.indicators.high};
         border: 3px solid ${colors.indicators.high};`
-        : `color: ${colors.primary.darkest};`} &:hover {
+      : `color: ${colors.primary.darkest};`} &:hover {
           ${props =>
-            props.apply
-              ? `background: ${colors.indicators.high};`
-              : `background: ${colors.primary.darkest};`}
+    props.apply
+      ? `background: ${colors.indicators.high};`
+      : `background: ${colors.primary.darkest};`}
               
       color: ${colors.white};
     }
@@ -30,9 +30,11 @@ const NavigationLinkList = styled('li')`
 `
 
 const MobileNavigationLinkList = styled('li')`
-  padding: 0.5rem 1rem;
+  margin: 0;
   a {
+    padding: 0.5rem 1rem;
     text-decoration: none;
+    display: block;
     color: ${colors.white};
   }
 `
