@@ -3,7 +3,6 @@ import { StaticHero } from 'components/homepages/hero'
 import mapData from './mapData'
 import styled from 'react-emotion'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
-import Container from 'components/container'
 import { HeroParagraph } from 'components/type'
 
 const FloatBox = styled('div')`
