@@ -127,13 +127,12 @@ class HeaderMobile extends React.Component {
               }}
             >
               <MobileNavigationLink to="/academics">
-                Majors &amp; Programs
+                Majors &amp; programs
             </MobileNavigationLink>
               <MobileNavigationLink to="/cost">
-                Tuition &amp; Aid
+                Tuition &amp; aid
             </MobileNavigationLink>
-              <MobileNavigationLink to="/map">Map</MobileNavigationLink>
-              <MobileNavigationLink to="/about">About</MobileNavigationLink>
+              <MobileNavigationLink to="/everything">Everything else</MobileNavigationLink>
               <MobileNavigationLink to="/admissions">Apply</MobileNavigationLink>
             </HeaderMobileNavigation>
           </>

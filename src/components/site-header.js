@@ -4,6 +4,7 @@ import Link from 'gatsby-link'
 import Container from './container'
 import { colors } from './styles/theme'
 
+
 const SiteHeaderWrapper = styled('div')`
   background: ${colors.primary.darkest};
   padding: 1rem 0;

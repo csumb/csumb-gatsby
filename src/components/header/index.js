@@ -5,7 +5,7 @@ import Container from 'components/container'
 import Search from './search'
 import UserWidget from './user-widget'
 import Applicant from './applicant'
-import HeaderMobile from './header-mobile'
+import HeaderMobile from './mobile'
 import { NavigationLink, NavigationLinkApply } from './navigation-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import styled from 'react-emotion'
@@ -67,13 +67,12 @@ class Header extends React.Component {
                       `}
                       >
                         <NavigationLink to="/academics">
-                          Majors &amp; Programs
+                          Majors &amp; programs
                         </NavigationLink>
                         <NavigationLink to="/cost">
-                          Tuition &amp; Aid
+                          Tuition &amp; aid
                         </NavigationLink>
-                        <NavigationLink to="/map">Map</NavigationLink>
-                        <NavigationLink to="/about">About</NavigationLink>
+                        <NavigationLink to="/everything">Everything else</NavigationLink>
                         <NavigationLinkApply to="/apply">
                           Apply
                       </NavigationLinkApply>

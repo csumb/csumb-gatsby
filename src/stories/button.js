@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { Button, ButtonLink } from 'components/button'
+import { Button, ButtonLink, LinkyButton } from 'components/button'
 import typography from 'utils/typography'
 
 typography.injectStyles()
@@ -41,3 +41,8 @@ storiesOf('Button', module)
       A huge button
     </Button>
   ))
+
+storiesOf('Linky Button', module)
+  .add('Default', () => <LinkyButton>I look like a link!</LinkyButton>, {
+    info: 'Use when a button is an appropriate element, but you want it to look visually like a link.'
+  })
