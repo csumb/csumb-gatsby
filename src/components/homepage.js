@@ -4,7 +4,6 @@ import moment from 'moment'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors, fonts } from 'components/styles/theme'
-import bp from 'components/styles/breakpoints'
 
 
 const dateFormat = 'MMMM D, YYYY'

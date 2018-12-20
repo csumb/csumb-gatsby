@@ -6,21 +6,42 @@ const HeroWrapperElement = styled('div')`
   height: 80vh;
 `
 
-class HeroWrapper extends React.Component {
+const StaticHero = styled('div')`
+  height: 500px;
+  margin-bottom: 1rem;
+  position: relative;
+`
+
+const HeroPadding = styled('div')`
+  padding: 2rem 0;
+`
+
+const headerHeight = 200
+
+
+
+class FullHeroWrapper extends React.Component {
 
   state = {
-    height: 500
+    height: this.props.minHeight ? this.props.minHeight : 500
   }
 
   componentDidMount() {
     let that = this
-    that.setState({
-      height: window.innerHeight - 500,
-    })
-    window.addEventListener('resize', () => {
+    const { minHeight } = this.props
+    const getHeight = () => {
+      const height = ((window.innerHeight - headerHeight) > minHeight) ?
+        (window.innerHeight - headerHeight) :
+        minHeight
       that.setState({
-        height: window.innerHeight - 500,
+        height: height,
       })
+
+    }
+    getHeight()
+
+    window.addEventListener('resize', () => {
+      getHeight()
     })
   }
 
@@ -35,4 +56,4 @@ class HeroWrapper extends React.Component {
   }
 }
 
-export { HeroWrapper }
+export { HeroPadding, StaticHero, FullHeroWrapper }
