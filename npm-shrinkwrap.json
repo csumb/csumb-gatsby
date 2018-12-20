@@ -22183,6 +22183,11 @@
       "resolved": "https://registry.npmjs.org/react-typography/-/react-typography-0.16.13.tgz",
       "integrity": "sha512-lqyl8yqRN6O8Gn596+9QpRegmjnUaNvJuz11u99+gJ2hJ2iSUFqlLDfCs+j8+y0efCFyM5+oy2IYNBwBCTF9qQ=="
     },
+    "react-vivus": {
+      "version": "0.0.2",
+      "resolved": "https://registry.npmjs.org/react-vivus/-/react-vivus-0.0.2.tgz",
+      "integrity": "sha512-T65P3JxixMfbsG1Z82JveFj/Lw2vzpVebxCX0skc9xKpdBjJZTvMXTq4K/Nb3aZOlspRgJMk/zE7/UD3W/Mmrg=="
+    },
     "read": {
       "version": "1.0.7",
       "resolved": "https://registry.npmjs.org/read/-/read-1.0.7.tgz",
@@ -25557,6 +25562,11 @@
       "resolved": "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz",
       "integrity": "sha1-f17oI66AUgfACvLfSoTsP8+lcLQ="
     },
+    "three": {
+      "version": "0.99.0",
+      "resolved": "https://registry.npmjs.org/three/-/three-0.99.0.tgz",
+      "integrity": "sha512-DmNNq6H6nRGaqxScJ8x7v5VjdtDZR72oTVwDdKbB2BYNFxCkAoo9vdFAznEsMu9YzTV2yFvbVs7qHRzvJZzTIg=="
+    },
     "throat": {
       "version": "4.1.0",
       "resolved": "https://registry.npmjs.org/throat/-/throat-4.1.0.tgz",
@@ -26748,6 +26758,11 @@
           }
         }
       }
+    },
+    "vivus": {
+      "version": "0.4.4",
+      "resolved": "https://registry.npmjs.org/vivus/-/vivus-0.4.4.tgz",
+      "integrity": "sha1-NDY+uDPV9v4LY6ks/M/xStCZukQ="
     },
     "vm-browserify": {
       "version": "0.0.4",
