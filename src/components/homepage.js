@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'react-emotion'
 import moment from 'moment'
+import Link from 'gatsby-link'
+import { Flex, Box } from '@rebass/grid/emotion'
 import { colors, fonts } from 'components/styles/theme'
+import bp from 'components/styles/breakpoints'
 
 
 const dateFormat = 'MMMM D, YYYY'
@@ -81,6 +84,39 @@ const NuggetsHeader = styled('h3')`
   border-bottom: 3px solid ${colors.black};
 `
 
+const NavigationHeader = styled('h3')`
+  font-family: ${fonts.sansSerif};
+  margin-bottom: 0.3rem;
+`
+
+const NavigationItem = styled(Box)`
+  margin-bottom: 1rem;
+  border: 3px solid ${colors.white};
+  padding: 1rem;
+  a {
+    color: ${colors.black};
+    text-decoration: none;
+  }
+  &:hover {
+    border-color: ${colors.primary.dark};
+  }
+`
+
+const HomepageNavigation = ({ items }) => (
+  <Flex flexWrap="wrap">
+    {items[0].node.items.map(item => (
+      <Box width={[1, 1 / 3]} px={4}>
+        <NavigationItem>
+          <Link to={item.link}>
+            <NavigationHeader>{item.title}</NavigationHeader>
+            <span>{item.childContentfulHomepageNavigationItemDescriptionTextNode.description}</span>
+          </Link>
+        </NavigationItem>
+      </Box>
+    ))}
+  </Flex>
+)
+
 const NonFeaturedStory = ({ link, image, title, eventDate }) => (
   <Story>
     <a href={link}>
@@ -143,4 +179,4 @@ const Nuggets = ({ nuggets }) => (
   </NuggetsWrapper>
 )
 
-export { NonFeaturedStory, FeaturedStory, Nuggets }
+export { HomepageNavigation, NonFeaturedStory, FeaturedStory, Nuggets }

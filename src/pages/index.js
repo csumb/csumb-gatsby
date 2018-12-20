@@ -4,7 +4,7 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import moment from 'moment'
-import { NonFeaturedStory, FeaturedStory, Nuggets } from 'components/homepage'
+import { HomepageNavigation, NonFeaturedStory, FeaturedStory, Nuggets } from 'components/homepage'
 //import Link from 'gatsby-link'
 
 
@@ -44,6 +44,9 @@ class IndexPage extends React.Component {
     const colPadding = [0, 0, 3, 3]
     return (
       <Layout>
+        <Container topPadding>
+          <HomepageNavigation items={this.props.data.allContentfulHomepageNavigation.edges} />
+        </Container>
         <Container topPadding>
           <Flex flexWrap="wrap">
             <Box width={[1, 1, 1 / 2, 3 / 12]} pr={colPadding}>
@@ -126,6 +129,19 @@ export const query = graphql`
         link
         goLiveDate
         unpublishDate
+      }
+    }
+  }
+  allContentfulHomepageNavigation {
+    edges {
+      node {
+        items {
+          title
+          link
+          childContentfulHomepageNavigationItemDescriptionTextNode {
+            description
+          }
+        }
       }
     }
   }
