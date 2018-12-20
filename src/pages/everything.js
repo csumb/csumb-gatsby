@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
 import { Flex, Box } from '@rebass/grid/emotion'
+import SiteHeader from 'components/site-header'
 
 const TopLevelList = styled('ul')`
   border-right: 1px solid ${colors.muted.dark};
@@ -103,6 +104,7 @@ class EverythingPage extends React.Component {
     const { secondSelected, thirdSelected } = this.state
     return (
       <Layout pageTitle="About">
+        <SiteHeader path="/everything">Everything else</SiteHeader>
         <Container topPadding>
           <Flex flexWrap="wrap">
             <Box width={[1, 1 / 5]} px={2}>
@@ -138,14 +140,14 @@ class EverythingPage extends React.Component {
                           <h3>{this.navigation[id.contentful_id].title}</h3>
                           {this.navigation[id.contentful_id]
                             .childContentfulNavigationItemDescriptionTextNode && (
-                            <p
-                              dangerouslySetInnerHTML={{
-                                __html: this.navigation[id.contentful_id]
-                                  .childContentfulNavigationItemDescriptionTextNode
-                                  .childMarkdownRemark.html,
-                              }}
-                            />
-                          )}
+                              <p
+                                dangerouslySetInnerHTML={{
+                                  __html: this.navigation[id.contentful_id]
+                                    .childContentfulNavigationItemDescriptionTextNode
+                                    .childMarkdownRemark.html,
+                                }}
+                              />
+                            )}
                         </HiddenButton>
                       </SecondLevelItem>
                     )
