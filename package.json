@@ -65,10 +65,13 @@
     "react-select": "^2.1.2",
     "react-simplemde-editor": "^3.6.22",
     "react-typography": "^0.16.13",
+    "react-vivus": "0.0.2",
     "styled-components": "^4.1.2",
+    "three": "^0.99.0",
     "typography": "^0.16.17",
     "typography-theme-sutro": "^0.15.10",
     "typography-theme-us-web-design-standards": "^0.16.9",
+    "vivus": "^0.4.4",
     "walk": "^2.3.14"
   },
   "keywords": [
