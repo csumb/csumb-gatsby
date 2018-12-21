@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
 import { ContainerContext, ContainerElement } from '../container-context'
-import VisuallyHidden from '@reach/visually-hidden'
+import VisuallyHidden from 'components/visually-hidden'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
 
