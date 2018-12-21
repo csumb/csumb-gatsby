@@ -36,18 +36,7 @@ exports[`Loading renders a loading indicator correctly without children 1`] = `
 >
   <span>
     <div
-      style={
-        Object {
-          "border": 0,
-          "clip": "rect(0 0 0 0)",
-          "height": "1px",
-          "margin": "-1px",
-          "overflow": "hidden",
-          "padding": 0,
-          "position": "absolute",
-          "width": "1px",
-        }
-      }
+      className="css-1p349jc"
     >
       Loading
     </div>

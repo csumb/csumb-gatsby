@@ -538,18 +538,7 @@ exports[`InputText renders hidden labels correctly 1`] = `
   className="css-1ycul8i"
 >
   <div
-    style={
-      Object {
-        "border": 0,
-        "clip": "rect(0 0 0 0)",
-        "height": "1px",
-        "margin": "-1px",
-        "overflow": "hidden",
-        "padding": 0,
-        "position": "absolute",
-        "width": "1px",
-      }
-    }
+    className="css-1p349jc"
   >
     <label
       className="css-1n1cms9"
@@ -699,18 +688,7 @@ exports[`InputTextarea renders hidden labels correctly 1`] = `
   className="css-1ycul8i"
 >
   <div
-    style={
-      Object {
-        "border": 0,
-        "clip": "rect(0 0 0 0)",
-        "height": "1px",
-        "margin": "-1px",
-        "overflow": "hidden",
-        "padding": 0,
-        "position": "absolute",
-        "width": "1px",
-      }
-    }
+    className="css-1p349jc"
   >
     <label
       className="css-1n1cms9"
@@ -792,18 +770,7 @@ exports[`InputTextarea renders text input correctly 1`] = `
 
 exports[`Label renders hidden labels correctly 1`] = `
 <div
-  style={
-    Object {
-      "border": 0,
-      "clip": "rect(0 0 0 0)",
-      "height": "1px",
-      "margin": "-1px",
-      "overflow": "hidden",
-      "padding": 0,
-      "position": "absolute",
-      "width": "1px",
-    }
-  }
+  className="css-1p349jc"
 >
   <label
     className="css-1n1cms9"
