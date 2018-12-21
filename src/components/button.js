@@ -26,10 +26,12 @@ const ButtonStyle = props => {
     width: 100%;
   `
       : `
-  
-  display: inline-block;
+    display: inline-block;
   `
     }
+    ${props.extraMargin && (`
+      margin: 1rem 0;
+    `)}
   ${
     props.buttonType === 'default'
       ? `
@@ -66,15 +68,11 @@ const ButtonStyle = props => {
 `
 }
 
-const ButtonLink = styled(LinkInspect, {
-  shouldForwardProp: 'buttonType',
-})`
+const ButtonLink = styled(LinkInspect)`
   ${props => ButtonStyle(props)};
 `
 
-const Button = styled('button', {
-  shouldForwardProp: 'buttonType',
-})`
+const Button = styled('button')`
   ${props => ButtonStyle(props)};
 `
 
