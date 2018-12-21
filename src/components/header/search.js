@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import VisuallyHidden from '@reach/visually-hidden'
+import VisuallyHidden from 'components/visually-hidden'
 import Rect from '@reach/rect'
 import { InputText } from 'components/forms'
 import styled from 'react-emotion'

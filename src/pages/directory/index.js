@@ -16,7 +16,7 @@ const DirectoryPage = ({ data }) => (
       <Flex flexWrap="wrap">
         <Box width={[1, 1 / 2]} px={2}>
           <h3>Important numbers</h3>
-          <ul class="intro">
+          <ul>
             <li>
               <strong>
                 <a href="/csc">Campus Service Center</a>
@@ -111,9 +111,19 @@ class DirectoryForm extends React.Component {
     }
     let search = []
     directory.forEach(person => {
-      const name = `${person.node.user.firstName} ${person.node.user.lastName}`
+      const { user } = person.node
+      const name = `${user.firstName} ${user.lastName}`
+
       if (name.toLowerCase().search(query.toLowerCase()) > -1) {
-        search.push(person.node.user)
+        search.push(user)
+      } else {
+        if (
+          query.length > 3 &&
+          user.directoryPhone &&
+          user.directoryPhone.replace(/\D/g, '').search(query) > -1
+        ) {
+          search.push(user)
+        }
       }
     })
     this.setState({
