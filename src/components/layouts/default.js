@@ -7,12 +7,30 @@ import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 import { UserContext, setUserRole } from 'components/contexts/user'
 import Emergency from 'components/emergency'
+import BreakpointContext from 'components/contexts/breakpoint'
+console.log(BreakpointContext)
 class Layout extends React.Component {
   state = {
     user: false,
+    breakpoint: {
+      isMobile: window.innerWidth <= 768,
+      isDesktop: window.innerWidth > 768,
+      width: window.innerWidth,
+    },
   }
 
   async componentDidMount() {
+    let that = this
+    window.addEventListener('resize', () => {
+      that.setState({
+        breakpoint: {
+          isMobile: window.innerWidth <= 768,
+          isDesktop: window.innerWidth > 768,
+          width: window.innerWidth,
+        },
+      })
+    })
+
     window
       .fetch('https://csumb.okta.com/api/v1/users/me', {
         credentials: 'include',
@@ -34,44 +52,50 @@ class Layout extends React.Component {
   }
 
   render() {
+    const { siteNavigation } = this.props
     let pageTitle = []
     pageTitle.push(
       typeof this.props.pageTitle !== 'undefined' ? this.props.pageTitle : null
     )
     pageTitle.push('Cal State Monterey Bay')
     return (
-      <UserContext.Provider value={this.state}>
-        <Emergency />
-        <SkipNavLink />
-        <Helmet>
-          <html lang="en" />
-          <meta charset="utf-8" />
-          <title>{pageTitle.join(' | ')}</title>
-        </Helmet>
-        <StaticQuery
-          query={graphql`
-            {
-              site {
-                siteMetadata {
-                  swiftypeId
-                  title
-                  okta {
-                    login
+      <BreakpointContext.Provider value={this.state.breakpoint}>
+        <UserContext.Provider value={{ user: this.state.user }}>
+          <Emergency />
+          <SkipNavLink />
+          <Helmet>
+            <html lang="en" />
+            <meta charset="utf-8" />
+            <title>{pageTitle.join(' | ')}</title>
+          </Helmet>
+          <StaticQuery
+            query={graphql`
+              {
+                site {
+                  siteMetadata {
+                    swiftypeId
+                    title
+                    okta {
+                      login
+                    }
                   }
                 }
               }
-            }
-          `}
-          render={data => (
-            <>
-              <Header metadata={data.site.siteMetadata} />
-            </>
-          )}
-        />
-        <SkipNavContent />
-        {this.props.children}
-        <Footer />
-      </UserContext.Provider>
+            `}
+            render={data => (
+              <>
+                <Header
+                  metadata={data.site.siteMetadata}
+                  siteNavigation={siteNavigation}
+                />
+              </>
+            )}
+          />
+          <SkipNavContent />
+          {this.props.children}
+          <Footer />
+        </UserContext.Provider>
+      </BreakpointContext.Provider>
     )
   }
 }
