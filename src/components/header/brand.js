@@ -6,7 +6,7 @@ import { colors } from 'components/styles/theme'
 const BrandLink = styled(Link)`
   font-weight: bold;
   ${props => props.mobile ?
-    `font-size: 1.4rem;` :
+    `font-size: 1.2rem;` :
     `font-size: 2rem;`}
   color: ${colors.primary.darkest} !important;
   text-decoration: none;
