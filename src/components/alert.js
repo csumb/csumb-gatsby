@@ -5,7 +5,7 @@ import { css } from 'emotion'
 import { colors } from 'components/styles/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import color from 'color'
-import VisuallyHidden from '@reach/visually-hidden'
+import VisuallyHidden from 'components/visually-hidden'
 import {
   faCheckCircle,
   faExclamationTriangle,
