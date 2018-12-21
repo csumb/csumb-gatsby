@@ -19,3 +19,12 @@
 - Use `npm run storybook` to run the Storybook locally
 - Use `npm run test` to confirm that all tests pass before making commits
 - Use `jest -u` to update snapshots, only needed if tests fail because you changed the layout of a component.
+
+## Environment variables
+
+- CSUMB_HOME_CONTENTFUL_SPACE		
+- CSUMB_HOME_CONTENTFUL_TOKEN		
+- CSUMB_NAV_CONTENTFUL_SPACE		
+- CSUMB_NAV_CONTENTFUL_TOKEN		
+- FIREBASE_TOKEN		
+- GITHUB_TOKEN
