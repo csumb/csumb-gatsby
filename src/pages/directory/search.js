@@ -15,9 +15,11 @@ const DirectoryItem = styled('div')`
 
 const DirectoryDetail = styled('p')`
   margin: 0;
-  ${props => props.small && (`
+  ${props =>
+    props.small &&
+    `
     font-size: 80%;
-  `)};
+  `};
 `
 
 const DirectoryTitle = styled('h3')`
@@ -47,18 +49,21 @@ const DepartmentListing = ({ name, phone, fax, email }) => (
       <Box width={[1, 1 / 2]} px={2}>
         <DirectoryTitle>{name}</DirectoryTitle>
         {email && (
-          <DirectoryDetail><a href={`mailto:${email}`}>{email}</a></DirectoryDetail>
+          <DirectoryDetail>
+            <a href={`mailto:${email}`}>{email}</a>
+          </DirectoryDetail>
         )}
-        {phone && (
-          <DirectoryDetail>{phone}</DirectoryDetail>
-        )}
+        {phone && <DirectoryDetail>{phone}</DirectoryDetail>}
         {fax && (
-          <DirectoryDetail small><strong>Fax:</strong>{fax}</DirectoryDetail>
+          <DirectoryDetail small>
+            <strong>Fax:</strong>
+            {fax}
+          </DirectoryDetail>
         )}
       </Box>
-      <Box width={[1, 1 / 2]} px={2}>
-      </Box>
-    </Flex></DirectoryItem>
+      <Box width={[1, 1 / 2]} px={2} />
+    </Flex>
+  </DirectoryItem>
 )
 
 class DirectorySearchResults extends React.Component {
@@ -72,14 +77,17 @@ class DirectorySearchResults extends React.Component {
       departments: [],
     }
     people.forEach(person => {
-      const name = `${person.node.user.firstName} ${person.node.user.lastName}`
+      const { user } = person.node
+      const name = `${user.firstName} ${user.lastName}`
       if (name.toLowerCase().search(query.toLowerCase()) > -1) {
-        search.people.push(person.node.user)
+        search.people.push(user)
       }
     })
     departments.forEach(department => {
-
-      if (department.node.name && department.node.name.toLowerCase().search(query.toLowerCase()) > -1) {
+      if (
+        department.node.name &&
+        department.node.name.toLowerCase().search(query.toLowerCase()) > -1
+      ) {
         search.departments.push(department.node)
       }
     })
@@ -204,7 +212,7 @@ export const query = graphql`
         }
       }
     }
-    allCsumbDepartment(sort: {fields: name}) {
+    allCsumbDepartment(sort: { fields: name }) {
       edges {
         node {
           name

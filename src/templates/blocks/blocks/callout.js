@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
 import { ContainerContext, ContainerElement } from '../container-context'
-import VisuallyHidden from '@reach/visually-hidden'
+import VisuallyHidden from 'components/visually-hidden'
 import Link from 'gatsby-link'
 
 const Callout = styled('div')`

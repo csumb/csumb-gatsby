@@ -6,7 +6,7 @@ import Loading from 'components/loading'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { ButtonLink } from 'components/button'
 import { AlertEmpty } from 'components/alert'
-import VisuallyHidden from '@reach/visually-hidden'
+import VisuallyHidden from 'components/visually-hidden'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import Link from 'gatsby-link'
 

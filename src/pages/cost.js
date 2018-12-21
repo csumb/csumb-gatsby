@@ -10,7 +10,7 @@ import { Button, LinkyButton } from 'components/button'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
 import { InputText, Submit } from 'components/forms'
-import VisuallyHidden from '@reach/visually-hidden'
+import VisuallyHidden from 'components/visually-hidden'
 import { Table, TableRow, TableCell, TableHeader } from 'components/table'
 
 const tuition = [
@@ -74,7 +74,6 @@ const fees = [
     fee: 127,
   },
 ]
-
 
 const nonResidentPerUnitFee = 396
 
@@ -177,8 +176,13 @@ const SpecificUnitsQuestion = ({ handler, handleChange }) => (
   </>
 )
 
-
-const CostResults = ({ resident, undergraduate, moreThanSixUnits, units, startOver }) => {
+const CostResults = ({
+  resident,
+  undergraduate,
+  moreThanSixUnits,
+  units,
+  startOver,
+}) => {
   let totalTuition = 0
   let total = 0
   fees.forEach(fee => {
@@ -201,7 +205,6 @@ const CostResults = ({ resident, undergraduate, moreThanSixUnits, units, startOv
     <>
       <HeroParagraph>
         Your semester tuition is ${total.toFixed(2)}
-
       </HeroParagraph>
       <Table>
         <thead>
@@ -301,7 +304,6 @@ class CostPageForm extends React.Component {
       units: false,
       specificUnits: false,
     })
-
   }
 
   render() {
@@ -311,39 +313,42 @@ class CostPageForm extends React.Component {
         {!resident ? (
           <ResidencyQuestion handler={this.handleResidency.bind(this)} />
         ) : (
-            <>
-              {!undergraduate ? (
-                <UndergraduateQuestion
-                  handler={this.handleUndergraduates.bind(this)}
-                />
-              ) : (
+          <>
+            {!undergraduate ? (
+              <UndergraduateQuestion
+                handler={this.handleUndergraduates.bind(this)}
+              />
+            ) : (
+              <>
+                {!(moreThanSixUnits || units) ? (
                   <>
-                    {!(moreThanSixUnits || units) ? (
+                    {resident !== 'no' ? (
                       <>
-                        {resident !== 'no' ? (
-                          <>
-                            <UnitsQuestion handler={this.handleUnits.bind(this)} />
-                          </>
-                        ) : (
-                            <>
-                              <SpecificUnitsQuestion
-                                handleChange={this.handleSpecificUnitsChange.bind(
-                                  this
-                                )}
-                                handler={this.handleSpecificUnits.bind(this)}
-                              />
-                            </>
-                          )}
+                        <UnitsQuestion handler={this.handleUnits.bind(this)} />
                       </>
                     ) : (
-                        <>
-                          <CostResults {...this.state} startOver={this.startOver.bind(this)} />
-                        </>
-                      )}
+                      <>
+                        <SpecificUnitsQuestion
+                          handleChange={this.handleSpecificUnitsChange.bind(
+                            this
+                          )}
+                          handler={this.handleSpecificUnits.bind(this)}
+                        />
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <CostResults
+                      {...this.state}
+                      startOver={this.startOver.bind(this)}
+                    />
                   </>
                 )}
-            </>
-          )}
+              </>
+            )}
+          </>
+        )}
       </>
     )
   }
