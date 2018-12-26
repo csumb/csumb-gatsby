@@ -1,73 +1,93 @@
-import React from "react";
-import Brand from "./brand";
-import { colors } from "components/styles/theme";
-import styled from "react-emotion";
-import { MobileNavigationLink } from "./navigation-link";
-import VisuallyHidden from "components/visually-hidden";
-import { Flex, Box } from "@rebass/grid/emotion";
-import Search from "./search";
-import Container from "components/container";
-import { css } from "react-emotion";
-import UserWidget from "./user-widget";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faBars } from "@fortawesome/free-solid-svg-icons";
+import React from 'react'
+import Brand from './brand'
+import { colors } from 'components/styles/theme'
+import styled from 'react-emotion'
+import { MobileNavigationLink } from './navigation-link'
+import VisuallyHidden from 'components/visually-hidden'
+import { Flex, Box } from '@rebass/grid/emotion'
+import Search from './search'
+import Container from 'components/container'
+import { css } from 'react-emotion'
+import UserWidget from './user-widget'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
+import LinkInspect from 'components/link-inspect'
 
-const HeaderMobileWrapper = styled("div")`
+const HeaderMobileWrapper = styled('div')`
   padding: 0.5rem 0.25rem;
-`;
+`
 
 const mobileButton = css`
   border: 0;
   padding: 0.3rem;
   font-size: 1.8rem;
-`;
+`
 
-const HeaderMobileToggle = styled("button")`
+const HeaderMobileToggle = styled('button')`
   ${mobileButton};
-`;
+`
 
-const HeaderMobileSearchToggle = styled("button")`
+const HeaderMobileSearchToggle = styled('button')`
   ${mobileButton};
   margin-right: 1.5rem;
-`;
+`
 
-const HeaderMobileNavigation = styled("ul")`
+const HeaderMobileNavigation = styled('ul')`
   margin: 0;
   list-style: none;
   margin-top: 1rem;
   padding: 0;
   background: ${colors.primary.darkest};
-`;
+`
 
-const HeaderMobileSearch = styled("div")`
+const HeaderMobileSearch = styled('div')`
   background: white;
   padding: 0.5rem;
-`;
+`
 
 const MenuBox = styled(Box)`
   text-align: right;
-`;
+`
+const MobileSiteNavigationLink = styled(LinkInspect)`
+  text-decoration: none;
+  padding: 1rem;
+  &[aria-current='page'] {
+    text-decoration: underline;
+  }
+`
+
+const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
+  return (
+    <>
+      {to ? (
+        <MobileSiteNavigationLink to={to}>{children}</MobileSiteNavigationLink>
+      ) : (
+        <></>
+      )}
+    </>
+  )
+}
 
 class HeaderMobile extends React.Component {
   state = {
     hasNavigation: false,
-    hasSearch: false
-  };
+    hasSearch: false,
+  }
 
   mobileToggle(event) {
-    event.preventDefault();
+    event.preventDefault()
     this.setState({
       hasNavigation: !this.state.hasNavigation,
-      hasSearch: false
-    });
+      hasSearch: false,
+    })
   }
 
   searchToggle(event) {
-    event.preventDefault();
+    event.preventDefault()
     this.setState({
       hasSearch: !this.state.hasSearch,
-      hasNavigation: false
-    });
+      hasNavigation: false,
+    })
   }
 
   /*componentDidUpdate(prevProps, prevState) {
@@ -79,7 +99,10 @@ class HeaderMobile extends React.Component {
   }*/
 
   render() {
-    const { hasSearch, hasNavigation } = this.state;
+    const { hasSearch, hasNavigation } = this.state
+    const siteNavigation = this.props.siteNavigation
+      ? JSON.parse(this.props.siteNavigation)
+      : false
     return (
       <header>
         <HeaderMobileWrapper>
@@ -91,7 +114,7 @@ class HeaderMobile extends React.Component {
               <HeaderMobileSearchToggle
                 onClick={this.searchToggle.bind(this)}
                 ref={node => {
-                  this.searchButtonRef = node;
+                  this.searchButtonRef = node
                 }}
               >
                 <VisuallyHidden>Search</VisuallyHidden>
@@ -100,7 +123,7 @@ class HeaderMobile extends React.Component {
               <HeaderMobileToggle
                 onClick={this.mobileToggle.bind(this)}
                 ref={node => {
-                  this.navButtonRef = node;
+                  this.navButtonRef = node
                 }}
               >
                 <FontAwesomeIcon icon={faBars} />
@@ -123,7 +146,7 @@ class HeaderMobile extends React.Component {
               tabIndex="-1"
               role="navigation"
               ref={node => {
-                this.navRef = node;
+                this.navRef = node
               }}
             >
               <MobileNavigationLink to="/admissions">
@@ -139,11 +162,22 @@ class HeaderMobile extends React.Component {
                 Everything else
               </MobileNavigationLink>
             </HeaderMobileNavigation>
+            {siteNavigation && (
+              <Container>
+                {siteNavigation.map((item, key) => (
+                  <li key={key}>
+                    <MobileSiteNavigationItem to={item.url}>
+                      {item.name}
+                    </MobileSiteNavigationItem>
+                  </li>
+                ))}
+              </Container>
+            )}
           </>
         )}
       </header>
-    );
+    )
   }
 }
 
-export default HeaderMobile;
+export default HeaderMobile
