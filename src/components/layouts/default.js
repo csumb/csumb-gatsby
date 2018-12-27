@@ -72,12 +72,8 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { siteNavigation, siteTitle } = this.props
-    let pageTitle = []
-    pageTitle.push(
-      typeof this.props.pageTitle !== 'undefined' ? this.props.pageTitle : null
-    )
-    pageTitle.push('Cal State Monterey Bay')
+    const { siteNavigation, siteTitle, pageTitle } = this.props
+
     return (
       <BreakpointContext.Provider value={this.state.breakpoint}>
         <UserContext.Provider value={{ user: this.state.user }}>
@@ -86,7 +82,10 @@ class Layout extends React.Component {
           <Helmet>
             <html lang="en" />
             <meta charset="utf-8" />
-            <title>{pageTitle.join(' | ')}</title>
+            <title>
+              {`${pageTitle ? `${pageTitle} |` : ''}
+              Cal State Monterey Bay`}
+            </title>
           </Helmet>
           <StaticQuery
             query={graphql`
