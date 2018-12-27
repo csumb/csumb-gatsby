@@ -5,17 +5,21 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import moment from 'moment'
 import HomepageHero from 'components/homepages/samples/lazy-hero'
-import { HomepageNavigation, NonFeaturedStory, FeaturedStory, Nuggets } from 'components/homepage'
-//import Link from 'gatsby-link'
-
-
+import {
+  HomepageNavigation,
+  NonFeaturedStory,
+  FeaturedStory,
+  Nuggets,
+} from 'components/homepage'
 
 class IndexPage extends React.Component {
-
   constructor(props) {
     super(props)
-    const { allContentfulStory, allContentfulEvent, allContentfulNuggets } = props.data
-
+    const {
+      allContentfulStory,
+      allContentfulEvent,
+      allContentfulNuggets,
+    } = props.data
 
     const sortItems = (items, featured, ignore) => {
       let result = []
@@ -35,9 +39,8 @@ class IndexPage extends React.Component {
     this.stories = {
       featured: sortItems([allContentfulStory, allContentfulEvent], true),
       notFeatured: sortItems([allContentfulStory, allContentfulEvent], false),
-      nuggets: sortItems([allContentfulNuggets], null, true)
+      nuggets: sortItems([allContentfulNuggets], null, true),
     }
-
   }
 
   render() {
@@ -47,7 +50,9 @@ class IndexPage extends React.Component {
       <Layout>
         <HomepageHero />
         <Container topPadding>
-          <HomepageNavigation items={this.props.data.allContentfulHomepageNavigation.edges} />
+          <HomepageNavigation
+            items={this.props.data.allContentfulHomepageNavigation.edges}
+          />
         </Container>
         <Container topPadding>
           <Flex flexWrap="wrap">
@@ -74,80 +79,81 @@ class IndexPage extends React.Component {
 export default IndexPage
 
 export const query = graphql`
-{
-  allContentfulStory(sort:{fields:goLiveDate}){
-    edges {
-      node {
-        title
-        featured
-        link
-        goLiveDate
-        unpbulishDate
-        childContentfulStoryDescriptionTextNode {
-          description
-        }
-        image {
-          fixed {
-            src
-            srcSet
-          }
-          fluid {
-            src
-            srcSet
-          }
-        }
-      }
-    }
-  }
-  allContentfulEvent(sort:{fields:goLiveDate}){
-    edges {
-      node {
-        title
-        featured
-        link
-        goLiveDate
-        eventDate
-        unpbulishDate
-        contentful_id
-        childContentfulEventDescriptionTextNode {
-          description
-        }
-        image {
-          fixed {
-            src
-            srcSet
-          }
-          fluid {
-            src
-            srcSet
-          }
-        }
-      }
-    }
-  }
-  allContentfulNuggets(sort:{fields:goLiveDate}) {
-    edges{
-      node {
-        title
-        link
-        goLiveDate
-        unpublishDate
-        contentful_id
-      }
-    }
-  }
-  allContentfulHomepageNavigation {
-    edges {
-      node {
-        items {
-          contentful_id
+  {
+    allContentfulStory(sort: { fields: goLiveDate }) {
+      edges {
+        node {
           title
+          featured
           link
-          childContentfulHomepageNavigationItemDescriptionTextNode {
+          goLiveDate
+          unpbulishDate
+          childContentfulStoryDescriptionTextNode {
             description
           }
+          image {
+            fixed {
+              src
+              srcSet
+            }
+            fluid {
+              src
+              srcSet
+            }
+          }
+        }
+      }
+    }
+    allContentfulEvent(sort: { fields: goLiveDate }) {
+      edges {
+        node {
+          title
+          featured
+          link
+          goLiveDate
+          eventDate
+          unpbulishDate
+          contentful_id
+          childContentfulEventDescriptionTextNode {
+            description
+          }
+          image {
+            fixed {
+              src
+              srcSet
+            }
+            fluid {
+              src
+              srcSet
+            }
+          }
+        }
+      }
+    }
+    allContentfulNuggets(sort: { fields: goLiveDate }) {
+      edges {
+        node {
+          title
+          link
+          goLiveDate
+          unpublishDate
+          contentful_id
+        }
+      }
+    }
+    allContentfulHomepageNavigation {
+      edges {
+        node {
+          items {
+            contentful_id
+            title
+            link
+            childContentfulHomepageNavigationItemDescriptionTextNode {
+              description
+            }
+          }
         }
       }
     }
   }
-}`
+`
