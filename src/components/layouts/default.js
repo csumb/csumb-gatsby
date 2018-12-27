@@ -15,9 +15,9 @@ class Layout extends React.Component {
   state = {
     user: false,
     breakpoint: {
-      isMobile: window.innerWidth <= 768,
-      isDesktop: window.innerWidth > 768,
-      width: window.innerWidth,
+      isMobile: false,
+      isDesktop: true,
+      width: 800,
     },
   }
 
@@ -32,6 +32,8 @@ class Layout extends React.Component {
         },
       })
     })
+
+    window.trigger('resize')
 
     let location = url.parse(window.location.href, true)
     if (location.query && typeof location.query._login !== 'undefined') {
