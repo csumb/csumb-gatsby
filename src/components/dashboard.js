@@ -6,8 +6,9 @@ import Loading from 'components/loading'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { ButtonLink } from 'components/button'
 import { AlertEmpty } from 'components/alert'
-import VisuallyHidden from '@reach/visually-hidden'
+import VisuallyHidden from 'components/visually-hidden'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
+import { ImmortalDB } from 'immortal-db'
 import Link from 'gatsby-link'
 
 import '@reach/menu-button/styles.css'
@@ -194,6 +195,7 @@ class DashboardMessages extends React.Component {
           messages: messages,
           didLoad: true,
         })
+        ImmortalDB.remove('messageCount')
       })
       .catch(error => {
         this.setState({

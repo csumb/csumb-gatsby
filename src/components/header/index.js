@@ -9,6 +9,7 @@ import HeaderMobile from './mobile'
 import { NavigationLink, NavigationLinkApply } from './navigation-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import styled from 'react-emotion'
+import BreakpointContext from 'components/contexts/breakpoint'
 
 const HeaderWrapper = styled('header')`
   padding-top: 1rem;
@@ -16,74 +17,70 @@ const HeaderWrapper = styled('header')`
 `
 
 class Header extends React.Component {
-  state = {
-    isMobile: typeof window !== 'undefined' ? window.innerWidth < 700 : false,
-  }
-
-  componentDidMount() {
-    let that = this
-    window.addEventListener('resize', () => {
-      that.setState({
-        isMobile: window.innerWidth < 700,
-      })
-    })
-  }
-
   render() {
-    const { isMobile } = this.state
-    const { metadata } = this.props
+    const { metadata, siteNavigation, siteTitle } = this.props
     return (
-      <>
-        {isMobile ? (
-          <HeaderMobile swiftypeId={metadata.swiftypeId} />
-        ) : (
-            <HeaderWrapper>
-              <Container>
-                <Flex flexWrap="wrap">
-                  <Box width={[1, 1, 1 / 3, 1 / 3]} pr={2}>
-                    <Brand />
-                  </Box>
-                  <Box
-                    width={[1, 1, 2 / 3, 2 / 3]}
-                    pl={2}
-                    className={css`
-                    text-align: right;
-                  `}
-                  >
-                    <div>
-                      <Applicant />
-                      <UserWidget loginLink={metadata.okta.login} />
-                      <Search swiftypeId={metadata.swiftypeId} />
-                    </div>
-                    <div
+      <BreakpointContext.Consumer>
+        {breakpoint => (
+          <>
+            {breakpoint.isMobile ? (
+              <HeaderMobile
+                swiftypeId={metadata.swiftypeId}
+                siteNavigation={siteNavigation}
+                siteTitle={siteTitle}
+              />
+            ) : (
+              <HeaderWrapper>
+                <Container>
+                  <Flex flexWrap="wrap">
+                    <Box width={[1, 1, 1 / 3, 1 / 3]} pr={2}>
+                      <Brand />
+                    </Box>
+                    <Box
+                      width={[1, 1, 2 / 3, 2 / 3]}
+                      pl={2}
                       className={css`
-                      margin-top: 1rem;
-                    `}
-                    >
-                      <ul
-                        className={css`
-                        margin: 0;
-                        list-style: none;
+                        text-align: right;
                       `}
+                    >
+                      <div>
+                        <Applicant />
+                        <UserWidget loginLink={metadata.okta.login} />
+                        <Search swiftypeId={metadata.swiftypeId} />
+                      </div>
+                      <div
+                        className={css`
+                          margin-top: 1rem;
+                        `}
                       >
-                        <NavigationLink to="/academics">
-                          Majors &amp; programs
-                        </NavigationLink>
-                        <NavigationLink to="/cost">
-                          Tuition &amp; aid
-                        </NavigationLink>
-                        <NavigationLink to="/everything">Everything else</NavigationLink>
-                        <NavigationLinkApply to="/apply">
-                          Apply
-                      </NavigationLinkApply>
-                      </ul>
-                    </div>
-                  </Box>
-                </Flex>
-              </Container>
-            </HeaderWrapper>
-          )}
-      </>
+                        <ul
+                          className={css`
+                            margin: 0;
+                            list-style: none;
+                          `}
+                        >
+                          <NavigationLink to="/academics">
+                            Majors &amp; programs
+                          </NavigationLink>
+                          <NavigationLink to="/cost">
+                            Tuition &amp; aid
+                          </NavigationLink>
+                          <NavigationLink to="/everything">
+                            Everything else
+                          </NavigationLink>
+                          <NavigationLinkApply to="/apply">
+                            Apply
+                          </NavigationLinkApply>
+                        </ul>
+                      </div>
+                    </Box>
+                  </Flex>
+                </Container>
+              </HeaderWrapper>
+            )}
+          </>
+        )}
+      </BreakpointContext.Consumer>
     )
   }
 }

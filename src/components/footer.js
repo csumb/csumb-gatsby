@@ -1,5 +1,5 @@
 import React from 'react'
-import VisuallyHidden from '@reach/visually-hidden'
+import VisuallyHidden from 'components/visually-hidden'
 import Link from 'gatsby-link'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
@@ -61,7 +61,7 @@ const Logo = styled('img')`
 const RightFooter = styled(Box)`
   ${bp({
     textAlign: ['normal', 'right'],
-  })}
+  })};
 `
 
 const Footer = ({ children, data }) => (

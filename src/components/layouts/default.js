@@ -7,71 +7,113 @@ import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 import { UserContext, setUserRole } from 'components/contexts/user'
 import Emergency from 'components/emergency'
+import BreakpointContext from 'components/contexts/breakpoint'
+import { ImmortalDB } from 'immortal-db'
+import url from 'url'
+
 class Layout extends React.Component {
   state = {
     user: false,
+    breakpoint: {
+      isMobile: false,
+      isDesktop: true,
+      width: 800,
+    },
   }
 
   async componentDidMount() {
-    window
-      .fetch('https://csumb.okta.com/api/v1/users/me', {
-        credentials: 'include',
+    let that = this
+    window.addEventListener('resize', () => {
+      that.setState({
+        breakpoint: {
+          isMobile: window.innerWidth <= 768,
+          isDesktop: window.innerWidth > 768,
+          width: window.innerWidth,
+        },
       })
-      .then(response => {
-        return response.json()
-      })
-      .then(user => {
-        user = setUserRole(user)
-        this.setState({
-          user: user,
+    })
+
+    window.trigger('resize')
+
+    let location = url.parse(window.location.href, true)
+    if (location.query && typeof location.query._login !== 'undefined') {
+      await ImmortalDB.remove('user')
+    }
+
+    const cachedUser = await ImmortalDB.get('user', false)
+
+    if (cachedUser) {
+      this.setState({ user: JSON.parse(cachedUser) })
+    } else {
+      window
+        .fetch('https://csumb.okta.com/api/v1/users/me', {
+          credentials: 'include',
         })
-      })
-      .catch(error => {
-        this.setState({
-          user: 'anonymous',
+        .then(response => {
+          return response.json()
         })
-      })
+        .then(user => {
+          user = setUserRole(user)
+          this.setState({
+            user: user,
+          })
+          ImmortalDB.set('user', user)
+        })
+        .catch(error => {
+          this.setState({
+            user: { anonymous: true },
+          })
+          ImmortalDB.set('user', { anonymous: true })
+        })
+    }
   }
 
   render() {
+    const { siteNavigation, siteTitle } = this.props
     let pageTitle = []
     pageTitle.push(
       typeof this.props.pageTitle !== 'undefined' ? this.props.pageTitle : null
     )
     pageTitle.push('Cal State Monterey Bay')
     return (
-      <UserContext.Provider value={this.state}>
-        <Emergency />
-        <SkipNavLink />
-        <Helmet>
-          <html lang="en" />
-          <meta charset="utf-8" />
-          <title>{pageTitle.join(' | ')}</title>
-        </Helmet>
-        <StaticQuery
-          query={graphql`
-            {
-              site {
-                siteMetadata {
-                  swiftypeId
-                  title
-                  okta {
-                    login
+      <BreakpointContext.Provider value={this.state.breakpoint}>
+        <UserContext.Provider value={{ user: this.state.user }}>
+          <Emergency />
+          <SkipNavLink />
+          <Helmet>
+            <html lang="en" />
+            <meta charset="utf-8" />
+            <title>{pageTitle.join(' | ')}</title>
+          </Helmet>
+          <StaticQuery
+            query={graphql`
+              {
+                site {
+                  siteMetadata {
+                    swiftypeId
+                    title
+                    okta {
+                      login
+                    }
                   }
                 }
               }
-            }
-          `}
-          render={data => (
-            <>
-              <Header metadata={data.site.siteMetadata} />
-            </>
-          )}
-        />
-        <SkipNavContent />
-        {this.props.children}
-        <Footer />
-      </UserContext.Provider>
+            `}
+            render={data => (
+              <>
+                <Header
+                  metadata={data.site.siteMetadata}
+                  siteNavigation={siteNavigation}
+                  siteTitle={siteTitle}
+                />
+              </>
+            )}
+          />
+          <SkipNavContent />
+          {this.props.children}
+          <Footer />
+        </UserContext.Provider>
+      </BreakpointContext.Provider>
     )
   }
 }

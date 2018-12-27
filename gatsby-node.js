@@ -5,7 +5,6 @@ const contentPages = require(`./src/node/pages`)
 const schedulePages = require(`./src/node/schedule`)
 const buildingPages = require(`./src/node/buildings`)
 const directoryPages = require(`./src/node/directory`)
-const redirects = require('./src/node/redirects')
 require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ stage, graphql, actions }) => {
@@ -16,9 +15,6 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return directoryPages(graphql, actions)
-      })
-      .then(() => {
-        return redirects(graphql, actions)
       })
       .then(() => {
         return buildingPages(graphql, actions)
@@ -42,7 +38,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             use: loaders.null(),
           },
           {
-            test: /iron-db/,
+            test: /immortal-db/,
             use: loaders.null(),
           },
         ],
