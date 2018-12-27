@@ -8,6 +8,7 @@ import '@reach/skip-nav/styles.css'
 import { UserContext, setUserRole } from 'components/contexts/user'
 import Emergency from 'components/emergency'
 import BreakpointContext from 'components/contexts/breakpoint'
+import { ImmortalDB } from 'immortal-db'
 
 class Layout extends React.Component {
   state = {
@@ -31,24 +32,32 @@ class Layout extends React.Component {
       })
     })
 
-    window
-      .fetch('https://csumb.okta.com/api/v1/users/me', {
-        credentials: 'include',
-      })
-      .then(response => {
-        return response.json()
-      })
-      .then(user => {
-        user = setUserRole(user)
-        this.setState({
-          user: user,
+    const cachedUser = await ImmortalDB.get('user', false)
+
+    if (cachedUser) {
+      this.setState({ user: JSON.parse(cachedUser) })
+    } else {
+      window
+        .fetch('https://csumb.okta.com/api/v1/users/me', {
+          credentials: 'include',
         })
-      })
-      .catch(error => {
-        this.setState({
-          user: 'anonymous',
+        .then(response => {
+          return response.json()
         })
-      })
+        .then(user => {
+          user = setUserRole(user)
+          this.setState({
+            user: user,
+          })
+          ImmortalDB.set('user', user)
+        })
+        .catch(error => {
+          this.setState({
+            user: { anonymous: true },
+          })
+          ImmortalDB.set('user', { anonymous: true })
+        })
+    }
   }
 
   render() {
