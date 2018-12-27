@@ -23,7 +23,8 @@ class Layout extends React.Component {
 
   async componentDidMount() {
     let that = this
-    window.addEventListener('resize', () => {
+
+    const setWindowSize = () => {
       that.setState({
         breakpoint: {
           isMobile: window.innerWidth <= 768,
@@ -31,9 +32,11 @@ class Layout extends React.Component {
           width: window.innerWidth,
         },
       })
-    })
+    }
 
-    window.trigger('resize')
+    window.addEventListener('resize', setWindowSize)
+
+    setWindowSize()
 
     let location = url.parse(window.location.href, true)
     if (location.query && typeof location.query._login !== 'undefined') {
