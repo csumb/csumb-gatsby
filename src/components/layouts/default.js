@@ -8,7 +8,7 @@ import '@reach/skip-nav/styles.css'
 import { UserContext, setUserRole } from 'components/contexts/user'
 import Emergency from 'components/emergency'
 import BreakpointContext from 'components/contexts/breakpoint'
-console.log(BreakpointContext)
+
 class Layout extends React.Component {
   state = {
     user: false,
