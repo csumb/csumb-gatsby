@@ -28,3 +28,9 @@
 - CSUMB_NAV_CONTENTFUL_TOKEN		
 - FIREBASE_TOKEN		
 - GITHUB_TOKEN
+
+
+## Special URLs
+There are a few special URLs or queries that do special things:
+
+- **?_login** appending the `_login` query to any URL will force the local cache of the user object to flush and re-fetch the user's data from Okta.
