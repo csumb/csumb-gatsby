@@ -50,11 +50,90 @@ const MenuBox = styled(Box)`
 `
 const MobileSiteNavigationLink = styled(LinkInspect)`
   text-decoration: none;
-  padding: 1rem;
-  &[aria-current='page'] {
+  color: ${colors.black};
+  &:visited {
+    color: ${colors.black};
+  }
+  &:hover {
     text-decoration: underline;
   }
 `
+
+const HeaderMobileSiteNavigation = styled('div')`
+  background: ${colors.primary.light};
+  padding-bottom: 0.5rem;
+`
+
+const HeaderMobileSiteTitle = styled('h3')`
+  margin: 0;
+  padding: 0.8rem 0;
+`
+
+const SiteNavigationList = styled('ul')`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  li {
+    padding-bottom: 0.5rem;
+  }
+`
+
+const MobileSiteNavigationMenuToggle = styled('button')`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+`
+
+const SiteNavigationSubItem = styled('div')`
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding: 1rem 0;
+  background: ${colors.primary.dark};
+  a {
+    color: ${colors.white};
+  }
+`
+
+class MobileSiteNavigationSubMenu extends React.Component {
+  state = {
+    isOpen: false,
+  }
+
+  handleClick(event) {
+    event.preventDefault()
+    this.setState({
+      isOpen: !this.state.isOpen,
+    })
+  }
+
+  render() {
+    const { children, navigationChildren } = this.props
+    const { isOpen } = this.state
+    return (
+      <>
+        <MobileSiteNavigationMenuToggle onClick={this.handleClick.bind(this)}>
+          {children} <span aria-hidden>▾</span>
+        </MobileSiteNavigationMenuToggle>
+        {isOpen && (
+          <SiteNavigationSubItem>
+            <Container>
+              <SiteNavigationList>
+                {navigationChildren.map(({ url, name }, key) => (
+                  <li key={key}>
+                    <MobileSiteNavigationLink to={url}>
+                      {name}
+                    </MobileSiteNavigationLink>
+                  </li>
+                ))}
+              </SiteNavigationList>
+            </Container>
+          </SiteNavigationSubItem>
+        )}
+      </>
+    )
+  }
+}
 
 const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
   return (
@@ -62,7 +141,15 @@ const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
       {to ? (
         <MobileSiteNavigationLink to={to}>{children}</MobileSiteNavigationLink>
       ) : (
-        <></>
+        <>
+          {navigationChildren && (
+            <MobileSiteNavigationSubMenu
+              navigationChildren={navigationChildren}
+            >
+              {children}
+            </MobileSiteNavigationSubMenu>
+          )}
+        </>
       )}
     </>
   )
@@ -103,6 +190,7 @@ class HeaderMobile extends React.Component {
     const siteNavigation = this.props.siteNavigation
       ? JSON.parse(this.props.siteNavigation)
       : false
+    const { siteTitle } = this.props
     return (
       <header>
         <HeaderMobileWrapper>
@@ -163,15 +251,25 @@ class HeaderMobile extends React.Component {
               </MobileNavigationLink>
             </HeaderMobileNavigation>
             {siteNavigation && (
-              <Container>
-                {siteNavigation.map((item, key) => (
-                  <li key={key}>
-                    <MobileSiteNavigationItem to={item.url}>
-                      {item.name}
-                    </MobileSiteNavigationItem>
-                  </li>
-                ))}
-              </Container>
+              <HeaderMobileSiteNavigation>
+                <Container>
+                  {siteTitle && (
+                    <HeaderMobileSiteTitle>{siteTitle}</HeaderMobileSiteTitle>
+                  )}
+                  <SiteNavigationList>
+                    {siteNavigation.map((item, key) => (
+                      <li key={key}>
+                        <MobileSiteNavigationItem
+                          to={item.url}
+                          navigationChildren={item.children}
+                        >
+                          {item.name}
+                        </MobileSiteNavigationItem>
+                      </li>
+                    ))}
+                  </SiteNavigationList>
+                </Container>
+              </HeaderMobileSiteNavigation>
             )}
           </>
         )}

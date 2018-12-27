@@ -67,7 +67,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { siteNavigation } = this.props
+    const { siteNavigation, siteTitle } = this.props
     let pageTitle = []
     pageTitle.push(
       typeof this.props.pageTitle !== 'undefined' ? this.props.pageTitle : null
@@ -102,6 +102,7 @@ class Layout extends React.Component {
                 <Header
                   metadata={data.site.siteMetadata}
                   siteNavigation={siteNavigation}
+                  siteTitle={siteTitle}
                 />
               </>
             )}
