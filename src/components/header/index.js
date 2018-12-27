@@ -18,7 +18,7 @@ const HeaderWrapper = styled('header')`
 
 class Header extends React.Component {
   render() {
-    const { metadata, siteNavigation } = this.props
+    const { metadata, siteNavigation, siteTitle } = this.props
     return (
       <BreakpointContext.Consumer>
         {breakpoint => (
@@ -27,6 +27,7 @@ class Header extends React.Component {
               <HeaderMobile
                 swiftypeId={metadata.swiftypeId}
                 siteNavigation={siteNavigation}
+                siteTitle={siteTitle}
               />
             ) : (
               <HeaderWrapper>
