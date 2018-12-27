@@ -38,7 +38,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             use: loaders.null(),
           },
           {
-            test: /iron-db/,
+            test: /immortal-db/,
             use: loaders.null(),
           },
         ],
