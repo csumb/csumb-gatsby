@@ -4,50 +4,48 @@ import { colors } from 'components/styles/theme'
 import styled from 'react-emotion'
 import { MobileNavigationLink } from './navigation-link'
 import VisuallyHidden from 'components/visually-hidden'
-import { Flex, Box } from '@rebass/grid/emotion'
 import Search from './search'
 import Container from 'components/container'
-import { css } from 'react-emotion'
 import UserWidget from './user-widget'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
+import { Flex, Box } from '@rebass/grid/emotion'
 import LinkInspect from 'components/link-inspect'
+import Link from 'gatsby-link'
 
 const HeaderMobileWrapper = styled('div')`
-  padding: 0.5rem 0.25rem;
-`
-
-const mobileButton = css`
-  border: 0;
-  padding: 0.3rem;
-  font-size: 1.8rem;
+  padding: 0.5rem;
 `
 
 const HeaderMobileToggle = styled('button')`
-  ${mobileButton};
-`
-
-const HeaderMobileSearchToggle = styled('button')`
-  ${mobileButton};
-  margin-right: 1.5rem;
+  border: 0;
+  font-size: 1.8rem;
+  display: inline-block;
+  float: left;
+  margin-right: 1rem;
+  width: 1.2em;
 `
 
 const HeaderMobileNavigation = styled('ul')`
   margin: 0;
   list-style: none;
-  margin-top: 1rem;
   padding: 0;
   background: ${colors.primary.darkest};
 `
 
 const HeaderMobileSearch = styled('div')`
   background: white;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
 `
 
-const MenuBox = styled(Box)`
-  text-align: right;
+const HeaderMobileApply = styled(Link)`
+  color: ${colors.white};
+  background: ${colors.indicators.high};
+  padding: 0.3rem;
+  float: right;
+  text-decoration: none;
 `
+
 const MobileSiteNavigationLink = styled(LinkInspect)`
   text-decoration: none;
   color: ${colors.black};
@@ -157,36 +155,18 @@ const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
 
 class HeaderMobile extends React.Component {
   state = {
-    hasNavigation: false,
-    hasSearch: false,
+    isOpen: false,
   }
 
   mobileToggle(event) {
     event.preventDefault()
     this.setState({
-      hasNavigation: !this.state.hasNavigation,
-      hasSearch: false,
+      isOpen: !this.state.isOpen,
     })
   }
-
-  searchToggle(event) {
-    event.preventDefault()
-    this.setState({
-      hasSearch: !this.state.hasSearch,
-      hasNavigation: false,
-    })
-  }
-
-  /*componentDidUpdate(prevProps, prevState) {
-    if (!prevState.hasNavigation && this.state.hasNavigation) {
-      this.navRef.focus()
-    } else {
-      this.navButtonRef.focus()
-    }
-  }*/
 
   render() {
-    const { hasSearch, hasNavigation } = this.state
+    const { isOpen } = this.state
     const siteNavigation = this.props.siteNavigation
       ? JSON.parse(this.props.siteNavigation)
       : false
@@ -195,40 +175,30 @@ class HeaderMobile extends React.Component {
       <header>
         <HeaderMobileWrapper>
           <Flex flexWrap="wrap">
-            <Box width={[1 / 2]} px={2}>
-              <Brand mobile={true} />
-            </Box>
-            <MenuBox width={[1 / 2]} px={2}>
-              <HeaderMobileSearchToggle
-                onClick={this.searchToggle.bind(this)}
-                ref={node => {
-                  this.searchButtonRef = node
-                }}
-              >
-                <VisuallyHidden>Search</VisuallyHidden>
-                <FontAwesomeIcon icon={faSearch} />
-              </HeaderMobileSearchToggle>
+            <Box width={[2 / 3]}>
               <HeaderMobileToggle
                 onClick={this.mobileToggle.bind(this)}
                 ref={node => {
                   this.navButtonRef = node
                 }}
               >
-                <FontAwesomeIcon icon={faBars} />
+                <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
                 <VisuallyHidden>Menu</VisuallyHidden>
               </HeaderMobileToggle>
-            </MenuBox>
+              <Brand mobile={true} />
+            </Box>
+            <Box width={[1 / 3]}>
+              <HeaderMobileApply to="/apply">Apply</HeaderMobileApply>
+            </Box>
           </Flex>
         </HeaderMobileWrapper>
-        {hasSearch && (
-          <HeaderMobileSearch>
-            <Search swiftypeId={this.props.swiftypeId} fullWidth />
-          </HeaderMobileSearch>
-        )}
-        {hasNavigation && (
+        {isOpen && (
           <>
             <Container>
               <UserWidget />
+              <HeaderMobileSearch>
+                <Search swiftypeId={this.props.swiftypeId} fullWidth />
+              </HeaderMobileSearch>
             </Container>
             <HeaderMobileNavigation
               tabIndex="-1"
