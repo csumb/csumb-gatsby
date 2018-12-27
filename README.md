@@ -22,12 +22,12 @@
 
 ## Environment variables
 
-- CSUMB_HOME_CONTENTFUL_SPACE		
-- CSUMB_HOME_CONTENTFUL_TOKEN		
-- CSUMB_NAV_CONTENTFUL_SPACE		
-- CSUMB_NAV_CONTENTFUL_TOKEN		
-- FIREBASE_TOKEN		
-- GITHUB_TOKEN
+- **CSUMB_HOME_CONTENTFUL_SPACE**	 - the space ID for the homepage contentful space	
+- **CSUMB_HOME_CONTENTFUL_TOKEN**	- Token for above
+- **CSUMB_NAV_CONTENTFUL_SPACE** - The space ID for the general navigation (everything else) page	
+- **CSUMB_NAV_CONTENTFUL_TOKEN** - Token for above
+- **FIREBASE_TOKEN** - Token to deploy to Firebase
+- **GITHUB_TOKEN** - Token for fetching content from the web content repo
 
 
 ## Special URLs
