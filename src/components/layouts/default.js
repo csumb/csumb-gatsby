@@ -9,6 +9,7 @@ import { UserContext, setUserRole } from 'components/contexts/user'
 import Emergency from 'components/emergency'
 import BreakpointContext from 'components/contexts/breakpoint'
 import { ImmortalDB } from 'immortal-db'
+import url from 'url'
 
 class Layout extends React.Component {
   state = {
@@ -31,6 +32,11 @@ class Layout extends React.Component {
         },
       })
     })
+
+    let location = url.parse(window.location.href, true)
+    if (location.query && typeof location.query._login !== 'undefined') {
+      await ImmortalDB.remove('user')
+    }
 
     const cachedUser = await ImmortalDB.get('user', false)
 
