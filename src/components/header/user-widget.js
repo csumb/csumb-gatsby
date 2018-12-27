@@ -1,22 +1,28 @@
 import React from 'react'
 import styled from 'react-emotion'
 import { colors, fonts } from 'components/styles/theme'
-import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
+import {
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuButton,
+  MenuLink,
+} from '@reach/menu-button'
 import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
-import { IronDB } from 'iron-db'
+import { ImmortalDB } from 'immortal-db'
 import { css } from 'emotion'
 
 import '@reach/menu-button/styles.css'
 
 const userLinkStyles = css`
-color: ${colors.primary.darkest} !important;
-text-decoration: none;
-font-weight: bold;
-display: inline-block;
-&:hover {
-  text-decoration: underline;
-}
+  color: ${colors.primary.darkest} !important;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
 const UserLoginLink = styled('a')`
@@ -50,15 +56,28 @@ const UserDropdownMenuLink = styled(MenuLink)`
   }
 `
 
+const UserDropdownMenuLinkButton = styled(MenuItem)`
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  &:hover,
+  &:focus {
+    background: ${colors.primary.darkest};
+    color: ${colors.white};
+  }
+`
+
 const UserDashboardLink = styled(Link)`
   ${userLinkStyles};
   margin-right: 1rem;
 `
 
 class UserDropdown extends React.Component {
-  handleLogout() {
-    IronDB.remove('user')
-    IronDB.remove('messageCount')
+  handleLogout(event) {
+    event.preventDefault()
+    ImmortalDB.remove('user')
+    ImmortalDB.remove('messageCount')
+    window.location.href = 'https://csumb.okta.com/logout'
   }
 
   render() {
@@ -77,21 +96,17 @@ class UserDropdown extends React.Component {
               Public profile
             </UserDropdownMenuLink>
           ) : (
-              <></>
-            )}
+            <></>
+          )}
           <UserDropdownMenuLink component="a" href="/account/card">
             OtterCard
           </UserDropdownMenuLink>
           <UserDropdownMenuLink component="a" href="/account/print">
             Print balance
           </UserDropdownMenuLink>
-          <UserDropdownMenuLink
-            component="a"
-            onClick={this.handleLogout.bind(this)}
-            href="https://csumb.okta.com/logout"
-          >
+          <UserDropdownMenuLinkButton onClick={this.handleLogout.bind(this)}>
             Log out
-          </UserDropdownMenuLink>
+          </UserDropdownMenuLinkButton>
         </UserDropdownMenuList>
       </Menu>
     )
@@ -99,6 +114,11 @@ class UserDropdown extends React.Component {
 }
 
 class UserWidget extends React.Component {
+  handleLogin(event) {
+    ImmortalDB.remove('user')
+    window.location.href = this.props.loginLink
+  }
+
   render() {
     return (
       <>
@@ -108,22 +128,22 @@ class UserWidget extends React.Component {
               {context.user === false ? (
                 <></>
               ) : (
-                  <>
-                    {context.user === 'anonymous' ? (
-                      <UserLoginLink href={this.props.loginLink}>
-                        Log in
+                <>
+                  {context.user.anonymous ? (
+                    <UserLoginLink onClick={this.handleLogin.bind(this)}>
+                      Log in
                     </UserLoginLink>
-                    ) : (
-                        <>
-                          <UserDashboardLink to="/dashboard">
-                            Dashboard
+                  ) : (
+                    <>
+                      <UserDashboardLink to="/dashboard">
+                        Dashboard
                         <UnreadMessages user={context.user} />
-                          </UserDashboardLink>
-                          <UserDropdown user={context.user} />
-                        </>
-                      )}
-                  </>
-                )}
+                      </UserDashboardLink>
+                      <UserDropdown user={context.user} />
+                    </>
+                  )}
+                </>
+              )}
             </>
           )}
         </UserContext.Consumer>
@@ -170,27 +190,33 @@ class UnreadMessages extends React.Component {
     return roles.join(',')
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const login = this.props.user.profile.login.split('@').shift()
-    window
-      .fetch(
-        `https://messaging-staging.herokuapp.com/api/unread/${login}/${this.getRoles()}`
-      )
-      .then(response => {
-        return response.json()
+    const messageCount = await ImmortalDB.get('messageCount', false)
+    if (messageCount !== false) {
+      this.setState({
+        unread: messageCount,
       })
-      .then(messages => {
-        this.setState({
-          unread: messages.unread,
+    } else {
+      window
+        .fetch(
+          `https://messaging-staging.herokuapp.com/api/unread/${login}/${this.getRoles()}`
+        )
+        .then(response => {
+          return response.json()
         })
-
-        IronDB.set('messageCount', messages.unread)
-      })
-      .catch(error => {
-        this.setState({
-          unread: false,
+        .then(messages => {
+          this.setState({
+            unread: messages.unread,
+          })
+          ImmortalDB.set('messageCount', messages.unread)
         })
-      })
+        .catch(error => {
+          this.setState({
+            unread: false,
+          })
+        })
+    }
   }
   render() {
     return (
