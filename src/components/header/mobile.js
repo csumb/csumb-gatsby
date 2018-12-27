@@ -24,6 +24,7 @@ const HeaderMobileToggle = styled('button')`
   float: left;
   margin-right: 1rem;
   width: 1.2em;
+  cursor: pointer;
 `
 
 const HeaderMobileNavigation = styled('ul')`
