@@ -9,7 +9,10 @@ module.exports = {
     '^components/(.*)': '<rootDir>/src/components/$1',
   },
   testPathIgnorePatterns: ['node_modules', '.cache', 'src/custom-build'],
-  transformIgnorePatterns: ['node_modules/(?!(gatsby)/)'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(gatsby)/)',
+    'node_modules/(?!(immortal-db)/)',
+  ],
   globals: {
     __PATH_PREFIX__: '',
   },
