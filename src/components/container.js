@@ -3,7 +3,7 @@ import { Box } from '@rebass/grid/emotion'
 import bp from './styles/breakpoints'
 import styled from 'react-emotion'
 
-const padding = ['1rem', '1rem', 'auto']
+const margin = ['1rem', '1rem', 'auto']
 
 const ContainerElement = styled(Box)`
   ${props =>
@@ -16,8 +16,8 @@ const ContainerElement = styled(Box)`
 const Container = props => (
   <ContainerElement
     width={['auto', 'auto', '1100px']}
-    pl={padding}
-    pr={padding}
+    ml={margin}
+    mr={margin}
     {...props}
   />
 )
