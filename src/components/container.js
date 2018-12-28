@@ -1,9 +1,6 @@
 import React from 'react'
 import { Box } from '@rebass/grid/emotion'
-import bp from './styles/breakpoints'
 import styled from 'react-emotion'
-
-const margin = ['1rem', '1rem', 'auto']
 
 const ContainerElement = styled(Box)`
   ${props =>
@@ -11,15 +8,13 @@ const ContainerElement = styled(Box)`
     `
     padding-top: 1.5rem;
   `};
+  max-width: 1100px;
 `
 
-const Container = props => (
-  <ContainerElement
-    width={['auto', 'auto', '1100px']}
-    ml={margin}
-    mr={margin}
-    {...props}
-  />
-)
+ContainerElement.defaultProps = {
+  mx: ['1rem', '1rem', 'auto'],
+}
+
+const Container = props => <ContainerElement {...props} />
 
 export default Container
