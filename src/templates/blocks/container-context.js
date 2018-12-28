@@ -8,7 +8,7 @@ const containerStyle = {
     bp({
       marginLeft: ['1rem', 'auto'],
       marginRight: ['1rem', 'auto'],
-      width: ['100%', '100%', '66ch', '66ch'],
+      width: ['100%', '100%', '66ch'],
     })
   ),
   column: css(
@@ -22,14 +22,14 @@ const containerStyle = {
     bp({
       marginLeft: ['1rem', 'auto'],
       marginRight: ['1rem', 'auto'],
-      width: ['auto', 'auto', 'auto', 1100],
+      width: ['auto', 'auto', 1100],
     })
   ),
   slightlyLarger: css(
     bp({
       marginLeft: ['1rem', 'auto'],
       marginRight: ['1rem', 'auto'],
-      width: ['100%', '100%', '80ch', '80ch'],
+      width: ['100%', '100%', '80ch'],
     })
   ),
 }
