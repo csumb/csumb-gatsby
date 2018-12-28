@@ -1,7 +1,6 @@
 import React from 'react'
 import bp from 'components/styles/breakpoints'
 import { css } from 'emotion'
-import { Box } from '@rebass/grid/emotion'
 import styled from 'react-emotion'
 
 const containerStyle = {

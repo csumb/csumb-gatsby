@@ -118,7 +118,7 @@ class InputText extends FormElement {
   render() {
     const {
       inline,
-      value,
+      defaultValue,
       isRequired,
       hideLabel,
       label,
@@ -135,7 +135,7 @@ class InputText extends FormElement {
         </Label>
         <InputTextElement
           type="text"
-          value={value}
+          defaultValue={defaultValue}
           {...this.cleanProps()}
           id={this.htmlId}
           innerRef={forwardedRef}
