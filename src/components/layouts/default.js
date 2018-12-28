@@ -11,6 +11,8 @@ import BreakpointContext from 'components/contexts/breakpoint'
 import { ImmortalDB } from 'immortal-db'
 import url from 'url'
 
+const mobileBreakpoint = 830
+
 class Layout extends React.Component {
   state = {
     user: false,
@@ -23,17 +25,20 @@ class Layout extends React.Component {
 
   async componentDidMount() {
     let that = this
-    window.addEventListener('resize', () => {
+
+    const setWindowSize = () => {
       that.setState({
         breakpoint: {
-          isMobile: window.innerWidth <= 768,
-          isDesktop: window.innerWidth > 768,
+          isMobile: window.innerWidth <= mobileBreakpoint,
+          isDesktop: window.innerWidth > mobileBreakpoint,
           width: window.innerWidth,
         },
       })
-    })
+    }
 
-    window.trigger('resize')
+    window.addEventListener('resize', setWindowSize)
+
+    setWindowSize()
 
     let location = url.parse(window.location.href, true)
     if (location.query && typeof location.query._login !== 'undefined') {
@@ -69,12 +74,8 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { siteNavigation, siteTitle } = this.props
-    let pageTitle = []
-    pageTitle.push(
-      typeof this.props.pageTitle !== 'undefined' ? this.props.pageTitle : null
-    )
-    pageTitle.push('Cal State Monterey Bay')
+    const { siteNavigation, siteTitle, pageTitle } = this.props
+
     return (
       <BreakpointContext.Provider value={this.state.breakpoint}>
         <UserContext.Provider value={{ user: this.state.user }}>
@@ -83,7 +84,10 @@ class Layout extends React.Component {
           <Helmet>
             <html lang="en" />
             <meta charset="utf-8" />
-            <title>{pageTitle.join(' | ')}</title>
+            <title>
+              {`${pageTitle ? `${pageTitle} |` : ''}
+              Cal State Monterey Bay`}
+            </title>
           </Helmet>
           <StaticQuery
             query={graphql`
