@@ -11,6 +11,8 @@ import BreakpointContext from 'components/contexts/breakpoint'
 import { ImmortalDB } from 'immortal-db'
 import url from 'url'
 
+const mobileBreakpoint = 830
+
 class Layout extends React.Component {
   state = {
     user: false,
@@ -27,8 +29,8 @@ class Layout extends React.Component {
     const setWindowSize = () => {
       that.setState({
         breakpoint: {
-          isMobile: window.innerWidth <= 768,
-          isDesktop: window.innerWidth > 768,
+          isMobile: window.innerWidth <= mobileBreakpoint,
+          isDesktop: window.innerWidth > mobileBreakpoint,
           width: window.innerWidth,
         },
       })
