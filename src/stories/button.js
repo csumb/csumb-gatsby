@@ -26,6 +26,11 @@ storiesOf('ButtonLink', module)
       A huge button
     </ButtonLink>
   ))
+  .add('ExtraMargin', () => (
+    <ButtonLink to="#here" buttonType="primary" extraMargin>
+      I have some extra vertical margins
+    </ButtonLink>
+  ))
 
 storiesOf('Button', module)
   .add('Default', () => <Button>A native button</Button>, {
@@ -39,6 +44,11 @@ storiesOf('Button', module)
   .add('Huge', () => (
     <Button to="#here" buttonType="primary" huge>
       A huge button
+    </Button>
+  ))
+  .add('ExtraMargin', () => (
+    <Button to="#here" buttonType="primary" extraMargin>
+      I have some extra vertical margins
     </Button>
   ))
 

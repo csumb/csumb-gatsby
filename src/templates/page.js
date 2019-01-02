@@ -1,6 +1,7 @@
 import React from 'react'
 //import Link from 'gatsby'
 import Blocks from './blocks'
+import PageFeedback from 'components/page-feedback'
 import Layout from 'components/layouts/default'
 import SiteNavigation from 'components/site-navigation'
 import SiteHeader from 'components/site-header'
@@ -19,7 +20,10 @@ class PageTemplate extends React.Component {
       layout,
       event,
       pageContent,
+      feedbackEmail,
+      pageUrl
     } = this.props.pageContext
+
 
     return (
       <Layout
@@ -35,6 +39,7 @@ class PageTemplate extends React.Component {
         </Container>
         {event && <EventPage event={event} />}
         <Blocks blocks={pageContent} />
+        <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
       </Layout>
     )
   }
