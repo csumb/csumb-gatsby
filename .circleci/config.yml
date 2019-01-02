@@ -53,10 +53,6 @@ jobs:
           command: npm run configFirebase
 
       - run:
-          name: Build storybook
-          command: npm run storybookbuild
-
-      - run:
           name: Check canary files exist
           command: npm run canary
 
@@ -104,4 +100,9 @@ jobs:
       - run: 
           name: Push changes
           command: cd style-guide; git add *; git commit -m "Updated storybook"; git push origin gh-pages;
-      
+workflows:
+  version: 2
+  build_and_style_guide:
+    jobs:
+      - build
+      - styleguide
