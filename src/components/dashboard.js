@@ -4,7 +4,6 @@ import { colors, fonts } from 'components/styles/theme'
 import styled from 'react-emotion'
 import Loading from 'components/loading'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { ButtonLink } from 'components/button'
 import { AlertEmpty } from 'components/alert'
 import VisuallyHidden from 'components/visually-hidden'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
@@ -51,8 +50,9 @@ const appToolsStyle = `
   }
 `
 
-const EditOrderButton = styled(ButtonLink)`
+const EditOrderButton = styled('a')`
   ${appToolsStyle};
+  text-decoration: none;
 `
 
 const AppTools = styled(Box)`
@@ -130,8 +130,9 @@ class DashboardApps extends React.Component {
                 ))}
               </Box>
               <AppTools width={[1, 2 / 12]}>
-                <EditOrderButton to="https://csumb.okta.com/">
+                <EditOrderButton href="https://csumb.okta.com/" target="_blank">
                   Edit order
+                  <VisuallyHidden> of apps</VisuallyHidden>
                 </EditOrderButton>
                 <Menu>
                   <AppsDropdownButton>
@@ -222,12 +223,12 @@ class DashboardMessages extends React.Component {
                 ))}
               </>
             ) : (
-              <AlertEmpty>You do not have any messages</AlertEmpty>
-            )}
+                <AlertEmpty>You do not have any messages</AlertEmpty>
+              )}
           </>
         ) : (
-          <Loading>Loading messages</Loading>
-        )}
+            <Loading>Loading messages</Loading>
+          )}
       </>
     )
   }
@@ -272,7 +273,7 @@ class DashboardMessage extends React.Component {
     window
       .fetch(
         `https://messaging-staging.herokuapp.com/api/archive/${login}/${
-          message.uuid
+        message.uuid
         }`
       )
       .then(response => {
@@ -366,12 +367,12 @@ class DashboardEvents extends React.Component {
                 ))}
               </>
             ) : (
-              <AlertEmpty>No events</AlertEmpty>
-            )}
+                <AlertEmpty>No events</AlertEmpty>
+              )}
           </>
         ) : (
-          <Loading>Loading events</Loading>
-        )}
+            <Loading>Loading events</Loading>
+          )}
       </>
     )
   }
