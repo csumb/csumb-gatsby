@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/site-header'
-import { graphql } from 'gatsby'
+//import { graphql } from 'gatsby'
 import Container from 'components/container'
 
 class EventsPage extends React.Component {
@@ -16,7 +16,7 @@ class EventsPage extends React.Component {
 }
 
 export default EventsPage
-
+/*
 export const query = graphql`
   {
     allCsumbContentPage(filter: { event: { description: { ne: null } } }) {
@@ -55,3 +55,4 @@ export const query = graphql`
     }
   }
 `
+*/
