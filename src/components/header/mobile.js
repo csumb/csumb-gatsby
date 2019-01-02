@@ -140,16 +140,16 @@ const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
       {to ? (
         <MobileSiteNavigationLink to={to}>{children}</MobileSiteNavigationLink>
       ) : (
-        <>
-          {navigationChildren && (
-            <MobileSiteNavigationSubMenu
-              navigationChildren={navigationChildren}
-            >
-              {children}
-            </MobileSiteNavigationSubMenu>
-          )}
-        </>
-      )}
+          <>
+            {navigationChildren && (
+              <MobileSiteNavigationSubMenu
+                navigationChildren={navigationChildren}
+              >
+                {children}
+              </MobileSiteNavigationSubMenu>
+            )}
+          </>
+        )}
     </>
   )
 }
@@ -176,7 +176,7 @@ class HeaderMobile extends React.Component {
       <header>
         <HeaderMobileWrapper>
           <Flex flexWrap="wrap">
-            <Box width={[2 / 3]}>
+            <Box width={[9 / 12]}>
               <HeaderMobileToggle
                 onClick={this.mobileToggle.bind(this)}
                 ref={node => {
@@ -188,7 +188,7 @@ class HeaderMobile extends React.Component {
               </HeaderMobileToggle>
               <Brand mobile={true} />
             </Box>
-            <Box width={[1 / 3]}>
+            <Box width={[3 / 12]}>
               <HeaderMobileApply to="/apply">Apply</HeaderMobileApply>
             </Box>
           </Flex>
