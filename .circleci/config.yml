@@ -63,3 +63,45 @@ jobs:
       - run:
           name: Firebase deploy
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $CIRCLE_BRANCH
+  styleguide:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.11
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: npm i
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: 
+          name: Checkout storybook repo
+          command: git clone --branch gh-pages https://$GITHUB_TOKEN@github.com/csumb/style-guide.git
+      
+      # build storybook
+      - run:
+          name: Build storybook
+          command: npm run storybookbuild
+    
+      - run: 
+          name: Push changes
+          command: cd style-guide; git add *; git commit -m "Updated storybook"; git push origin gh-pages;
+      
