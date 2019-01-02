@@ -1,24 +1,19 @@
 import React from 'react'
-import { css } from 'emotion'
-import bp from './styles/breakpoints'
+import { Box } from '@rebass/grid/emotion'
 import styled from 'react-emotion'
 
-const containerClass = css(
-  bp({
-    width: ['auto', 'auto', 'auto', 1100],
-    marginLeft: ['1rem', '0.5rem', '0.5rem', 'auto'],
-    marginRight: ['1rem', '0.5rem', '0.5rem', 'auto'],
-  })
-)
-
-const ContainerElement = styled('div')`
-  ${containerClass};
+const ContainerElement = styled(Box)`
   ${props =>
     props.topPadding &&
     `
     padding-top: 1.5rem;
   `};
+  max-width: 1100px;
 `
+
+ContainerElement.defaultProps = {
+  mx: ['1rem', '1rem', 'auto'],
+}
 
 const Container = props => <ContainerElement {...props} />
 

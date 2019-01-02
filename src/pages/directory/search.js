@@ -70,7 +70,22 @@ class DirectorySearchResults extends React.Component {
   state = {
     search: false,
   }
+
   componentDidMount() {
+    this.searchDirectory()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.query !== prevProps.query) {
+      this.searchDirectory()
+      const url = `${window.location.protocol}//${window.location.host}${
+        window.location.pathname
+      }?q=${this.props.query}`
+      window.history.pushState({ path: url }, '', url)
+    }
+  }
+
+  searchDirectory() {
     const { query, people, departments } = this.props
     let search = {
       people: [],
@@ -91,10 +106,12 @@ class DirectorySearchResults extends React.Component {
         search.departments.push(department.node)
       }
     })
+
     this.setState({
       search: search,
     })
   }
+
   render() {
     const { search } = this.state
     return (
@@ -119,6 +136,8 @@ class DirectorySearchPage extends React.Component {
     query: false,
   }
 
+  updatedQuery = false
+
   componentDidMount() {
     let query = null
     let location = url.parse(window.location.href, true)
@@ -131,8 +150,13 @@ class DirectorySearchPage extends React.Component {
   }
 
   handleChange(event) {
+    this.updatedQuery = event.target.value.toLowerCase()
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
     this.setState({
-      query: event.target.value.toLowerCase(),
+      query: this.updatedQuery,
     })
   }
 
@@ -143,7 +167,11 @@ class DirectorySearchPage extends React.Component {
       <Layout>
         <SiteHeader path="/directory">Directory</SiteHeader>
         <Container>
-          <form method="get" action="/directory/search">
+          <form
+            method="get"
+            action="/directory/search"
+            onSubmit={this.handleSubmit.bind(this)}
+          >
             <h2>Search people and departments</h2>
             <Flex flexWrap="wrap">
               <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
@@ -151,7 +179,7 @@ class DirectorySearchPage extends React.Component {
                   name="q"
                   label="Search the directory"
                   onChange={this.handleChange.bind(this)}
-                  value={query && query}
+                  defaultValue={query ? query : ''}
                   huge
                   hideLabel
                 />
