@@ -1,7 +1,7 @@
+import '@babel/polyfill';
 import { configure, addDecorator } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { withInfo } from '@storybook/addon-info'
-import '@babel/polyfill';
 
 addDecorator(
   withInfo({

@@ -83,7 +83,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "storybookbuild": "build-storybook -c .storybook -o /Applications/MAMP/htdocs/style-guide",
+    "storybookbuild": "build-storybook -c .storybook -o ./style-guide",
     "test": "jest",
     "now-start": "npm run build",
     "firebase": "gatsby build; npm run storybookbuild; firebase deploy;",
