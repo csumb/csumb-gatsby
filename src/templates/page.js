@@ -20,10 +20,10 @@ class PageTemplate extends React.Component {
       layout,
       event,
       pageContent,
-      feedbackEmail
+      feedbackEmail,
+      pageUrl
     } = this.props.pageContext
 
-    const { path } = this.props
 
     return (
       <Layout
@@ -39,7 +39,7 @@ class PageTemplate extends React.Component {
         </Container>
         {event && <EventPage event={event} />}
         <Blocks blocks={pageContent} />
-        <PageFeedback email={feedbackEmail} title={title} url={path} />
+        <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
       </Layout>
     )
   }

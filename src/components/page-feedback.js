@@ -3,6 +3,8 @@ import Container from 'components/container'
 import { LinkyButton } from 'components/button'
 import { InputText, Submit } from 'components/forms'
 import { AlertInfo } from 'components/alert'
+import Well from 'components/well'
+import querystring from 'querystring'
 
 const FormPreamble = () => (
   <>
@@ -15,13 +17,48 @@ const FormPreamble = () => (
 class PageFeedbackForm extends React.Component {
 
   state = {
-    feedbackSent: false
+    feedbackSent: false,
+    action: '',
+    problem: '',
+    email: ''
   }
 
   handleSubmit(event) {
     event.preventDefault()
+
+
+    const data = {
+      feedbackEmail: this.props.email,
+      title: this.props.title,
+      action: this.state.action,
+      problem: this.state.problem,
+      email: this.state.email,
+      link: `https://csumb.edu/${this.props.url}`
+    }
+
+    fetch(`http://localhost:5000/feedback?${querystring.stringify(data)}`)
+
     this.setState({
       feedbackSent: true
+    })
+
+  }
+
+  handleAction(event) {
+    this.setState({
+      action: event.target.value
+    })
+  }
+
+  handleProblem(event) {
+    this.setState({
+      problem: event.target.value
+    })
+  }
+
+  handleEmail(event) {
+    this.setState({
+      email: event.target.value
     })
   }
 
@@ -30,7 +67,7 @@ class PageFeedbackForm extends React.Component {
     const { feedbackSent } = this.state
 
     return (
-      <>
+      <Well>
         {feedbackSent ? (
           <AlertInfo type="polite">
             <h4>Thanks for your help</h4>
@@ -39,13 +76,13 @@ class PageFeedbackForm extends React.Component {
         ) : (
             <form onSubmit={this.handleSubmit.bind(this)}>
               <FormPreamble />
-              <InputText name="action" label="What you were doing" required />
-              <InputText name="problem" label="What went wrong" required />
-              <InputText name="email" label="Your email" helpText="Your email address is optional." />
+              <InputText name="action" onChange={this.handleAction.bind(this)} label="What you were doing" required />
+              <InputText name="problem" onChange={this.handleProblem.bind(this)} label="What went wrong" required />
+              <InputText name="email" onChange={this.handleEmail.bind(this)} label="Your email" helpText="Your email address is optional." />
               <Submit value="Send feedback" />
             </form>
           )}
-      </>
+      </Well>
     )
   }
 }
