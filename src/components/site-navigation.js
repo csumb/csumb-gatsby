@@ -4,6 +4,7 @@ import Container from './container'
 import styled from 'react-emotion'
 import { colors, fonts } from './styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
+import BreakpointContext from 'components/contexts/breakpoint'
 
 import '@reach/menu-button/styles.css'
 
@@ -97,22 +98,30 @@ class SiteNavigation extends React.Component {
     const navigation = JSON.parse(this.props.navigation)
 
     return (
-      <SiteNavigationBar>
-        <Container>
-          <SiteNavigationList>
-            {navigation.map((item, key) => (
-              <li key={key}>
-                <SiteNavigationItem
-                  to={item.url}
-                  navigationChildren={item.children}
-                >
-                  {item.name}
-                </SiteNavigationItem>
-              </li>
-            ))}
-          </SiteNavigationList>
-        </Container>
-      </SiteNavigationBar>
+      <BreakpointContext.Consumer>
+        {breakpoint => (
+          <>
+            {breakpoint.isDesktop && (
+              <SiteNavigationBar>
+                <Container>
+                  <SiteNavigationList>
+                    {navigation.map((item, key) => (
+                      <li key={key}>
+                        <SiteNavigationItem
+                          to={item.url}
+                          navigationChildren={item.children}
+                        >
+                          {item.name}
+                        </SiteNavigationItem>
+                      </li>
+                    ))}
+                  </SiteNavigationList>
+                </Container>
+              </SiteNavigationBar>
+            )}
+          </>
+        )}
+      </BreakpointContext.Consumer>
     )
   }
 }

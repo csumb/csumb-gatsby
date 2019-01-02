@@ -2,15 +2,22 @@ import React from 'react'
 import styled from 'react-emotion'
 import Link from 'gatsby-link'
 import Container from './container'
+import { css } from 'react-emotion'
 import { colors } from './styles/theme'
+import bp from './styles/breakpoints'
 
+const siteHeaderSize = css(
+  bp({
+    fontSize: ['1.5rem', '2rem', '2.5rem'],
+  })
+)
 
 const SiteHeaderWrapper = styled('div')`
   background: ${colors.primary.darkest};
   padding: 1rem 0;
   h2 {
     margin: 0;
-    font-size: 2.5rem;
+    ${siteHeaderSize};
   }
   a,
   a:visited {

@@ -22,7 +22,11 @@ class PageTemplate extends React.Component {
     } = this.props.pageContext
 
     return (
-      <Layout pageTitle={title}>
+      <Layout
+        pageTitle={title}
+        siteNavigation={navigation}
+        siteTitle={site.title}
+      >
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
         <Container>

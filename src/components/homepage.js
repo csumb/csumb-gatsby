@@ -112,7 +112,7 @@ const NavigationItem = styled(Box)`
 const HomepageNavigation = ({ items }) => (
   <Flex flexWrap="wrap">
     {items[0].node.items.map(item => (
-      <Box width={[1, 1 / 3]} px={4}>
+      <Box width={[1, 1 / 3]} px={4} key={item.contentful_id}>
         <NavigationItem>
           <Link to={item.link}>
             <NavigationHeader>{item.title}</NavigationHeader>
@@ -129,7 +129,7 @@ const HomepageNavigation = ({ items }) => (
   </Flex>
 )
 
-const NonFeaturedStory = ({ link, image, title, eventDate }) => (
+const NonFeaturedStory = ({ contentful_id, link, image, title, eventDate }) => (
   <Story>
     <a href={link}>
       <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />

@@ -6,30 +6,30 @@ import styled from 'react-emotion'
 const containerStyle = {
   normal: css(
     bp({
-      marginLeft: ['1rem', 'auto'],
-      marginRight: ['1rem', 'auto'],
-      width: ['100%', '100%', '66ch', '66ch'],
+      marginLeft: ['1rem', '1rem', 'auto'],
+      marginRight: ['1rem', '1rem', 'auto'],
+      maxWidth: '66ch',
     })
   ),
   column: css(
     bp({
-      marginLeft: ['1rem', 'auto'],
-      marginRight: ['1rem', 'auto'],
+      marginLeft: ['1rem', '1rem', 'auto'],
+      marginRight: ['1rem', '1rem', 'auto'],
       width: ['100%'],
     })
   ),
   full: css(
     bp({
-      marginLeft: ['1rem', 'auto'],
-      marginRight: ['1rem', 'auto'],
-      width: ['auto', 'auto', 'auto', 1100],
+      marginLeft: ['1rem', '1rem', 'auto'],
+      marginRight: ['1rem', '1rem', 'auto'],
+      maxWidth: '1100px',
     })
   ),
   slightlyLarger: css(
     bp({
-      marginLeft: ['1rem', 'auto'],
-      marginRight: ['1rem', 'auto'],
-      width: ['100%', '100%', '80ch', '80ch'],
+      marginLeft: ['1rem', '1rem', 'auto'],
+      marginRight: ['1rem', '1rem', 'auto'],
+      maxWidth: '80ch',
     })
   ),
 }

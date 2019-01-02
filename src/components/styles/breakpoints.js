@@ -1,8 +1,8 @@
 //Use https://github.com/emotion-js/facepaint
 import facepaint from 'facepaint'
 
-const breakpoints = [576, 768, 992, 1200]
+const breakpoints = [32, 48, 64]
 
-const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`))
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}em)`))
 
 export default mq
