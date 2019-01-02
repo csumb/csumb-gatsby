@@ -1,5 +1,16 @@
 const path = require(`path`)
 const report = require(`gatsby-cli/lib/reporter`)
+const crypto = require('crypto')
+
+const encryptFeedback = (email) => {
+  if (!email) {
+    return null
+  }
+  const cipher = crypto.createCipher('aes-256-ctr', process.env.CSUMB_FEEDBACK_KEY)
+  let crypted = cipher.update(email, 'utf8', 'hex')
+  crypted += cipher.final('hex');
+  return crypted;
+}
 
 module.exports = (graphql, actions) => {
   const { createPage } = actions
@@ -45,6 +56,7 @@ module.exports = (graphql, actions) => {
                     site
                     pageContent
                     breadcrumbs
+                    feedbackEmail
                     layout
                     event {
                       dates {
@@ -110,6 +122,7 @@ module.exports = (graphql, actions) => {
                 title: content.title,
                 site: sites[content.site].site,
                 breadcrumbs: content.breadcrumbs,
+                feedbackEmail: encryptFeedback(content.feedbackEmail),
                 layout: content.layout,
                 navigation: sites[content.site].navigation,
                 pageContent: content.pageContent,
