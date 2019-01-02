@@ -6,7 +6,6 @@ module.exports = (graphql, actions) => {
   return new Promise((resolve, reject) => {
     const directoryTemplate = path.resolve(`src/templates/directory/person.js`)
     const jsonTemplate = path.resolve(`src/templates/json.js`)
-    // Query for CSV content from catalog
     resolve(
       graphql(
         `
@@ -39,7 +38,6 @@ module.exports = (graphql, actions) => {
                     directoryDepartment
                     directoryPhone
                     email
-                    directoryPhoto
                   }
                 }
               }

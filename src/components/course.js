@@ -26,18 +26,18 @@ const CourseListItem = ({
   UNITS_MINIMUM,
   UNITS_MAXIMUM,
 }) => (
-  <CouseListWrapper>
-    <CouseListTitle>
-      <Link to={`${SUBJECT.toLowerCase()}/${CATALOG_NBR.toLowerCase().trim()}`}>
-        {SUBJECT} {CATALOG_NBR}: {COURSE_TITLE_LONG}
-      </Link>
-    </CouseListTitle>
-    <CourseListDescription>{DESCRLONG}</CourseListDescription>
-    <CourseListDescription>
-      <strong>Units:</strong> {UNITS_MINIMUM} - {UNITS_MAXIMUM}
-    </CourseListDescription>
-  </CouseListWrapper>
-)
+    <CouseListWrapper>
+      <CouseListTitle>
+        <Link to={`${SUBJECT.toLowerCase()}/${CATALOG_NBR.toLowerCase().trim()}`}>
+          {SUBJECT} {CATALOG_NBR}: {COURSE_TITLE_LONG}
+        </Link>
+      </CouseListTitle>
+      <CourseListDescription>{DESCRLONG}</CourseListDescription>
+      <CourseListDescription>
+        <strong>Units:</strong> {UNITS_MINIMUM} - {UNITS_MAXIMUM}
+      </CourseListDescription>
+    </CouseListWrapper>
+  )
 
 const CoursePage = ({ courses, title }) => (
   <Layout pageTitle={`${title} `}>

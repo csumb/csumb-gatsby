@@ -10,7 +10,7 @@ exports[`AccountData renders account data correctly 1`] = `
 
 exports[`AccountGroup renders account data groups correctly 1`] = `
 <div
-  className="css-i9b2qu"
+  className="css-ade9ts"
 >
   <h3
     className="css-1kiihh0"
