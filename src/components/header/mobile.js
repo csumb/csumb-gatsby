@@ -23,7 +23,8 @@ const HeaderMobileToggle = styled('button')`
   display: inline-block;
   float: left;
   margin-right: 1rem;
-  width: 1.2em;
+  width: 0.875em;
+  padding: 0;
   cursor: pointer;
 `
 
