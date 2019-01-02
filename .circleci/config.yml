@@ -90,12 +90,13 @@ jobs:
 
       - run:
           name: Set global github identity
-          commands:
-            - git config --global user.email webfolk@csumb.edu
-            - git config --global user.name csumbwebfolk
+          command: |
+            git config --global user.email webfolk@csumb.edu
+            git config --global user.name csumbwebfolk
+            
       - run: 
           name: Checkout storybook repo
-          commands: git clone --branch gh-pages https://$GITHUB_TOKEN@github.com/csumb/style-guide.git
+          command: git clone --branch gh-pages https://$GITHUB_TOKEN@github.com/csumb/style-guide.git
       
       - run:
           name: Build storybook
@@ -103,11 +104,11 @@ jobs:
     
       - run: 
           name: Push changes
-          commands: 
-            - cd style-guide
-            - git add *
-            - git commit -m "Updated storybook"
-            - git push origin gh-pages
+          command: | 
+            cd style-guide
+            git add *
+            git commit -m "Updated storybook"
+            git push origin gh-pages
 
 workflows:
   version: 2
