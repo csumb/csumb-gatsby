@@ -119,6 +119,7 @@ module.exports = (graphql, actions) => {
               layout: 'index',
               context: {
                 filePath: edge.node.relativePath,
+                pageUrl: path,
                 title: content.title,
                 site: sites[content.site].site,
                 breadcrumbs: content.breadcrumbs,

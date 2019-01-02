@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'react-emotion'
 import Link from 'gatsby-link'
 import { colors } from 'components/styles/theme'
+import Well from 'components/well'
 import PropTypes from 'prop-types'
 
 const AccountSidebarOptions = styled('ul')`
@@ -49,21 +50,15 @@ const AccountSidebar = ({ user }) => (
   </AccountSidebarOptions>
 )
 
-const AccountGroupWrapper = styled('div')`
-  border: 1px solid ${colors.gray.light};
-  padding: 1rem;
-  margin-bottom: 1rem;
-`
-
 const AccountGroupLegend = styled('h3')`
   font-size: 1.5rem;
 `
 
 const AccountGroup = ({ legend, children }) => (
-  <AccountGroupWrapper>
+  <Well>
     <AccountGroupLegend>{legend}</AccountGroupLegend>
     {children}
-  </AccountGroupWrapper>
+  </Well>
 )
 
 AccountGroup.propTypes = {
