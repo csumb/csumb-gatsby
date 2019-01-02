@@ -88,18 +88,27 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run:
+          name: Set global github identity
+          commands:
+            - git config --global user.email webfolk@csumb.edu
+            - git config --global user.name csumbwebfolk
       - run: 
           name: Checkout storybook repo
-          command: git clone --branch gh-pages https://$GITHUB_TOKEN@github.com/csumb/style-guide.git
+          commands: git clone --branch gh-pages https://$GITHUB_TOKEN@github.com/csumb/style-guide.git
       
-      # build storybook
       - run:
           name: Build storybook
           command: npm run storybookbuild
     
       - run: 
           name: Push changes
-          command: cd style-guide; git add *; git commit -m "Updated storybook"; git push origin gh-pages;
+          commands: 
+            - cd style-guide
+            - git add *
+            - git commit -m "Updated storybook"
+            - git push origin gh-pages
+
 workflows:
   version: 2
   build_and_style_guide:
