@@ -107,8 +107,8 @@ jobs:
           command: | 
             cd style-guide
             git add *
-            git commit -m "Updated storybook"
-            git push origin gh-pages
+            git commit -m "Updated storybook" || true
+            git push origin gh-pages || true
 
 workflows:
   version: 2
