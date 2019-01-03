@@ -184,10 +184,9 @@ class DashboardMessages extends React.Component {
 
   componentDidMount() {
     const login = this.props.user.profile.login.split('@').shift()
-    window
-      .fetch(
-        `https://messaging-staging.herokuapp.com/api/messages/${login}/${this.getRoles()}`
-      )
+    fetch(
+      `https://messaging-staging.herokuapp.com/api/messages/${login}/${this.getRoles()}`
+    )
       .then(response => {
         return response.json()
       })
