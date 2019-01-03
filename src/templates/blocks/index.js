@@ -22,6 +22,7 @@ import BlockPathway from './blocks/pathway'
 import BlockRelated from './blocks/related'
 import BlockTable from './blocks/table'
 import BlockPerson from './blocks/person'
+import BlockEvent from './blocks/event'
 import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
 
@@ -49,6 +50,7 @@ class Block extends React.Component {
     video: BlockVideo,
     sound: BlockSound,
     person: BlockPerson,
+    event: BlockEvent
   }
 
   render() {
@@ -119,12 +121,12 @@ const Blocks = ({ blocks }) => {
               {layout._children ? (
                 <Columns layout={layout} blocks={blocks.blocks} />
               ) : (
-                <Block
-                  key={layout.id}
-                  type={blocks.blocks[layout.id].type}
-                  block={blocks.blocks[layout.id]}
-                />
-              )}
+                  <Block
+                    key={layout.id}
+                    type={blocks.blocks[layout.id].type}
+                    block={blocks.blocks[layout.id]}
+                  />
+                )}
             </>
           )}
         </React.Fragment>
