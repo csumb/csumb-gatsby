@@ -11,14 +11,19 @@ const NavigationLinkList = styled('li')`
     text-decoration: none;
     padding: 0.75rem;
     ${props =>
-      props.apply
-        ? `color: ${colors.indicators.high};
-        border: 3px solid ${colors.indicators.high};`
-        : `color: ${colors.primary.darkest};`} &:hover {
+    props.apply
+      ? `color: ${colors.indicators.high};
+        border: 3px solid ${colors.indicators.high};
+        &[aria-current='page'] {
+          background: ${colors.indicators.high};
+          color: ${colors.white};
+        }
+        `
+      : `color: ${colors.primary.darkest};`} &:hover {
           ${props =>
-            props.apply
-              ? `background: ${colors.indicators.high};`
-              : `background: ${colors.primary.darkest};`}
+    props.apply
+      ? `background: ${colors.indicators.high};`
+      : `background: ${colors.primary.darkest};`}
               
       color: ${colors.white};
     }
