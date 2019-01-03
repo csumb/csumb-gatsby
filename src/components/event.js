@@ -2,6 +2,7 @@ import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/container'
 import { LeadParagraph } from 'components/type'
+import Link from 'gatsby-link'
 
 const Event = ({ event }) => (
   <>
@@ -26,10 +27,18 @@ const Event = ({ event }) => (
   </>
 )
 
+const EventFeedItem = ({ event }) => (
+  <>
+    <Link to={event.link}>
+      <h4>{event.title}</h4>
+    </Link>
+  </>
+)
+
 const EventPage = ({ event }) => (
   <Container>
     <Event event={event} />
   </Container>
 )
 
-export { Event, EventPage }
+export { Event, EventPage, EventFeedItem }
