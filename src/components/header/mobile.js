@@ -209,9 +209,6 @@ class HeaderMobile extends React.Component {
                 this.navRef = node
               }}
             >
-              <MobileNavigationLink to="/admissions">
-                Apply
-              </MobileNavigationLink>
               <MobileNavigationLink to="/academics">
                 Majors &amp; programs
               </MobileNavigationLink>
