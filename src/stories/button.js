@@ -52,7 +52,11 @@ storiesOf('Button', module)
     </Button>
   ))
 
-storiesOf('Linky Button', module)
-  .add('Default', () => <LinkyButton>I look like a link!</LinkyButton>, {
-    info: 'Use when a button is an appropriate element, but you want it to look visually like a link.'
-  })
+storiesOf('Linky Button', module).add(
+  'Default',
+  () => <LinkyButton>I look like a link!</LinkyButton>,
+  {
+    info:
+      'Use when a button is an appropriate element, but you want it to look visually like a link.',
+  }
+)

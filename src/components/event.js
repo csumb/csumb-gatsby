@@ -8,9 +8,7 @@ const Event = ({ event }) => (
   <>
     {event.times && (
       <>
-        {event.title && (
-          <h2>{event.title}</h2>
-        )}
+        {event.title && <h2>{event.title}</h2>}
         <LeadParagraph>{event.description}</LeadParagraph>
         <Flex flexWrap="wrap">
           <Box width={[1, 1 / 3]} px={2}>

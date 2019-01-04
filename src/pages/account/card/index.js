@@ -61,7 +61,7 @@ class UserCardForm extends React.Component {
   componentDidMount() {
     const { user } = this.props
     if (!user) {
-      return
+      return;
     }
     window
       .fetch(
