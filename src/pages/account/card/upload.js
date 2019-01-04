@@ -66,7 +66,7 @@ class OtterCardPage extends React.Component {
     photo: false,
     showUpload: false,
     filePickerImage: false,
-    done: false
+    done: false,
   }
 
   handleShowUpload(event) {
@@ -107,48 +107,63 @@ class OtterCardPage extends React.Component {
                       {context.user && !context.user.anonymous ? (
                         <>
                           {done ? (
-                            <AlertInfo>Your photo has been received. We'll send you an email within a few days to confirm your card is ready.</AlertInfo>
+                            <AlertInfo>
+                              Your photo has been received. We'll send you an
+                              email within a few days to confirm your card is
+                              ready.
+                            </AlertInfo>
                           ) : (
-                              <>
-                                {showUpload ? (
-                                  <>
-                                    <UploadCheck photo={this.state.filePickerImage} />
-                                    <Button onClick={(event) => {
+                            <>
+                              {showUpload ? (
+                                <>
+                                  <UploadCheck
+                                    photo={this.state.filePickerImage}
+                                  />
+                                  <Button
+                                    onClick={event => {
                                       event.preventDefault()
-                                      this.handleApprovedPhoto(context.user, filePickerImage)
+                                      this.handleApprovedPhoto(
+                                        context.user,
+                                        filePickerImage
+                                      )
                                       this.setState({
-                                        done: true
+                                        done: true,
                                       })
-                                    }}>Looks good!</Button>
-                                  </>
-                                ) : (
-                                    <>
-                                      <UploadPreamble />
-                                      <ReactFilestack
-                                        apikey="A3ttdsdUR8aGvjvUnJBWUz"
-                                        onSuccess={this.handleUploadedPhoto.bind(this)}
-                                        options={{
-                                          accept: 'image/*',
-                                          maxFiles: 1,
-                                        }}
-                                        render={({ onPick }) => (
-                                          <div>
-                                            <Button onClick={onPick}>
-                                              Select or take photo
-                                    </Button>
-                                          </div>
-                                        )}
-                                      />
-                                    </>
-                                  )}
-                              </>
-                            )}
+                                    }}
+                                  >
+                                    Looks good!
+                                  </Button>
+                                </>
+                              ) : (
+                                <>
+                                  <UploadPreamble />
+                                  <ReactFilestack
+                                    apikey="A3ttdsdUR8aGvjvUnJBWUz"
+                                    onSuccess={this.handleUploadedPhoto.bind(
+                                      this
+                                    )}
+                                    options={{
+                                      accept: 'image/*',
+                                      maxFiles: 1,
+                                    }}
+                                    render={({ onPick }) => (
+                                      <div>
+                                        <Button onClick={onPick}>
+                                          Select or take photo
+                                        </Button>
+                                      </div>
+                                    )}
+                                  />
+                                </>
+                              )}
+                            </>
+                          )}
                         </>
                       ) : (
-                          <AlertWarning>
-                            You must be logged in to upload an OtterCard photo.
+                        <AlertWarning>
+                          You must be logged in to upload an OtterCard photo.
                         </AlertWarning>
-                        )}
+                      )}
                     </>
                   </Container>
                 </>
