@@ -5,7 +5,7 @@ import {
   AccountTitle,
   AccountData,
   AccountGroup,
-} from 'components/account'
+} from 'components/pages/account'
 
 const profile = {
   firstName: 'Joe',

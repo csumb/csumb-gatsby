@@ -7,7 +7,7 @@ import { navigate } from '@reach/router'
 import url from 'url'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { InputText, Submit } from 'components/forms'
-import PageTitle from 'components/page-title'
+import PageTitle from 'components/header/page-title'
 import Container from 'components/container'
 
 const ListResults = ({ results }) => {

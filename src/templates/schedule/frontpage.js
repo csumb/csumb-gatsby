@@ -2,14 +2,14 @@ import React from 'react'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
-import SiteHeader from 'components/site-header'
-import PageTitle from 'components/page-title'
+import SiteHeader from 'components/header/site-header'
+import PageTitle from 'components/header/page-title'
 import {
   ScheduleList,
   ScheduleListItem,
   GEList,
   GEListItem,
-} from 'components/schedule'
+} from 'components/pages/schedule'
 
 class ScheduleFront extends React.Component {
   render() {

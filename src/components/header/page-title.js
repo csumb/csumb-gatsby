@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { colors } from './styles/theme'
+import { colors } from 'components/styles/theme'
 
 const PageTitleHeader = styled('h1')`
   border-bottom: 1px solid ${colors.primary.darkest};

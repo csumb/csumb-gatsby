@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import PageTitle from 'components/page-title'
+import PageTitle from 'components/header/page-title'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import {
@@ -8,7 +8,7 @@ import {
   AccountTitle,
   AccountData,
   AccountSidebar,
-} from 'components/account'
+} from 'components/pages/account'
 import { InputText, Submit } from 'components/forms'
 import { UserContext } from 'components/contexts/user'
 

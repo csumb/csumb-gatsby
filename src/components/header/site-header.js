@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'react-emotion'
 import Link from 'gatsby-link'
-import Container from './container'
+import Container from 'components/container'
 import { css } from 'react-emotion'
-import { colors } from './styles/theme'
-import bp from './styles/breakpoints'
+import { colors } from 'components/styles/theme'
+import bp from 'components/styles/breakpoints'
 
 const siteHeaderSize = css(
   bp({

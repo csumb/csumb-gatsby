@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Breadcrumbs from 'components/breadcrumbs'
+import Breadcrumbs from 'components/header/breadcrumbs'
 
 const sampleBreadcrumbs = JSON.stringify([
   {

@@ -4,13 +4,13 @@ import Blocks from './blocks'
 import PageFeedback from 'components/page-feedback'
 import Layout from 'components/layouts/default'
 import SiteNavigation from 'components/navigation/site'
-import SiteHeader from 'components/site-header'
+import SiteHeader from 'components/header/site-header'
 import Container from 'components/container'
-import PageTitle from 'components/page-title'
-import { EventPage } from 'components/event'
+import PageTitle from 'components/header/page-title'
+import { EventPage } from 'components/pages/event'
 import { Flex, Box } from '@rebass/grid/emotion'
 import PageNavigation from 'components/navigation/page'
-import Breadcrumbs from 'components/breadcrumbs'
+import Breadcrumbs from 'components/header/breadcrumbs'
 
 class PageTemplate extends React.Component {
   render() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { colors } from './styles/theme'
+import { colors } from 'components/styles/theme'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
 import PropTypes from 'prop-types'
