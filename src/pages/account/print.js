@@ -24,28 +24,28 @@ class AccountPrintPage extends React.Component {
               {context.user && (
                 <>
                   <PageTitle>
-                    {context.user === 'anonymous' ? (
+                    {context.user.anonymous ? (
                       <h3>Your profile</h3>
                     ) : (
-                        <>
-                          {context.user.profile.firstName}{' '}
-                          {context.user.profile.lastName}
-                        </>
-                      )}
+                      <>
+                        {context.user.profile.firstName}{' '}
+                        {context.user.profile.lastName}
+                      </>
+                    )}
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
                       <AccountSidebar active="print" user={context.user} />
                     </Box>
                     <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
-                      {context.user === 'anonymous' ? (
+                      {context.user.anonymous ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
-                          <>
-                            <AccountTitle>Print balance</AccountTitle>
-                            <UserPrintForm user={context.user} />
-                          </>
-                        )}
+                        <>
+                          <AccountTitle>Print balance</AccountTitle>
+                          <UserPrintForm user={context.user} />
+                        </>
+                      )}
                     </Box>
                   </Flex>
                 </>
@@ -105,13 +105,11 @@ class UserPrintForm extends React.Component {
                   <p>Your print account has not been set up.</p>
                 </>
               ) : (
-                  <>
-                    <p>You can print:</p>
-                    <AccountData>
-                      {balance.pages_left} pages
-                  </AccountData>
-                  </>
-                )}
+                <>
+                  <p>You can print:</p>
+                  <AccountData>{balance.pages_left} pages</AccountData>
+                </>
+              )}
             </>
           )}
         </AccountGroup>
@@ -124,14 +122,14 @@ class UserPrintForm extends React.Component {
                   <p>Your print account has not been set up.</p>
                 </>
               ) : (
-                  <>
-                    <p>
-                      Buy more prints online.{' '}
-                      <strong>Each page costs {pricePerPage * 100} cents.</strong>
-                    </p>
-                    <AccountPrintBuyPrintsForm user={user} />
-                  </>
-                )}
+                <>
+                  <p>
+                    Buy more prints online.{' '}
+                    <strong>Each page costs {pricePerPage * 100} cents.</strong>
+                  </p>
+                  <AccountPrintBuyPrintsForm user={user} />
+                </>
+              )}
             </>
           )}
         </AccountGroup>
@@ -183,12 +181,7 @@ class AccountPrintBuyPrintsForm extends React.Component {
           id="edit-amount1"
           value={(quantity * pricePerPage).toFixed(2)}
         />
-        <input
-          type="hidden"
-          name="qty1"
-          id="edit-qty1"
-          value={quantity}
-        />
+        <input type="hidden" name="qty1" id="edit-qty1" value={quantity} />
         <input
           type="hidden"
           name="ref1type1"
@@ -199,9 +192,7 @@ class AccountPrintBuyPrintsForm extends React.Component {
           type="hidden"
           name="ref1val1"
           id="edit-ref1val1"
-          value={`${user.profile.firstName} ${
-            user.profile.lastName
-            }`}
+          value={`${user.profile.firstName} ${user.profile.lastName}`}
         />
         <input
           type="hidden"

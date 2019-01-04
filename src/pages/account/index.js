@@ -24,7 +24,7 @@ class AccountPage extends React.Component {
               {context.user && (
                 <Container>
                   <PageTitle>
-                    {context.user === 'anonymous' ? (
+                    {context.user.anonymous ? (
                       <h3>Your account</h3>
                     ) : (
                       <>
@@ -38,7 +38,7 @@ class AccountPage extends React.Component {
                       <AccountSidebar active="account" user={context.user} />
                     </Box>
                     <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
-                      {context.user === 'anonymous' ? (
+                      {context.user.anonymous ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
                         <>
