@@ -124,14 +124,23 @@ class UserCardForm extends React.Component {
         </AccountGroup>
         <AccountGroup legend="Add more meals">
           <p>You can add several kinds of pre-paid meal plans.</p>
-          <ButtonLink
+          <p><ButtonLink
             to={`https://api.csumb.edu/cashnet/${
               user.profile.employeeNumber
               }/RMBRD`}
             buttonType="default"
           >
             Add more meals
-          </ButtonLink>
+          </ButtonLink></p>
+        </AccountGroup>
+        <AccountGroup legend="Upload OtterCard photo">
+          <p>Upload a photo for your new OtterCard.</p>
+          <p><ButtonLink
+            to="/account/card/upload"
+            buttonType="default"
+          >
+            Upload photo
+          </ButtonLink></p>
         </AccountGroup>
       </>
     )
