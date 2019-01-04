@@ -3,7 +3,11 @@ import Layout from 'components/layouts/default'
 import PageTitle from 'components/header/page-title'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { AccountGroup, AccountTitle, AccountSidebar } from 'components/pages/account'
+import {
+  AccountGroup,
+  AccountTitle,
+  AccountSidebar,
+} from 'components/pages/account'
 import { UserContext } from 'components/contexts/user'
 import { Table, TableRow, TableHeader, TableCell } from 'components/table'
 import { ButtonLink } from 'components/button'
@@ -18,28 +22,28 @@ class AccountCardPage extends React.Component {
               {context.user && (
                 <>
                   <PageTitle>
-                    {context.user === 'anonymous' ? (
+                    {context.user.anonymous ? (
                       <h3>Your profile</h3>
                     ) : (
-                        <>
-                          {context.user.profile.firstName}{' '}
-                          {context.user.profile.lastName}
-                        </>
-                      )}
+                      <>
+                        {context.user.profile.firstName}{' '}
+                        {context.user.profile.lastName}
+                      </>
+                    )}
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
                       <AccountSidebar active="card" user={context.user} />
                     </Box>
                     <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
-                      {context.user === 'anonymous' ? (
+                      {context.user.anonymous ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
-                          <>
-                            <AccountTitle>Otter Card</AccountTitle>
-                            <UserCardForm user={context.user} />
-                          </>
-                        )}
+                        <>
+                          <AccountTitle>Otter Card</AccountTitle>
+                          <UserCardForm user={context.user} />
+                        </>
+                      )}
                     </Box>
                   </Flex>
                 </>
@@ -61,11 +65,11 @@ class UserCardForm extends React.Component {
   componentDidMount() {
     const { user } = this.props
     if (!user) {
-      return;
+      return
     }
     fetch(
       `https://winservices.csumb.edu/cbord/balance.php?e=${
-      user.profile.employeeNumber
+        user.profile.employeeNumber
       }`
     )
       .then(response => {
@@ -99,25 +103,25 @@ class UserCardForm extends React.Component {
                   <p>There was an error reading your Otter Card.</p>
                 </>
               ) : (
-                  <>
-                    <Table>
-                      <thead>
-                        <TableRow>
-                          <TableHeader>Tender type</TableHeader>
-                          <TableHeader>Balance</TableHeader>
+                <>
+                  <Table>
+                    <thead>
+                      <TableRow>
+                        <TableHeader>Tender type</TableHeader>
+                        <TableHeader>Balance</TableHeader>
+                      </TableRow>
+                    </thead>
+                    <tbody>
+                      {Object.keys(balance).map(key => (
+                        <TableRow key={key}>
+                          <TableCell>{balance[key].tender}</TableCell>
+                          <TableCell>{balance[key].balance}</TableCell>
                         </TableRow>
-                      </thead>
-                      <tbody>
-                        {Object.keys(balance).map(key => (
-                          <TableRow key={key}>
-                            <TableCell>{balance[key].tender}</TableCell>
-                            <TableCell>{balance[key].balance}</TableCell>
-                          </TableRow>
-                        ))}
-                      </tbody>
-                    </Table>
-                  </>
-                )}
+                      ))}
+                    </tbody>
+                  </Table>
+                </>
+              )}
             </>
           )}
         </AccountGroup>
@@ -127,7 +131,7 @@ class UserCardForm extends React.Component {
             <ButtonLink
               to={`https://api.csumb.edu/cashnet/${
                 user.profile.employeeNumber
-                }/RMBRD`}
+              }/RMBRD`}
               buttonType="default"
             >
               Add more meals

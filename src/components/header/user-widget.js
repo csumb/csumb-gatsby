@@ -125,7 +125,7 @@ class UserWidget extends React.Component {
         <UserContext.Consumer>
           {context => (
             <>
-              {context.user === false ? (
+              {context.user === false || context.user.anonymous ? (
                 <></>
               ) : (
                 <>
