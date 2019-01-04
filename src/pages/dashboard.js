@@ -3,7 +3,7 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
-import SiteHeader from 'components/site-header'
+import SiteHeader from 'components/header/site-header'
 import { graphql } from 'gatsby'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
@@ -11,7 +11,7 @@ import {
   DashboardEvents,
   DashboardMessages,
   DashboardApps,
-} from 'components/dashboard'
+} from 'components/pages/dashboard'
 
 const DashboardContainer = styled('section')`
   background: ${colors.primary.lightest};

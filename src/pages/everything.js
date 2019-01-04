@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
 import { Flex, Box } from '@rebass/grid/emotion'
-import SiteHeader from 'components/site-header'
+import SiteHeader from 'components/header/site-header'
 import LazyHero from 'react-lazy-hero'
 import heroImage from 'assets/hero-images/people/students-sunset-beach.jpg'
 

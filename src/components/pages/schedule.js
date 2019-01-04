@@ -3,7 +3,7 @@ import styled from 'react-emotion'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'components/styles/theme'
-import PageTitle from 'components/page-title'
+import PageTitle from 'components/header/page-title'
 import moment from 'moment'
 
 const ScheduleList = styled('ul')`

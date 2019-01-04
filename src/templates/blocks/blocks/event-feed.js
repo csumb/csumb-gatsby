@@ -1,7 +1,6 @@
 import React from 'react'
-import { EventFeedItem } from 'components/event'
+import { EventFeedItem } from 'components/pages/event'
 import { ContainerContext, ContainerElement } from '../container-context'
-
 
 class BlockEvent extends React.Component {
   render() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Breadcrumbs from 'components/breadcrumbs'
+import Breadcrumbs from 'components/header/breadcrumbs'
 import typography from 'utils/typography'
 import PropTypes from 'prop-types'
 

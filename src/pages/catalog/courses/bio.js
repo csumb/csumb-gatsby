@@ -1,5 +1,5 @@
 import React from 'react'
-import { CoursePage } from 'components/course'
+import { CoursePage } from 'components/pages/course'
 import { graphql } from 'gatsby'
 
 const CourseListPage = ({ data }) => (

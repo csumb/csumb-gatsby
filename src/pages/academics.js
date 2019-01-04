@@ -9,8 +9,8 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { LeadParagraph } from 'components/type'
 import { UnstyledList } from 'components/type'
 import Container from 'components/container'
-import SiteHeader from 'components/site-header'
-import PageTitle from 'components/page-title'
+import SiteHeader from 'components/header/site-header'
+import PageTitle from 'components/header/page-title'
 import AllPrograms from 'static/all-programs.js'
 
 const SearchSubmit = styled(Submit)`

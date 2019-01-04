@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import PageTitle from 'components/page-title'
+import PageTitle from 'components/header/page-title'
 
 describe('Breadcrumbs', () => {
   it('renders a page title', () => {
