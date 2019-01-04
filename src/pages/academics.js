@@ -50,7 +50,6 @@ class AcademicsPage extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    navigate(`?f=${this.state.filter}`)
 
     if (this.state.filter.trim().length < 3) {
       return
