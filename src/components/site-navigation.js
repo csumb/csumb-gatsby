@@ -29,17 +29,15 @@ const SiteNavigationLink = styled(LinkInspect)`
   }
 `
 
-const SiteNavigationSubLink = styled(MenuLink)`
-  text-decoration: none;
-  color: ${colors.white};
-`
-
 const SiteNavigationSubList = styled(MenuList)`
   background: ${colors.primary.dark};
   padding: 0;
+  margin-top: 10px;
   a {
     color: ${colors.white};
     font-family: ${fonts.sansSerif};
+    font-size: 20px;
+    text-decoration: none;
   }
 `
 
@@ -62,14 +60,14 @@ const SiteNavigationItem = ({ to, children, navigationChildren }) => {
       {to ? (
         <SiteNavigationLink to={to}>{children}</SiteNavigationLink>
       ) : (
-        <>
-          {navigationChildren && (
-            <SiteNavigationSubMenu navigationChildren={navigationChildren}>
-              {children}
-            </SiteNavigationSubMenu>
-          )}
-        </>
-      )}
+          <>
+            {navigationChildren && (
+              <SiteNavigationSubMenu navigationChildren={navigationChildren}>
+                {children}
+              </SiteNavigationSubMenu>
+            )}
+          </>
+        )}
     </>
   )
 }
@@ -81,9 +79,9 @@ const SiteNavigationSubMenu = ({ children, navigationChildren }) => (
     </SiteNavigationMenuButton>
     <SiteNavigationSubList>
       {navigationChildren.map((child, key) => (
-        <SiteNavigationSubLink key={key} component="a" href={child.url}>
+        <MenuLink key={key} component="a" href={child.url}>
           {child.name}
-        </SiteNavigationSubLink>
+        </MenuLink>
       ))}
     </SiteNavigationSubList>
   </Menu>
