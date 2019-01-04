@@ -2,14 +2,17 @@ const path = require(`path`)
 const report = require(`gatsby-cli/lib/reporter`)
 const crypto = require('crypto')
 
-const encryptFeedback = (email) => {
+const encryptFeedback = email => {
   if (!email) {
     return null
   }
-  const cipher = crypto.createCipher('aes-256-ctr', process.env.CSUMB_FEEDBACK_KEY)
+  const cipher = crypto.createCipher(
+    'aes-256-ctr',
+    process.env.CSUMB_FEEDBACK_KEY
+  )
   let crypted = cipher.update(email, 'utf8', 'hex')
-  crypted += cipher.final('hex');
-  return crypted;
+  crypted += cipher.final('hex')
+  return crypted
 }
 
 module.exports = (graphql, actions) => {

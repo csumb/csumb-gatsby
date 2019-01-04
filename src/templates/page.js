@@ -21,9 +21,8 @@ class PageTemplate extends React.Component {
       event,
       pageContent,
       feedbackEmail,
-      pageUrl
+      pageUrl,
     } = this.props.pageContext
-
 
     return (
       <Layout

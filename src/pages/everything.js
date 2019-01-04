@@ -71,8 +71,8 @@ const EverythingHero = () => (
     parallaxOffset={0}
     transitionDuration={0}
     imageSrc={heroImage}
-    minHeight="250px">
-  </LazyHero>
+    minHeight="250px"
+  />
 )
 
 class EverythingPage extends React.Component {
@@ -153,14 +153,14 @@ class EverythingPage extends React.Component {
                           <h3>{this.navigation[id.contentful_id].title}</h3>
                           {this.navigation[id.contentful_id]
                             .childContentfulNavigationItemDescriptionTextNode && (
-                              <p
-                                dangerouslySetInnerHTML={{
-                                  __html: this.navigation[id.contentful_id]
-                                    .childContentfulNavigationItemDescriptionTextNode
-                                    .childMarkdownRemark.html,
-                                }}
-                              />
-                            )}
+                            <p
+                              dangerouslySetInnerHTML={{
+                                __html: this.navigation[id.contentful_id]
+                                  .childContentfulNavigationItemDescriptionTextNode
+                                  .childMarkdownRemark.html,
+                              }}
+                            />
+                          )}
                         </HiddenButton>
                       </SecondLevelItem>
                     )
