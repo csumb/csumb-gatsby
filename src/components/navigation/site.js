@@ -1,8 +1,8 @@
 import React from 'react'
-import LinkInspect from './link-inspect'
-import Container from './container'
+import LinkInspect from 'components/link-inspect'
+import Container from 'components/container'
 import styled from 'react-emotion'
-import { colors, fonts } from './styles/theme'
+import { colors, fonts } from '../styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import BreakpointContext from 'components/contexts/breakpoint'
 
@@ -60,14 +60,14 @@ const SiteNavigationItem = ({ to, children, navigationChildren }) => {
       {to ? (
         <SiteNavigationLink to={to}>{children}</SiteNavigationLink>
       ) : (
-        <>
-          {navigationChildren && (
-            <SiteNavigationSubMenu navigationChildren={navigationChildren}>
-              {children}
-            </SiteNavigationSubMenu>
-          )}
-        </>
-      )}
+          <>
+            {navigationChildren && (
+              <SiteNavigationSubMenu navigationChildren={navigationChildren}>
+                {children}
+              </SiteNavigationSubMenu>
+            )}
+          </>
+        )}
     </>
   )
 }
