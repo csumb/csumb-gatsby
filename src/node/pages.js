@@ -58,6 +58,10 @@ module.exports = (graphql, actions) => {
                     title
                     site
                     pageContent
+                    navigation {
+                      url
+                      name
+                    }
                     breadcrumbs
                     feedbackEmail
                     layout
@@ -126,6 +130,7 @@ module.exports = (graphql, actions) => {
                 title: content.title,
                 site: sites[content.site].site,
                 breadcrumbs: content.breadcrumbs,
+                pageNavigation: content.navigation,
                 feedbackEmail: encryptFeedback(content.feedbackEmail),
                 layout: content.layout,
                 navigation: sites[content.site].navigation,
