@@ -41,7 +41,7 @@ const HeaderMobileSearch = styled('div')`
 `
 
 const HeaderMobileApply = styled(Link)`
-  color: ${colors.white};
+  color: ${colors.white} !important;
   background: ${colors.indicators.high};
   padding: 0.3rem;
   float: right;
