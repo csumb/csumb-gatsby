@@ -35,6 +35,7 @@ exports.onCreateNode = async ({
       layout: content.layout,
       site: content.site,
       breadcrumbs: breadcrumbs,
+      navigation: content.navigation,
       feedbackEmail: content.feedback_email,
       pageContent: JSON.stringify(content.pageContent),
       internal: {
