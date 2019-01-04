@@ -63,12 +63,11 @@ class UserCardForm extends React.Component {
     if (!user) {
       return;
     }
-    window
-      .fetch(
-        `https://winservices.csumb.edu/cbord/balance.php?e=${
-        user.profile.employeeNumber
-        }`
-      )
+    fetch(
+      `https://winservices.csumb.edu/cbord/balance.php?e=${
+      user.profile.employeeNumber
+      }`
+    )
       .then(response => {
         return response.json()
       })
