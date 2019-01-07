@@ -3,24 +3,29 @@ import Link from 'gatsby-link'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
 
+const BrandWrapper = styled('span')`
+  a {
+    color: ${colors.primary.darkest};
+    padding: 0.2rem;
+    line-height: 80%;
+    text-decoration: none;
+  }
+`
+
 const BrandLink = styled(Link)`
   font-weight: bold;
   ${props => props.mobile ?
     `font-size: 1.2rem;` :
-    `font-size: 2rem;`}
-  color: ${colors.primary.darkest} !important;
-  text-decoration: none;
-  line-height: 80%;
-  &:hover {
-    text-decoration: underline;
-  }
+    `font-size: 2rem;`};
 `
 const Brand = (props) => (
-  <BrandLink {...props} to="/">
-    Cal State
+  <BrandWrapper>
+    <BrandLink {...props} to="/">
+      Cal State
     <br />
-    Monterey Bay
+      Monterey Bay
   </BrandLink>
+  </BrandWrapper>
 )
 
 export default Brand
