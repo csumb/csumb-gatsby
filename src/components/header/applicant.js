@@ -21,11 +21,13 @@ class Applicant extends React.Component {
         <UserContext.Consumer>
           {context => (
             <>
-              {context.user === false || !context.user._isApplicant ? (
+              {context.user === false ||
+              context.user.anonymous ||
+              !context.user._isApplicant ? (
                 <></>
               ) : (
                 <>
-                  {context.user === 'anonymous' ? (
+                  {context.user.anonymous ? (
                     <></>
                   ) : (
                     <ApplicantLink to="/account/applicant-status">

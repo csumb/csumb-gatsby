@@ -2,7 +2,6 @@ import React from 'react'
 import Layout from 'components/layouts/default'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
-import { navigate } from '@reach/router'
 import { InputText, Submit } from 'components/forms'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
@@ -10,8 +9,8 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { LeadParagraph } from 'components/type'
 import { UnstyledList } from 'components/type'
 import Container from 'components/container'
-import SiteHeader from 'components/site-header'
-import PageTitle from 'components/page-title'
+import SiteHeader from 'components/header/site-header'
+import PageTitle from 'components/header/page-title'
 import AllPrograms from 'static/all-programs.js'
 
 const SearchSubmit = styled(Submit)`
@@ -50,7 +49,6 @@ class AcademicsPage extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    navigate(`?f=${this.state.filter}`)
 
     if (this.state.filter.trim().length < 3) {
       return

@@ -48,7 +48,7 @@ const SearchAutocompleteItemSite = styled('span')`
 `
 
 const SearchForm = styled('form')`
-  ${props => props.inline ? `display: inline-block;` : `display: block;`}
+  ${props => (props.inline ? `display: inline-block;` : `display: block;`)}
   margin-bottom: 0;
 `
 
@@ -83,7 +83,7 @@ class Search extends React.Component {
     window
       .fetch(
         `https://api.swiftype.com/api/v1/public/engines/suggest?engine_key=${
-        this.props.swiftypeId
+          this.props.swiftypeId
         }&q=${event.target.value.trim().toLowerCase()}`
       )
       .then(response => {

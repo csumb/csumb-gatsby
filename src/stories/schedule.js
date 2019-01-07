@@ -9,7 +9,7 @@ import {
   GEListItem,
   CourseList,
   CoursePage,
-} from 'components/schedule'
+} from 'components/pages/schedule'
 
 typography.injectStyles()
 

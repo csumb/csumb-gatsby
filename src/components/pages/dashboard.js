@@ -184,10 +184,9 @@ class DashboardMessages extends React.Component {
 
   componentDidMount() {
     const login = this.props.user.profile.login.split('@').shift()
-    window
-      .fetch(
-        `https://messaging-staging.herokuapp.com/api/messages/${login}/${this.getRoles()}`
-      )
+    fetch(
+      `https://messaging-staging.herokuapp.com/api/messages/${login}/${this.getRoles()}`
+    )
       .then(response => {
         return response.json()
       })
@@ -223,12 +222,12 @@ class DashboardMessages extends React.Component {
                 ))}
               </>
             ) : (
-                <AlertEmpty>You do not have any messages</AlertEmpty>
-              )}
+              <AlertEmpty>You do not have any messages</AlertEmpty>
+            )}
           </>
         ) : (
-            <Loading>Loading messages</Loading>
-          )}
+          <Loading>Loading messages</Loading>
+        )}
       </>
     )
   }
@@ -273,7 +272,7 @@ class DashboardMessage extends React.Component {
     window
       .fetch(
         `https://messaging-staging.herokuapp.com/api/archive/${login}/${
-        message.uuid
+          message.uuid
         }`
       )
       .then(response => {
@@ -367,12 +366,12 @@ class DashboardEvents extends React.Component {
                 ))}
               </>
             ) : (
-                <AlertEmpty>No events</AlertEmpty>
-              )}
+              <AlertEmpty>No events</AlertEmpty>
+            )}
           </>
         ) : (
-            <Loading>Loading events</Loading>
-          )}
+          <Loading>Loading events</Loading>
+        )}
       </>
     )
   }

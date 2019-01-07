@@ -1,8 +1,8 @@
 import React from 'react'
-import LinkInspect from './link-inspect'
-import Container from './container'
+import LinkInspect from 'components/link-inspect'
+import Container from 'components/container'
 import styled from 'react-emotion'
-import { colors, fonts } from './styles/theme'
+import { colors, fonts } from '../styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import BreakpointContext from 'components/contexts/breakpoint'
 
@@ -29,17 +29,15 @@ const SiteNavigationLink = styled(LinkInspect)`
   }
 `
 
-const SiteNavigationSubLink = styled(MenuLink)`
-  text-decoration: none;
-  color: ${colors.white};
-`
-
 const SiteNavigationSubList = styled(MenuList)`
   background: ${colors.primary.dark};
   padding: 0;
+  margin-top: 10px;
   a {
     color: ${colors.white};
     font-family: ${fonts.sansSerif};
+    font-size: 20px;
+    text-decoration: none;
   }
 `
 
@@ -81,9 +79,9 @@ const SiteNavigationSubMenu = ({ children, navigationChildren }) => (
     </SiteNavigationMenuButton>
     <SiteNavigationSubList>
       {navigationChildren.map((child, key) => (
-        <SiteNavigationSubLink key={key} component="a" href={child.url}>
+        <MenuLink key={key} component="a" href={child.url}>
           {child.name}
-        </SiteNavigationSubLink>
+        </MenuLink>
       ))}
     </SiteNavigationSubList>
   </Menu>

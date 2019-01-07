@@ -17,7 +17,6 @@ const FloatText = styled('div')`
   max-width: 300px;
 `
 class HomepageHero extends React.Component {
-
   onReady(mapProps, map) {
     map.data.addGeoJson(mapData)
   }
@@ -29,7 +28,9 @@ class HomepageHero extends React.Component {
         <FloatBox>
           <FloatText>
             <h1>Real service</h1>
-            <HeroParagraph>Our students volunteered 50,000 hours last year.</HeroParagraph>
+            <HeroParagraph>
+              Our students volunteered 50,000 hours last year.
+            </HeroParagraph>
           </FloatText>
         </FloatBox>
         <Map
@@ -41,19 +42,18 @@ class HomepageHero extends React.Component {
           streetViewControl={false}
           onReady={this.onReady.bind(this)}
           mapOptions={{
-            mapTypeId: "terrain"
+            mapTypeId: 'terrain',
           }}
           style={{
             height: '500px',
             width: '100%',
-            position: 'relative'
+            position: 'relative',
           }}
           initialCenter={{
             lat: 36.6536502,
             lng: -121.7989176,
           }}
         />
-
       </StaticHero>
     )
   }

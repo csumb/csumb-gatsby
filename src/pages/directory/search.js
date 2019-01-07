@@ -6,7 +6,7 @@ import Container from 'components/container'
 import Layout from 'components/layouts/default'
 import url from 'url'
 import Link from 'gatsby-link'
-import SiteHeader from 'components/site-header'
+import SiteHeader from 'components/header/site-header'
 import { graphql } from 'gatsby'
 
 const DirectoryItem = styled('div')`
@@ -80,7 +80,7 @@ class DirectorySearchResults extends React.Component {
       this.searchDirectory()
       const url = `${window.location.protocol}//${window.location.host}${
         window.location.pathname
-        }?q=${this.props.query}`
+      }?q=${this.props.query}`
       window.history.pushState({ path: url }, '', url)
     }
   }

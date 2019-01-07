@@ -1,8 +1,8 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
-import SiteHeader from 'components/site-header'
-import { CoursePage } from 'components/schedule'
+import SiteHeader from 'components/header/site-header'
+import { CoursePage } from 'components/pages/schedule'
 
 class CoursePageTemplate extends React.Component {
   render() {

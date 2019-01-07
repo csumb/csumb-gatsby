@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import PageTitle from 'components/page-title'
+import PageTitle from 'components/header/page-title'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { UserContext } from 'components/contexts/user'
@@ -15,7 +15,7 @@ import {
   AccountTitle,
   AccountData,
   AccountSidebar,
-} from 'components/account'
+} from 'components/pages/account'
 import { Button } from 'components/button'
 import SimpleMDE from 'react-simplemde-editor'
 import 'simplemde/dist/simplemde.min.css'
@@ -41,7 +41,7 @@ class AccountProfilePage extends React.Component {
               {context.user && (
                 <Container>
                   <PageTitle>
-                    {context.user === 'anonymous' ? (
+                    {context.user.anonymous ? (
                       <h3>Your profile</h3>
                     ) : (
                       <>
@@ -55,7 +55,7 @@ class AccountProfilePage extends React.Component {
                       <AccountSidebar active="profile" user={context.user} />
                     </Box>
                     <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
-                      {context.user === 'anonymous' ? (
+                      {context.user.anonymous ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
                         <>
