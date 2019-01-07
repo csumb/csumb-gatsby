@@ -14,17 +14,15 @@ const BrandWrapper = styled('span')`
 
 const BrandLink = styled(Link)`
   font-weight: bold;
-  ${props => props.mobile ?
-    `font-size: 1.2rem;` :
-    `font-size: 2rem;`};
+  ${props => (props.mobile ? `font-size: 1.2rem;` : `font-size: 2rem;`)};
 `
-const Brand = (props) => (
+const Brand = props => (
   <BrandWrapper>
     <BrandLink {...props} to="/">
       Cal State
-    <br />
+      <br />
       Monterey Bay
-  </BrandLink>
+    </BrandLink>
   </BrandWrapper>
 )
 
