@@ -6,8 +6,6 @@ import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
 import { Flex, Box } from '@rebass/grid/emotion'
 import SiteHeader from 'components/header/site-header'
-import LazyHero from 'react-lazy-hero'
-import heroImage from 'assets/hero-images/people/students-sunset-beach.jpg'
 
 const TopLevelList = styled('ul')`
   border-right: 1px solid ${colors.muted.dark};
@@ -65,16 +63,6 @@ const ThirdLevelList = styled('ul')`
   list-style-type: none;
 `
 
-const EverythingHero = () => (
-  <LazyHero
-    opacity={0}
-    parallaxOffset={0}
-    transitionDuration={0}
-    imageSrc={heroImage}
-    minHeight="250px"
-  />
-)
-
 class EverythingPage extends React.Component {
   state = {
     firstSelected: false,
@@ -117,7 +105,6 @@ class EverythingPage extends React.Component {
     return (
       <Layout pageTitle="Everything else">
         <SiteHeader path="/everything">Everything else</SiteHeader>
-        <EverythingHero />
         <Container topPadding>
           <Flex flexWrap="wrap">
             <Box width={[1, 1 / 5]} px={2}>
