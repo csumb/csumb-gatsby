@@ -9,12 +9,7 @@ const dateFormat = 'MMMM D, YYYY'
 
 const Story = styled('div')`
   ${props =>
-    props.featured ? `margin-bottom: 1.5rem` : `margin-bottom: 1rem`};
-  &:hover {
-    a {
-      text-decoration: underline;
-    }
-  }
+    props.featured ? `margin-bottom: 2rem` : `margin-bottom: 1.5rem`};
   a {
     color: ${colors.black};
     text-decoration: none;
@@ -150,27 +145,27 @@ const FeaturedStory = ({
   childContentfulStoryDescriptionTextNode,
   childContentfulEventDescriptionTextNode,
 }) => (
-    <Story featured>
-      <a href={link}>
-        <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
-        <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
-        {eventDate && (
-          <FeaturedEventDate>
-            {moment(eventDate).format(dateFormat)}
-          </FeaturedEventDate>
-        )}
-      </a>
-      <FeaturedStoryDescription>
-        {childContentfulStoryDescriptionTextNode && (
-          <>{childContentfulStoryDescriptionTextNode.description}</>
-        )}
+  <Story featured>
+    <a href={link}>
+      <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
+      <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
+      {eventDate && (
+        <FeaturedEventDate>
+          {moment(eventDate).format(dateFormat)}
+        </FeaturedEventDate>
+      )}
+    </a>
+    <FeaturedStoryDescription>
+      {childContentfulStoryDescriptionTextNode && (
+        <>{childContentfulStoryDescriptionTextNode.description}</>
+      )}
 
-        {childContentfulEventDescriptionTextNode && (
-          <>{childContentfulEventDescriptionTextNode.description}</>
-        )}
-      </FeaturedStoryDescription>
-    </Story>
-  )
+      {childContentfulEventDescriptionTextNode && (
+        <>{childContentfulEventDescriptionTextNode.description}</>
+      )}
+    </FeaturedStoryDescription>
+  </Story>
+)
 
 const Nuggets = ({ nuggets }) => (
   <NuggetsWrapper>

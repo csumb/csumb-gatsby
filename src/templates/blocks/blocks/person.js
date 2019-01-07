@@ -63,32 +63,32 @@ class BlockPerson extends React.Component {
                 </Link>
               </p>
             ) : (
-                <Flex flexWrap="wrap">
-                  <Box width={[1, 3 / 4]} pr={2}>
-                    <h3>
-                      <Link
-                        to={`/directory/person/${person.email
-                          .split('@')
-                          .shift()}`}
-                      >
-                        {person.firstName} {person.lastName}
-                      </Link>
-                    </h3>
-                    {person.directoryTitle.map((title, key) => (
-                      <PersonPosition>
-                        <PersonPositionTitle>{title}</PersonPositionTitle>
-                        <Link>{person.directoryDepartment[key]}</Link>
-                      </PersonPosition>
-                    ))}
-                    <a href={`mailto:${person.email}`}>{person.email}</a>
-                  </Box>
-                  <Box width={[1, 1 / 4]}>
-                    {person.directoryPhoto && (
-                      <PersonPhoto src={person.directoryPhoto} alt="" />
-                    )}
-                  </Box>
-                </Flex>
-              )}
+              <Flex flexWrap="wrap">
+                <Box width={[1, 3 / 4]} pr={2}>
+                  <h3>
+                    <Link
+                      to={`/directory/person/${person.email
+                        .split('@')
+                        .shift()}`}
+                    >
+                      {person.firstName} {person.lastName}
+                    </Link>
+                  </h3>
+                  {person.directoryTitle.map((title, key) => (
+                    <PersonPosition>
+                      <PersonPositionTitle>{title}</PersonPositionTitle>
+                      <Link>{person.directoryDepartment[key]}</Link>
+                    </PersonPosition>
+                  ))}
+                  <a href={`mailto:${person.email}`}>{person.email}</a>
+                </Box>
+                <Box width={[1, 1 / 4]}>
+                  {person.directoryPhoto && (
+                    <PersonPhoto src={person.directoryPhoto} alt="" />
+                  )}
+                </Box>
+              </Flex>
+            )}
           </Person>
         )}
       </ContainerElement>

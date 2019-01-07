@@ -141,16 +141,16 @@ const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
       {to ? (
         <MobileSiteNavigationLink to={to}>{children}</MobileSiteNavigationLink>
       ) : (
-          <>
-            {navigationChildren && (
-              <MobileSiteNavigationSubMenu
-                navigationChildren={navigationChildren}
-              >
-                {children}
-              </MobileSiteNavigationSubMenu>
-            )}
-          </>
-        )}
+        <>
+          {navigationChildren && (
+            <MobileSiteNavigationSubMenu
+              navigationChildren={navigationChildren}
+            >
+              {children}
+            </MobileSiteNavigationSubMenu>
+          )}
+        </>
+      )}
     </>
   )
 }

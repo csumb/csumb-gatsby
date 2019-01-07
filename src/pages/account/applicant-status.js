@@ -72,22 +72,21 @@ const ApplicationTranscripts = props => <AccountGroup legend="Transcripts" />
 
 const ApplicationMultipleMessage = ({ applications }) => (
   <>
-    {applications &&
-      applications.length > 1 && (
-        <LeadParagraph>
-          You have more than one application:{' '}
-          {applications.map(application => (
-            <Link
-              key={application.application.application_number}
-              to={`account/applicant-status?app=${
-                application.application.application_number
-              }`}
-            >
-              {application.term.gsx$name}{' '}
-            </Link>
-          ))}
-        </LeadParagraph>
-      )}
+    {applications && applications.length > 1 && (
+      <LeadParagraph>
+        You have more than one application:{' '}
+        {applications.map(application => (
+          <Link
+            key={application.application.application_number}
+            to={`account/applicant-status?app=${
+              application.application.application_number
+            }`}
+          >
+            {application.term.gsx$name}{' '}
+          </Link>
+        ))}
+      </LeadParagraph>
+    )}
   </>
 )
 

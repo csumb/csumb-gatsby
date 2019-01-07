@@ -52,7 +52,7 @@ class Block extends React.Component {
     sound: BlockSound,
     person: BlockPerson,
     event: BlockEvent,
-    eventfeed: BlockEventFeed
+    eventfeed: BlockEventFeed,
   }
 
   render() {
@@ -123,12 +123,12 @@ const Blocks = ({ blocks }) => {
               {layout._children ? (
                 <Columns layout={layout} blocks={blocks.blocks} />
               ) : (
-                  <Block
-                    key={layout.id}
-                    type={blocks.blocks[layout.id].type}
-                    block={blocks.blocks[layout.id]}
-                  />
-                )}
+                <Block
+                  key={layout.id}
+                  type={blocks.blocks[layout.id].type}
+                  block={blocks.blocks[layout.id]}
+                />
+              )}
             </>
           )}
         </React.Fragment>
