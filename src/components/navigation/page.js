@@ -7,9 +7,13 @@ const PageNavigationList = styled('ul')`
   margin: 0;
   li {
     margin: 0;
+    padding-bottom: 0.5rem;
   }
   a {
-
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 
