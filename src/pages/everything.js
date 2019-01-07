@@ -7,6 +7,7 @@ import styled from 'react-emotion'
 import { colors, fonts } from 'components/styles/theme'
 import { Flex, Box } from '@rebass/grid/emotion'
 import SiteHeader from 'components/header/site-header'
+import LinkInspect from 'components/link-inspect'
 
 const TopLevelBox = styled(Box)`
   h4 {
@@ -48,8 +49,16 @@ const SecondLevelList = styled('ul')`
   margin: 0;
 `
 
-const SecondLevelItem = styled('li')`
+const SecondLevelTitle = styled('h2')`
+  font-family: ${fonts.sansSerif};
+  margin-bottom: 0;
+`
+
+const SubItem = styled('li')`
   padding: 0.5rem;
+  &:hover {
+    background: ${colors.primary.lightest};
+  }
   h3 {
     margin: 0;
     color: ${colors.primary.dark};
@@ -70,10 +79,35 @@ const HiddenButton = styled('button')`
   text-align: left;
 `
 
+const HiddenLink = styled(LinkInspect)`
+  text-decoration: none;
+  color: ${colors.black};
+`
+
 const ThirdLevelList = styled('ul')`
   margin: 0;
   list-style-type: none;
 `
+
+const ThirdLevelTitle = styled('h2')`
+  font-family: ${fonts.sansSerif};
+  margin: 0;
+`
+
+const SubItemContent = ({ item }) => (
+  <>
+    <h3>{item.title}</h3>
+    {item.childContentfulNavigationItemDescriptionTextNode && (
+      <p
+        dangerouslySetInnerHTML={{
+          __html:
+            item.childContentfulNavigationItemDescriptionTextNode
+              .childMarkdownRemark.html,
+        }}
+      />
+    )}
+  </>
+)
 
 class EverythingPageNavigation extends React.Component {
   state = {
@@ -86,6 +120,7 @@ class EverythingPageNavigation extends React.Component {
       this.setState({
         secondSelected: this.props.selectedItem,
       })
+      window.location.hash = this.props.navigation[this.props.selectedItem].slug
     }
   }
 
@@ -128,13 +163,38 @@ class EverythingPageNavigation extends React.Component {
         </Box>
         {secondSelected && (
           <Box width={[1, 2 / 5]} px={2}>
-            <h2>{navigation[secondSelected].title}</h2>
+            <SecondLevelTitle>
+              {navigation[secondSelected].title}
+            </SecondLevelTitle>
             <SecondLevelList>
               {navigation[secondSelected].contentfulchildren.map(id => (
-                <SecondLevelItem key={id.contentful_id}>
-                  <HiddenButton
-                    onClick={this.handleThirdLevel.bind(this, id.contentful_id)}
-                  >
+                <SubItem key={id.contentful_id}>
+                  {navigation[id.contentful_id].link ? (
+                    <HiddenLink to={navigation[id.contentful_id].link}>
+                      <SubItemContent item={navigation[id.contentful_id]} />
+                    </HiddenLink>
+                  ) : (
+                    <HiddenButton
+                      onClick={this.handleThirdLevel.bind(
+                        this,
+                        id.contentful_id
+                      )}
+                    >
+                      <SubItemContent item={navigation[id.contentful_id]} />
+                    </HiddenButton>
+                  )}
+                </SubItem>
+              ))}
+            </SecondLevelList>
+          </Box>
+        )}
+        {thirdSelected && (
+          <Box width={[1, 2 / 5]} px={2}>
+            <ThirdLevelTitle>{navigation[thirdSelected].title}</ThirdLevelTitle>
+            <ThirdLevelList>
+              {navigation[thirdSelected].contentfulchildren.map(id => (
+                <SubItem key={id.contentful_id}>
+                  <HiddenLink to={navigation[id.contentful_id].link}>
                     <h3>{navigation[id.contentful_id].title}</h3>
                     {navigation[id.contentful_id]
                       .childContentfulNavigationItemDescriptionTextNode && (
@@ -147,16 +207,10 @@ class EverythingPageNavigation extends React.Component {
                         }}
                       />
                     )}
-                  </HiddenButton>
-                </SecondLevelItem>
+                  </HiddenLink>
+                </SubItem>
               ))}
-            </SecondLevelList>
-          </Box>
-        )}
-        {thirdSelected && (
-          <Box width={[1, 2 / 5]} px={2}>
-            <h2>{navigation[thirdSelected].title}</h2>
-            <ThirdLevelList />
+            </ThirdLevelList>
           </Box>
         )}
       </Flex>
@@ -179,6 +233,20 @@ class EverythingPage extends React.Component {
       this.navigation[node.contentful_id] = node
       if (node.topLevelItem) {
         this.topLevelItems.push(node)
+      }
+    })
+  }
+
+  componentDidMount() {
+    if (!window.location.hash.length) {
+      return
+    }
+    const slug = window.location.hash.replace('#', '')
+    Object.values(this.navigation).forEach(item => {
+      if (item.slug === slug) {
+        this.setState({
+          topLevelItem: item.contentful_id,
+        })
       }
     })
   }
