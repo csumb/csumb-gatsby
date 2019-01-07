@@ -83,6 +83,7 @@ const LinkyButton = styled('button')`
   color: ${colors.primary.dark};
   text-decoration: underline;
   cursor: pointer;
+  padding: 0;
   ${props => props.small && `font-size: 80%;`}
 `
 
