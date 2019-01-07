@@ -22,6 +22,8 @@ import BlockPathway from './blocks/pathway'
 import BlockRelated from './blocks/related'
 import BlockTable from './blocks/table'
 import BlockPerson from './blocks/person'
+import BlockEvent from './blocks/event'
+import BlockEventFeed from './blocks/event-feed'
 import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
 
@@ -49,6 +51,8 @@ class Block extends React.Component {
     video: BlockVideo,
     sound: BlockSound,
     person: BlockPerson,
+    event: BlockEvent,
+    eventfeed: BlockEventFeed,
   }
 
   render() {

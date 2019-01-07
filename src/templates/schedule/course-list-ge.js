@@ -1,9 +1,9 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import { CourseList } from 'components/schedule'
+import { CourseList } from 'components/pages/schedule'
 import Container from 'components/container'
-import PageTitle from 'components/page-title'
-import SiteHeader from 'components/site-header'
+import PageTitle from 'components/header/page-title'
+import SiteHeader from 'components/header/site-header'
 class GECourseList extends React.Component {
   render() {
     const { ge, term } = this.props.pageContext

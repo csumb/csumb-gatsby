@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'react-emotion'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
-import PageTitle from 'components/page-title'
+import PageTitle from 'components/header/page-title'
 import Link from 'gatsby-link'
 
 const CouseListWrapper = styled('div')`
@@ -26,18 +26,18 @@ const CourseListItem = ({
   UNITS_MINIMUM,
   UNITS_MAXIMUM,
 }) => (
-    <CouseListWrapper>
-      <CouseListTitle>
-        <Link to={`${SUBJECT.toLowerCase()}/${CATALOG_NBR.toLowerCase().trim()}`}>
-          {SUBJECT} {CATALOG_NBR}: {COURSE_TITLE_LONG}
-        </Link>
-      </CouseListTitle>
-      <CourseListDescription>{DESCRLONG}</CourseListDescription>
-      <CourseListDescription>
-        <strong>Units:</strong> {UNITS_MINIMUM} - {UNITS_MAXIMUM}
-      </CourseListDescription>
-    </CouseListWrapper>
-  )
+  <CouseListWrapper>
+    <CouseListTitle>
+      <Link to={`${SUBJECT.toLowerCase()}/${CATALOG_NBR.toLowerCase().trim()}`}>
+        {SUBJECT} {CATALOG_NBR}: {COURSE_TITLE_LONG}
+      </Link>
+    </CouseListTitle>
+    <CourseListDescription>{DESCRLONG}</CourseListDescription>
+    <CourseListDescription>
+      <strong>Units:</strong> {UNITS_MINIMUM} - {UNITS_MAXIMUM}
+    </CourseListDescription>
+  </CouseListWrapper>
+)
 
 const CoursePage = ({ courses, title }) => (
   <Layout pageTitle={`${title} `}>

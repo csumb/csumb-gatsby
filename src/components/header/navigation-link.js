@@ -13,19 +13,28 @@ const NavigationLinkList = styled('li')`
     ${props =>
       props.apply
         ? `color: ${colors.indicators.high};
-        border: 3px solid ${colors.indicators.high};`
-        : `color: ${colors.primary.darkest};`} &:hover {
+        border: 3px solid ${colors.indicators.high};
+        `
+        : `color: ${colors.primary.darkest};`}
+    &:hover {
           ${props =>
             props.apply
               ? `background: ${colors.indicators.high};`
               : `background: ${colors.primary.darkest};`}
-              
+                
       color: ${colors.white};
     }
     &[aria-current='page'] {
-      background: ${colors.primary.dark};
-      color: ${colors.white};
-    }
+      ${props =>
+        props.apply
+          ? `
+        background: ${colors.indicators.high};
+        color: ${colors.white};
+        `
+          : `
+        background: ${colors.primary.dark};
+        color: ${colors.white};
+        `}
   }
 `
 

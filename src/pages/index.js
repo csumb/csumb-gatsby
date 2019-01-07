@@ -10,7 +10,7 @@ import {
   NonFeaturedStory,
   FeaturedStory,
   Nuggets,
-} from 'components/homepage'
+} from 'components/pages/homepage'
 
 class IndexPage extends React.Component {
   constructor(props) {

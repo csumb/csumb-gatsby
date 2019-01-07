@@ -21,24 +21,25 @@ const HeroItem = styled('div')`
 `
 
 class HomepageHero extends React.Component {
-
   render() {
     return (
       <LazyHero
         opacity={0.3}
         parallaxOffset={100}
         transitionDuration={0}
-        imageSrc="https://cdn.filepicker.io/api/file/dnVXbrfdTuTUkR5hS5Kw">
+        imageSrc="https://cdn.filepicker.io/api/file/dnVXbrfdTuTUkR5hS5Kw"
+      >
         <HeroItem>
           <h2>
             <Link to="/scienceillustration">Illustrating life</Link>
           </h2>
-          <LeadParagraph>Try your hand at Science Illustration this summer.</LeadParagraph>
+          <LeadParagraph>
+            Try your hand at Science Illustration this summer.
+          </LeadParagraph>
         </HeroItem>
       </LazyHero>
     )
   }
-
 }
 
 export default HomepageHero

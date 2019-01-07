@@ -1,11 +1,11 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import SiteHeader from 'components/site-header'
+import SiteHeader from 'components/header/site-header'
 import Container from 'components/container'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
 import { Flex, Box } from '@rebass/grid/emotion'
-import SiteNavigation from 'components/site-navigation'
+import SiteNavigation from 'components/navigation/site'
 import { InputText, Submit } from 'components/forms'
 
 class ITSearch extends React.Component {

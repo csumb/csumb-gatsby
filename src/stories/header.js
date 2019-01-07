@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import Brand from 'components/header/brand'
 import Applicant from 'components/header/applicant'
 import Header from 'components/header'
-import SiteHeader from 'components/site-header'
+import SiteHeader from 'components/header/site-header'
 import {
   NavigationLink,
   NavigationLinkApply,

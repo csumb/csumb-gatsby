@@ -6,7 +6,7 @@ import {
   DashboardMessage,
   DashboardAppsWrapper,
   DashboardApp,
-} from 'components/dashboard'
+} from 'components/pages/dashboard'
 import typography from 'utils/typography'
 
 typography.injectStyles()

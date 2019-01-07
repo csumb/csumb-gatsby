@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import SiteHeader from 'components/site-header'
+import SiteHeader from 'components/header/site-header'
 //import { graphql } from 'gatsby'
 import Container from 'components/container'
 

@@ -28,10 +28,11 @@ const ButtonStyle = props => {
       : `
     display: inline-block;
   `
-    }
-    ${props.extraMargin && (`
+  }
+    ${props.extraMargin &&
+      `
       margin: 1rem 0;
-    `)}
+    `}
   ${
     props.buttonType === 'default'
       ? `
@@ -42,7 +43,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-    } 
+  } 
   ${
     props.buttonType === 'primary'
       ? `
@@ -53,7 +54,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-    } 
+  } 
   ${
     props.buttonType === 'highImpact'
       ? `
@@ -64,7 +65,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-    };
+  };
 `
 }
 
@@ -82,9 +83,8 @@ const LinkyButton = styled('button')`
   color: ${colors.primary.dark};
   text-decoration: underline;
   cursor: pointer;
-  ${props => props.small && (
-    `font-size: 80%;`
-  )}
+  padding: 0;
+  ${props => props.small && `font-size: 80%;`}
 `
 
 export { Button, ButtonLink, LinkyButton }

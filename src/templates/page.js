@@ -3,12 +3,14 @@ import React from 'react'
 import Blocks from './blocks'
 import PageFeedback from 'components/page-feedback'
 import Layout from 'components/layouts/default'
-import SiteNavigation from 'components/site-navigation'
-import SiteHeader from 'components/site-header'
+import SiteNavigation from 'components/navigation/site'
+import SiteHeader from 'components/header/site-header'
 import Container from 'components/container'
-import PageTitle from 'components/page-title'
-import { EventPage } from 'components/event'
-import Breadcrumbs from 'components/breadcrumbs'
+import PageTitle from 'components/header/page-title'
+import { EventPage } from 'components/pages/event'
+import { Flex, Box } from '@rebass/grid/emotion'
+import PageNavigation from 'components/navigation/page'
+import Breadcrumbs from 'components/header/breadcrumbs'
 
 class PageTemplate extends React.Component {
   render() {
@@ -19,11 +21,13 @@ class PageTemplate extends React.Component {
       breadcrumbs,
       layout,
       event,
+      pageNavigation,
       pageContent,
       feedbackEmail,
-      pageUrl
+      pageUrl,
     } = this.props.pageContext
 
+    const showNavigation = pageNavigation && pageNavigation.length
 
     return (
       <Layout
@@ -38,7 +42,20 @@ class PageTemplate extends React.Component {
           {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
         </Container>
         {event && <EventPage event={event} />}
-        <Blocks blocks={pageContent} />
+        {showNavigation ? (
+          <Container>
+            <Flex flexWrap="wrap">
+              <Box width={[1, 3 / 12, 3 / 12]} px={2}>
+                <PageNavigation navigation={pageNavigation} />
+              </Box>
+              <Box width={[1, 9 / 12, 9 / 12]} px={2}>
+                <Blocks blocks={pageContent} />
+              </Box>
+            </Flex>
+          </Container>
+        ) : (
+          <Blocks blocks={pageContent} />
+        )}
         <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
       </Layout>
     )

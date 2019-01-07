@@ -23,7 +23,8 @@ const HeaderMobileToggle = styled('button')`
   display: inline-block;
   float: left;
   margin-right: 1rem;
-  width: 1.2em;
+  width: 0.875em;
+  padding: 0;
   cursor: pointer;
 `
 
@@ -40,7 +41,7 @@ const HeaderMobileSearch = styled('div')`
 `
 
 const HeaderMobileApply = styled(Link)`
-  color: ${colors.white};
+  color: ${colors.white} !important;
   background: ${colors.indicators.high};
   padding: 0.3rem;
   float: right;
@@ -140,16 +141,16 @@ const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
       {to ? (
         <MobileSiteNavigationLink to={to}>{children}</MobileSiteNavigationLink>
       ) : (
-          <>
-            {navigationChildren && (
-              <MobileSiteNavigationSubMenu
-                navigationChildren={navigationChildren}
-              >
-                {children}
-              </MobileSiteNavigationSubMenu>
-            )}
-          </>
-        )}
+        <>
+          {navigationChildren && (
+            <MobileSiteNavigationSubMenu
+              navigationChildren={navigationChildren}
+            >
+              {children}
+            </MobileSiteNavigationSubMenu>
+          )}
+        </>
+      )}
     </>
   )
 }
@@ -208,9 +209,6 @@ class HeaderMobile extends React.Component {
                 this.navRef = node
               }}
             >
-              <MobileNavigationLink to="/admissions">
-                Apply
-              </MobileNavigationLink>
               <MobileNavigationLink to="/academics">
                 Majors &amp; programs
               </MobileNavigationLink>

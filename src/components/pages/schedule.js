@@ -3,7 +3,7 @@ import styled from 'react-emotion'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'components/styles/theme'
-import PageTitle from 'components/page-title'
+import PageTitle from 'components/header/page-title'
 import moment from 'moment'
 
 const ScheduleList = styled('ul')`
@@ -126,16 +126,15 @@ const MeetingItem = props => {
     <li>
       {meetingDays.length && meetingDays.join(', ')} {start.format('h:mma')} to{' '}
       {end.format('h:mma')}
-      {props.showLocation &&
-        props._building && (
-          <>
-            <br />
-            <Link to={`building/${props._building.code}`}>
-              {props._building.buildingName}
-            </Link>{' '}
-            - Room {props.MEETING_RM}
-          </>
-        )}
+      {props.showLocation && props._building && (
+        <>
+          <br />
+          <Link to={`building/${props._building.code}`}>
+            {props._building.buildingName}
+          </Link>{' '}
+          - Room {props.MEETING_RM}
+        </>
+      )}
     </li>
   )
 }

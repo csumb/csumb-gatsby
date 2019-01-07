@@ -1,9 +1,9 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
-import { CourseList } from 'components/schedule'
-import PageTitle from 'components/page-title'
-import SiteHeader from 'components/site-header'
+import { CourseList } from 'components/pages/schedule'
+import PageTitle from 'components/header/page-title'
+import SiteHeader from 'components/header/site-header'
 
 class SubjectCourseList extends React.Component {
   render() {
