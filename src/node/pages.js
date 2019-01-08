@@ -6,7 +6,7 @@ const encryptFeedback = email => {
   if (!email) {
     return null
   }
-  const cipher = crypto.createCipheriv(
+  const cipher = crypto.createCipher(
     'aes-256-ctr',
     process.env.CSUMB_FEEDBACK_KEY
   )
