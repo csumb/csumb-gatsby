@@ -26,6 +26,7 @@ import BlockEvent from './blocks/event'
 import BlockEventFeed from './blocks/event-feed'
 import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
+import VisuallyHidden from 'components/visually-hidden'
 
 class Block extends React.Component {
   blockComponents = {
@@ -56,7 +57,7 @@ class Block extends React.Component {
   }
 
   render() {
-    const { type, block, inColumn } = this.props
+    const { type, block, inColumn, hidden, headerHandler } = this.props
     if (typeof this.blockComponents[type] === 'undefined') {
       return null
     }
@@ -66,7 +67,21 @@ class Block extends React.Component {
       : containerStyle.normal
     return (
       <ContainerContext.Provider value={containerWidth}>
-        <BlockType {...block.data} uuid={block.uuid} />
+        {hidden ? (
+          <VisuallyHidden>
+            <BlockType
+              {...block.data}
+              uuid={block.uuid}
+              headerHandler={headerHandler}
+            />
+          </VisuallyHidden>
+        ) : (
+          <BlockType
+            {...block.data}
+            uuid={block.uuid}
+            headerHandler={headerHandler}
+          />
+        )}
       </ContainerContext.Provider>
     )
   }
@@ -105,36 +120,92 @@ const Columns = ({ layout, blocks }) => {
     </Flex>
   )
 }
-const Blocks = ({ blocks }) => {
-  blocks = JSON.parse(blocks)
-
-  if (
-    typeof blocks.layout === 'undefined' ||
-    typeof blocks.layout.map === 'undefined'
-  ) {
-    return <div>Empty layout data</div>
+class Blocks extends React.Component {
+  state = {
+    expandedBlocks: [],
   }
-  return (
-    <>
-      {blocks.layout.map(layout => (
-        <React.Fragment key={layout.id}>
-          {blocks.blocks[layout.id] && (
-            <>
-              {layout._children ? (
-                <Columns layout={layout} blocks={blocks.blocks} />
-              ) : (
-                <Block
-                  key={layout.id}
-                  type={blocks.blocks[layout.id].type}
-                  block={blocks.blocks[layout.id]}
-                />
-              )}
-            </>
-          )}
-        </React.Fragment>
-      ))}
-    </>
-  )
+
+  constructor(props) {
+    super(props)
+    let { blocks } = props
+    blocks = JSON.parse(blocks)
+    this.blocks = blocks
+    this.addBlockRelationships()
+  }
+
+  addBlockRelationships() {
+    let lastHeader = false
+    this.blocks.layout.map(layout => {
+      const block = this.blocks.blocks[layout.id]
+      if (block.type === 'heading' && block.data.collapsible) {
+        lastHeader = layout.id
+        return lastHeader
+      }
+      if (lastHeader && block.type === 'heading') {
+        lastHeader = false
+        return lastHeader
+      }
+      if (lastHeader) {
+        this.blocks.blocks[layout.id]._collapsedHeader = lastHeader
+        return lastHeader
+      }
+      return lastHeader
+    })
+  }
+
+  handleCollapseHeader(event) {}
+
+  render() {
+    const blocks = this.blocks
+    const { expandedBlocks } = this.state
+
+    if (
+      typeof blocks.layout === 'undefined' ||
+      typeof blocks.layout.map === 'undefined'
+    ) {
+      return null
+    }
+    return (
+      <>
+        {blocks.layout.map(layout => (
+          <React.Fragment key={layout.id}>
+            {blocks.blocks[layout.id] && (
+              <>
+                {layout._children ? (
+                  <Columns layout={layout} blocks={blocks.blocks} />
+                ) : (
+                  <Block
+                    key={layout.id}
+                    type={blocks.blocks[layout.id].type}
+                    block={blocks.blocks[layout.id]}
+                    headerHandler={() => {
+                      let { expandedBlocks } = this.state
+                      const index = expandedBlocks.indexOf(layout.id)
+                      if (index > -1) {
+                        expandedBlocks.splice(index, 1)
+                      } else {
+                        expandedBlocks.push(layout.id)
+                      }
+                      this.setState({
+                        expandedBlocks: expandedBlocks,
+                      })
+                    }}
+                    hidden={
+                      blocks.blocks[layout.id]._collapsedHeader &&
+                      (!expandedBlocks.length ||
+                        expandedBlocks.indexOf(
+                          blocks.blocks[layout.id]._collapsedHeader
+                        ) === -1)
+                    }
+                  />
+                )}
+              </>
+            )}
+          </React.Fragment>
+        ))}
+      </>
+    )
+  }
 }
 
 export default Blocks
