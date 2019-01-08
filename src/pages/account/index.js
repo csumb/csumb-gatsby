@@ -4,6 +4,7 @@ import PageTitle from 'components/header/page-title'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { UserContext } from 'components/contexts/user'
+import { Button } from 'components/button'
 import Link from 'gatsby-link'
 import { css } from 'emotion'
 import {
@@ -27,11 +28,11 @@ class AccountPage extends React.Component {
                     {context.user.anonymous ? (
                       <h3>Your account</h3>
                     ) : (
-                      <>
-                        {context.user.profile.firstName}{' '}
-                        {context.user.profile.lastName}
-                      </>
-                    )}
+                        <>
+                          {context.user.profile.firstName}{' '}
+                          {context.user.profile.lastName}
+                        </>
+                      )}
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
@@ -41,11 +42,11 @@ class AccountPage extends React.Component {
                       {context.user.anonymous ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
-                        <>
-                          <AccountTitle>Your account</AccountTitle>
-                          <UserAccountForm user={context.user} />
-                        </>
-                      )}
+                          <>
+                            <AccountTitle>Your account</AccountTitle>
+                            <UserAccountForm user={context.user} />
+                          </>
+                        )}
                     </Box>
                   </Flex>
                 </Container>
@@ -86,6 +87,7 @@ class UserAccountForm extends React.Component {
             </Box>
           </Flex>
         </AccountGroup>
+        <AccountFormAlumni user={user} />
         <AccountGroup legend="Role">
           <p>
             You may have one or many roles on campus. These determine what you
@@ -121,15 +123,15 @@ class UserAccountForm extends React.Component {
               </p>
             </>
           ) : (
-            <>
-              <p>
-                You do not have an official CSUMB email address. The email
-                address we have on file is:
+              <>
+                <p>
+                  You do not have an official CSUMB email address. The email
+                  address we have on file is:
               </p>
 
-              <AccountData>{user.profile.email}</AccountData>
-            </>
-          )}
+                <AccountData>{user.profile.email}</AccountData>
+              </>
+            )}
         </AccountGroup>
         <AccountGroup legend="Secondary email">
           <p>
@@ -149,19 +151,19 @@ class UserAccountForm extends React.Component {
               </ButtonLink>
             </>
           ) : (
-            <>
-              <p>
-                You do not have a secondary email set up. You should setup one
-                now to make sure you are never locked out of your account.
+              <>
+                <p>
+                  You do not have a secondary email set up. You should setup one
+                  now to make sure you are never locked out of your account.
               </p>
-              <ButtonLink
-                to="https://csumb.okta.com/settings"
-                buttonType="primary"
-              >
-                Setup your secondary email
+                <ButtonLink
+                  to="https://csumb.okta.com/settings"
+                  buttonType="primary"
+                >
+                  Setup your secondary email
               </ButtonLink>
-            </>
-          )}
+              </>
+            )}
         </AccountGroup>
         <AccountGroup legend="Employee or student number">
           <p>Your employee or student number is:</p>
@@ -169,6 +171,26 @@ class UserAccountForm extends React.Component {
           <p>This is used on some forms around campus.</p>
         </AccountGroup>
       </>
+    )
+  }
+}
+
+class AccountFormAlumni extends React.Component {
+
+  render() {
+    const { user } = this.props
+
+    if (!(user.profile.cmsRole.indexOf('csumb_aa_life_member') === -1 &&
+      user.profile.cmsRole.indexOf('student_graduate'))) {
+      return null
+    }
+    return (
+      <AccountGroup legend="Join the Alumni Association">
+        <p>You are eligible to join the <Link to="/alumni">CSUMB Alumni Association</Link>. Joining is free, and <strong>means you get to keep your CSUMB email account.</strong></p>
+
+        <p>All individuals with a CSUMB email address are required to comply with CSUMB’s <a href="https://csumb.edu/policy/policy-acceptable-use-computing-information-technology-resources">Policy on the Acceptable Use of Computing &amp; Information Technology Resources</a> and <a href="http://www.calstate.edu/icsuam/documents/Section8000.pdf">CSU’s Responsible Use policy</a>. Failure to comply with these policies may result in the suspension, deletion or termination of the CSUMB email account.</p>
+        <Button>Sign up</Button>
+      </AccountGroup>
     )
   }
 }
@@ -237,24 +259,24 @@ class UserAccountFormRole extends React.Component {
         {this.props.roles.length === 1 ? (
           <AccountData>{this.roles[this.props.roles[0]].name}</AccountData>
         ) : (
-          <AccountData>
-            <ul
-              className={css`
+            <AccountData>
+              <ul
+                className={css`
                 list-style-type: none;
                 margin-left: 0;
               `}
-            >
-              {this.props.roles.map(role => (
-                <li key={role}>{this.roles[role].name}</li>
-              ))}
-            </ul>
-          </AccountData>
-        )}
+              >
+                {this.props.roles.map(role => (
+                  <li key={role}>{this.roles[role].name}</li>
+                ))}
+              </ul>
+            </AccountData>
+          )}
         {email ? (
           <p>You get a campus email account.</p>
         ) : (
-          <p>You do not get a campus email account.</p>
-        )}
+            <p>You do not get a campus email account.</p>
+          )}
       </>
     )
   }
