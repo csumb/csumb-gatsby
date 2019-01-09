@@ -6,6 +6,7 @@ import { InputText, InputDate, Submit } from 'components/forms'
 import { LeadParagraph } from 'components/type'
 import Well from 'components/well'
 import styled from 'react-emotion'
+import Link from 'gatsby-link'
 
 const Username = styled('code')`
   font-weight: bold;
@@ -73,7 +74,11 @@ class LookupForm extends React.Component {
 const LookupPage = () => (
   <Layout PageTitle="Lookup username">
     <Container topPadding>
-      <PageTitle>Lookup username</PageTitle><Well>
+      <PageTitle>Lookup username</PageTitle>
+      <LeadParagraph>
+        Your <Link to="/it/accounts-and-passwords">CSUMB account</Link> is used to log into every app on campus.
+      </LeadParagraph>
+      <Well>
         <LookupForm />
       </Well>
     </Container>
