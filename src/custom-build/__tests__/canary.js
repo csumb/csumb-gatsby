@@ -20,4 +20,14 @@ describe('Canary', () => {
     const exists = fs.pathExistsSync('./public/directory/index.html')
     expect(exists).toBe(true)
   })
+
+  it('has a catalog website', () => {
+    const exists = fs.pathExistsSync('./public/catalog/index.html')
+    expect(exists).toBe(true)
+  })
+
+  it('has an about website', () => {
+    const exists = fs.pathExistsSync('./public/about/index.html')
+    expect(exists).toBe(true)
+  })
 })

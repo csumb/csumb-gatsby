@@ -145,6 +145,67 @@ class InputText extends FormElement {
   }
 }
 
+class InputDate extends FormElement {
+  render() {
+    const {
+      inline,
+      defaultValue,
+      isRequired,
+      hideLabel,
+      label,
+      forwardedRef,
+    } = this.props
+    return (
+      <FormGroup inline={inline}>
+        <Label
+          labelId={this.htmlId}
+          isRequired={isRequired}
+          isHidden={hideLabel}
+        >
+          {label}
+        </Label>
+        <InputTextElement
+          type="date"
+          defaultValue={defaultValue}
+          {...this.cleanProps()}
+          id={this.htmlId}
+          innerRef={forwardedRef}
+        />
+      </FormGroup>
+    )
+  }
+}
+class InputPassword extends FormElement {
+  render() {
+    const {
+      inline,
+      defaultValue,
+      isRequired,
+      hideLabel,
+      label,
+      forwardedRef,
+    } = this.props
+    return (
+      <FormGroup inline={inline}>
+        <Label
+          labelId={this.htmlId}
+          isRequired={isRequired}
+          isHidden={hideLabel}
+        >
+          {label}
+        </Label>
+        <InputTextElement
+          type="password"
+          defaultValue={defaultValue}
+          {...this.cleanProps()}
+          id={this.htmlId}
+          innerRef={forwardedRef}
+        />
+      </FormGroup>
+    )
+  }
+}
+
 const InputTextareaElement = styled('textarea')`
   &:focus {
     ${focusStyle};
@@ -347,8 +408,10 @@ export {
   Submit,
   Fieldset,
   InputText,
+  InputPassword,
   InputTextarea,
   InputCheckbox,
   InputRadio,
   InputSelect,
+  InputDate,
 }
