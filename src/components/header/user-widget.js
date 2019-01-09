@@ -20,6 +20,7 @@ const userLinkStyles = css`
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
+  cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
@@ -77,7 +78,17 @@ class UserDropdown extends React.Component {
     event.preventDefault()
     ImmortalDB.remove('user')
     ImmortalDB.remove('messageCount')
-    window.location.href = 'https://csumb.okta.com/logout'
+    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
+      credentials: 'include',
+    }).then(response => {
+      return response.json()
+    }).then(session => {
+      if (session && session.id) {
+        fetch(`https://api.csumb.edu/okta/session/end?token=${session.id}`).then(response => {
+          window.location.href = `${window.location.protocol}//${window.location.host}`
+        })
+      }
+    });
   }
 
   render() {
@@ -96,8 +107,8 @@ class UserDropdown extends React.Component {
               Public profile
             </UserDropdownMenuLink>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
           <UserDropdownMenuLink component="a" href="/account/card">
             OtterCard
           </UserDropdownMenuLink>
@@ -125,25 +136,25 @@ class UserWidget extends React.Component {
         <UserContext.Consumer>
           {context => (
             <>
-              {context.user === false || context.user.anonymous ? (
+              {context.user === false ? (
                 <></>
               ) : (
-                <>
-                  {context.user.anonymous ? (
-                    <UserLoginLink onClick={this.handleLogin.bind(this)}>
-                      Log in
+                  <>
+                    {context.user.anonymous ? (
+                      <UserLoginLink onClick={this.handleLogin.bind(this)}>
+                        Log in
                     </UserLoginLink>
-                  ) : (
-                    <>
-                      <UserDashboardLink to="/dashboard">
-                        Dashboard
+                    ) : (
+                        <>
+                          <UserDashboardLink to="/dashboard">
+                            Dashboard
                         <UnreadMessages user={context.user} />
-                      </UserDashboardLink>
-                      <UserDropdown user={context.user} />
-                    </>
-                  )}
-                </>
-              )}
+                          </UserDashboardLink>
+                          <UserDropdown user={context.user} />
+                        </>
+                      )}
+                  </>
+                )}
             </>
           )}
         </UserContext.Consumer>
