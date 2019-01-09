@@ -72,10 +72,10 @@ class LookupForm extends React.Component {
 
 const LookupPage = () => (
   <Layout PageTitle="Lookup username">
-    <PageTitle>Lookup username</PageTitle>
-    <Container topPadding><Well>
-      <LookupForm />
-    </Well>
+    <Container topPadding>
+      <PageTitle>Lookup username</PageTitle><Well>
+        <LookupForm />
+      </Well>
     </Container>
   </Layout>
 )
