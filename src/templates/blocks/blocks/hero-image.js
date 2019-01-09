@@ -1,18 +1,8 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { ContainerContext, ContainerElement } from '../container-context'
 import { colors } from 'components/styles/theme'
+import LazyHero from 'react-lazy-hero'
 import Link from 'gatsby-link'
-
-const HeroImage = styled('div')`
-  width: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: #eceade;
-  position: relative;
-  height: 70vh;
-`
 
 const HeroImageTextWrapper = styled('div')`
   padding-top: 1.5rem;
@@ -45,27 +35,23 @@ class BlockHeroImage extends React.Component {
   render() {
     const { image, buttonUrl, headline } = this.props
     return (
-      <HeroImage
-        style={{
-          backgroundImage: `url('${image.url}')`,
-        }}
+      <LazyHero
+        opacity={0.3}
+        parallaxOffset={0}
+        transitionDuration={0}
+        isCentered={false}
+        imageSrc={image.url}
       >
-        <ContainerContext.Consumer>
-          {container => (
-            <ContainerElement container={container}>
-              <HeroImageTextWrapper>
-                <HeroImageText>
-                  {buttonUrl ? (
-                    <Link to={buttonUrl}>{headline}</Link>
-                  ) : (
-                    <>{headline}</>
-                  )}
-                </HeroImageText>
-              </HeroImageTextWrapper>
-            </ContainerElement>
-          )}
-        </ContainerContext.Consumer>
-      </HeroImage>
+        <HeroImageTextWrapper>
+          <HeroImageText>
+            {buttonUrl ? (
+              <Link to={buttonUrl}>{headline}</Link>
+            ) : (
+                <>{headline}</>
+              )}
+          </HeroImageText>
+        </HeroImageTextWrapper>
+      </LazyHero>
     )
   }
 }
