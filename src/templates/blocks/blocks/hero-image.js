@@ -36,7 +36,7 @@ class BlockHeroImage extends React.Component {
     const { image, buttonUrl, headline } = this.props
     return (
       <LazyHero
-        opacity={0.3}
+        opacity={0}
         parallaxOffset={0}
         transitionDuration={0}
         isCentered={false}
