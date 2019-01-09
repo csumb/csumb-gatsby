@@ -51,17 +51,17 @@ const Label = ({
   isHidden,
   isAriaLabel,
 }) => (
-  <LabelWrapper isHidden={isHidden}>
-    <LabelElement
-      htmlFor={labelId}
-      smallText={smallText}
-      id={isAriaLabel && labelId}
-    >
-      {children}
-      {isRequired ? <Required>Required</Required> : null}
-    </LabelElement>
-  </LabelWrapper>
-)
+    <LabelWrapper isHidden={isHidden}>
+      <LabelElement
+        htmlFor={labelId}
+        smallText={smallText}
+        id={isAriaLabel && labelId}
+      >
+        {children}
+        {isRequired ? <Required>Required</Required> : null}
+      </LabelElement>
+    </LabelWrapper>
+  )
 
 Label.propTypes = {
   labelId: PropTypes.string.isRequired,
@@ -135,6 +135,37 @@ class InputText extends FormElement {
         </Label>
         <InputTextElement
           type="text"
+          defaultValue={defaultValue}
+          {...this.cleanProps()}
+          id={this.htmlId}
+          innerRef={forwardedRef}
+        />
+      </FormGroup>
+    )
+  }
+}
+
+class InputPassword extends FormElement {
+  render() {
+    const {
+      inline,
+      defaultValue,
+      isRequired,
+      hideLabel,
+      label,
+      forwardedRef,
+    } = this.props
+    return (
+      <FormGroup inline={inline}>
+        <Label
+          labelId={this.htmlId}
+          isRequired={isRequired}
+          isHidden={hideLabel}
+        >
+          {label}
+        </Label>
+        <InputTextElement
+          type="password"
           defaultValue={defaultValue}
           {...this.cleanProps()}
           id={this.htmlId}
@@ -243,12 +274,12 @@ const SelectElement = styled(Select)`
     padding: 0.1rem;
     width: ${props => (props.small ? '30%' : '100%')};
     ${props =>
-      props.huge
-        ? `
+    props.huge
+      ? `
   padding: 0.3rem;
   font-size: 2rem;
 `
-        : ``};
+      : ``};
   }
 `
 
@@ -347,6 +378,7 @@ export {
   Submit,
   Fieldset,
   InputText,
+  InputPassword,
   InputTextarea,
   InputCheckbox,
   InputRadio,
