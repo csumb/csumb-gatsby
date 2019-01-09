@@ -51,17 +51,17 @@ const Label = ({
   isHidden,
   isAriaLabel,
 }) => (
-    <LabelWrapper isHidden={isHidden}>
-      <LabelElement
-        htmlFor={labelId}
-        smallText={smallText}
-        id={isAriaLabel && labelId}
-      >
-        {children}
-        {isRequired ? <Required>Required</Required> : null}
-      </LabelElement>
-    </LabelWrapper>
-  )
+  <LabelWrapper isHidden={isHidden}>
+    <LabelElement
+      htmlFor={labelId}
+      smallText={smallText}
+      id={isAriaLabel && labelId}
+    >
+      {children}
+      {isRequired ? <Required>Required</Required> : null}
+    </LabelElement>
+  </LabelWrapper>
+)
 
 Label.propTypes = {
   labelId: PropTypes.string.isRequired,
@@ -304,12 +304,12 @@ const SelectElement = styled(Select)`
     padding: 0.1rem;
     width: ${props => (props.small ? '30%' : '100%')};
     ${props =>
-    props.huge
-      ? `
+      props.huge
+        ? `
   padding: 0.3rem;
   font-size: 2rem;
 `
-      : ``};
+        : ``};
   }
 `
 
@@ -413,5 +413,5 @@ export {
   InputCheckbox,
   InputRadio,
   InputSelect,
-  InputDate
+  InputDate,
 }
