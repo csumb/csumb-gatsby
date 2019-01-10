@@ -7,7 +7,7 @@ import {
   AlertSuccess,
   AlertWarning,
   AlertEmpty,
-  AlertFyi
+  AlertFyi,
 } from 'components/alert'
 
 typography.injectStyles()
