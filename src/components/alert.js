@@ -18,6 +18,7 @@ import bp from './styles/breakpoints'
 const baseStyle = css`
   display: block;
   padding: 0.5rem;
+  margin: 1rem 0;
   p {
     margin-bottom: 0;
   }
@@ -30,8 +31,8 @@ const AlertIcon = styled(FontAwesomeIcon)`
 
 const AlertIconBox = styled(Box)`
   ${bp({
-    display: ['none', 'block', 'block', 'block'],
-  })};
+  display: ['none', 'block', 'block', 'block'],
+})};
 `
 
 const AlertContent = ({ icon, children }) => (
@@ -102,4 +103,16 @@ const AlertEmpty = props => (
   </AlertEmptyElement>
 )
 
-export { AlertDanger, AlertInfo, AlertWarning, AlertEmpty }
+const AlertFyiElement = styled(Alert)`
+  ${baseStyle};
+  border: 1px solid ${colors.muted.bright};
+  font-weight: bold;
+`
+
+const AlertFyi = props => (
+  <AlertFyiElement {...props}>
+    {props.children}
+  </AlertFyiElement>
+)
+
+export { AlertDanger, AlertInfo, AlertWarning, AlertEmpty, AlertFyi }

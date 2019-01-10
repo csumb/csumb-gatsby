@@ -7,6 +7,7 @@ import {
   AlertInfo,
   AlertWarning,
   AlertEmpty,
+  AlertFyi
 } from 'components/alert'
 
 typography.injectStyles()
@@ -68,5 +69,20 @@ storiesOf('Alerts', module)
     ),
     {
       info: 'Use for when there are no search results, messages, events, etc.',
+    }
+  )
+  .add(
+    'FYI',
+    () => (
+      <AlertFyi type="polite">
+        <p>
+          Besides, it has been divined by other continental commentators, that
+          when Jonah was thrown overboard from the Joppa ship, he straightway
+          effected his escape to another vessel near by
+        </p>
+      </AlertFyi>
+    ),
+    {
+      info: 'Use to notify users of important stuff without being too glaring.',
     }
   )
