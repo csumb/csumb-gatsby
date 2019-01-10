@@ -48,8 +48,8 @@ const Logo = styled('img')`
 
 const RightFooter = styled(Box)`
   ${bp({
-  textAlign: ['normal', 'right'],
-})};
+    textAlign: ['normal', 'right'],
+  })};
 `
 
 const LegalLink = styled(Link)`
@@ -59,7 +59,6 @@ const LegalLink = styled(Link)`
 `
 
 class Footer extends React.Component {
-
   render() {
     return (
       <FooterElement>
@@ -70,17 +69,17 @@ class Footer extends React.Component {
                 <li>
                   <Link to="/jobs" title="">
                     Jobs
-                </Link>
+                  </Link>
                 </li>
                 <li>
                   <Link to="/admissions/visit" title="">
                     Tours
-                </Link>
+                  </Link>
                 </li>
                 <li>
                   <Link to="/academics" title="">
                     Majors
-                </Link>
+                  </Link>
                 </li>
               </FooterList>
             </Box>
@@ -89,17 +88,17 @@ class Footer extends React.Component {
                 <li>
                   <Link to="/library" title="">
                     Library
-                </Link>
+                  </Link>
                 </li>
                 <li>
                   <Link to="/map" title="">
                     Map
-                </Link>
+                  </Link>
                 </li>
                 <li>
                   <Link to="/mastercalendar" title="">
                     Calendar
-                </Link>
+                  </Link>
                 </li>
               </FooterList>
             </Box>
@@ -108,17 +107,17 @@ class Footer extends React.Component {
                 <li>
                   <Link to="/directory" title="">
                     Directory
-                </Link>
+                  </Link>
                 </li>
                 <li>
                   <Link to="/catalog" title="">
                     Catalog
-                </Link>
+                  </Link>
                 </li>
                 <li>
                   <Link to="/planning/schedule" title="">
                     Class schedule
-                </Link>
+                  </Link>
                 </li>
               </FooterList>
             </Box>
@@ -127,13 +126,13 @@ class Footer extends React.Component {
               <FooterAddressList>
                 <FooterAddressListItem>
                   <strong>Call:</strong> 831-582-3000
-              </FooterAddressListItem>
+                </FooterAddressListItem>
                 <FooterAddressListItem>
                   <strong>Visit:</strong> 5108 Fourth Avenue, Marina, CA 93933
-              </FooterAddressListItem>
+                </FooterAddressListItem>
                 <FooterAddressListItem>
                   <strong>Mail:</strong> 100 Campus Center, Seaside, CA 93955
-              </FooterAddressListItem>
+                </FooterAddressListItem>
               </FooterAddressList>
               <LegalLink to="/clery">Security report</LegalLink> |{' '}
               <LegalLink to="/legal">Legal information</LegalLink>

@@ -5,6 +5,7 @@ import {
   AlertSuccess,
   AlertWarning,
   AlertEmpty,
+  AlertFyi
 } from '../../components/alert'
 
 describe('Alert', () => {
@@ -47,6 +48,17 @@ describe('Alert', () => {
         <AlertEmpty>
           <p>This is an alert</p>
         </AlertEmpty>
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('renders an fyi alert correctly', () => {
+    const tree = renderer
+      .create(
+        <AlertFyi>
+          <p>This is an alert</p>
+        </AlertFyi>
       )
       .toJSON()
     expect(tree).toMatchSnapshot()

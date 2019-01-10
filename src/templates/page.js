@@ -38,9 +38,7 @@ class PageTemplate extends React.Component {
       >
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
-        {topHero && (
-          <BlockHero {...topHero} />
-        )}
+        {topHero && <BlockHero {...topHero} />}
         <Container>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
@@ -58,8 +56,8 @@ class PageTemplate extends React.Component {
             </Flex>
           </Container>
         ) : (
-            <Blocks blocks={pageContent} />
-          )}
+          <Blocks blocks={pageContent} />
+        )}
         <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
       </Layout>
     )

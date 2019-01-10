@@ -31,8 +31,8 @@ const AlertIcon = styled(FontAwesomeIcon)`
 
 const AlertIconBox = styled(Box)`
   ${bp({
-  display: ['none', 'block', 'block', 'block'],
-})};
+    display: ['none', 'block', 'block', 'block'],
+  })};
 `
 
 const AlertContent = ({ icon, children }) => (
@@ -110,9 +110,7 @@ const AlertFyiElement = styled(Alert)`
 `
 
 const AlertFyi = props => (
-  <AlertFyiElement {...props}>
-    {props.children}
-  </AlertFyiElement>
+  <AlertFyiElement {...props}>{props.children}</AlertFyiElement>
 )
 
 export { AlertDanger, AlertSuccess, AlertWarning, AlertEmpty, AlertFyi }
