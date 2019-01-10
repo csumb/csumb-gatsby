@@ -2,7 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import {
   AlertDanger,
-  AlertInfo,
+  AlertSuccess,
   AlertWarning,
   AlertEmpty,
 } from '../../components/alert'
@@ -33,9 +33,9 @@ describe('Alert', () => {
   it('renders an info alert correctly', () => {
     const tree = renderer
       .create(
-        <AlertInfo>
+        <AlertSuccess>
           <p>This is an alert</p>
-        </AlertInfo>
+        </AlertSuccess>
       )
       .toJSON()
     expect(tree).toMatchSnapshot()

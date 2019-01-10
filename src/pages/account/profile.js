@@ -9,7 +9,7 @@ import styled from 'react-emotion'
 import ReactFilestack from 'filestack-react'
 import { InputText, InputSelect, Submit } from 'components/forms'
 import { graphql } from 'gatsby'
-import { AlertInfo } from 'components/alert'
+import { AlertSuccess } from 'components/alert'
 import {
   AccountGroup,
   AccountTitle,
@@ -200,10 +200,10 @@ class UserAccountProfileOfficeForm extends React.Component {
         />
         <Submit value="Update office information" />
         {this.state.updated && (
-          <AlertInfo>
+          <AlertSuccess>
             Your building and room have been updated. It might take a few hours
             for the change to make it to the public directory.
-          </AlertInfo>
+          </AlertSuccess>
         )}
       </form>
     )
@@ -273,10 +273,10 @@ class UserAccountProfilePhoneForm extends React.Component {
         />
         <Submit value="Update phone" />
         {this.state.updated && (
-          <AlertInfo>
+          <AlertSuccess>
             Your phone number has been updated. It might take a few hours for
             the change to make it to the public directory.
-          </AlertInfo>
+          </AlertSuccess>
         )}
       </form>
     )
@@ -366,10 +366,10 @@ class UserAccountProfileBioForm extends React.Component {
         />
         <Submit value="Update biography" />
         {this.state.updated && (
-          <AlertInfo>
+          <AlertSuccess>
             Your biography has been updated. It might take a few hours before
             your changes appear on the public directory.
-          </AlertInfo>
+          </AlertSuccess>
         )}
       </form>
     )
