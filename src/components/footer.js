@@ -3,18 +3,26 @@ import VisuallyHidden from 'components/visually-hidden'
 import Link from 'gatsby-link'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
-import logo from 'assets/images/csumb-logo-blue.svg'
+import logo from 'assets/images/csumb-logo-white.svg'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
 import bp from 'components/styles/breakpoints'
+import color from 'color'
 
 const FooterElement = styled('footer')`
-  border-top: 3px solid ${colors.primary.darkest};
+  background: ${color(colors.primary.darkest)
+    .lighten(0.2)
+    .hex()};
   margin-top: 1rem;
   padding-top: 1rem;
+  color: ${colors.white};
+  font-size: 0.9rem;
   ul {
     list-style-type: none;
     padding: 0;
+  }
+  a {
+    color: ${colors.white};
   }
   h2 {
     margin-top: 0;
@@ -23,13 +31,13 @@ const FooterElement = styled('footer')`
 
 const Legal = styled('div')`
   background-color: ${colors.primary.darkest};
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   text-align: right;
   margin-top: 1rem;
   a,
   a:visited {
     color: ${colors.white};
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin-right: 1rem;
     &:last-child {
       margin-right: 0;
@@ -60,8 +68,8 @@ const Logo = styled('img')`
 
 const RightFooter = styled(Box)`
   ${bp({
-    textAlign: ['normal', 'right'],
-  })};
+  textAlign: ['normal', 'right'],
+})};
 `
 
 const Footer = ({ children, data }) => (
