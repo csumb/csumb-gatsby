@@ -11,7 +11,7 @@ import { EventPage } from 'components/pages/event'
 import { Flex, Box } from '@rebass/grid/emotion'
 import PageNavigation from 'components/navigation/page'
 import Breadcrumbs from 'components/header/breadcrumbs'
-
+import BlockHero from './blocks/blocks/hero-image'
 class PageTemplate extends React.Component {
   render() {
     const {
@@ -25,6 +25,7 @@ class PageTemplate extends React.Component {
       pageContent,
       feedbackEmail,
       pageUrl,
+      topHero,
     } = this.props.pageContext
 
     const showNavigation = pageNavigation && pageNavigation.length
@@ -37,6 +38,9 @@ class PageTemplate extends React.Component {
       >
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
+        {topHero && (
+          <BlockHero {...topHero} />
+        )}
         <Container>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
@@ -54,8 +58,8 @@ class PageTemplate extends React.Component {
             </Flex>
           </Container>
         ) : (
-          <Blocks blocks={pageContent} />
-        )}
+            <Blocks blocks={pageContent} />
+          )}
         <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
       </Layout>
     )

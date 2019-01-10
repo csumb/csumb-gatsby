@@ -58,6 +58,14 @@ module.exports = (graphql, actions) => {
                     title
                     site
                     pageContent
+                    topHero {
+                      headline
+                      text
+                      buttonUrl
+                      image {
+                        url
+                      }
+                    }
                     navigation {
                       url
                       name
@@ -139,6 +147,9 @@ module.exports = (graphql, actions) => {
             }
             if (typeof content.event !== 'undefined') {
               pageNode.context.event = content.event
+            }
+            if (content.topHero.image) {
+              pageNode.context.topHero = content.topHero
             }
             createPage(pageNode)
           }
