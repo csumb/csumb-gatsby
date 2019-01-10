@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 import typography from 'utils/typography'
 import {
   AlertDanger,
-  AlertInfo,
+  AlertSuccess,
   AlertWarning,
   AlertEmpty,
   AlertFyi
@@ -44,15 +44,15 @@ storiesOf('Alerts', module)
     alertInfo
   )
   .add(
-    'Info',
+    'Success',
     () => (
-      <AlertInfo type="polite">
+      <AlertSuccess type="polite">
         <p>
           Besides, it has been divined by other continental commentators, that
           when Jonah was thrown overboard from the Joppa ship, he straightway
           effected his escape to another vessel near by
         </p>
-      </AlertInfo>
+      </AlertSuccess>
     ),
     alertInfo
   )
@@ -83,6 +83,6 @@ storiesOf('Alerts', module)
       </AlertFyi>
     ),
     {
-      info: 'Use to notify users of important stuff without being too glaring.',
+      info: 'Use to notify users of important stuff without being too',
     }
   )

@@ -75,7 +75,7 @@ const AlertWarning = props => (
   </AlertWarningElement>
 )
 
-const AlertInfoElement = styled(Alert)`
+const AlertSuccessElement = styled(Alert)`
   ${baseStyle};
   background: ${color(colors.indicators.low)
     .lighten(1.5)
@@ -84,11 +84,11 @@ const AlertInfoElement = styled(Alert)`
   border-left: 8px solid ${colors.indicators.low};
 `
 
-const AlertInfo = props => (
-  <AlertInfoElement {...props}>
+const AlertSuccess = props => (
+  <AlertSuccessElement {...props}>
     <VisuallyHidden>For your information</VisuallyHidden>
     <AlertContent icon={faCheckCircle}>{props.children}</AlertContent>
-  </AlertInfoElement>
+  </AlertSuccessElement>
 )
 
 const AlertEmptyElement = styled(Alert)`
@@ -115,4 +115,4 @@ const AlertFyi = props => (
   </AlertFyiElement>
 )
 
-export { AlertDanger, AlertInfo, AlertWarning, AlertEmpty, AlertFyi }
+export { AlertDanger, AlertSuccess, AlertWarning, AlertEmpty, AlertFyi }
