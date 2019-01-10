@@ -1,0 +1,35 @@
+import React from 'react'
+import Layout from 'components/layouts/default'
+import { graphql } from 'gatsby'
+import PageTitle from 'components/header/page-title'
+import Container from 'components/container'
+
+const LegalPage = props => {
+  const page = props.data.allMarkdownRemark.edges[0].node
+  return (
+    <Layout pageTitle={page.frontmatter.title}>
+      <Container>
+        <PageTitle>{page.frontmatter.title}</PageTitle>
+        <div dangerouslySetInnerHTML={{ __html: page.html }} />
+      </Container>
+    </Layout>
+  )
+}
+
+export default LegalPage
+
+export const query = graphql`
+  {
+    allMarkdownRemark(filter: { frontmatter: { name: { eq: "legal" } } }) {
+      edges {
+        node {
+          frontmatter {
+            name
+            title
+          }
+          html
+        }
+      }
+    }
+  }
+`

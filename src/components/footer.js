@@ -1,5 +1,4 @@
 import React from 'react'
-import VisuallyHidden from 'components/visually-hidden'
 import Link from 'gatsby-link'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
@@ -7,14 +6,11 @@ import logo from 'assets/images/csumb-logo-white.svg'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
 import bp from 'components/styles/breakpoints'
-import color from 'color'
 
 const FooterElement = styled('footer')`
-  background: ${color(colors.primary.darkest)
-    .lighten(0.2)
-    .hex()};
+  background: ${colors.primary.darkest};
   margin-top: 1rem;
-  padding-top: 1rem;
+  padding: 1rem 0;
   color: ${colors.white};
   font-size: 0.9rem;
   ul {
@@ -26,22 +22,6 @@ const FooterElement = styled('footer')`
   }
   h2 {
     margin-top: 0;
-  }
-`
-
-const Legal = styled('div')`
-  background-color: ${colors.primary.darkest};
-  padding: 1rem 0;
-  text-align: right;
-  margin-top: 1rem;
-  a,
-  a:visited {
-    color: ${colors.white};
-    font-size: 0.7rem;
-    margin-right: 1rem;
-    &:last-child {
-      margin-right: 0;
-    }
   }
 `
 
@@ -72,106 +52,97 @@ const RightFooter = styled(Box)`
 })};
 `
 
-const Footer = ({ children, data }) => (
-  <FooterElement>
-    <Container>
-      <Flex flexWrap="wrap">
-        <Box width={[1, 2 / 12]}>
-          <FooterList>
-            <li>
-              <Link to="/jobs" title="">
-                Jobs
-              </Link>
-            </li>
-            <li>
-              <Link to="/admissions/visit" title="">
-                Tours
-              </Link>
-            </li>
-            <li>
-              <Link to="/academics" title="">
-                Majors
-              </Link>
-            </li>
-          </FooterList>
-        </Box>
-        <Box width={[1, 2 / 12]}>
-          <FooterList>
-            <li>
-              <Link to="/library" title="">
-                Library
-              </Link>
-            </li>
-            <li>
-              <Link to="/map" title="">
-                Map
-              </Link>
-            </li>
-            <li>
-              <Link to="/mastercalendar" title="">
-                Calendar
-              </Link>
-            </li>
-          </FooterList>
-        </Box>
-        <Box width={[1, 3 / 12]}>
-          <FooterList>
-            <li>
-              <Link to="/directory" title="">
-                Directory
-              </Link>
-            </li>
-            <li>
-              <Link to="/catalog" title="">
-                Catalog
-              </Link>
-            </li>
-            <li>
-              <Link to="/planning/schedule" title="">
-                Class schedule
-              </Link>
-            </li>
-          </FooterList>
-        </Box>
-        <RightFooter width={[1, 5 / 12]}>
-          <Logo src={logo} alt="Cal State Monterey Bay" />
-          <FooterAddressList>
-            <FooterAddressListItem>
-              <strong>Call:</strong> 831-582-3000
-            </FooterAddressListItem>
-            <FooterAddressListItem>
-              <strong>Visit:</strong> 5108 Fourth Avenue, Marina, CA 93933
-            </FooterAddressListItem>
-            <FooterAddressListItem>
-              <strong>Mail:</strong> 100 Campus Center, Seaside, CA 93955
-            </FooterAddressListItem>
-          </FooterAddressList>
-        </RightFooter>
-      </Flex>
-    </Container>
-    <Legal>
-      <Container>
-        <Link to="/copyright">Website Copyright/DMCA Policy</Link>
-        <Link to="/privacy">Privacy</Link>
-        <Link to="/accessibility">Accessibility</Link>
-        <Link to="https:/cm.maxient.com/reportingform.php?CSUMontereyBay&amp;layout_id=0">
-          Report concerning behavior
-        </Link>
-        <Link to="/titleix">
-          Title <abbr title="nine">IX</abbr>
-        </Link>
-        <Link to="/diversity">Diversity &amp; Inclusion</Link>
-        <Link to="/clery">Security report</Link>
-        <Link to="/hr/form-801">Form 801</Link>
-      </Container>
+const LegalLink = styled(Link)`
+  color: ${colors.white};
+  padding-top: 1rem;
+  font-size: 0.8rem;
+`
 
-      <VisuallyHidden>
-        <Link to="/document-reader">
-          Some links for may require a Document Reader.
-        </Link>
-      </VisuallyHidden>
-    </Legal>
-  </FooterElement>
-)
+class Footer extends React.Component {
+
+  render() {
+    return (
+      <FooterElement>
+        <Container>
+          <Flex flexWrap="wrap">
+            <Box width={[1, 2 / 12]}>
+              <FooterList>
+                <li>
+                  <Link to="/jobs" title="">
+                    Jobs
+                </Link>
+                </li>
+                <li>
+                  <Link to="/admissions/visit" title="">
+                    Tours
+                </Link>
+                </li>
+                <li>
+                  <Link to="/academics" title="">
+                    Majors
+                </Link>
+                </li>
+              </FooterList>
+            </Box>
+            <Box width={[1, 2 / 12]}>
+              <FooterList>
+                <li>
+                  <Link to="/library" title="">
+                    Library
+                </Link>
+                </li>
+                <li>
+                  <Link to="/map" title="">
+                    Map
+                </Link>
+                </li>
+                <li>
+                  <Link to="/mastercalendar" title="">
+                    Calendar
+                </Link>
+                </li>
+              </FooterList>
+            </Box>
+            <Box width={[1, 3 / 12]}>
+              <FooterList>
+                <li>
+                  <Link to="/directory" title="">
+                    Directory
+                </Link>
+                </li>
+                <li>
+                  <Link to="/catalog" title="">
+                    Catalog
+                </Link>
+                </li>
+                <li>
+                  <Link to="/planning/schedule" title="">
+                    Class schedule
+                </Link>
+                </li>
+              </FooterList>
+            </Box>
+            <RightFooter width={[1, 5 / 12]}>
+              <Logo src={logo} alt="Cal State Monterey Bay" />
+              <FooterAddressList>
+                <FooterAddressListItem>
+                  <strong>Call:</strong> 831-582-3000
+              </FooterAddressListItem>
+                <FooterAddressListItem>
+                  <strong>Visit:</strong> 5108 Fourth Avenue, Marina, CA 93933
+              </FooterAddressListItem>
+                <FooterAddressListItem>
+                  <strong>Mail:</strong> 100 Campus Center, Seaside, CA 93955
+              </FooterAddressListItem>
+              </FooterAddressList>
+              <LegalLink to="/clery">Security report</LegalLink> |{' '}
+              <LegalLink to="/legal">Legal information</LegalLink>
+            </RightFooter>
+          </Flex>
+        </Container>
+      </FooterElement>
+    )
+  }
+}
 
 export default Footer
