@@ -17,7 +17,8 @@ const FooterElement = styled('footer')`
     list-style-type: none;
     padding: 0;
   }
-  a {
+  a,
+  a:visited {
     color: ${colors.white};
   }
   h2 {
