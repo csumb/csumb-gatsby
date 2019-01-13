@@ -80,15 +80,21 @@ class UserDropdown extends React.Component {
     ImmortalDB.remove('messageCount')
     fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
-    }).then(response => {
-      return response.json()
-    }).then(session => {
-      if (session && session.id) {
-        fetch(`https://api.csumb.edu/okta/session/end?token=${session.id}`).then(response => {
-          window.location.href = `${window.location.protocol}//${window.location.host}`
-        })
-      }
-    });
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(session => {
+        if (session && session.id) {
+          fetch(
+            `https://api.csumb.edu/okta/session/end?token=${session.id}`
+          ).then(response => {
+            window.location.href = `${window.location.protocol}//${
+              window.location.host
+            }`
+          })
+        }
+      })
   }
 
   render() {
@@ -107,13 +113,16 @@ class UserDropdown extends React.Component {
               Public profile
             </UserDropdownMenuLink>
           ) : (
-              <></>
-            )}
+            <></>
+          )}
           <UserDropdownMenuLink component="a" href="/account/card">
             OtterCard
           </UserDropdownMenuLink>
           <UserDropdownMenuLink component="a" href="/account/print">
             Print balance
+          </UserDropdownMenuLink>
+          <UserDropdownMenuLink component="a" href="/account/emergency">
+            Emergency alerts
           </UserDropdownMenuLink>
           <UserDropdownMenuLinkButton onClick={this.handleLogout.bind(this)}>
             Log out
@@ -139,22 +148,22 @@ class UserWidget extends React.Component {
               {context.user === false ? (
                 <></>
               ) : (
-                  <>
-                    {context.user.anonymous ? (
-                      <UserLoginLink onClick={this.handleLogin.bind(this)}>
-                        Log in
+                <>
+                  {context.user.anonymous ? (
+                    <UserLoginLink onClick={this.handleLogin.bind(this)}>
+                      Log in
                     </UserLoginLink>
-                    ) : (
-                        <>
-                          <UserDashboardLink to="/dashboard">
-                            Dashboard
+                  ) : (
+                    <>
+                      <UserDashboardLink to="/dashboard">
+                        Dashboard
                         <UnreadMessages user={context.user} />
-                          </UserDashboardLink>
-                          <UserDropdown user={context.user} />
-                        </>
-                      )}
-                  </>
-                )}
+                      </UserDashboardLink>
+                      <UserDropdown user={context.user} />
+                    </>
+                  )}
+                </>
+              )}
             </>
           )}
         </UserContext.Consumer>
