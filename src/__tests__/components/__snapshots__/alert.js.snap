@@ -2,7 +2,7 @@
 
 exports[`Alert renders a danger alert correctly 1`] = `
 <div
-  className="css-k51ohx"
+  className="css-xtr3pa"
   data-reach-alert={true}
 >
   <div
@@ -60,7 +60,7 @@ exports[`Alert renders a danger alert correctly 1`] = `
 
 exports[`Alert renders a warning alert correctly 1`] = `
 <div
-  className="css-12r1kpa"
+  className="css-jcln01"
   data-reach-alert={true}
 >
   <div
@@ -118,7 +118,7 @@ exports[`Alert renders a warning alert correctly 1`] = `
 
 exports[`Alert renders an empty alert correctly 1`] = `
 <div
-  className="css-1lnoq55"
+  className="css-19b7sg5"
   data-reach-alert={true}
 >
   <div
@@ -174,9 +174,20 @@ exports[`Alert renders an empty alert correctly 1`] = `
 </div>
 `;
 
+exports[`Alert renders an fyi alert correctly 1`] = `
+<div
+  className="css-2173aj"
+  data-reach-alert={true}
+>
+  <p>
+    This is an alert
+  </p>
+</div>
+`;
+
 exports[`Alert renders an info alert correctly 1`] = `
 <div
-  className="css-16a9wz5"
+  className="css-gnh87"
   data-reach-alert={true}
 >
   <div

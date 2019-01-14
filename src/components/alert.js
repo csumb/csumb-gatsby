@@ -18,6 +18,7 @@ import bp from './styles/breakpoints'
 const baseStyle = css`
   display: block;
   padding: 0.5rem;
+  margin: 1rem 0;
   p {
     margin-bottom: 0;
   }
@@ -74,7 +75,7 @@ const AlertWarning = props => (
   </AlertWarningElement>
 )
 
-const AlertInfoElement = styled(Alert)`
+const AlertSuccessElement = styled(Alert)`
   ${baseStyle};
   background: ${color(colors.indicators.low)
     .lighten(1.5)
@@ -83,11 +84,11 @@ const AlertInfoElement = styled(Alert)`
   border-left: 8px solid ${colors.indicators.low};
 `
 
-const AlertInfo = props => (
-  <AlertInfoElement {...props}>
+const AlertSuccess = props => (
+  <AlertSuccessElement {...props}>
     <VisuallyHidden>For your information</VisuallyHidden>
     <AlertContent icon={faCheckCircle}>{props.children}</AlertContent>
-  </AlertInfoElement>
+  </AlertSuccessElement>
 )
 
 const AlertEmptyElement = styled(Alert)`
@@ -102,4 +103,14 @@ const AlertEmpty = props => (
   </AlertEmptyElement>
 )
 
-export { AlertDanger, AlertInfo, AlertWarning, AlertEmpty }
+const AlertFyiElement = styled(Alert)`
+  ${baseStyle};
+  border: 1px solid ${colors.muted.bright};
+  font-weight: bold;
+`
+
+const AlertFyi = props => (
+  <AlertFyiElement {...props}>{props.children}</AlertFyiElement>
+)
+
+export { AlertDanger, AlertSuccess, AlertWarning, AlertEmpty, AlertFyi }

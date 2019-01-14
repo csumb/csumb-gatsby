@@ -3,7 +3,7 @@ import Layout from 'components/layouts/default'
 import SiteHeader from 'components/header/site-header'
 import Container from 'components/container'
 import PageTitle from 'components/header/page-title'
-import { AlertWarning, AlertInfo } from 'components/alert'
+import { AlertWarning, AlertSuccess } from 'components/alert'
 import { UserContext } from 'components/contexts/user'
 import { Flex, Box } from '@rebass/grid/emotion'
 import samplePhoto from 'assets/images/card-sample-photo.png'
@@ -107,11 +107,11 @@ class OtterCardPage extends React.Component {
                       {context.user && !context.user.anonymous ? (
                         <>
                           {done ? (
-                            <AlertInfo>
+                            <AlertSuccess>
                               Your photo has been received. We'll send you an
                               email within a few days to confirm your card is
                               ready.
-                            </AlertInfo>
+                            </AlertSuccess>
                           ) : (
                             <>
                               {showUpload ? (
