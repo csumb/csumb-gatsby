@@ -17,11 +17,6 @@ import Link from 'gatsby-link'
 import { AlertDanger, AlertSuccess } from 'components/alert'
 import phoneFormatter from 'phone-formatter'
 
-const paths = {
-  241901148045316: 'Email address',
-  241901148045324: 'Text messages',
-}
-
 class UserEmergencyForm extends React.Component {
   state = {
     everbridgeUser: false,
@@ -91,7 +86,7 @@ class UserEmergencyForm extends React.Component {
 
                   {everbridgeUser.user.paths.map(path => (
                     <>
-                      {path.pathId == 241901148045324 && (
+                      {path.pathId === 241901148045324 && (
                         <AccountData key={path.pathId}>
                           {phoneFormatter.format(path.value, "(NNN) NNN-NNNN")}
                         </AccountData>

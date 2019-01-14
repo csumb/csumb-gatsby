@@ -57,6 +57,14 @@ exports[`AccountSidebar renders the sidebar for Applicants 1`] = `
   >
     Printer paper
   </a>
+  <a
+    className="css-rvxwuc"
+    href="/account/emergency"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Emergency alerts
+  </a>
 </ul>
 `;
 
@@ -95,6 +103,14 @@ exports[`AccountSidebar renders the sidebar for Staff 1`] = `
     onMouseEnter={[Function]}
   >
     Printer paper
+  </a>
+  <a
+    className="css-rvxwuc"
+    href="/account/emergency"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Emergency alerts
   </a>
 </ul>
 `;
