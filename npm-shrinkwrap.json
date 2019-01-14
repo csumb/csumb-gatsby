@@ -20528,6 +20528,11 @@
       "resolved": "https://registry.npmjs.org/phin/-/phin-2.9.2.tgz",
       "integrity": "sha512-j+UOz1qs+k8NlBRws2IF+Qd+YsVKcqIjvYPBEP9IpmhyvLvyN6GTuqsGbsqH3fIgHufqVqLQSttidIgshkgT7w=="
     },
+    "phone-formatter": {
+      "version": "0.0.2",
+      "resolved": "https://registry.npmjs.org/phone-formatter/-/phone-formatter-0.0.2.tgz",
+      "integrity": "sha1-82JsfSdIYPAU9w9DqHVmoWsOes4="
+    },
     "physical-cpu-count": {
       "version": "2.0.0",
       "resolved": "https://registry.npmjs.org/physical-cpu-count/-/physical-cpu-count-2.0.0.tgz",
