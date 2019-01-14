@@ -185,7 +185,7 @@ class AccountEmergencyPage extends React.Component {
                       ) : (
                           <>
                             <AccountTitle>Emergency alerts</AccountTitle>
-                            <p><Link to="/otteralerts">OtterAlerts</Link> is CSUMB's emergency notification system. It delivers time-sensitive emergency notifications via email, text-messaging and outdoor warning sirens to all members of the CSUMB community.</p>
+                            <p><Link to="/otteralerts">OTTERAlerts</Link> is CSUMB's emergency notification system. It delivers time-sensitive emergency notifications via email, text-messaging and outdoor warning sirens to all members of the CSUMB community.</p>
                             <UserEmergencyForm user={context.user} />
                           </>
                         )}
