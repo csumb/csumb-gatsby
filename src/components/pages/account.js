@@ -47,6 +47,9 @@ const AccountSidebar = ({ user }) => (
     )}
     <AccountSidebarLink to="/account/card">Otter Card</AccountSidebarLink>
     <AccountSidebarLink to="/account/print">Printer paper</AccountSidebarLink>
+    <AccountSidebarLink to="/account/emergency">
+      Emergency alerts
+    </AccountSidebarLink>
   </AccountSidebarOptions>
 )
 

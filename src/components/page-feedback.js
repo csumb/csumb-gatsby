@@ -2,7 +2,7 @@ import React from 'react'
 import Container from 'components/container'
 import { LinkyButton } from 'components/button'
 import { InputText, Submit } from 'components/forms'
-import { AlertInfo } from 'components/alert'
+import { AlertSuccess } from 'components/alert'
 import Well from 'components/well'
 import querystring from 'querystring'
 
@@ -68,13 +68,13 @@ class PageFeedbackForm extends React.Component {
     return (
       <Well>
         {feedbackSent ? (
-          <AlertInfo type="polite">
+          <AlertSuccess type="polite">
             <h4>Thanks for your help</h4>
             <p>
               The person responsible for fixing this page will get an email with
               your feedback.
             </p>
-          </AlertInfo>
+          </AlertSuccess>
         ) : (
           <form onSubmit={this.handleSubmit.bind(this)}>
             <FormPreamble />

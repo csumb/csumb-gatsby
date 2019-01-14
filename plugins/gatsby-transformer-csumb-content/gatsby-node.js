@@ -23,6 +23,11 @@ exports.onCreateNode = async ({
 
   let contentNode = false
   if (typeof content.pageContent !== 'undefined') {
+    let topHero = {}
+    if (content.pageContent.blocks[content.pageContent.layout[0].id].type == 'heroimage') {
+      topHero = content.pageContent.blocks[content.pageContent.layout[0].id].data
+      content.pageContent.layout.splice(0, 1)
+    }
     const breadcrumbs =
       typeof content.breadcrumb !== 'undefined'
         ? JSON.stringify(content.breadcrumb)
@@ -34,6 +39,7 @@ exports.onCreateNode = async ({
       title: content.title,
       layout: content.layout,
       site: content.site,
+      topHero: topHero,
       breadcrumbs: breadcrumbs,
       navigation: content.navigation ? content.navigation : [],
       feedbackEmail: content.feedback_email ? content.feedback_email : '',
