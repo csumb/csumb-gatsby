@@ -37,10 +37,9 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { AlertFyi } from 'components/alert'
 
 class LabsPage extends React.Component {
-
   state = {
     labs: [],
-    isReady: false
+    isReady: false,
   }
 
   componentDidMount() {
@@ -48,17 +47,18 @@ class LabsPage extends React.Component {
     labs.forEach(lab => {
       fetch(`https://portal.labstats.com/api/public/GetPublicApiData/${lab}`, {
         headers: {
-          'Authorization': customerId
-        }
+          Authorization: customerId,
+        },
       })
         .then(response => {
           return response.json()
-        }).then(lab => {
+        })
+        .then(lab => {
           const stateLabs = this.state.labs
           stateLabs.push(lab)
           this.setState({
             labs: stateLabs,
-            isReady: true
+            isReady: true,
           })
         })
     })
@@ -67,11 +67,12 @@ class LabsPage extends React.Component {
   render() {
     const { labs, isReady } = this.state
     return (
-      <Layout pageTitle={"Campus Computer Labs"}>
+      <Layout pageTitle={'Campus Computer Labs'}>
         <Container>
           <PageTitle>Computer Labs</PageTitle>
           <AlertFyi>
-            Cinematic Arts labs are only avaialble for Cinematic Arts students, and may require special training.
+            Cinematic Arts labs are only avaialble for Cinematic Arts students,
+            and may require special training.
           </AlertFyi>
           {isReady ? (
             <Flex flexWrap="wrap">
@@ -82,8 +83,8 @@ class LabsPage extends React.Component {
               ))}
             </Flex>
           ) : (
-              <Loading>Loading labs</Loading>
-            )}
+            <Loading>Loading labs</Loading>
+          )}
         </Container>
       </Layout>
     )

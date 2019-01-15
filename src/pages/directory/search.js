@@ -28,14 +28,15 @@ const DirectoryTitle = styled('h3')`
 `
 
 const DirectoryPosition = styled('div')`
-margin-top: 1rem;
+  margin-top: 1rem;
   h4 {
     margin: 0;
   }
 `
 
-const PersonListing = (props) => {
-  const { firstName,
+const PersonListing = props => {
+  const {
+    firstName,
     lastName,
     campusRoomNumber,
     directoryBuildingCode,
@@ -44,7 +45,8 @@ const PersonListing = (props) => {
     directoryDepartment,
     directoryPhone,
     email,
-    buildings } = props
+    buildings,
+  } = props
   const link = email.split('@').shift()
   return (
     <DirectoryItem>
@@ -55,16 +57,9 @@ const PersonListing = (props) => {
       </DirectoryTitle>
       <Flex flexWrap="wrap">
         <Box width={[1, 1, 1 / 2]} px={2}>
-
           {directoryJobClass.map((jobClass, key) => (
             <DirectoryPosition key={key}>
-              <h4>
-                {directoryTitle[key] && (
-                  <>
-                    {directoryTitle[key]}
-                  </>
-                )}
-              </h4>
+              <h4>{directoryTitle[key] && <>{directoryTitle[key]}</>}</h4>
               {directoryDepartment[key]}
             </DirectoryPosition>
           ))}
@@ -75,7 +70,9 @@ const PersonListing = (props) => {
               <a href={`mailto:${email}`}>{email}</a>
             </DirectoryDetail>
           )}
-          {directoryPhone && <DirectoryDetail>{directoryPhone}</DirectoryDetail>}
+          {directoryPhone && (
+            <DirectoryDetail>{directoryPhone}</DirectoryDetail>
+          )}
 
           {directoryBuildingCode && buildings[directoryBuildingCode] && (
             <>
@@ -94,13 +91,13 @@ const PersonListing = (props) => {
           )}
         </Box>
       </Flex>
-
     </DirectoryItem>
   )
 }
 
-const DepartmentListing = (props) => {
-  const { name,
+const DepartmentListing = props => {
+  const {
+    name,
     phone,
     fax,
     email,
@@ -109,18 +106,14 @@ const DepartmentListing = (props) => {
     room,
     website,
     building_code,
-    building_name } = props
+    building_name,
+  } = props
   return (
-    < DirectoryItem > <DirectoryTitle>
-      {website ? (
-        <LinkInspect to={website}>{name}</LinkInspect>
-      ) : (
-          <>
-            {name}
-          </>
-        )}</DirectoryTitle>
-
-
+    <DirectoryItem>
+      {' '}
+      <DirectoryTitle>
+        {website ? <LinkInspect to={website}>{name}</LinkInspect> : <>{name}</>}
+      </DirectoryTitle>
       {email && (
         <DirectoryDetail>
           <a href={`mailto:${email}`}>{email}</a>
@@ -134,20 +127,27 @@ const DepartmentListing = (props) => {
         </DirectoryDetail>
       )}
       {building_code && (
-        <Link to={`building/${building_code}`}>
-          {building_name}
-        </Link>
+        <Link to={`building/${building_code}`}>{building_name}</Link>
       )}
       {floor && (
-        <DirectoryDetail><strong>Floor: </strong>{floor}</DirectoryDetail>
+        <DirectoryDetail>
+          <strong>Floor: </strong>
+          {floor}
+        </DirectoryDetail>
       )}
       {suite && (
-        <DirectoryDetail><strong>Suite: </strong>{suite}</DirectoryDetail>
+        <DirectoryDetail>
+          <strong>Suite: </strong>
+          {suite}
+        </DirectoryDetail>
       )}
       {room && (
-        <DirectoryDetail><strong>Room: </strong>{room}</DirectoryDetail>
+        <DirectoryDetail>
+          <strong>Room: </strong>
+          {room}
+        </DirectoryDetail>
       )}
-    </DirectoryItem >
+    </DirectoryItem>
   )
 }
 
@@ -165,7 +165,7 @@ class DirectorySearchResults extends React.Component {
       this.searchDirectory()
       const url = `${window.location.protocol}//${window.location.host}${
         window.location.pathname
-        }?q=${this.props.query}`
+      }?q=${this.props.query}`
       window.history.pushState({ path: url }, '', url)
     }
   }
@@ -208,7 +208,11 @@ class DirectorySearchResults extends React.Component {
               <DepartmentListing key={result.name} {...result} />
             ))}
             {search.people.map(result => (
-              <PersonListing buildings={buildings} key={result.email} {...result} />
+              <PersonListing
+                buildings={buildings}
+                key={result.email}
+                {...result}
+              />
             ))}
           </>
         )}
@@ -251,7 +255,7 @@ class DirectorySearchPage extends React.Component {
     const { data } = this.props
     let buildings = {}
     data.allCsumbBuilding.edges.map(building => {
-      return buildings[building.node.code] = building.node.buildingName
+      return (buildings[building.node.code] = building.node.buildingName)
     })
     return (
       <Layout>
@@ -332,7 +336,7 @@ export const query = graphql`
     }
 
     allCsumbBuilding {
-      edges{
+      edges {
         node {
           buildingName
           code

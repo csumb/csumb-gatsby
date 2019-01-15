@@ -145,27 +145,27 @@ const FeaturedStory = ({
   childContentfulStoryDescriptionTextNode,
   childContentfulEventDescriptionTextNode,
 }) => (
-    <Story featured>
-      <a href={link}>
-        <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
-        <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
-        {eventDate && (
-          <FeaturedEventDate>
-            {moment(eventDate).format(dateFormat)}
-          </FeaturedEventDate>
-        )}
-      </a>
-      <FeaturedStoryDescription>
-        {childContentfulStoryDescriptionTextNode && (
-          <>{childContentfulStoryDescriptionTextNode.description}</>
-        )}
+  <Story featured>
+    <a href={link}>
+      <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
+      <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
+      {eventDate && (
+        <FeaturedEventDate>
+          {moment(eventDate).format(dateFormat)}
+        </FeaturedEventDate>
+      )}
+    </a>
+    <FeaturedStoryDescription>
+      {childContentfulStoryDescriptionTextNode && (
+        <>{childContentfulStoryDescriptionTextNode.description}</>
+      )}
 
-        {childContentfulEventDescriptionTextNode && (
-          <>{childContentfulEventDescriptionTextNode.description}</>
-        )}
-      </FeaturedStoryDescription>
-    </Story>
-  )
+      {childContentfulEventDescriptionTextNode && (
+        <>{childContentfulEventDescriptionTextNode.description}</>
+      )}
+    </FeaturedStoryDescription>
+  </Story>
+)
 
 const Nuggets = ({ nuggets }) => (
   <NuggetsWrapper>

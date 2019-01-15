@@ -3,9 +3,7 @@ import Layout from 'components/layouts/default'
 import SiteHeader from 'components/header/site-header'
 import PageTitle from 'components/header/page-title'
 import styled from 'react-emotion'
-import { InputText, Submit } from 'components/forms'
-import { ButtonLink } from 'components/button'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { InputText } from 'components/forms'
 import Container from 'components/container'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
@@ -18,7 +16,7 @@ const BuildingList = styled('ul')`
 class DirectoryPage extends React.Component {
   state = {
     search: false,
-    buildings: false
+    buildings: false,
   }
 
   componentDidMount() {
@@ -27,7 +25,7 @@ class DirectoryPage extends React.Component {
       return buildings.push(building.node)
     })
     this.setState({
-      buildings: buildings
+      buildings: buildings,
     })
   }
 
@@ -36,18 +34,18 @@ class DirectoryPage extends React.Component {
     const search = event.target.value.toLowerCase().trim()
     this.props.data.allCsumbBuilding.edges.map(building => {
       if (building.node.buildingName.toLowerCase().search(search) > -1) {
-        return buildings.push(building.node)
+        buildings.push(building.node)
       }
+      return true
     })
     this.setState({
-      buildings: buildings
+      buildings: buildings,
     })
   }
 
   render() {
     const { buildings } = this.state
     return (
-
       <Layout>
         <SiteHeader path="/directory">Directory</SiteHeader>
         <Container>
@@ -64,9 +62,11 @@ class DirectoryPage extends React.Component {
           {buildings && (
             <BuildingList>
               {buildings.map(building => (
-                <li><Link to={`/buildings/${building.code}`}>
-                  {building.buildingName}
-                </Link></li>
+                <li>
+                  <Link to={`/buildings/${building.code}`}>
+                    {building.buildingName}
+                  </Link>
+                </li>
               ))}
             </BuildingList>
           )}
@@ -79,15 +79,14 @@ class DirectoryPage extends React.Component {
 export default DirectoryPage
 
 export const query = graphql`
-{
-  allCsumbBuilding (sort:{fields:[buildingName]}){
-    edges{
-      node {
-        
-        buildingName
-        code
+  {
+    allCsumbBuilding(sort: { fields: [buildingName] }) {
+      edges {
+        node {
+          buildingName
+          code
+        }
       }
     }
   }
-}
 `
