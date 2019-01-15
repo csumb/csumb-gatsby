@@ -23,7 +23,10 @@ class BlockList extends React.Component {
               {list.map((item, key) => (
                 <>
                   {item.text && item.text.trim().length > 0 && (
-                    <li dangerouslySetInnerHTML={{ __html: item.text }} key={key} />
+                    <li
+                      dangerouslySetInnerHTML={{ __html: item.text }}
+                      key={key}
+                    />
                   )}
                 </>
               ))}
