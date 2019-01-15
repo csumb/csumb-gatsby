@@ -6,7 +6,7 @@ import Link from 'gatsby-link'
 
 const Event = ({ event }) => (
   <>
-    {event.times && (
+    {event && event.times && (
       <>
         {event.title && <h2>{event.title}</h2>}
         <LeadParagraph>{event.description}</LeadParagraph>
