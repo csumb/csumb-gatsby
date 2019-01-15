@@ -138,6 +138,9 @@ class Blocks extends React.Component {
     let lastSize = 0
     this.blocks.layout.map(layout => {
       const block = this.blocks.blocks[layout.id]
+      if (!this.blocks.blocks[layout.id]) {
+        return lastHeader
+      }
       if (block.type === 'heading' && lastHeader && lastSize && lastSize < block.data.level) {
         this.blocks.blocks[layout.id]._collapsedHeader = lastHeader
       }
