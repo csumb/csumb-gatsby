@@ -1,18 +1,13 @@
 const path = require(`path`)
 const report = require(`gatsby-cli/lib/reporter`)
-const crypto = require('crypto')
+const cryptex = require('node-cryptex')
 
 const encryptFeedback = email => {
   if (!email) {
     return null
   }
-  const cipher = crypto.createCipher(
-    'aes-256-ctr',
-    process.env.CSUMB_FEEDBACK_KEY
-  )
-  let crypted = cipher.update(email, 'utf8', 'hex')
-  crypted += cipher.final('hex')
-  return crypted
+  const iv = new Buffer(16)
+  return cryptex.encrypt(email, process.env.CSUMB_FEEDBACK_KEY, iv)
 }
 
 module.exports = (graphql, actions) => {
@@ -100,6 +95,7 @@ module.exports = (graphql, actions) => {
         `
       ).then(result => {
         if (!result.data) {
+          report.error(`Could not query content pages.`)
           return
         }
         let count = 0
