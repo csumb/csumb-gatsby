@@ -100,6 +100,7 @@ module.exports = (graphql, actions) => {
         `
       ).then(result => {
         if (!result.data) {
+          report.error(`Could not query content pages.`)
           return
         }
         let count = 0
