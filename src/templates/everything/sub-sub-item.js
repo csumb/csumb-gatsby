@@ -35,6 +35,15 @@ const EverythingSubLevelPage = ({ pageContext }) => (
         </Box>
         <Box width={[1, 2 / 5]} px={2}>
           <SecondLevelTitle>{pageContext.topLevelItem.title}</SecondLevelTitle>
+          {pageContext.topLevelItem.childContentfulNavigationItemDescriptionTextNode && (
+            <p
+              dangerouslySetInnerHTML={{
+                __html:
+                  pageContext.topLevelItem.childContentfulNavigationItemDescriptionTextNode
+                    .childMarkdownRemark.html,
+              }}
+            />
+          )}
           <SecondLevelList>
             {pageContext.secondLevelItems.map(item => (
               <SubItem key={item.contentful_id}>
@@ -45,9 +54,7 @@ const EverythingSubLevelPage = ({ pageContext }) => (
                   to={
                     item.link
                       ? item.link
-                      : `/everything/${pageContext.currentItem.slug}/${
-                      item.slug
-                      }`
+                      : `/everything/${pageContext.topLevelItem.slug}/${item.slug}`
                   }
                 >
                   <SubItemContent item={item} />
@@ -58,6 +65,15 @@ const EverythingSubLevelPage = ({ pageContext }) => (
         </Box>
         <Box width={[1, 2 / 5]} px={2}>
           <ThirdLevelTitle>{pageContext.currentItem.title}</ThirdLevelTitle>
+          {pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode && (
+            <p
+              dangerouslySetInnerHTML={{
+                __html:
+                  pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode
+                    .childMarkdownRemark.html,
+              }}
+            />
+          )}
           <ThirdLevelList>
             {pageContext.currentItems.map(item => (
               <SubItem key={item.contentful_id}>

@@ -38,6 +38,15 @@ const EverythingSubLevelPage = ({ pageContext }) => (
         </Box>
         <Box width={[1, 4 / 5]} px={2}>
           <SecondLevelTitle>{pageContext.currentItem.title}</SecondLevelTitle>
+          {pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode && (
+            <p
+              dangerouslySetInnerHTML={{
+                __html:
+                  pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode
+                    .childMarkdownRemark.html,
+              }}
+            />
+          )}
           <SecondLevelList>
             {pageContext.currentItems.map(item => (
               <SubItem key={item.contentful_id}>
