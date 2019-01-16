@@ -9,7 +9,9 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 const TopLevelBox = styled(Box)`
   h3 {
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
     font-family: ${fonts.sansSerif};
   }
   margin-bottom: 1rem;
@@ -66,9 +68,7 @@ const SubItemArrowElement = styled(FontAwesomeIcon)`
   float: right;
 `
 
-const SubItemArrow = () => (
-  <SubItemArrowElement icon={faChevronRight} />
-)
+const SubItemArrow = () => <SubItemArrowElement icon={faChevronRight} />
 
 const HiddenButton = styled('button')`
   cursor: pointer;
@@ -125,5 +125,5 @@ export {
   HiddenLink,
   ThirdLevelList,
   ThirdLevelTitle,
-  SubItemArrow
+  SubItemArrow,
 }

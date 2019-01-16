@@ -25,6 +25,7 @@ exports.onCreateNode = async ({
   if (typeof content.pageContent !== 'undefined') {
     let topHero = {}
     if (content.pageContent.layout.length > 0 && content.pageContent.blocks &&
+      typeof content.pageContent.blocks[content.pageContent.layout[0].id] !== 'undefined' &&
       content.pageContent.blocks[content.pageContent.layout[0].id].type === 'heroimage') {
       topHero = content.pageContent.blocks[content.pageContent.layout[0].id].data
       content.pageContent.layout.splice(0, 1)
