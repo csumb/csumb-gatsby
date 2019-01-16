@@ -16,7 +16,6 @@ import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import BreakpointContext from 'components/contexts/breakpoint'
-import { ButtonLink } from 'components/button'
 
 const EverythingSubLevelPage = ({ pageContext }) => (
   <Layout pageTitle="Everything else">
@@ -31,29 +30,35 @@ const EverythingSubLevelPage = ({ pageContext }) => (
                   <Link to="/everything">← Back to everything</Link>
                 </p>
               ) : (
-                  <Box width={[1, 1 / 5]} px={2}>
-                    <TopLevelList>
-                      {pageContext.topLevelItems.map(item => (
-                        <TopLevelItem key={item.contentful_id}>
-                          <TopLevelItemLink
-                            to={`/everything/${item.slug}`}
-                            isActive={
-                              item.contentful_id === pageContext.currentItem.contentful_id
-                            }
-                          >
-                            {item.title}
-                          </TopLevelItemLink>
-                        </TopLevelItem>
-                      ))}
-                    </TopLevelList>
-                  </Box>)}
+                <Box width={[1, 1 / 5]} px={2}>
+                  <TopLevelList>
+                    {pageContext.topLevelItems.map(item => (
+                      <TopLevelItem key={item.contentful_id}>
+                        <TopLevelItemLink
+                          to={`/everything/${item.slug}`}
+                          isActive={
+                            item.contentful_id ===
+                            pageContext.currentItem.contentful_id
+                          }
+                        >
+                          {item.title}
+                        </TopLevelItemLink>
+                      </TopLevelItem>
+                    ))}
+                  </TopLevelList>
+                </Box>
+              )}
               <Box width={[1, 2 / 5]} px={2}>
-                <SecondLevelTitle>{pageContext.currentItem.title}</SecondLevelTitle>
-                {pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode && (
+                <SecondLevelTitle>
+                  {pageContext.currentItem.title}
+                </SecondLevelTitle>
+                {pageContext.currentItem
+                  .childContentfulNavigationItemDescriptionTextNode && (
                   <p
                     dangerouslySetInnerHTML={{
                       __html:
-                        pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode
+                        pageContext.currentItem
+                          .childContentfulNavigationItemDescriptionTextNode
                           .childMarkdownRemark.html,
                     }}
                   />
@@ -61,16 +66,14 @@ const EverythingSubLevelPage = ({ pageContext }) => (
                 <SecondLevelList>
                   {pageContext.currentItems.map(item => (
                     <SubItem key={item.contentful_id}>
-                      {!item.link && (
-                        <SubItemArrow />
-                      )}
+                      {!item.link && <SubItemArrow />}
                       <HiddenLink
                         to={
                           item.link
                             ? item.link
                             : `/everything/${pageContext.currentItem.slug}/${
-                            item.slug
-                            }`
+                                item.slug
+                              }`
                         }
                       >
                         <SubItemContent item={item} />
@@ -83,9 +86,8 @@ const EverythingSubLevelPage = ({ pageContext }) => (
           </Container>
         </>
       )}
-    </BreakpointContext.Consumer >
+    </BreakpointContext.Consumer>
   </Layout>
-
 )
 
 export default EverythingSubLevelPage

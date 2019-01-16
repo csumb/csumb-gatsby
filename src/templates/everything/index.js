@@ -12,13 +12,13 @@ const EverythingTopLevelPage = ({ pageContext }) => (
     {pageContext.is404 ? (
       <SiteHeader path="/everything">Page not found</SiteHeader>
     ) : (
-
-        <SiteHeader path="/everything">Everything else</SiteHeader>
-      )}
+      <SiteHeader path="/everything">Everything else</SiteHeader>
+    )}
     <Container topPadding>
       {pageContext.is404 && (
         <HeroParagraph>
-          We couldn't find that page, but here's a great way to find what you're looking for:
+          We couldn't find that page, but here's a great way to find what you're
+          looking for:
         </HeroParagraph>
       )}
       <Flex flexWrap="wrap">
