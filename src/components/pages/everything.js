@@ -4,6 +4,8 @@ import { colors, fonts } from 'components/styles/theme'
 import { Box } from '@rebass/grid/emotion'
 import LinkInspect from 'components/link-inspect'
 import Link from 'gatsby-link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 const TopLevelBox = styled(Box)`
   h3 {
@@ -60,6 +62,14 @@ const SubItem = styled('li')`
   }
 `
 
+const SubItemArrowElement = styled(FontAwesomeIcon)`
+  float: right;
+`
+
+const SubItemArrow = () => (
+  <SubItemArrowElement icon={faChevronRight} />
+)
+
 const HiddenButton = styled('button')`
   cursor: pointer;
   padding: 0;
@@ -113,4 +123,5 @@ export {
   HiddenLink,
   ThirdLevelList,
   ThirdLevelTitle,
+  SubItemArrow
 }
