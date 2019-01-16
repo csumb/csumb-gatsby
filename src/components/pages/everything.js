@@ -102,11 +102,14 @@ const EverythingContent = ({ item }) => {
     return null
   }
   return (
-    <p dangerouslySetInnerHTML={{
-      __html:
-        item.childContentfulNavigationItemDescriptionTextNode
-          .childMarkdownRemark.html,
-    }}></p>)
+    <p
+      dangerouslySetInnerHTML={{
+        __html:
+          item.childContentfulNavigationItemDescriptionTextNode
+            .childMarkdownRemark.html,
+      }}
+    />
+  )
 }
 
 const SubItemContent = ({ item }) => (
