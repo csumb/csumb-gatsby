@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex } from '@rebass/grid/emotion'
-import { TopLevelBox } from 'components/pages/everything'
+import { TopLevelBox, EverythingContent } from 'components/pages/everything'
 import Link from 'gatsby-link'
 import SiteHeader from 'components/header/site-header'
 import Layout from 'components/layouts/default'
@@ -31,13 +31,7 @@ const EverythingTopLevelPage = ({ pageContext }) => (
                   <h3>
                     <Link to={`/everything/${item.slug}`}>{item.title}</Link>
                   </h3>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        item.childContentfulNavigationItemDescriptionTextNode
-                          .childMarkdownRemark.html,
-                    }}
-                  />
+                  <EverythingContent item={item} />
                 </TopLevelBox>
               ))}
             </Flex>
