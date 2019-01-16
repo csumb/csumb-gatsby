@@ -49,6 +49,16 @@ module.exports = (graphql, actions) => {
           component: path.resolve('src/templates/everything/index.js'),
           context: {
             topLevelItems: topLevelItems,
+            is404: false
+          },
+        })
+
+        createPage({
+          path: '404.html',
+          component: path.resolve('src/templates/everything/index.js'),
+          context: {
+            topLevelItems: topLevelItems,
+            is404: true
           },
         })
 
