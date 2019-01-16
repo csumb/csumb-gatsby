@@ -6,6 +6,7 @@ import {
   SecondLevelList,
   SecondLevelTitle,
   SubItem,
+  SubItemArrow,
   SubItemContent,
   HiddenLink,
   ThirdLevelList,
@@ -37,13 +38,16 @@ const EverythingSubLevelPage = ({ pageContext }) => (
           <SecondLevelList>
             {pageContext.secondLevelItems.map(item => (
               <SubItem key={item.contentful_id}>
+                {!item.link && (
+                  <SubItemArrow />
+                )}
                 <HiddenLink
                   to={
                     item.link
                       ? item.link
                       : `/everything/${pageContext.currentItem.slug}/${
-                          item.slug
-                        }`
+                      item.slug
+                      }`
                   }
                 >
                   <SubItemContent item={item} />
