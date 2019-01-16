@@ -2,6 +2,7 @@ import React from 'react'
 import Well from 'components/well'
 import { colors } from 'components/styles/theme'
 import styled from 'react-emotion'
+import Loading from 'components/loading'
 
 const LabBarElement = styled('div')`
   height: 2rem;
@@ -43,15 +44,49 @@ const LabNumber = ({ label, children }) => (
   </LabelNumberElement>
 )
 
-const Lab = ({ lab }) => (
-  <Well>
-    <h3>{lab.Name}</h3>
-    <p>
-      <LabNumber label="Available">{lab.Available}</LabNumber>
-      <LabNumber label="Total">{lab.Total}</LabNumber>
-    </p>
-    <LabBar total={lab.Total} available={lab.Available} offline={lab.Offline} />
-  </Well>
-)
+class Lab extends React.Component {
+  state = {
+    lab: false,
+  }
+
+  componentDidMount() {
+    const { lab, customerId } = this.props
+    fetch(`https://portal.labstats.com/api/public/GetPublicApiData/${lab}`, {
+      headers: {
+        Authorization: customerId,
+      },
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(lab => {
+        this.setState({
+          lab: lab
+        })
+      })
+  }
+
+  render() {
+    const { lab } = this.state
+    return (
+      <Well>
+        {lab ? (
+          <>
+            <h3>{lab.Name}</h3>
+            <p>
+              <LabNumber label="Available">{lab.Available}</LabNumber>
+              <LabNumber label="Total">{lab.Total}</LabNumber>
+            </p>
+            <LabBar total={lab.Total} available={lab.Available} offline={lab.Offline} />
+          </>
+        ) : (
+            <Loading />
+          )}
+
+      </Well>
+    )
+  }
+
+}
 
 export { Lab }
