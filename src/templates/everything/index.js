@@ -26,20 +26,18 @@ const EverythingTopLevelPage = ({ pageContext }) => (
             </HeroParagraph>
             )}
             <Flex flexWrap="wrap">
-              {pageContext.topLevelItems.map((item, key) => (
-                <TopLevelBox key={item.contentful_id} width={[1, 1, 1 / 3]} key={key} px={2}>
+              {pageContext.topLevelItems.map(item => (
+                <TopLevelBox key={item.contentful_id} width={[1, 1, 1 / 3]} px={2}>
                   <h3>
                     <Link to={`/everything/${item.slug}`}>{item.title}</Link>
                   </h3>
-                  {item.childContentfulNavigationItemDescriptionTextNode && (
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          item.childContentfulNavigationItemDescriptionTextNode
-                            .childMarkdownRemark.html,
-                      }}
-                    />
-                  )}
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        item.childContentfulNavigationItemDescriptionTextNode
+                          .childMarkdownRemark.html,
+                    }}
+                  />
                 </TopLevelBox>
               ))}
             </Flex>
