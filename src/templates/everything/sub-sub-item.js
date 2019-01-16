@@ -16,76 +16,87 @@ import SiteHeader from 'components/header/site-header'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
+import BreakpointContext from 'components/contexts/breakpoint'
 
 const EverythingSubLevelPage = ({ pageContext }) => (
   <Layout pageTitle="Everything else">
-    <SiteHeader path="/everything">Everything else</SiteHeader>
-    <Container topPadding>
-      <Flex flexWrap="wrap">
-        <Box width={[1, 1 / 5]} px={2}>
-          <TopLevelList>
-            {pageContext.topLevelItems.map(item => (
-              <TopLevelItem key={item.contentful_id}>
-                <TopLevelItemLink to={`/everything/${item.slug}`}>
-                  {item.title}
-                </TopLevelItemLink>
-              </TopLevelItem>
-            ))}
-          </TopLevelList>
-        </Box>
-        <Box width={[1, 2 / 5]} px={2}>
-          <SecondLevelTitle>{pageContext.topLevelItem.title}</SecondLevelTitle>
-          {pageContext.topLevelItem.childContentfulNavigationItemDescriptionTextNode && (
-            <p
-              dangerouslySetInnerHTML={{
-                __html:
-                  pageContext.topLevelItem.childContentfulNavigationItemDescriptionTextNode
-                    .childMarkdownRemark.html,
-              }}
-            />
-          )}
-          <SecondLevelList>
-            {pageContext.secondLevelItems.map(item => (
-              <SubItem key={item.contentful_id}>
-                {!item.link && (
-                  <SubItemArrow />
+    <BreakpointContext.Consumer>
+      {breakpoint => (
+        <>
+          <SiteHeader path="/everything">Everything else</SiteHeader>
+          <Container topPadding>
+            <Flex flexWrap="wrap">
+              {!breakpoint.isMobile && (
+                <>
+                  <Box width={[1, 1 / 5]} px={2}>
+                    <TopLevelList>
+                      {pageContext.topLevelItems.map(item => (
+                        <TopLevelItem key={item.contentful_id}>
+                          <TopLevelItemLink to={`/everything/${item.slug}`}>
+                            {item.title}
+                          </TopLevelItemLink>
+                        </TopLevelItem>
+                      ))}
+                    </TopLevelList>
+                  </Box>
+                  <Box width={[1, 2 / 5]} px={2}>
+                    <SecondLevelTitle>{pageContext.topLevelItem.title}</SecondLevelTitle>
+                    {pageContext.topLevelItem.childContentfulNavigationItemDescriptionTextNode && (
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            pageContext.topLevelItem.childContentfulNavigationItemDescriptionTextNode
+                              .childMarkdownRemark.html,
+                        }}
+                      />
+                    )}
+                    <SecondLevelList>
+                      {pageContext.secondLevelItems.map(item => (
+                        <SubItem key={item.contentful_id}>
+                          {!item.link && (
+                            <SubItemArrow />
+                          )}
+                          <HiddenLink
+                            to={
+                              item.link
+                                ? item.link
+                                : `/everything/${pageContext.topLevelItem.slug}/${item.slug}`
+                            }
+                          >
+                            <SubItemContent item={item} />
+                          </HiddenLink>
+                        </SubItem>
+                      ))}
+                    </SecondLevelList>
+                  </Box>
+                </>
+              )}
+              <Box width={[1, 2 / 5]} px={2}>
+                <ThirdLevelTitle>{pageContext.currentItem.title}</ThirdLevelTitle>
+                {pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode && (
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode
+                          .childMarkdownRemark.html,
+                    }}
+                  />
                 )}
-                <HiddenLink
-                  to={
-                    item.link
-                      ? item.link
-                      : `/everything/${pageContext.topLevelItem.slug}/${item.slug}`
-                  }
-                >
-                  <SubItemContent item={item} />
-                </HiddenLink>
-              </SubItem>
-            ))}
-          </SecondLevelList>
-        </Box>
-        <Box width={[1, 2 / 5]} px={2}>
-          <ThirdLevelTitle>{pageContext.currentItem.title}</ThirdLevelTitle>
-          {pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode && (
-            <p
-              dangerouslySetInnerHTML={{
-                __html:
-                  pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode
-                    .childMarkdownRemark.html,
-              }}
-            />
-          )}
-          <ThirdLevelList>
-            {pageContext.currentItems.map(item => (
-              <SubItem key={item.contentful_id}>
-                <HiddenLink to={item.link}>
-                  <SubItemContent item={item} />
-                </HiddenLink>
-              </SubItem>
-            ))}
-          </ThirdLevelList>
-        </Box>
-      </Flex>
-    </Container>
+                <ThirdLevelList>
+                  {pageContext.currentItems.map(item => (
+                    <SubItem key={item.contentful_id}>
+                      <HiddenLink to={item.link}>
+                        <SubItemContent item={item} />
+                      </HiddenLink>
+                    </SubItem>
+                  ))}
+                </ThirdLevelList>
+              </Box>
+            </Flex>
+          </Container>
+        </>
+      )}
+    </BreakpointContext.Consumer>
   </Layout>
 )
 
