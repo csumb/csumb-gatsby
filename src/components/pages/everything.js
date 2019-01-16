@@ -68,9 +68,7 @@ const SubItemArrowElement = styled(FontAwesomeIcon)`
   float: right;
 `
 
-const SubItemArrow = () => (
-  <SubItemArrowElement icon={faChevronRight} />
-)
+const SubItemArrow = () => <SubItemArrowElement icon={faChevronRight} />
 
 const HiddenButton = styled('button')`
   cursor: pointer;
@@ -127,5 +125,5 @@ export {
   HiddenLink,
   ThirdLevelList,
   ThirdLevelTitle,
-  SubItemArrow
+  SubItemArrow,
 }

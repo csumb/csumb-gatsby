@@ -49,7 +49,7 @@ module.exports = (graphql, actions) => {
           component: path.resolve('src/templates/everything/index.js'),
           context: {
             topLevelItems: topLevelItems,
-            is404: false
+            is404: false,
           },
         })
 
@@ -58,7 +58,7 @@ module.exports = (graphql, actions) => {
           component: path.resolve('src/templates/everything/index.js'),
           context: {
             topLevelItems: topLevelItems,
-            is404: true
+            is404: true,
           },
         })
 
