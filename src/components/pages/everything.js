@@ -82,7 +82,9 @@ const HiddenButton = styled('button')`
 
 const HiddenLink = styled(LinkInspect)`
   text-decoration: none;
-  color: ${colors.black};
+  p {
+    color: ${colors.black};
+  }
 `
 
 const ThirdLevelList = styled('ul')`
