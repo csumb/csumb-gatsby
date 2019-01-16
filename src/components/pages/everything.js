@@ -97,6 +97,14 @@ const ThirdLevelTitle = styled('h2')`
   margin: 0;
 `
 
+const EverythingContent = ({ item }) => (
+  <p dangerouslySetInnerHTML={{
+    __html:
+      item.childContentfulNavigationItemDescriptionTextNode
+        .childMarkdownRemark.html,
+  }}></p>
+)
+
 const SubItemContent = ({ item }) => (
   <>
     <h3>{item.title}</h3>
@@ -119,6 +127,7 @@ export {
   TopLevelItemLink,
   SecondLevelList,
   SecondLevelTitle,
+  EverythingContent,
   SubItem,
   SubItemContent,
   HiddenButton,
