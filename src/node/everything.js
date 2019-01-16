@@ -68,10 +68,19 @@ module.exports = (graphql, actions) => {
               },
             })
             subItems.forEach(subItem => {
-              if (typeof subItem.contentfulchildren !== 'undefined' && subItem.contentfulchildren) {
+              if (
+                typeof subItem.contentfulchildren !== 'undefined' &&
+                subItem.contentfulchildren
+              ) {
                 let subSubItems = []
-                for (let index = 0; index < subItem.contentfulchildren.length; index++) {
-                  subSubItems.push(allItems[subItem.contentfulchildren[index].contentful_id])
+                for (
+                  let index = 0;
+                  index < subItem.contentfulchildren.length;
+                  index++
+                ) {
+                  subSubItems.push(
+                    allItems[subItem.contentfulchildren[index].contentful_id]
+                  )
                 }
                 createPage({
                   path: `everything/${topItem.slug}/${subItem.slug}`,
