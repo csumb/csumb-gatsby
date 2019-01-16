@@ -13,7 +13,7 @@ module.exports = {
     },
     labs: {
       customerId: `200b96ee-10c7-4355-83a4-3ded9ab6e845`,
-      labs: [1010, 1009, 1008, 1005]
+      labs: [1001, 1002, 1003, 1005, 1006, 1010, 1009, 1008]
     }
   },
   plugins: [
