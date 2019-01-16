@@ -13,12 +13,8 @@ const LabBarElement = styled('div')`
 const LabBarMeasure = styled('div')`
   height: 100%;
   display: inline-block;
-  ${props => props.available && (
-    `background: ${colors.indicators.low}`
-  )}
-  ${props => props.offline && (
-    `background: ${colors.indicators.medium}`
-  )}
+  ${props => props.available && `background: ${colors.indicators.low}`}
+  ${props => props.offline && `background: ${colors.indicators.medium}`}
 `
 
 const LabBar = ({ total, available, offline }) => {
@@ -30,7 +26,6 @@ const LabBar = ({ total, available, offline }) => {
       <LabBarMeasure offline style={{ width: `${offlineLength}%` }} />
     </LabBarElement>
   )
-
 }
 
 const LabelNumberElement = styled('span')`

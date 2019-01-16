@@ -46,7 +46,7 @@ class ITPage extends React.Component {
             navigation={data.allCsumbContentNavigation.edges[0].node.navigation}
           />
         )}
-        <Container>
+        <Container topPadding>
           <ITSearch />
           <Flex flexWrap="wrap">
             <Box width={[1, 1 / 3]} px={2}>

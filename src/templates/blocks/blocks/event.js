@@ -5,6 +5,9 @@ import { ContainerContext, ContainerElement } from '../container-context'
 class BlockEvent extends React.Component {
   render() {
     const { event } = this.props
+    if (!event) {
+      return null
+    }
     return (
       <ContainerContext.Consumer>
         {container => (

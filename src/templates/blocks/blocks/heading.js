@@ -52,14 +52,14 @@ class BlockHeading extends React.Component {
                   {text}
                 </CollapsibleHeading>
               ) : (
-                  <>
-                    {url ? (
-                      <LinkInspect to={url}>{text}</LinkInspect>
-                    ) : (
-                        <>{text}</>
-                      )}
-                  </>
-                )}
+                <>
+                  {url ? (
+                    <LinkInspect to={url}>{text}</LinkInspect>
+                  ) : (
+                    <>{text}</>
+                  )}
+                </>
+              )}
             </HeadingTag>
           </ContainerElement>
         )}

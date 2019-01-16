@@ -47,8 +47,8 @@ class BlockHeroImage extends React.Component {
             {buttonUrl ? (
               <Link to={buttonUrl}>{headline}</Link>
             ) : (
-                <>{headline}</>
-              )}
+              <>{headline}</>
+            )}
           </HeroImageText>
         </HeroImageTextWrapper>
       </LazyHero>

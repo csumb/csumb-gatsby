@@ -23,7 +23,7 @@ class UserEmergencyForm extends React.Component {
     error: false,
     userToken: false,
     isReady: false,
-    showForm: false
+    showForm: false,
   }
 
   componentDidMount() {
@@ -35,7 +35,11 @@ class UserEmergencyForm extends React.Component {
       })
       .then(session => {
         const time = new Date()
-        fetch(`https://api.csumb.edu/everbridge/get?token=${session.id}&_t=${time.getTime()}`)
+        fetch(
+          `https://api.csumb.edu/everbridge/get?token=${
+            session.id
+          }&_t=${time.getTime()}`
+        )
           .then(response => {
             return response.json()
           })
@@ -64,7 +68,7 @@ class UserEmergencyForm extends React.Component {
   handleShowForm(event) {
     event.preventDefault()
     this.setState({
-      showForm: !this.state.showForm
+      showForm: !this.state.showForm,
     })
   }
 
@@ -80,59 +84,66 @@ class UserEmergencyForm extends React.Component {
                 We could not find your emergency information.
               </AlertDanger>
             ) : (
-                <>
-                  <p>This phone number will receive text messages when there is a campus emergency.</p>
+              <>
+                <p>
+                  This phone number will receive text messages when there is a
+                  campus emergency.
+                </p>
 
-
-                  {everbridgeUser.user.paths.map(path => (
-                    <>
-                      {path.pathId === 241901148045324 && (
-                        <AccountData key={path.pathId}>
-                          {phoneFormatter.format(path.value, "(NNN) NNN-NNNN")}
-                        </AccountData>
-                      )}
-                    </>
-                  ))}
-                  <p>
-                    <Button onClick={this.handleShowForm.bind(this)}>Edit phone number</Button>
-                  </p>
-                  {showForm && (
-                    <UserEmergencyPhoneForm token={userToken} />
-                  )}
-                </>
-              )}
+                {everbridgeUser.user.paths.map(path => (
+                  <>
+                    {path.pathId === 241901148045324 && (
+                      <AccountData key={path.pathId}>
+                        {phoneFormatter.format(path.value, '(NNN) NNN-NNNN')}
+                      </AccountData>
+                    )}
+                  </>
+                ))}
+                <p>
+                  <Button onClick={this.handleShowForm.bind(this)}>
+                    Edit phone number
+                  </Button>
+                </p>
+                {showForm && <UserEmergencyPhoneForm token={userToken} />}
+              </>
+            )}
           </>
         ) : (
-            <Loading>Loading your emergency information</Loading>
-          )}
+          <Loading>Loading your emergency information</Loading>
+        )}
       </AccountGroup>
     )
   }
 }
 
 class UserEmergencyPhoneForm extends React.Component {
-
   state = {
     success: false,
-    number: false
+    number: false,
   }
 
   handleNumberChange(event) {
     this.setState({
-      number: event.target.value
+      number: event.target.value,
     })
   }
 
   handleSubmit(event) {
     event.preventDefault()
     const phone = phoneFormatter.normalize(this.state.number)
-    fetch(`https://api.csumb.edu/everbridge/phone?token=${this.props.token}&phone=${phone}`).then(response => {
-      return response.json()
-    }).then(result => {
-      this.setState({
-        success: true
+    fetch(
+      `https://api.csumb.edu/everbridge/phone?token=${
+        this.props.token
+      }&phone=${phone}`
+    )
+      .then(response => {
+        return response.json()
       })
-    })
+      .then(result => {
+        this.setState({
+          success: true,
+        })
+      })
   }
 
   render() {
@@ -169,11 +180,11 @@ class AccountEmergencyPage extends React.Component {
                     {context.user.anonymous ? (
                       <h3>Your account</h3>
                     ) : (
-                        <>
-                          {context.user.profile.firstName}{' '}
-                          {context.user.profile.lastName}
-                        </>
-                      )}
+                      <>
+                        {context.user.profile.firstName}{' '}
+                        {context.user.profile.lastName}
+                      </>
+                    )}
                   </PageTitle>
                   <Flex flexWrap="wrap">
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
@@ -183,12 +194,18 @@ class AccountEmergencyPage extends React.Component {
                       {context.user.anonymous ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
-                          <>
-                            <AccountTitle>Emergency alerts</AccountTitle>
-                            <p><Link to="/otteralerts">OTTERAlerts</Link> is CSUMB's emergency notification system. It delivers time-sensitive emergency notifications via email, text-messaging and outdoor warning sirens to all members of the CSUMB community.</p>
-                            <UserEmergencyForm user={context.user} />
-                          </>
-                        )}
+                        <>
+                          <AccountTitle>Emergency alerts</AccountTitle>
+                          <p>
+                            <Link to="/otteralerts">OTTERAlerts</Link> is
+                            CSUMB's emergency notification system. It delivers
+                            time-sensitive emergency notifications via email,
+                            text-messaging and outdoor warning sirens to all
+                            members of the CSUMB community.
+                          </p>
+                          <UserEmergencyForm user={context.user} />
+                        </>
+                      )}
                     </Box>
                   </Flex>
                 </Container>
