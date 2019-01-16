@@ -23,7 +23,7 @@ const EverythingTopLevelPage = ({ pageContext }) => (
       )}
       <Flex flexWrap="wrap">
         {pageContext.topLevelItems.map((item, key) => (
-          <TopLevelBox key={item.contentful_id} width={[1, 1, 1 / 4]} px={2}>
+          <TopLevelBox key={item.contentful_id} width={[1, 1, 1 / 3]} px={2}>
             <h3>
               <Link to={`/everything/${item.slug}`}>{item.title}</Link>
             </h3>
