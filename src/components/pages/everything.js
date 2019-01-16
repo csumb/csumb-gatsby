@@ -97,13 +97,17 @@ const ThirdLevelTitle = styled('h2')`
   margin: 0;
 `
 
-const EverythingContent = ({ item }) => (
-  <p dangerouslySetInnerHTML={{
-    __html:
-      item.childContentfulNavigationItemDescriptionTextNode
-        .childMarkdownRemark.html,
-  }}></p>
-)
+const EverythingContent = ({ item }) => {
+  if (!item.childContentfulNavigationItemDescriptionTextNode) {
+    return null
+  }
+  return (
+    <p dangerouslySetInnerHTML={{
+      __html:
+        item.childContentfulNavigationItemDescriptionTextNode
+          .childMarkdownRemark.html,
+    }}></p>)
+}
 
 const SubItemContent = ({ item }) => (
   <>
