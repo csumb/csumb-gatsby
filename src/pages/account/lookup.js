@@ -16,67 +16,84 @@ const Username = styled('code')`
 `
 
 class LookupForm extends React.Component {
-
   state = {
     firstName: false,
     lastName: false,
     dob: false,
-    user: false
+    user: false,
   }
 
   handleChangeFirstName(event) {
     this.setState({
-      firstName: event.target.value
+      firstName: event.target.value,
     })
   }
 
   handleChangeLastName(event) {
     this.setState({
-      lastName: event.target.value
+      lastName: event.target.value,
     })
   }
 
   handleChangeDob(event) {
     this.setState({
-      dob: event.target.value
+      dob: event.target.value,
     })
   }
 
   handleSubmit(event) {
     const { firstName, lastName, dob } = this.state
     event.preventDefault()
-    fetch(`https://api.csumb.edu/okta/lookup?firstName=${firstName}&lastName=${lastName}&dob=${dob}`).then(response => {
-      return response.json()
-    }).then(user => {
-      this.setState({
-        user: user
+    fetch(
+      `https://api.csumb.edu/okta/lookup?firstName=${firstName}&lastName=${lastName}&dob=${dob}`
+    )
+      .then(response => {
+        return response.json()
       })
-    })
+      .then(user => {
+        this.setState({
+          user: user,
+        })
+      })
   }
 
   render() {
     const { user } = this.state
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
-        <InputText name="first" label="First name" onChange={this.handleChangeFirstName.bind(this)} />
-        <InputText name="last" label="Last name" onChange={this.handleChangeLastName.bind(this)} />
-        <InputDate name="dob" label="Date of birth" onChange={this.handleChangeDob.bind(this)} />
+        <InputText
+          name="first"
+          label="First name"
+          onChange={this.handleChangeFirstName.bind(this)}
+        />
+        <InputText
+          name="last"
+          label="Last name"
+          onChange={this.handleChangeLastName.bind(this)}
+        />
+        <InputDate
+          name="dob"
+          label="Date of birth"
+          onChange={this.handleChangeDob.bind(this)}
+        />
         <Submit value="Lookup username" />
         {user && user.id && (
-          <LeadParagraph>Your username is: <Username>{user.id}</Username></LeadParagraph>
+          <LeadParagraph>
+            Your username is: <Username>{user.id}</Username>
+          </LeadParagraph>
         )}
       </form>
     )
   }
 }
 
-
 const LookupPage = () => (
   <Layout PageTitle="Lookup username">
     <Container topPadding>
       <PageTitle>Lookup username</PageTitle>
       <LeadParagraph>
-        Your <Link to="/it/accounts-and-passwords">CSUMB account</Link> is used to log into every app on campus.
+        Your <Link to="/it/accounts-and-passwords">CSUMB account</Link> is used
+        to log into every app on campus.
       </LeadParagraph>
       <Well>
         <LookupForm />
