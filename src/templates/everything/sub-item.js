@@ -9,7 +9,7 @@ import {
   SubItemArrow,
   SubItemContent,
   HiddenLink,
-  EverythingContent
+  EverythingContent,
 } from 'components/pages/everything'
 import SiteHeader from 'components/header/site-header'
 import Link from 'gatsby-link'
@@ -31,24 +31,24 @@ const EverythingSubLevelPage = ({ pageContext }) => (
                   <Link to="/everything">← Back to everything</Link>
                 </p>
               ) : (
-                  <Box width={[1, 1 / 5]} px={2}>
-                    <TopLevelList>
-                      {pageContext.topLevelItems.map(item => (
-                        <TopLevelItem key={item.contentful_id}>
-                          <TopLevelItemLink
-                            to={`/everything/${item.slug}`}
-                            isActive={
-                              item.contentful_id ===
-                              pageContext.currentItem.contentful_id
-                            }
-                          >
-                            {item.title}
-                          </TopLevelItemLink>
-                        </TopLevelItem>
-                      ))}
-                    </TopLevelList>
-                  </Box>
-                )}
+                <Box width={[1, 1 / 5]} px={2}>
+                  <TopLevelList>
+                    {pageContext.topLevelItems.map(item => (
+                      <TopLevelItem key={item.contentful_id}>
+                        <TopLevelItemLink
+                          to={`/everything/${item.slug}`}
+                          isActive={
+                            item.contentful_id ===
+                            pageContext.currentItem.contentful_id
+                          }
+                        >
+                          {item.title}
+                        </TopLevelItemLink>
+                      </TopLevelItem>
+                    ))}
+                  </TopLevelList>
+                </Box>
+              )}
               <Box width={[1, 2 / 5]} px={2}>
                 <SecondLevelTitle>
                   {pageContext.currentItem.title}
@@ -63,8 +63,8 @@ const EverythingSubLevelPage = ({ pageContext }) => (
                           item.link
                             ? item.link
                             : `/everything/${pageContext.currentItem.slug}/${
-                            item.slug
-                            }`
+                                item.slug
+                              }`
                         }
                       >
                         <SubItemContent item={item} />

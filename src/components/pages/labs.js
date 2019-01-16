@@ -61,7 +61,7 @@ class Lab extends React.Component {
       })
       .then(lab => {
         this.setState({
-          lab: lab
+          lab: lab,
         })
       })
   }
@@ -77,16 +77,18 @@ class Lab extends React.Component {
               <LabNumber label="Available">{lab.Available}</LabNumber>
               <LabNumber label="Total">{lab.Total}</LabNumber>
             </p>
-            <LabBar total={lab.Total} available={lab.Available} offline={lab.Offline} />
+            <LabBar
+              total={lab.Total}
+              available={lab.Available}
+              offline={lab.Offline}
+            />
           </>
         ) : (
-            <Loading />
-          )}
-
+          <Loading />
+        )}
       </Well>
     )
   }
-
 }
 
 export { Lab }
