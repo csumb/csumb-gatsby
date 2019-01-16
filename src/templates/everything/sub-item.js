@@ -36,7 +36,7 @@ const EverythingSubLevelPage = ({ pageContext }) => (
             ))}
           </TopLevelList>
         </Box>
-        <Box width={[1, 4 / 5]} px={2}>
+        <Box width={[1, 2 / 5]} px={2}>
           <SecondLevelTitle>{pageContext.currentItem.title}</SecondLevelTitle>
           {pageContext.currentItem.childContentfulNavigationItemDescriptionTextNode && (
             <p
