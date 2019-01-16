@@ -12,8 +12,8 @@ const EverythingTopLevelPage = ({ pageContext }) => (
     {pageContext.is404 ? (
       <SiteHeader path="/everything">Page not found</SiteHeader>
     ) : (
-      <SiteHeader path="/everything">Everything else</SiteHeader>
-    )}
+        <SiteHeader path="/everything">Everything else</SiteHeader>
+      )}
     <Container topPadding>
       {pageContext.is404 && (
         <HeroParagraph>
@@ -23,7 +23,7 @@ const EverythingTopLevelPage = ({ pageContext }) => (
       )}
       <Flex flexWrap="wrap">
         {pageContext.topLevelItems.map((item, key) => (
-          <TopLevelBox key={item.contentful_id} width={[1, 1, 1 / 3]} px={2}>
+          <TopLevelBox key={item.contentful_id} width={[1, 1, 1 / 3]} key={key} px={2}>
             <h3>
               <Link to={`/everything/${item.slug}`}>{item.title}</Link>
             </h3>
