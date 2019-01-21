@@ -43,6 +43,7 @@ jobs:
       - run:
           name: Build gatsby site
           command: ./node_modules/.bin/gatsby build
+          no_output_timeout: 30m
 
       - run:
           name: Build directory JSON files
@@ -93,18 +94,18 @@ jobs:
           command: |
             git config --global user.email webfolk@csumb.edu
             git config --global user.name csumbwebfolk
-            
-      - run: 
+
+      - run:
           name: Checkout storybook repo
           command: git clone --branch gh-pages https://$GITHUB_TOKEN@github.com/csumb/style-guide.git
-      
+
       - run:
           name: Build storybook
           command: npm run storybookbuild
-    
-      - run: 
+
+      - run:
           name: Push changes
-          command: | 
+          command: |
             cd style-guide
             git add *
             git commit -m "Updated storybook" || true
