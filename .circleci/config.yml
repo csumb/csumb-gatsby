@@ -13,7 +13,8 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
-
+    environment:
+      NODE_OPTIONS: --max_old_space_size=8096
     working_directory: ~/repo
 
     steps:
