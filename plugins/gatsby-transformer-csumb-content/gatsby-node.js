@@ -24,10 +24,17 @@ exports.onCreateNode = async ({
   let contentNode = false
   if (typeof content.pageContent !== 'undefined') {
     let topHero = {}
-    if (content.pageContent.layout.length > 0 && content.pageContent.blocks &&
-      typeof content.pageContent.blocks[content.pageContent.layout[0].id] !== 'undefined' &&
-      content.pageContent.blocks[content.pageContent.layout[0].id].type === 'heroimage') {
-      topHero = content.pageContent.blocks[content.pageContent.layout[0].id].data
+    if (
+      content.pageContent.layout.length > 0 &&
+      content.pageContent.blocks &&
+      typeof content.pageContent.blocks[content.pageContent.layout[0].id] !==
+        'undefined' &&
+      content.pageContent.blocks[content.pageContent.layout[0].id] &&
+      content.pageContent.blocks[content.pageContent.layout[0].id].type ===
+        'heroimage'
+    ) {
+      topHero =
+        content.pageContent.blocks[content.pageContent.layout[0].id].data
       content.pageContent.layout.splice(0, 1)
     }
     const breadcrumbs =
