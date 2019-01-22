@@ -43,7 +43,7 @@ jobs:
 
       - run:
           name: Build gatsby site
-          command: ./node_modules/.bin/gatsby build --verbose
+          command: ./node_modules/.bin/gatsby build | tee
 
 
 
@@ -52,4 +52,3 @@ workflows:
   build_and_style_guide:
     jobs:
       - build
-      - styleguide
