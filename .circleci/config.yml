@@ -41,7 +41,7 @@ jobs:
 
       - run:
           name: Build gatsby site
-          command: node --max_old_space_size=12000 ./node_modules/.bin/gatsby build
+          command: ./node_modules/.bin/gatsby build
 
 
 

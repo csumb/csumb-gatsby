@@ -22,7 +22,7 @@ exports.onCreateNode = async ({
   }
 
   let contentNode = false
-  if (typeof content.pageContent !== 'undefined') {
+  /*if (typeof content.pageContent !== 'undefined') {
     let topHero = {}
     if (
       content.pageContent.layout.length > 0 &&
@@ -61,7 +61,7 @@ exports.onCreateNode = async ({
     if (content.event) {
       contentNode.event = content.event
     }
-  }
+  }*/
 
   if (node.relativePath.search('_site.json') > -1) {
     contentNode = {
