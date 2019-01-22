@@ -15,9 +15,6 @@ exports.createPages = ({ stage, graphql, actions }) => {
         return everythingPages(graphql, actions)
       })
       .then(() => {
-        return directoryPages(graphql, actions)
-      })
-      .then(() => {
         return buildingPages(graphql, actions)
       })
       .then(() => {
