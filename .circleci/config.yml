@@ -32,6 +32,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
+            - .cache
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
@@ -43,7 +44,7 @@ jobs:
 
       - run:
           name: Build gatsby site
-          command: ./node_modules/.bin/gatsby build | tee
+          command: ./node_modules/.bin/gatsby build
 
 
 
