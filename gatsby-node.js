@@ -28,6 +28,8 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         resolve()
+      }).catch(error => {
+        console.log(error)
       })
   })
 }
