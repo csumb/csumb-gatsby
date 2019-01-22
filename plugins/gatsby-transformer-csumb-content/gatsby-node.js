@@ -41,6 +41,7 @@ exports.onCreateNode = async ({
       title: content.title,
       layout: content.layout,
       site: content.site,
+      pagePath: content.path,
       topHero: topHero,
       breadcrumbs: breadcrumbs,
       navigation: content.navigation ? content.navigation : [],
