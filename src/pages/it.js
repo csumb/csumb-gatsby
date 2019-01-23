@@ -41,9 +41,9 @@ class ITPage extends React.Component {
     return (
       <Layout pageTitle="Information Technology">
         <SiteHeader path="/it">Information Technology</SiteHeader>
-        {data.allCsumbContentNavigation && (
+        {data.allCsumbNavigation && (
           <SiteNavigation
-            navigation={data.allCsumbContentNavigation.edges[0].node.navigation}
+            navigation={data.allCsumbNavigation.edges[0].node.navigation}
           />
         )}
         <Container topPadding>
@@ -136,7 +136,7 @@ export default ITPage
 
 export const query = graphql`
   {
-    allCsumbContentNavigation(filter: { site: { eq: "it" } }) {
+    allCsumbNavigation(filter: { site: { eq: "it" } }) {
       edges {
         node {
           navigation

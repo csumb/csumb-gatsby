@@ -22,6 +22,7 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-csumb-content`,
+    `gatsby-source-csumb-web-content`,
     {
       resolve: `gatsby-plugin-emotion`,
       options: {},
@@ -48,14 +49,7 @@ module.exports = {
         ignore: [`**/\.*`],
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `./_web-content`,
-        name: `web-content`,
-        ignore: [`**/\.*`],
-      },
-    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
