@@ -21,7 +21,6 @@ module.exports = {
     `gatsby-transformer-csv`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-catch-links`,
-    `gatsby-transformer-csumb-content`,
     `gatsby-source-csumb-web-content`,
     {
       resolve: `gatsby-plugin-emotion`,
