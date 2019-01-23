@@ -72,6 +72,9 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       typeof content.breadcrumb !== 'undefined'
         ? JSON.stringify(content.breadcrumb)
         : false
+    const pagePath = (content.site === content.path) ?
+      `${content.site}/index` :
+      `${content.site}/${content.path}`
     const contentNode = {
       id: createNodeId(`${content.uuid} >>> CsumbPage`),
       children: [],
@@ -79,7 +82,7 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       title: content.title,
       layout: content.layout,
       site: content.site,
-      pagePath: `${content.site}/${content.path}`,
+      pagePath: pagePath,
       topHero: topHero,
       breadcrumbs: breadcrumbs,
       navigation: content.navigation ? content.navigation : [],
