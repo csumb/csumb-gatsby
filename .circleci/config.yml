@@ -39,7 +39,7 @@ jobs:
 
       - run:
           name: Pull site content
-          command: ./node_modules/.bin/grunt
+          command: ./node_modules/.bin/grunt testing
 
       - run:
           name: Build gatsby site
