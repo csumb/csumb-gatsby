@@ -73,7 +73,7 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
         ? JSON.stringify(content.breadcrumb)
         : false
     const pagePath = (content.site === content.path) ?
-      `${content.site}/index` :
+      content.site :
       `${content.site}/${content.path}`
     const contentNode = {
       id: createNodeId(`${content.uuid} >>> CsumbPage`),
