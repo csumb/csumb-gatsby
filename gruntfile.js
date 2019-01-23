@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
     clean: ['_data', '_web-content'],
@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         options: {
           repository: `https://${
             process.env.GITHUB_TOKEN
-          }@github.com/csumb/web-data.git`,
+            }@github.com/csumb/web-data.git`,
           directory: '_data',
           depth: 1,
         },
@@ -16,17 +16,17 @@ module.exports = function(grunt) {
         options: {
           repository: `https://${
             process.env.GITHUB_TOKEN
-          }@github.com/csumb/web-content.git`,
+            }@github.com/csumb/web-content.git`,
           directory: '_web-content',
           depth: 1,
         },
       },
-      local: {
+      testing: {
         options: {
-          branch: 'local',
+          branch: 'testing',
           repository: `https://${
             process.env.GITHUB_TOKEN
-          }@github.com/csumb/web-content.git`,
+            }@github.com/csumb/web-content.git`,
           directory: '_web-content',
           depth: 1,
         },
@@ -39,5 +39,5 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['clean', 'gitclone:data', 'gitclone:content'])
-  grunt.registerTask('local', ['clean', 'gitclone:data', 'gitclone:local'])
+  grunt.registerTask('testing', ['clean', 'gitclone:data', 'gitclone:testing'])
 }

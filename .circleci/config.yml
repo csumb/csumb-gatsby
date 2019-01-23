@@ -43,8 +43,7 @@ jobs:
 
       - run:
           name: Build gatsby site
-          command: ./node_modules/.bin/gatsby build
-          no_output_timeout: 60m
+          command: ./node_modules/.bin/gatsby testing
 
       - run:
           name: Build directory JSON files
@@ -60,7 +59,7 @@ jobs:
 
       - run:
           name: Firebase deploy
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $CIRCLE_BRANCH
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P develop
   styleguide:
     docker:
       # specify the version you desire here
