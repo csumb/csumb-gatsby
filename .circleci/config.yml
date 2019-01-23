@@ -1,18 +1,10 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
+    
       - image: circleci/node:8.11
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
     environment:
       NODE_OPTIONS: --max_old_space_size=8096
     working_directory: ~/repo
@@ -27,6 +19,8 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run: ulimit -u unlimited
+      
       - run: npm i
 
       - save_cache:
@@ -43,8 +37,8 @@ jobs:
 
       - run:
           name: Build gatsby site
-          command: ./node_modules/.bin/gatsby build
-          no_output_timeout: 60m
+          command: node --max_old_space_size=12000 --stack-size=100000 ./node_modules/.bin/gatsby build
+          no_output_timeout: 10m
 
       - run:
           name: Build directory JSON files
