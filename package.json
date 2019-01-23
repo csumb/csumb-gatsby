@@ -90,7 +90,7 @@
     "test": "jest",
     "now-start": "npm run build",
     "firebase": "grunt; gatsby build; npm run storybookbuild; firebase deploy;",
-    "netlify": "grunt; gatsby build; npm run directoryJson; npm run configFirebase; npm run canary; ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P develop",
+    "netlify": "grunt; gatsby build; npm run directoryJson; npm run canary",
     "directoryJson": "node src/custom-build/directory-json.js",
     "configFirebase": "node src/custom-build/firebase.js",
     "cleanup": "jest -u; prettier --write 'src/**/**.js';",
