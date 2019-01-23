@@ -43,7 +43,7 @@ jobs:
 
       - run:
           name: Build gatsby site
-          command: node --max-old-space-size=2000 ./node_modules/.bin/gatsby build
+          command: node --max-old-space-size=4000 ./node_modules/.bin/gatsby build
           no_output_timeout: 60m
 
       - run:
