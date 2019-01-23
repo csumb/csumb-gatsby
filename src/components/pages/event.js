@@ -3,7 +3,6 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/container'
 import { LeadParagraph } from 'components/type'
 import Link from 'gatsby-link'
-import moment from 'moment'
 
 const Event = ({ event }) => (
   <>
