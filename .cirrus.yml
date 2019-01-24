@@ -27,4 +27,4 @@ deploy_task:
     - npm run directoryJson
     - npm run configFirebase
     - npm run canary
-    - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P "develop"
+    - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $CIRRUS_BRANCH

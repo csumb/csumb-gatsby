@@ -55,7 +55,7 @@ class EventsPage extends React.Component {
   }
 
   render() {
-    const { featured, regular } = this.getEvents(this.props.data.allCsumbContentPage.edges)
+    const { featured, regular } = this.getEvents(this.props.data.allCsumbPage.edges)
     return (
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
@@ -85,7 +85,7 @@ export default EventsPage
 
 export const query = graphql`
 {
-  allCsumbContentPage(filter: 
+  allCsumbPage(filter: 
     {event: {
       public: {eq: true},
       description: {ne: null}}

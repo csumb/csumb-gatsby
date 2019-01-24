@@ -1,37 +1,68 @@
-const crypto = require(`crypto`)
+const walk = require('walk')
+const fs = require('fs-extra')
+const crypto = require('crypto')
 
-exports.onCreateNode = async ({
-  node,
-  loadNodeContent,
-  actions,
-  createNodeId,
-}) => {
-  const { createNode, createParentChildLink } = actions
-  if (node.extension !== `json` || node.sourceInstanceName !== 'web-content') {
-    return
-  }
-  let content = await loadNodeContent(node)
-  try {
-    content = JSON.parse(content)
-  } catch (e) {
-    console.log(`JSON error in file ${node.relativePath}`)
-    content = false
-  }
-  if (!content) {
-    return
+exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
+  const { createNode } = actions
+
+
+  walk.walkSync('./_web-content', {
+    listeners: {
+      file: async (root, fileStats, next) => {
+        const fileName = `${root}/${fileStats.name}`
+        if (fileName.search('.json') > -1) {
+          const contents = await fs.readJson(fileName)
+          parseContents(fileName, contents)
+        }
+        next()
+      }
+    }
+  })
+
+  const parseContents = (name, content) => {
+    const digest = crypto.createHash(`md5`)
+      .update(JSON.stringify(content))
+      .digest(`hex`)
+    if (name.search('_site.json') > -1) {
+      siteNode(name, content, digest)
+      return
+    }
+    if (name.search('_navigation.json') > -1) {
+      navigationNode(name, content, digest)
+      return
+    }
+    if (name.search('_data/directory.json') > -1) {
+      directoryNodes(content)
+      return
+    }
+    if (name.search('_data/departments.json') > -1) {
+      departmentNodes(content)
+      return
+    }
+    if (name.search('_data/buildings.json') > -1) {
+      buildingNodes(content)
+      return
+    }
+    if (name.search('_data/apps.json') > -1) {
+      appNodes(content)
+      return
+    }
+    if (typeof content.pageContent !== 'undefined') {
+      pageNode(name, content, digest)
+      return
+    }
   }
 
-  let contentNode = false
-  if (typeof content.pageContent !== 'undefined') {
+  const pageNode = (name, content, digest) => {
     let topHero = {}
     if (
       content.pageContent.layout.length > 0 &&
       content.pageContent.blocks &&
       typeof content.pageContent.blocks[content.pageContent.layout[0].id] !==
-        'undefined' &&
+      'undefined' &&
       content.pageContent.blocks[content.pageContent.layout[0].id] &&
       content.pageContent.blocks[content.pageContent.layout[0].id].type ===
-        'heroimage'
+      'heroimage'
     ) {
       topHero =
         content.pageContent.blocks[content.pageContent.layout[0].id].data
@@ -41,55 +72,62 @@ exports.onCreateNode = async ({
       typeof content.breadcrumb !== 'undefined'
         ? JSON.stringify(content.breadcrumb)
         : false
-    contentNode = {
-      id: createNodeId(`${node.id} >>> CsumbContentPage`),
+    const pagePath = (content.site === content.path) ?
+      content.site :
+      `${content.site}/${content.path}`
+    const contentNode = {
+      id: createNodeId(`${content.uuid} >>> CsumbPage`),
       children: [],
-      parent: node.id,
+      parent: null,
       title: content.title,
       layout: content.layout,
       site: content.site,
-      pagePath: content.path,
+      pagePath: pagePath,
       topHero: topHero,
       breadcrumbs: breadcrumbs,
       navigation: content.navigation ? content.navigation : [],
       feedbackEmail: content.feedback_email ? content.feedback_email : '',
       pageContent: JSON.stringify(content.pageContent),
       internal: {
-        type: `CsumbContentPage`,
+        type: `CsumbPage`,
+        contentDigest: digest
       },
     }
     if (content.event) {
       contentNode.event = content.event
     }
+    createNode(contentNode)
   }
 
-  if (node.relativePath.search('_site.json') > -1) {
-    contentNode = {
-      id: createNodeId(`${node.id} >>> CsumbContentSite`),
-      children: [],
+  const siteNode = (name, content, digest) => {
+    createNode({
+      id: createNodeId(`${content.site} >>> CsumbSite`),
       parent: null,
+      children: [],
       site: content.site,
       title: content.title,
       internal: {
-        type: `CsumbContentSite`,
-      },
-    }
+        type: `CsumbSite`,
+        contentDigest: digest
+      }
+    })
   }
 
-  if (node.relativePath.search('_navigation.json') > -1) {
-    contentNode = {
-      id: createNodeId(`${node.id} >>> CsumbContentNavigation`),
-      children: [],
+  const navigationNode = (name, content, digest) => {
+    createNode({
+      id: createNodeId(`${content.site} >>> CsumbNavigation`),
       parent: null,
+      children: [],
       site: content.site,
       navigation: JSON.stringify(content.navigation),
       internal: {
-        type: `CsumbContentNavigation`,
-      },
-    }
+        type: `CsumbNavigation`,
+        contentDigest: digest
+      }
+    })
   }
 
-  if (node.relativePath.search('_data/directory.json') > -1) {
+  const directoryNodes = (content) => {
     content.forEach(user => {
       const directoryNode = {
         id: createNodeId(`${user.email} >>> CsumbDirectory`),
@@ -108,7 +146,7 @@ exports.onCreateNode = async ({
     })
   }
 
-  if (node.relativePath.search('_data/departments.json') > -1) {
+  const departmentNodes = (content) => {
     content.forEach(department => {
       let departmentNode = {
         id: createNodeId(`${department.uuid} >>> CsumbDepartment`),
@@ -127,7 +165,7 @@ exports.onCreateNode = async ({
     })
   }
 
-  if (node.relativePath.search('_data/buildings.json') > -1) {
+  const buildingNodes = (content) => {
     Object.values(content).forEach(building => {
       const buildingNode = {
         id: createNodeId(`${building.code} >>> CsumbBuilding`),
@@ -149,7 +187,7 @@ exports.onCreateNode = async ({
     })
   }
 
-  if (node.relativePath.search('_data/apps.json') > -1) {
+  const appNodes = (content) => {
     content.forEach(app => {
       const appNode = {
         id: createNodeId(`${app.url} >>> CsumbApp`),
@@ -169,37 +207,4 @@ exports.onCreateNode = async ({
     })
   }
 
-  if (node.relativePath.search('_data/redirects.json') > -1) {
-    for (path in content) {
-      const redirectNode = {
-        id: createNodeId(`${path} >>> CsumbRedirects`),
-        children: [],
-        parent: null,
-        path: path,
-        target: content[path],
-        internal: {
-          type: `CsumbRedirects`,
-        },
-      }
-      redirectNode.internal.contentDigest = crypto
-        .createHash(`md5`)
-        .update(JSON.stringify(redirectNode))
-        .digest(`hex`)
-      createNode(redirectNode)
-    }
-  }
-
-  if (!contentNode) {
-    return
-  }
-
-  contentNode.internal.contentDigest = crypto
-    .createHash(`md5`)
-    .update(JSON.stringify(contentNode))
-    .digest(`hex`)
-
-  createNode(contentNode)
-  if (contentNode.parent) {
-    createParentChildLink({ parent: node, child: contentNode })
-  }
 }
