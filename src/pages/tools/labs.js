@@ -1,5 +1,3 @@
-
-
 import React from 'react'
 import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
@@ -10,8 +8,6 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { AlertFyi } from 'components/alert'
 
 class LabsPage extends React.Component {
-
-
   render() {
     const { labs, customerId } = this.props.data.site.siteMetadata.labs
     return (

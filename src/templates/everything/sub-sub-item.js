@@ -11,6 +11,7 @@ import {
   HiddenLink,
   ThirdLevelList,
   ThirdLevelTitle,
+  EverythingContent,
 } from 'components/pages/everything'
 import SiteHeader from 'components/header/site-header'
 import Layout from 'components/layouts/default'
@@ -50,17 +51,7 @@ const EverythingSubLevelPage = ({ pageContext }) => (
                     <SecondLevelTitle>
                       {pageContext.topLevelItem.title}
                     </SecondLevelTitle>
-                    {pageContext.topLevelItem
-                      .childContentfulNavigationItemDescriptionTextNode && (
-                      <p
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            pageContext.topLevelItem
-                              .childContentfulNavigationItemDescriptionTextNode
-                              .childMarkdownRemark.html,
-                        }}
-                      />
-                    )}
+                    <EverythingContent item={pageContext.topLevelItem} />
                     <SecondLevelList>
                       {pageContext.secondLevelItems.map(item => (
                         <SubItem key={item.contentful_id}>
@@ -86,17 +77,7 @@ const EverythingSubLevelPage = ({ pageContext }) => (
                 <ThirdLevelTitle>
                   {pageContext.currentItem.title}
                 </ThirdLevelTitle>
-                {pageContext.currentItem
-                  .childContentfulNavigationItemDescriptionTextNode && (
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        pageContext.currentItem
-                          .childContentfulNavigationItemDescriptionTextNode
-                          .childMarkdownRemark.html,
-                    }}
-                  />
-                )}
+                <EverythingContent item={pageContext.currentItem} />
                 <ThirdLevelList>
                   {pageContext.currentItems.map(item => (
                     <SubItem key={item.contentful_id}>
