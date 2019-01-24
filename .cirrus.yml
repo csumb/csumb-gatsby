@@ -1,8 +1,26 @@
 container:
   image: node:latest
-check_task:
+test_task:
   node_modules_cache:
     folder: node_modules
-    fingerprint_script: cat npm-shrinkwrap.lock
     populate_script: npm i
   script: npm run test
+
+deploy_task:
+  depends_on:
+    - check
+  env:
+    CSUMB_FEEDBACK_KEY: ENCRYPTED[5941e37fd78bc922e10214b5b57887f5ff82807671bdd282f9531d9d7b40de5c968e97e1d2f36cccc7416cc08066d7d7]
+    CSUMB_HOME_CONTENTFUL_SPACE: ENCRYPTED[bb33ec72d9911e444d853e4235d2496e22f2a7965317d93ff3440683cb04abe0809ba530be281bc1c7aeb75ff286d3fd]
+    CSUMB_HOME_CONTENTFUL_TOKEN: ENCRYPTED[875cdf5d24a285aa4ba15878363d002f4a333f10de487090e2f3300054b845cf5751de29df78b5202a268a486d0439b6]
+    CSUMB_NAV_CONTENTFUL_SPACE: ENCRYPTED[484f4a40d372bd3741eb974136cd76594b2a309d8c76a434b3573011c2596c9d15269ba33ed67aedefbe2a3d502fbdce]
+    CSUMB_NAV_CONTENTFUL_TOKEN: ENCRYPTED[ddace2691cae8b1cb4fe36a657c206896e1f03ceaee546e66d1bb535ba345c33c8d129b247d218d4626f5223ced7d78a]
+    FIREBASE_TOKEN: ENCRYPTED[4c4d209d91abe58092d022f26cab87e43a712fe65f0fac74c3551aa06b5ce76a3bfbf86043a1f02cad89f743f5b2d67a]
+    GITHUB_TOKEN: ENCRYPTED[de199f8d18f3fb0958784265ae5c138de547dc3a17bd2bdd92f788e1855a35256c76f3f2666769c0c2bc380377725234]
+  script: 
+    - ./node_modules/.bin/grunt
+    - ./node_modules/.bin/gatsby build
+    - npm run directoryJson
+    - npm run configFirebase
+    - npm run canary
+    - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P "develop"
