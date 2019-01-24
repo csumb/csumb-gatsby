@@ -9,6 +9,10 @@ test_task:
 deploy_task:
   depends_on:
     - check
+  node_modules_cache:
+    folder: node_modules
+    populate_script: npm i
+  
   env:
     CSUMB_FEEDBACK_KEY: ENCRYPTED[5941e37fd78bc922e10214b5b57887f5ff82807671bdd282f9531d9d7b40de5c968e97e1d2f36cccc7416cc08066d7d7]
     CSUMB_HOME_CONTENTFUL_SPACE: ENCRYPTED[bb33ec72d9911e444d853e4235d2496e22f2a7965317d93ff3440683cb04abe0809ba530be281bc1c7aeb75ff286d3fd]
