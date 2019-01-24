@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import bp from 'components/styles/breakpoints'
 import { css } from 'react-emotion'
 

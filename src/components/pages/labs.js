@@ -1,7 +1,7 @@
 import React from 'react'
 import Well from 'components/well'
 import { colors } from 'components/styles/theme'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import Loading from 'components/loading'
 
 const LabBarElement = styled('div')`
