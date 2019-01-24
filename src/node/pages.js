@@ -20,28 +20,28 @@ module.exports = (graphql, actions) => {
     resolve(
       graphql(
         `
-        {
-          allCsumbSite {
-            edges {
-              node {
-                site
-                title
+          {
+            allCsumbSite {
+              edges {
+                node {
+                  site
+                  title
+                }
               }
             }
-          }
 
-          allCsumbNavigation {
-            edges {
-              node {
-                site
-                navigation
+            allCsumbNavigation {
+              edges {
+                node {
+                  site
+                  navigation
+                }
               }
             }
-          }
 
-          allCsumbPage {
-            edges {
-              node {
+            allCsumbPage {
+              edges {
+                node {
                   pagePath
                   title
                   site
@@ -83,8 +83,7 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-          
-        }
+          }
         `
       ).then(result => {
         if (!result.data) {

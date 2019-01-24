@@ -7,12 +7,13 @@ import moment from 'moment'
 import { FeaturedEvent, RegularEvent } from 'components/pages/event'
 
 class EventsPage extends React.Component {
-
   getEvents(events) {
-    const timeCutoff = moment().subtract(1, 'day').unix()
+    const timeCutoff = moment()
+      .subtract(1, 'day')
+      .unix()
     const regularEvents = []
     const featuredEvents = []
-    const showEvent = (event) => {
+    const showEvent = event => {
       let show = false
       event.event.date_stamps.forEach(stamp => {
         if (stamp.start_stamp > timeCutoff) {
@@ -28,16 +29,18 @@ class EventsPage extends React.Component {
       }
       if (node.event.featured) {
         featuredEvents.push(node)
-      }
-      else {
+      } else {
         regularEvents.push(node)
       }
     })
 
-    const getEarliestDate = (event) => {
+    const getEarliestDate = event => {
       let earliest = false
       event.event.date_stamps.forEach(date => {
-        if (!earliest || (date.start_stamp > timeCutoff && date.start_stamp < earliest)) {
+        if (
+          !earliest ||
+          (date.start_stamp > timeCutoff && date.start_stamp < earliest)
+        ) {
           earliest = date.start_stamp
         }
       })
@@ -45,7 +48,7 @@ class EventsPage extends React.Component {
     }
 
     const sortEvents = (a, b) => {
-      return (getEarliestDate(a) > getEarliestDate(b))
+      return getEarliestDate(a) > getEarliestDate(b)
     }
 
     regularEvents.sort(sortEvents)
@@ -55,7 +58,9 @@ class EventsPage extends React.Component {
   }
 
   render() {
-    const { featured, regular } = this.getEvents(this.props.data.allCsumbPage.edges)
+    const { featured, regular } = this.getEvents(
+      this.props.data.allCsumbPage.edges
+    )
     return (
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
@@ -84,52 +89,48 @@ class EventsPage extends React.Component {
 export default EventsPage
 
 export const query = graphql`
-{
-  allCsumbPage(filter: 
-    {event: {
-      public: {eq: true},
-      description: {ne: null}}
-    }
-    sort:{fields:[event___date_stamps]}) {
-    edges {
-      node {
-        id
-        title
-        site
-        event {
-          description
-          featured
-          image
-          location {
-            type
-            room
-            building {
-              code
-              name
+  {
+    allCsumbPage(
+      filter: { event: { public: { eq: true }, description: { ne: null } } }
+      sort: { fields: [event___date_stamps] }
+    ) {
+      edges {
+        node {
+          id
+          title
+          site
+          event {
+            description
+            featured
+            image
+            location {
+              type
+              room
+              building {
+                code
+                name
+              }
             }
-          }
-          ticket {
-            url
-            title
-          }
-          cost_message
-          dates {
-            start
-            end
-          }
-          date_stamps {
-            start_stamp
-            end_stamp
-          }
-          times {
-            start
-            end
+            ticket {
+              url
+              title
+            }
+            cost_message
+            dates {
+              start
+              end
+            }
+            date_stamps {
+              start_stamp
+              end_stamp
+            }
+            times {
+              start
+              end
+            }
           }
         }
       }
     }
   }
-}
-
-
 `
