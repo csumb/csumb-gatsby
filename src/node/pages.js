@@ -21,6 +21,13 @@ module.exports = (graphql, actions) => {
       graphql(
         `
           {
+            
+            site {
+              siteMetadata {
+                overridePages
+              }
+            }
+
             allCsumbSite {
               edges {
                 node {
@@ -90,6 +97,7 @@ module.exports = (graphql, actions) => {
           report.error(`Could not query content pages.`)
           return
         }
+        const overridePages = result.data.site.siteMetadata.overridePages
         let count = 0
 
         result.data.allCsumbSite.edges.forEach(({ node }) => {
@@ -108,7 +116,7 @@ module.exports = (graphql, actions) => {
         })
 
         result.data.allCsumbPage.edges.forEach(({ node }) => {
-          if (typeof sites[node.site] !== 'undefined') {
+          if (typeof sites[node.site] !== 'undefined' && overridePages.indexOf(node.pagePath) === -1) {
             count++
             let pageNode = {
               path: node.pagePath,
