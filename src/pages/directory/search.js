@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { InputText, Submit } from 'components/forms'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import Container from 'components/container'
 import Layout from 'components/layouts/default'
 import url from 'url'

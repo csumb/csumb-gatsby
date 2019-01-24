@@ -1,6 +1,6 @@
 import React from 'react'
 import { ContainerElement } from '../container-context'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
 

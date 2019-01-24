@@ -1,7 +1,7 @@
 import React from 'react'
 import bp from 'components/styles/breakpoints'
 import { css } from 'emotion'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 
 const containerStyle = {
   normal: css(

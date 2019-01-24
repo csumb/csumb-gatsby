@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import logo from 'assets/images/csumb-logo-white.svg'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
 import bp from 'components/styles/breakpoints'
 

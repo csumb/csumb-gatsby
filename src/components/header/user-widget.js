@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import { colors, fonts } from 'components/styles/theme'
 import {
   Menu,
@@ -11,11 +11,10 @@ import {
 import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
 import { ImmortalDB } from 'immortal-db'
-import { css } from 'emotion'
 
 import '@reach/menu-button/styles.css'
 
-const userLinkStyles = css`
+const userLinkStyles = `
   color: ${colors.primary.darkest} !important;
   text-decoration: none;
   font-weight: bold;
@@ -91,7 +90,7 @@ class UserDropdown extends React.Component {
           ).then(response => {
             window.location.href = `${window.location.protocol}//${
               window.location.host
-            }`
+              }`
           })
         }
       })
@@ -113,8 +112,8 @@ class UserDropdown extends React.Component {
               Public profile
             </UserDropdownMenuLink>
           ) : (
-            <></>
-          )}
+              <></>
+            )}
           <UserDropdownMenuLink component="a" href="/account/card">
             OtterCard
           </UserDropdownMenuLink>
@@ -148,22 +147,22 @@ class UserWidget extends React.Component {
               {context.user === false ? (
                 <></>
               ) : (
-                <>
-                  {context.user.anonymous ? (
-                    <UserLoginLink onClick={this.handleLogin.bind(this)}>
-                      Log in
+                  <>
+                    {context.user.anonymous ? (
+                      <UserLoginLink onClick={this.handleLogin.bind(this)}>
+                        Log in
                     </UserLoginLink>
-                  ) : (
-                    <>
-                      <UserDashboardLink to="/dashboard">
-                        Dashboard
+                    ) : (
+                        <>
+                          <UserDashboardLink to="/dashboard">
+                            Dashboard
                         <UnreadMessages user={context.user} />
-                      </UserDashboardLink>
-                      <UserDropdown user={context.user} />
-                    </>
-                  )}
-                </>
-              )}
+                          </UserDashboardLink>
+                          <UserDropdown user={context.user} />
+                        </>
+                      )}
+                  </>
+                )}
             </>
           )}
         </UserContext.Consumer>
