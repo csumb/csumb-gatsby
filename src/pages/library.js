@@ -81,12 +81,16 @@ class LibraryPage extends React.Component {
     return (
       <Layout pageTitle="Library">
         <SiteHeader path="/library">Library</SiteHeader>
-        <SiteNavigation
-          navigation={data.allCsumbNavigation.edges[0].node.navigation}
-        />
+        {data.allCsumbNavigation && (
+          <SiteNavigation
+            navigation={data.allCsumbNavigation.edges[0].node.navigation}
+          />
+        )}
         <Container>
           <LibrarySearch />
-          <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+          {data.allCsumbPage && (
+            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+          )}
         </Container>
       </Layout>
     )
@@ -104,9 +108,7 @@ export const query = graphql`
         }
       }
     }
-    allCsumbPage(
-      filter: { layout: { eq: "site" }, site: { eq: "library" } }
-    ) {
+    allCsumbPage(filter: { layout: { eq: "site" }, site: { eq: "library" } }) {
       edges {
         node {
           pageContent
