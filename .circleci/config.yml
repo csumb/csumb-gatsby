@@ -56,7 +56,7 @@ jobs:
 
       - run:
           name: Check canary files exist
-          command: npm run canary
+          command: npm run configFirebase
 
       - run:
           name: Firebase deploy
