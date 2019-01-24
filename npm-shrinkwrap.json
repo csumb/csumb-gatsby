@@ -6906,6 +6906,11 @@
       "resolved": "https://registry.npmjs.org/charenc/-/charenc-0.0.2.tgz",
       "integrity": "sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc="
     },
+    "chart.js": {
+      "version": "1.1.1",
+      "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-1.1.1.tgz",
+      "integrity": "sha1-qbFwVCIL1Fy9sXb9a8uHg++HGn0="
+    },
     "cheerio": {
       "version": "1.0.0-rc.2",
       "resolved": "https://registry.npmjs.org/cheerio/-/cheerio-1.0.0-rc.2.tgz",
@@ -22160,6 +22165,14 @@
         "fbjs": "^0.8.4",
         "loose-envify": "^1.3.1",
         "object-assign": "^4.1.0"
+      }
+    },
+    "react-chartjs": {
+      "version": "1.2.0",
+      "resolved": "https://registry.npmjs.org/react-chartjs/-/react-chartjs-1.2.0.tgz",
+      "integrity": "sha512-Zhc47Jv8DwJwT3R5iyskRWoz5TEP3qloMlC758Oa+4THSxd/Qat4CIE23epY7XHzEuL5m6/hJIjD2iqLcO9rfw==",
+      "requires": {
+        "create-react-class": "^15.6.2"
       }
     },
     "react-dev-utils": {
