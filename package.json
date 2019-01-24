@@ -89,7 +89,6 @@
     "storybookbuild": "build-storybook -c .storybook -o ./style-guide",
     "test": "jest",
     "now-start": "npm run build",
-    "firebase": "gatsby build; npm run storybookbuild; firebase deploy;",
     "directoryJson": "node src/custom-build/directory-json.js",
     "configFirebase": "node src/custom-build/firebase.js",
     "cleanup": "jest -u; prettier --write 'src/**/**.js';",

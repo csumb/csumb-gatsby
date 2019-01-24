@@ -9,6 +9,7 @@ import {
   SubItemArrow,
   SubItemContent,
   HiddenLink,
+  EverythingContent,
 } from 'components/pages/everything'
 import SiteHeader from 'components/header/site-header'
 import Link from 'gatsby-link'
@@ -52,17 +53,7 @@ const EverythingSubLevelPage = ({ pageContext }) => (
                 <SecondLevelTitle>
                   {pageContext.currentItem.title}
                 </SecondLevelTitle>
-                {pageContext.currentItem
-                  .childContentfulNavigationItemDescriptionTextNode && (
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        pageContext.currentItem
-                          .childContentfulNavigationItemDescriptionTextNode
-                          .childMarkdownRemark.html,
-                    }}
-                  />
-                )}
+                <EverythingContent item={pageContext.currentItem} />
                 <SecondLevelList>
                   {pageContext.currentItems.map(item => (
                     <SubItem key={item.contentful_id}>

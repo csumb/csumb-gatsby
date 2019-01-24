@@ -13,6 +13,9 @@ const ImageContainer = styled('div')`
 class BlockImage extends React.Component {
   render() {
     const { image, description, pullRight } = this.props
+    if (!image || !image.url) {
+      return null
+    }
     return (
       <ContainerContext.Consumer>
         {container => (

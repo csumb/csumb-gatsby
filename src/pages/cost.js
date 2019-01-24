@@ -313,42 +313,42 @@ class CostPageForm extends React.Component {
         {!resident ? (
           <ResidencyQuestion handler={this.handleResidency.bind(this)} />
         ) : (
-          <>
-            {!undergraduate ? (
-              <UndergraduateQuestion
-                handler={this.handleUndergraduates.bind(this)}
-              />
-            ) : (
-              <>
-                {!(moreThanSixUnits || units) ? (
+            <>
+              {!undergraduate ? (
+                <UndergraduateQuestion
+                  handler={this.handleUndergraduates.bind(this)}
+                />
+              ) : (
                   <>
-                    {resident !== 'no' ? (
+                    {!(moreThanSixUnits || units) ? (
                       <>
-                        <UnitsQuestion handler={this.handleUnits.bind(this)} />
+                        {resident !== 'no' ? (
+                          <>
+                            <UnitsQuestion handler={this.handleUnits.bind(this)} />
+                          </>
+                        ) : (
+                            <>
+                              <SpecificUnitsQuestion
+                                handleChange={this.handleSpecificUnitsChange.bind(
+                                  this
+                                )}
+                                handler={this.handleSpecificUnits.bind(this)}
+                              />
+                            </>
+                          )}
                       </>
                     ) : (
-                      <>
-                        <SpecificUnitsQuestion
-                          handleChange={this.handleSpecificUnitsChange.bind(
-                            this
-                          )}
-                          handler={this.handleSpecificUnits.bind(this)}
-                        />
-                      </>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <CostResults
-                      {...this.state}
-                      startOver={this.startOver.bind(this)}
-                    />
+                        <>
+                          <CostResults
+                            {...this.state}
+                            startOver={this.startOver.bind(this)}
+                          />
+                        </>
+                      )}
                   </>
                 )}
-              </>
-            )}
-          </>
-        )}
+            </>
+          )}
       </>
     )
   }
@@ -360,9 +360,9 @@ class CostPage extends React.Component {
     return (
       <Layout>
         <SiteHeader path="/cost">Costs &amp; Aid</SiteHeader>
-        {data.allCsumbContentNavigation && (
+        {data.allCsumbNavigation && (
           <SiteNavigation
-            navigation={data.allCsumbContentNavigation.edges[0].node.navigation}
+            navigation={data.allCsumbNavigation.edges[0].node.navigation}
           />
         )}
         <Container>
@@ -379,7 +379,7 @@ export default CostPage
 
 export const query = graphql`
   {
-    allCsumbContentNavigation(filter: { site: { eq: "cost" } }) {
+    allCsumbNavigation(filter: { site: { eq: "cost" } }) {
       edges {
         node {
           site

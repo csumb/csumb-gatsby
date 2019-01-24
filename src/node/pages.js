@@ -20,78 +20,71 @@ module.exports = (graphql, actions) => {
     resolve(
       graphql(
         `
-          {
-            allCsumbContentSite {
-              edges {
-                node {
-                  site
+        {
+          allCsumbSite {
+            edges {
+              node {
+                site
+                title
+              }
+            }
+          }
+
+          allCsumbNavigation {
+            edges {
+              node {
+                site
+                navigation
+              }
+            }
+          }
+
+          allCsumbPage {
+            edges {
+              node {
+                  pagePath
                   title
-                }
-              }
-            }
-
-            allCsumbContentNavigation {
-              edges {
-                node {
                   site
-                  navigation
-                }
-              }
-            }
-
-            allFile(
-              filter: {
-                sourceInstanceName: { eq: "web-content" }
-                extension: { eq: "json" }
-              }
-            ) {
-              edges {
-                node {
-                  relativePath
-                  absolutePath
-                  childCsumbContentPage {
-                    title
-                    site
-                    pageContent
-                    topHero {
-                      headline
-                      text
-                      buttonUrl
-                      image {
-                        url
-                      }
-                    }
-                    navigation {
+                  pageContent
+                  topHero {
+                    headline
+                    text
+                    buttonUrl
+                    image {
                       url
-                      name
                     }
-                    breadcrumbs
-                    feedbackEmail
-                    layout
-                    event {
-                      dates {
-                        start
-                        end
-                      }
-                      times {
-                        start
-                        end
-                      }
-                      description
-                      ticket {
-                        url
-                        title
-                      }
-                      cost_message
-                      location {
-                        type
-                      }
+                  }
+                  navigation {
+                    url
+                    name
+                  }
+                  breadcrumbs
+                  feedbackEmail
+                  layout
+                  event {
+                    dates {
+                      start
+                      end
+                    }
+                    times {
+                      start
+                      end
+                    }
+                    description
+                    ticket {
+                      url
+                      title
+                    }
+                    cost_message
+                    location {
+                      type
                     }
                   }
                 }
               }
             }
-          }
+          
+        }
         `
       ).then(result => {
         if (!result.data) {
@@ -100,52 +93,46 @@ module.exports = (graphql, actions) => {
         }
         let count = 0
 
-        result.data.allCsumbContentSite.edges.forEach(edge => {
-          if (typeof sites[edge.node.site] === 'undefined') {
-            sites[edge.node.site] = {
-              site: edge.node,
+        result.data.allCsumbSite.edges.forEach(({ node }) => {
+          if (typeof sites[node.site] === 'undefined') {
+            sites[node.site] = {
+              site: node,
               navigation: null,
             }
           }
         })
 
-        result.data.allCsumbContentNavigation.edges.forEach(edge => {
-          if (typeof sites[edge.node.site] !== 'undefined') {
-            sites[edge.node.site].navigation = edge.node.navigation
+        result.data.allCsumbNavigation.edges.forEach(({ node }) => {
+          if (typeof sites[node.site] !== 'undefined') {
+            sites[node.site].navigation = node.navigation
           }
         })
 
-        result.data.allFile.edges.forEach(edge => {
-          if (edge.node.relativePath.search('_data') > -1) {
-            return
-          }
-          const content = edge.node.childCsumbContentPage
-          let path = edge.node.relativePath
-          path = path.replace('index.json', '').replace('.json', '')
-          if (typeof sites[content.site] !== 'undefined') {
+        result.data.allCsumbPage.edges.forEach(({ node }) => {
+          if (typeof sites[node.site] !== 'undefined') {
             count++
             let pageNode = {
-              path: path,
+              path: node.pagePath,
               component: pageTemplate,
               layout: 'index',
               context: {
-                filePath: edge.node.relativePath,
-                pageUrl: path,
-                title: content.title,
-                site: sites[content.site].site,
-                breadcrumbs: content.breadcrumbs,
-                pageNavigation: content.navigation,
-                feedbackEmail: encryptFeedback(content.feedbackEmail),
-                layout: content.layout,
-                navigation: sites[content.site].navigation,
-                pageContent: content.pageContent,
+                filePath: node.pagePath,
+                pageUrl: node.pagePath,
+                title: node.title,
+                site: sites[node.site].site,
+                breadcrumbs: node.breadcrumbs,
+                pageNavigation: node.navigation,
+                feedbackEmail: encryptFeedback(node.feedbackEmail),
+                layout: node.layout,
+                navigation: sites[node.site].navigation,
+                pageContent: node.pageContent,
               },
             }
-            if (typeof content.event !== 'undefined') {
-              pageNode.context.event = content.event
+            if (typeof node.event !== 'undefined') {
+              pageNode.context.event = node.event
             }
-            if (content.topHero.image) {
-              pageNode.context.topHero = content.topHero
+            if (node.topHero.image) {
+              pageNode.context.topHero = node.topHero
             }
             createPage(pageNode)
           }
