@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
 import LazyHero from 'react-lazy-hero'
 import Link from 'gatsby-link'

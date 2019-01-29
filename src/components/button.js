@@ -1,5 +1,5 @@
 import LinkInspect from './link-inspect'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import { colors } from './styles/theme'
 
 const ButtonStyle = props => {
@@ -10,6 +10,7 @@ const ButtonStyle = props => {
   padding: 0.75rem;
   text-decoration: none;
   cursor: pointer;
+  color: ${colors.primary.dark};
   &:hover {
     color: ${colors.white};
   }
@@ -28,9 +29,9 @@ const ButtonStyle = props => {
       : `
     display: inline-block;
   `
-  }
+    }
     ${props.extraMargin &&
-      `
+    `
       margin: 1rem 0;
     `}
   ${
@@ -43,7 +44,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-  } 
+    } 
   ${
     props.buttonType === 'primary'
       ? `
@@ -54,7 +55,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-  } 
+    } 
   ${
     props.buttonType === 'highImpact'
       ? `
@@ -65,7 +66,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-  };
+    };
 `
 }
 

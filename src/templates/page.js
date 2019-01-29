@@ -12,6 +12,8 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import PageNavigation from 'components/navigation/page'
 import Breadcrumbs from 'components/header/breadcrumbs'
 import BlockHero from './blocks/blocks/hero-image'
+import SiteFooter from 'components/footer/site'
+
 class PageTemplate extends React.Component {
   render() {
     const {
@@ -35,6 +37,7 @@ class PageTemplate extends React.Component {
         pageTitle={title}
         siteNavigation={navigation}
         siteTitle={site.title}
+        hasSiteFooter={site.contact ? true : false}
       >
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
@@ -56,9 +59,12 @@ class PageTemplate extends React.Component {
             </Flex>
           </Container>
         ) : (
-          <Blocks blocks={pageContent} />
-        )}
+            <Blocks blocks={pageContent} />
+          )}
         <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
+        {site.contact && (
+          <SiteFooter site={site} />
+        )}
       </Layout>
     )
   }

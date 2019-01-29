@@ -1,7 +1,6 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import Alert from '@reach/alert'
-import { css } from 'emotion'
 import { colors } from 'components/styles/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import color from 'color'
@@ -15,7 +14,7 @@ import {
 import { Flex, Box } from '@rebass/grid/emotion'
 import bp from './styles/breakpoints'
 
-const baseStyle = css`
+const baseStyle = `
   display: block;
   padding: 0.5rem;
   margin: 1rem 0;
@@ -31,8 +30,8 @@ const AlertIcon = styled(FontAwesomeIcon)`
 
 const AlertIconBox = styled(Box)`
   ${bp({
-    display: ['none', 'block', 'block', 'block'],
-  })};
+  display: ['none', 'block', 'block', 'block'],
+})};
 `
 
 const AlertContent = ({ icon, children }) => (

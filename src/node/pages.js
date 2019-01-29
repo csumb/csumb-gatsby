@@ -20,28 +20,46 @@ module.exports = (graphql, actions) => {
     resolve(
       graphql(
         `
-        {
-          allCsumbSite {
-            edges {
-              node {
-                site
-                title
+          {
+            
+            site {
+              siteMetadata {
+                overridePages
               }
             }
-          }
 
-          allCsumbNavigation {
-            edges {
-              node {
-                site
-                navigation
+            allCsumbSite {
+              edges {
+                node {
+                  site
+                  title
+                  contact {
+                  phone
+                  email
+                  floor
+                  suite
+                  fax
+                  building {
+                    name
+                    code
+                  }
+                }
+                }
               }
             }
-          }
 
-          allCsumbPage {
-            edges {
-              node {
+            allCsumbNavigation {
+              edges {
+                node {
+                  site
+                  navigation
+                }
+              }
+            }
+
+            allCsumbPage {
+              edges {
+                node {
                   pagePath
                   title
                   site
@@ -83,14 +101,14 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-          
-        }
+          }
         `
       ).then(result => {
         if (!result.data) {
           report.error(`Could not query content pages.`)
           return
         }
+        const overridePages = result.data.site.siteMetadata.overridePages
         let count = 0
 
         result.data.allCsumbSite.edges.forEach(({ node }) => {
@@ -109,7 +127,7 @@ module.exports = (graphql, actions) => {
         })
 
         result.data.allCsumbPage.edges.forEach(({ node }) => {
-          if (typeof sites[node.site] !== 'undefined') {
+          if (typeof sites[node.site] !== 'undefined' && overridePages.indexOf(node.pagePath) === -1) {
             count++
             let pageNode = {
               path: node.pagePath,

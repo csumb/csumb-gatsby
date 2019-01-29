@@ -39,15 +39,14 @@ const EventPage = ({ event }) => (
   </Container>
 )
 
-const FeaturedEvent = ({ event }) => (
-  <h2>{event.title}</h2>
-)
+const FeaturedEvent = ({ event }) => <h2>{event.title}</h2>
 
 const RegularEvent = ({ event }) => (
   <Flex flexWrap="wrap">
     <Box width={[1, 3 / 4, 9 / 12]} pr={[0, 2, 2]}>
-      <h3><Link to={`${event.site}/${event.pagePath}`}>{event.title}</Link></h3>
-
+      <h3>
+        <Link to={`${event.site}/${event.pagePath}`}>{event.title}</Link>
+      </h3>
     </Box>
   </Flex>
 )

@@ -1,18 +1,17 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
 import LinkInspect from 'components/link-inspect'
 import VisuallyHidden from 'components/visually-hidden'
 import bp from 'components/styles/breakpoints'
-import { css } from 'emotion'
 import { ContainerElement, containerStyle } from '../container-context'
 
-const relatedBreakpoints = css(
+const relatedBreakpoints =
   bp({
     margin: ['0.5rem 0', '0.5rem 0 0.5rem 0.5rem'],
     width: ['auto', '30%'],
   })
-)
+
 
 const RelatedContent = styled('div')`
   ${relatedBreakpoints};
