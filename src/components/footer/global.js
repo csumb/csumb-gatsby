@@ -8,14 +8,14 @@ import { colors } from 'components/styles/theme'
 import bp from 'components/styles/breakpoints'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import VisuallyHidden from './visually-hidden';
+import VisuallyHidden from 'components/visually-hidden';
 
 const FooterSocialIconLink = styled('a')`
   color: ${colors.white};
   text-decoration: none;
   display: inline-block;
   margin-right: 2rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
 `
 
 const SocialIconWrapper = styled('div')`
@@ -24,7 +24,7 @@ const SocialIconWrapper = styled('div')`
 
 const FooterElement = styled('footer')`
   background: ${colors.primary.darkest};
-  margin-top: 1rem;
+  ${props => props.hasSiteFooter ? `` : `margin-top: 1rem;`}
   padding: 1rem 0;
   color: ${colors.white};
   font-size: 0.9rem;
@@ -84,7 +84,7 @@ const FooterSocialIcon = ({ href, name, icon }) => (
 class Footer extends React.Component {
   render() {
     return (
-      <FooterElement>
+      <FooterElement hasSiteFooter={this.props.hasSiteFooter}>
         <Container>
           <Flex flexWrap="wrap">
             <Box width={[1, 7 / 12]} pr={2}>
