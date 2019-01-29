@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import Header from 'components/header'
-import Footer from 'components/footer'
+import Footer from 'components/footer/global'
 import Helmet from 'react-helmet'
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
@@ -74,7 +74,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { siteNavigation, siteTitle, pageTitle } = this.props
+    const { siteNavigation, siteTitle, pageTitle, hasSiteFooter } = this.props
 
     return (
       <BreakpointContext.Provider value={this.state.breakpoint}>
@@ -115,7 +115,7 @@ class Layout extends React.Component {
           />
           <SkipNavContent />
           {this.props.children}
-          <Footer />
+          <Footer hasSiteFooter={hasSiteFooter ? true : false} />
         </UserContext.Provider>
       </BreakpointContext.Provider>
     )

@@ -39,6 +39,10 @@ module.exports = (graphql, actions) => {
                   floor
                   suite
                   fax
+                  building {
+                    name
+                    code
+                  }
                 }
                 }
               }
