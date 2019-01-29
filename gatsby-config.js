@@ -20,6 +20,7 @@ module.exports = {
     ]
   },
   plugins: [
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-csv`,
     `gatsby-transformer-remark`,

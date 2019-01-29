@@ -7,7 +7,7 @@ import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
 import bp from 'components/styles/breakpoints'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook, faTwitter, faInstagram, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import VisuallyHidden from 'components/visually-hidden';
 
 const FooterSocialIconLink = styled('a')`
@@ -152,6 +152,7 @@ class Footer extends React.Component {
                 <FooterSocialIcon name="facebook" href="https://facebook.com/csumb" icon={faFacebook} />
                 <FooterSocialIcon name="instagram" href="https://instagram.com/csumb" icon={faInstagram} />
                 <FooterSocialIcon name="linkedin" href="http://linkedin.com/company/csu-monterey-bay" icon={faLinkedin} />
+                <FooterSocialIcon name="youtube" href="http://youtube.com/csumb" icon={faYoutube} />
               </SocialIconWrapper>
             </Box>
 
