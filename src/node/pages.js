@@ -33,6 +33,13 @@ module.exports = (graphql, actions) => {
                 node {
                   site
                   title
+                  contact {
+                  phone
+                  email
+                  floor
+                  suite
+                  fax
+                }
                 }
               }
             }
