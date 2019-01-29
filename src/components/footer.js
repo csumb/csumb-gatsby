@@ -6,6 +6,21 @@ import logo from 'assets/images/csumb-logo-white.svg'
 import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
 import bp from 'components/styles/breakpoints'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import VisuallyHidden from './visually-hidden';
+
+const FooterSocialIconLink = styled('a')`
+  color: ${colors.white};
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 2rem;
+  font-size: 2rem;
+`
+
+const SocialIconWrapper = styled('div')`
+  margin: 1rem 0;
+`
 
 const FooterElement = styled('footer')`
   background: ${colors.primary.darkest};
@@ -49,8 +64,8 @@ const Logo = styled('img')`
 
 const RightFooter = styled(Box)`
   ${bp({
-    textAlign: ['normal', 'right'],
-  })};
+  textAlign: ['normal', 'right'],
+})};
 `
 
 const LegalLink = styled(Link)`
@@ -59,69 +74,87 @@ const LegalLink = styled(Link)`
   font-size: 0.8rem;
 `
 
+const FooterSocialIcon = ({ href, name, icon }) => (
+  <FooterSocialIconLink href={href}>
+    <VisuallyHidden>{name}</VisuallyHidden>
+    <FontAwesomeIcon icon={icon} />
+  </FooterSocialIconLink>
+)
+
 class Footer extends React.Component {
   render() {
     return (
       <FooterElement>
         <Container>
           <Flex flexWrap="wrap">
-            <Box width={[1, 2 / 12]}>
-              <FooterList>
-                <li>
-                  <Link to="/jobs" title="">
-                    Jobs
+            <Box width={[1, 7 / 12]} pr={2}>
+              <Flex flexWrap="wrap">
+                <Box width={[1, 1 / 3]}>
+                  <FooterList>
+                    <li>
+                      <Link to="/jobs" title="">
+                        Jobs
                   </Link>
-                </li>
-                <li>
-                  <Link to="/admissions/visit" title="">
-                    Tours
+                    </li>
+                    <li>
+                      <Link to="/admissions/visit" title="">
+                        Tours
                   </Link>
-                </li>
-                <li>
-                  <Link to="/academics" title="">
-                    Majors
+                    </li>
+                    <li>
+                      <Link to="/academics" title="">
+                        Majors
                   </Link>
-                </li>
-              </FooterList>
+                    </li>
+                  </FooterList>
+                </Box>
+                <Box width={[1, 1 / 3]}>
+                  <FooterList>
+                    <li>
+                      <Link to="/library" title="">
+                        Library
+                  </Link>
+                    </li>
+                    <li>
+                      <Link to="/map" title="">
+                        Map
+                  </Link>
+                    </li>
+                    <li>
+                      <Link to="/mastercalendar" title="">
+                        Calendar
+                  </Link>
+                    </li>
+                  </FooterList>
+                </Box>
+                <Box width={[1, 1 / 3]}>
+                  <FooterList>
+                    <li>
+                      <Link to="/directory" title="">
+                        Directory
+                  </Link>
+                    </li>
+                    <li>
+                      <Link to="/catalog" title="">
+                        Catalog
+                  </Link>
+                    </li>
+                    <li>
+                      <Link to="/planning/schedule" title="">
+                        Class schedule
+                  </Link>
+                    </li>
+                  </FooterList>
+                </Box>
+              </Flex>
+              <SocialIconWrapper>
+                <FooterSocialIcon name="twitter" href="https://twitter.com/csumb" icon={faTwitter} />
+                <FooterSocialIcon name="facebook" href="https://facebook.com/csumb" icon={faFacebook} />
+                <FooterSocialIcon name="instagram" href="https://instagram.com/csumb" icon={faInstagram} />
+                <FooterSocialIcon name="linkedin" href="http://linkedin.com/company/csu-monterey-bay" icon={faLinkedin} />
+              </SocialIconWrapper>
             </Box>
-            <Box width={[1, 2 / 12]}>
-              <FooterList>
-                <li>
-                  <Link to="/library" title="">
-                    Library
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/map" title="">
-                    Map
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/mastercalendar" title="">
-                    Calendar
-                  </Link>
-                </li>
-              </FooterList>
-            </Box>
-            <Box width={[1, 3 / 12]}>
-              <FooterList>
-                <li>
-                  <Link to="/directory" title="">
-                    Directory
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/catalog" title="">
-                    Catalog
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/planning/schedule" title="">
-                    Class schedule
-                  </Link>
-                </li>
-              </FooterList>
-            </Box>
+
             <RightFooter width={[1, 5 / 12]}>
               <Logo src={logo} alt="Cal State Monterey Bay" />
               <FooterAddressList>
