@@ -1,7 +1,7 @@
 import React from 'react'
 import { colors } from 'components/styles/theme'
 import Link from 'gatsby-link'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 
 const BreadcrumbItem = styled('li')`

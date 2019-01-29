@@ -1,7 +1,7 @@
 import React from 'react'
 import LinkInspect from 'components/link-inspect'
 import Container from 'components/container'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import { colors, fonts } from '../styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import BreakpointContext from 'components/contexts/breakpoint'

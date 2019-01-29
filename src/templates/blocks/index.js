@@ -18,7 +18,6 @@ import BlockFeed from './blocks/feed'
 import BlockForm from './blocks/form'
 import BlockImageGrid from './blocks/image-grid'
 import BlockMap from './blocks/map'
-import BlockPathway from './blocks/pathway'
 import BlockRelated from './blocks/related'
 import BlockTable from './blocks/table'
 import BlockPerson from './blocks/person'
@@ -34,7 +33,6 @@ class Block extends React.Component {
     form: BlockForm,
     imagegrid: BlockImageGrid,
     map: BlockMap,
-    pathway: BlockPathway,
     related: BlockRelated,
     table: BlockTable,
     text: BlockText,
@@ -76,12 +74,12 @@ class Block extends React.Component {
             />
           </VisuallyHidden>
         ) : (
-          <BlockType
-            {...block.data}
-            uuid={block.uuid}
-            headerHandler={headerHandler}
-          />
-        )}
+            <BlockType
+              {...block.data}
+              uuid={block.uuid}
+              headerHandler={headerHandler}
+            />
+          )}
       </ContainerContext.Provider>
     )
   }
@@ -171,7 +169,7 @@ class Blocks extends React.Component {
     })
   }
 
-  handleCollapseHeader(event) {}
+  handleCollapseHeader(event) { }
 
   render() {
     const blocks = this.blocks
@@ -192,31 +190,31 @@ class Blocks extends React.Component {
                 {layout._children ? (
                   <Columns layout={layout} blocks={blocks.blocks} />
                 ) : (
-                  <Block
-                    key={layout.id}
-                    type={blocks.blocks[layout.id].type}
-                    block={blocks.blocks[layout.id]}
-                    headerHandler={() => {
-                      let { expandedBlocks } = this.state
-                      const index = expandedBlocks.indexOf(layout.id)
-                      if (index > -1) {
-                        expandedBlocks.splice(index, 1)
-                      } else {
-                        expandedBlocks.push(layout.id)
+                    <Block
+                      key={layout.id}
+                      type={blocks.blocks[layout.id].type}
+                      block={blocks.blocks[layout.id]}
+                      headerHandler={() => {
+                        let { expandedBlocks } = this.state
+                        const index = expandedBlocks.indexOf(layout.id)
+                        if (index > -1) {
+                          expandedBlocks.splice(index, 1)
+                        } else {
+                          expandedBlocks.push(layout.id)
+                        }
+                        this.setState({
+                          expandedBlocks: expandedBlocks,
+                        })
+                      }}
+                      hidden={
+                        blocks.blocks[layout.id]._collapsedHeader &&
+                        (!expandedBlocks.length ||
+                          expandedBlocks.indexOf(
+                            blocks.blocks[layout.id]._collapsedHeader
+                          ) === -1)
                       }
-                      this.setState({
-                        expandedBlocks: expandedBlocks,
-                      })
-                    }}
-                    hidden={
-                      blocks.blocks[layout.id]._collapsedHeader &&
-                      (!expandedBlocks.length ||
-                        expandedBlocks.indexOf(
-                          blocks.blocks[layout.id]._collapsedHeader
-                        ) === -1)
-                    }
-                  />
-                )}
+                    />
+                  )}
               </>
             )}
           </React.Fragment>

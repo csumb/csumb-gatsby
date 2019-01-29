@@ -106,6 +106,7 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       children: [],
       site: content.site,
       title: content.title,
+      contact: content.contact ? content.contact : null,
       internal: {
         type: `CsumbSite`,
         contentDigest: digest

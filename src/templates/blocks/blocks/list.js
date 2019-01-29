@@ -1,6 +1,6 @@
 import React from 'react'
 import { ContainerContext, ContainerElement } from '../container-context'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 
 class BlockList extends React.Component {
   render() {

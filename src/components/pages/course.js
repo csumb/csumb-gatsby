@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import PageTitle from 'components/header/page-title'
