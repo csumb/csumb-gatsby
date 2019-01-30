@@ -98,11 +98,8 @@ const ThirdLevelTitle = styled('h2')`
 `
 
 const EverythingContent = ({ item }) => {
-  if (!item.childContentfulNavigationItemDescriptionTextNode) {
-    return null
-  }
   return (
-    <p
+    <div
       dangerouslySetInnerHTML={{
         __html:
           item.childContentfulNavigationItemDescriptionTextNode
