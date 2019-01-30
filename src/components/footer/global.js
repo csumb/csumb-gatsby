@@ -62,11 +62,6 @@ const FooterAddressListItem = styled('li')`
   margin-bottom: 0;
 `
 
-const Logo = styled('img')`
-  margin-bottom: 0.5rem;
-  max-width: 250px;
-`
-
 const RightFooter = styled(Box)`
   ${bp({
   textAlign: ['normal', 'right'],

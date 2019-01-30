@@ -56,7 +56,7 @@ class Block extends React.Component {
   }
 
   render() {
-    const { type, block, inColumn, hidden, headerHandler } = this.props
+    const { type, block, hidden, headerHandler } = this.props
     if (typeof this.blockComponents[type] === 'undefined') {
       return null
     }
