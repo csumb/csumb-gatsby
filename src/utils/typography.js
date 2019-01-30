@@ -8,7 +8,7 @@ const type = {
     {
       name: 'Open Sans',
       styles: [
-        '300', '700',
+        '300', '600', '700',
       ],
     },
     {
