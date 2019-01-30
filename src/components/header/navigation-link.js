@@ -17,12 +17,12 @@ const NavigationLinkList = styled('li')`
     }
     &[aria-current='page'] {
       ${props =>
-    props.apply
-      ? `
+        props.apply
+          ? `
         background: ${colors.indicators.high};
         color: ${colors.white};
         `
-      : `
+          : `
         background: ${colors.primary.dark};
         color: ${colors.white};
         `}

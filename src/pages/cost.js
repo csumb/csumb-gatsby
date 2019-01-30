@@ -313,42 +313,42 @@ class CostPageForm extends React.Component {
         {!resident ? (
           <ResidencyQuestion handler={this.handleResidency.bind(this)} />
         ) : (
-            <>
-              {!undergraduate ? (
-                <UndergraduateQuestion
-                  handler={this.handleUndergraduates.bind(this)}
-                />
-              ) : (
+          <>
+            {!undergraduate ? (
+              <UndergraduateQuestion
+                handler={this.handleUndergraduates.bind(this)}
+              />
+            ) : (
+              <>
+                {!(moreThanSixUnits || units) ? (
                   <>
-                    {!(moreThanSixUnits || units) ? (
+                    {resident !== 'no' ? (
                       <>
-                        {resident !== 'no' ? (
-                          <>
-                            <UnitsQuestion handler={this.handleUnits.bind(this)} />
-                          </>
-                        ) : (
-                            <>
-                              <SpecificUnitsQuestion
-                                handleChange={this.handleSpecificUnitsChange.bind(
-                                  this
-                                )}
-                                handler={this.handleSpecificUnits.bind(this)}
-                              />
-                            </>
-                          )}
+                        <UnitsQuestion handler={this.handleUnits.bind(this)} />
                       </>
                     ) : (
-                        <>
-                          <CostResults
-                            {...this.state}
-                            startOver={this.startOver.bind(this)}
-                          />
-                        </>
-                      )}
+                      <>
+                        <SpecificUnitsQuestion
+                          handleChange={this.handleSpecificUnitsChange.bind(
+                            this
+                          )}
+                          handler={this.handleSpecificUnits.bind(this)}
+                        />
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <CostResults
+                      {...this.state}
+                      startOver={this.startOver.bind(this)}
+                    />
                   </>
                 )}
-            </>
-          )}
+              </>
+            )}
+          </>
+        )}
       </>
     )
   }

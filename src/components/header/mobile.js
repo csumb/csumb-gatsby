@@ -141,16 +141,16 @@ const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
       {to ? (
         <MobileSiteNavigationLink to={to}>{children}</MobileSiteNavigationLink>
       ) : (
-          <>
-            {navigationChildren && (
-              <MobileSiteNavigationSubMenu
-                navigationChildren={navigationChildren}
-              >
-                {children}
-              </MobileSiteNavigationSubMenu>
-            )}
-          </>
-        )}
+        <>
+          {navigationChildren && (
+            <MobileSiteNavigationSubMenu
+              navigationChildren={navigationChildren}
+            >
+              {children}
+            </MobileSiteNavigationSubMenu>
+          )}
+        </>
+      )}
     </>
   )
 }
@@ -209,21 +209,19 @@ class HeaderMobile extends React.Component {
                 this.navRef = node
               }}
             >
-              <MobileNavigationLink to="/about">
-                About
-                          </MobileNavigationLink>
+              <MobileNavigationLink to="/about">About</MobileNavigationLink>
               <MobileNavigationLink to="/cost">
                 Cost &amp; aid
-                          </MobileNavigationLink>
+              </MobileNavigationLink>
               <MobileNavigationLink to="/academics">
                 Academics
-                          </MobileNavigationLink>
+              </MobileNavigationLink>
               <MobileNavigationLink to="/life">
                 Campus life
-                          </MobileNavigationLink>
+              </MobileNavigationLink>
               <MobileNavigationLink to="/everything">
                 Everything else
-                          </MobileNavigationLink>
+              </MobileNavigationLink>
             </HeaderMobileNavigation>
             {siteNavigation && (
               <HeaderMobileSiteNavigation>
