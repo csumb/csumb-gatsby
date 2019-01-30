@@ -1,7 +1,7 @@
 import React from 'react'
 import { ContainerElement } from '../container-context'
 import styled from '@emotion/styled'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import Link from 'gatsby-link'
 
 const Person = styled('div')`

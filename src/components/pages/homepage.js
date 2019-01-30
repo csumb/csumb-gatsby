@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import moment from 'moment'
 import Link from 'gatsby-link'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import { colors, fonts } from 'components/styles/theme'
 
 const dateFormat = 'MMMM D, YYYY'

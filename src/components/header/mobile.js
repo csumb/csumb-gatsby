@@ -9,7 +9,7 @@ import Container from 'components/container'
 import UserWidget from './user-widget'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import LinkInspect from 'components/link-inspect'
 import Link from 'gatsby-link'
 
