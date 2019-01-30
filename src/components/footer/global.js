@@ -64,8 +64,8 @@ const FooterAddressListItem = styled('li')`
 
 const RightFooter = styled(Box)`
   ${bp({
-  textAlign: ['normal', 'right'],
-})};
+    textAlign: ['normal', 'right'],
+  })};
 `
 
 const LegalLink = styled(Link)`
@@ -189,8 +189,10 @@ class Footer extends React.Component {
                   <strong>Mail:</strong> 100 Campus Center, Seaside, CA 93955
                 </FooterAddressListItem>
               </FooterAddressList>
-              <LegalLink to="https://cm.maxient.com/reportingform.php?CSUMontereyBay&layout_id=0">Report concerning behavior</LegalLink> |{' '}
-              <LegalLink to="/clery">Security report</LegalLink> |{' '}
+              <LegalLink to="https://cm.maxient.com/reportingform.php?CSUMontereyBay&layout_id=0">
+                Report concerning behavior
+              </LegalLink>{' '}
+              | <LegalLink to="/clery">Security report</LegalLink> |{' '}
               <LegalLink to="/legal">Legal information</LegalLink>
             </RightFooter>
           </Flex>
