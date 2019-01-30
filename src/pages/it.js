@@ -4,7 +4,7 @@ import SiteHeader from 'components/header/site-header'
 import Container from 'components/container'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import SiteNavigation from 'components/navigation/site'
 import { InputText, Submit } from 'components/forms'
 

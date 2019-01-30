@@ -11,7 +11,7 @@ import {
   faExclamationCircle,
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import bp from './styles/breakpoints'
 
 const baseStyle = `
@@ -30,8 +30,8 @@ const AlertIcon = styled(FontAwesomeIcon)`
 
 const AlertIconBox = styled(Box)`
   ${bp({
-  display: ['none', 'block', 'block', 'block'],
-})};
+    display: ['none', 'block', 'block', 'block'],
+  })};
 `
 
 const AlertContent = ({ icon, children }) => (

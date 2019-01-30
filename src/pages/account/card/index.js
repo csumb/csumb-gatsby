@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/header/page-title'
 import Container from 'components/container'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import {
   AccountGroup,
   AccountTitle,

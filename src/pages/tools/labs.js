@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import PageTitle from 'components/header/page-title'
 import Container from 'components/container'
 import { Lab } from 'components/pages/labs'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import { AlertFyi } from 'components/alert'
 
 class LabsPage extends React.Component {

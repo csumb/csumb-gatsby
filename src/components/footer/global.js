@@ -1,14 +1,20 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import Container from 'components/container'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import logo from 'assets/images/csumb-logo-white.svg'
 import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
 import bp from 'components/styles/breakpoints'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import VisuallyHidden from 'components/visually-hidden';
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+  faLinkedin,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons'
+import VisuallyHidden from 'components/visually-hidden'
 
 const FooterSocialIconLink = styled('a')`
   color: ${colors.white};
@@ -24,7 +30,7 @@ const SocialIconWrapper = styled('div')`
 
 const FooterElement = styled('footer')`
   background: ${colors.primary.darkest};
-  ${props => props.hasSiteFooter ? `` : `margin-top: 1rem;`}
+  ${props => (props.hasSiteFooter ? `` : `margin-top: 1rem;`)}
   padding: 1rem 0;
   color: ${colors.white};
   font-size: 0.9rem;
@@ -64,8 +70,8 @@ const Logo = styled('img')`
 
 const RightFooter = styled(Box)`
   ${bp({
-  textAlign: ['normal', 'right'],
-})};
+    textAlign: ['normal', 'right'],
+  })};
 `
 
 const LegalLink = styled(Link)`
@@ -94,17 +100,17 @@ class Footer extends React.Component {
                     <li>
                       <Link to="/jobs" title="">
                         Jobs
-                  </Link>
+                      </Link>
                     </li>
                     <li>
                       <Link to="/admissions/visit" title="">
                         Tours
-                  </Link>
+                      </Link>
                     </li>
                     <li>
                       <Link to="/academics" title="">
                         Majors
-                  </Link>
+                      </Link>
                     </li>
                   </FooterList>
                 </Box>
@@ -113,17 +119,17 @@ class Footer extends React.Component {
                     <li>
                       <Link to="/library" title="">
                         Library
-                  </Link>
+                      </Link>
                     </li>
                     <li>
                       <Link to="/map" title="">
                         Map
-                  </Link>
+                      </Link>
                     </li>
                     <li>
                       <Link to="/mastercalendar" title="">
                         Calendar
-                  </Link>
+                      </Link>
                     </li>
                   </FooterList>
                 </Box>
@@ -132,26 +138,47 @@ class Footer extends React.Component {
                     <li>
                       <Link to="/directory" title="">
                         Directory
-                  </Link>
+                      </Link>
                     </li>
                     <li>
                       <Link to="/catalog" title="">
                         Catalog
-                  </Link>
+                      </Link>
                     </li>
                     <li>
                       <Link to="/planning/schedule" title="">
                         Class schedule
-                  </Link>
+                      </Link>
                     </li>
                   </FooterList>
                 </Box>
               </Flex>
               <SocialIconWrapper>
-                <FooterSocialIcon name="twitter" href="https://twitter.com/csumb" icon={faTwitter} />
-                <FooterSocialIcon name="facebook" href="https://facebook.com/csumb" icon={faFacebook} />
-                <FooterSocialIcon name="instagram" href="https://instagram.com/csumb" icon={faInstagram} />
-                <FooterSocialIcon name="linkedin" href="http://linkedin.com/company/csu-monterey-bay" icon={faLinkedin} />
+                <FooterSocialIcon
+                  name="twitter"
+                  href="https://twitter.com/csumb"
+                  icon={faTwitter}
+                />
+                <FooterSocialIcon
+                  name="facebook"
+                  href="https://facebook.com/csumb"
+                  icon={faFacebook}
+                />
+                <FooterSocialIcon
+                  name="instagram"
+                  href="https://instagram.com/csumb"
+                  icon={faInstagram}
+                />
+                <FooterSocialIcon
+                  name="linkedin"
+                  href="http://linkedin.com/company/csu-monterey-bay"
+                  icon={faLinkedin}
+                />
+                <FooterSocialIcon
+                  name="youtube"
+                  href="http://youtube.com/csumb"
+                  icon={faYoutube}
+                />
               </SocialIconWrapper>
             </Box>
 

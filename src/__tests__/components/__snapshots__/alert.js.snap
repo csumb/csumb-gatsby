@@ -11,10 +11,10 @@ exports[`Alert renders a danger alert correctly 1`] = `
     Danger
   </div>
   <div
-    className="css-11ltxe6"
+    className="sc-bdVaJa sc-bwzfXH hbZeap"
   >
     <div
-      className="css-1cirk5q"
+      className="css-n80ioy sc-bdVaJa iqCHRR"
       width={
         Array [
           0,
@@ -41,7 +41,7 @@ exports[`Alert renders a danger alert correctly 1`] = `
       </svg>
     </div>
     <div
-      className="css-1rmp463"
+      className="sc-bdVaJa kkdbJs"
       width={
         Array [
           1,
@@ -69,10 +69,10 @@ exports[`Alert renders a warning alert correctly 1`] = `
     Warning
   </div>
   <div
-    className="css-11ltxe6"
+    className="sc-bdVaJa sc-bwzfXH hbZeap"
   >
     <div
-      className="css-1cirk5q"
+      className="css-n80ioy sc-bdVaJa iqCHRR"
       width={
         Array [
           0,
@@ -99,7 +99,7 @@ exports[`Alert renders a warning alert correctly 1`] = `
       </svg>
     </div>
     <div
-      className="css-1rmp463"
+      className="sc-bdVaJa kkdbJs"
       width={
         Array [
           1,
@@ -127,10 +127,10 @@ exports[`Alert renders an empty alert correctly 1`] = `
     For your information
   </div>
   <div
-    className="css-11ltxe6"
+    className="sc-bdVaJa sc-bwzfXH hbZeap"
   >
     <div
-      className="css-1cirk5q"
+      className="css-n80ioy sc-bdVaJa iqCHRR"
       width={
         Array [
           0,
@@ -157,7 +157,7 @@ exports[`Alert renders an empty alert correctly 1`] = `
       </svg>
     </div>
     <div
-      className="css-1rmp463"
+      className="sc-bdVaJa kkdbJs"
       width={
         Array [
           1,
@@ -196,10 +196,10 @@ exports[`Alert renders an info alert correctly 1`] = `
     For your information
   </div>
   <div
-    className="css-11ltxe6"
+    className="sc-bdVaJa sc-bwzfXH hbZeap"
   >
     <div
-      className="css-1cirk5q"
+      className="css-n80ioy sc-bdVaJa iqCHRR"
       width={
         Array [
           0,
@@ -226,7 +226,7 @@ exports[`Alert renders an info alert correctly 1`] = `
       </svg>
     </div>
     <div
-      className="css-1rmp463"
+      className="sc-bdVaJa kkdbJs"
       width={
         Array [
           1,
