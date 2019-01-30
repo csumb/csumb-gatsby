@@ -31,9 +31,9 @@ const ButtonStyle = props => {
       : `
     display: inline-block;
   `
-    }
+  }
     ${props.extraMargin &&
-    `
+      `
       margin: 1rem 0;
     `}
   ${
@@ -46,7 +46,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-    } 
+  } 
   ${
     props.buttonType === 'primary'
       ? `
@@ -57,7 +57,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-    } 
+  } 
   ${
     props.buttonType === 'highImpact'
       ? `
@@ -68,7 +68,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-    };
+  };
 `
 }
 
