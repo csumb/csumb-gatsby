@@ -35,7 +35,7 @@ const SiteNavigationSubList = styled(MenuList)`
   margin-top: 10px;
   a {
     color: ${colors.white};
-    font-family: ${fonts.sansSerif};
+    font-family: ${fonts.body};
     font-size: 20px;
     text-decoration: none;
   }
