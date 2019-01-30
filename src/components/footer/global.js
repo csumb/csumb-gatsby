@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid'
-import logo from 'assets/images/csumb-logo-white.svg'
 import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
 import bp from 'components/styles/breakpoints'
@@ -183,7 +182,7 @@ class Footer extends React.Component {
             </Box>
 
             <RightFooter width={[1, 5 / 12]}>
-              <Logo src={logo} alt="Cal State Monterey Bay" />
+              <h4>California State University, Monterey Bay</h4>
               <FooterAddressList>
                 <FooterAddressListItem>
                   <strong>Call:</strong> 831-582-3000
