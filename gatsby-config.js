@@ -16,7 +16,11 @@ module.exports = {
       labs: [1001, 1002, 1003, 1005, 1006, 1010, 1009, 1008]
     },
     overridePages: [
-      'about/about-our-students'
+      'cost',
+      'it',
+      'library',
+      'about/about-our-students',
+      'search'
     ]
   },
   plugins: [
