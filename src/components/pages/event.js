@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import Container from 'components/container'
 import { LeadParagraph } from 'components/type'
 import Link from 'gatsby-link'

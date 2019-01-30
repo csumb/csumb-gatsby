@@ -15,7 +15,7 @@ import SiteHeader from 'components/header/site-header'
 import Link from 'gatsby-link'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import BreakpointContext from 'components/contexts/breakpoint'
 
 const EverythingSubLevelPage = ({ pageContext }) => (

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import { colors } from 'components/styles/theme'
 import PageTitle from 'components/header/page-title'
 import moment from 'moment'

@@ -16,19 +16,20 @@ module.exports = {
       labs: [1001, 1002, 1003, 1005, 1006, 1010, 1009, 1008]
     },
     overridePages: [
-      'about/about-our-students'
+      'cost',
+      'it',
+      'library',
+      'about/about-our-students',
+      'search'
     ]
   },
   plugins: [
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-csv`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-catch-links`,
     `gatsby-source-csumb-web-content`,
-    {
-      resolve: `gatsby-plugin-emotion`,
-      options: {},
-    },
     {
       resolve: `gatsby-source-contentful`,
       options: {

@@ -2,10 +2,9 @@ import React from 'react'
 import styled from '@emotion/styled'
 import bp from 'components/styles/breakpoints'
 
-const responsiveWidth =
-  bp({
-    width: ['100%', '100%', '75%', '75%'],
-  })
+const responsiveWidth = bp({
+  width: ['100%', '100%', '75%', '75%'],
+})
 
 const VideoWrapper = styled('div')`
   position: relative;

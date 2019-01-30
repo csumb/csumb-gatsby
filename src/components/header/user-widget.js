@@ -90,7 +90,7 @@ class UserDropdown extends React.Component {
           ).then(response => {
             window.location.href = `${window.location.protocol}//${
               window.location.host
-              }`
+            }`
           })
         }
       })
@@ -112,8 +112,8 @@ class UserDropdown extends React.Component {
               Public profile
             </UserDropdownMenuLink>
           ) : (
-              <></>
-            )}
+            <></>
+          )}
           <UserDropdownMenuLink component="a" href="/account/card">
             OtterCard
           </UserDropdownMenuLink>
@@ -147,22 +147,22 @@ class UserWidget extends React.Component {
               {context.user === false ? (
                 <></>
               ) : (
-                  <>
-                    {context.user.anonymous ? (
-                      <UserLoginLink onClick={this.handleLogin.bind(this)}>
-                        Log in
+                <>
+                  {context.user.anonymous ? (
+                    <UserLoginLink onClick={this.handleLogin.bind(this)}>
+                      Log in
                     </UserLoginLink>
-                    ) : (
-                        <>
-                          <UserDashboardLink to="/dashboard">
-                            Dashboard
+                  ) : (
+                    <>
+                      <UserDashboardLink to="/dashboard">
+                        Dashboard
                         <UnreadMessages user={context.user} />
-                          </UserDashboardLink>
-                          <UserDropdown user={context.user} />
-                        </>
-                      )}
-                  </>
-                )}
+                      </UserDashboardLink>
+                      <UserDropdown user={context.user} />
+                    </>
+                  )}
+                </>
+              )}
             </>
           )}
         </UserContext.Consumer>

@@ -2,7 +2,7 @@
 
 exports[`Container renders container correctly 1`] = `
 <div
-  className="css-fnvopl"
+  className="css-xgklm7 sc-bdVaJa hFurdN"
 >
   The children!
 </div>
@@ -10,7 +10,7 @@ exports[`Container renders container correctly 1`] = `
 
 exports[`Container renders container correctly with top padding 1`] = `
 <div
-  className="css-y05ap"
+  className="css-19v68mi sc-bdVaJa hFurdN"
 >
   The children!
 </div>

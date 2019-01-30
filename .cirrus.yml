@@ -29,3 +29,19 @@ deploy_task:
     - npm run configFirebase
     - npm run canary
     - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $CIRRUS_BRANCH
+
+storybook_task:
+  node_modules_cache:
+    folder: node_modules
+    populate_script: npm i
+  env:
+    GITHUB_TOKEN: ENCRYPTED[de199f8d18f3fb0958784265ae5c138de547dc3a17bd2bdd92f788e1855a35256c76f3f2666769c0c2bc380377725234]
+  script:
+    - git config --global user.email webfolk@csumb.edu
+    - git config --global user.name csumbwebfolk
+    - git clone --branch gh-pages https://$GITHUB_TOKEN@github.com/csumb/style-guide.git
+    - npm run storybookbuild
+    - cd style-guide
+    - git add *
+    - git commit -m "Updated storybook" || true
+    - git push origin gh-pages || true

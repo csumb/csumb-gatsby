@@ -20,7 +20,6 @@ import BlockVideo from 'templates/blocks/blocks/video'
 import BlockRelated from 'templates/blocks/blocks/related'
 import BlockSound from 'templates/blocks/blocks/sound'
 import BlockTable from 'templates/blocks/blocks/table'
-import BlockPathway from 'templates/blocks/blocks/pathway'
 import BlockMap from 'templates/blocks/blocks/map'
 import typography from 'utils/typography'
 import {
@@ -465,36 +464,6 @@ storiesOf('Blocks/List', module)
     </ContainerContext.Provider>
   ))
 
-storiesOf('Blocks/Pathway', module).add('Pathway', () => (
-  <ContainerContext.Provider value={containerStyle.normal}>
-    <BlockPathway
-      {...{
-        pathways: [
-          {
-            course: ' CHEM 109',
-            units: '4',
-            requirements: ['B1'],
-          },
-          {
-            course: ' MATH 130',
-            units: '5',
-            requirements: ['B4'],
-          },
-          {
-            course: ' *FYS 183',
-            units: '4',
-            requirements: ['E'],
-          },
-          {
-            course: 'Language 102',
-            units: '4',
-            requirements: ['C3', 'Language Proficiency'],
-          },
-        ],
-      }}
-    />
-  </ContainerContext.Provider>
-))
 storiesOf('Blocks/Text', module)
   .add('Regular', () => (
     <ContainerContext.Provider value={containerStyle.normal}>

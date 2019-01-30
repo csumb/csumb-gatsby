@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import Container from 'components/container'
 import Link from 'gatsby-link'
 
@@ -13,7 +13,8 @@ const SiteFooterWrapper = styled('footer')`
 `
 
 const SiteFooterItems = styled('dl')`
-  dt,dd { 
+  dt,
+  dd {
     display: inline;
   }
   dt {
@@ -34,7 +35,11 @@ const SiteFooter = ({ site }) => (
             {site.contact.email && (
               <div>
                 <dt>Email</dt>
-                <dd><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></dd>
+                <dd>
+                  <a href={`mailto:${site.contact.email}`}>
+                    {site.contact.email}
+                  </a>
+                </dd>
               </div>
             )}
             {site.contact.phone && (
@@ -57,32 +62,31 @@ const SiteFooter = ({ site }) => (
               <div>
                 <dt>Building</dt>
                 <dd>
-                  <Link to={`/building/${site.contact.building.code}`} dangerouslySetInnerHTML={{ __html: site.contact.building.name }} />
+                  <Link
+                    to={`/building/${site.contact.building.code}`}
+                    dangerouslySetInnerHTML={{
+                      __html: site.contact.building.name,
+                    }}
+                  />
                 </dd>
               </div>
             )}
             {site.contact.floor && (
               <div>
                 <dt>Floor</dt>
-                <dd>
-                  {site.contact.floor}
-                </dd>
+                <dd>{site.contact.floor}</dd>
               </div>
             )}
             {site.contact.suite && (
               <div>
                 <dt>Suite</dt>
-                <dd>
-                  {site.contact.suite}
-                </dd>
+                <dd>{site.contact.suite}</dd>
               </div>
             )}
             {site.contact.room && (
               <div>
                 <dt>Room</dt>
-                <dd>
-                  {site.contact.room}
-                </dd>
+                <dd>{site.contact.room}</dd>
               </div>
             )}
           </SiteFooterItems>

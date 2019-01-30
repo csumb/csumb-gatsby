@@ -7,7 +7,7 @@ import UserWidget from './user-widget'
 import Applicant from './applicant'
 import HeaderMobile from './mobile'
 import { NavigationLink, NavigationLinkApply } from './navigation-link'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import styled from '@emotion/styled'
 import BreakpointContext from 'components/contexts/breakpoint'
 

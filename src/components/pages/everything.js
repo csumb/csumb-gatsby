@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { colors, fonts } from 'components/styles/theme'
-import { Box } from '@rebass/grid/emotion'
+import { Box } from '@rebass/grid'
 import LinkInspect from 'components/link-inspect'
 import Link from 'gatsby-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -98,17 +98,18 @@ const ThirdLevelTitle = styled('h2')`
 `
 
 const EverythingContent = ({ item }) => {
-  if (!item.childContentfulNavigationItemDescriptionTextNode) {
-    return null
-  }
   return (
-    <p
-      dangerouslySetInnerHTML={{
-        __html:
-          item.childContentfulNavigationItemDescriptionTextNode
-            .childMarkdownRemark.html,
-      }}
-    />
+    <>
+      {item.childContentfulNavigationItemDescriptionTextNode && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              item.childContentfulNavigationItemDescriptionTextNode
+                .childMarkdownRemark.html,
+          }}
+        />
+      )}
+    </>
   )
 }
 
