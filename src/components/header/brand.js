@@ -2,28 +2,23 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
+import logo from 'assets/images/csumb-logo-blue.svg'
 
-const BrandWrapper = styled('span')`
-  a,
-  a:visited {
-    color: ${colors.primary.darkest};
-    line-height: 80%;
-    text-decoration: none;
-  }
+
+const BrandImage = styled('img')`
+  display: inline-block;
+  margin: 0;
+  ${props => props.mobile && (
+    `width: 170px;`
+  )}
 `
 
-const BrandLink = styled(Link)`
-  font-weight: bold;
-  ${props => (props.mobile ? `font-size: 1.2rem;` : `font-size: 2rem;`)};
-`
 const Brand = props => (
-  <BrandWrapper>
-    <BrandLink {...props} to="/">
-      Cal State
-      <br />
-      Monterey Bay
-    </BrandLink>
-  </BrandWrapper>
+  <>
+    <Link to="/">
+      <BrandImage {...props} src={logo} alt="California State University Monterey Bay" />
+    </Link>
+  </>
 )
 
 export default Brand
