@@ -41,8 +41,8 @@ const HeaderMobileSearch = styled('div')`
 `
 
 const HeaderMobileApply = styled(Link)`
-  color: ${colors.white} !important;
-  background: ${colors.indicators.high};
+  color: ${colors.primary.darkest} !important;
+  border: 2px solid ${colors.primary.darkest};
   padding: 0.3rem;
   float: right;
   text-decoration: none;
@@ -141,16 +141,16 @@ const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
       {to ? (
         <MobileSiteNavigationLink to={to}>{children}</MobileSiteNavigationLink>
       ) : (
-        <>
-          {navigationChildren && (
-            <MobileSiteNavigationSubMenu
-              navigationChildren={navigationChildren}
-            >
-              {children}
-            </MobileSiteNavigationSubMenu>
-          )}
-        </>
-      )}
+          <>
+            {navigationChildren && (
+              <MobileSiteNavigationSubMenu
+                navigationChildren={navigationChildren}
+              >
+                {children}
+              </MobileSiteNavigationSubMenu>
+            )}
+          </>
+        )}
     </>
   )
 }
@@ -209,15 +209,21 @@ class HeaderMobile extends React.Component {
                 this.navRef = node
               }}
             >
-              <MobileNavigationLink to="/academics">
-                Majors &amp; programs
-              </MobileNavigationLink>
+              <MobileNavigationLink to="/about">
+                About
+                          </MobileNavigationLink>
               <MobileNavigationLink to="/cost">
-                Tuition &amp; aid
-              </MobileNavigationLink>
+                Cost &amp; aid
+                          </MobileNavigationLink>
+              <MobileNavigationLink to="/academics">
+                Academics
+                          </MobileNavigationLink>
+              <MobileNavigationLink to="/life">
+                Campus life
+                          </MobileNavigationLink>
               <MobileNavigationLink to="/everything">
                 Everything else
-              </MobileNavigationLink>
+                          </MobileNavigationLink>
             </HeaderMobileNavigation>
             {siteNavigation && (
               <HeaderMobileSiteNavigation>
