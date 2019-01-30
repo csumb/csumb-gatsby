@@ -1,27 +1,19 @@
 import React from 'react'
-import { colors } from 'components/styles/theme'
+import { colors, fonts } from 'components/styles/theme'
 import Link from 'gatsby-link'
 import styled from '@emotion/styled'
 
 const NavigationLinkList = styled('li')`
   margin-left: 0.5rem;
   display: inline-block;
+  font-weight: 300;
+  font-family: ${fonts.heading};
   a, a:visited {
     text-decoration: none;
-    padding: 0.25rem;
-    ${props =>
-    props.apply
-      ? `color: ${colors.indicators.high};
-        border: 3px solid ${colors.indicators.high};
-        `
-      : `color: ${colors.primary.darkest};`}
+    padding: 0.25rem 0.3rem;
+    color: ${colors.primary.darkest};
     &:hover {
-          ${props =>
-    props.apply
-      ? `background: ${colors.indicators.high};`
-      : `background: ${colors.primary.darkest};`}
-                
-      color: ${colors.white};
+      text-decoration: underline;
     }
     &[aria-current='page'] {
       ${props =>
