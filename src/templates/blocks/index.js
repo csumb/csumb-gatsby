@@ -27,6 +27,7 @@ import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
 import VisuallyHidden from 'components/visually-hidden'
 
+const containerWidth = containerStyle.full
 class Block extends React.Component {
   blockComponents = {
     feed: BlockFeed,
@@ -60,9 +61,7 @@ class Block extends React.Component {
       return null
     }
     let BlockType = this.blockComponents[type]
-    const containerWidth = inColumn
-      ? containerStyle.column
-      : containerStyle.normal
+
     return (
       <ContainerContext.Provider value={containerWidth}>
         {hidden ? (
@@ -74,12 +73,12 @@ class Block extends React.Component {
             />
           </VisuallyHidden>
         ) : (
-          <BlockType
-            {...block.data}
-            uuid={block.uuid}
-            headerHandler={headerHandler}
-          />
-        )}
+            <BlockType
+              {...block.data}
+              uuid={block.uuid}
+              headerHandler={headerHandler}
+            />
+          )}
       </ContainerContext.Provider>
     )
   }
@@ -169,7 +168,7 @@ class Blocks extends React.Component {
     })
   }
 
-  handleCollapseHeader(event) {}
+  handleCollapseHeader(event) { }
 
   render() {
     const blocks = this.blocks
@@ -190,31 +189,31 @@ class Blocks extends React.Component {
                 {layout._children ? (
                   <Columns layout={layout} blocks={blocks.blocks} />
                 ) : (
-                  <Block
-                    key={layout.id}
-                    type={blocks.blocks[layout.id].type}
-                    block={blocks.blocks[layout.id]}
-                    headerHandler={() => {
-                      let { expandedBlocks } = this.state
-                      const index = expandedBlocks.indexOf(layout.id)
-                      if (index > -1) {
-                        expandedBlocks.splice(index, 1)
-                      } else {
-                        expandedBlocks.push(layout.id)
+                    <Block
+                      key={layout.id}
+                      type={blocks.blocks[layout.id].type}
+                      block={blocks.blocks[layout.id]}
+                      headerHandler={() => {
+                        let { expandedBlocks } = this.state
+                        const index = expandedBlocks.indexOf(layout.id)
+                        if (index > -1) {
+                          expandedBlocks.splice(index, 1)
+                        } else {
+                          expandedBlocks.push(layout.id)
+                        }
+                        this.setState({
+                          expandedBlocks: expandedBlocks,
+                        })
+                      }}
+                      hidden={
+                        blocks.blocks[layout.id]._collapsedHeader &&
+                        (!expandedBlocks.length ||
+                          expandedBlocks.indexOf(
+                            blocks.blocks[layout.id]._collapsedHeader
+                          ) === -1)
                       }
-                      this.setState({
-                        expandedBlocks: expandedBlocks,
-                      })
-                    }}
-                    hidden={
-                      blocks.blocks[layout.id]._collapsedHeader &&
-                      (!expandedBlocks.length ||
-                        expandedBlocks.indexOf(
-                          blocks.blocks[layout.id]._collapsedHeader
-                        ) === -1)
-                    }
-                  />
-                )}
+                    />
+                  )}
               </>
             )}
           </React.Fragment>
