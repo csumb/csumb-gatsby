@@ -27,10 +27,6 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-source-csumb-web-content`,
     {
-      resolve: `gatsby-plugin-emotion`,
-      options: {},
-    },
-    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CSUMB_NAV_CONTENTFUL_SPACE,
