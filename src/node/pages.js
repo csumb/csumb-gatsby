@@ -21,7 +21,6 @@ module.exports = (graphql, actions) => {
       graphql(
         `
           {
-            
             site {
               siteMetadata {
                 overridePages
@@ -34,16 +33,16 @@ module.exports = (graphql, actions) => {
                   site
                   title
                   contact {
-                  phone
-                  email
-                  floor
-                  suite
-                  fax
-                  building {
-                    name
-                    code
+                    phone
+                    email
+                    floor
+                    suite
+                    fax
+                    building {
+                      name
+                      code
+                    }
                   }
-                }
                 }
               }
             }
@@ -127,7 +126,10 @@ module.exports = (graphql, actions) => {
         })
 
         result.data.allCsumbPage.edges.forEach(({ node }) => {
-          if (typeof sites[node.site] !== 'undefined' && overridePages.indexOf(node.pagePath) === -1) {
+          if (
+            typeof sites[node.site] !== 'undefined' &&
+            overridePages.indexOf(node.pagePath) === -1
+          ) {
             count++
             let pageNode = {
               path: node.pagePath,
