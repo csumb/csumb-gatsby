@@ -10,7 +10,9 @@ const ButtonStyle = props => {
   padding: 0.75rem;
   text-decoration: none;
   cursor: pointer;
-  color: ${colors.primary.dark};
+  border: none;
+  color: ${colors.white};
+  background: ${colors.buttons.default};
   &:hover {
     color: ${colors.white};
   }
@@ -29,33 +31,33 @@ const ButtonStyle = props => {
       : `
     display: inline-block;
   `
-  }
+    }
     ${props.extraMargin &&
-      `
+    `
       margin: 1rem 0;
     `}
   ${
     props.buttonType === 'default'
       ? `
-      color: ${colors.primary.dark};
-      border: 3px solid ${colors.primary.dark};
+      color: ${colors.white};
+      background: ${colors.buttons.default};
       &:hover {
-        background: ${colors.primary.dark};
+        
       }
     `
       : ``
-  } 
+    } 
   ${
     props.buttonType === 'primary'
       ? `
-      color: ${colors.primary.dark};
-      border: 3px solid ${colors.primary.dark};
+      color: ${colors.white};
+      background: ${colors.buttons.default};
       &:hover {
-        background: ${colors.primary.dark};
+        
       }
     `
       : ``
-  } 
+    } 
   ${
     props.buttonType === 'highImpact'
       ? `
@@ -66,7 +68,7 @@ const ButtonStyle = props => {
       }
     `
       : ``
-  };
+    };
 `
 }
 

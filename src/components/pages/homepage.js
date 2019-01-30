@@ -18,7 +18,7 @@ const Story = styled('div')`
 
 const NonFeaturedStoryHeader = styled('h3')`
   text-decoration: none;
-  font-family: ${fonts.sansSerif};
+  font-family: ${fonts.body};
   margin: 0;
   color: ${colors.black};
 `
@@ -26,7 +26,7 @@ const NonFeaturedStoryHeader = styled('h3')`
 const FeaturedStoryHeader = styled('h2')`
   text-decoration: none;
   font-size: 1.8rem;
-  font-family: ${fonts.sansSerif};
+  font-family: ${fonts.body};
   color: ${colors.black};
   margin: 0;
 `
@@ -75,12 +75,12 @@ const NuggetsHeader = styled('h3')`
   font-weight: 700;
   padding-bottom: 0.5rem;
   margin-bottom: 0.7rem;
-  font-family: ${fonts.sansSerif};
+  font-family: ${fonts.body};
   border-bottom: 3px solid ${colors.black};
 `
 
 const NavigationHeader = styled('h3')`
-  font-family: ${fonts.sansSerif};
+  font-family: ${fonts.body};
   margin-bottom: 0.3rem;
 `
 

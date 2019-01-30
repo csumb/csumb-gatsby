@@ -41,7 +41,7 @@ const UserDropdownButton = styled(MenuButton)`
 const UserDropdownMenuList = styled(MenuList)`
   border: 1px solid ${colors.black};
   padding: 0;
-  font-family: ${fonts.sansSerif};
+  font-family: ${fonts.body};
   a {
     color: ${colors.primary.darkest};
   }

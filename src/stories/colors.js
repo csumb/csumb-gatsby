@@ -83,6 +83,14 @@ storiesOf('Colors', module)
       ))}
     </>
   ))
+  .add('Buttons', () => (
+    <>
+      <ColorLabel />
+      {Object.keys(colors.buttons).map(name => (
+        <Color name={name} color={colors.buttons[name]} />
+      ))}
+    </>
+  ))
   .add('Muted', () => (
     <>
       <ColorLabel />
