@@ -30,8 +30,8 @@ const AlertIcon = styled(FontAwesomeIcon)`
 
 const AlertIconBox = styled(Box)`
   ${bp({
-  display: ['none', 'block', 'block', 'block'],
-})};
+    display: ['none', 'block', 'block', 'block'],
+  })};
 `
 
 const AlertContent = ({ icon, children }) => (

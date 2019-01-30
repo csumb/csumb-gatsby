@@ -59,12 +59,10 @@ class PageTemplate extends React.Component {
             </Flex>
           </Container>
         ) : (
-            <Blocks blocks={pageContent} />
-          )}
-        <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
-        {site.contact && (
-          <SiteFooter site={site} />
+          <Blocks blocks={pageContent} />
         )}
+        <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
+        {site.contact && <SiteFooter site={site} />}
       </Layout>
     )
   }

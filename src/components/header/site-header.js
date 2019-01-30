@@ -5,10 +5,9 @@ import Container from 'components/container'
 import { colors } from 'components/styles/theme'
 import bp from 'components/styles/breakpoints'
 
-const siteHeaderSize =
-  bp({
-    fontSize: ['1.5rem', '2rem', '2.5rem'],
-  })
+const siteHeaderSize = bp({
+  fontSize: ['1.5rem', '2rem', '2.5rem'],
+})
 
 const SiteHeaderWrapper = styled('div')`
   background: ${colors.primary.darkest};
