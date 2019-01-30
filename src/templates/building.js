@@ -4,7 +4,7 @@ import SiteHeader from 'components/header/site-header'
 import Container from 'components/container'
 import PageTitle from 'components/header/page-title'
 import styled from '@emotion/styled'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from '@rebass/grid'
 import { ButtonLink } from 'components/button'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
 

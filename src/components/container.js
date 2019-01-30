@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@rebass/grid/emotion'
+import { Box } from '@rebass/grid'
 import styled from '@emotion/styled'
 
 const ContainerElement = styled(Box)`
