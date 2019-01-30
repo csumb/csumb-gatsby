@@ -7,31 +7,30 @@ const NavigationLinkList = styled('li')`
   margin-left: 0.5rem;
   display: inline-block;
   a, a:visited {
-    font-weight: bold;
     text-decoration: none;
-    padding: 0.75rem;
+    padding: 0.25rem;
     ${props =>
-      props.apply
-        ? `color: ${colors.indicators.high};
+    props.apply
+      ? `color: ${colors.indicators.high};
         border: 3px solid ${colors.indicators.high};
         `
-        : `color: ${colors.primary.darkest};`}
+      : `color: ${colors.primary.darkest};`}
     &:hover {
           ${props =>
-            props.apply
-              ? `background: ${colors.indicators.high};`
-              : `background: ${colors.primary.darkest};`}
+    props.apply
+      ? `background: ${colors.indicators.high};`
+      : `background: ${colors.primary.darkest};`}
                 
       color: ${colors.white};
     }
     &[aria-current='page'] {
       ${props =>
-        props.apply
-          ? `
+    props.apply
+      ? `
         background: ${colors.indicators.high};
         color: ${colors.white};
         `
-          : `
+      : `
         background: ${colors.primary.dark};
         color: ${colors.white};
         `}
