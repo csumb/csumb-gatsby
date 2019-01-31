@@ -13,7 +13,7 @@ deploy_task:
     folder: node_modules
     fingerprint_script: cat package.json
     populate_script: npm i
-
+  
   env:
     CSUMB_FEEDBACK_KEY: ENCRYPTED[5941e37fd78bc922e10214b5b57887f5ff82807671bdd282f9531d9d7b40de5c968e97e1d2f36cccc7416cc08066d7d7]
     CSUMB_HOME_CONTENTFUL_SPACE: ENCRYPTED[0c9450f6dae892b491ba9a94cbcfc70f3a51709ac40ca05ae4d9cae05d50bf13c8d05ba5eb722b5a2c562901cee03538]
@@ -22,8 +22,7 @@ deploy_task:
     CSUMB_NAV_CONTENTFUL_TOKEN: ENCRYPTED[ddace2691cae8b1cb4fe36a657c206896e1f03ceaee546e66d1bb535ba345c33c8d129b247d218d4626f5223ced7d78a]
     FIREBASE_TOKEN: ENCRYPTED[4c4d209d91abe58092d022f26cab87e43a712fe65f0fac74c3551aa06b5ce76a3bfbf86043a1f02cad89f743f5b2d67a]
     GITHUB_TOKEN: ENCRYPTED[de199f8d18f3fb0958784265ae5c138de547dc3a17bd2bdd92f788e1855a35256c76f3f2666769c0c2bc380377725234]
-    NODE_ENV: production
-  script:
+  script: 
     - ./node_modules/.bin/grunt
     - ./node_modules/.bin/gatsby build
     - npm run directoryJson

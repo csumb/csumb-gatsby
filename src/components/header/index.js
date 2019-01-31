@@ -75,7 +75,7 @@ class Header extends React.Component {
                           <NavigationLink to="/life">
                             Campus life
                           </NavigationLink>
-                          <NavigationLink to="/everything" last>
+                          <NavigationLink to="/everything">
                             Everything else
                           </NavigationLink>
                         </ul>
