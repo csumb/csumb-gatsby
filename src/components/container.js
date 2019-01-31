@@ -9,10 +9,10 @@ const Container = styled('div')`
     padding-top: 1.5rem;
   `}
   ${bp({
-      marginLeft: ['1rem', '1rem', 'auto'],
-      marginRight: ['1rem', '1rem', 'auto'],
-      maxWidth: '1100px',
-    })}
+    marginLeft: ['1rem', '1rem', 'auto'],
+    marginRight: ['1rem', '1rem', 'auto'],
+    maxWidth: '1100px',
+  })}
 `
 
 export default Container

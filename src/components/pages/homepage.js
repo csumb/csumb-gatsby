@@ -133,7 +133,6 @@ const Taglink = styled(Link)`
 `
 
 const HomepageHero = ({ item }) => (
-
   <LazyHero
     opacity={item.lighten / 100}
     parallaxOffset={100}
@@ -144,9 +143,7 @@ const HomepageHero = ({ item }) => (
       <h2>
         <Link to={item.link}>{item.title}</Link>
       </h2>
-      <LeadParagraph>
-        {item.description}
-      </LeadParagraph>
+      <LeadParagraph>{item.description}</LeadParagraph>
     </HeroItem>
   </LazyHero>
 )
@@ -192,34 +189,34 @@ const FeaturedStory = ({
   childContentfulHomepageStoryDescriptionTextNode,
   childContentfulHomepageEventDescriptionTextNode,
 }) => (
-    <Story featured>
-      <a href={link}>
-        <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
-        {tags && (
-          <>
-            {tags.map(tag => (
-              <Taglink to={`/news/tag/${tag.slug}`}>{tag.name}</Taglink>
-            ))}
-          </>
-        )}
-        <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
-        {eventDate && (
-          <FeaturedEventDate>
-            {moment(eventDate).format(dateFormat)}
-          </FeaturedEventDate>
-        )}
-      </a>
-      <FeaturedStoryDescription>
-        {childContentfulHomepageStoryDescriptionTextNode && (
-          <>{childContentfulHomepageStoryDescriptionTextNode.description}</>
-        )}
+  <Story featured>
+    <a href={link}>
+      <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
+      {tags && (
+        <>
+          {tags.map(tag => (
+            <Taglink to={`/news/tag/${tag.slug}`}>{tag.name}</Taglink>
+          ))}
+        </>
+      )}
+      <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
+      {eventDate && (
+        <FeaturedEventDate>
+          {moment(eventDate).format(dateFormat)}
+        </FeaturedEventDate>
+      )}
+    </a>
+    <FeaturedStoryDescription>
+      {childContentfulHomepageStoryDescriptionTextNode && (
+        <>{childContentfulHomepageStoryDescriptionTextNode.description}</>
+      )}
 
-        {childContentfulHomepageEventDescriptionTextNode && (
-          <>{childContentfulHomepageEventDescriptionTextNode.description}</>
-        )}
-      </FeaturedStoryDescription>
-    </Story>
-  )
+      {childContentfulHomepageEventDescriptionTextNode && (
+        <>{childContentfulHomepageEventDescriptionTextNode.description}</>
+      )}
+    </FeaturedStoryDescription>
+  </Story>
+)
 
 const Nuggets = ({ nuggets }) => (
   <NuggetsWrapper>
@@ -234,4 +231,10 @@ const Nuggets = ({ nuggets }) => (
   </NuggetsWrapper>
 )
 
-export { HomepageHero, HomepageNavigation, NonFeaturedStory, FeaturedStory, Nuggets }
+export {
+  HomepageHero,
+  HomepageNavigation,
+  NonFeaturedStory,
+  FeaturedStory,
+  Nuggets,
+}

@@ -9,7 +9,7 @@ import {
   NonFeaturedStory,
   FeaturedStory,
   Nuggets,
-  HomepageHero
+  HomepageHero,
 } from 'components/pages/homepage'
 
 class IndexPage extends React.Component {
@@ -19,7 +19,7 @@ class IndexPage extends React.Component {
       allContentfulHomepageStory,
       allContentfulHomepageEvent,
       allContentfulHomepageNugget,
-      allContentfulHomepageHeroImage
+      allContentfulHomepageHeroImage,
     } = props.data
 
     const sortItems = (items, featured, ignore) => {
@@ -38,8 +38,14 @@ class IndexPage extends React.Component {
     }
 
     this.stories = {
-      featured: sortItems([allContentfulHomepageStory, allContentfulHomepageEvent], true),
-      notFeatured: sortItems([allContentfulHomepageStory, allContentfulHomepageEvent], false),
+      featured: sortItems(
+        [allContentfulHomepageStory, allContentfulHomepageEvent],
+        true
+      ),
+      notFeatured: sortItems(
+        [allContentfulHomepageStory, allContentfulHomepageEvent],
+        false
+      ),
       nuggets: sortItems([allContentfulHomepageNugget], null, true),
       heroImages: sortItems([allContentfulHomepageHeroImage], null, true),
     }
