@@ -318,6 +318,19 @@ const CoursePage = ({ course, term }) => (
   </>
 )
 
+const ScheduleBackLinkElement = styled(Link)`
+  margin-bottom: 1rem;
+  display: inline-block;
+`
+
+const ScheduleBackLink = ({ term }) => (
+  <ScheduleBackLinkElement to={`/schedule/${term.DESCR.toLowerCase().replace(
+    ' ',
+    ''
+  )}`} >← Return to {term.DESCR}
+  </ScheduleBackLinkElement>
+)
+
 export {
   ScheduleList,
   ScheduleListItem,
@@ -327,4 +340,5 @@ export {
   CourseSection,
   MeetingItem,
   CoursePage,
+  ScheduleBackLink
 }
