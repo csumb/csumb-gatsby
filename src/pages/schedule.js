@@ -4,9 +4,9 @@ import { graphql } from 'gatsby'
 import { navigate } from '@reach/router'
 class SchedulePage extends React.Component {
   componentDidMount() {
-    navigate(
+    window.location.href =
       `/schedule/${this.props.data.site.siteMetadata.schedule.currentTermName}`
-    )
+
   }
 
   render() {
