@@ -46,7 +46,7 @@ class Header extends React.Component {
                         <div>
                           <Applicant />
                           <UserWidget loginLink={metadata.okta.login} />
-                          <Search swiftypeId={metadata.swiftypeId} />
+                          <Search swiftypeId={metadata.swiftypeId} isMobile={false} />
                         </div>
                         <div
                           className={css`

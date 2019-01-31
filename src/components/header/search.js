@@ -83,7 +83,7 @@ class Search extends React.Component {
     window
       .fetch(
         `https://api.swiftype.com/api/v1/public/engines/suggest?engine_key=${
-          this.props.swiftypeId
+        this.props.swiftypeId
         }&q=${event.target.value.trim().toLowerCase()}`
       )
       .then(response => {
@@ -115,6 +115,7 @@ class Search extends React.Component {
 
   render() {
     const { search } = this.state
+    const { isMobile } = this.props
     return (
       <Rect>
         {({ rect, ref }) => (
@@ -134,6 +135,7 @@ class Search extends React.Component {
               onChange={this.handleChange.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)}
               inline={!this.props.fullWidth}
+              noMargin={!isMobile}
             />
             <Portal>
               {search ? (
