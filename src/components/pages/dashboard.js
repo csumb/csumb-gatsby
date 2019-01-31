@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from 'components/container'
 import { colors, fonts } from 'components/styles/theme'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import Loading from 'components/loading'
 import { Flex, Box } from '@rebass/grid'
 import { AlertEmpty } from 'components/alert'

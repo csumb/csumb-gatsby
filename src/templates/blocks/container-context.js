@@ -1,6 +1,6 @@
 import React from 'react'
 import bp from 'components/styles/breakpoints'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 
 const containerStyle = {
   normal: bp({

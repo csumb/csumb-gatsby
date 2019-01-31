@@ -13,18 +13,18 @@ module.exports = {
     },
     labs: {
       customerId: `200b96ee-10c7-4355-83a4-3ded9ab6e845`,
-      labs: [1001, 1002, 1003, 1005, 1006, 1010, 1009, 1008]
+      labs: [1001, 1002, 1003, 1005, 1006, 1010, 1009, 1008],
     },
     overridePages: [
       'cost',
       'it',
       'library',
       'about/about-our-students',
-      'search'
-    ]
+      'search',
+    ],
   },
   plugins: [
-    `gatsby-plugin-emotion`,
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-csv`,
     `gatsby-transformer-remark`,
@@ -88,10 +88,10 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Hind`
+            family: `Hind`,
           },
           {
-            family: `Open Sans`
+            family: `Open Sans`,
           },
         ],
       },

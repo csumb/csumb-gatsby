@@ -1,7 +1,7 @@
 import React from 'react'
 import { colors, fonts } from 'components/styles/theme'
 import Link from 'gatsby-link'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 
 const NavigationLinkList = styled('li')`
   margin-left: 0.5rem;

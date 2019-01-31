@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { colors } from 'components/styles/theme'
 import { Flex, Box } from '@rebass/grid'
 import Container from 'components/container'

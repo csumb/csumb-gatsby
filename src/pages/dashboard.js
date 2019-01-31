@@ -5,7 +5,7 @@ import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
 import SiteHeader from 'components/header/site-header'
 import { graphql } from 'gatsby'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { colors } from 'components/styles/theme'
 import {
   DashboardEvents,

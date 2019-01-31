@@ -1,6 +1,6 @@
 import React from 'react'
 import filterCourses from './filter-courses'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { ContainerContext, ContainerElement } from '../container-context'
 
 const Paragraph = styled('p')`

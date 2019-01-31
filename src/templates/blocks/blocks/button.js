@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonLink } from 'components/button'
 import { ContainerContext, ContainerElement } from '../container-context'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 
 const ButtonContainer = styled(ContainerElement)`
   margin-bottom: 1.5rem;

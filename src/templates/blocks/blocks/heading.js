@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import LinkInspect from 'components/link-inspect'
 import { ContainerContext, ContainerElement } from '../container-context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

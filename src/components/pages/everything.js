@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { colors, fonts } from 'components/styles/theme'
 import { Box } from '@rebass/grid'
 import LinkInspect from 'components/link-inspect'

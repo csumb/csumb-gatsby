@@ -7,7 +7,7 @@ import { AlertWarning, AlertSuccess } from 'components/alert'
 import { UserContext } from 'components/contexts/user'
 import { Flex, Box } from '@rebass/grid'
 import samplePhoto from 'assets/images/card-sample-photo.png'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { Button } from 'components/button'
 import ReactFilestack, { client } from 'filestack-react'
 

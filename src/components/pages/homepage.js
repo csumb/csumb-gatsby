@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import moment from 'moment'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid'

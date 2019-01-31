@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import bp from 'components/styles/breakpoints'
 
 const responsiveWidth = bp({

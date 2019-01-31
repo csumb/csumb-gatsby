@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticHero } from 'components/homepages/hero'
 import mapData from './mapData'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import { HeroParagraph } from 'components/type'
 

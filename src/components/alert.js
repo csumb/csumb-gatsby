@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import Alert from '@reach/alert'
 import { colors } from 'components/styles/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

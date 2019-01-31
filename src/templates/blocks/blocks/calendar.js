@@ -1,6 +1,6 @@
 import React from 'react'
 import { ContainerElement } from '../container-context'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const Iframe = styled('iframe')`

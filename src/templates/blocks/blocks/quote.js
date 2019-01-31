@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import LinkInspect from 'components/link-inspect'
 import { ContainerElement, containerStyle } from '../container-context'
 

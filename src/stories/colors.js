@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import typography from 'utils/typography'
 import { colors } from 'components/styles/theme'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { Flex, Box } from '@rebass/grid'
 
 const ColorBox = styled(Box)`

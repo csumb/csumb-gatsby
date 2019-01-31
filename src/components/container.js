@@ -1,6 +1,5 @@
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import bp from 'components/styles/breakpoints'
-import facepaint from 'facepaint'
 
 const Container = styled('div')`
   ${props =>

@@ -5,7 +5,7 @@ import Container from 'components/container'
 import { InputText, InputDate, Submit } from 'components/forms'
 import { LeadParagraph } from 'components/type'
 import Well from 'components/well'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import Link from 'gatsby-link'
 
 const Username = styled('code')`

@@ -1,7 +1,7 @@
 import React from 'react'
 import LazyHero from 'react-lazy-hero'
 import { colors, fonts } from 'components/styles/theme'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import Link from 'gatsby-link'
 import { LeadParagraph } from 'components/type'
 

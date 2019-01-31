@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import logo from 'assets/images/csumb-logo-blue.svg'
 
 const BrandImage = styled('img')`

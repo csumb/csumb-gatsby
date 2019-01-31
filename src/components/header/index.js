@@ -8,7 +8,7 @@ import Applicant from './applicant'
 import HeaderMobile from './mobile'
 import { NavigationLink } from './navigation-link'
 import { Flex, Box } from '@rebass/grid'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import BreakpointContext from 'components/contexts/breakpoint'
 
 const HeaderWrapper = styled('header')`

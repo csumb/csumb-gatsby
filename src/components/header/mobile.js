@@ -1,7 +1,7 @@
 import React from 'react'
 import Brand from './brand'
 import { colors } from 'components/styles/theme'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { MobileNavigationLink } from './navigation-link'
 import VisuallyHidden from 'components/visually-hidden'
 import Search from './search'

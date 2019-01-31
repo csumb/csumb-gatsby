@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { ContainerContext, ContainerElement } from '../container-context'
 import VisuallyHidden from 'components/visually-hidden'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

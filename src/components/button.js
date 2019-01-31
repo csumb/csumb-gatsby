@@ -1,5 +1,5 @@
 import LinkInspect from './link-inspect'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import { colors } from './styles/theme'
 
 const ButtonStyle = props => {
