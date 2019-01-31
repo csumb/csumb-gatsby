@@ -64,14 +64,14 @@ const SiteNavigationItem = ({ to, children, navigationChildren }) => {
       {to ? (
         <SiteNavigationLink to={to}>{children}</SiteNavigationLink>
       ) : (
-          <>
-            {navigationChildren && (
-              <SiteNavigationSubMenu navigationChildren={navigationChildren}>
-                {children}
-              </SiteNavigationSubMenu>
-            )}
-          </>
-        )}
+        <>
+          {navigationChildren && (
+            <SiteNavigationSubMenu navigationChildren={navigationChildren}>
+              {children}
+            </SiteNavigationSubMenu>
+          )}
+        </>
+      )}
     </>
   )
 }
