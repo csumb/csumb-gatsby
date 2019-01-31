@@ -11,7 +11,7 @@ deploy_task:
     - check
   node_modules_cache:
     folder: node_modules
-    fingerprint_script: cat package.json
+    fingerprint_script: cat npm-shrinkwrap.json
     populate_script: npm i
 
   env:
