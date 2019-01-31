@@ -42,10 +42,4 @@ const MobileNavigationLink = props => (
   </MobileNavigationLinkList>
 )
 
-const NavigationLinkApply = props => (
-  <NavigationLinkList apply>
-    <Link to={props.to}>{props.children}</Link>
-  </NavigationLinkList>
-)
-
 export { NavigationLink, MobileNavigationLink }
