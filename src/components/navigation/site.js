@@ -14,6 +14,8 @@ const SiteNavigationList = styled('ul')`
   li {
     display: inline-block;
     margin: 0;
+    font-weight: 300;
+    font-family: ${fonts.heading};
   }
   a,
   a:visited {
@@ -33,6 +35,8 @@ const SiteNavigationSubList = styled(MenuList)`
   background: ${colors.primary.dark};
   padding: 0;
   margin-top: 10px;
+  font-weight: 300;
+  font-family: ${fonts.heading};
   a {
     color: ${colors.white};
     font-family: ${fonts.body};
@@ -60,14 +64,14 @@ const SiteNavigationItem = ({ to, children, navigationChildren }) => {
       {to ? (
         <SiteNavigationLink to={to}>{children}</SiteNavigationLink>
       ) : (
-        <>
-          {navigationChildren && (
-            <SiteNavigationSubMenu navigationChildren={navigationChildren}>
-              {children}
-            </SiteNavigationSubMenu>
-          )}
-        </>
-      )}
+          <>
+            {navigationChildren && (
+              <SiteNavigationSubMenu navigationChildren={navigationChildren}>
+                {children}
+              </SiteNavigationSubMenu>
+            )}
+          </>
+        )}
     </>
   )
 }
