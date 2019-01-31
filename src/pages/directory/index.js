@@ -11,7 +11,7 @@ import { graphql } from 'gatsby'
 const DirectoryPage = ({ data }) => (
   <Layout>
     <SiteHeader path="/directory">Directory</SiteHeader>
-    <Container>
+    <Container topPadding>
       <DirectoryForm directory={data.allCsumbDirectory.edges} />
       <Flex flexWrap="wrap">
         <Box width={[1, 1 / 2]} px={2}>
