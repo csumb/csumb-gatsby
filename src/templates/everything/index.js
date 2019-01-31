@@ -16,8 +16,8 @@ const EverythingTopLevelPage = ({ pageContext }) => (
           {pageContext.is404 ? (
             <SiteHeader path="/everything">Page not found</SiteHeader>
           ) : (
-            <SiteHeader path="/everything">Everything else</SiteHeader>
-          )}
+              <SiteHeader path="/everything">Everything else</SiteHeader>
+            )}
           <Container topPadding>
             {pageContext.is404 && (
               <LeadParagraph>

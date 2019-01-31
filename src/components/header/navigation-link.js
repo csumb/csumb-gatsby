@@ -10,22 +10,13 @@ const NavigationLinkList = styled('li')`
   font-family: ${fonts.heading};
   a, a:visited {
     text-decoration: none;
-    padding: 0.25rem 0.3rem;
+    padding: 0.25rem 0.25rem;
     color: ${colors.primary.darkest};
     &:hover {
       text-decoration: underline;
     }
     &[aria-current='page'] {
-      ${props =>
-        props.apply
-          ? `
-        background: ${colors.indicators.high};
-        color: ${colors.white};
-        `
-          : `
-        background: ${colors.primary.dark};
-        color: ${colors.white};
-        `}
+      text-decoration: underline;
   }
 `
 
