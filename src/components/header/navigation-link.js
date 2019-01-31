@@ -10,7 +10,10 @@ const NavigationLinkList = styled('li')`
   font-family: ${fonts.heading};
   a, a:visited {
     text-decoration: none;
-    padding: 0.25rem 0.25rem;
+    ${props =>
+      props.last
+        ? `padding: 0.25rem 0 0.25rem 0.25rem;`
+        : `padding: 0.25rem 0.25rem;`}
     color: ${colors.primary.darkest};
     &:hover {
       text-decoration: underline;
@@ -30,15 +33,15 @@ const MobileNavigationLinkList = styled('li')`
   }
 `
 
-const NavigationLink = props => (
-  <NavigationLinkList>
-    <Link to={props.to}>{props.children}</Link>
+const NavigationLink = ({ last, to, children }) => (
+  <NavigationLinkList last={last}>
+    <Link to={to}>{children}</Link>
   </NavigationLinkList>
 )
 
-const MobileNavigationLink = props => (
+const MobileNavigationLink = ({ to, children }) => (
   <MobileNavigationLinkList>
-    <Link to={props.to}>{props.children}</Link>
+    <Link to={to}>{children}</Link>
   </MobileNavigationLinkList>
 )
 

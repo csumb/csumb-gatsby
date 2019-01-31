@@ -12,8 +12,8 @@ import styled from '@emotion/styled'
 import BreakpointContext from 'components/contexts/breakpoint'
 
 const HeaderWrapper = styled('header')`
-  padding-top: 1rem;
-  padding-bottom: 0.7rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
 `
 
 class Header extends React.Component {
@@ -75,7 +75,7 @@ class Header extends React.Component {
                           <NavigationLink to="/life">
                             Campus life
                           </NavigationLink>
-                          <NavigationLink to="/everything">
+                          <NavigationLink to="/everything" last={true}>
                             Everything else
                           </NavigationLink>
                         </ul>
