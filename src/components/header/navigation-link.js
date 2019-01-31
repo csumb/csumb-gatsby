@@ -24,6 +24,7 @@ const MobileNavigationLinkList = styled('li')`
   margin: 0;
   a {
     padding: 0.5rem 1rem;
+    ${props => props.last && `padding-right: 0;`}
     text-decoration: none;
     display: block;
     color: ${colors.white};
@@ -31,7 +32,7 @@ const MobileNavigationLinkList = styled('li')`
 `
 
 const NavigationLink = props => (
-  <NavigationLinkList>
+  <NavigationLinkList last={props.last}>
     <Link to={props.to}>{props.children}</Link>
   </NavigationLinkList>
 )
@@ -40,12 +41,6 @@ const MobileNavigationLink = props => (
   <MobileNavigationLinkList>
     <Link to={props.to}>{props.children}</Link>
   </MobileNavigationLinkList>
-)
-
-const NavigationLinkApply = props => (
-  <NavigationLinkList apply>
-    <Link to={props.to}>{props.children}</Link>
-  </NavigationLinkList>
 )
 
 export { NavigationLink, MobileNavigationLink }
