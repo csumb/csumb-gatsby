@@ -4,6 +4,8 @@ import moment from 'moment'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid'
 import { colors, fonts } from 'components/styles/theme'
+import LazyHero from 'react-lazy-hero'
+import { LeadParagraph } from 'components/type'
 
 const dateFormat = 'MMMM D, YYYY'
 
@@ -104,6 +106,39 @@ const NavigationItem = styled(Box)`
     }
   }
 `
+const HeroItem = styled('div')`
+  h2 {
+    margin: 0;
+    font-family: ${fonts.body};
+    font-size: 2.5rem;
+  }
+  a {
+    color: ${colors.black};
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
+const HomepageHero = ({ item }) => (
+
+  <LazyHero
+    opacity={item.lighten / 100}
+    parallaxOffset={100}
+    transitionDuration={0}
+    imageSrc={item.image.file.url}
+  >
+    <HeroItem>
+      <h2>
+        <Link to={item.link}>{item.title}</Link>
+      </h2>
+      <LeadParagraph>
+        {item.description}
+      </LeadParagraph>
+    </HeroItem>
+  </LazyHero>
+)
 
 const HomepageNavigation = ({ items }) => (
   <Flex flexWrap="wrap">
@@ -142,30 +177,30 @@ const FeaturedStory = ({
   image,
   title,
   eventDate,
-  childContentfulStoryDescriptionTextNode,
-  childContentfulEventDescriptionTextNode,
+  childContentfulHomepageStoryDescriptionTextNode,
+  childContentfulHomepageEventDescriptionTextNode,
 }) => (
-  <Story featured>
-    <a href={link}>
-      <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
-      <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
-      {eventDate && (
-        <FeaturedEventDate>
-          {moment(eventDate).format(dateFormat)}
-        </FeaturedEventDate>
-      )}
-    </a>
-    <FeaturedStoryDescription>
-      {childContentfulStoryDescriptionTextNode && (
-        <>{childContentfulStoryDescriptionTextNode.description}</>
-      )}
+    <Story featured>
+      <a href={link}>
+        <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
+        <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
+        {eventDate && (
+          <FeaturedEventDate>
+            {moment(eventDate).format(dateFormat)}
+          </FeaturedEventDate>
+        )}
+      </a>
+      <FeaturedStoryDescription>
+        {childContentfulHomepageStoryDescriptionTextNode && (
+          <>{childContentfulHomepageStoryDescriptionTextNode.description}</>
+        )}
 
-      {childContentfulEventDescriptionTextNode && (
-        <>{childContentfulEventDescriptionTextNode.description}</>
-      )}
-    </FeaturedStoryDescription>
-  </Story>
-)
+        {childContentfulHomepageEventDescriptionTextNode && (
+          <>{childContentfulHomepageEventDescriptionTextNode.description}</>
+        )}
+      </FeaturedStoryDescription>
+    </Story>
+  )
 
 const Nuggets = ({ nuggets }) => (
   <NuggetsWrapper>
@@ -180,4 +215,4 @@ const Nuggets = ({ nuggets }) => (
   </NuggetsWrapper>
 )
 
-export { HomepageNavigation, NonFeaturedStory, FeaturedStory, Nuggets }
+export { HomepageHero, HomepageNavigation, NonFeaturedStory, FeaturedStory, Nuggets }
