@@ -48,4 +48,4 @@ const NavigationLinkApply = props => (
   </NavigationLinkList>
 )
 
-export { NavigationLink, MobileNavigationLink, NavigationLinkApply }
+export { NavigationLink, MobileNavigationLink }
