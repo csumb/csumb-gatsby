@@ -121,6 +121,17 @@ const HeroItem = styled('div')`
   }
 `
 
+const Taglink = styled(Link)`
+  color: ${colors.muted.mid};
+  text-decoration: underline !important;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  &:hover {
+    color: ${colors.muted.darkest};
+  }
+`
+
 const HomepageHero = ({ item }) => (
 
   <LazyHero
@@ -177,12 +188,20 @@ const FeaturedStory = ({
   image,
   title,
   eventDate,
+  tags,
   childContentfulHomepageStoryDescriptionTextNode,
   childContentfulHomepageEventDescriptionTextNode,
 }) => (
     <Story featured>
       <a href={link}>
         <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
+        {tags && (
+          <>
+            {tags.map(tag => (
+              <Taglink to={`/news/tag/${tag.slug}`}>{tag.name}</Taglink>
+            ))}
+          </>
+        )}
         <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
         {eventDate && (
           <FeaturedEventDate>
