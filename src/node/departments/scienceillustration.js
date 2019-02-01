@@ -16,6 +16,7 @@ module.exports = (graphql, actions) => {
                 node {
                   id
                   table
+                  rowId
                   data {
                     first_name
                     last_name
@@ -41,23 +42,24 @@ module.exports = (graphql, actions) => {
           reject(result.errors)
           return
         }
-
         const images = {}
         result.data.allAirtable.edges.forEach(edge => {
           if (edge.node.table === 'Images') {
-            images[edge.node.id] = edge.node
+            images[edge.node.rowId] = edge.node
           }
         })
         result.data.allAirtable.edges.forEach(edge => {
           if (edge.node.table === 'Graduates') {
             const graduateImages = []
-            edge.node.data.Images.forEach(image => {
-              if (typeof images[image] !== 'undefined') {
-                graduateImages.push(images[image])
-              }
-            })
+            if (edge.node.data.Images) {
+              edge.node.data.Images.forEach(image => {
+                if (typeof images[image] !== 'undefined') {
+                  graduateImages.push(images[image])
+                }
+              })
+            }
             createPage({
-              path: `scienceillustration/graduate/${edge.node.slug}`,
+              path: `scienceillustration/graduate/${edge.node.data.slug}`,
               component: graduateTemplate,
               context: {
                 graduate: edge.node,

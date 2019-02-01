@@ -379,6 +379,7 @@ const SubmitButton = styled('input')`
     ${focusStyle};
   }
   padding: 1rem;
+  border: none;
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
@@ -395,6 +396,12 @@ const SubmitButton = styled('input')`
       ? `
     font-size: 2rem;
     padding: 0.6rem;
+  `
+      : ``};
+  ${props =>
+    props.small
+      ? `
+    padding: 0.35rem;
   `
       : ``};
 `

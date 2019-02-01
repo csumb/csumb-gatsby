@@ -10,6 +10,15 @@ import { Flex, Box } from '@rebass/grid'
 import Link from 'gatsby-link'
 import { InputText, Submit } from 'components/forms'
 import Well from 'components/well'
+import styled from '@emotion/styled'
+
+const GraduateList = styled('ul')`
+  list-style-type: none;
+  margin: 0;
+  li {
+    padding-left: 0;
+  }
+`
 
 const ViewGraduate = ({ graduate }) => (
   <li>
@@ -39,7 +48,7 @@ class ScienceIllustrationGallerySearch extends React.Component {
     let results = []
     this.props.graduates.map(graduate => {
       if (
-        `${graduate.node.first_name} ${graduate.node.last_name}`
+        `${graduate.node.data.first_name} ${graduate.node.data.last_name}`
           .toLowerCase()
           .search(query) > -1
       ) {
@@ -67,17 +76,17 @@ class ScienceIllustrationGallerySearch extends React.Component {
               />
             </Box>
             <Box width={[1, 3 / 12]}>
-              <Submit value="Search" />
+              <Submit value="Search" nomargin small />
             </Box>
           </Flex>
         </form>
-        {results.length && (
-          <ul>
+        {results.length ? (
+          <GraduateList>
             {results.map(graduate => (
-              <ViewGraduate graduate={graduate.node} />
+              <ViewGraduate key={graduate.node.id} graduate={graduate.node} />
             ))}
-          </ul>
-        )}
+          </GraduateList>
+        ) : null}
       </Well>
     )
   }
@@ -106,11 +115,11 @@ class ScienceIllustrationGalleryPage extends React.Component {
           <ScienceIllustrationGallerySearch
             graduates={data.allAirtable.edges}
           />
-          <ul>
+          <GraduateList>
             {data.allAirtable.edges.map(graduate => (
-              <ViewGraduate graduate={graduate.node} />
+              <ViewGraduate key={graduate.node.id} graduate={graduate.node} />
             ))}
-          </ul>
+          </GraduateList>
         </Container>
       </Layout>
     )
