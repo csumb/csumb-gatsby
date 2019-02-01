@@ -52,6 +52,7 @@ const icons = {
   instagram: faInstagram,
   flickr: faFlickr,
   linkedin: faLinkedin,
+  youtube: faYoutube,
 }
 
 const SiteFooterSocialIcon = ({ href, name }) => {
