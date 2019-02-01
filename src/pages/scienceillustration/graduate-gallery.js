@@ -54,6 +54,7 @@ class ScienceIllustrationGallerySearch extends React.Component {
       ) {
         results.push(graduate)
       }
+      return results
     })
     this.setState({
       results: results,

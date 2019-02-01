@@ -35,6 +35,15 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
+            allCsumbNavigation(
+              filter: { site: { eq: "scienceillustration" } }
+            ) {
+              edges {
+                node {
+                  navigation
+                }
+              }
+            }
           }
         `
       ).then(result => {
@@ -64,6 +73,9 @@ module.exports = (graphql, actions) => {
               context: {
                 graduate: edge.node,
                 images: graduateImages,
+                navigation: result.data.allCsumbNavigation
+                  ? result.data.allCsumbNavigation.edges[0].node.navigation
+                  : false,
               },
             })
           }

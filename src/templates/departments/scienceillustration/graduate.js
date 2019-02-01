@@ -7,6 +7,8 @@ import { Flex, Box } from '@rebass/grid'
 import { LeadParagraph } from 'components/type'
 import Gallery from 'react-photo-gallery'
 import Lightbox from 'react-images'
+import Link from 'gatsby-link'
+import SiteNavigation from 'components/navigation/site'
 
 class GraduateTemplate extends React.Component {
   state = {
@@ -39,7 +41,7 @@ class GraduateTemplate extends React.Component {
   }
 
   render() {
-    const { graduate, images } = this.props.pageContext
+    const { graduate, images, navigation } = this.props.pageContext
     const pageTitle = `${graduate.data.first_name} ${graduate.data.last_name}`
     const galleryImages = []
     images.forEach(image => {
@@ -55,8 +57,14 @@ class GraduateTemplate extends React.Component {
         <SiteHeader path="/scienceillustration">
           Science Illustration
         </SiteHeader>
+        {navigation && <SiteNavigation navigation={navigation} />}
         <Container>
           <PageTitle>{pageTitle}</PageTitle>
+          <p>
+            <Link to="/scienceillustration/graduate-gallery">
+              ← Return to graduate gallery
+            </Link>
+          </p>
           <LeadParagraph>Class of {graduate.data.class}</LeadParagraph>
           <Flex flexWrap="wrap">
             <Box width={[1, 1, 1 / 2]} pr={[0, 0, 2]}>

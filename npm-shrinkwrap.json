@@ -13890,14 +13890,6 @@
         "warning": "^3.0.0"
       }
     },
-    "gatsby-source-airtable": {
-      "version": "2.0.3",
-      "resolved": "https://registry.npmjs.org/gatsby-source-airtable/-/gatsby-source-airtable-2.0.3.tgz",
-      "integrity": "sha512-Yu7Z8FBQv9bBH2HeEmsVWSIb3uckvAAi4JMUUrq7wpI2X8SItCKw0Ar6fQGpsHeyNXxBa/p5o0jFI6DcNETewg==",
-      "requires": {
-        "airtable": "^0.5.6"
-      }
-    },
     "gatsby-source-contentful": {
       "version": "2.0.20",
       "resolved": "https://registry.npmjs.org/gatsby-source-contentful/-/gatsby-source-contentful-2.0.20.tgz",
