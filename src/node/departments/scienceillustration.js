@@ -75,7 +75,7 @@ module.exports = (graphql, actions) => {
                 images: graduateImages,
                 navigation: result.data.allCsumbNavigation
                   ? result.data.allCsumbNavigation.edges[0].node.navigation
-                  : false,
+                  : '',
               },
             })
           }
