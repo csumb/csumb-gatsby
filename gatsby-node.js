@@ -13,6 +13,9 @@ exports.createPages = ({ stage, graphql, actions }) => {
   return new Promise((resolve, reject) => {
     coursePages(graphql, actions)
       .then(() => {
+        return scienceIllustrationPages(graphql, actions)
+      })
+      .then(() => {
         return contentPages(graphql, actions)
       })
       .then(() => {
@@ -26,9 +29,6 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return schedulePages(graphql, actions)
-      })
-      .then(() => {
-        return scienceIllustrationPages(graphql, actions)
       })
       .then(() => {
         resolve()
