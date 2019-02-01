@@ -387,12 +387,9 @@ const SubmitButton = styled('input')`
       ? `
     `
       : `margin: 1.5rem 0;`}
-  color: ${colors.primary.dark};
-  border: 3px solid ${colors.primary.dark};
-  &:hover {
-    color: ${colors.white};
-    background: ${colors.primary.dark};
-  }
+
+  color: ${colors.white} !important;
+  background: ${colors.buttons.default};
   ${props =>
     props.huge
       ? `
