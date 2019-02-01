@@ -1,4 +1,8 @@
-# 🏄‍♀️ CSUMB Gatsby website
+# 🏄‍♀️ CSUMB website
+
+The CSUMB website is made up of lots of little pieces. This repository includes all the code we use to pull those pieces together into a single, cohesive site using Gatsby.
+
+# Technical notes
 
 ## Setup
 
@@ -22,15 +26,10 @@
 
 ## Environment variables
 
-- **CSUMB_HOME_CONTENTFUL_SPACE**	 - the space ID for the homepage contentful space	
-- **CSUMB_HOME_CONTENTFUL_TOKEN**	- Token for above
-- **CSUMB_NAV_CONTENTFUL_SPACE** - The space ID for the general navigation (everything else) page	
-- **CSUMB_NAV_CONTENTFUL_TOKEN** - Token for above
-- **FIREBASE_TOKEN** - Token to deploy to Firebase
-- **GITHUB_TOKEN** - Token for fetching content from the web content repo
-
+Check out the environment variables in `.cirrus.yml`, those values are encrypted, but you'll need those values on your local machine in order for builds to work.
 
 ## Special URLs
+
 There are a few special URLs or queries that do special things:
 
-- **?_login** appending the `_login` query to any URL will force the local cache of the user object to flush and re-fetch the user's data from Okta.
+- **?\_login** appending the `_login` query to any URL will force the local cache of the user object to flush and re-fetch the user's data from Okta.
