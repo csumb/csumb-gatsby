@@ -13,7 +13,7 @@ transition:all 100ms;
 `
 
 const FormGroup = styled('div')`
-  margin-bottom: 0.5rem;
+  ${props => (props.noMargin ? `` : `margin-bottom: 0.5rem;`)}
   ${props => (props.inline ? `display: inline-block;` : ``)};
 `
 
@@ -123,9 +123,10 @@ class InputText extends FormElement {
       hideLabel,
       label,
       forwardedRef,
+      noMargin,
     } = this.props
     return (
-      <FormGroup inline={inline}>
+      <FormGroup inline={inline} noMargin={noMargin}>
         <Label
           labelId={this.htmlId}
           isRequired={isRequired}

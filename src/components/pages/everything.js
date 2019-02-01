@@ -12,7 +12,7 @@ const TopLevelBox = styled(Box)`
     margin-top: 0;
     margin-bottom: 0.5rem;
     font-size: 1.3rem;
-    font-family: ${fonts.sansSerif};
+    font-family: ${fonts.body};
   }
   margin-bottom: 1rem;
 `
@@ -45,7 +45,7 @@ const SecondLevelList = styled('ul')`
 `
 
 const SecondLevelTitle = styled('h2')`
-  font-family: ${fonts.sansSerif};
+  font-family: ${fonts.body};
   margin-bottom: 0;
 `
 
@@ -57,7 +57,7 @@ const SubItem = styled('li')`
   h3 {
     margin: 0;
     color: ${colors.primary.dark};
-    font-family: ${fonts.sansSerif};
+    font-family: ${fonts.body};
   }
   p {
     margin: 0;
@@ -93,7 +93,7 @@ const ThirdLevelList = styled('ul')`
 `
 
 const ThirdLevelTitle = styled('h2')`
-  font-family: ${fonts.sansSerif};
+  font-family: ${fonts.body};
   margin: 0;
 `
 

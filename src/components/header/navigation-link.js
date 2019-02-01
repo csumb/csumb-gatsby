@@ -1,40 +1,25 @@
 import React from 'react'
-import { colors } from 'components/styles/theme'
+import { colors, fonts } from 'components/styles/theme'
 import Link from 'gatsby-link'
 import styled from '@emotion/styled'
 
 const NavigationLinkList = styled('li')`
   margin-left: 0.5rem;
   display: inline-block;
+  font-weight: 300;
+  font-family: ${fonts.heading};
   a, a:visited {
-    font-weight: bold;
     text-decoration: none;
-    padding: 0.75rem;
     ${props =>
-      props.apply
-        ? `color: ${colors.indicators.high};
-        border: 3px solid ${colors.indicators.high};
-        `
-        : `color: ${colors.primary.darkest};`}
+      props.last
+        ? `padding: 0.25rem 0 0.25rem 0.25rem;`
+        : `padding: 0.25rem 0.25rem;`}
+    color: ${colors.primary.darkest};
     &:hover {
-          ${props =>
-            props.apply
-              ? `background: ${colors.indicators.high};`
-              : `background: ${colors.primary.darkest};`}
-                
-      color: ${colors.white};
+      text-decoration: underline;
     }
     &[aria-current='page'] {
-      ${props =>
-        props.apply
-          ? `
-        background: ${colors.indicators.high};
-        color: ${colors.white};
-        `
-          : `
-        background: ${colors.primary.dark};
-        color: ${colors.white};
-        `}
+      text-decoration: underline;
   }
 `
 
@@ -48,22 +33,16 @@ const MobileNavigationLinkList = styled('li')`
   }
 `
 
-const NavigationLink = props => (
-  <NavigationLinkList>
-    <Link to={props.to}>{props.children}</Link>
+const NavigationLink = ({ last, to, children }) => (
+  <NavigationLinkList last={last}>
+    <Link to={to}>{children}</Link>
   </NavigationLinkList>
 )
 
-const MobileNavigationLink = props => (
+const MobileNavigationLink = ({ to, children }) => (
   <MobileNavigationLinkList>
-    <Link to={props.to}>{props.children}</Link>
+    <Link to={to}>{children}</Link>
   </MobileNavigationLinkList>
 )
 
-const NavigationLinkApply = props => (
-  <NavigationLinkList apply>
-    <Link to={props.to}>{props.children}</Link>
-  </NavigationLinkList>
-)
-
-export { NavigationLink, MobileNavigationLink, NavigationLinkApply }
+export { NavigationLink, MobileNavigationLink }

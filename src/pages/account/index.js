@@ -142,13 +142,15 @@ class UserAccountForm extends React.Component {
             <>
               <p>Your secondary email is: </p>
               <AccountData>{user.profile.secondEmail}</AccountData>
-              <ButtonLink
-                to="https://csumb.okta.com/enduser/settings"
-                buttonType="primary"
-                extraMargin
-              >
-                Change your secondary email
-              </ButtonLink>
+              <p>
+                <ButtonLink
+                  to="https://csumb.okta.com/enduser/settings"
+                  buttonType="primary"
+                  extraMargin
+                >
+                  Change your secondary email
+                </ButtonLink>
+              </p>
             </>
           ) : (
             <>

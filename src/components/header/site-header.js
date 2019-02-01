@@ -15,6 +15,7 @@ const SiteHeaderWrapper = styled('div')`
   h2 {
     margin: 0;
     ${siteHeaderSize};
+    font-weight: 600;
   }
   a,
   a:visited {
