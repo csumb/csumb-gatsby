@@ -142,7 +142,7 @@ const MeetingItem = props => {
 const CourseListItem = ({ course, term }) => {
   const link = `/schedule/${term.DESCR.toLowerCase().replace(' ', '')}/course/${
     course.CRN
-  }`
+    }`
 
   return (
     <CourseListItemRow>
@@ -219,9 +219,6 @@ const CourseListItemHeader = () => (
 )
 
 const CourseSectionElement = styled('div')`
-  border: 1px solid ${colors.gray.light};
-  padding: 1rem;
-  margin-bottom: 1rem;
 `
 
 const CourseSectionLegend = styled('h3')`
@@ -254,7 +251,7 @@ const CourseTitle = styled('h2')`
 `
 
 const CourseNumber = styled('pre')`
-  font-size: 2rem;
+  font-size: 1.5rem;
 `
 
 const CoursePage = ({ course, term }) => (
@@ -262,7 +259,7 @@ const CoursePage = ({ course, term }) => (
     <PageTitle
       sub={`${course.SUBJECT} ${course.CATALOG_NBR} Section ${
         course.SECTION
-      }, ${course.UNITS} units`}
+        }, ${course.UNITS} units`}
     >
       {term.DESCR}
     </PageTitle>
@@ -309,16 +306,29 @@ const CoursePage = ({ course, term }) => (
           <p>
             Use this number to{' '}
             <Link to="/registration-process">
-              register for the course in CMS
+              register for the course in OASIS
             </Link>
-            .
-          </p>
+            :
 
           <CourseNumber>{course.CRN}</CourseNumber>
+          </p>
         </CourseSection>
       </Box>
     </Flex>
   </>
+)
+
+const ScheduleBackLinkElement = styled(Link)`
+  margin-bottom: 1rem;
+  display: inline-block;
+`
+
+const ScheduleBackLink = ({ term }) => (
+  <ScheduleBackLinkElement to={`/schedule/${term.DESCR.toLowerCase().replace(
+    ' ',
+    ''
+  )}`} >← Return to {term.DESCR}
+  </ScheduleBackLinkElement>
 )
 
 export {
@@ -330,4 +340,5 @@ export {
   CourseSection,
   MeetingItem,
   CoursePage,
+  ScheduleBackLink
 }

@@ -88,10 +88,10 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Merriweather`
+            family: `Hind`
           },
           {
-            family: `Source Sans Pro`
+            family: `Open Sans`
           },
         ],
       },

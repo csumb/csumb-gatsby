@@ -14,6 +14,8 @@ const SiteNavigationList = styled('ul')`
   li {
     display: inline-block;
     margin: 0;
+    font-weight: 300;
+    font-family: ${fonts.heading};
   }
   a,
   a:visited {
@@ -33,9 +35,11 @@ const SiteNavigationSubList = styled(MenuList)`
   background: ${colors.primary.dark};
   padding: 0;
   margin-top: 10px;
+  font-weight: 300;
+  font-family: ${fonts.heading};
   a {
     color: ${colors.white};
-    font-family: ${fonts.sansSerif};
+    font-family: ${fonts.body};
     font-size: 20px;
     text-decoration: none;
   }

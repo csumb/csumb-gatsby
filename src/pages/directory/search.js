@@ -165,7 +165,7 @@ class DirectorySearchResults extends React.Component {
       this.searchDirectory()
       const url = `${window.location.protocol}//${window.location.host}${
         window.location.pathname
-      }?q=${this.props.query}`
+        }?q=${this.props.query}`
       window.history.pushState({ path: url }, '', url)
     }
   }
@@ -260,7 +260,7 @@ class DirectorySearchPage extends React.Component {
     return (
       <Layout>
         <SiteHeader path="/directory">Directory</SiteHeader>
-        <Container>
+        <Container topPadding>
           <form
             method="get"
             action="/directory/search"

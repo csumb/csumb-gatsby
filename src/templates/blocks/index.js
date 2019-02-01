@@ -27,6 +27,7 @@ import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
 import VisuallyHidden from 'components/visually-hidden'
 
+const containerWidth = containerStyle.full
 class Block extends React.Component {
   blockComponents = {
     feed: BlockFeed,
@@ -55,14 +56,12 @@ class Block extends React.Component {
   }
 
   render() {
-    const { type, block, inColumn, hidden, headerHandler } = this.props
+    const { type, block, hidden, headerHandler } = this.props
     if (typeof this.blockComponents[type] === 'undefined') {
       return null
     }
     let BlockType = this.blockComponents[type]
-    const containerWidth = inColumn
-      ? containerStyle.column
-      : containerStyle.normal
+
     return (
       <ContainerContext.Provider value={containerWidth}>
         {hidden ? (

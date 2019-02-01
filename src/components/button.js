@@ -10,7 +10,9 @@ const ButtonStyle = props => {
   padding: 0.75rem;
   text-decoration: none;
   cursor: pointer;
-  color: ${colors.primary.dark};
+  border: none;
+  color: ${colors.white} !important;
+  background: ${colors.buttons.default};
   &:hover {
     color: ${colors.white};
   }
@@ -37,10 +39,10 @@ const ButtonStyle = props => {
   ${
     props.buttonType === 'default'
       ? `
-      color: ${colors.primary.dark};
-      border: 3px solid ${colors.primary.dark};
+      color: ${colors.white};
+      background: ${colors.buttons.default};
       &:hover {
-        background: ${colors.primary.dark};
+        
       }
     `
       : ``
@@ -48,10 +50,10 @@ const ButtonStyle = props => {
   ${
     props.buttonType === 'primary'
       ? `
-      color: ${colors.primary.dark};
-      border: 3px solid ${colors.primary.dark};
+      color: ${colors.white};
+      background: ${colors.buttons.default};
       &:hover {
-        background: ${colors.primary.dark};
+        
       }
     `
       : ``

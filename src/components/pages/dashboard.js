@@ -66,7 +66,7 @@ const AppsDropdownButton = styled(MenuButton)`
 const AppsDropdownMenuList = styled(MenuList)`
   border: 1px solid ${colors.black};
   padding: 0;
-  font-family: ${fonts.sansSerif};
+  font-family: ${fonts.body};
   a {
     color: ${colors.primary.darkest};
   }
@@ -241,7 +241,7 @@ const DashboardCard = styled('div')`
 `
 
 const DashboardCardHeader = styled('h3')`
-  font-family: ${fonts.sansSerif};
+  font-family: ${fonts.body};
   ${props =>
     props.noMargin &&
     `
@@ -378,7 +378,7 @@ class DashboardEvents extends React.Component {
 }
 
 const DashboardEventDate = styled('h4')`
-  font-family: ${fonts.sansSerif};
+  font-family: ${fonts.body};
 `
 
 const DashboardEvent = ({ event }) => (

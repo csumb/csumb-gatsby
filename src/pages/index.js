@@ -4,21 +4,22 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid'
 import { graphql } from 'gatsby'
 import moment from 'moment'
-import HomepageHero from 'components/homepages/samples/lazy-hero'
 import {
   HomepageNavigation,
   NonFeaturedStory,
   FeaturedStory,
   Nuggets,
+  HomepageHero,
 } from 'components/pages/homepage'
 
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
     const {
-      allContentfulStory,
-      allContentfulEvent,
-      allContentfulNuggets,
+      allContentfulHomepageStory,
+      allContentfulHomepageEvent,
+      allContentfulHomepageNugget,
+      allContentfulHomepageHeroImage,
     } = props.data
 
     const sortItems = (items, featured, ignore) => {
@@ -37,18 +38,25 @@ class IndexPage extends React.Component {
     }
 
     this.stories = {
-      featured: sortItems([allContentfulStory, allContentfulEvent], true),
-      notFeatured: sortItems([allContentfulStory, allContentfulEvent], false),
-      nuggets: sortItems([allContentfulNuggets], null, true),
+      featured: sortItems(
+        [allContentfulHomepageStory, allContentfulHomepageEvent],
+        true
+      ),
+      notFeatured: sortItems(
+        [allContentfulHomepageStory, allContentfulHomepageEvent],
+        false
+      ),
+      nuggets: sortItems([allContentfulHomepageNugget], null, true),
+      heroImages: sortItems([allContentfulHomepageHeroImage], null, true),
     }
   }
 
   render() {
-    const { featured, notFeatured, nuggets } = this.stories
+    const { featured, notFeatured, nuggets, heroImages } = this.stories
     const colPadding = [0, 0, 3, 3]
     return (
       <Layout>
-        <HomepageHero />
+        <HomepageHero item={heroImages[0]} />
         <Container topPadding>
           <HomepageNavigation
             items={this.props.data.allContentfulHomepageNavigation.edges}
@@ -80,15 +88,19 @@ export default IndexPage
 
 export const query = graphql`
   {
-    allContentfulStory(sort: { fields: goLiveDate }) {
+    allContentfulHomepageStory(sort: { fields: goLiveDate }) {
       edges {
         node {
           title
+          tags {
+            name
+            slug
+          }
           featured
           link
           goLiveDate
-          unpbulishDate
-          childContentfulStoryDescriptionTextNode {
+          unpublishDate
+          childContentfulHomepageStoryDescriptionTextNode {
             description
           }
           image {
@@ -104,7 +116,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulEvent(sort: { fields: goLiveDate }) {
+    allContentfulHomepageEvent(sort: { fields: goLiveDate }) {
       edges {
         node {
           title
@@ -112,9 +124,9 @@ export const query = graphql`
           link
           goLiveDate
           eventDate
-          unpbulishDate
+          unpublishDate
           contentful_id
-          childContentfulEventDescriptionTextNode {
+          childContentfulHomepageEventDescriptionTextNode {
             description
           }
           image {
@@ -130,7 +142,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulNuggets(sort: { fields: goLiveDate }) {
+    allContentfulHomepageNugget(sort: { fields: goLiveDate }) {
       edges {
         node {
           title
@@ -150,6 +162,25 @@ export const query = graphql`
             link
             childContentfulHomepageNavigationItemDescriptionTextNode {
               description
+            }
+          }
+        }
+      }
+    }
+    allContentfulHomepageHeroImage(sort: { fields: goLiveDate }) {
+      edges {
+        node {
+          title
+          description
+          goLiveDate
+          darkImage
+          link
+          lighten
+          image {
+            file {
+              url
+              fileName
+              contentType
             }
           }
         }

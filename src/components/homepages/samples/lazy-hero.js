@@ -8,7 +8,7 @@ import { LeadParagraph } from 'components/type'
 const HeroItem = styled('div')`
   h2 {
     margin: 0;
-    font-family: ${fonts.sansSerif};
+    font-family: ${fonts.body};
     font-size: 2.5rem;
   }
   a {

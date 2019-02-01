@@ -382,6 +382,13 @@ export const query = graphql`
     allCsumbNavigation(filter: { site: { eq: "cost" } }) {
       edges {
         node {
+          navigation
+        }
+      }
+    }
+    allCsumbNavigation(filter: { site: { eq: "cost" } }) {
+      edges {
+        node {
           site
           navigation
         }

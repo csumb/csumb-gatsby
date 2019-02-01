@@ -41,8 +41,8 @@ const HeaderMobileSearch = styled('div')`
 `
 
 const HeaderMobileApply = styled(Link)`
-  color: ${colors.white} !important;
-  background: ${colors.indicators.high};
+  color: ${colors.primary.darkest} !important;
+  border: 2px solid ${colors.primary.darkest};
   padding: 0.3rem;
   float: right;
   text-decoration: none;
@@ -199,7 +199,11 @@ class HeaderMobile extends React.Component {
             <Container>
               <UserWidget />
               <HeaderMobileSearch>
-                <Search swiftypeId={this.props.swiftypeId} fullWidth />
+                <Search
+                  swiftypeId={this.props.swiftypeId}
+                  fullWidth
+                  isMobile={true}
+                />
               </HeaderMobileSearch>
             </Container>
             <HeaderMobileNavigation
@@ -209,11 +213,15 @@ class HeaderMobile extends React.Component {
                 this.navRef = node
               }}
             >
-              <MobileNavigationLink to="/academics">
-                Majors &amp; programs
-              </MobileNavigationLink>
+              <MobileNavigationLink to="/about">About</MobileNavigationLink>
               <MobileNavigationLink to="/cost">
-                Tuition &amp; aid
+                Cost &amp; aid
+              </MobileNavigationLink>
+              <MobileNavigationLink to="/academics">
+                Academics
+              </MobileNavigationLink>
+              <MobileNavigationLink to="/life">
+                Campus life
               </MobileNavigationLink>
               <MobileNavigationLink to="/everything">
                 Everything else

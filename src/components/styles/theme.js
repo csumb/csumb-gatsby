@@ -13,6 +13,9 @@ const colors = {
     light: '#d9ebf7',
     lightest: '#eaf3f9',
   },
+  buttons: {
+    default: '#07633B',
+  },
   secondary: {
     highlight: {
       default: '#02bfe7',
@@ -46,8 +49,9 @@ const colors = {
 }
 
 const fonts = {
-  sansSerif: '"Source Sans Pro",sans-serif',
-  serif: '"Merriweather",serif',
+  body: '"Hind","Helvetica Neue",Helvetica,Arial,"Nimbus Sans L",sans-serif',
+  heading:
+    '"Open Sans","Helvetica Neue",Helvetica,Arial,"Nimbus Sans L",sans-serif',
 }
 
 export { colors, fonts }
