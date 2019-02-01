@@ -45,12 +45,14 @@ class GraduateTemplate extends React.Component {
     const pageTitle = `${graduate.data.first_name} ${graduate.data.last_name}`
     const galleryImages = []
     images.forEach(image => {
-      galleryImages.push({
-        width: 1,
-        height: 1,
-        src: image.data.image[0].url,
-        caption: image.data.title,
-      })
+      if (image.data.image) {
+        galleryImages.push({
+          width: 1,
+          height: 1,
+          src: image.data.image[0].url,
+          caption: image.data.title,
+        })
+      }
     })
     return (
       <Layout pageTitle={pageTitle}>
