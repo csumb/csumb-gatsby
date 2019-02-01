@@ -6,6 +6,7 @@ const schedulePages = require(`./src/node/schedule`)
 const buildingPages = require(`./src/node/buildings`)
 const directoryPages = require(`./src/node/directory`)
 const everythingPages = require(`./src/node/everything`)
+const scienceIllustrationPages = require(`./src/node/departments/scienceillustration`)
 require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ stage, graphql, actions }) => {
@@ -25,6 +26,9 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return schedulePages(graphql, actions)
+      })
+      .then(() => {
+        return scienceIllustrationPages(graphql, actions)
       })
       .then(() => {
         resolve()
