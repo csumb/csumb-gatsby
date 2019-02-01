@@ -2,6 +2,8 @@
 
 The CSUMB website is made up of lots of little pieces. This repository includes all the code we use to pull those pieces together into a single, cohesive site using Gatsby.
 
+Need help with your campus website? [Get in touch with web services.](https://csumb.edu/web)
+
 # Technical notes
 
 ## Setup
