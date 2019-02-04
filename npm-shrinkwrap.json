@@ -1285,6 +1285,54 @@
         "is-buffer": "^1.1.5"
       }
     },
+    "@contentful/gatsby-transformer-contentful-richtext": {
+      "version": "13.0.0",
+      "resolved": "https://registry.npmjs.org/@contentful/gatsby-transformer-contentful-richtext/-/gatsby-transformer-contentful-richtext-13.0.0.tgz",
+      "integrity": "sha512-KYwUzbGZWbrU0viKpfTAYL/UhPp+yj/oNlMt4HsJ4/FOh+09aCHozDkUmmmmlzHYh+Nzyrl7DpGuCHaiuFdmwA==",
+      "requires": {
+        "@babel/runtime": "^7.2.0",
+        "@contentful/rich-text-html-renderer": "^13.0.0",
+        "@contentful/rich-text-plain-text-renderer": "^13.0.0",
+        "lodash.words": "^4.2.0"
+      },
+      "dependencies": {
+        "@babel/runtime": {
+          "version": "7.3.1",
+          "resolved": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.3.1.tgz",
+          "integrity": "sha512-7jGW8ppV0ant637pIqAcFfQDDH1orEPGJb8aXfUozuCU3QqX7rX4DA8iwrbPrR1hcH0FTTHz47yQnk+bl5xHQA==",
+          "requires": {
+            "regenerator-runtime": "^0.12.0"
+          }
+        },
+        "regenerator-runtime": {
+          "version": "0.12.1",
+          "resolved": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz",
+          "integrity": "sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg=="
+        }
+      }
+    },
+    "@contentful/rich-text-html-renderer": {
+      "version": "13.0.0",
+      "resolved": "https://registry.npmjs.org/@contentful/rich-text-html-renderer/-/rich-text-html-renderer-13.0.0.tgz",
+      "integrity": "sha512-gUhEjNyU/QR36+RsJ7/N+IaqJbQ9GiTezNRpF2NztOILdyjxplIbTt3HN5Yo99DT9K+qs8GbFV43EsIxbWgVjA==",
+      "requires": {
+        "@contentful/rich-text-types": "^13.0.0",
+        "escape-html": "^1.0.3"
+      }
+    },
+    "@contentful/rich-text-plain-text-renderer": {
+      "version": "13.0.0",
+      "resolved": "https://registry.npmjs.org/@contentful/rich-text-plain-text-renderer/-/rich-text-plain-text-renderer-13.0.0.tgz",
+      "integrity": "sha512-NCWNdIZRaXq9zbXj75qctuaZTc3K+J9L1jcZLAjxXS0M85xh9W3mpPcY4Xcz+OkYbQesUFaAEqFVu8y05d4xSQ==",
+      "requires": {
+        "@contentful/rich-text-types": "^13.0.0"
+      }
+    },
+    "@contentful/rich-text-types": {
+      "version": "13.0.0",
+      "resolved": "https://registry.npmjs.org/@contentful/rich-text-types/-/rich-text-types-13.0.0.tgz",
+      "integrity": "sha512-1+a/WAFVBZl1tJb4J7nHZxbqde1CqwLYE+xtpqO8Pqr5zOgVV4MJHzA2t7SDYc/ypJIoNL0W8yEUNgf43iFL/Q=="
+    },
     "@emotion/babel-utils": {
       "version": "0.6.10",
       "resolved": "https://registry.npmjs.org/@emotion/babel-utils/-/babel-utils-0.6.10.tgz",
@@ -18665,6 +18713,11 @@
       "requires": {
         "lodash.keys": "~2.4.1"
       }
+    },
+    "lodash.words": {
+      "version": "4.2.0",
+      "resolved": "https://registry.npmjs.org/lodash.words/-/lodash.words-4.2.0.tgz",
+      "integrity": "sha1-Xs/q+Oz4rKqODIOGKV8Zk8nPQDY="
     },
     "log-driver": {
       "version": "1.2.7",
