@@ -3,7 +3,6 @@ node_js:
   - 'iojs'
   - '8'
 before_script:
-  - npm i
   - ./node_modules/.bin/grunt
   - npm run test
 script:
