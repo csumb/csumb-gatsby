@@ -46,6 +46,7 @@
     "gatsby-plugin-react-helmet": "^3.0.3",
     "gatsby-plugin-styled-components": "^3.0.4",
     "gatsby-plugin-typography": "^2.2.2",
+    "gatsby-source-airtable": "^2.0.4",
     "gatsby-source-contentful": "^2.0.20",
     "gatsby-source-filesystem": "^2.0.10",
     "gatsby-source-thirdparty": "^1.0.6",

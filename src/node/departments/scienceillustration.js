@@ -8,45 +8,41 @@ module.exports = (graphql, actions) => {
       `src/templates/departments/scienceillustration/graduate.js`
     )
     resolve(
-      graphql(
-        `
-          {
-            allAirtable(filter: { table: { in: ["Graduates", "Images"] } }) {
-              edges {
-                node {
-                  id
-                  table
-                  rowId
-                  data {
-                    first_name
-                    last_name
-                    degrees
-                    website
-                    class
-                    Images
-                    slug
-                    bio
-                    title
-                    caption
-                    image {
-                      url
-                    }
+      graphql(`
+        {
+          allAirtable(filter: { table: { in: ["Graduates", "Images"] } }) {
+            edges {
+              node {
+                id
+                table
+                recordId
+                data {
+                  first_name
+                  last_name
+                  degrees
+                  website
+                  class
+                  Images
+                  slug
+                  bio
+                  title
+                  caption
+                  image {
+                    url
                   }
                 }
               }
             }
-            allCsumbNavigation(
-              filter: { site: { eq: "scienceillustration" } }
-            ) {
-              edges {
-                node {
-                  navigation
-                }
+          }
+          allCsumbNavigation(filter: { site: { eq: "scienceillustration" } }) {
+            edges {
+              node {
+                navigation
               }
             }
           }
-        `
-      ).then(result => {
+        }
+      `).then(result => {
         if (result.errors) {
           reject(result.errors)
           return
@@ -54,7 +50,7 @@ module.exports = (graphql, actions) => {
         const images = {}
         result.data.allAirtable.edges.forEach(edge => {
           if (edge.node.table === 'Images') {
-            images[edge.node.rowId] = edge.node
+            images[edge.node.recordId] = edge.node
           }
         })
         result.data.allAirtable.edges.forEach(edge => {
