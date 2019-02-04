@@ -74,6 +74,7 @@
     "react-lazy-hero": "^2.0.0",
     "react-loading": "^2.0.3",
     "react-photo-gallery": "^6.3.1",
+    "react-responsive": "^6.1.1",
     "react-select": "^2.1.2",
     "react-simplemde-editor": "^3.6.22",
     "react-typography": "^0.16.13",
