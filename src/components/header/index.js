@@ -37,7 +37,7 @@ class Header extends React.Component {
 
   render() {
     const { metadata, siteNavigation, siteTitle } = this.props
-    const { ready, isMobile } = this.state
+    const { isMobile } = this.state
 
     return (
       <>
