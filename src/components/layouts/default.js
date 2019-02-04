@@ -16,8 +16,6 @@ class Layout extends React.Component {
   }
 
   async componentDidMount() {
-    let that = this
-
     let location = url.parse(window.location.href, true)
     if (location.query && typeof location.query._login !== 'undefined') {
       await ImmortalDB.remove('user')
