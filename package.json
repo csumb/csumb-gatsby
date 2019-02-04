@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "Kevin Miller <kevin@csumb.edu>",
   "dependencies": {
+    "@contentful/gatsby-transformer-contentful-richtext": "^13.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-brands-svg-icons": "^5.7.0",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",

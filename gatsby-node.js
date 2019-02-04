@@ -7,11 +7,16 @@ const buildingPages = require(`./src/node/buildings`)
 const directoryPages = require(`./src/node/directory`)
 const everythingPages = require(`./src/node/everything`)
 const scienceIllustrationPages = require(`./src/node/departments/scienceillustration`)
+const newsStoryPages = require(`./src/node/departments/news`)
+
 require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ stage, graphql, actions }) => {
   return new Promise((resolve, reject) => {
     coursePages(graphql, actions)
+      .then(() => {
+        return newsStoryPages(graphql, actions)
+      })
       .then(() => {
         return scienceIllustrationPages(graphql, actions)
       })
