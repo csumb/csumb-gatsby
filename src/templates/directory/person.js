@@ -3,7 +3,7 @@ import Layout from 'components/layouts/default'
 import SiteHeader from 'components/header/site-header'
 import Container from 'components/container'
 import PageTitle from 'components/header/page-title'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 import styled from '@emotion/styled'
 
 const DirectoryTitle = styled('div')`

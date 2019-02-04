@@ -16,7 +16,7 @@ import {
 import SiteHeader from 'components/header/site-header'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 import MediaQuery from 'react-responsive'
 import Link from 'gatsby-link'
 

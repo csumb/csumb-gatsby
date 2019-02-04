@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 import { InputText, Submit } from 'components/forms'
 import styled from '@emotion/styled'
 import Container from 'components/container'
