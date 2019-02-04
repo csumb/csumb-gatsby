@@ -7,38 +7,16 @@ import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 import { UserContext, setUserRole } from 'components/contexts/user'
 import Emergency from 'components/emergency'
-import BreakpointContext from 'components/contexts/breakpoint'
 import { ImmortalDB } from 'immortal-db'
 import url from 'url'
-
-const mobileBreakpoint = 830
 
 class Layout extends React.Component {
   state = {
     user: false,
-    breakpoint: {
-      isMobile: false,
-      isDesktop: true,
-      width: 800,
-    },
   }
 
   async componentDidMount() {
     let that = this
-
-    const setWindowSize = () => {
-      that.setState({
-        breakpoint: {
-          isMobile: window.innerWidth <= mobileBreakpoint,
-          isDesktop: window.innerWidth > mobileBreakpoint,
-          width: window.innerWidth,
-        },
-      })
-    }
-
-    window.addEventListener('resize', setWindowSize)
-
-    setWindowSize()
 
     let location = url.parse(window.location.href, true)
     if (location.query && typeof location.query._login !== 'undefined') {
@@ -77,47 +55,45 @@ class Layout extends React.Component {
     const { siteNavigation, siteTitle, pageTitle, hasSiteFooter } = this.props
 
     return (
-      <BreakpointContext.Provider value={this.state.breakpoint}>
-        <UserContext.Provider value={{ user: this.state.user }}>
-          <Emergency />
-          <SkipNavLink />
-          <Helmet>
-            <html lang="en" />
-            <meta charset="utf-8" />
-            <title>
-              {`${pageTitle ? `${pageTitle} |` : ''}
+      <UserContext.Provider value={{ user: this.state.user }}>
+        <Emergency />
+        <SkipNavLink />
+        <Helmet>
+          <html lang="en" />
+          <meta charset="utf-8" />
+          <title>
+            {`${pageTitle ? `${pageTitle} |` : ''}
               Cal State Monterey Bay`}
-            </title>
-          </Helmet>
-          <StaticQuery
-            query={graphql`
-              {
-                site {
-                  siteMetadata {
-                    swiftypeId
-                    title
-                    okta {
-                      login
-                    }
+          </title>
+        </Helmet>
+        <StaticQuery
+          query={graphql`
+            {
+              site {
+                siteMetadata {
+                  swiftypeId
+                  title
+                  okta {
+                    login
                   }
                 }
               }
-            `}
-            render={data => (
-              <>
-                <Header
-                  metadata={data.site.siteMetadata}
-                  siteNavigation={siteNavigation}
-                  siteTitle={siteTitle}
-                />
-              </>
-            )}
-          />
-          <SkipNavContent />
-          {this.props.children}
-          <Footer hasSiteFooter={hasSiteFooter ? true : false} />
-        </UserContext.Provider>
-      </BreakpointContext.Provider>
+            }
+          `}
+          render={data => (
+            <>
+              <Header
+                metadata={data.site.siteMetadata}
+                siteNavigation={siteNavigation}
+                siteTitle={siteTitle}
+              />
+            </>
+          )}
+        />
+        <SkipNavContent />
+        {this.props.children}
+        <Footer hasSiteFooter={hasSiteFooter ? true : false} />
+      </UserContext.Provider>
     )
   }
 }

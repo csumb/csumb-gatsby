@@ -4,7 +4,6 @@ import Container from 'components/container'
 import styled from '@emotion/styled'
 import { colors, fonts } from '../styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
-import BreakpointContext from 'components/contexts/breakpoint'
 
 import '@reach/menu-button/styles.css'
 
@@ -92,38 +91,52 @@ const SiteNavigationSubMenu = ({ children, navigationChildren }) => (
 )
 
 class SiteNavigation extends React.Component {
+  state = {
+    isDesktop: true,
+  }
+
+  componentDidMount() {
+    const mobileBreakpoint = 830
+    const that = this
+    const setWindowSize = () => {
+      that.setState({
+        isDekstop: window.innerWidth > mobileBreakpoint,
+      })
+    }
+
+    window.addEventListener('resize', setWindowSize)
+
+    setWindowSize()
+  }
+
   render() {
     if (!this.props.navigation) {
       return null
     }
 
     const navigation = JSON.parse(this.props.navigation)
-
+    const { isDesktop } = this.state
     return (
-      <BreakpointContext.Consumer>
-        {breakpoint => (
-          <>
-            {breakpoint.isDesktop && (
-              <SiteNavigationBar>
-                <Container>
-                  <SiteNavigationList>
-                    {navigation.map((item, key) => (
-                      <li key={key}>
-                        <SiteNavigationItem
-                          to={item.url}
-                          navigationChildren={item.children}
-                        >
-                          {item.name}
-                        </SiteNavigationItem>
-                      </li>
-                    ))}
-                  </SiteNavigationList>
-                </Container>
-              </SiteNavigationBar>
-            )}
-          </>
+      <>
+        {isDesktop && (
+          <SiteNavigationBar>
+            <Container>
+              <SiteNavigationList>
+                {navigation.map((item, key) => (
+                  <li key={key}>
+                    <SiteNavigationItem
+                      to={item.url}
+                      navigationChildren={item.children}
+                    >
+                      {item.name}
+                    </SiteNavigationItem>
+                  </li>
+                ))}
+              </SiteNavigationList>
+            </Container>
+          </SiteNavigationBar>
         )}
-      </BreakpointContext.Consumer>
+      </>
     )
   }
 }
