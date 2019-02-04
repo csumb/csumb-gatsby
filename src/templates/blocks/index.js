@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 import BlockList from './blocks/list'
 import BlockText from './blocks/text'
 import BlockHeading from './blocks/heading'

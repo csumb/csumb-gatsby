@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex } from '@rebass/grid'
+import { Flex } from '@rebass/grid/emotion'
 import { TopLevelBox, EverythingContent } from 'components/pages/everything'
 import Link from 'gatsby-link'
 import SiteHeader from 'components/header/site-header'

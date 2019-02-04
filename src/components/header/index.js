@@ -7,7 +7,7 @@ import UserWidget from './user-widget'
 import Applicant from './applicant'
 import HeaderMobile from './mobile'
 import { NavigationLink } from './navigation-link'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 import styled from '@emotion/styled'
 
 const HeaderWrapper = styled('header')`
