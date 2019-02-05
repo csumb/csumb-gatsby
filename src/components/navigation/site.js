@@ -106,7 +106,7 @@ class SiteNavigation extends React.Component {
     const that = this
     const setWindowSize = () => {
       that.setState({
-        isDekstop: window.innerWidth > mobileBreakpoint,
+        isDesktop: window.innerWidth > mobileBreakpoint,
       })
     }
 
@@ -116,34 +116,29 @@ class SiteNavigation extends React.Component {
   }
 
   render() {
-    if (!this.props.navigation) {
+    if (!this.props.navigation || !this.state.isDesktop) {
       return null
     }
 
     const navigation = JSON.parse(this.props.navigation)
-    const { isDesktop } = this.state
     return (
-      <>
-        {isDesktop && (
-          <SiteNavigationBar>
-            <Container>
-              <SiteNavigationList>
-                {navigation.map((item, key) => (
-                  <li key={key}>
-                    <SiteNavigationItem
-                      to={item.url}
-                      navigationChildren={item.children}
-                      first={key === 0}
-                    >
-                      {item.name}
-                    </SiteNavigationItem>
-                  </li>
-                ))}
-              </SiteNavigationList>
-            </Container>
-          </SiteNavigationBar>
-        )}
-      </>
+      <SiteNavigationBar>
+        <Container>
+          <SiteNavigationList>
+            {navigation.map((item, key) => (
+              <li key={key}>
+                <SiteNavigationItem
+                  to={item.url}
+                  navigationChildren={item.children}
+                  first={key === 0}
+                >
+                  {item.name}
+                </SiteNavigationItem>
+              </li>
+            ))}
+          </SiteNavigationList>
+        </Container>
+      </SiteNavigationBar>
     )
   }
 }
