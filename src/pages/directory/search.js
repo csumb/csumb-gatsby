@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 import { InputText, Submit } from 'components/forms'
 import styled from '@emotion/styled'
 import Container from 'components/container'
@@ -165,7 +165,7 @@ class DirectorySearchResults extends React.Component {
       this.searchDirectory()
       const url = `${window.location.protocol}//${window.location.host}${
         window.location.pathname
-        }?q=${this.props.query}`
+      }?q=${this.props.query}`
       window.history.pushState({ path: url }, '', url)
     }
   }

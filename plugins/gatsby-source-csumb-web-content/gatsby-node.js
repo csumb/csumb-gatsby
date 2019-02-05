@@ -5,7 +5,6 @@ const crypto = require('crypto')
 exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
   const { createNode } = actions
 
-
   walk.walkSync('./_web-content', {
     listeners: {
       file: async (root, fileStats, next) => {
@@ -15,12 +14,13 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
           parseContents(fileName, contents)
         }
         next()
-      }
-    }
+      },
+    },
   })
 
   const parseContents = (name, content) => {
-    const digest = crypto.createHash(`md5`)
+    const digest = crypto
+      .createHash(`md5`)
       .update(JSON.stringify(content))
       .digest(`hex`)
     if (name.search('_site.json') > -1) {
@@ -59,10 +59,10 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       content.pageContent.layout.length > 0 &&
       content.pageContent.blocks &&
       typeof content.pageContent.blocks[content.pageContent.layout[0].id] !==
-      'undefined' &&
+        'undefined' &&
       content.pageContent.blocks[content.pageContent.layout[0].id] &&
       content.pageContent.blocks[content.pageContent.layout[0].id].type ===
-      'heroimage'
+        'heroimage'
     ) {
       topHero =
         content.pageContent.blocks[content.pageContent.layout[0].id].data
@@ -72,9 +72,10 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       typeof content.breadcrumb !== 'undefined'
         ? JSON.stringify(content.breadcrumb)
         : false
-    const pagePath = (content.site === content.path) ?
-      content.site :
-      `${content.site}/${content.path}`
+    const pagePath =
+      content.site === content.path
+        ? content.site
+        : `${content.site}/${content.path}`
     const contentNode = {
       id: createNodeId(`${content.uuid} >>> CsumbPage`),
       children: [],
@@ -90,7 +91,7 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       pageContent: JSON.stringify(content.pageContent),
       internal: {
         type: `CsumbPage`,
-        contentDigest: digest
+        contentDigest: digest,
       },
     }
     if (content.event) {
@@ -107,10 +108,11 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       site: content.site,
       title: content.title,
       contact: content.contact ? content.contact : null,
+      social: content.social ? content.social : null,
       internal: {
         type: `CsumbSite`,
-        contentDigest: digest
-      }
+        contentDigest: digest,
+      },
     })
   }
 
@@ -123,12 +125,12 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       navigation: JSON.stringify(content.navigation),
       internal: {
         type: `CsumbNavigation`,
-        contentDigest: digest
-      }
+        contentDigest: digest,
+      },
     })
   }
 
-  const directoryNodes = (content) => {
+  const directoryNodes = content => {
     content.forEach(user => {
       const directoryNode = {
         id: createNodeId(`${user.email} >>> CsumbDirectory`),
@@ -147,7 +149,7 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
     })
   }
 
-  const departmentNodes = (content) => {
+  const departmentNodes = content => {
     content.forEach(department => {
       let departmentNode = {
         id: createNodeId(`${department.uuid} >>> CsumbDepartment`),
@@ -166,7 +168,7 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
     })
   }
 
-  const buildingNodes = (content) => {
+  const buildingNodes = content => {
     Object.values(content).forEach(building => {
       const buildingNode = {
         id: createNodeId(`${building.code} >>> CsumbBuilding`),
@@ -188,7 +190,7 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
     })
   }
 
-  const appNodes = (content) => {
+  const appNodes = content => {
     content.forEach(app => {
       const appNode = {
         id: createNodeId(`${app.url} >>> CsumbApp`),
@@ -207,5 +209,4 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       createNode(appNode)
     })
   }
-
 }

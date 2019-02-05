@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from 'components/container'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
 import SiteHeader from 'components/header/site-header'
