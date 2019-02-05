@@ -140,7 +140,7 @@ class DashboardApps extends React.Component {
                   <AppsDropdownMenuList>
                     {apps.map(app => (
                       <AppsDropdownMenuLink
-                        key={app.node.ndame}
+                        key={app.node.name}
                         component="a"
                         href={app.node.url}
                       >
@@ -160,7 +160,7 @@ class DashboardApps extends React.Component {
 
 class DashboardMessages extends React.Component {
   render() {
-    const { messages } = this.props
+    const { messages, archive } = this.props
     return (
       <>
         {messages && messages.length ? (
@@ -170,6 +170,7 @@ class DashboardMessages extends React.Component {
                 key={key}
                 message={message}
                 user={this.props.user}
+                archive={archive}
               />
             ))}
           </>
@@ -215,6 +216,7 @@ class DashboardContent extends React.Component {
     ready: false,
     events: false,
     messages: false,
+    session: false,
   }
 
   componentDidMount() {
@@ -241,10 +243,13 @@ class DashboardContent extends React.Component {
         return response.json()
       })
       .then(session => {
+        this.setState({
+          session: session.id,
+        })
         fetch(
           `https://csumb.edu/api/dashboard?_session=${
             session.id
-          }&role=${userRoles}`
+          }&role=${userRoles}&_t=${Date.now()}`
         )
           .then(response => {
             return response.json()
@@ -257,29 +262,43 @@ class DashboardContent extends React.Component {
             })
           })
           .catch(error => {
-            this.setState({
-              events: false,
-              didLoad: true,
-            })
+            this.setState({ events: false, didLoad: true })
           })
       })
       .catch(error => {
         this.setState({ ready: false })
       })
   }
+
+  archive(id, session) {
+    fetch(
+      `https://csumb.edu/api/dashboard/archive?_session=${session}&id=${id}`
+    )
+  }
+
   render() {
-    const { ready, events, messages } = this.state
+    const { ready, events, messages, session } = this.state
     return (
       <>
         {ready ? (
           <Flex flexWrap="wrap">
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h2>Events</h2>
-              <DashboardEvents events={events} />
+              <DashboardEvents
+                events={events}
+                archive={id => {
+                  this.archive(id, session)
+                }}
+              />
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h2>Messages</h2>
-              <DashboardMessages messages={messages} />
+              <DashboardMessages
+                messages={messages}
+                archive={id => {
+                  this.archive(id, session)
+                }}
+              />
             </Box>
           </Flex>
         ) : (
@@ -294,42 +313,29 @@ class DashboardMessage extends React.Component {
   state = {
     archived: false,
   }
+
   archiveMessage(event) {
-    const { message, user } = this.props
-    const login = user.profile.login.split('@').shift()
     event.preventDefault()
-    window
-      .fetch(
-        `https://messaging-staging.herokuapp.com/api/archive/${login}/${
-          message.uuid
-        }`
-      )
-      .then(response => {
-        return response.json()
-      })
-      .then(messages => {
-        this.setState({
-          archived: true,
-        })
-      })
-      .catch(error => {
-        this.setState({
-          archived: false,
-        })
-      })
+    this.setState({
+      archived: true,
+    })
+    this.props.archive(this.props.message.id)
   }
 
   render() {
-    const { title, message } = this.props.message
+    const { headline, message, link } = this.props.message
+    const { archived } = this.state
     return (
       <>
-        {!this.state.archived && (
+        {!archived && (
           <DashboardCard>
             <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
               &times;
               <VisuallyHidden>Archive message</VisuallyHidden>
             </DashboardMessageClose>
-            <DashboardCardHeader>{title}</DashboardCardHeader>
+            <Link to={link}>
+              <DashboardCardHeader>{headline}</DashboardCardHeader>
+            </Link>
             <p>{message}</p>
           </DashboardCard>
         )}
@@ -340,13 +346,13 @@ class DashboardMessage extends React.Component {
 
 class DashboardEvents extends React.Component {
   render() {
-    const { events } = this.props
+    const { events, archive } = this.props
     return (
       <>
         {events ? (
           <>
             {events.map((event, key) => (
-              <DashboardEvent key={key} event={event} />
+              <DashboardEvent key={key} event={event} archive={archive} />
             ))}
           </>
         ) : (
@@ -361,15 +367,46 @@ const DashboardEventDate = styled('h4')`
   font-family: ${fonts.body};
 `
 
-const DashboardEvent = ({ event }) => (
-  <DashboardCard>
-    <Link to={event.link}>
-      <DashboardCardHeader noMargin>{event.headline}</DashboardCardHeader>
-    </Link>
-    <DashboardEventDate>{event.date}</DashboardEventDate>
-    <p>{event.description}</p>
-  </DashboardCard>
-)
+const DashboardImage = styled('img')`
+  float: right;
+  width: 150px;
+  margin-left: 0.5rem;
+`
+
+class DashboardEvent extends React.Component {
+  state = {
+    archived: false,
+  }
+
+  archiveMessage(event) {
+    event.preventDefault()
+    this.setState({
+      archived: true,
+    })
+    this.props.archive(this.props.event.id)
+  }
+
+  render() {
+    const { event } = this.props
+    const { archived } = this.state
+    return (
+      <DashboardCard>
+        <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
+          &times;
+          <VisuallyHidden>Archive message</VisuallyHidden>
+        </DashboardMessageClose>
+        <Link to={event.link}>
+          <DashboardCardHeader noMargin>{event.headline}</DashboardCardHeader>
+        </Link>
+        <DashboardEventDate>
+          {event.image && <DashboardImage src={event.image} />}
+          {event.date} {event.time_start}
+        </DashboardEventDate>
+        <p>{event.description}</p>
+      </DashboardCard>
+    )
+  }
+}
 
 export {
   DashboardEvents,
