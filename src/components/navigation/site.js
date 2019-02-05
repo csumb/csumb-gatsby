@@ -24,7 +24,7 @@ const SiteNavigationList = styled('ul')`
 
 const SiteNavigationLink = styled(LinkInspect)`
   text-decoration: none;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
   &[aria-current='page'] {
     text-decoration: underline;
   }
@@ -49,6 +49,7 @@ const SiteNavigationMenuButton = styled(MenuButton)`
   color: ${colors.white};
   border: none;
   cursor: pointer;
+  padding: 1rem 1rem 1rem 0;
 `
 
 const SiteNavigationBar = styled('nav')`
@@ -57,15 +58,20 @@ const SiteNavigationBar = styled('nav')`
   overflow: hidden;
 `
 
-const SiteNavigationItem = ({ to, children, navigationChildren }) => {
+const SiteNavigationItem = ({ to, children, navigationChildren, first }) => {
   return (
     <>
       {to ? (
-        <SiteNavigationLink to={to}>{children}</SiteNavigationLink>
+        <SiteNavigationLink to={to} first={first}>
+          {children}
+        </SiteNavigationLink>
       ) : (
         <>
           {navigationChildren && (
-            <SiteNavigationSubMenu navigationChildren={navigationChildren}>
+            <SiteNavigationSubMenu
+              first={first}
+              navigationChildren={navigationChildren}
+            >
               {children}
             </SiteNavigationSubMenu>
           )}
@@ -127,6 +133,7 @@ class SiteNavigation extends React.Component {
                     <SiteNavigationItem
                       to={item.url}
                       navigationChildren={item.children}
+                      first={key === 0}
                     >
                       {item.name}
                     </SiteNavigationItem>
