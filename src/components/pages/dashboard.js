@@ -7,7 +7,6 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { AlertEmpty } from 'components/alert'
 import VisuallyHidden from 'components/visually-hidden'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
-import { ImmortalDB } from 'immortal-db'
 import Link from 'gatsby-link'
 
 import '@reach/menu-button/styles.css'
@@ -140,7 +139,11 @@ class DashboardApps extends React.Component {
                   </AppsDropdownButton>
                   <AppsDropdownMenuList>
                     {apps.map(app => (
-                      <AppsDropdownMenuLink component="a" href={app.node.url}>
+                      <AppsDropdownMenuLink
+                        key={app.node.ndame}
+                        component="a"
+                        href={app.node.url}
+                      >
                         {app.node.name}
                       </AppsDropdownMenuLink>
                     ))}
@@ -156,77 +159,22 @@ class DashboardApps extends React.Component {
 }
 
 class DashboardMessages extends React.Component {
-  state = {
-    messages: false,
-    didLoad: false,
-  }
-
-  getRoles() {
-    const { user } = this.props
-    let roles = []
-    if (user._isStaff) {
-      roles.push('staff')
-    }
-    if (user._isFaculty) {
-      roles.push('faculty')
-    }
-    if (user._isEmployee) {
-      roles.push('staff')
-    }
-    if (user._isStudent) {
-      roles.push('student')
-    }
-    if (user._isApplicant) {
-      roles.push('applicant')
-    }
-    return roles.join(',')
-  }
-
-  componentDidMount() {
-    const login = this.props.user.profile.login.split('@').shift()
-    fetch(
-      `https://messaging-staging.herokuapp.com/api/messages/${login}/${this.getRoles()}`
-    )
-      .then(response => {
-        return response.json()
-      })
-      .then(messages => {
-        this.setState({
-          messages: messages,
-          didLoad: true,
-        })
-        ImmortalDB.remove('messageCount')
-      })
-      .catch(error => {
-        this.setState({
-          messages: false,
-          didLoad: true,
-        })
-      })
-  }
-
   render() {
-    const { didLoad, messages } = this.state
+    const { messages } = this.props
     return (
       <>
-        {didLoad ? (
+        {messages && messages.length ? (
           <>
-            {messages && messages.length ? (
-              <>
-                {messages.map((message, key) => (
-                  <DashboardMessage
-                    key={key}
-                    message={message}
-                    user={this.props.user}
-                  />
-                ))}
-              </>
-            ) : (
-              <AlertEmpty>You do not have any messages</AlertEmpty>
-            )}
+            {messages.map((message, key) => (
+              <DashboardMessage
+                key={key}
+                message={message}
+                user={this.props.user}
+              />
+            ))}
           </>
         ) : (
-          <Loading>Loading messages</Loading>
+          <AlertEmpty>You do not have any messages</AlertEmpty>
         )}
       </>
     )
@@ -261,6 +209,87 @@ const DashboardMessageClose = styled('button')`
   font-weight: bold;
   color: ${colors.muted.dark};
 `
+
+class DashboardContent extends React.Component {
+  state = {
+    ready: false,
+    events: false,
+    messages: false,
+  }
+
+  componentDidMount() {
+    const { user } = this.props
+    let roles = []
+    if (user._isStaff) {
+      roles.push('employee_staff')
+    }
+    if (user._isFaculty) {
+      roles.push('employee_faculty')
+    }
+    if (user._isStudent) {
+      roles.push('student_matriculated')
+    }
+    if (user._isApplicant) {
+      roles.push('student_applicant')
+    }
+
+    const userRoles = roles.join(',')
+    fetch('https://csumb.okta.com/api/v1/sessions/me', {
+      credentials: 'include',
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(session => {
+        fetch(
+          `https://csumb.edu/api/dashboard?_session=${
+            session.id
+          }&role=${userRoles}`
+        )
+          .then(response => {
+            return response.json()
+          })
+          .then(content => {
+            this.setState({
+              events: content.events,
+              messages: content.messages,
+              ready: true,
+            })
+          })
+          .catch(error => {
+            this.setState({
+              events: false,
+              didLoad: true,
+            })
+          })
+      })
+      .catch(error => {
+        this.setState({ ready: false })
+      })
+  }
+  render() {
+    const { ready, events, messages } = this.state
+    return (
+      <>
+        {ready ? (
+          <Flex flexWrap="wrap">
+            <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+              <h2>Events</h2>
+              <DashboardEvents events={events} />
+            </Box>
+            <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+              <h2>Messages</h2>
+              <DashboardMessages messages={messages} />
+            </Box>
+          </Flex>
+        ) : (
+          <Loading>Loading messages &amp; events</Loading>
+        )}
+      </>
+    )
+  }
+}
+
 class DashboardMessage extends React.Component {
   state = {
     archived: false,
@@ -310,67 +339,18 @@ class DashboardMessage extends React.Component {
 }
 
 class DashboardEvents extends React.Component {
-  state = {
-    events: false,
-    didLoad: false,
-  }
-
-  getRoles() {
-    const { user } = this.props
-    let roles = []
-    if (user._isStaff) {
-      roles.push('employee_staff')
-    }
-    if (user._isFaculty) {
-      roles.push('employee_faculty')
-    }
-    if (user._isStudent) {
-      roles.push('student_matriculated')
-    }
-    if (user._isApplicant) {
-      roles.push('student_applicant')
-    }
-    return roles.join(',')
-  }
-
-  componentDidMount() {
-    window
-      .fetch(
-        `https://csumb.edu/public/api/dashboard/events?role=${this.getRoles()}`
-      )
-      .then(response => {
-        return response.json()
-      })
-      .then(events => {
-        this.setState({
-          events: events,
-          didLoad: true,
-        })
-      })
-      .catch(error => {
-        this.setState({
-          events: false,
-          didLoad: true,
-        })
-      })
-  }
   render() {
+    const { events } = this.props
     return (
       <>
-        {this.state.didLoad ? (
+        {events ? (
           <>
-            {this.state.events ? (
-              <>
-                {this.state.events.map((event, key) => (
-                  <DashboardEvent key={key} event={event} />
-                ))}
-              </>
-            ) : (
-              <AlertEmpty>No events</AlertEmpty>
-            )}
+            {events.map((event, key) => (
+              <DashboardEvent key={key} event={event} />
+            ))}
           </>
         ) : (
-          <Loading>Loading events</Loading>
+          <AlertEmpty>No events</AlertEmpty>
         )}
       </>
     )
@@ -399,4 +379,5 @@ export {
   DashboardApps,
   DashboardAppsWrapper,
   DashboardApp,
+  DashboardContent,
 }
