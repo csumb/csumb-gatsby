@@ -3,9 +3,6 @@ import styled from '@emotion/styled'
 import { ContainerContext, ContainerElement } from '../container-context'
 
 const ImageContainer = styled('div')`
-  img {
-    width: 100%;
-  }
   ${props => props.container} ${props =>
     props.pullRight ? ` float: right;` : ``};
 `
