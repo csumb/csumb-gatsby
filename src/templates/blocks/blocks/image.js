@@ -12,7 +12,7 @@ const ImageContainer = styled('div')`
 
 class BlockImage extends React.Component {
   render() {
-    const { image, description, pullRight } = this.props
+    const { image, description, height, pullRight } = this.props
     if (!image || !image.url) {
       return null
     }
@@ -24,6 +24,10 @@ class BlockImage extends React.Component {
               <img
                 src={image.url.replace('http://', 'https://')}
                 alt={description}
+                style={{
+                  height: height ? `${height}px` : 'auto',
+                  width: 'auto',
+                }}
               />
             </ImageContainer>
           </ContainerElement>
