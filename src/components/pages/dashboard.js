@@ -390,20 +390,26 @@ class DashboardEvent extends React.Component {
     const { event } = this.props
     const { archived } = this.state
     return (
-      <DashboardCard>
-        <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
-          &times;
-          <VisuallyHidden>Archive message</VisuallyHidden>
-        </DashboardMessageClose>
-        <Link to={event.link}>
-          <DashboardCardHeader noMargin>{event.headline}</DashboardCardHeader>
-        </Link>
-        <DashboardEventDate>
-          {event.date} {event.time_start}
-        </DashboardEventDate>
-        {event.image && <DashboardImage src={event.image} />}
-        <p>{event.description}</p>
-      </DashboardCard>
+      <>
+        {!archived && (
+          <DashboardCard>
+            <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
+              &times;
+              <VisuallyHidden>Archive message</VisuallyHidden>
+            </DashboardMessageClose>
+            <Link to={event.link}>
+              <DashboardCardHeader noMargin>
+                {event.headline}
+              </DashboardCardHeader>
+            </Link>
+            <DashboardEventDate>
+              {event.date} {event.time_start}
+            </DashboardEventDate>
+            {event.image && <DashboardImage src={event.image} />}
+            <p>{event.description}</p>
+          </DashboardCard>
+        )}
+      </>
     )
   }
 }
