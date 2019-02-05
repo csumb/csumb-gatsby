@@ -6,7 +6,7 @@ const encryptFeedback = email => {
   if (!email) {
     return null
   }
-  const iv = new Buffer(16)
+  const iv = new Buffer.alloc(16)
   return cryptex.encrypt(email, process.env.CSUMB_FEEDBACK_KEY, iv)
 }
 
@@ -32,6 +32,10 @@ module.exports = (graphql, actions) => {
                 node {
                   site
                   title
+                  social {
+                    url
+                    site
+                  }
                   contact {
                     phone
                     email

@@ -34,6 +34,9 @@ const type = {
     'a,a:visited': {
       color: colors.primary.default,
     },
+    form: {
+      margin: 0,
+    },
   }),
 }
 

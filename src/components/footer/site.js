@@ -1,9 +1,19 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/container'
 import Link from 'gatsby-link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+  faLinkedin,
+  faYoutube,
+  faFlickr,
+} from '@fortawesome/free-brands-svg-icons'
+import VisuallyHidden from 'components/visually-hidden'
 
 const SiteFooterWrapper = styled('footer')`
   padding: 2rem 0;
@@ -25,10 +35,51 @@ const SiteFooterItems = styled('dl')`
   }
 `
 
+const SiteFooterSocialIconLink = styled('a')`
+  color: ${colors.primary.dark};
+  font-size: 1.5rem;
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  &:visited {
+    color: ${colors.primary.dark};
+  }
+`
+
+const icons = {
+  facebook: faFacebook,
+  twitter: faTwitter,
+  instagram: faInstagram,
+  flickr: faFlickr,
+  linkedin: faLinkedin,
+  youtube: faYoutube,
+}
+
+const SiteFooterSocialIcon = ({ href, name }) => {
+  if (!icons[name]) {
+    return null
+  }
+  return (
+    <SiteFooterSocialIconLink href={href}>
+      <VisuallyHidden>{name}</VisuallyHidden>
+      <FontAwesomeIcon icon={icons[name]} />
+    </SiteFooterSocialIconLink>
+  )
+}
+
+const SiteFooterSocial = ({ social }) => (
+  <>
+    {social.map(item => (
+      <SiteFooterSocialIcon name={item.site} href={item.url} />
+    ))}
+  </>
+)
+
 const SiteFooter = ({ site }) => (
   <SiteFooterWrapper>
     <Container>
       <h3>{site.title}</h3>
+      {site.social && <SiteFooterSocial social={site.social} />}
       <Flex flexWrap="wrap">
         <Box width={[1, 1 / 3, 1 / 3]} pr={[0, 2, 2]}>
           <SiteFooterItems>

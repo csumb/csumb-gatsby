@@ -379,6 +379,7 @@ const SubmitButton = styled('input')`
     ${focusStyle};
   }
   padding: 1rem;
+  border: none;
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
@@ -387,17 +388,20 @@ const SubmitButton = styled('input')`
       ? `
     `
       : `margin: 1.5rem 0;`}
-  color: ${colors.primary.dark};
-  border: 3px solid ${colors.primary.dark};
-  &:hover {
-    color: ${colors.white};
-    background: ${colors.primary.dark};
-  }
+
+  color: ${colors.white} !important;
+  background: ${colors.buttons.default};
   ${props =>
     props.huge
       ? `
     font-size: 2rem;
     padding: 0.6rem;
+  `
+      : ``};
+  ${props =>
+    props.small
+      ? `
+    padding: 0.35rem;
   `
       : ``};
 `

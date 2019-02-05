@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'components/styles/theme'
 import PageTitle from 'components/header/page-title'
 import moment from 'moment'
@@ -142,7 +142,7 @@ const MeetingItem = props => {
 const CourseListItem = ({ course, term }) => {
   const link = `/schedule/${term.DESCR.toLowerCase().replace(' ', '')}/course/${
     course.CRN
-    }`
+  }`
 
   return (
     <CourseListItemRow>
@@ -218,8 +218,7 @@ const CourseListItemHeader = () => (
   </CourseListItemHeaderFlex>
 )
 
-const CourseSectionElement = styled('div')`
-`
+const CourseSectionElement = styled('div')``
 
 const CourseSectionLegend = styled('h3')`
   font-size: 1rem;
@@ -259,7 +258,7 @@ const CoursePage = ({ course, term }) => (
     <PageTitle
       sub={`${course.SUBJECT} ${course.CATALOG_NBR} Section ${
         course.SECTION
-        }, ${course.UNITS} units`}
+      }, ${course.UNITS} units`}
     >
       {term.DESCR}
     </PageTitle>
@@ -308,9 +307,7 @@ const CoursePage = ({ course, term }) => (
             <Link to="/registration-process">
               register for the course in OASIS
             </Link>
-            :
-
-          <CourseNumber>{course.CRN}</CourseNumber>
+            :<CourseNumber>{course.CRN}</CourseNumber>
           </p>
         </CourseSection>
       </Box>
@@ -324,10 +321,10 @@ const ScheduleBackLinkElement = styled(Link)`
 `
 
 const ScheduleBackLink = ({ term }) => (
-  <ScheduleBackLinkElement to={`/schedule/${term.DESCR.toLowerCase().replace(
-    ' ',
-    ''
-  )}`} >← Return to {term.DESCR}
+  <ScheduleBackLinkElement
+    to={`/schedule/${term.DESCR.toLowerCase().replace(' ', '')}`}
+  >
+    ← Return to {term.DESCR}
   </ScheduleBackLinkElement>
 )
 
@@ -340,5 +337,5 @@ export {
   CourseSection,
   MeetingItem,
   CoursePage,
-  ScheduleBackLink
+  ScheduleBackLink,
 }

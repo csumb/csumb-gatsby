@@ -4,7 +4,6 @@ import styled from '@emotion/styled'
 import logo from 'assets/images/csumb-logo-blue.svg'
 
 const BrandImage = styled('img')`
-  display: inline-block;
   margin: 0;
   ${props => props.mobile && `width: 170px;`}
 `

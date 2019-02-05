@@ -137,6 +137,7 @@ storiesOf('Forms/Fieldset').add(
   }
 )
 
-storiesOf('Forms/Submit Button').add('Submit Button', () => (
-  <Submit value="Submit" />
-))
+storiesOf('Forms/Submit Button')
+  .add('Submit Button', () => <Submit value="Submit" />)
+  .add('Huge Button', () => <Submit value="Submit" huge />)
+  .add('Small Button', () => <Submit value="Submit" small />)

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
 import { ContainerElement } from '../container-context'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 
 const ImageGridHeader = styled('h3')`
   margin-top: 0;

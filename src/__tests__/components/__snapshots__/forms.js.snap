@@ -797,7 +797,7 @@ exports[`Label renders labels correctly 1`] = `
 
 exports[`Submit renders huge buttons correctly 1`] = `
 <input
-  className="css-1twcmcy"
+  className="css-j1gy8k"
   type="submit"
   value="Submit"
 />
@@ -805,7 +805,7 @@ exports[`Submit renders huge buttons correctly 1`] = `
 
 exports[`Submit renders marginless buttons correctly 1`] = `
 <input
-  className="css-s6dxkq"
+  className="css-bvtpfo"
   type="submit"
   value="Submit"
 />
@@ -813,7 +813,7 @@ exports[`Submit renders marginless buttons correctly 1`] = `
 
 exports[`Submit renders submit buttons correctly 1`] = `
 <input
-  className="css-1j0xl55"
+  className="css-14weyid"
   type="submit"
   value="Submit"
 />

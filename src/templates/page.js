@@ -8,7 +8,7 @@ import SiteHeader from 'components/header/site-header'
 import Container from 'components/container'
 import PageTitle from 'components/header/page-title'
 import { EventPage } from 'components/pages/event'
-import { Flex, Box } from '@rebass/grid'
+import { Flex, Box } from '@rebass/grid/emotion'
 import PageNavigation from 'components/navigation/page'
 import Breadcrumbs from 'components/header/breadcrumbs'
 import BlockHero from './blocks/blocks/hero-image'
@@ -62,7 +62,7 @@ class PageTemplate extends React.Component {
           <Blocks blocks={pageContent} />
         )}
         <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
-        {site.contact && <SiteFooter site={site} />}
+        {(site.contact || site.social) && <SiteFooter site={site} />}
       </Layout>
     )
   }
