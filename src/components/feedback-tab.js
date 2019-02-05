@@ -14,7 +14,11 @@ class FeedbackTab extends React.Component {
   render() {
     return (
       <FeedbackTabItem>
-        <a href="https://csumb.edu" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScST28lvvCwNZvDQPnScwRATH5jbB86LoaKSNyBlvI-fr0unA/viewform?usp=sf_link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Give feedback!
         </a>
       </FeedbackTabItem>
