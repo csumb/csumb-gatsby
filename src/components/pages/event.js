@@ -7,10 +7,6 @@ import Link from 'gatsby-link'
 import styled from 'react-emotion'
 import moment from 'moment'
 
-const eventStyle = `
-  margin-bottom: 1.5rem;
-`
-
 const Event = ({ event }) => (
   <>
     {event && event.times && (
