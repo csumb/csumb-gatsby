@@ -19,6 +19,7 @@ const StyledCalendar = styled(Calendar)`
   }
   abbr {
     border-bottom: 0;
+    cursor: pointer;
   }
 `
 

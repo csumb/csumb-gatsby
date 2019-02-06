@@ -5,8 +5,9 @@ import { graphql } from 'gatsby'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/container'
 import moment from 'moment'
-import { FeaturedEvent } from 'components/pages/event'
+import { PublicEvent } from 'components/pages/event'
 import EventsSidebar from 'components/events-sidebar'
+import PageTitle from 'components/header/page-title'
 
 class EventsPage extends React.Component {
   getEvents(events) {
@@ -58,13 +59,18 @@ class EventsPage extends React.Component {
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
         <Container topPadding>
+          <PageTitle>Featured events</PageTitle>
           <Flex flexWrap="wrap">
             <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
-              <h2>Featured events</h2>
               {events && (
                 <>
                   {events.map(event => (
-                    <FeaturedEvent key={event.id} event={event} />
+                    <PublicEvent
+                      key={event.id}
+                      event={event}
+                      showTime={true}
+                      showDate={true}
+                    />
                   ))}
                 </>
               )}
@@ -98,6 +104,7 @@ export const query = graphql`
           id
           title
           site
+          pagePath
           event {
             description
             featured
