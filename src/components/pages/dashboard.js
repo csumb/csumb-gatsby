@@ -8,8 +8,13 @@ import { AlertEmpty } from 'components/alert'
 import VisuallyHidden from 'components/visually-hidden'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import Link from 'gatsby-link'
+import { ButtonLink } from 'components/button'
 
 import '@reach/menu-button/styles.css'
+
+const loginUrl =
+  'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7'
+
 const DashboardAppsWrapper = styled('div')`
   background: ${colors.primary.dark};
   padding: 0.5rem 0 0.4rem 0;
@@ -110,50 +115,51 @@ class DashboardApps extends React.Component {
 
   render() {
     const { apps } = this.props
+    if (!this.state.apps) {
+      return null
+    }
     return (
       <DashboardAppsWrapper>
         <Container>
-          {this.state.apps && (
-            <Flex flexWrap="wrap">
-              <Box width={[1, 10 / 12]} pr={2}>
-                {this.state.apps.map(app => (
-                  <React.Fragment key={app.linkUrl}>
-                    {app.label.search('CSUMB Website') === -1 && (
-                      <DashboardApp
-                        href={app.linkUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {app.label.replace('Google Apps ', '')}
-                      </DashboardApp>
-                    )}
-                  </React.Fragment>
-                ))}
-              </Box>
-              <AppTools width={[1, 2 / 12]}>
-                <EditOrderButton href="https://csumb.okta.com/" target="_blank">
-                  Edit order
-                  <VisuallyHidden> of apps</VisuallyHidden>
-                </EditOrderButton>
-                <Menu>
-                  <AppsDropdownButton>
-                    More apps <span aria-hidden>▾</span>
-                  </AppsDropdownButton>
-                  <AppsDropdownMenuList>
-                    {apps.map(app => (
-                      <AppsDropdownMenuLink
-                        key={app.node.name}
-                        component="a"
-                        href={app.node.url}
-                      >
-                        {app.node.name}
-                      </AppsDropdownMenuLink>
-                    ))}
-                  </AppsDropdownMenuList>
-                </Menu>
-              </AppTools>
-            </Flex>
-          )}
+          <Flex flexWrap="wrap">
+            <Box width={[1, 10 / 12]} pr={2}>
+              {this.state.apps.map(app => (
+                <React.Fragment key={app.linkUrl}>
+                  {app.label.search('CSUMB Website') === -1 && (
+                    <DashboardApp
+                      href={app.linkUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {app.label.replace('Google Apps ', '')}
+                    </DashboardApp>
+                  )}
+                </React.Fragment>
+              ))}
+            </Box>
+            <AppTools width={[1, 2 / 12]}>
+              <EditOrderButton href="https://csumb.okta.com/" target="_blank">
+                Edit order
+                <VisuallyHidden> of apps</VisuallyHidden>
+              </EditOrderButton>
+              <Menu>
+                <AppsDropdownButton>
+                  More apps <span aria-hidden>▾</span>
+                </AppsDropdownButton>
+                <AppsDropdownMenuList>
+                  {apps.map(app => (
+                    <AppsDropdownMenuLink
+                      key={app.node.name}
+                      component="a"
+                      href={app.node.url}
+                    >
+                      {app.node.name}
+                    </AppsDropdownMenuLink>
+                  ))}
+                </AppsDropdownMenuList>
+              </Menu>
+            </AppTools>
+          </Flex>
         </Container>
       </DashboardAppsWrapper>
     )
@@ -213,12 +219,55 @@ const DashboardMessageClose = styled('button')`
   color: ${colors.muted.dark};
 `
 
+const NotLoggedIn = styled('div')`
+  font-size: 2rem;
+  text-align: center;
+  margin: 1rem 0;
+`
+
+const LoginMessage = styled('p')`
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+`
+
+class DashboardNotLoggedIn extends React.Component {
+  state = {
+    redirect: false,
+  }
+
+  componentDidMount() {
+    const that = this
+    setTimeout(() => {
+      that.setState({
+        redirect: true,
+      })
+    }, 5000)
+  }
+
+  componentDidUpdate() {
+    if (this.state.redirect) {
+      window.location.href = loginUrl
+    }
+  }
+
+  render() {
+    return (
+      <NotLoggedIn>
+        <p>You are not logged in.</p>
+        <ButtonLink to={loginUrl}>Log in</ButtonLink>
+        <LoginMessage>We'll log you in shortly....</LoginMessage>
+      </NotLoggedIn>
+    )
+  }
+}
+
 class DashboardContent extends React.Component {
   state = {
     ready: false,
     events: false,
     messages: false,
     session: false,
+    notLoggedIn: false,
   }
 
   componentDidMount() {
@@ -242,7 +291,14 @@ class DashboardContent extends React.Component {
       credentials: 'include',
     })
       .then(response => {
-        return response.json()
+        if (response.ok) {
+          return response.json()
+        }
+
+        this.setState({
+          ready: false,
+          notLoggedIn: true,
+        })
       })
       .then(session => {
         this.setState({
@@ -264,11 +320,17 @@ class DashboardContent extends React.Component {
             })
           })
           .catch(error => {
-            this.setState({ events: false, didLoad: true })
+            this.setState({
+              events: false,
+              didLoad: true,
+            })
           })
       })
       .catch(error => {
-        this.setState({ ready: false })
+        this.setState({
+          ready: false,
+          notLoggedIn: true,
+        })
       })
   }
 
@@ -279,7 +341,10 @@ class DashboardContent extends React.Component {
   }
 
   render() {
-    const { ready, events, messages, session } = this.state
+    const { ready, events, messages, session, notLoggedIn } = this.state
+    if (notLoggedIn) {
+      return <DashboardNotLoggedIn />
+    }
     return (
       <>
         {ready ? (
