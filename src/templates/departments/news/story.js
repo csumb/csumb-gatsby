@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/header/site-header'
-import Container from 'components/container'
 import PageTitle from 'components/header/page-title'
 import { LeadParagraph } from 'components/type'
 import SiteNavigation from 'components/navigation/site'

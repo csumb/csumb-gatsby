@@ -147,8 +147,8 @@ export const query = graphql`
         node {
           title
           link
+          source
           goLiveDate
-          unpublishDate
           contentful_id
         }
       }
@@ -176,6 +176,8 @@ export const query = graphql`
           darkImage
           link
           lighten
+          fixedHeight
+          imageHeight
           image {
             file {
               url
