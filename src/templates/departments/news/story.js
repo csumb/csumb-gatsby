@@ -16,10 +16,9 @@ class NewsStoryPage extends React.Component {
       <Layout pageTitle={story.title}>
         <SiteHeader path="/news">News</SiteHeader>
         {navigation && <SiteNavigation navigation={navigation} />}
-        <Container>
-          <PageTitle>{story.title}</PageTitle>
-        </Container>
+
         <NewsContainer>
+          <PageTitle>{story.title}</PageTitle>
           <NewsByline story={story} />
           {story.childContentfulNewsStoryLeadParagraphTextNode
             .leadParagraph && (
