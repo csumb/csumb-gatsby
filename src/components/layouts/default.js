@@ -9,6 +9,7 @@ import { UserContext, setUserRole } from 'components/contexts/user'
 import Emergency from 'components/emergency'
 import { ImmortalDB } from 'immortal-db'
 import url from 'url'
+import FeedbackTab from 'components/feedback-tab'
 
 class Layout extends React.Component {
   state = {
@@ -91,6 +92,7 @@ class Layout extends React.Component {
         <SkipNavContent />
         {this.props.children}
         <Footer hasSiteFooter={hasSiteFooter ? true : false} />
+        <FeedbackTab />
       </UserContext.Provider>
     )
   }

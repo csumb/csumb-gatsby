@@ -7,7 +7,6 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { AlertEmpty } from 'components/alert'
 import VisuallyHidden from 'components/visually-hidden'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
-import { ImmortalDB } from 'immortal-db'
 import Link from 'gatsby-link'
 
 import '@reach/menu-button/styles.css'
@@ -97,7 +96,9 @@ class DashboardApps extends React.Component {
       })
       .then(apps => {
         this.setState({
-          apps: apps,
+          apps: apps.sort((a, b) => {
+            return a.sortOrder - b.sortOrder
+          }),
         })
       })
       .catch(error => {
@@ -140,7 +141,11 @@ class DashboardApps extends React.Component {
                   </AppsDropdownButton>
                   <AppsDropdownMenuList>
                     {apps.map(app => (
-                      <AppsDropdownMenuLink component="a" href={app.node.url}>
+                      <AppsDropdownMenuLink
+                        key={app.node.name}
+                        component="a"
+                        href={app.node.url}
+                      >
                         {app.node.name}
                       </AppsDropdownMenuLink>
                     ))}
@@ -156,77 +161,23 @@ class DashboardApps extends React.Component {
 }
 
 class DashboardMessages extends React.Component {
-  state = {
-    messages: false,
-    didLoad: false,
-  }
-
-  getRoles() {
-    const { user } = this.props
-    let roles = []
-    if (user._isStaff) {
-      roles.push('staff')
-    }
-    if (user._isFaculty) {
-      roles.push('faculty')
-    }
-    if (user._isEmployee) {
-      roles.push('staff')
-    }
-    if (user._isStudent) {
-      roles.push('student')
-    }
-    if (user._isApplicant) {
-      roles.push('applicant')
-    }
-    return roles.join(',')
-  }
-
-  componentDidMount() {
-    const login = this.props.user.profile.login.split('@').shift()
-    fetch(
-      `https://messaging-staging.herokuapp.com/api/messages/${login}/${this.getRoles()}`
-    )
-      .then(response => {
-        return response.json()
-      })
-      .then(messages => {
-        this.setState({
-          messages: messages,
-          didLoad: true,
-        })
-        ImmortalDB.remove('messageCount')
-      })
-      .catch(error => {
-        this.setState({
-          messages: false,
-          didLoad: true,
-        })
-      })
-  }
-
   render() {
-    const { didLoad, messages } = this.state
+    const { messages, archive } = this.props
     return (
       <>
-        {didLoad ? (
+        {messages && messages.length ? (
           <>
-            {messages && messages.length ? (
-              <>
-                {messages.map((message, key) => (
-                  <DashboardMessage
-                    key={key}
-                    message={message}
-                    user={this.props.user}
-                  />
-                ))}
-              </>
-            ) : (
-              <AlertEmpty>You do not have any messages</AlertEmpty>
-            )}
+            {messages.map((message, key) => (
+              <DashboardMessage
+                key={key}
+                message={message}
+                user={this.props.user}
+                archive={archive}
+              />
+            ))}
           </>
         ) : (
-          <Loading>Loading messages</Loading>
+          <AlertEmpty>You do not have any messages</AlertEmpty>
         )}
       </>
     )
@@ -261,61 +212,16 @@ const DashboardMessageClose = styled('button')`
   font-weight: bold;
   color: ${colors.muted.dark};
 `
-class DashboardMessage extends React.Component {
-  state = {
-    archived: false,
-  }
-  archiveMessage(event) {
-    const { message, user } = this.props
-    const login = user.profile.login.split('@').shift()
-    event.preventDefault()
-    window
-      .fetch(
-        `https://messaging-staging.herokuapp.com/api/archive/${login}/${
-          message.uuid
-        }`
-      )
-      .then(response => {
-        return response.json()
-      })
-      .then(messages => {
-        this.setState({
-          archived: true,
-        })
-      })
-      .catch(error => {
-        this.setState({
-          archived: false,
-        })
-      })
-  }
 
-  render() {
-    const { title, message } = this.props.message
-    return (
-      <>
-        {!this.state.archived && (
-          <DashboardCard>
-            <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
-              &times;
-              <VisuallyHidden>Archive message</VisuallyHidden>
-            </DashboardMessageClose>
-            <DashboardCardHeader>{title}</DashboardCardHeader>
-            <p>{message}</p>
-          </DashboardCard>
-        )}
-      </>
-    )
-  }
-}
-
-class DashboardEvents extends React.Component {
+class DashboardContent extends React.Component {
   state = {
+    ready: false,
     events: false,
-    didLoad: false,
+    messages: false,
+    session: false,
   }
 
-  getRoles() {
+  componentDidMount() {
     const { user } = this.props
     let roles = []
     if (user._isStaff) {
@@ -330,47 +236,129 @@ class DashboardEvents extends React.Component {
     if (user._isApplicant) {
       roles.push('student_applicant')
     }
-    return roles.join(',')
-  }
 
-  componentDidMount() {
-    window
-      .fetch(
-        `https://csumb.edu/public/api/dashboard/events?role=${this.getRoles()}`
-      )
+    const userRoles = roles.join(',')
+    fetch('https://csumb.okta.com/api/v1/sessions/me', {
+      credentials: 'include',
+    })
       .then(response => {
         return response.json()
       })
-      .then(events => {
+      .then(session => {
         this.setState({
-          events: events,
-          didLoad: true,
+          session: session.id,
         })
+        fetch(
+          `https://csumb.edu/api/dashboard?_session=${
+            session.id
+          }&role=${userRoles}&_t=${Date.now()}`
+        )
+          .then(response => {
+            return response.json()
+          })
+          .then(content => {
+            this.setState({
+              events: content.events,
+              messages: content.messages,
+              ready: true,
+            })
+          })
+          .catch(error => {
+            this.setState({ events: false, didLoad: true })
+          })
       })
       .catch(error => {
-        this.setState({
-          events: false,
-          didLoad: true,
-        })
+        this.setState({ ready: false })
       })
   }
+
+  archive(id, session) {
+    fetch(
+      `https://csumb.edu/api/dashboard/archive?_session=${session}&id=${id}`
+    )
+  }
+
   render() {
+    const { ready, events, messages, session } = this.state
     return (
       <>
-        {this.state.didLoad ? (
+        {ready ? (
+          <Flex flexWrap="wrap">
+            <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+              <h2>Events</h2>
+              <DashboardEvents
+                events={events}
+                archive={id => {
+                  this.archive(id, session)
+                }}
+              />
+            </Box>
+            <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+              <h2>Messages</h2>
+              <DashboardMessages
+                messages={messages}
+                archive={id => {
+                  this.archive(id, session)
+                }}
+              />
+            </Box>
+          </Flex>
+        ) : (
+          <Loading>Loading messages &amp; events</Loading>
+        )}
+      </>
+    )
+  }
+}
+
+class DashboardMessage extends React.Component {
+  state = {
+    archived: false,
+  }
+
+  archiveMessage(event) {
+    event.preventDefault()
+    this.setState({
+      archived: true,
+    })
+    this.props.archive(this.props.message.id)
+  }
+
+  render() {
+    const { headline, message, link } = this.props.message
+    const { archived } = this.state
+    return (
+      <>
+        {!archived && (
+          <DashboardCard>
+            <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
+              &times;
+              <VisuallyHidden>Archive message</VisuallyHidden>
+            </DashboardMessageClose>
+            <Link to={link}>
+              <DashboardCardHeader>{headline}</DashboardCardHeader>
+            </Link>
+            <p>{message}</p>
+          </DashboardCard>
+        )}
+      </>
+    )
+  }
+}
+
+class DashboardEvents extends React.Component {
+  render() {
+    const { events, archive } = this.props
+    return (
+      <>
+        {events ? (
           <>
-            {this.state.events ? (
-              <>
-                {this.state.events.map((event, key) => (
-                  <DashboardEvent key={key} event={event} />
-                ))}
-              </>
-            ) : (
-              <AlertEmpty>No events</AlertEmpty>
-            )}
+            {events.map((event, key) => (
+              <DashboardEvent key={key} event={event} archive={archive} />
+            ))}
           </>
         ) : (
-          <Loading>Loading events</Loading>
+          <AlertEmpty>No events</AlertEmpty>
         )}
       </>
     )
@@ -381,15 +369,52 @@ const DashboardEventDate = styled('h4')`
   font-family: ${fonts.body};
 `
 
-const DashboardEvent = ({ event }) => (
-  <DashboardCard>
-    <Link to={event.link}>
-      <DashboardCardHeader noMargin>{event.headline}</DashboardCardHeader>
-    </Link>
-    <DashboardEventDate>{event.date}</DashboardEventDate>
-    <p>{event.description}</p>
-  </DashboardCard>
-)
+const DashboardImage = styled('img')`
+  float: right;
+  width: 150px;
+  margin-left: 0.5rem;
+`
+
+class DashboardEvent extends React.Component {
+  state = {
+    archived: false,
+  }
+
+  archiveMessage(event) {
+    event.preventDefault()
+    this.setState({
+      archived: true,
+    })
+    this.props.archive(this.props.event.id)
+  }
+
+  render() {
+    const { event } = this.props
+    const { archived } = this.state
+    return (
+      <>
+        {!archived && (
+          <DashboardCard>
+            <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
+              &times;
+              <VisuallyHidden>Archive message</VisuallyHidden>
+            </DashboardMessageClose>
+            <Link to={event.link}>
+              <DashboardCardHeader noMargin>
+                {event.headline}
+              </DashboardCardHeader>
+            </Link>
+            <DashboardEventDate>
+              {event.date} {event.time_start}
+            </DashboardEventDate>
+            {event.image && <DashboardImage src={event.image} />}
+            <p>{event.description}</p>
+          </DashboardCard>
+        )}
+      </>
+    )
+  }
+}
 
 export {
   DashboardEvents,
@@ -399,4 +424,5 @@ export {
   DashboardApps,
   DashboardAppsWrapper,
   DashboardApp,
+  DashboardContent,
 }
