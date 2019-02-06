@@ -185,20 +185,12 @@ const FeaturedStory = ({
   image,
   title,
   eventDate,
-  tags,
   childContentfulHomepageStoryDescriptionTextNode,
   childContentfulHomepageEventDescriptionTextNode,
 }) => (
   <Story featured>
     <a href={link}>
       <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
-      {tags && (
-        <>
-          {tags.map(tag => (
-            <Taglink to={`/news/tag/${tag.slug}`}>{tag.name}</Taglink>
-          ))}
-        </>
-      )}
       <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
       {eventDate && (
         <FeaturedEventDate>
