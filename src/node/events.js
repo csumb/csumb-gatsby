@@ -1,5 +1,6 @@
 const path = require(`path`)
 const report = require(`gatsby-cli/lib/reporter`)
+const moment = require('moment')
 
 module.exports = (graphql, actions) => {
   const { createPage } = actions
@@ -58,14 +59,31 @@ module.exports = (graphql, actions) => {
           return
         }
         const template = path.resolve('src/templates/event-day.js')
-
-        createPage({
-          path: 'everything',
-          component: path.resolve('src/templates/everything/index.js'),
-          context: {
-            topLevelItems: topLevelItems,
-            is404: false,
-          },
+        const eventsByDate = {}
+        const timeCutoff = moment()
+          .subtract(1, 'day')
+          .unix()
+        result.data.allCsumbPage.edges.forEach(edge => {
+          const event = edge.node
+          event.event.date_stamps.forEach(stamp => {
+            if (stamp.start_stamp >= timeCutoff) {
+              const date = moment.unix(stamp.start_stamp).format('YYYY/M/D')
+              if (typeof eventsByDate[date] === 'undefined') {
+                eventsByDate[date] = []
+              }
+              eventsByDate[date].push(event)
+            }
+          })
+        })
+        Object.keys(eventsByDate).forEach(date => {
+          createPage({
+            path: `events/${date}`,
+            component: template,
+            context: {
+              events: eventsByDate[date],
+              date: date,
+            },
+          })
         })
 
         report.success(`built event listing pages.`)

@@ -59,7 +59,7 @@ class EventsPage extends React.Component {
         <SiteHeader path="/events">Events</SiteHeader>
         <Container topPadding>
           <Flex flexWrap="wrap">
-            <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 2, 2]}>
+            <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
               <h2>Featured events</h2>
               {events && (
                 <>

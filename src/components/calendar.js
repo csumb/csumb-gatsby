@@ -9,6 +9,9 @@ const StyledCalendar = styled(Calendar)`
   .react-calendar__month-view__days__day--weekend {
     color: ${colors.black};
   }
+  .react-calendar__navigation__label {
+    font-weight: bold;
+  }
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
     background: ${colors.primary.darkest};
