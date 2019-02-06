@@ -48,7 +48,8 @@ const PublicEventWrapper = styled('div')`
   h3 {
     margin-bottom: 0.5rem;
   }
-  a {
+  a,
+  a:visited {
     color: ${colors.black};
     text-decoration: none;
     &:hover {

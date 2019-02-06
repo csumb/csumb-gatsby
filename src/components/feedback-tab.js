@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'react-emotion'
 import { colors } from 'components/styles/theme'
 import Container from 'components/container'
+import { Global, css } from '@emotion/core'
 const FeedbackTabItem = styled('div')`
   position: fixed;
   bottom: 0;
@@ -15,6 +16,13 @@ class FeedbackTab extends React.Component {
   render() {
     return (
       <FeedbackTabItem>
+        <Global
+          styles={css`
+            body {
+              padding-bottom: 3rem;
+            }
+          `}
+        />
         <Container>
           The CSUMB website will be updated to improve the functionality of the
           dashboard and the appearance of the site.{' '}
