@@ -72,6 +72,16 @@ const NuggetsList = styled('ul')`
   }
 `
 
+const NuggetArrow = styled('span')`
+  display: inline-block;
+  float: right;
+`
+
+const NuggetSource = styled('div')`
+  font-variant: italic;
+  font-size: 0.8rem;
+`
+
 const NuggetsHeader = styled('h3')`
   font-size: 1rem;
   font-weight: 700;
@@ -121,23 +131,13 @@ const HeroItem = styled('div')`
   }
 `
 
-const Taglink = styled(Link)`
-  color: ${colors.muted.mid};
-  text-decoration: underline !important;
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  &:hover {
-    color: ${colors.muted.darkest};
-  }
-`
-
 const HomepageHero = ({ item }) => (
   <LazyHero
     opacity={item.lighten / 100}
-    parallaxOffset={100}
+    parallaxOffset={item.fixedHeight ? 0 : 100}
     transitionDuration={0}
     imageSrc={item.image.file.url}
+    minHeight={item.fixedHeight ? `${item.imageHeight}px` : '80vh'}
   >
     <HeroItem>
       <h2>
@@ -212,11 +212,18 @@ const FeaturedStory = ({
 
 const Nuggets = ({ nuggets }) => (
   <NuggetsWrapper>
-    <NuggetsHeader>From around campus</NuggetsHeader>
+    <NuggetsHeader>
+      <NuggetArrow>↗</NuggetArrow>In the news
+    </NuggetsHeader>
     <NuggetsList>
-      {nuggets.map(({ contentful_id, link, title }) => (
+      {nuggets.map(({ contentful_id, link, title, source }) => (
         <li key={contentful_id}>
-          <a href={link}>{title}</a>
+          <a href={link}>
+            <>
+              {title}
+              {source && <NuggetSource>{source}</NuggetSource>}
+            </>
+          </a>
         </li>
       ))}
     </NuggetsList>
