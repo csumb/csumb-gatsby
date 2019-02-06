@@ -96,7 +96,9 @@ class DashboardApps extends React.Component {
       })
       .then(apps => {
         this.setState({
-          apps: apps,
+          apps: apps.sort((a, b) => {
+            return a.sortOrder - b.sortOrder
+          }),
         })
       })
       .catch(error => {
