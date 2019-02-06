@@ -64,11 +64,13 @@ const FeaturedEvent = ({ event }) => (
 )
 
 const RegularEventWrapper = styled('div')`
-  padding: 0.5rem;
-  background: ${colors.primary.light};
+  margin-bottom: 1.5rem;
   a {
     color: ${colors.black};
     text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 
@@ -77,6 +79,7 @@ const RegularEvent = ({ event }) => (
     <h4>
       <Link to={`${event.site}/${event.pagePath}`}>{event.title}</Link>
     </h4>
+    <p>{event.event.description}</p>
   </RegularEventWrapper>
 )
 

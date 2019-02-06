@@ -57,7 +57,6 @@ module.exports = (graphql, actions) => {
           const publishDate = moment(node.goLiveDate)
           if (publishDate.isSameOrBefore()) {
             const pathDate = publishDate.format('YYYY/MMM/D').toLowerCase()
-            console.log(`news/${pathDate}/${node.slug}`)
             createPage({
               path: `news/${pathDate}/${node.slug}`,
               component: newsStoryTemplate,
