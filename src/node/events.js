@@ -19,6 +19,7 @@ module.exports = (graphql, actions) => {
                 id
                 title
                 site
+                pagePath
                 event {
                   description
                   featured
@@ -76,12 +77,22 @@ module.exports = (graphql, actions) => {
           })
         })
         Object.keys(eventsByDate).forEach(date => {
+          const dateParts = date.split('/')
+          const dateFormat = moment()
+            .set({
+              year: dateParts[0],
+              month: parseInt(dateParts[1]) - 1,
+              date: dateParts[2],
+            })
+            .format('MMMM D, YYYY')
+
           createPage({
             path: `events/${date}`,
             component: template,
             context: {
               events: eventsByDate[date],
               date: date,
+              dateFormat: dateFormat,
             },
           })
         })

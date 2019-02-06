@@ -5,16 +5,10 @@ import { LeadParagraph } from 'components/type'
 import { colors } from 'components/styles/theme'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
+import moment from 'moment'
 
 const eventStyle = `
   margin-bottom: 1.5rem;
-`
-
-const FeaturedEventWrapper = styled('div')`
-  ${eventStyle};
-  background: ${colors.primary.darkest};
-  padding: 1rem;
-  color: ${colors.white};
 `
 
 const Event = ({ event }) => (
@@ -52,35 +46,75 @@ const EventPage = ({ event }) => (
   </Container>
 )
 
-const FeaturedEvent = ({ event }) => (
-  <FeaturedEventWrapper>
-    <h2>{event.title}</h2>
-    <Flex flexWrap="wrap">
-      <Box width={[0, 1 / 4, 1 / 4]} pr={[0, 2, 2]}>
-        image
-      </Box>
-    </Flex>
-  </FeaturedEventWrapper>
-)
-
-const RegularEventWrapper = styled('div')`
+const PublicEventWrapper = styled('div')`
   margin-bottom: 1.5rem;
+  p,
+  h3 {
+    margin-bottom: 0.5rem;
+  }
   a {
     color: ${colors.black};
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      background: ${colors.primary.lightest};
     }
   }
 `
 
-const RegularEvent = ({ event }) => (
-  <RegularEventWrapper>
-    <h4>
-      <Link to={`${event.site}/${event.pagePath}`}>{event.title}</Link>
-    </h4>
-    <p>{event.event.description}</p>
-  </RegularEventWrapper>
+const PublicEventLocation = styled('p')`
+  font-weight: bold;
+`
+
+const PublicEventDate = styled('span')`
+  display: inline-block;
+  margin-right: 1.5rem;
+`
+
+const PublicEvent = ({ event, showDate, showTime }) => (
+  <PublicEventWrapper>
+    <Link to={event.pagePath}>
+      <Flex flexWrap="wrap">
+        <Box width={[0, 3 / 12, 3 / 12]} pr={[0, 4, 4]}>
+          {event.event.image && <img src={event.event.image} alt="" />}
+        </Box>
+        <Box width={[1, 9 / 12, 9 / 12]}>
+          <h3>{event.title}</h3>
+          {(showDate || showTime) && (
+            <p>
+              {showDate && (
+                <PublicEventDate>
+                  {event.event.date_stamps.map(stamp => (
+                    <>{moment.unix(stamp.start_stamp).format('MMMM D, YYYY')}</>
+                  ))}
+                </PublicEventDate>
+              )}
+              {showTime && (
+                <>
+                  {event.event.times.start} — {event.event.times.end}
+                </>
+              )}
+            </p>
+          )}
+
+          <PublicEventLocation>
+            {event.event.location.type === 'on-campus' && (
+              <>
+                {event.event.location.building.name}
+                {event.event.location.room && (
+                  <>
+                    {', '}
+                    {event.event.location.room}
+                  </>
+                )}
+              </>
+            )}
+          </PublicEventLocation>
+
+          <p>{event.event.description}</p>
+        </Box>
+      </Flex>
+    </Link>
+  </PublicEventWrapper>
 )
 
-export { Event, EventPage, EventFeedItem, FeaturedEvent, RegularEvent }
+export { Event, EventPage, EventFeedItem, PublicEvent }
