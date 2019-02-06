@@ -2,7 +2,20 @@ import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/container'
 import { LeadParagraph } from 'components/type'
+import { colors } from 'components/styles/theme'
 import Link from 'gatsby-link'
+import styled from 'react-emotion'
+
+const eventStyle = `
+  margin-bottom: 1.5rem;
+`
+
+const FeaturedEventWrapper = styled('div')`
+  ${eventStyle};
+  background: ${colors.primary.darkest};
+  padding: 1rem;
+  color: ${colors.white};
+`
 
 const Event = ({ event }) => (
   <>
@@ -39,16 +52,32 @@ const EventPage = ({ event }) => (
   </Container>
 )
 
-const FeaturedEvent = ({ event }) => <h2>{event.title}</h2>
+const FeaturedEvent = ({ event }) => (
+  <FeaturedEventWrapper>
+    <h2>{event.title}</h2>
+    <Flex flexWrap="wrap">
+      <Box width={[0, 1 / 4, 1 / 4]} pr={[0, 2, 2]}>
+        image
+      </Box>
+    </Flex>
+  </FeaturedEventWrapper>
+)
+
+const RegularEventWrapper = styled('div')`
+  padding: 0.5rem;
+  background: ${colors.primary.light};
+  a {
+    color: ${colors.black};
+    text-decoration: none;
+  }
+`
 
 const RegularEvent = ({ event }) => (
-  <Flex flexWrap="wrap">
-    <Box width={[1, 3 / 4, 9 / 12]} pr={[0, 2, 2]}>
-      <h3>
-        <Link to={`${event.site}/${event.pagePath}`}>{event.title}</Link>
-      </h3>
-    </Box>
-  </Flex>
+  <RegularEventWrapper>
+    <h4>
+      <Link to={`${event.site}/${event.pagePath}`}>{event.title}</Link>
+    </h4>
+  </RegularEventWrapper>
 )
 
 export { Event, EventPage, EventFeedItem, FeaturedEvent, RegularEvent }
