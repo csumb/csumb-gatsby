@@ -53,7 +53,6 @@ module.exports = (graphql, actions) => {
 
         result.data.allContentfulNewsStory.edges.forEach(edge => {
           const { node } = edge
-          console.log(node.id)
           const publishDate = moment(node.goLiveDate)
           if (publishDate.isSameOrBefore()) {
             const pathDate = publishDate.format('YYYY/MMM/D').toLowerCase()
