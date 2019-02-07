@@ -168,9 +168,16 @@ const HomepageNavigation = ({ items }) => (
   </Flex>
 )
 
-const NonFeaturedStory = ({ contentful_id, link, image, title, eventDate }) => (
+const NonFeaturedStory = ({
+  contentful_id,
+  news_story,
+  link,
+  image,
+  title,
+  eventDate,
+}) => (
   <Story>
-    <a href={link}>
+    <a href={getNewsLink(news_story, link)}>
       <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
       <NonFeaturedStoryHeader>{title}</NonFeaturedStoryHeader>
       {eventDate && (
@@ -185,11 +192,12 @@ const FeaturedStory = ({
   image,
   title,
   eventDate,
+  news_story,
   childContentfulHomepageStoryDescriptionTextNode,
   childContentfulHomepageEventDescriptionTextNode,
 }) => (
   <Story featured>
-    <a href={link}>
+    <a href={getNewsLink(news_story, link)}>
       <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
       <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
       {eventDate && (
@@ -209,6 +217,15 @@ const FeaturedStory = ({
     </FeaturedStoryDescription>
   </Story>
 )
+
+const getNewsLink = (newsStory, link) => {
+  if (!newsStory) {
+    return link
+  }
+  return `/news/${moment(newsStory[0].goLiveDate)
+    .format('YYYY/MMM/D')
+    .toLowerCase()}/${newsStory[0].slug}`
+}
 
 const Nuggets = ({ nuggets }) => (
   <NuggetsWrapper>

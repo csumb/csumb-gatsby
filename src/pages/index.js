@@ -88,7 +88,7 @@ export default IndexPage
 
 export const query = graphql`
   {
-    allContentfulHomepageStory(sort: { fields: goLiveDate }) {
+    allContentfulHomepageStory(sort: { fields: goLiveDate, order: DESC }) {
       edges {
         node {
           title
@@ -98,6 +98,11 @@ export const query = graphql`
           unpublishDate
           childContentfulHomepageStoryDescriptionTextNode {
             description
+          }
+          news_story {
+            id
+            slug
+            goLiveDate
           }
           image {
             fixed {
