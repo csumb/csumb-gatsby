@@ -7,7 +7,6 @@ import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 import { UserContext, setUserRole } from 'components/contexts/user'
 import Emergency from 'components/emergency'
-import { ImmortalDB } from 'immortal-db'
 import url from 'url'
 import FeedbackTab from 'components/feedback-tab'
 
@@ -17,37 +16,24 @@ class Layout extends React.Component {
   }
 
   async componentDidMount() {
-    let location = url.parse(window.location.href, true)
-    if (location.query && typeof location.query._login !== 'undefined') {
-      await ImmortalDB.remove('user')
-    }
-
-    const cachedUser = await ImmortalDB.get('user', false)
-
-    if (cachedUser) {
-      this.setState({ user: JSON.parse(cachedUser) })
-    } else {
-      window
-        .fetch('https://csumb.okta.com/api/v1/users/me', {
-          credentials: 'include',
+    window
+      .fetch('https://csumb.okta.com/api/v1/users/me', {
+        credentials: 'include',
+      })
+      .then(response => {
+        return response.json()
+      })
+      .then(user => {
+        user = setUserRole(user)
+        this.setState({
+          user: user,
         })
-        .then(response => {
-          return response.json()
+      })
+      .catch(error => {
+        this.setState({
+          user: { anonymous: true },
         })
-        .then(user => {
-          user = setUserRole(user)
-          this.setState({
-            user: user,
-          })
-          ImmortalDB.set('user', user)
-        })
-        .catch(error => {
-          this.setState({
-            user: { anonymous: true },
-          })
-          ImmortalDB.set('user', { anonymous: true })
-        })
-    }
+      })
   }
 
   render() {
