@@ -7,7 +7,6 @@ import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 import { UserContext, setUserRole } from 'components/contexts/user'
 import Emergency from 'components/emergency'
-import url from 'url'
 import FeedbackTab from 'components/feedback-tab'
 
 class Layout extends React.Component {
