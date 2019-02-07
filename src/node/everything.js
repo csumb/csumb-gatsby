@@ -53,7 +53,7 @@ module.exports = (graphql, actions) => {
         })
 
         topLevelItems.forEach(topItem => {
-          if (topItem.contentfulchildren.length) {
+          if (topItem.contentfulchildren && topItem.contentfulchildren.length) {
             let subItems = []
             topItem.contentfulchildren.forEach(child => {
               subItems.push(allItems[child.contentful_id])

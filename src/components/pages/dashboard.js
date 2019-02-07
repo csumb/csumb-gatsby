@@ -251,7 +251,7 @@ const DashboardMobileToolbar = styled('div')`
     width: 33.3333333333333333%;
     text-align: center;
     margin: 0;
-    padding: 5px 15px;
+    padding: 5px 0;
     cursor: pointer;
   }
 `
@@ -653,8 +653,6 @@ class DashboardEvent extends React.Component {
     )
   }
 }
-
-const DashboardMobileContent = ({ user, tab }) => <>{tab === ''}</>
 
 export {
   DashboardEvents,
