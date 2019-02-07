@@ -4,31 +4,45 @@ import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
 import SiteHeader from 'components/header/site-header'
 import { graphql } from 'gatsby'
-import styled from '@emotion/styled'
-import { colors } from 'components/styles/theme'
 import { DashboardApps, DashboardContent } from 'components/pages/dashboard'
 
-const DashboardContainer = styled('section')`
-  background: ${colors.primary.lightest};
-`
-
 class DashboardPage extends React.Component {
+  state = {
+    isMobile: false,
+  }
+
+  componentDidMount() {
+    const mobileBreakpoint = 830
+    const that = this
+
+    const setWindowSize = () => {
+      that.setState({
+        isMobile: window.innerWidth <= mobileBreakpoint,
+      })
+    }
+
+    window.addEventListener('resize', setWindowSize)
+
+    setWindowSize()
+  }
+
   render() {
     const { data } = this.props
+    const { isMobile } = this.state
     return (
       <Layout pageTitle="Dashboard">
         <SiteHeader path="/dashboard">Dashboard</SiteHeader>
 
-        <DashboardApps apps={data.allCsumbApp.edges} />
+        <DashboardApps apps={data.allCsumbApp.edges} isMobile={isMobile} />
         <UserContext.Consumer>
           {context => (
             <>
               {context.user && (
-                <DashboardContainer>
+                <section>
                   <Container topPadding>
-                    <DashboardContent user={context.user} />
+                    <DashboardContent user={context.user} isMobile={isMobile} />
                   </Container>
-                </DashboardContainer>
+                </section>
               )}
             </>
           )}
