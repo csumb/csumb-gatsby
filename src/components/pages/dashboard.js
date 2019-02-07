@@ -28,7 +28,14 @@ const DashboardAppsWrapper = styled('div')`
 `
 
 const DashboardApp = styled('a')`
-  color: ${colors.white};
+  ${props =>
+    props.isMobile
+      ? `
+    display: block;
+    margin: 1rem 0;
+    `
+      : `
+    color: ${colors.white};
   text-decoration: none;
   display: inline-block;
   margin-right: 0.8rem;
@@ -40,6 +47,7 @@ const DashboardApp = styled('a')`
   &:visited {
     color: ${colors.white};
   }
+    `}
 `
 
 const appToolsStyle = `
@@ -149,10 +157,18 @@ class DashboardApps extends React.Component {
   }
 
   render() {
-    const { apps } = this.props
+    const { apps, isMobile } = this.props
     const { oktaApps, isExpanded } = this.state
     if (!oktaApps) {
       return null
+    }
+    if (isMobile) {
+      return (
+        <Container topPadding>
+          <DashboardOktaAppList apps={oktaApps.top} isMobile={true} />
+          <DashboardOktaAppList apps={oktaApps.bottom} isMobile={true} />
+        </Container>
+      )
     }
     return (
       <DashboardAppsWrapper>
@@ -184,7 +200,7 @@ class DashboardApps extends React.Component {
   }
 }
 
-const DashboardOktaAppList = ({ apps }) => (
+const DashboardOktaAppList = ({ apps, isMobile }) => (
   <>
     {apps.map((app, index) => (
       <DashboardApp
@@ -192,6 +208,7 @@ const DashboardOktaAppList = ({ apps }) => (
         target="_blank"
         rel="noopener noreferrer"
         key={app.linkUrl}
+        isMobile={isMobile}
       >
         {app.label}
       </DashboardApp>
@@ -223,6 +240,20 @@ const CloseDialog = styled('button')`
 const MoreAppsMessage = styled('p')`
   font-size: 0.8rem;
   text-align: right;
+`
+
+const DashboardMobileToolbar = styled('div')`
+  background: ${colors.primary.darkest};
+  button {
+    color: ${colors.white};
+    border: none;
+    background: transparent;
+    width: 33.3333333333333333%;
+    text-align: center;
+    margin: 0;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
 `
 
 class DashboardOtherApps extends React.Component {
@@ -448,16 +479,47 @@ class DashboardContent extends React.Component {
 
   render() {
     const { ready, events, messages, session, notLoggedIn } = this.state
-    const { isMobile } = this.props
+    const { isMobile, mobileTab, moreApps } = this.props
     if (notLoggedIn) {
       return <DashboardNotLoggedIn />
+    }
+    if (isMobile && ready) {
+      return (
+        <>
+          {mobileTab === 'messages' && (
+            <DashboardMessageWrapper>
+              <h2>Messages</h2>
+              <DashboardMessages
+                messages={messages}
+                archive={id => {
+                  this.archive(id, session)
+                }}
+              />
+            </DashboardMessageWrapper>
+          )}
+          {mobileTab === 'events' && (
+            <DashboardEventWrapper>
+              <h2>Events</h2>
+              <DashboardEvents
+                events={events}
+                archive={id => {
+                  this.archive(id, session)
+                }}
+              />
+            </DashboardEventWrapper>
+          )}
+          {mobileTab === 'apps' && (
+            <DashboardApps isMobile={true} apps={moreApps} />
+          )}
+        </>
+      )
     }
     return (
       <>
         {ready ? (
           <Flex flexWrap="wrap">
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-              <DashboardMessageWrapper>
+              <DashboardEventWrapper>
                 <h2>Events</h2>
                 <DashboardEvents
                   events={events}
@@ -465,10 +527,10 @@ class DashboardContent extends React.Component {
                     this.archive(id, session)
                   }}
                 />
-              </DashboardMessageWrapper>
+              </DashboardEventWrapper>
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-              <DashboardEventWrapper>
+              <DashboardMessageWrapper>
                 <h2>Messages</h2>
                 <DashboardMessages
                   messages={messages}
@@ -476,7 +538,7 @@ class DashboardContent extends React.Component {
                     this.archive(id, session)
                   }}
                 />
-              </DashboardEventWrapper>
+              </DashboardMessageWrapper>
             </Box>
           </Flex>
         ) : (
@@ -592,6 +654,8 @@ class DashboardEvent extends React.Component {
   }
 }
 
+const DashboardMobileContent = ({ user, tab }) => <>{tab === ''}</>
+
 export {
   DashboardEvents,
   DashboardEvent,
@@ -601,4 +665,5 @@ export {
   DashboardAppsWrapper,
   DashboardApp,
   DashboardContent,
+  DashboardMobileToolbar,
 }

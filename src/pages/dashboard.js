@@ -4,11 +4,16 @@ import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
 import SiteHeader from 'components/header/site-header'
 import { graphql } from 'gatsby'
-import { DashboardApps, DashboardContent } from 'components/pages/dashboard'
+import {
+  DashboardApps,
+  DashboardContent,
+  DashboardMobileToolbar,
+} from 'components/pages/dashboard'
 
 class DashboardPage extends React.Component {
   state = {
     isMobile: false,
+    activeTab: 'messages',
   }
 
   componentDidMount() {
@@ -28,21 +33,61 @@ class DashboardPage extends React.Component {
 
   render() {
     const { data } = this.props
-    const { isMobile } = this.state
+    const { isMobile, activeTab } = this.state
     return (
       <Layout pageTitle="Dashboard">
         <SiteHeader path="/dashboard">Dashboard</SiteHeader>
-
-        <DashboardApps apps={data.allCsumbApp.edges} isMobile={isMobile} />
         <UserContext.Consumer>
           {context => (
             <>
               {context.user && (
-                <section>
-                  <Container topPadding>
-                    <DashboardContent user={context.user} isMobile={isMobile} />
-                  </Container>
-                </section>
+                <>
+                  {isMobile ? (
+                    <>
+                      <DashboardMobileToolbar>
+                        <Container>
+                          <button
+                            onClick={() => {
+                              this.setState({ activeTab: 'messages' })
+                            }}
+                          >
+                            Messages
+                          </button>
+                          <button
+                            onClick={() => {
+                              this.setState({ activeTab: 'events' })
+                            }}
+                          >
+                            Events
+                          </button>
+                          <button
+                            onClick={() => {
+                              this.setState({ activeTab: 'apps' })
+                            }}
+                          >
+                            Apps
+                          </button>
+                        </Container>
+                      </DashboardMobileToolbar>
+                      <DashboardContent
+                        user={context.user}
+                        mobileTab={activeTab}
+                        isMobile={true}
+                        moreApps={data.allCsumbApp.edges}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <DashboardApps apps={data.allCsumbApp.edges} />
+                      <section>
+                        <Container topPadding>
+                          <DashboardContent user={context.user} />
+                        </Container>
+                      </section>
+                      )}
+                    </>
+                  )}
+                </>
               )}
             </>
           )}
