@@ -92,10 +92,6 @@ export const query = graphql`
       edges {
         node {
           title
-          tags {
-            name
-            slug
-          }
           featured
           link
           goLiveDate
