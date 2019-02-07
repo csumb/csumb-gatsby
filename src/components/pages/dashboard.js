@@ -6,11 +6,18 @@ import Loading from 'components/loading'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { AlertEmpty } from 'components/alert'
 import VisuallyHidden from 'components/visually-hidden'
-import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
 import Link from 'gatsby-link'
-import { ButtonLink } from 'components/button'
+import { ButtonLink, Button } from 'components/button'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faChevronUp,
+  faChevronDown,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons'
+import { DialogOverlay, DialogContent } from '@reach/dialog'
 
 import '@reach/menu-button/styles.css'
+import '@reach/dialog/styles.css'
 
 const loginUrl =
   'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7'
@@ -39,7 +46,7 @@ const appToolsStyle = `
   padding: 0.2rem;
   border: 1px solid ${colors.white};
   margin-top: 0.5rem;
-  display: block;
+  display: inline-block;
   background: transparent;
   color: ${colors.white};
   text-align: center;
@@ -59,36 +66,42 @@ const EditOrderButton = styled('a')`
   text-decoration: none;
 `
 
-const AppTools = styled(Box)`
-  text-align: right;
-`
-
-const AppsDropdownButton = styled(MenuButton)`
+const MoreAppsButton = styled('button')`
   ${appToolsStyle};
 `
 
-const AppsDropdownMenuList = styled(MenuList)`
-  border: 1px solid ${colors.black};
-  padding: 0;
-  font-family: ${fonts.body};
-  a {
-    color: ${colors.primary.darkest};
-  }
+const dashboardWrapperStyle = `
+  padding: 1rem;
 `
 
-const AppsDropdownMenuLink = styled(MenuLink)`
-  padding: 0.5rem;
-  color: ${colors.primary.darkest};
-  &:hover,
-  &:focus {
-    background: ${colors.primary.darkest};
-    color: ${colors.white};
-  }
+const DashboardMessageWrapper = styled('div')`
+  ${dashboardWrapperStyle};
+  background: ${colors.primary.light};
+`
+
+const DashboardEventWrapper = styled('div')`
+  ${dashboardWrapperStyle};
+  background: ${colors.muted.light};
+`
+
+const DasbhoardAppToggle = styled('button')`
+  float: right;
+  margin-left: 1rem;
+  background: transparent;
+  color: ${colors.white};
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+`
+
+const MoreAppsDialog = styled(DialogContent)`
+  width: 75vw;
 `
 
 class DashboardApps extends React.Component {
   state = {
-    apps: false,
+    oktaApps: false,
+    isExpanded: false,
   }
 
   componentDidMount() {
@@ -100,68 +113,160 @@ class DashboardApps extends React.Component {
         return response.json()
       })
       .then(apps => {
+        const oktaApps = {
+          top: [],
+          bottom: [],
+        }
+        apps.sort((a, b) => {
+          return a.sortOrder - b.sortOrder
+        })
+        apps.forEach((app, index) => {
+          if (app.label.search('CSUMB Website') === -1) {
+            app.label = app.label.replace('Google Apps ', '')
+            if (index < 9) {
+              oktaApps.top.push(app)
+            } else {
+              oktaApps.bottom.push(app)
+            }
+          }
+        })
         this.setState({
-          apps: apps.sort((a, b) => {
-            return a.sortOrder - b.sortOrder
-          }),
+          oktaApps: oktaApps,
         })
       })
       .catch(error => {
         this.setState({
-          apps: false,
+          oktaApps: false,
         })
       })
   }
 
+  handleToggle(event) {
+    event.preventDefault()
+    this.setState({
+      isExpanded: !this.state.isExpanded,
+    })
+  }
+
   render() {
     const { apps } = this.props
-    if (!this.state.apps) {
+    const { oktaApps, isExpanded } = this.state
+    if (!oktaApps) {
       return null
     }
     return (
       <DashboardAppsWrapper>
         <Container>
-          <Flex flexWrap="wrap">
-            <Box width={[1, 10 / 12]} pr={2}>
-              {this.state.apps.map(app => (
-                <React.Fragment key={app.linkUrl}>
-                  {app.label.search('CSUMB Website') === -1 && (
-                    <DashboardApp
-                      href={app.linkUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {app.label.replace('Google Apps ', '')}
-                    </DashboardApp>
-                  )}
-                </React.Fragment>
-              ))}
-            </Box>
-            <AppTools width={[1, 2 / 12]}>
-              <EditOrderButton href="https://csumb.okta.com/" target="_blank">
-                Edit order
-                <VisuallyHidden> of apps</VisuallyHidden>
-              </EditOrderButton>
-              <Menu>
-                <AppsDropdownButton>
-                  More apps <span aria-hidden>▾</span>
-                </AppsDropdownButton>
-                <AppsDropdownMenuList>
-                  {apps.map(app => (
-                    <AppsDropdownMenuLink
-                      key={app.node.name}
-                      component="a"
-                      href={app.node.url}
-                    >
-                      {app.node.name}
-                    </AppsDropdownMenuLink>
-                  ))}
-                </AppsDropdownMenuList>
-              </Menu>
-            </AppTools>
-          </Flex>
+          <DasbhoardAppToggle onClick={this.handleToggle.bind(this)}>
+            <FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} />
+            <VisuallyHidden>View more apps</VisuallyHidden>
+          </DasbhoardAppToggle>
+          <DashboardOktaAppList apps={oktaApps.top} />
         </Container>
+        {isExpanded && (
+          <Container>
+            <Flex flexWrap="wrap">
+              <Box width={[1, 10 / 12, 10 / 12]} pr={3}>
+                <DashboardOktaAppList apps={oktaApps.bottom} />
+              </Box>
+              <Box width={[1, 2 / 12, 2 / 12]}>
+                <EditOrderButton href="https://csumb.okta.com/" target="_blank">
+                  Edit order
+                  <VisuallyHidden> of apps</VisuallyHidden>
+                </EditOrderButton>
+                <DashboardOtherApps apps={apps} />
+              </Box>
+            </Flex>
+          </Container>
+        )}
       </DashboardAppsWrapper>
+    )
+  }
+}
+
+const DashboardOktaAppList = ({ apps }) => (
+  <>
+    {apps.map((app, index) => (
+      <DashboardApp
+        href={app.linkUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        key={app.linkUrl}
+      >
+        {app.label}
+      </DashboardApp>
+    ))}
+  </>
+)
+
+const MoreAppsList = styled('ul')`
+  list-style-type: none;
+  margin: 0;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  li {
+    padding-left: 0;
+  }
+`
+
+const CloseDialog = styled('button')`
+  cursor: pointer;
+  background: transparent;
+  float: right;
+  font-size: 1.4rem;
+  border: none;
+  margin-top: -1rem;
+  margin-right: -1rem;
+`
+
+const MoreAppsMessage = styled('p')`
+  font-size: 0.8rem;
+  text-align: right;
+`
+
+class DashboardOtherApps extends React.Component {
+  state = {
+    showDialog: false,
+  }
+
+  render() {
+    const { apps } = this.props
+    return (
+      <>
+        <MoreAppsButton onClick={() => this.setState({ showDialog: true })}>
+          More apps
+        </MoreAppsButton>
+        <DialogOverlay
+          style={{ background: 'rgba(0, 0, 0, 0.7)' }}
+          isOpen={this.state.showDialog}
+        >
+          <MoreAppsDialog>
+            <CloseDialog onClick={() => this.setState({ showDialog: false })}>
+              <VisuallyHidden>Close dialog</VisuallyHidden>
+              <FontAwesomeIcon icon={faTimes} />
+            </CloseDialog>
+            <h2>More apps</h2>
+            <MoreAppsList>
+              {apps.map(app => (
+                <li>
+                  <a key={app.node.name} component="a" href={app.node.url}>
+                    {app.node.name}
+                  </a>
+                </li>
+              ))}
+            </MoreAppsList>
+            <Button onClick={() => this.setState({ showDialog: false })}>
+              Close
+            </Button>
+            <MoreAppsMessage>
+              <a href="https://github.com/csumb/csumb-gatsby/wiki/The-%22More-apps%22-button-in-the-dashboard">
+                Why are these apps here?
+              </a>
+            </MoreAppsMessage>
+          </MoreAppsDialog>
+        </DialogOverlay>
+      </>
     )
   }
 }
@@ -195,6 +300,7 @@ const DashboardCard = styled('div')`
   padding: 0.5rem;
   margin-bottom: 1rem;
   position: relative;
+  overflow: hidden;
 `
 
 const DashboardCardHeader = styled('h3')`
@@ -342,6 +448,7 @@ class DashboardContent extends React.Component {
 
   render() {
     const { ready, events, messages, session, notLoggedIn } = this.state
+    const { isMobile } = this.props
     if (notLoggedIn) {
       return <DashboardNotLoggedIn />
     }
@@ -350,22 +457,26 @@ class DashboardContent extends React.Component {
         {ready ? (
           <Flex flexWrap="wrap">
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-              <h2>Events</h2>
-              <DashboardEvents
-                events={events}
-                archive={id => {
-                  this.archive(id, session)
-                }}
-              />
+              <DashboardMessageWrapper>
+                <h2>Events</h2>
+                <DashboardEvents
+                  events={events}
+                  archive={id => {
+                    this.archive(id, session)
+                  }}
+                />
+              </DashboardMessageWrapper>
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-              <h2>Messages</h2>
-              <DashboardMessages
-                messages={messages}
-                archive={id => {
-                  this.archive(id, session)
-                }}
-              />
+              <DashboardEventWrapper>
+                <h2>Messages</h2>
+                <DashboardMessages
+                  messages={messages}
+                  archive={id => {
+                    this.archive(id, session)
+                  }}
+                />
+              </DashboardEventWrapper>
             </Box>
           </Flex>
         ) : (

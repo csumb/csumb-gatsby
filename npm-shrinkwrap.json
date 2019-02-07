@@ -2281,14 +2281,29 @@
       "integrity": "sha512-4HxyyOLo/nDg0LlgYvzgqpTGaxqKmrZB8/y5wWhtyvGzgKAb1DJzSnYRaFsgGGgkQAQmhwPXKZ0H/rOAkxXJ8Q=="
     },
     "@reach/dialog": {
-      "version": "0.1.2",
-      "resolved": "https://registry.npmjs.org/@reach/dialog/-/dialog-0.1.2.tgz",
-      "integrity": "sha512-aaBS2a4ZNKGpqsjCdZukYhjf1x75sZ1lQrYg9mJq21Nfz9kk0Yx6zn4LR7ZYxgqkGj5/CQOSciGuUPF+Z8k9nA==",
+      "version": "0.1.3",
+      "resolved": "https://registry.npmjs.org/@reach/dialog/-/dialog-0.1.3.tgz",
+      "integrity": "sha512-G5yLyqANY0MwiqD9fYY1DJQoauQhWoQAMS1DmmjUX0dKf5yJFP0+2IplfkIopx9xop6Xz3psleofydU0ygBboA==",
       "requires": {
-        "@reach/component-component": "^0.1.1",
-        "@reach/portal": "^0.1.1",
+        "@reach/component-component": "^0.1.2",
+        "@reach/portal": "^0.1.2",
         "@reach/utils": "^0.1.2",
         "focus-trap": "^3.0.0"
+      },
+      "dependencies": {
+        "@reach/component-component": {
+          "version": "0.1.2",
+          "resolved": "https://registry.npmjs.org/@reach/component-component/-/component-component-0.1.2.tgz",
+          "integrity": "sha512-LSsLxBA13qLsfjLtytiuB0siVJSTp0h3hhlJybr90Ynx1SuQ4pRtMi5aUIk7HM3wDswj22YbGC2zOpzibNyN3w=="
+        },
+        "@reach/portal": {
+          "version": "0.1.2",
+          "resolved": "https://registry.npmjs.org/@reach/portal/-/portal-0.1.2.tgz",
+          "integrity": "sha512-9jvdmlThI4l5MpNiN2S0235TmzN99pafD6K6tKMUHsEzIhmIIn5qap6Yx06LE96bHj2D2LARbQV5oVBzaKjLFg==",
+          "requires": {
+            "@reach/component-component": "^0.1.2"
+          }
+        }
       }
     },
     "@reach/menu-button": {
@@ -25862,9 +25877,9 @@
       }
     },
     "tabbable": {
-      "version": "3.1.1",
-      "resolved": "https://registry.npmjs.org/tabbable/-/tabbable-3.1.1.tgz",
-      "integrity": "sha512-583MHIOwictf7+zbxqO/L5fBqMN6Li4SJ1XTKQA9WzHRA7c2BB+D+Ny7Y6kGqU2u+rHK59+oRzrBvMU53aZz+A=="
+      "version": "3.1.2",
+      "resolved": "https://registry.npmjs.org/tabbable/-/tabbable-3.1.2.tgz",
+      "integrity": "sha512-wjB6puVXTYO0BSFtCmWQubA/KIn7Xvajw0x0l6eJUudMG/EAiJvIUnyNX6xO4NpGrJ16lbD0eUseB9WxW0vlpQ=="
     },
     "table": {
       "version": "4.0.2",
