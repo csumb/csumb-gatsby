@@ -57,7 +57,7 @@
     "grunt": "^1.0.3",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-git": "^1.0.10",
-    "immortal-db": "^1.0.1",
+    "js-cookie": "^2.2.0",
     "moment": "^2.22.2",
     "node-cryptex": "0.0.2",
     "normalize.css": "^8.0.1",

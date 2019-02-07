@@ -54,10 +54,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             test: /filestack-js/,
             use: loaders.null(),
           },
-          {
-            test: /immortal-db/,
-            use: loaders.null(),
-          },
         ],
       },
     })
