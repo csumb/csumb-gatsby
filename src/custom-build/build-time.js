@@ -6,4 +6,4 @@ const content = {
   format: moment().format('MMMM, D, YYYY h:mm:ss a'),
 }
 
-fs.outputJson('./public/_build.json', content)
+fs.outputJson('./public/_last-build.json', content)
