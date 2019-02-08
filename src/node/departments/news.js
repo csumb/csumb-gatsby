@@ -30,9 +30,7 @@ module.exports = (graphql, actions) => {
                   id
                 }
                 childContentfulNewsStoryMainContentRichTextNode {
-                  childContentfulRichText {
-                    html
-                  }
+                  mainContent
                 }
               }
             }

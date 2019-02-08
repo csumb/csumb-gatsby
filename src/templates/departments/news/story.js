@@ -5,8 +5,8 @@ import PageTitle from 'components/header/page-title'
 import { LeadParagraph } from 'components/type'
 import SiteNavigation from 'components/navigation/site'
 import NewsContainer from 'components/news-container'
-import { NewsByline, NewsContent } from 'components/pages/news'
-
+import { NewsByline } from 'components/pages/news'
+import RichText from 'components/rich-text'
 class NewsStoryPage extends React.Component {
   render() {
     const { story, navigation } = this.props.pageContext
@@ -29,11 +29,10 @@ class NewsStoryPage extends React.Component {
             </LeadParagraph>
           )}
         </NewsContainer>
-        <NewsContent
-          content={
-            story.childContentfulNewsStoryMainContentRichTextNode
-              .childContentfulRichText.html
-          }
+        <RichText
+          richText={JSON.parse(
+            story.childContentfulNewsStoryMainContentRichTextNode.mainContent
+          )}
         />
       </Layout>
     )
