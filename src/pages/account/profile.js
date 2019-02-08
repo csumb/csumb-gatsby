@@ -18,19 +18,29 @@ import {
 } from 'components/pages/account'
 import { Button } from 'components/button'
 import SimpleMDE from 'react-simplemde-editor'
+import showdown from 'showdown'
 import 'simplemde/dist/simplemde.min.css'
 
 const AccountPhoto = styled('img')`
   max-width: 150px;
 `
 
-const updateOktaField = (user, field, value) => {
-  fetch(
-    `https://api.csumb.edu/okta/profile?user=${user.id}&token=${
-      user.profile.authToken
-    }&field=${field}&value=${value}`
-  )
+const updateProfileField = (field, value) => {
+  fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
+    credentials: 'include',
+  })
+    .then(response => {
+      return response.json()
+    })
+    .then(response => {
+      fetch(
+        `http://api.csumb.edu/profile/data/update?token=${
+          response.id
+        }&field=${field}&value=${value}`
+      )
+    })
 }
+
 class AccountProfilePage extends React.Component {
   render() {
     return (
@@ -79,8 +89,34 @@ class AccountProfilePage extends React.Component {
 }
 
 class UserAccountProfileForm extends React.Component {
+  state = {
+    profile: false,
+  }
+
+  componentDidMount() {
+    const that = this
+    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
+      credentials: 'include',
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        fetch(`http://api.csumb.edu/profile/data?token=${response.id}`)
+          .then(response => {
+            return response.json()
+          })
+          .then(response => {
+            that.setState({
+              profile: response,
+            })
+          })
+      })
+  }
+
   render() {
     const { user, buildings } = this.props
+    const { profile } = this.state
     return (
       <>
         <AccountGroup legend="Job title">
@@ -100,10 +136,14 @@ class UserAccountProfileForm extends React.Component {
             title are controled by your human resources department.
           </p>
         </AccountGroup>
-        <UserAccountProfileOffice user={user} buildings={buildings} />
-        <UserAccountProfilePhone user={user} />
-        <UserAccountProfileBio user={user} />
-        <UserAccountProfilePhoto user={user} />
+        <UserAccountProfileOffice
+          user={user}
+          buildings={buildings}
+          profile={profile}
+        />
+        <UserAccountProfilePhone user={user} profile={profile} />
+        <UserAccountProfileBio user={user} profile={profile} />
+        <UserAccountProfilePhoto user={user} profile={profile} />
       </>
     )
   }
@@ -120,6 +160,7 @@ class UserAccountProfileOffice extends React.Component {
       showForm: !this.state.showForm,
     })
   }
+
   render() {
     const { user, buildings } = this.props
     return (
@@ -157,8 +198,8 @@ class UserAccountProfileOfficeForm extends React.Component {
   handleSubmit(event) {
     const { user } = this.props
     event.preventDefault()
-    updateOktaField(user, 'directoryBuildingCode', this.state.building)
-    updateOktaField(user, 'campusRoomNumber', this.state.room)
+    updateProfileField('buildingCode', this.state.building)
+    updateProfileField('room', this.state.room)
     this.setState({
       updated: true,
     })
@@ -223,14 +264,14 @@ class UserAccountProfilePhone extends React.Component {
   }
 
   render() {
-    const { user } = this.props
+    const { user, profile } = this.props
     return (
       <AccountGroup legend="Phone number">
         <p>
           Your phone number is shown on the{' '}
           <Link to="/directory">public campus directory.</Link>
         </p>
-        <AccountData>{user.profile.directoryPhone}</AccountData>
+        {profile && <AccountData>{profile.phone}</AccountData>}
         <p>
           <Button onClick={this.handleShowForm.bind(this)} to="#phone">
             Change phone number
@@ -250,7 +291,7 @@ class UserAccountProfilePhoneForm extends React.Component {
   handleSubmit(event) {
     const { user } = this.props
     event.preventDefault()
-    updateOktaField(user, 'directoryPhone', this.state.phone)
+    updateProfileField('phone', this.state.phone)
     this.setState({
       updated: true,
     })
@@ -296,16 +337,21 @@ class UserAccountProfileBio extends React.Component {
   }
 
   render() {
-    const { user } = this.props
+    const { user, profile } = this.props
+    const converter = new showdown.Converter()
     return (
       <AccountGroup legend="Biography">
         <p>
           Your biography is shown on the{' '}
           <Link to="/directory">public campus directory.</Link>
         </p>
-        <AccountData>{user.profile.profileBio}</AccountData>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: converter.makeHtml(profile.biography),
+          }}
+        />
         <p>
-          <Button onClick={this.handleShowForm.bind(this)} to="#phone">
+          <Button onClick={this.handleShowForm.bind(this)}>
             Update biography
           </Button>
         </p>
@@ -324,7 +370,7 @@ class UserAccountProfileBioForm extends React.Component {
     const { user } = this.props
     event.preventDefault()
 
-    updateOktaField(user, 'profileBio', this.state.biography)
+    updateProfileField('biography', this.state.biography)
     this.setState({
       updated: true,
     })
@@ -377,7 +423,9 @@ class UserAccountProfileBioForm extends React.Component {
 }
 
 class UserAccountProfilePhoto extends React.Component {
-  savePhoto(photo) {}
+  savePhoto(photo) {
+    updateProfileField('photo', photo.filesUploaded[0].url)
+  }
 
   render() {
     const { user } = this.props
