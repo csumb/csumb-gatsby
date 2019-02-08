@@ -10,7 +10,6 @@ import {
 } from '@reach/menu-button'
 import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
-import { ImmortalDB } from 'immortal-db'
 
 import '@reach/menu-button/styles.css'
 
@@ -76,8 +75,6 @@ const UserDashboardLink = styled(Link)`
 class UserDropdown extends React.Component {
   handleLogout(event) {
     event.preventDefault()
-    ImmortalDB.remove('user')
-    ImmortalDB.remove('messageCount')
     fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
     })
@@ -135,7 +132,6 @@ class UserDropdown extends React.Component {
 
 class UserWidget extends React.Component {
   handleLogin(event) {
-    ImmortalDB.remove('user')
     window.location.href = this.props.loginLink
   }
 
@@ -157,7 +153,6 @@ class UserWidget extends React.Component {
                     <>
                       <UserDashboardLink to="/dashboard">
                         Dashboard
-                        <UnreadMessages user={context.user} />
                       </UserDashboardLink>
                       <UserDropdown user={context.user} />
                     </>
@@ -167,83 +162,6 @@ class UserWidget extends React.Component {
             </>
           )}
         </UserContext.Consumer>
-      </>
-    )
-  }
-}
-
-const UnreadMessageCounter = styled('span')`
-  display: inline-block;
-  background: ${colors.indicators.high};
-  color: ${colors.white};
-  font-size: 0.5rem;
-  margin-left: 0.3rem;
-  font-weight: bold;
-  border-radius: 8px;
-  padding: 0.1rem 0.3rem;
-  float: right;
-`
-
-class UnreadMessages extends React.Component {
-  state = {
-    unread: false,
-  }
-
-  getRoles() {
-    const { user } = this.props
-    let roles = []
-    if (user._isStaff) {
-      roles.push('staff')
-    }
-    if (user._isFaculty) {
-      roles.push('faculty')
-    }
-    if (user._isEmployee) {
-      roles.push('staff')
-    }
-    if (user._isStudent) {
-      roles.push('student')
-    }
-    if (user._isApplicant) {
-      roles.push('applicant')
-    }
-    return roles.join(',')
-  }
-
-  async componentDidMount() {
-    const login = this.props.user.profile.login.split('@').shift()
-    const messageCount = await ImmortalDB.get('messageCount', false)
-    if (messageCount !== false) {
-      this.setState({
-        unread: messageCount,
-      })
-    } else {
-      window
-        .fetch(
-          `https://messaging-staging.herokuapp.com/api/unread/${login}/${this.getRoles()}`
-        )
-        .then(response => {
-          return response.json()
-        })
-        .then(messages => {
-          this.setState({
-            unread: messages.unread,
-          })
-          ImmortalDB.set('messageCount', messages.unread)
-        })
-        .catch(error => {
-          this.setState({
-            unread: false,
-          })
-        })
-    }
-  }
-  render() {
-    return (
-      <>
-        {this.state.unread && (
-          <UnreadMessageCounter>{this.state.unread}</UnreadMessageCounter>
-        )}
       </>
     )
   }

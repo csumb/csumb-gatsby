@@ -18,19 +18,29 @@ import {
 } from 'components/pages/account'
 import { Button } from 'components/button'
 import SimpleMDE from 'react-simplemde-editor'
+import showdown from 'showdown'
 import 'simplemde/dist/simplemde.min.css'
 
 const AccountPhoto = styled('img')`
   max-width: 150px;
 `
 
-const updateOktaField = (user, field, value) => {
-  fetch(
-    `https://api.csumb.edu/okta/profile?user=${user.id}&token=${
-      user.profile.authToken
-    }&field=${field}&value=${value}`
-  )
+const updateProfileField = (field, value) => {
+  fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
+    credentials: 'include',
+  })
+    .then(response => {
+      return response.json()
+    })
+    .then(response => {
+      fetch(
+        `http://api.csumb.edu/profile/data/update?token=${
+          response.id
+        }&field=${field}&value=${value}`
+      )
+    })
 }
+
 class AccountProfilePage extends React.Component {
   render() {
     return (
@@ -79,8 +89,34 @@ class AccountProfilePage extends React.Component {
 }
 
 class UserAccountProfileForm extends React.Component {
+  state = {
+    profile: false,
+  }
+
+  componentDidMount() {
+    const that = this
+    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
+      credentials: 'include',
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        fetch(`http://api.csumb.edu/profile/data?token=${response.id}`)
+          .then(response => {
+            return response.json()
+          })
+          .then(response => {
+            that.setState({
+              profile: response,
+            })
+          })
+      })
+  }
+
   render() {
     const { user, buildings } = this.props
+    const { profile } = this.state
     return (
       <>
         <AccountGroup legend="Job title">
@@ -100,11 +136,94 @@ class UserAccountProfileForm extends React.Component {
             title are controled by your human resources department.
           </p>
         </AccountGroup>
-        <UserAccountProfileOffice user={user} buildings={buildings} />
-        <UserAccountProfilePhone user={user} />
-        <UserAccountProfileBio user={user} />
-        <UserAccountProfilePhoto user={user} />
+        <UserAccountProfileOffice
+          user={user}
+          buildings={buildings}
+          profile={profile}
+        />
+        <UserAccountProfilePhone user={user} profile={profile} />
+        <UserAccountProfileBio user={user} profile={profile} />
+        <UserAccountProfileOfficeHours user={user} profile={profile} />
+        <UserAccountProfilePhoto user={user} profile={profile} />
       </>
+    )
+  }
+}
+
+class UserAccountProfileOfficeHours extends React.Component {
+  state = {
+    showForm: false,
+  }
+
+  handleShowForm(event) {
+    event.preventDefault()
+    this.setState({
+      showForm: !this.state.showForm,
+    })
+  }
+
+  render() {
+    const { profile } = this.props
+    return (
+      <AccountGroup legend="Office appointment calendar">
+        <p>
+          Students can use your appointment calendar to book office hours.
+          <a href="https://support.google.com/calendar/answer/190998?hl=en">
+            Learn how to setup an appointment calendar
+          </a>
+        </p>
+        {profile && profile.appointmentCalendar && (
+          <AccountData>
+            <a href={profile.appointmentCalendar}>View appointment calendar</a>
+          </AccountData>
+        )}
+        <p>
+          <Button onClick={this.handleShowForm.bind(this)} to="#phone">
+            Change appointment calendar
+          </Button>
+        </p>
+        {this.state.showForm && <UserAccountProfileOfficeHoursForm />}
+      </AccountGroup>
+    )
+  }
+}
+
+class UserAccountProfileOfficeHoursForm extends React.Component {
+  state = {
+    calendar: false,
+    updated: false,
+  }
+  handleSubmit(event) {
+    event.preventDefault()
+    updateProfileField('appointmentCalendar', this.state.calendar)
+    this.setState({
+      updated: true,
+    })
+  }
+
+  handleChange(event) {
+    this.setState({
+      calendar: event.target.value.trim(),
+    })
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <InputText
+          onKeyUp={this.handleChange.bind(this)}
+          label="Appointment calendar address"
+          name="calendar"
+          small
+        />
+        <Submit value="Update calendar" />
+        {this.state.updated && (
+          <AlertSuccess>
+            Your appointment calendar has been updated. It might take a few
+            hours for the change to make it to the public directory.
+          </AlertSuccess>
+        )}
+      </form>
     )
   }
 }
@@ -120,8 +239,18 @@ class UserAccountProfileOffice extends React.Component {
       showForm: !this.state.showForm,
     })
   }
+
   render() {
-    const { user, buildings } = this.props
+    const { user, buildings, profile } = this.props
+    const location = profile.location ? profile.location.split('-') : false
+    let currentBuilding = false
+    if (location) {
+      buildings.forEach(building => {
+        if (building.node.code === location[0]) {
+          currentBuilding = building.node
+        }
+      })
+    }
     return (
       <AccountGroup legend="Office location">
         <p>
@@ -129,10 +258,16 @@ class UserAccountProfileOffice extends React.Component {
           <Link to="/directory">public campus directory.</Link>
         </p>
         <AccountData>
-          {user.profile.directoryBuilding}
-          <br />
-          {user.profile.campusRoomNumber.length && (
-            <em>Room {user.profile.campusRoomNumber}</em>
+          {location && (
+            <>
+              {currentBuilding && (
+                <>
+                  {currentBuilding.buildingName} ({currentBuilding.code})
+                </>
+              )}
+              <br />
+              <em>Room {location[1]}</em>
+            </>
           )}
         </AccountData>
         <p>
@@ -155,10 +290,8 @@ class UserAccountProfileOfficeForm extends React.Component {
     updated: false,
   }
   handleSubmit(event) {
-    const { user } = this.props
     event.preventDefault()
-    updateOktaField(user, 'directoryBuildingCode', this.state.building)
-    updateOktaField(user, 'campusRoomNumber', this.state.room)
+    updateProfileField('location', `${this.state.building}-${this.state.room}`)
     this.setState({
       updated: true,
     })
@@ -223,14 +356,14 @@ class UserAccountProfilePhone extends React.Component {
   }
 
   render() {
-    const { user } = this.props
+    const { user, profile } = this.props
     return (
       <AccountGroup legend="Phone number">
         <p>
           Your phone number is shown on the{' '}
           <Link to="/directory">public campus directory.</Link>
         </p>
-        <AccountData>{user.profile.directoryPhone}</AccountData>
+        {profile && <AccountData>{profile.phone}</AccountData>}
         <p>
           <Button onClick={this.handleShowForm.bind(this)} to="#phone">
             Change phone number
@@ -248,9 +381,8 @@ class UserAccountProfilePhoneForm extends React.Component {
     updated: false,
   }
   handleSubmit(event) {
-    const { user } = this.props
     event.preventDefault()
-    updateOktaField(user, 'directoryPhone', this.state.phone)
+    updateProfileField('phone', this.state.phone)
     this.setState({
       updated: true,
     })
@@ -296,16 +428,21 @@ class UserAccountProfileBio extends React.Component {
   }
 
   render() {
-    const { user } = this.props
+    const { user, profile } = this.props
+    const converter = new showdown.Converter()
     return (
       <AccountGroup legend="Biography">
         <p>
           Your biography is shown on the{' '}
           <Link to="/directory">public campus directory.</Link>
         </p>
-        <AccountData>{user.profile.profileBio}</AccountData>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: converter.makeHtml(profile.biography),
+          }}
+        />
         <p>
-          <Button onClick={this.handleShowForm.bind(this)} to="#phone">
+          <Button onClick={this.handleShowForm.bind(this)}>
             Update biography
           </Button>
         </p>
@@ -321,10 +458,9 @@ class UserAccountProfileBioForm extends React.Component {
     updated: false,
   }
   handleSubmit(event) {
-    const { user } = this.props
     event.preventDefault()
 
-    updateOktaField(user, 'profileBio', this.state.biography)
+    updateProfileField('biography', this.state.biography)
     this.setState({
       updated: true,
     })
@@ -377,22 +513,21 @@ class UserAccountProfileBioForm extends React.Component {
 }
 
 class UserAccountProfilePhoto extends React.Component {
-  savePhoto(photo) {}
+  savePhoto(photo) {
+    updateProfileField('photo', photo.filesUploaded[0].url)
+  }
 
   render() {
-    const { user } = this.props
+    const { profile } = this.props
     return (
       <AccountGroup legend="Profile photo">
         <p>
           This photo is shown on the{' '}
           <Link to="/directory">public campus directory.</Link>
         </p>
-        {user.profile.directoryPhoto && (
+        {profile.photo && (
           <AccountData>
-            <AccountPhoto
-              src={user.profile.directoryPhoto}
-              alt="Your profile"
-            />
+            <AccountPhoto src={profile.photo} alt="Your profile" />
           </AccountData>
         )}
         <ReactFilestack

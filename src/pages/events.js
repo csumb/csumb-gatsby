@@ -2,17 +2,20 @@ import React from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/header/site-header'
 import { graphql } from 'gatsby'
+import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/container'
 import moment from 'moment'
-import { FeaturedEvent, RegularEvent } from 'components/pages/event'
+import { PublicEvent } from 'components/pages/event'
+import EventsSidebar from 'components/events-sidebar'
+import PageTitle from 'components/header/page-title'
 
 class EventsPage extends React.Component {
   getEvents(events) {
     const timeCutoff = moment()
       .subtract(1, 'day')
       .unix()
-    const regularEvents = []
-    const featuredEvents = []
+    const results = []
+
     const showEvent = event => {
       let show = false
       event.event.date_stamps.forEach(stamp => {
@@ -27,11 +30,7 @@ class EventsPage extends React.Component {
       if (!showEvent(node)) {
         return
       }
-      if (node.event.featured) {
-        featuredEvents.push(node)
-      } else {
-        regularEvents.push(node)
-      }
+      results.push(node)
     })
 
     const getEarliestDate = event => {
@@ -47,39 +46,39 @@ class EventsPage extends React.Component {
       return earliest
     }
 
-    const sortEvents = (a, b) => {
+    results.sort((a, b) => {
       return getEarliestDate(a) > getEarliestDate(b)
-    }
+    })
 
-    regularEvents.sort(sortEvents)
-    featuredEvents.sort(sortEvents)
-
-    return { regular: regularEvents, featured: featuredEvents }
+    return results
   }
 
   render() {
-    const { featured, regular } = this.getEvents(
-      this.props.data.allCsumbPage.edges
-    )
+    const events = this.getEvents(this.props.data.allCsumbPage.edges)
     return (
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
-        <Container>
-          {featured && (
-            <>
-              {featured.map(event => (
-                <FeaturedEvent key={event.id} event={event} />
-              ))}
-            </>
-          )}
-          {regular && (
-            <>
-              <h2>Today's events</h2>
-              {regular.map(event => (
-                <RegularEvent key={event.id} event={event} />
-              ))}
-            </>
-          )}
+        <Container topPadding>
+          <PageTitle>Featured events</PageTitle>
+          <Flex flexWrap="wrap">
+            <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
+              {events && (
+                <>
+                  {events.map(event => (
+                    <PublicEvent
+                      key={event.id}
+                      event={event}
+                      showTime={true}
+                      showDate={true}
+                    />
+                  ))}
+                </>
+              )}
+            </Box>
+            <Box width={[1, 1 / 4, 1 / 4]}>
+              <EventsSidebar />
+            </Box>
+          </Flex>
         </Container>
       </Layout>
     )
@@ -91,7 +90,13 @@ export default EventsPage
 export const query = graphql`
   {
     allCsumbPage(
-      filter: { event: { public: { eq: true }, description: { ne: null } } }
+      filter: {
+        event: {
+          public: { eq: true }
+          featured: { eq: true }
+          description: { ne: null }
+        }
+      }
       sort: { fields: [event___date_stamps] }
     ) {
       edges {
@@ -99,6 +104,7 @@ export const query = graphql`
           id
           title
           site
+          pagePath
           event {
             description
             featured

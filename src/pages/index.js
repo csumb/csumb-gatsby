@@ -88,20 +88,21 @@ export default IndexPage
 
 export const query = graphql`
   {
-    allContentfulHomepageStory(sort: { fields: goLiveDate }) {
+    allContentfulHomepageStory(sort: { fields: goLiveDate, order: DESC }) {
       edges {
         node {
           title
-          tags {
-            name
-            slug
-          }
           featured
           link
           goLiveDate
           unpublishDate
           childContentfulHomepageStoryDescriptionTextNode {
             description
+          }
+          news_story {
+            id
+            slug
+            goLiveDate
           }
           image {
             fixed {
@@ -147,8 +148,8 @@ export const query = graphql`
         node {
           title
           link
+          source
           goLiveDate
-          unpublishDate
           contentful_id
         }
       }
@@ -176,6 +177,8 @@ export const query = graphql`
           darkImage
           link
           lighten
+          fixedHeight
+          imageHeight
           image {
             file {
               url
