@@ -302,7 +302,6 @@ class UserAccountProfilePhoneForm extends React.Component {
     updated: false,
   }
   handleSubmit(event) {
-    const { user } = this.props
     event.preventDefault()
     updateProfileField('phone', this.state.phone)
     this.setState({
@@ -380,7 +379,6 @@ class UserAccountProfileBioForm extends React.Component {
     updated: false,
   }
   handleSubmit(event) {
-    const { user } = this.props
     event.preventDefault()
 
     updateProfileField('biography', this.state.biography)
@@ -441,19 +439,16 @@ class UserAccountProfilePhoto extends React.Component {
   }
 
   render() {
-    const { user } = this.props
+    const { profile } = this.props
     return (
       <AccountGroup legend="Profile photo">
         <p>
           This photo is shown on the{' '}
           <Link to="/directory">public campus directory.</Link>
         </p>
-        {user.profile.directoryPhoto && (
+        {profile.photo && (
           <AccountData>
-            <AccountPhoto
-              src={user.profile.directoryPhoto}
-              alt="Your profile"
-            />
+            <AccountPhoto src={profile.photo} alt="Your profile" />
           </AccountData>
         )}
         <ReactFilestack
