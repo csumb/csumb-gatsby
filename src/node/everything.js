@@ -52,17 +52,8 @@ module.exports = (graphql, actions) => {
           },
         })
 
-        createPage({
-          path: '404.html',
-          component: path.resolve('src/templates/everything/index.js'),
-          context: {
-            topLevelItems: topLevelItems,
-            is404: true,
-          },
-        })
-
         topLevelItems.forEach(topItem => {
-          if (topItem.contentfulchildren.length) {
+          if (topItem.contentfulchildren && topItem.contentfulchildren.length) {
             let subItems = []
             topItem.contentfulchildren.forEach(child => {
               subItems.push(allItems[child.contentful_id])
