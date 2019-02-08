@@ -143,8 +143,87 @@ class UserAccountProfileForm extends React.Component {
         />
         <UserAccountProfilePhone user={user} profile={profile} />
         <UserAccountProfileBio user={user} profile={profile} />
+        <UserAccountProfileOfficeHours user={user} profile={profile} />
         <UserAccountProfilePhoto user={user} profile={profile} />
       </>
+    )
+  }
+}
+
+class UserAccountProfileOfficeHours extends React.Component {
+  state = {
+    showForm: false,
+  }
+
+  handleShowForm(event) {
+    event.preventDefault()
+    this.setState({
+      showForm: !this.state.showForm,
+    })
+  }
+
+  render() {
+    const { profile } = this.props
+    return (
+      <AccountGroup legend="Office appointment calendar">
+        <p>
+          Students can use your appointment calendar to book office hours.
+          <a href="https://support.google.com/calendar/answer/190998?hl=en">
+            Learn how to setup an appointment calendar
+          </a>
+        </p>
+        {profile && profile.appointmentCalendar && (
+          <AccountData>
+            <a href={profile.appointmentCalendar}>View appointment calendar</a>
+          </AccountData>
+        )}
+        <p>
+          <Button onClick={this.handleShowForm.bind(this)} to="#phone">
+            Change appointment calendar
+          </Button>
+        </p>
+        {this.state.showForm && <UserAccountProfileOfficeHoursForm />}
+      </AccountGroup>
+    )
+  }
+}
+
+class UserAccountProfileOfficeHoursForm extends React.Component {
+  state = {
+    calendar: false,
+    updated: false,
+  }
+  handleSubmit(event) {
+    event.preventDefault()
+    updateProfileField('appointmentCalendar', this.state.calendar)
+    this.setState({
+      updated: true,
+    })
+  }
+
+  handleChange(event) {
+    this.setState({
+      calendar: event.target.value.trim(),
+    })
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <InputText
+          onKeyUp={this.handleChange.bind(this)}
+          label="Appointment calendar address"
+          name="calendar"
+          small
+        />
+        <Submit value="Update calendar" />
+        {this.state.updated && (
+          <AlertSuccess>
+            Your appointment calendar has been updated. It might take a few
+            hours for the change to make it to the public directory.
+          </AlertSuccess>
+        )}
+      </form>
     )
   }
 }
