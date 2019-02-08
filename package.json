@@ -102,6 +102,7 @@
     "storybookbuild": "build-storybook -c .storybook -o ./style-guide",
     "test": "jest",
     "directoryJson": "node src/custom-build/directory-json.js",
+    "buildJson": "node src/custom-build/build-time.js",
     "configFirebase": "node src/custom-build/firebase.js",
     "cleanup": "jest -u; prettier --write 'src/**/**.js';",
     "buildTrace": "gatsby build --open-tracing-config-file node_modules/gatsby/dist/utils/tracer/zipkin-local.js",
