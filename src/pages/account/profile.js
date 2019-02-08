@@ -162,7 +162,16 @@ class UserAccountProfileOffice extends React.Component {
   }
 
   render() {
-    const { user, buildings } = this.props
+    const { user, buildings, profile } = this.props
+    const location = profile.location ? profile.location.split('-') : false
+    let currentBuilding = false
+    if (location) {
+      buildings.forEach(building => {
+        if (building.node.code === location[0]) {
+          currentBuilding = building.node
+        }
+      })
+    }
     return (
       <AccountGroup legend="Office location">
         <p>
@@ -170,10 +179,16 @@ class UserAccountProfileOffice extends React.Component {
           <Link to="/directory">public campus directory.</Link>
         </p>
         <AccountData>
-          {user.profile.directoryBuilding}
-          <br />
-          {user.profile.campusRoomNumber.length && (
-            <em>Room {user.profile.campusRoomNumber}</em>
+          {location && (
+            <>
+              {currentBuilding && (
+                <>
+                  {currentBuilding.buildingName} ({currentBuilding.code})
+                </>
+              )}
+              <br />
+              <em>Room {location[1]}</em>
+            </>
           )}
         </AccountData>
         <p>
@@ -196,10 +211,8 @@ class UserAccountProfileOfficeForm extends React.Component {
     updated: false,
   }
   handleSubmit(event) {
-    const { user } = this.props
     event.preventDefault()
-    updateProfileField('buildingCode', this.state.building)
-    updateProfileField('room', this.state.room)
+    updateProfileField('location', `${this.state.building}-${this.state.room}`)
     this.setState({
       updated: true,
     })
