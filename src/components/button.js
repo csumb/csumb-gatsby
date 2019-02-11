@@ -7,6 +7,7 @@ const ButtonStyle = props => {
     props.buttonType = 'default'
   }
   return `
+  display: inline-block;
   padding: 0.75rem;
   text-decoration: none;
   cursor: pointer;

@@ -2,7 +2,7 @@
 
 exports[`Button renders block button type correctly 1`] = `
 <button
-  className="css-1shwb05"
+  className="css-1pjuk3c"
 >
   A block button!
 </button>
@@ -10,7 +10,7 @@ exports[`Button renders block button type correctly 1`] = `
 
 exports[`Button renders default button type correctly 1`] = `
 <button
-  className="css-v7sskl"
+  className="css-xxwvww"
 >
   A button!
 </button>
@@ -18,7 +18,7 @@ exports[`Button renders default button type correctly 1`] = `
 
 exports[`Button renders default button type correctly 2`] = `
 <button
-  className="css-bujbck"
+  className="css-548gsz"
 >
   A button!
 </button>
@@ -26,7 +26,7 @@ exports[`Button renders default button type correctly 2`] = `
 
 exports[`Button renders default button type correctly 3`] = `
 <button
-  className="css-ns5hzj"
+  className="css-18gpm1f"
 >
   A button!
 </button>
@@ -34,7 +34,7 @@ exports[`Button renders default button type correctly 3`] = `
 
 exports[`Button renders huge button type correctly 1`] = `
 <button
-  className="css-1m3y3w9"
+  className="css-rawig0"
 >
   A huge button!
 </button>
@@ -42,7 +42,7 @@ exports[`Button renders huge button type correctly 1`] = `
 
 exports[`Button renders native button correctly 1`] = `
 <button
-  className="css-v7sskl"
+  className="css-xxwvww"
 >
   A button!
 </button>
@@ -50,7 +50,7 @@ exports[`Button renders native button correctly 1`] = `
 
 exports[`ButtonLink renders link button correctly 1`] = `
 <a
-  className="css-v7sskl"
+  className="css-xxwvww"
   href="/home"
   onClick={[Function]}
   onMouseEnter={[Function]}
