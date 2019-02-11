@@ -1,5 +1,3 @@
-const { BLOCKS, MARKS, INLINES } = require('@contentful/rich-text-types')
-
 module.exports = {
   siteMetadata: {
     title: 'Cal State Monterey Bay',
@@ -154,17 +152,6 @@ module.exports = {
         theme_color: '#fff',
         display: 'minimal-ui',
         icon: 'src/assets/images/icon.png', // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: '@contentful/gatsby-transformer-contentful-richtext',
-      options: {
-        renderOptions: {
-          renderNode: {},
-          renderMark: {
-            [MARKS.BOLD]: text => `<strong>${text}<strong>`,
-          },
-        },
       },
     },
   ],

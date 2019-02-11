@@ -6,6 +6,7 @@ const schedulePages = require(`./src/node/schedule`)
 const buildingPages = require(`./src/node/buildings`)
 const directoryPages = require(`./src/node/directory`)
 const everythingPages = require(`./src/node/everything`)
+const eventPages = require(`./src/node/events`)
 const scienceIllustrationPages = require(`./src/node/departments/scienceillustration`)
 const newsStoryPages = require(`./src/node/departments/news`)
 
@@ -25,6 +26,9 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return everythingPages(graphql, actions)
+      })
+      .then(() => {
+        return eventPages(graphql, actions)
       })
       .then(() => {
         return directoryPages(graphql, actions)
@@ -48,10 +52,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         rules: [
           {
             test: /filestack-js/,
-            use: loaders.null(),
-          },
-          {
-            test: /immortal-db/,
             use: loaders.null(),
           },
         ],

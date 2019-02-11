@@ -1,51 +1,101 @@
 import React from 'react'
 import Container from 'components/container'
-import { Flex, Box } from '@rebass/grid/emotion'
 import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
 import SiteHeader from 'components/header/site-header'
 import { graphql } from 'gatsby'
-import styled from '@emotion/styled'
-import { colors } from 'components/styles/theme'
 import {
-  DashboardEvents,
-  DashboardMessages,
   DashboardApps,
+  DashboardContent,
+  DashboardMobileToolbar,
 } from 'components/pages/dashboard'
 
-const DashboardContainer = styled('section')`
-  background: ${colors.primary.lightest};
-`
+class DashboardPage extends React.Component {
+  state = {
+    isMobile: false,
+    activeTab: 'messages',
+  }
 
-const DashboardPage = ({ data }) => (
-  <Layout pageTitle="Dashboard">
-    <SiteHeader path="/dashboard">Dashboard</SiteHeader>
+  componentDidMount() {
+    const mobileBreakpoint = 830
+    const that = this
 
-    <DashboardApps apps={data.allCsumbApp.edges} />
-    <UserContext.Consumer>
-      {context => (
-        <>
-          {context.user && (
-            <DashboardContainer>
-              <Container topPadding>
-                <Flex flexWrap="wrap">
-                  <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-                    <h2>Events</h2>
-                    <DashboardEvents user={context.user} />
-                  </Box>
-                  <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-                    <h2>Messages</h2>
-                    <DashboardMessages user={context.user} />
-                  </Box>
-                </Flex>
-              </Container>
-            </DashboardContainer>
+    const setWindowSize = () => {
+      that.setState({
+        isMobile: window.innerWidth <= mobileBreakpoint,
+      })
+    }
+
+    window.addEventListener('resize', setWindowSize)
+
+    setWindowSize()
+  }
+
+  render() {
+    const { data } = this.props
+    const { isMobile, activeTab } = this.state
+    return (
+      <Layout pageTitle="Dashboard">
+        <SiteHeader path="/dashboard">Dashboard</SiteHeader>
+        <UserContext.Consumer>
+          {context => (
+            <>
+              {context.user && (
+                <>
+                  {isMobile ? (
+                    <>
+                      <DashboardMobileToolbar>
+                        <Container>
+                          <button
+                            onClick={() => {
+                              this.setState({ activeTab: 'messages' })
+                            }}
+                          >
+                            Messages
+                          </button>
+                          <button
+                            onClick={() => {
+                              this.setState({ activeTab: 'events' })
+                            }}
+                          >
+                            Events
+                          </button>
+                          <button
+                            onClick={() => {
+                              this.setState({ activeTab: 'apps' })
+                            }}
+                          >
+                            Apps
+                          </button>
+                        </Container>
+                      </DashboardMobileToolbar>
+                      <DashboardContent
+                        user={context.user}
+                        mobileTab={activeTab}
+                        isMobile={true}
+                        moreApps={data.allCsumbApp.edges}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <DashboardApps apps={data.allCsumbApp.edges} />
+                      <section>
+                        <Container topPadding>
+                          <DashboardContent user={context.user} />
+                        </Container>
+                      </section>
+                      )}
+                    </>
+                  )}
+                </>
+              )}
+            </>
           )}
-        </>
-      )}
-    </UserContext.Consumer>
-  </Layout>
-)
+        </UserContext.Consumer>
+      </Layout>
+    )
+  }
+}
 
 export default DashboardPage
 
