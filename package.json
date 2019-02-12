@@ -10,7 +10,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.7.0",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
     "@fortawesome/react-fontawesome": "^0.1.3",
-    "@madebyconnor/rich-text-to-jsx": "^2.1.0",
+    "@madebyconnor/rich-text-to-jsx": "^2.1.1",
     "@okta/okta-sdk-nodejs": "^1.2.0",
     "@reach/alert": "^0.1.1",
     "@reach/dialog": "^0.1.3",
