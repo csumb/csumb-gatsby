@@ -2185,9 +2185,9 @@
       }
     },
     "@madebyconnor/rich-text-to-jsx": {
-      "version": "2.1.0",
-      "resolved": "https://registry.npmjs.org/@madebyconnor/rich-text-to-jsx/-/rich-text-to-jsx-2.1.0.tgz",
-      "integrity": "sha512-3SQCSLrYuShMMa3OLVu5QW2qj1S/NM0ip9OzN5aWkyMaqLW7L6rAPki2LrIqlE+0bFECXPDOzmqBno3hkFqw7A==",
+      "version": "2.1.1",
+      "resolved": "https://registry.npmjs.org/@madebyconnor/rich-text-to-jsx/-/rich-text-to-jsx-2.1.1.tgz",
+      "integrity": "sha512-07DQUsMniQSa4+n0w4s+vis2E4lBkK2Uru/XB9lYd6SdZ9WyqzarpxbEQsgdodgtP1clSiZ6JBmhnCau4LuorQ==",
       "requires": {
         "@contentful/rich-text-types": "^12.1.2"
       },

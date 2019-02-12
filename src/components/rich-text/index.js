@@ -30,7 +30,6 @@ const List = ({ children, tag }) => {
 const ListItem = ({ children }) => <li>{children}</li>
 
 const RichTextRenderer = ({ richText }) => {
-  console.log(richText)
   return (
     <RichText
       richText={richText}
