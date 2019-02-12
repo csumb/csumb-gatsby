@@ -1,7 +1,8 @@
 import React from 'react'
 import RichText from '@madebyconnor/rich-text-to-jsx'
-import { BLOCKS } from '@contentful/rich-text-types'
+import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import NewsContainer from 'components/news-container'
+import { ContentImageInline } from './blocks/image'
 
 const Paragraph = ({ children }) => (
   <NewsContainer>
@@ -87,6 +88,11 @@ const RichTextRenderer = ({ richText }) => {
         },
         [BLOCKS.LIST_ITEM]: {
           component: ListItem,
+        },
+        [INLINES.EMBEDDED_ENTRY]: {
+          contentImage: {
+            component: ContentImageInline,
+          },
         },
       }}
     />
