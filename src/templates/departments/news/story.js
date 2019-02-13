@@ -5,7 +5,7 @@ import PageTitle from 'components/header/page-title'
 import { LeadParagraph } from 'components/type'
 import SiteNavigation from 'components/navigation/site'
 import NewsContainer from 'components/news-container'
-import { NewsByline } from 'components/pages/news'
+import { NewsByline, NewsTags } from 'components/pages/news'
 import RichText from 'components/rich-text'
 class NewsStoryPage extends React.Component {
   render() {
@@ -18,6 +18,7 @@ class NewsStoryPage extends React.Component {
 
         <NewsContainer>
           <PageTitle>{story.title}</PageTitle>
+          <NewsTags tags={story.tags} />
           <NewsByline story={story} />
           {story.childContentfulNewsStoryLeadParagraphTextNode
             .leadParagraph && (
