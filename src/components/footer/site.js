@@ -103,7 +103,7 @@ const SiteFooter = ({ site }) => {
                   <dd>{site.contact.phone}</dd>
                 </div>
               )}
-              {site.contact.phone && (
+              {site.contact.fax && (
                 <div>
                   <dt>Fax</dt>
                   <dd>{site.contact.fax}</dd>
