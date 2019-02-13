@@ -4,12 +4,15 @@ import Container from 'components/container'
 import styled from '@emotion/styled'
 import { colors, fonts } from '../styles/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import '@reach/menu-button/styles.css'
 
 const SiteNavigationList = styled('ul')`
   list-style-type: none;
   margin: 0;
+  font-size: 17px;
   li {
     display: inline-block;
     margin: 0;
@@ -81,20 +84,51 @@ const SiteNavigationItem = ({ to, children, navigationChildren, first }) => {
   )
 }
 
-const SiteNavigationSubMenu = ({ children, navigationChildren }) => (
-  <Menu>
-    <SiteNavigationMenuButton>
-      {children} <span aria-hidden>▾</span>
-    </SiteNavigationMenuButton>
-    <SiteNavigationSubList>
-      {navigationChildren.map((child, key) => (
-        <MenuLink key={key} component="a" href={child.url}>
-          {child.name}
-        </MenuLink>
-      ))}
-    </SiteNavigationSubList>
-  </Menu>
-)
+const SiteNavigationArrow = styled('span')`
+  font-size: 0.6rem;
+  display: inline-block;
+  margin-left: 0.25rem;
+`
+
+class SiteNavigationSubMenu extends React.Component {
+  state = {
+    isExpanded: false,
+  }
+
+  render() {
+    const { children, navigationChildren } = this.props
+    const { isExpanded } = this.state
+    return (
+      <Menu>
+        <SiteNavigationMenuButton
+          onClick={() => {
+            this.setState({
+              isExpanded: !isExpanded,
+            })
+          }}
+        >
+          {children}{' '}
+          {isExpanded ? (
+            <SiteNavigationArrow aria-hidden>
+              <FontAwesomeIcon icon={faChevronUp} />
+            </SiteNavigationArrow>
+          ) : (
+            <SiteNavigationArrow aria-hidden>
+              <FontAwesomeIcon icon={faChevronDown} />
+            </SiteNavigationArrow>
+          )}
+        </SiteNavigationMenuButton>
+        <SiteNavigationSubList>
+          {navigationChildren.map((child, key) => (
+            <MenuLink key={key} component="a" href={child.url}>
+              {child.name}
+            </MenuLink>
+          ))}
+        </SiteNavigationSubList>
+      </Menu>
+    )
+  }
+}
 
 class SiteNavigation extends React.Component {
   state = {
