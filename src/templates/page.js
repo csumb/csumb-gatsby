@@ -37,7 +37,7 @@ class PageTemplate extends React.Component {
         pageTitle={title}
         siteNavigation={navigation}
         siteTitle={site.title}
-        hasSiteFooter={site.contact ? true : false}
+        hasSiteFooter={site.contact || site.staffPage ? true : false}
       >
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
@@ -62,7 +62,9 @@ class PageTemplate extends React.Component {
           <Blocks blocks={pageContent} />
         )}
         <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
-        {(site.contact || site.social) && <SiteFooter site={site} />}
+        {(site.contact || site.social || site.staffPage) && (
+          <SiteFooter site={site} />
+        )}
       </Layout>
     )
   }
