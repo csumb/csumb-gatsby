@@ -32,6 +32,7 @@ module.exports = (graphql, actions) => {
                 node {
                   site
                   title
+                  staffPage
                   social {
                     url
                     site

@@ -76,9 +76,6 @@ const SiteFooterSocial = ({ social }) => (
 )
 
 const SiteFooter = ({ site }) => {
-  if (!site.social && !site.contact.email && !site.contact.phone) {
-    return null
-  }
   return (
     <SiteFooterWrapper>
       <Container>
@@ -87,7 +84,15 @@ const SiteFooter = ({ site }) => {
         <Flex flexWrap="wrap">
           <Box width={[1, 1 / 3, 1 / 3]} pr={[0, 2, 2]}>
             <SiteFooterItems>
-              {site.contact.email && (
+              {site.staffPage && (
+                <div>
+                  <dt>Staff</dt>
+                  <dd>
+                    <a href={site.staffPage}>View all staff</a>
+                  </dd>
+                </div>
+              )}
+              {site.contact && site.contact.email && (
                 <div>
                   <dt>Email</dt>
                   <dd>
@@ -97,13 +102,13 @@ const SiteFooter = ({ site }) => {
                   </dd>
                 </div>
               )}
-              {site.contact.phone && (
+              {site.contact && site.contact.phone && (
                 <div>
                   <dt>Phone</dt>
                   <dd>{site.contact.phone}</dd>
                 </div>
               )}
-              {site.contact.phone && (
+              {site.contact && site.contact.fax && (
                 <div>
                   <dt>Fax</dt>
                   <dd>{site.contact.fax}</dd>
@@ -113,7 +118,7 @@ const SiteFooter = ({ site }) => {
           </Box>
           <Box width={[1, 2 / 3, 2 / 3]}>
             <SiteFooterItems>
-              {site.contact.building && (
+              {site.contact && site.contact.building && (
                 <div>
                   <dt>Building</dt>
                   <dd>
@@ -126,19 +131,19 @@ const SiteFooter = ({ site }) => {
                   </dd>
                 </div>
               )}
-              {site.contact.floor && (
+              {site.contact && site.contact.floor && (
                 <div>
                   <dt>Floor</dt>
                   <dd>{site.contact.floor}</dd>
                 </div>
               )}
-              {site.contact.suite && (
+              {site.contact && site.contact.suite && (
                 <div>
                   <dt>Suite</dt>
                   <dd>{site.contact.suite}</dd>
                 </div>
               )}
-              {site.contact.room && (
+              {site.contact && site.contact.room && (
                 <div>
                   <dt>Room</dt>
                   <dd>{site.contact.room}</dd>
