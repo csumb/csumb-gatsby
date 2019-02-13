@@ -25,6 +25,8 @@ module.exports = (graphql, actions) => {
                 }
                 tags {
                   id
+                  name
+                  slug
                 }
                 homepageStory {
                   id
