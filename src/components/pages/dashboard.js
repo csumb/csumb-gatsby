@@ -613,6 +613,11 @@ const DashboardImage = styled('img')`
   margin-left: 0.5rem;
 `
 
+const DashboardEventCalendarLink = styled('div')`
+  text-align: right;
+  with: 100%;
+`
+
 class DashboardEvent extends React.Component {
   state = {
     archived: false,
@@ -646,7 +651,16 @@ class DashboardEvent extends React.Component {
               {event.date} {event.time_start}
             </DashboardEventDate>
             {event.image && <DashboardImage src={event.image} />}
-            <p>{event.description}</p>
+            <div>{event.description}</div>
+            <DashboardEventCalendarLink>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={event.add_calendar}
+              >
+                Add to calendar
+              </a>
+            </DashboardEventCalendarLink>
           </DashboardCard>
         )}
       </>
