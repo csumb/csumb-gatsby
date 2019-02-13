@@ -9,8 +9,8 @@ import {
   NonFeaturedStory,
   FeaturedStory,
   Nuggets,
-  HomepageHero,
 } from 'components/pages/homepage'
+import HomepageHero from 'components/homepages/samples/map'
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class IndexPage extends React.Component {
     const {
       allContentfulHomepageStory,
       allContentfulHomepageEvent,
-      allContentfulHomepageNugget,
+      allContentfulHomepageInTheNews,
       allContentfulHomepageHeroImage,
     } = props.data
 
@@ -46,7 +46,7 @@ class IndexPage extends React.Component {
         [allContentfulHomepageStory, allContentfulHomepageEvent],
         false
       ),
-      nuggets: sortItems([allContentfulHomepageNugget], null, true),
+      nuggets: sortItems([allContentfulHomepageInTheNews], null, true),
       heroImages: sortItems([allContentfulHomepageHeroImage], null, true),
     }
   }
@@ -56,7 +56,7 @@ class IndexPage extends React.Component {
     const colPadding = [0, 0, 3, 3]
     return (
       <Layout>
-        <HomepageHero item={heroImages[0]} />
+        <HomepageHero />
         <Container topPadding>
           <HomepageNavigation
             items={this.props.data.allContentfulHomepageNavigation.edges}
@@ -143,7 +143,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulHomepageNugget(sort: { fields: goLiveDate }) {
+    allContentfulHomepageInTheNews(sort: { fields: goLiveDate }) {
       edges {
         node {
           title
