@@ -19,6 +19,7 @@ import {
 import { Button } from 'components/button'
 import SimpleMDE from 'react-simplemde-editor'
 import showdown from 'showdown'
+import { LeadParagraph } from 'components/type'
 import 'simplemde/dist/simplemde.min.css'
 
 const AccountPhoto = styled('img')`
@@ -42,7 +43,25 @@ const updateProfileField = (field, value) => {
 }
 
 class AccountProfilePage extends React.Component {
+  state = {
+    lastBuild: false,
+  }
+
+  componentDidMount() {
+    fetch('/_last-build.json')
+      .then(result => {
+        return result.json()
+      })
+      .then(lastBuild => {
+        this.setState({
+          lastBuild: lastBuild,
+        })
+      })
+      .catch(() => {})
+  }
+
   render() {
+    const { lastBuild } = this.state
     return (
       <Layout pageTitle="Your profile">
         <UserContext.Consumer>
@@ -70,6 +89,13 @@ class AccountProfilePage extends React.Component {
                       ) : (
                         <>
                           <AccountTitle>Your public profile</AccountTitle>
+                          {lastBuild && (
+                            <LeadParagraph>
+                              Any changes you make to your profile will not be
+                              published for an hour. The last time we updated
+                              the site was <strong>{lastBuild.format}</strong>.
+                            </LeadParagraph>
+                          )}
                           <UserAccountProfileForm
                             user={context.user}
                             buildings={this.props.data.allCsumbBuilding.edges}
