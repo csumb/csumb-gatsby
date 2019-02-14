@@ -20,7 +20,9 @@ const FooterSocialIconLink = styled('a')`
   text-decoration: none;
   display: inline-block;
   margin-right: 2rem;
-  font-size: 1.5rem;
+  ${bp({
+    fontSize: ['1rem', '1.5rem', '1.5rem'],
+  })};
 `
 
 const SocialIconWrapper = styled('div')`
