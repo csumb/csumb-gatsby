@@ -21,7 +21,7 @@ const FooterSocialIconLink = styled('a')`
   display: inline-block;
   margin-right: 2rem;
   ${bp({
-    fontSize: ['1rem', '1.5rem', '1.5rem'],
+    fontSize: ['1.2rem', '1.5rem', '1.5rem'],
   })};
 `
 

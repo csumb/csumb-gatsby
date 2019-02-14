@@ -3,13 +3,13 @@ import { StaticHero } from 'components/homepages/hero'
 import mapData from './mapData'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
-import { HeroParagraph } from 'components/type'
+import { LeadParagraph } from 'components/type'
 
 const FloatBox = styled('div')`
   position: absolute;
   top: 40px;
   left: 40px;
-  max-width: 300px;
+  max-width: 400px;
   z-index: 10000;
 `
 
@@ -27,11 +27,11 @@ class HomepageHero extends React.Component {
       <StaticHero>
         <FloatBox>
           <FloatText>
-            <h1>Real service</h1>
-            <HeroParagraph>
-              Last year, 3,310 students provided 114,651 hours of service in
+            <h1>Service Learning</h1>
+            <LeadParagraph>
+              Last year, 3,310 students provided 114,651 hours of service in our
               community.
-            </HeroParagraph>
+            </LeadParagraph>
           </FloatText>
         </FloatBox>
         <Map
