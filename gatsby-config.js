@@ -123,17 +123,14 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingId: 'UA-4860091-14',
-        // Puts tracking script in the head instead of the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        exclude: [],
+        trackingIds: ['UA-4860091-14'],
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+          exclude: ['/preview/**', '/do-not-track/me/too/'],
+        },
       },
     },
     {
