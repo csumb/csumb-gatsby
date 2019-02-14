@@ -64,17 +64,26 @@ class IndexPage extends React.Component {
         </Container>
         <Container topPadding>
           <Flex flexWrap="wrap">
-            <Box width={[1, 1, 1 / 2, 3 / 12]} pr={colPadding}>
+            <Box
+              width={[1, 1, 1 / 2, 3 / 12]}
+              order={[2, 1, 1]}
+              pr={colPadding}
+            >
               {notFeatured.map(item => (
                 <NonFeaturedStory key={item.contentful_id} {...item} />
               ))}
             </Box>
-            <Box width={[1, 1, 1 / 2, 6 / 12]} pl={colPadding} pr={colPadding}>
+            <Box
+              width={[1, 1, 1 / 2, 6 / 12]}
+              order={[1, 2, 2]}
+              pl={colPadding}
+              pr={colPadding}
+            >
               {featured.map(item => (
                 <FeaturedStory key={item.contentful_id} {...item} />
               ))}
             </Box>
-            <Box width={[1, 1, 1, 3 / 12]} pl={colPadding}>
+            <Box width={[1, 1, 1, 3 / 12]} order={3} pl={colPadding}>
               <Nuggets nuggets={nuggets} />
             </Box>
           </Flex>
