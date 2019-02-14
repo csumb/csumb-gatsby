@@ -6,26 +6,48 @@ import { Map, GoogleApiWrapper } from 'google-maps-react'
 import { LeadParagraph } from 'components/type'
 
 const FloatBox = styled('div')`
-  position: absolute;
+  ${props =>
+    props.isMobile
+      ? `padding: 0 1rem 1rem 1rem;`
+      : `position: absolute;
   top: 40px;
   left: 40px;
   max-width: 400px;
-  z-index: 10000;
+  z-index: 10000;`};
 `
 
 const FloatText = styled('div')`
   max-width: 300px;
 `
 class HomepageHero extends React.Component {
+  state = {
+    isMobile: false,
+  }
+
+  componentDidMount() {
+    const mobileBreakpoint = 830
+    const that = this
+
+    const setWindowSize = () => {
+      that.setState({
+        isMobile: window.innerWidth <= mobileBreakpoint,
+      })
+    }
+
+    window.addEventListener('resize', setWindowSize)
+
+    setWindowSize()
+  }
   onReady(mapProps, map) {
     map.data.addGeoJson(mapData)
   }
 
   render() {
     const { google } = this.props
+    const { isMobile } = this.state
     return (
       <StaticHero>
-        <FloatBox>
+        <FloatBox isMobile={isMobile}>
           <FloatText>
             <h1>Service Learning</h1>
             <LeadParagraph>
