@@ -42,9 +42,7 @@ class HomepageHero extends React.Component {
           mapTypeControl={false}
           streetViewControl={false}
           onReady={this.onReady.bind(this)}
-          options={{
-            mapTypeId: 'terrain',
-          }}
+          mapType="TERRAIN"
           style={{
             height: '500px',
             width: '100%',

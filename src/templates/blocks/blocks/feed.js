@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
-import { ContainerElement } from '../container-context'
+import { ContainerElement, ContainerContext } from '../container-context'
 
 const FeedItem = styled('li')``
 const FeedList = styled('ul')`
@@ -18,25 +18,31 @@ class BlockFeed extends React.Component {
     let { items } = this.props
     items.splice(limit, items.length)
     return (
-      <ContainerElement isFull>
-        {title && <h3>{title}</h3>}
-        <FeedList>
-          {items.map(item => (
-            <FeedItem>
-              {displayShort ? (
-                <LinkInspect to={item.page_link}>{item.title}</LinkInspect>
-              ) : (
-                <>
-                  <FeedItemHeader>
+      <ContainerContext.Consumer>
+        {container => (
+          <ContainerElement container={container}>
+            {title && <h3>{title}</h3>}
+            <FeedList>
+              {items.map(item => (
+                <FeedItem>
+                  {displayShort ? (
                     <LinkInspect to={item.page_link}>{item.title}</LinkInspect>
-                  </FeedItemHeader>
-                  <FeedItemTeaser>{item.teaser}</FeedItemTeaser>
-                </>
-              )}
-            </FeedItem>
-          ))}
-        </FeedList>
-      </ContainerElement>
+                  ) : (
+                    <>
+                      <FeedItemHeader>
+                        <LinkInspect to={item.page_link}>
+                          {item.title}
+                        </LinkInspect>
+                      </FeedItemHeader>
+                      <FeedItemTeaser>{item.teaser}</FeedItemTeaser>
+                    </>
+                  )}
+                </FeedItem>
+              ))}
+            </FeedList>
+          </ContainerElement>
+        )}
+      </ContainerContext.Consumer>
     )
   }
 }
