@@ -10,6 +10,7 @@ import Loading from 'components/loading'
 class StatusPage extends React.Component {
   state = {
     updown: false,
+    lastBuild: false,
   }
 
   componentDidMount() {
@@ -22,19 +23,27 @@ class StatusPage extends React.Component {
           updown: status,
         })
       })
+    fetch('/_last-build.json')
+      .then(result => {
+        return result.json()
+      })
+      .then(lastBuild => {
+        this.setState({
+          lastBuild: lastBuild,
+        })
+      })
+      .catch(() => {})
   }
 
   render() {
-    const { updown } = this.state
+    const { updown, lastBuild } = this.state
     return (
       <Layout pageTitle="Library">
         <Container>
           <PageTitle>Website status</PageTitle>
           <Well>
             <h2>Last build time</h2>
-            <HeroParagraph>
-              {moment().format('MMMM D YYYY, h:mm:ss a')}
-            </HeroParagraph>
+            {lastBuild && <HeroParagraph>{lastBuild.format}</HeroParagraph>}
             <p>
               The <strong>build time</strong> is the last time content has been
               published to the campus website. Any changes to profiles, or
