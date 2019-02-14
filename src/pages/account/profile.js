@@ -92,8 +92,11 @@ class AccountProfilePage extends React.Component {
                           {lastBuild && (
                             <LeadParagraph>
                               Any changes you make to your profile will not be
-                              published for an hour. The last time we updated
-                              the site was <strong>{lastBuild.format}</strong>.
+                              published for an hour. The{' '}
+                              <Link to="/status">
+                                last time we updated the site
+                              </Link>{' '}
+                              was <strong>{lastBuild.format}</strong>.
                             </LeadParagraph>
                           )}
                           <UserAccountProfileForm
