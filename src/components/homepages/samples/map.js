@@ -3,13 +3,13 @@ import { StaticHero } from 'components/homepages/hero'
 import mapData from './mapData'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
-import { HeroParagraph } from 'components/type'
+import { LeadParagraph } from 'components/type'
 
 const FloatBox = styled('div')`
   position: absolute;
   top: 40px;
   left: 40px;
-  max-width: 300px;
+  max-width: 400px;
   z-index: 10000;
 `
 
@@ -27,10 +27,11 @@ class HomepageHero extends React.Component {
       <StaticHero>
         <FloatBox>
           <FloatText>
-            <h1>Real service</h1>
-            <HeroParagraph>
-              Our students volunteered 50,000 hours last year.
-            </HeroParagraph>
+            <h1>Service Learning</h1>
+            <LeadParagraph>
+              Last year, 3,310 students provided 114,651 hours of service in our
+              community.
+            </LeadParagraph>
           </FloatText>
         </FloatBox>
         <Map
@@ -41,9 +42,7 @@ class HomepageHero extends React.Component {
           mapTypeControl={false}
           streetViewControl={false}
           onReady={this.onReady.bind(this)}
-          mapOptions={{
-            mapTypeId: 'terrain',
-          }}
+          mapType="TERRAIN"
           style={{
             height: '500px',
             width: '100%',
