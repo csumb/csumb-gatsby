@@ -52,7 +52,7 @@ class IndexPage extends React.Component {
   }
 
   render() {
-    const { featured, notFeatured, nuggets, heroImages } = this.stories
+    const { featured, notFeatured, nuggets /*heroImages*/ } = this.stories
     const colPadding = [0, 0, 3, 3]
     return (
       <Layout>
