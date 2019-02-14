@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticHero } from 'components/homepages/hero'
-import mapData from './mapData'
+import mapData from './serviceLearning.json'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import { LeadParagraph } from 'components/type'
@@ -19,6 +19,23 @@ const FloatBox = styled('div')`
 const FloatText = styled('div')`
   max-width: 300px;
 `
+
+const serviceLearningFeatures = {
+  type: 'FeatureCollection',
+  features: [],
+}
+
+mapData.forEach(item => {
+  serviceLearningFeatures.features.push({
+    type: 'Feature',
+    properties: {},
+    geometry: {
+      type: 'Point',
+      coordinates: [item.lon, item.lat],
+    },
+  })
+})
+
 class HomepageHero extends React.Component {
   state = {
     isMobile: false,
@@ -39,7 +56,7 @@ class HomepageHero extends React.Component {
     setWindowSize()
   }
   onReady(mapProps, map) {
-    map.data.addGeoJson(mapData)
+    map.data.addGeoJson(serviceLearningFeatures)
   }
 
   render() {
@@ -58,7 +75,7 @@ class HomepageHero extends React.Component {
         </FloatBox>
         <Map
           google={google}
-          zoom={8}
+          zoom={9}
           zoomControl={false}
           scaleControl={false}
           mapTypeControl={false}
