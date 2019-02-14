@@ -30,11 +30,14 @@ class BlockFeed extends React.Component {
                   ) : (
                     <>
                       <FeedItemHeader>
-                        <LinkInspect to={item.page_link}>
-                          {item.title}
-                        </LinkInspect>
+                        <LinkInspect
+                          to={item.page_link}
+                          dangerouslySetInnerHTML={{ __html: item.title }}
+                        />
                       </FeedItemHeader>
-                      <FeedItemTeaser>{item.teaser}</FeedItemTeaser>
+                      <FeedItemTeaser
+                        dangerouslySetInnerHTML={{ __html: item.teaser }}
+                      />
                     </>
                   )}
                 </FeedItem>
