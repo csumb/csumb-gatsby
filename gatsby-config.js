@@ -127,9 +127,12 @@ module.exports = {
       options: {
         trackingIds: ['UA-4860091-14'],
         pluginConfig: {
+          anonymize_ip: true,
           head: false,
-          respectDNT: true,
           exclude: ['/preview/**', '/do-not-track/me/too/'],
+        },
+        gtagConfig: {
+          respectDNT: true,
         },
       },
     },
