@@ -29,7 +29,8 @@ class HomepageHero extends React.Component {
           <FloatText>
             <h1>Real service</h1>
             <HeroParagraph>
-              Our students volunteered 50,000 hours last year.
+              Last year, 3,310 students provided 114,651 hours of service in
+              community.
             </HeroParagraph>
           </FloatText>
         </FloatBox>
@@ -41,7 +42,7 @@ class HomepageHero extends React.Component {
           mapTypeControl={false}
           streetViewControl={false}
           onReady={this.onReady.bind(this)}
-          mapOptions={{
+          options={{
             mapTypeId: 'terrain',
           }}
           style={{
