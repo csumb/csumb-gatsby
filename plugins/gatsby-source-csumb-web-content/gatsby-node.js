@@ -27,6 +27,10 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       siteNode(name, content, digest)
       return
     }
+    if (name.search('_data/public-directory/') > -1) {
+      publicDirectoryNode(name, content, digest)
+      return
+    }
     if (name.search('_navigation.json') > -1) {
       navigationNode(name, content, digest)
       return
@@ -98,6 +102,19 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       contentNode.event = content.event
     }
     createNode(contentNode)
+  }
+
+  const publicDirectoryNode = (name, content, digest) => {
+    createNode({
+      id: createNodeId(`${name} >>> CsumbPublicDirectory`),
+      parent: null,
+      children: [],
+      profile: content,
+      internal: {
+        type: `CsumbPublicDirectory`,
+        contentDigest: digest,
+      },
+    })
   }
 
   const siteNode = (name, content, digest) => {
