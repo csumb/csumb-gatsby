@@ -153,7 +153,7 @@ const HomepageNavigation = ({ items }) => (
     {items[0].node.items.map(item => (
       <Box width={[1, 1 / 3]} px={4} key={item.contentful_id}>
         <NavigationItem>
-          <Link to={item.link}>
+          <a href={item.link}>
             <NavigationHeader>{item.title}</NavigationHeader>
             <span>
               {
@@ -161,7 +161,7 @@ const HomepageNavigation = ({ items }) => (
                   .description
               }
             </span>
-          </Link>
+          </a>
         </NavigationItem>
       </Box>
     ))}
