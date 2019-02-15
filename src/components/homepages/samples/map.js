@@ -4,6 +4,14 @@ import mapData from './serviceLearning.json'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import { LeadParagraph } from 'components/type'
+import { colors } from 'components/styles/theme'
+import Link from 'gatsby-link'
+
+const InfoWindowContent = styled('p')`
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+`
 
 const FloatBox = styled('div')`
   ${props =>
@@ -18,6 +26,18 @@ const FloatBox = styled('div')`
 
 const FloatText = styled('div')`
   max-width: 300px;
+  h1 {
+    a {
+      color: ${colors.black};
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+      &:visited {
+        color: ${colors.black};
+      }
+    }
+  }
 `
 
 class HomepageHero extends React.Component {
@@ -65,7 +85,9 @@ class HomepageHero extends React.Component {
       <StaticHero>
         <FloatBox isMobile={isMobile}>
           <FloatText>
-            <h1>Service Learning</h1>
+            <h1>
+              <Link to="/service">Service Learning</Link>
+            </h1>
             <LeadParagraph>
               Last year, 3,310 students provided 114,651 hours of service in our
               community.
@@ -103,7 +125,9 @@ class HomepageHero extends React.Component {
             visible={showInfoWindow}
             onClose={this.onInfoWindowClose.bind(this)}
           >
-            <p dangerouslySetInnerHTML={{ __html: selectedPlace.name }} />
+            <InfoWindowContent
+              dangerouslySetInnerHTML={{ __html: selectedPlace.name }}
+            />
           </InfoWindow>
         </Map>
       </StaticHero>
