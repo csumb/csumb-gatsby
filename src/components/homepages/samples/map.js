@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticHero } from 'components/homepages/hero'
 import mapData from './serviceLearning.json'
 import styled from '@emotion/styled'
-import { Map, GoogleApiWrapper } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import { LeadParagraph } from 'components/type'
 
 const FloatBox = styled('div')`
@@ -20,25 +20,12 @@ const FloatText = styled('div')`
   max-width: 300px;
 `
 
-const serviceLearningFeatures = {
-  type: 'FeatureCollection',
-  features: [],
-}
-
-mapData.forEach(item => {
-  serviceLearningFeatures.features.push({
-    type: 'Feature',
-    properties: {},
-    geometry: {
-      type: 'Point',
-      coordinates: [item.lon, item.lat],
-    },
-  })
-})
-
 class HomepageHero extends React.Component {
   state = {
     isMobile: false,
+    selectedPlace: false,
+    activeMarker: false,
+    showInfoWindow: false,
   }
 
   componentDidMount() {
@@ -55,13 +42,25 @@ class HomepageHero extends React.Component {
 
     setWindowSize()
   }
-  onReady(mapProps, map) {
-    map.data.addGeoJson(serviceLearningFeatures)
+
+  onMarkerClick(props, marker, e) {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showInfoWindow: true,
+    })
+  }
+
+  onInfoWindowClose() {
+    this.setState({
+      showInfoWindow: false,
+      activeMarker: false,
+    })
   }
 
   render() {
     const { google } = this.props
-    const { isMobile } = this.state
+    const { isMobile, activeMarker, showInfoWindow, selectedPlace } = this.state
     return (
       <StaticHero>
         <FloatBox isMobile={isMobile}>
@@ -75,12 +74,11 @@ class HomepageHero extends React.Component {
         </FloatBox>
         <Map
           google={google}
-          zoom={9}
+          zoom={10}
           zoomControl={false}
           scaleControl={false}
           mapTypeControl={false}
           streetViewControl={false}
-          onReady={this.onReady.bind(this)}
           mapType="TERRAIN"
           style={{
             height: '500px',
@@ -91,7 +89,23 @@ class HomepageHero extends React.Component {
             lat: 36.6536502,
             lng: -121.7989176,
           }}
-        />
+        >
+          {mapData.map((item, key) => (
+            <Marker
+              key={key}
+              name={item.text}
+              position={{ lat: item.lat, lng: item.lon }}
+              onClick={this.onMarkerClick.bind(this)}
+            />
+          ))}
+          <InfoWindow
+            marker={activeMarker}
+            visible={showInfoWindow}
+            onClose={this.onInfoWindowClose.bind(this)}
+          >
+            <p dangerouslySetInnerHTML={{ __html: selectedPlace.name }} />
+          </InfoWindow>
+        </Map>
       </StaticHero>
     )
   }
