@@ -65,8 +65,12 @@ const IndexPage = ({ data }) => {
             pl={colPadding}
             pr={colPadding}
           >
-            {featured.map(item => (
-              <FeaturedStory key={item.contentful_id} {...item} />
+            {allContentfulHomepageStory.edges.map(item => (
+              <>
+                {item.node.featured && (
+                  <FeaturedStory key={item.node.contentful_id} {...item.node} />
+                )}
+              </>
             ))}
           </Box>
           <Box width={[1, 1, 1, 3 / 12]} order={3} pl={colPadding}>
