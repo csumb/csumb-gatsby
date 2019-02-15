@@ -35,7 +35,7 @@ const FeaturedStoryHeader = styled('h2')`
 
 const StoryImage = styled('img')`
   width: 100%;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0;
 `
 
 const FeaturedStoryDescription = styled('p')`
@@ -131,6 +131,16 @@ const HeroItem = styled('div')`
   }
 `
 
+const StoryLabel = styled('p')`
+  color: ${colors.primary.dark};
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+`
+
+const StoryType = ({ isEvent }) => (
+  <StoryLabel>{isEvent ? <>Event</> : <>News</>}</StoryLabel>
+)
+
 const HomepageHero = ({ item }) => (
   <LazyHero
     opacity={item.lighten / 100}
@@ -179,6 +189,7 @@ const NonFeaturedStory = ({
   <Story>
     <a href={getNewsLink(news_story, link)}>
       <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
+      <StoryType isEvent={eventDate && true} />
       <NonFeaturedStoryHeader>{title}</NonFeaturedStoryHeader>
       {eventDate && (
         <EventDate>{moment(eventDate).format(dateFormat)}</EventDate>
@@ -199,6 +210,7 @@ const FeaturedStory = ({
   <Story featured>
     <a href={getNewsLink(news_story, link)}>
       <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
+      <StoryType isEvent={eventDate && true} />
       <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
       {eventDate && (
         <FeaturedEventDate>
