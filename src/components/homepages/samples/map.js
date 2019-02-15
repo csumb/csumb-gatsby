@@ -97,7 +97,7 @@ class HomepageHero extends React.Component {
         <Map
           google={google}
           zoom={10}
-          zoomControl={false}
+          zoomControl={true}
           scaleControl={false}
           mapTypeControl={false}
           streetViewControl={false}
