@@ -1,33 +1,93 @@
 import React from 'react'
 import { StaticHero } from 'components/homepages/hero'
-import mapData from './mapData'
+import mapData from './serviceLearning.json'
 import styled from '@emotion/styled'
-import { Map, GoogleApiWrapper } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import { LeadParagraph } from 'components/type'
+import { colors } from 'components/styles/theme'
+import Link from 'gatsby-link'
+
+const InfoWindowContent = styled('p')`
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+`
 
 const FloatBox = styled('div')`
-  position: absolute;
+  ${props =>
+    props.isMobile
+      ? `padding: 0 1rem 1rem 1rem;`
+      : `position: absolute;
   top: 40px;
   left: 40px;
   max-width: 400px;
-  z-index: 10000;
+  z-index: 10000;`};
 `
 
 const FloatText = styled('div')`
   max-width: 300px;
+  h1 {
+    a {
+      color: ${colors.black};
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+      &:visited {
+        color: ${colors.black};
+      }
+    }
+  }
 `
+
 class HomepageHero extends React.Component {
-  onReady(mapProps, map) {
-    map.data.addGeoJson(mapData)
+  state = {
+    isMobile: false,
+    selectedPlace: false,
+    activeMarker: false,
+    showInfoWindow: false,
+  }
+
+  componentDidMount() {
+    const mobileBreakpoint = 830
+    const that = this
+
+    const setWindowSize = () => {
+      that.setState({
+        isMobile: window.innerWidth <= mobileBreakpoint,
+      })
+    }
+
+    window.addEventListener('resize', setWindowSize)
+
+    setWindowSize()
+  }
+
+  onMarkerClick(props, marker, e) {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showInfoWindow: true,
+    })
+  }
+
+  onInfoWindowClose() {
+    this.setState({
+      showInfoWindow: false,
+      activeMarker: false,
+    })
   }
 
   render() {
     const { google } = this.props
+    const { isMobile, activeMarker, showInfoWindow, selectedPlace } = this.state
     return (
       <StaticHero>
-        <FloatBox>
+        <FloatBox isMobile={isMobile}>
           <FloatText>
-            <h1>Service Learning</h1>
+            <h1>
+              <Link to="/service">Service Learning</Link>
+            </h1>
             <LeadParagraph>
               Last year, 3,310 students provided 114,651 hours of service in our
               community.
@@ -36,12 +96,11 @@ class HomepageHero extends React.Component {
         </FloatBox>
         <Map
           google={google}
-          zoom={8}
-          zoomControl={false}
+          zoom={10}
+          zoomControl={true}
           scaleControl={false}
           mapTypeControl={false}
           streetViewControl={false}
-          onReady={this.onReady.bind(this)}
           mapType="TERRAIN"
           style={{
             height: '500px',
@@ -52,7 +111,25 @@ class HomepageHero extends React.Component {
             lat: 36.6536502,
             lng: -121.7989176,
           }}
-        />
+        >
+          {mapData.map((item, key) => (
+            <Marker
+              key={key}
+              name={item.text}
+              position={{ lat: item.lat, lng: item.lon }}
+              onClick={this.onMarkerClick.bind(this)}
+            />
+          ))}
+          <InfoWindow
+            marker={activeMarker}
+            visible={showInfoWindow}
+            onClose={this.onInfoWindowClose.bind(this)}
+          >
+            <InfoWindowContent
+              dangerouslySetInnerHTML={{ __html: selectedPlace.name }}
+            />
+          </InfoWindow>
+        </Map>
       </StaticHero>
     )
   }

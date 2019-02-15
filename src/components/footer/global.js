@@ -104,8 +104,8 @@ class Footer extends React.Component {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/academics" title="">
-                        Majors
+                      <Link to="/donate" title="">
+                        Make a gift
                       </Link>
                     </li>
                   </FooterList>
