@@ -12,85 +12,74 @@ import {
 } from 'components/pages/homepage'
 import HomepageHero from 'components/homepages/samples/map'
 
-class IndexPage extends React.Component {
-  constructor(props) {
-    super(props)
-    const {
-      allContentfulHomepageStory,
-      allContentfulHomepageEvent,
-      allContentfulHomepageInTheNews,
-      allContentfulHomepageHeroImage,
-    } = props.data
+const sortItems = (items, featured, ignore) => {
+  let result = []
+  items.forEach(type => {
+    type.edges.forEach(item => {
+      if (ignore || item.node.featured === featured) {
+        result.push(item.node)
+      }
+    })
+  })
+  result.sort((a, b) => {
+    return moment(a.goLiveDate).unix() > moment(b.goLiveDate).unix()
+  })
+  return result
+}
 
-    const sortItems = (items, featured, ignore) => {
-      let result = []
-      items.forEach(type => {
-        type.edges.forEach(item => {
-          if (ignore || item.node.featured === featured) {
-            result.push(item.node)
-          }
-        })
-      })
-      result.sort((a, b) => {
-        return moment(a.goLiveDate).unix() > moment(b.goLiveDate).unix()
-      })
-      return result
-    }
+const IndexPage = ({ data }) => {
+  const {
+    allContentfulHomepageStory,
+    allContentfulHomepageEvent,
+    allContentfulHomepageInTheNews,
+  } = data
 
-    this.stories = {
-      featured: sortItems(
-        [allContentfulHomepageStory, allContentfulHomepageEvent],
-        true
-      ),
-      notFeatured: sortItems(
-        [allContentfulHomepageStory, allContentfulHomepageEvent],
-        false
-      ),
-      nuggets: sortItems([allContentfulHomepageInTheNews], null, true),
-      heroImages: sortItems([allContentfulHomepageHeroImage], null, true),
-    }
-  }
-
-  render() {
-    const { featured, notFeatured, nuggets /*heroImages*/ } = this.stories
-    const colPadding = [0, 0, 3, 3]
-    return (
-      <Layout>
-        <HomepageHero />
-        <Container topPadding>
-          <HomepageNavigation
-            items={this.props.data.allContentfulHomepageNavigation.edges}
-          />
-        </Container>
-        <Container topPadding>
-          <Flex flexWrap="wrap">
-            <Box
-              width={[1, 1, 1 / 2, 3 / 12]}
-              order={[2, 1, 1]}
-              pr={colPadding}
-            >
-              {notFeatured.map(item => (
-                <NonFeaturedStory key={item.contentful_id} {...item} />
-              ))}
-            </Box>
-            <Box
-              width={[1, 1, 1 / 2, 6 / 12]}
-              order={[1, 2, 2]}
-              pl={colPadding}
-              pr={colPadding}
-            >
-              {featured.map(item => (
-                <FeaturedStory key={item.contentful_id} {...item} />
-              ))}
-            </Box>
-            <Box width={[1, 1, 1, 3 / 12]} order={3} pl={colPadding}>
-              <Nuggets nuggets={nuggets} />
-            </Box>
-          </Flex>
-        </Container>
-      </Layout>
-    )
-  }
+  const featured = sortItems(
+    [allContentfulHomepageStory, allContentfulHomepageEvent],
+    true
+  )
+  const notFeatured = sortItems(
+    [allContentfulHomepageStory, allContentfulHomepageEvent],
+    false
+  )
+  const nuggets = sortItems([allContentfulHomepageInTheNews], null, true)
+  const colPadding = [0, 0, 3, 3]
+  return (
+    <Layout>
+      <HomepageHero />
+      <Container topPadding>
+        <HomepageNavigation
+          items={data.allContentfulHomepageNavigation.edges}
+        />
+      </Container>
+      <Container topPadding>
+        <Flex flexWrap="wrap">
+          <Box width={[1, 1, 1 / 2, 3 / 12]} order={[2, 1, 1]} pr={colPadding}>
+            {notFeatured.map(item => (
+              <NonFeaturedStory key={item.contentful_id} {...item} />
+            ))}
+          </Box>
+          <Box
+            width={[1, 1, 1 / 2, 6 / 12]}
+            order={[1, 2, 2]}
+            pl={colPadding}
+            pr={colPadding}
+          >
+            {allContentfulHomepageStory.edges.map(item => (
+              <>
+                {item.node.featured && (
+                  <FeaturedStory key={item.node.contentful_id} {...item.node} />
+                )}
+              </>
+            ))}
+          </Box>
+          <Box width={[1, 1, 1, 3 / 12]} order={3} pl={colPadding}>
+            <Nuggets nuggets={nuggets} />
+          </Box>
+        </Flex>
+      </Container>
+    </Layout>
+  )
 }
 
 export default IndexPage
