@@ -38,10 +38,7 @@ class IndexPage extends React.Component {
     }
 
     this.stories = {
-      featured: sortItems(
-        [allContentfulHomepageStory, allContentfulHomepageEvent],
-        true
-      ),
+      featured: sortItems([allContentfulHomepageStory], true),
       notFeatured: sortItems(
         [allContentfulHomepageStory, allContentfulHomepageEvent],
         false
