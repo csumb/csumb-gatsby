@@ -10,7 +10,7 @@ exports.onClientEntry = () => {
       const s = document.createElement('script')
       s.src = `https://cdn.polyfill.io/v2/polyfill.min.js?features=${features.join(
         ','
-      )}&rum=1&flags=always&callback=__polyfillio__`
+      )}&rum=1&flags=gated,always&callback=__polyfillio__`
       s.async = true
       s.onerror = reject
       document.head.appendChild(s)
