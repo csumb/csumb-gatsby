@@ -132,10 +132,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/csumb/csumb-gatsby"
-  },
-  "browserslist": [
-    ">0.25%",
-    "not dead",
-    "ie 11"
-  ]
+  }
 }
