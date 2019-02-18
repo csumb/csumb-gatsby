@@ -52,6 +52,7 @@ class AccountProfilePage extends React.Component {
     NProgress.start()
     fetch('/_last-build.json')
       .then(result => {
+        NProgress.inc()
         return result.json()
       })
       .then(lastBuild => {
@@ -130,11 +131,13 @@ class UserAccountProfileForm extends React.Component {
       credentials: 'include',
     })
       .then(response => {
+        NProgress.inc()
         return response.json()
       })
       .then(response => {
         fetch(`http://api.csumb.edu/profile/data?token=${response.id}`)
           .then(response => {
+            NProgress.inc()
             return response.json()
           })
           .then(response => {
