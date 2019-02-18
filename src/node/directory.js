@@ -38,6 +38,14 @@ module.exports = (graphql, actions) => {
                     directoryDepartment
                     directoryPhone
                     email
+                    _publicProfile {
+                      phone
+                      biography
+                      photo
+                      buildingCode
+                      location
+                      appointmentCalendar
+                    }
                   }
                 }
               }
