@@ -16,6 +16,7 @@ import {
 import Link from 'gatsby-link'
 import { AlertDanger, AlertSuccess } from 'components/alert'
 import phoneFormatter from 'phone-formatter'
+import NProgress from 'nprogress'
 
 class UserEmergencyForm extends React.Component {
   state = {
@@ -27,10 +28,12 @@ class UserEmergencyForm extends React.Component {
   }
 
   componentDidMount() {
+    NProgress.start()
     fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
     })
       .then(response => {
+        NProgress.inc()
         return response.json()
       })
       .then(session => {
@@ -41,9 +44,11 @@ class UserEmergencyForm extends React.Component {
           }&_t=${time.getTime()}`
         )
           .then(response => {
+            NProgress.inc()
             return response.json()
           })
           .then(everbridgeUser => {
+            NProgress.done()
             this.setState({
               everbridgeUser: everbridgeUser,
               userToken: session.id,
@@ -51,6 +56,7 @@ class UserEmergencyForm extends React.Component {
             })
           })
           .catch(error => {
+            NProgress.done()
             this.setState({
               error: true,
               isReady: true,
