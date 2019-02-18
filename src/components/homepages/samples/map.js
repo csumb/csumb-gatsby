@@ -13,15 +13,16 @@ const InfoWindowContent = styled('p')`
   margin-bottom: 0;
 `
 
+const MobileFloatBox = styled('div')`
+  padding: 0 1rem 1rem 1rem;
+`
+
 const FloatBox = styled('div')`
-  ${props =>
-    props.isMobile
-      ? `padding: 0 1rem 1rem 1rem;`
-      : `position: absolute;
+  position: absolute;
   top: 40px;
   left: 40px;
   max-width: 400px;
-  z-index: 10000;`};
+  z-index: 10000;
 `
 
 const FloatText = styled('div')`
@@ -82,55 +83,72 @@ class HomepageHero extends React.Component {
     const { google } = this.props
     const { isMobile, activeMarker, showInfoWindow, selectedPlace } = this.state
     return (
-      <StaticHero>
-        <FloatBox isMobile={isMobile}>
-          <FloatText>
-            <h1>
-              <Link to="/service">Service Learning</Link>
-            </h1>
-            <LeadParagraph>
-              Last year, 3,310 students provided 114,651 hours of service in our
-              community.
-            </LeadParagraph>
-          </FloatText>
-        </FloatBox>
-        <Map
-          google={google}
-          zoom={10}
-          zoomControl={true}
-          scaleControl={false}
-          mapTypeControl={false}
-          streetViewControl={false}
-          mapType="TERRAIN"
-          style={{
-            height: '500px',
-            width: '100%',
-            position: 'relative',
-          }}
-          initialCenter={{
-            lat: 36.6536502,
-            lng: -121.7989176,
-          }}
-        >
-          {mapData.map((item, key) => (
-            <Marker
-              key={key}
-              name={item.text}
-              position={{ lat: item.lat, lng: item.lon }}
-              onClick={this.onMarkerClick.bind(this)}
-            />
-          ))}
-          <InfoWindow
-            marker={activeMarker}
-            visible={showInfoWindow}
-            onClose={this.onInfoWindowClose.bind(this)}
+      <>
+        {isMobile && (
+          <MobileFloatBox>
+            <FloatText>
+              <h1>
+                <Link to="/service">Service Learning</Link>
+              </h1>
+              <LeadParagraph>
+                Last year, 3,310 students provided 114,651 hours of service in
+                our community.
+              </LeadParagraph>
+            </FloatText>
+          </MobileFloatBox>
+        )}
+        <StaticHero>
+          {!isMobile && (
+            <FloatBox>
+              <FloatText>
+                <h1>
+                  <Link to="/service">Service Learning</Link>
+                </h1>
+                <LeadParagraph>
+                  Last year, 3,310 students provided 114,651 hours of service in
+                  our community.
+                </LeadParagraph>
+              </FloatText>
+            </FloatBox>
+          )}
+          <Map
+            google={google}
+            zoom={10}
+            zoomControl={true}
+            scaleControl={false}
+            mapTypeControl={false}
+            streetViewControl={false}
+            mapType="TERRAIN"
+            style={{
+              height: '500px',
+              width: '100%',
+              position: 'relative',
+            }}
+            initialCenter={{
+              lat: 36.6536502,
+              lng: -121.7989176,
+            }}
           >
-            <InfoWindowContent
-              dangerouslySetInnerHTML={{ __html: selectedPlace.name }}
-            />
-          </InfoWindow>
-        </Map>
-      </StaticHero>
+            {mapData.map((item, key) => (
+              <Marker
+                key={key}
+                name={item.text}
+                position={{ lat: item.lat, lng: item.lon }}
+                onClick={this.onMarkerClick.bind(this)}
+              />
+            ))}
+            <InfoWindow
+              marker={activeMarker}
+              visible={showInfoWindow}
+              onClose={this.onInfoWindowClose.bind(this)}
+            >
+              <InfoWindowContent
+                dangerouslySetInnerHTML={{ __html: selectedPlace.name }}
+              />
+            </InfoWindow>
+          </Map>
+        </StaticHero>
+      </>
     )
   }
 }
