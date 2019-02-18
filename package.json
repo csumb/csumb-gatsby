@@ -135,6 +135,7 @@
   },
   "browserslist": [
     ">0.25%",
-    "not dead"
+    "not dead",
+    "ie 11"
   ]
 }
