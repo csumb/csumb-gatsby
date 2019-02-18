@@ -86,7 +86,10 @@ export default IndexPage
 
 export const query = graphql`
   {
-    allContentfulHomepageStory(sort: { fields: goLiveDate, order: DESC }) {
+    allContentfulHomepageStory(
+      limit: 20
+      sort: { fields: goLiveDate, order: DESC }
+    ) {
       edges {
         node {
           title
@@ -115,7 +118,25 @@ export const query = graphql`
         }
       }
     }
-    allContentfulHomepageEvent(sort: { fields: goLiveDate }) {
+
+    allContentfulHomepageInTheNews(
+      limit: 10
+      sort: { fields: [goLiveDate, title], order: [DESC, ASC] }
+    ) {
+      edges {
+        node {
+          title
+          link
+          source
+          goLiveDate
+          contentful_id
+        }
+      }
+    }
+    allContentfulHomepageEvent(
+      limit: 10
+      sort: { fields: goLiveDate, order: DESC }
+    ) {
       edges {
         node {
           title
@@ -138,17 +159,6 @@ export const query = graphql`
               srcSet
             }
           }
-        }
-      }
-    }
-    allContentfulHomepageInTheNews(sort: { fields: goLiveDate }) {
-      edges {
-        node {
-          title
-          link
-          source
-          goLiveDate
-          contentful_id
         }
       }
     }
