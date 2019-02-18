@@ -34,6 +34,13 @@ module.exports = {
     'gatsby-source-csumb-directory',
     'gatsby-source-csumb-web-content',
     {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        color: 'tomato',
+        showSpinner: false,
+      },
+    },
+    {
       resolve: 'gatsby-source-airtable',
       options: {
         apiKey: process.env.AIRTABLE_SCIENCEILLUSTRATION,

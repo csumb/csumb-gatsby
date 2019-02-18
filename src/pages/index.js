@@ -34,10 +34,10 @@ const IndexPage = ({ data }) => {
     allContentfulHomepageInTheNews,
   } = data
 
-  const featured = sortItems(
+  /*const featured = sortItems(
     [allContentfulHomepageStory, allContentfulHomepageEvent],
     true
-  )
+  )*/
   const notFeatured = sortItems(
     [allContentfulHomepageStory, allContentfulHomepageEvent],
     false
