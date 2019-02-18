@@ -31,6 +31,7 @@ module.exports = {
     'gatsby-transformer-csv',
     'gatsby-transformer-remark',
     'gatsby-plugin-catch-links',
+    'gatsby-source-csumb-directory',
     'gatsby-source-csumb-web-content',
     {
       resolve: 'gatsby-source-airtable',
