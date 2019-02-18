@@ -21,6 +21,7 @@ import SimpleMDE from 'react-simplemde-editor'
 import showdown from 'showdown'
 import { LeadParagraph } from 'components/type'
 import 'simplemde/dist/simplemde.min.css'
+import NProgress from 'nprogress'
 
 const AccountPhoto = styled('img')`
   max-width: 150px;
@@ -48,6 +49,7 @@ class AccountProfilePage extends React.Component {
   }
 
   componentDidMount() {
+    NProgress.start()
     fetch('/_last-build.json')
       .then(result => {
         return result.json()
@@ -136,6 +138,7 @@ class UserAccountProfileForm extends React.Component {
             return response.json()
           })
           .then(response => {
+            NProgress.done()
             that.setState({
               profile: response,
             })
