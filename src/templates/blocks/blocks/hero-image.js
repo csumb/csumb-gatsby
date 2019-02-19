@@ -33,6 +33,16 @@ const MobileHeroTextWrapper = styled('div')`
   padding: 1rem;
 `
 
+const HeroText = ({ headline, text, buttonUrl, buttonText }) => (
+  <>
+    <h3>{headline}</h3>
+    <p>{text}</p>
+    {buttonUrl && buttonText && (
+      <HeroButton to={buttonUrl}>{buttonText}</HeroButton>
+    )}
+  </>
+)
+
 class BlockHeroImage extends React.Component {
   state = {
     isMobile: false,
@@ -53,15 +63,13 @@ class BlockHeroImage extends React.Component {
   }
 
   render() {
-    const { image, buttonUrl, headline, text, buttonText } = this.props
+    const { image } = this.props
     const { isMobile } = this.state
     return (
       <>
         {isMobile && (
           <MobileHeroTextWrapper>
-            <h3>{headline}</h3>
-            <p>{text}</p>
-            <HeroButton to="link">This is text</HeroButton>
+            <HeroText {...this.props} />
           </MobileHeroTextWrapper>
         )}
         <LazyHero
@@ -74,9 +82,7 @@ class BlockHeroImage extends React.Component {
         >
           {!isMobile && (
             <HeroImageTextWrapper>
-              <h3>{headline}</h3>
-              <p>{text}</p>
-              <HeroButton to="link">This is text</HeroButton>
+              <HeroText {...this.props} />
             </HeroImageTextWrapper>
           )}
         </LazyHero>

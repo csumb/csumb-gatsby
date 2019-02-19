@@ -39,8 +39,6 @@ const PersonListing = props => {
   const {
     firstName,
     lastName,
-    campusRoomNumber,
-    directoryBuildingCode,
     directoryJobClass,
     directoryTitle,
     directoryDepartment,
@@ -328,12 +326,10 @@ export const query = graphql`
           user {
             firstName
             lastName
-            directoryBuildingCode
             directoryJobClass
             directoryTitle
             directoryDepartment
             directoryPhone
-            campusRoomNumber
             email
             _publicProfile {
               phone
