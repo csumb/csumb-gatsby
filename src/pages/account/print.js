@@ -11,6 +11,7 @@ import {
 } from 'components/pages/account'
 import { InputText, Submit } from 'components/forms'
 import { UserContext } from 'components/contexts/user'
+import NProgress from 'nprogress'
 
 const pricePerPage = 0.08
 
@@ -69,6 +70,7 @@ class UserPrintForm extends React.Component {
     if (!user) {
       return
     }
+    NProgress.start()
     window
       .fetch(
         `https://winservices.csumb.edu/print/balance.php?u=${user.profile.login
@@ -76,15 +78,18 @@ class UserPrintForm extends React.Component {
           .shift()}`
       )
       .then(response => {
+        NProgress.inc()
         return response.json()
       })
       .then(balance => {
+        NProgress.done()
         this.setState({
           isReady: true,
           balance: balance,
         })
       })
       .catch(error => {
+        NProgress.done()
         this.setState({
           isReady: true,
         })

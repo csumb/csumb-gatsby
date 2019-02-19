@@ -21,6 +21,7 @@ import SimpleMDE from 'react-simplemde-editor'
 import showdown from 'showdown'
 import { LeadParagraph } from 'components/type'
 import 'simplemde/dist/simplemde.min.css'
+import NProgress from 'nprogress'
 
 const AccountPhoto = styled('img')`
   max-width: 150px;
@@ -48,8 +49,10 @@ class AccountProfilePage extends React.Component {
   }
 
   componentDidMount() {
+    NProgress.start()
     fetch('/_last-build.json')
       .then(result => {
+        NProgress.inc()
         return result.json()
       })
       .then(lastBuild => {
@@ -128,14 +131,17 @@ class UserAccountProfileForm extends React.Component {
       credentials: 'include',
     })
       .then(response => {
+        NProgress.inc()
         return response.json()
       })
       .then(response => {
         fetch(`http://api.csumb.edu/profile/data?token=${response.id}`)
           .then(response => {
+            NProgress.inc()
             return response.json()
           })
           .then(response => {
+            NProgress.done()
             that.setState({
               profile: response,
             })

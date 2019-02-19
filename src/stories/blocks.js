@@ -280,6 +280,7 @@ storiesOf('Blocks/Hero Image', module).add('Hero Image', () => (
           url: 'https://placekitten.com/g/2000/900',
         },
         headline: shortSampleText,
+        text: sampleText,
       }}
     />
   </ContainerContext.Provider>

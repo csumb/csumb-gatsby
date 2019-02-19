@@ -15,9 +15,9 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
-
 import '@reach/menu-button/styles.css'
 import '@reach/dialog/styles.css'
+import NProgress from 'nprogress'
 
 const loginUrl =
   'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7'
@@ -424,10 +424,12 @@ class DashboardContent extends React.Component {
     }
 
     const userRoles = roles.join(',')
+    NProgress.start()
     fetch('https://csumb.okta.com/api/v1/sessions/me', {
       credentials: 'include',
     })
       .then(response => {
+        NProgress.inc()
         if (response.ok) {
           return response.json()
         }
@@ -447,9 +449,11 @@ class DashboardContent extends React.Component {
           }&role=${userRoles}&_t=${Date.now()}`
         )
           .then(response => {
+            NProgress.inc()
             return response.json()
           })
           .then(content => {
+            NProgress.done()
             this.setState({
               events: content.events,
               messages: content.messages,

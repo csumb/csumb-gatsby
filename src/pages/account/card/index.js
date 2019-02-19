@@ -11,6 +11,7 @@ import {
 import { UserContext } from 'components/contexts/user'
 import { Table, TableRow, TableHeader, TableCell } from 'components/table'
 import { ButtonLink } from 'components/button'
+import NProgress from 'nprogress'
 
 class AccountCardPage extends React.Component {
   render() {
@@ -67,21 +68,25 @@ class UserCardForm extends React.Component {
     if (!user) {
       return
     }
+    NProgress.start()
     fetch(
       `https://winservices.csumb.edu/cbord/balance.php?e=${
         user.profile.employeeNumber
       }`
     )
       .then(response => {
+        NProgress.inc()
         return response.json()
       })
       .then(card => {
+        NProgress.done()
         this.setState({
           isReady: true,
           card: card,
         })
       })
       .catch(error => {
+        NProgress.done()
         this.setState({
           isReady: true,
         })

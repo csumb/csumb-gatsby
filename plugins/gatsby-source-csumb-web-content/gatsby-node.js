@@ -28,7 +28,6 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       return
     }
     if (name.search('_data/public-directory/') > -1) {
-      publicDirectoryNode(name, content, digest)
       return
     }
     if (name.search('_navigation.json') > -1) {
@@ -36,7 +35,6 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       return
     }
     if (name.search('_data/directory.json') > -1) {
-      directoryNodes(content)
       return
     }
     if (name.search('_data/departments.json') > -1) {
@@ -104,19 +102,6 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
     createNode(contentNode)
   }
 
-  const publicDirectoryNode = (name, content, digest) => {
-    createNode({
-      id: createNodeId(`${name} >>> CsumbPublicDirectory`),
-      parent: null,
-      children: [],
-      profile: content,
-      internal: {
-        type: `CsumbPublicDirectory`,
-        contentDigest: digest,
-      },
-    })
-  }
-
   const siteNode = (name, content, digest) => {
     createNode({
       id: createNodeId(`${content.site} >>> CsumbSite`),
@@ -145,25 +130,6 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
         type: `CsumbNavigation`,
         contentDigest: digest,
       },
-    })
-  }
-
-  const directoryNodes = content => {
-    content.forEach(user => {
-      const directoryNode = {
-        id: createNodeId(`${user.email} >>> CsumbDirectory`),
-        children: [],
-        parent: null,
-        user: user,
-        internal: {
-          type: `CsumbDirectory`,
-        },
-      }
-      directoryNode.internal.contentDigest = crypto
-        .createHash(`md5`)
-        .update(JSON.stringify(directoryNode))
-        .digest(`hex`)
-      createNode(directoryNode)
     })
   }
 

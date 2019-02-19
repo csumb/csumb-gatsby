@@ -9,6 +9,7 @@ import Link from 'gatsby-link'
 import LinkInspect from 'components/link-inspect'
 import SiteHeader from 'components/header/site-header'
 import { graphql } from 'gatsby'
+import phoneFormatter from 'phone-formatter'
 
 const DirectoryItem = styled('div')`
   margin-bottom: 2rem;
@@ -38,14 +39,12 @@ const PersonListing = props => {
   const {
     firstName,
     lastName,
-    campusRoomNumber,
-    directoryBuildingCode,
     directoryJobClass,
     directoryTitle,
     directoryDepartment,
-    directoryPhone,
     email,
     buildings,
+    _publicProfile,
   } = props
   const link = email.split('@').shift()
   return (
@@ -70,25 +69,29 @@ const PersonListing = props => {
               <a href={`mailto:${email}`}>{email}</a>
             </DirectoryDetail>
           )}
-          {directoryPhone && (
-            <DirectoryDetail>{directoryPhone}</DirectoryDetail>
+          {_publicProfile && _publicProfile.phone && (
+            <DirectoryDetail>
+              {phoneFormatter.format(_publicProfile.phone, '(NNN) NNN-NNNN')}
+            </DirectoryDetail>
           )}
 
-          {directoryBuildingCode && buildings[directoryBuildingCode] && (
-            <>
-              <Link to={`/buildings/${directoryBuildingCode}`}>
-                {buildings[directoryBuildingCode]}
-              </Link>
+          {_publicProfile &&
+            _publicProfile.buildingCode &&
+            buildings[_publicProfile.buildingCode] && (
               <>
-                {campusRoomNumber && (
-                  <DirectoryDetail>
-                    <strong>Room: </strong>
-                    {campusRoomNumber}
-                  </DirectoryDetail>
-                )}
+                <Link to={`/buildings/${_publicProfile.buildingCode}`}>
+                  {buildings[_publicProfile.buildingCode]}
+                </Link>
+                <>
+                  {_publicProfile.location && (
+                    <DirectoryDetail>
+                      <strong>Room: </strong>
+                      {_publicProfile.location.split('-').pop()}
+                    </DirectoryDetail>
+                  )}
+                </>
               </>
-            </>
-          )}
+            )}
         </Box>
       </Flex>
     </DirectoryItem>
@@ -323,13 +326,19 @@ export const query = graphql`
           user {
             firstName
             lastName
-            directoryBuildingCode
             directoryJobClass
             directoryTitle
             directoryDepartment
             directoryPhone
-            campusRoomNumber
             email
+            _publicProfile {
+              phone
+              biography
+              photo
+              buildingCode
+              location
+              appointmentCalendar
+            }
           }
         }
       }
