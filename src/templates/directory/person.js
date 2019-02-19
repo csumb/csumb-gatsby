@@ -5,6 +5,8 @@ import Container from 'components/container'
 import PageTitle from 'components/header/page-title'
 import { Flex, Box } from '@rebass/grid/emotion'
 import styled from '@emotion/styled'
+import phoneFormatter from 'phone-formatter'
+import showdown from 'showdown'
 
 const DirectoryTitle = styled('div')`
   font-size: 1.5rem;
@@ -15,38 +17,51 @@ const DirectoryPosition = styled('div')`
   margin-bottom: 1.5rem;
 `
 
-class BuildingTemplate extends React.Component {
-  render() {
-    const { user } = this.props.pageContext
-    return (
-      <Layout pageTitle={`${user.firstName} ${user.lastName} Directory`}>
-        <SiteHeader path="/directory">Directory</SiteHeader>
-        <Container>
-          <PageTitle>
-            {user.firstName} {user.lastName}
-          </PageTitle>
-          <Flex flexWrap="wrap">
-            <Box width={[1, 1, 1 / 2, 1 / 2]}>
-              {user.directoryDepartment.map((department, key) => (
-                <DirectoryPosition key={key}>
-                  <DirectoryTitle>{user.directoryTitle[key]}</DirectoryTitle>
-                  {department}
-                </DirectoryPosition>
-              ))}
-              <h2>Contact information</h2>
+const PersonTemplate = ({ pageContext }) => {
+  const { user } = pageContext
+  const { _publicProfile } = user
+  const converter = new showdown.Converter()
+  return (
+    <Layout pageTitle={`${user.firstName} ${user.lastName} Directory`}>
+      <SiteHeader path="/directory">Directory</SiteHeader>
+      <Container>
+        <PageTitle>
+          {user.firstName} {user.lastName}
+        </PageTitle>
+        <Flex flexWrap="wrap">
+          <Box width={[1, 1, 1 / 2, 1 / 2]}>
+            {user.directoryDepartment.map((department, key) => (
+              <DirectoryPosition key={key}>
+                <DirectoryTitle>{user.directoryTitle[key]}</DirectoryTitle>
+                {department}
+              </DirectoryPosition>
+            ))}
+            <h2>Contact information</h2>
+            <p>
+              <a href={`mailto:${user.email}`}>{user.email}</a>
+            </p>
+            {_publicProfile && _publicProfile.phone && (
               <p>
-                <a href={`mailto:${user.email}`}>{user.email}</a>
+                {phoneFormatter.format(_publicProfile.phone, '(NNN) NNN-NNNN')}
               </p>
-              {user.directoryPhone && <p>{user.directoryPhone}</p>}
-            </Box>
-            <Box width={[1, 1, 1 / 2, 1 / 2]}>
-              {user.directoryPhoto && <img src={user.directoryPhoto} alt="" />}
-            </Box>
-          </Flex>
-        </Container>
-      </Layout>
-    )
-  }
+            )}
+          </Box>
+          <Box width={[1, 1, 1 / 2, 1 / 2]}>
+            {_publicProfile && _publicProfile.photo && (
+              <img src={_publicProfile.photo} alt="" />
+            )}
+          </Box>
+        </Flex>
+        {_publicProfile && _publicProfile.biography && (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: converter.makeHtml(_publicProfile.biography),
+            }}
+          />
+        )}
+      </Container>
+    </Layout>
+  )
 }
 
-export default BuildingTemplate
+export default PersonTemplate

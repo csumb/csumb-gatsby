@@ -7,6 +7,7 @@ import Container from 'components/container'
 import Link from 'gatsby-link'
 import { Box, Flex } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
+import phoneFormatter from 'phone-formatter'
 
 const DirectoryPage = ({ data }) => (
   <Layout>
@@ -77,7 +78,7 @@ const ShortPersonList = styled('ul')`
   margin-top: 1rem;
 `
 
-const ShortPersonListing = ({ firstName, lastName, directoryPhone, email }) => {
+const ShortPersonListing = ({ firstName, lastName, email, _publicProfile }) => {
   const link = email.split('@').shift()
   return (
     <li>
@@ -86,7 +87,11 @@ const ShortPersonListing = ({ firstName, lastName, directoryPhone, email }) => {
           {firstName} {lastName}
         </ShortPersonName>
       </Link>
-      {directoryPhone && <ShortPersonPhone>{directoryPhone}</ShortPersonPhone>}
+      {_publicProfile && _publicProfile.phone && (
+        <ShortPersonPhone>
+          {phoneFormatter.format(_publicProfile.phone, '(NNN) NNN-NNNN')}
+        </ShortPersonPhone>
+      )}
     </li>
   )
 }
@@ -130,6 +135,7 @@ class DirectoryForm extends React.Component {
       search: search,
     })
   }
+
   render() {
     const { search } = this.state
     return (
@@ -187,8 +193,15 @@ export const query = graphql`
           user {
             firstName
             lastName
-            directoryPhone
             email
+            _publicProfile {
+              phone
+              biography
+              photo
+              buildingCode
+              location
+              appointmentCalendar
+            }
           }
         }
       }

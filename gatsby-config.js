@@ -31,7 +31,15 @@ module.exports = {
     'gatsby-transformer-csv',
     'gatsby-transformer-remark',
     'gatsby-plugin-catch-links',
+    'gatsby-source-csumb-directory',
     'gatsby-source-csumb-web-content',
+    {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        color: 'tomato',
+        showSpinner: false,
+      },
+    },
     {
       resolve: 'gatsby-source-airtable',
       options: {
