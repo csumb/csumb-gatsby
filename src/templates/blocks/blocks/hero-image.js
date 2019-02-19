@@ -1,57 +1,86 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'components/styles/theme'
+import color from 'color'
 import LazyHero from 'react-lazy-hero'
-import Link from 'gatsby-link'
+import LinkInspect from 'components/link-inspect'
 
-const HeroImageTextWrapper = styled('div')`
-  padding-top: 1.5rem;
-  padding-left: 1.5rem;
-  position: relative;
+const background = color(colors.primary.dark)
+  .rgb()
+  .array()
+
+const HeroButton = styled(LinkInspect)`
+  color: ${colors.white};
+  border: 3px solid ${colors.white};
+  display: inline-block;
+  padding: 0.5rem;
+  font-weight: bold;
+  text-decoration: none;
 `
 
-const HeroImageText = styled('p')`
-  font-size: 2rem;
-  line-height: 2.8rem;
-  font-weight: bold;
-  color: ${colors.primary.darkest};
-  display: inline;
-  white-space: pre-wrap;
-  border: 0.25em solid ${colors.white};
-  background: ${colors.white};
-  &:after {
-    background-color: ${colors.white};
-  }
-  a {
-    color: ${colors.primary.darkest};
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+const HeroImageTextWrapper = styled('div')`
+  color: ${colors.white};
+  background: rgba(${background[0]}, ${background[1]}, ${background[2]}, 0.8);
+  position: absolute;
+  width: 33.33333333%;
+  min-height: 75vh;
+  padding: 2rem;
+`
+
+const MobileHeroTextWrapper = styled('div')`
+  color: ${colors.white};
+  background: ${colors.primary.dark};
+  padding: 1rem;
 `
 
 class BlockHeroImage extends React.Component {
+  state = {
+    isMobile: false,
+  }
+  componentDidMount() {
+    const mobileBreakpoint = 830
+    const that = this
+
+    const setWindowSize = () => {
+      that.setState({
+        isMobile: window.innerWidth <= mobileBreakpoint,
+      })
+    }
+
+    window.addEventListener('resize', setWindowSize)
+
+    setWindowSize()
+  }
+
   render() {
-    const { image, buttonUrl, headline } = this.props
+    const { image, buttonUrl, headline, text, buttonText } = this.props
+    const { isMobile } = this.state
     return (
-      <LazyHero
-        opacity={0}
-        parallaxOffset={0}
-        transitionDuration={0}
-        isCentered={false}
-        imageSrc={image.url}
-      >
-        <HeroImageTextWrapper>
-          <HeroImageText>
-            {buttonUrl ? (
-              <Link to={buttonUrl}>{headline}</Link>
-            ) : (
-              <>{headline}</>
-            )}
-          </HeroImageText>
-        </HeroImageTextWrapper>
-      </LazyHero>
+      <>
+        {isMobile && (
+          <MobileHeroTextWrapper>
+            <h3>{headline}</h3>
+            <p>{text}</p>
+            <HeroButton to="link">This is text</HeroButton>
+          </MobileHeroTextWrapper>
+        )}
+        <LazyHero
+          opacity={0}
+          parallaxOffset={0}
+          transitionDuration={0}
+          isCentered={false}
+          imageSrc={image.url}
+          minHeight="75vh"
+        >
+          {!isMobile && (
+            <HeroImageTextWrapper>
+              <h3>{headline}</h3>
+              <p>{text}</p>
+              <HeroButton to="link">This is text</HeroButton>
+            </HeroImageTextWrapper>
+          )}
+        </LazyHero>
+      </>
     )
   }
 }

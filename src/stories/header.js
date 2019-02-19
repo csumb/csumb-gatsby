@@ -4,10 +4,7 @@ import Brand from 'components/header/brand'
 import Applicant from 'components/header/applicant'
 import Header from 'components/header'
 import SiteHeader from 'components/header/site-header'
-import {
-  NavigationLink,
-  NavigationLinkApply,
-} from 'components/header/navigation-link'
+import { NavigationLink } from 'components/header/navigation-link'
 import typography from 'utils/typography'
 import { UserContext } from 'components/contexts/user'
 
@@ -47,9 +44,6 @@ storiesOf('Header', module)
   ))
   .add('Navigation Link', () => (
     <NavigationLink to="/about">About</NavigationLink>
-  ))
-  .add('Apply Navigation Link', () => (
-    <NavigationLinkApply to="/apply">Apply</NavigationLinkApply>
   ))
   .add('Site header', () => (
     <SiteHeader path="/it">Information Technology</SiteHeader>
