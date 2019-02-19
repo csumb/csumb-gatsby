@@ -15,7 +15,6 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
-
 import '@reach/menu-button/styles.css'
 import '@reach/dialog/styles.css'
 import NProgress from 'nprogress'
