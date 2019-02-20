@@ -28,7 +28,7 @@ Need help with your campus website? [Get in touch with web services.](https://cs
 
 ## Environment variables
 
-Check out the environment variables in `.cirrus.yml`, those values are encrypted, but you'll need those values on your local machine in order for builds to work.
+The environment variables defined in TravisCI are required for builds to work.
 
 ## Special URLs
 
