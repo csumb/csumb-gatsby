@@ -18,7 +18,6 @@ class NewsStoryPage extends React.Component {
 
         <NewsContainer>
           <PageTitle>{story.title}</PageTitle>
-          <NewsTags tags={story.tags} />
           <NewsByline story={story} />
           {story.childContentfulNewsStoryLeadParagraphTextNode
             .leadParagraph && (
@@ -35,6 +34,9 @@ class NewsStoryPage extends React.Component {
             story.childContentfulNewsStoryMainContentRichTextNode.mainContent
           )}
         />
+        <NewsContainer>
+          <NewsTags tags={story.tags} />
+        </NewsContainer>
       </Layout>
     )
   }

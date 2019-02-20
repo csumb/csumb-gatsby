@@ -4,13 +4,26 @@ import moment from 'moment'
 import NewsContainer from 'components/news-container'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import VisuallyHidden from 'components/visually-hidden'
+import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'components/styles/theme'
 
 const NewsTag = styled(Link)`
   color: ${colors.white};
-  background: ${colors.primary.darkest};
+  background: ${colors.primary.dark};
   padding: 0.3rem;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  &:hover {
+    background: ${colors.primary.darkest};
+  }
+`
+
+const NewsTagWrapper = styled('div')`
+  border-top: 1px solid ${colors.primary.darkest};
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
 `
 
 const NewsTags = ({ tags }) => {
@@ -18,12 +31,18 @@ const NewsTags = ({ tags }) => {
     return null
   }
   return (
-    <p>
-      <VisuallyHidden>Tagged with:</VisuallyHidden>
-      {tags.map(tag => (
-        <NewsTag to={`news/tag/${tag.slug}`}>{tag.name}</NewsTag>
-      ))}
-    </p>
+    <NewsTagWrapper>
+      <Flex flexWrap="wrap">
+        <Box width={[1, 2 / 12, 2 / 12]} pr={[0, 2, 2]}>
+          <h5>More about</h5>
+        </Box>
+        <Box width={[1, 10 / 12, 10 / 12]}>
+          {tags.map(tag => (
+            <NewsTag to={`news/tag/${tag.slug}`}>{tag.name}</NewsTag>
+          ))}
+        </Box>
+      </Flex>
+    </NewsTagWrapper>
   )
 }
 
@@ -35,8 +54,8 @@ const NewsByline = ({ story }) => {
 
   return (
     <Byline>
+      {story.bylineName && <div> {story.bylineName}</div>}
       {story.bylineLocation} {date.format('MMMM D, YYYY')}
-      {story.bylineName && <> {story.bylineName}</>}
     </Byline>
   )
 }
