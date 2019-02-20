@@ -18,6 +18,9 @@ const NewsTag = styled(Link)`
   &:hover {
     background: ${colors.primary.darkest};
   }
+  &:visited {
+    color: ${colors.white};
+  }
 `
 
 const NewsTagWrapper = styled('div')`
