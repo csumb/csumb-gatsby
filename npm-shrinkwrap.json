@@ -13142,6 +13142,18 @@
         "favicons-webpack-plugin": "git+https://github.com/Creatiwity/favicons-webpack-plugin.git#f262255febeeca348bf7ae5cc140e0386c074e2c",
         "html-react-parser": "^0.4.6",
         "lodash": "^4.17.10"
+      },
+      "dependencies": {
+        "html-react-parser": {
+          "version": "0.4.7",
+          "resolved": "https://registry.npmjs.org/html-react-parser/-/html-react-parser-0.4.7.tgz",
+          "integrity": "sha512-h3EUYXqKXts68/ynQwH5ws57vg2P94VzvzpwVRwYgWjW+uEtkXDjOO8q/7UmfcGX4DFHJ69UlQJa1RoRXCTaPg==",
+          "requires": {
+            "html-dom-parser": "0.1.3",
+            "react-dom-core": "0.0.3",
+            "style-to-object": "0.2.2"
+          }
+        }
       }
     },
     "gatsby-plugin-google-analytics": {
@@ -15019,9 +15031,9 @@
       }
     },
     "html-react-parser": {
-      "version": "0.4.7",
-      "resolved": "https://registry.npmjs.org/html-react-parser/-/html-react-parser-0.4.7.tgz",
-      "integrity": "sha512-h3EUYXqKXts68/ynQwH5ws57vg2P94VzvzpwVRwYgWjW+uEtkXDjOO8q/7UmfcGX4DFHJ69UlQJa1RoRXCTaPg==",
+      "version": "0.6.1",
+      "resolved": "https://registry.npmjs.org/html-react-parser/-/html-react-parser-0.6.1.tgz",
+      "integrity": "sha512-KIVma8fvzrUIuLVsZJ4MU7HJxQGCa/LmgBti2iOSjIdf3iVDRQvR+iJ07y0AByuzyYCL6TUCOPi/OF+Joa2OSg==",
       "requires": {
         "html-dom-parser": "0.1.3",
         "react-dom-core": "0.0.3",
