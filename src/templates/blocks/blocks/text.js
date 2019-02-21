@@ -18,7 +18,6 @@ const Paragraph = styled('p')`
 const parserOptions = {
   replace: ({ type, name, attribs, children }) => {
     if (type === 'tag' && name === 'a') {
-      console.log(name)
       return (
         <LinkInspect to={attribs.href}>
           {domToReact(children, parserOptions)}
@@ -28,16 +27,21 @@ const parserOptions = {
   },
 }
 
-const BlockText = ({ lead, text }) => (
-  <ContainerContext.Consumer>
-    {container => (
-      <ContainerElement container={container}>
-        <Paragraph lead={lead} container={container}>
-          {parse(filterCourses(text), parserOptions)}
-        </Paragraph>
-      </ContainerElement>
-    )}
-  </ContainerContext.Consumer>
-)
+const BlockText = ({ lead, text }) => {
+  if (!text) {
+    return null
+  }
+  return (
+    <ContainerContext.Consumer>
+      {container => (
+        <ContainerElement container={container}>
+          <Paragraph lead={lead} container={container}>
+            {parse(filterCourses(text), parserOptions)}
+          </Paragraph>
+        </ContainerElement>
+      )}
+    </ContainerContext.Consumer>
+  )
+}
 
 export default BlockText
