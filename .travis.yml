@@ -4,6 +4,8 @@ node_js:
 before_script:
   - ./node_modules/.bin/grunt
   - npm run test
+  - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-data.git _data
+  - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-content.git _web-content
 script:
   - ./node_modules/.bin/gatsby build
   - npm run directoryJson
