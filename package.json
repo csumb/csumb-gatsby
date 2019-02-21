@@ -37,7 +37,7 @@
     "filestack-react": "^2.0.0",
     "gatsby": "^2.1.14",
     "gatsby-cli": "^2.4.10",
-    "gatsby-link": "^2.0.7",
+    "gatsby-link": "^2.0.11",
     "gatsby-node-helpers": "^0.3.0",
     "gatsby-plugin-catch-links": "^2.0.9",
     "gatsby-plugin-emotion": "^2.0.7",
