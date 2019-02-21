@@ -6191,7 +6191,7 @@
       "dependencies": {
         "lru-cache": {
           "version": "4.0.0",
-          "resolved": "https://registry.npmjs.org/lru-cache/-/lru-cache-4.0.0.tgz",
+          "resolved": "http://registry.npmjs.org/lru-cache/-/lru-cache-4.0.0.tgz",
           "integrity": "sha1-tcvwFVbBaWb+vlTO7A+03JDfbCg=",
           "requires": {
             "pseudomap": "^1.0.1",
@@ -7527,12 +7527,12 @@
       "dependencies": {
         "node-fetch": {
           "version": "2.1.2",
-          "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-2.1.2.tgz",
+          "resolved": "http://registry.npmjs.org/node-fetch/-/node-fetch-2.1.2.tgz",
           "integrity": "sha1-q4hOjn5X44qUR1POxwb3iNF2i7U="
         },
         "whatwg-fetch": {
           "version": "2.0.4",
-          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz",
+          "resolved": "http://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz",
           "integrity": "sha512-dcQ1GWpOD/eEQ97k66aiEVpNnapVj90/+R+SXTPYGHpYBBypfKJEQjLrvMZ7YXbKm21gXd4NcuxUTjiv1YtLng=="
         }
       }
@@ -11902,7 +11902,7 @@
         },
         "dotenv": {
           "version": "4.0.0",
-          "resolved": "https://registry.npmjs.org/dotenv/-/dotenv-4.0.0.tgz",
+          "resolved": "http://registry.npmjs.org/dotenv/-/dotenv-4.0.0.tgz",
           "integrity": "sha1-hk7xN5rO1Vzm+V3r7NzhefegzR0="
         },
         "execa": {
@@ -12012,7 +12012,7 @@
         },
         "external-editor": {
           "version": "2.2.0",
-          "resolved": "https://registry.npmjs.org/external-editor/-/external-editor-2.2.0.tgz",
+          "resolved": "http://registry.npmjs.org/external-editor/-/external-editor-2.2.0.tgz",
           "integrity": "sha512-bSn6gvGxKt+b7+6TKEv1ZycHleA7aHhRHyAqJyp5pbUFuYYNIzpZnQDk7AsYckyWdEnTeAnay0aCy2aV6iTk9A==",
           "requires": {
             "chardet": "^0.4.0",
@@ -12055,7 +12055,7 @@
         },
         "file-loader": {
           "version": "1.1.11",
-          "resolved": "https://registry.npmjs.org/file-loader/-/file-loader-1.1.11.tgz",
+          "resolved": "http://registry.npmjs.org/file-loader/-/file-loader-1.1.11.tgz",
           "integrity": "sha512-TGR4HU7HUsGg6GCOPJnFk06RhWgEWFLAGWiT6rcD+GRC2keU3s9RGJ+b3Z6/U73jwwNb2gKLJ7YCrp+jvU4ALg==",
           "requires": {
             "loader-utils": "^1.0.2",
@@ -12851,7 +12851,7 @@
             },
             "chalk": {
               "version": "1.1.3",
-              "resolved": "https://registry.npmjs.org/chalk/-/chalk-1.1.3.tgz",
+              "resolved": "http://registry.npmjs.org/chalk/-/chalk-1.1.3.tgz",
               "integrity": "sha1-qBFcVeSnAv5NFQq9OHKCKn4J/Jg=",
               "requires": {
                 "ansi-styles": "^2.2.1",
@@ -13097,9 +13097,9 @@
       }
     },
     "gatsby-link": {
-      "version": "2.0.7",
-      "resolved": "https://registry.npmjs.org/gatsby-link/-/gatsby-link-2.0.7.tgz",
-      "integrity": "sha512-UoMxlH3yU6UXiNeSKRcpN87zvD771r3gmhSSvKMI3cCOqwDkqyiRDIWC90FHBf0wJoBnNalFJydJM77kJ/FZTg==",
+      "version": "2.0.11",
+      "resolved": "https://registry.npmjs.org/gatsby-link/-/gatsby-link-2.0.11.tgz",
+      "integrity": "sha512-t0KdvD9+3NN7LRBRNJOx17Y4a2AT+pbZt/ZIAneywxwYtyPLgioQjF3rBVMU2/T+FPCSEsy6WxmS0CtopUfK3A==",
       "requires": {
         "@babel/runtime": "^7.0.0",
         "@reach/router": "^1.1.1",
