@@ -72,6 +72,8 @@ module.exports = (graphql, actions) => {
                     headline
                     text
                     buttonUrl
+                    buttonText
+                    position
                     image {
                       url
                     }
