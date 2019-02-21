@@ -25,6 +25,11 @@ const HeroImageTextWrapper = styled('div')`
   width: 33.33333333%;
   min-height: 75vh;
   padding: 2rem;
+  ${props =>
+    props.position === 'right' &&
+    `
+    right: 0;
+  `}
 `
 
 const MobileHeroTextWrapper = styled('div')`
@@ -63,7 +68,7 @@ class BlockHeroImage extends React.Component {
   }
 
   render() {
-    const { image } = this.props
+    const { image, position } = this.props
     const { isMobile } = this.state
     return (
       <>
@@ -81,7 +86,9 @@ class BlockHeroImage extends React.Component {
           minHeight="75vh"
         >
           {!isMobile && (
-            <HeroImageTextWrapper>
+            <HeroImageTextWrapper
+              position={['ne', 'se'].indexOf(position) > -1 ? 'right' : 'left'}
+            >
               <HeroText {...this.props} />
             </HeroImageTextWrapper>
           )}
