@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
-import { colors } from 'components/styles/theme'
+
 const Byline = styled('div')`
-  background: ${colors.muted.light};
-  padding: 0.4rem;
+  font-weight: bold;
   display: inline-block;
+  margin-bottom: 1rem;
 `
 
 export default Byline

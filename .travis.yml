@@ -2,7 +2,8 @@ language: node_js
 node_js:
   - '8'
 before_script:
-  - ./node_modules/.bin/grunt
+  - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-data.git _data
+  - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-content.git _web-content
   - npm run test
 script:
   - ./node_modules/.bin/gatsby build
@@ -11,3 +12,12 @@ script:
   - npm run configFirebase
   - npm run canary
   - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH
+after_success:
+  - git config --global user.email webfolk@csumb.edu
+  - git config --global user.name csumbwebfolk
+  - git clone --branch gh-pages https://$GITHUB_TOKEN@github.com/csumb/style-guide.git
+  - npm run storybookbuild
+  - cd style-guide
+  - git add *
+  - git commit -m "Updated storybook" || true
+  - git push origin gh-pages || true
