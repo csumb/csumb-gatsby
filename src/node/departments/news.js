@@ -23,6 +23,17 @@ module.exports = (graphql, actions) => {
                 goLiveDate
                 bylineName
                 bylineDate
+                teaserHeadline
+                teaserImage {
+                  file {
+                    url
+                    fileName
+                    contentType
+                  }
+                }
+                childContentfulNewsStoryTeaserDescriptionTextNode {
+                  teaserDescription
+                }
                 childContentfulNewsStoryLeadParagraphTextNode {
                   leadParagraph
                 }
