@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import LinkInspect from 'components/link-inspect'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import styled from '@emotion/styled'
@@ -70,7 +71,7 @@ const RightFooter = styled(Box)`
   })};
 `
 
-const LegalLink = styled(Link)`
+const LegalLink = styled(LinkInspect)`
   color: ${colors.white};
   padding-top: 1rem;
   font-size: 0.8rem;
