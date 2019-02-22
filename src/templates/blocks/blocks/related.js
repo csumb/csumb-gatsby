@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'styles/theme'
+import { colors } from 'style/theme'
 import LinkInspect from 'components/link-inspect'
 import VisuallyHidden from 'components/visually-hidden'
-import bp from 'components/styles/breakpoints'
+import bp from 'style/breakpoints'
 import { ContainerElement, containerStyle } from '../container-context'
 
 const relatedBreakpoints = bp({

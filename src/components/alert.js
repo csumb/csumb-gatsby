@@ -12,7 +12,7 @@ import {
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons'
 import { Flex, Box } from '@rebass/grid/emotion'
-import bp from './styles/breakpoints'
+import bp from 'style/breakpoints'
 
 const baseStyle = `
   display: block;

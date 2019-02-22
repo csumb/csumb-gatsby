@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from 'components/container'
-import { colors } from 'style/theme'
+import { colors, fonts } from 'style/theme'
 import styled from '@emotion/styled'
 import Loading from 'components/loading'
 import { Flex, Box } from '@rebass/grid/emotion'

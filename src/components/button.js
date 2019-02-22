@@ -1,6 +1,6 @@
 import LinkInspect from './link-inspect'
 import styled from '@emotion/styled'
-import { colors } from './styles/theme'
+import { colors } from 'style/theme'
 
 const ButtonStyle = props => {
   if (typeof props.buttonType === 'undefined') {
