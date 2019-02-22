@@ -68,7 +68,9 @@ const SubItemArrowElement = styled(FontAwesomeIcon)`
   float: right;
 `
 
-const SubItemArrow = () => <SubItemArrowElement icon={faChevronRight} />
+const SubItemArrow = () => (
+  <SubItemArrowElement size="1rem" icon={faChevronRight} />
+)
 
 const HiddenButton = styled('button')`
   cursor: pointer;
