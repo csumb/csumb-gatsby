@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 
 const LeadParagraph = styled('p')`
   font-size: 1.3rem;

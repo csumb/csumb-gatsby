@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'components/styles/theme'
+import { colors } from 'styles/theme'
 import color from 'color'
 import LazyHero from 'react-lazy-hero'
 import LinkInspect from 'components/link-inspect'

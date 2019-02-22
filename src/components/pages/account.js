@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import Well from 'components/well'
 import PropTypes from 'prop-types'
 

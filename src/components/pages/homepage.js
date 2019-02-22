@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import moment from 'moment'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { colors, fonts } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import LazyHero from 'react-lazy-hero'
 import { LeadParagraph } from 'components/type'
 

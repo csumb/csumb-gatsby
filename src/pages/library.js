@@ -7,7 +7,7 @@ import { graphql } from 'gatsby'
 import { Flex, Box } from '@rebass/grid/emotion'
 import SiteNavigation from 'components/navigation/site'
 import Blocks from 'templates/blocks'
-import { colors } from 'components/styles/theme'
+import { colors } from 'styles/theme'
 import { InputText, InputSelect, Submit } from 'components/forms'
 
 const LibrarySearchWrapper = styled('form')`

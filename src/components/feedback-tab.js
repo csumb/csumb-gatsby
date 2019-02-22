@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import Container from 'components/container'
 import { Global, css } from '@emotion/core'
 const FeedbackTabItem = styled('div')`

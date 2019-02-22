@@ -4,7 +4,7 @@ import mapData from './serviceLearning.json'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import { LeadParagraph } from 'components/type'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import Link from 'gatsby-link'
 
 const InfoWindowContent = styled('p')`

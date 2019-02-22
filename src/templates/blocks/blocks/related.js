@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'components/styles/theme'
+import { colors } from 'styles/theme'
 import LinkInspect from 'components/link-inspect'
 import VisuallyHidden from 'components/visually-hidden'
 import bp from 'components/styles/breakpoints'

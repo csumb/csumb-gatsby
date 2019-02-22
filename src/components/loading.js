@@ -1,5 +1,5 @@
 import React from 'react'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import styled from '@emotion/styled'
 import ReactLoading from 'react-loading'
 import VisuallyHidden from 'components/visually-hidden'
