@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Alert from '@reach/alert'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import color from 'color'
 import VisuallyHidden from 'components/visually-hidden'

@@ -4,8 +4,8 @@ import LinkInspect from 'components/link-inspect'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import styled from '@emotion/styled'
-import { colors } from 'components/styles/theme'
-import bp from 'components/styles/breakpoints'
+import { colors } from 'style/theme'
+import bp from 'style/breakpoints'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors, fonts } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import { Box } from '@rebass/grid/emotion'
 import LinkInspect from 'components/link-inspect'
 import Link from 'gatsby-link'

@@ -5,7 +5,7 @@ import Rect from '@reach/rect'
 import { InputText } from 'components/forms'
 import styled from '@emotion/styled'
 import Portal from 'components/portal'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import { navigate } from '@reach/router'
 
 /** A11Y
