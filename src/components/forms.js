@@ -3,7 +3,7 @@ import VisuallyHidden from 'components/visually-hidden'
 import PropTypes from 'prop-types'
 import idGenerator from 'react-id-generator'
 import styled from '@emotion/styled'
-import { colors } from './styles/theme'
+import { colors } from 'style/theme'
 import { css } from 'emotion'
 import Select from 'react-select'
 

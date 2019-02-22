@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'styles/theme'
+import { colors } from 'style/theme'
 import { ContainerContext, ContainerElement } from '../container-context'
 import VisuallyHidden from 'components/visually-hidden'
 import Link from 'gatsby-link'
