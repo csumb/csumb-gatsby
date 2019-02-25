@@ -91,13 +91,16 @@ const NuggetsHeader = styled('h3')`
   border-bottom: 3px solid ${colors.black};
 `
 
+const NavigationWrap = styled(Flex)`
+  margin-bottom: 1rem;
+`
+
 const NavigationHeader = styled('h3')`
   font-family: ${fonts.body};
-  margin-bottom: 0.3rem;
+  margin-bottom: 0;
 `
 
 const NavigationItem = styled(Box)`
-  margin-bottom: 1rem;
   border: 3px solid ${colors.white};
   padding: 1rem;
   height: 100%;
@@ -159,33 +162,20 @@ const HomepageHero = ({ item }) => (
 )
 
 const HomepageNavigation = ({ items }) => (
-  <Flex flexWrap="wrap">
+  <NavigationWrap flexWrap="wrap">
     {items[0].node.items.map(item => (
-      <Box width={[1, 1 / 3]} px={4} key={item.contentful_id}>
+      <Box width={[1, 1 / 4]} px={2} key={item.contentful_id}>
         <NavigationItem>
           <a href={item.link}>
             <NavigationHeader>{item.title}</NavigationHeader>
-            <span>
-              {
-                item.childContentfulHomepageNavigationItemDescriptionTextNode
-                  .description
-              }
-            </span>
           </a>
         </NavigationItem>
       </Box>
     ))}
-  </Flex>
+  </NavigationWrap>
 )
 
-const NonFeaturedStory = ({
-  contentful_id,
-  news_story,
-  link,
-  image,
-  title,
-  eventDate,
-}) => (
+const NonFeaturedStory = ({ news_story, link, image, title, eventDate }) => (
   <Story>
     <a href={getNewsLink(news_story, link)}>
       <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
