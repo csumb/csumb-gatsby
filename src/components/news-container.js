@@ -1,4 +1,4 @@
-import bp from 'components/styles/breakpoints'
+import bp from 'style/breakpoints'
 import styled from '@emotion/styled'
 
 const NewsContainer = styled('div')`

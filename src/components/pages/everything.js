@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors, fonts } from 'components/styles/theme'
+import { colors, fonts } from 'style/theme'
 import { Box } from '@rebass/grid/emotion'
 import LinkInspect from 'components/link-inspect'
 import Link from 'gatsby-link'
@@ -68,7 +68,9 @@ const SubItemArrowElement = styled(FontAwesomeIcon)`
   float: right;
 `
 
-const SubItemArrow = () => <SubItemArrowElement icon={faChevronRight} />
+const SubItemArrow = () => (
+  <SubItemArrowElement size="1rem" icon={faChevronRight} />
+)
 
 const HiddenButton = styled('button')`
   cursor: pointer;

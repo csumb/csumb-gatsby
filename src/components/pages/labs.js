@@ -1,6 +1,6 @@
 import React from 'react'
 import Well from 'components/well'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import styled from '@emotion/styled'
 import Loading from 'components/loading'
 

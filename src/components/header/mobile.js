@@ -1,6 +1,6 @@
 import React from 'react'
 import Brand from './brand'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import styled from '@emotion/styled'
 import { MobileNavigationLink } from './navigation-link'
 import VisuallyHidden from 'components/visually-hidden'

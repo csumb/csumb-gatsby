@@ -6,7 +6,7 @@ import Container from 'components/container'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import { graphql } from 'gatsby'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 
 const MapMap = styled(Map)`
   width: 100%;

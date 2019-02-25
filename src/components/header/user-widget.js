@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors, fonts } from 'components/styles/theme'
+import { colors, fonts } from 'style/theme'
 import {
   Menu,
   MenuList,
