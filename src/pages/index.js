@@ -157,20 +157,6 @@ export const query = graphql`
         }
       }
     }
-    allContentfulHomepageNavigation {
-      edges {
-        node {
-          items {
-            contentful_id
-            title
-            link
-            childContentfulHomepageNavigationItemDescriptionTextNode {
-              description
-            }
-          }
-        }
-      }
-    }
     allContentfulHomepageHeroImage(sort: { fields: goLiveDate }) {
       edges {
         node {
