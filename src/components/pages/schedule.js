@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import PageTitle from 'components/header/page-title'
 import moment from 'moment'
 

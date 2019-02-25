@@ -1,5 +1,5 @@
 import React from 'react'
-import bp from 'components/styles/breakpoints'
+import bp from 'style/breakpoints'
 import styled from '@emotion/styled'
 
 const containerStyle = {

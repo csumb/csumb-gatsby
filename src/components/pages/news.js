@@ -5,7 +5,7 @@ import NewsContainer from 'components/news-container'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 
 const NewsTag = styled(Link)`
   color: ${colors.white};

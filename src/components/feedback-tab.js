@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { colors } from 'components/styles/theme'
+import { colors } from 'style/theme'
 import Container from 'components/container'
 import { Global, css } from '@emotion/core'
 const FeedbackTabItem = styled('div')`
@@ -9,7 +9,6 @@ const FeedbackTabItem = styled('div')`
   right: 10px;
   background: ${colors.primary.light};
   padding: 0.5rem;
-  width: 100%;
 `
 
 class FeedbackTab extends React.Component {
