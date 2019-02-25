@@ -5,7 +5,6 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import moment from 'moment'
 import {
-  HomepageNavigation,
   NonFeaturedStory,
   FeaturedStory,
   Nuggets,
@@ -47,11 +46,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HomepageHero />
-      <Container topPadding>
-        <HomepageNavigation
-          items={data.allContentfulHomepageNavigation.edges}
-        />
-      </Container>
+
       <Container topPadding>
         <Flex flexWrap="wrap">
           <Box width={[1, 1, 1 / 2, 3 / 12]} order={[2, 1, 1]} pr={colPadding}>
