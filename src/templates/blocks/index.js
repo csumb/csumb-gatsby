@@ -127,10 +127,10 @@ class Blocks extends React.Component {
     let { blocks } = props
     blocks = JSON.parse(blocks)
     this.blocks = blocks
-    this.addBlockRelationships()
+    this.addBlockHeaderRelationships()
   }
 
-  addBlockRelationships() {
+  addBlockHeaderRelationships() {
     let lastHeader = false
     let lastSize = 0
     this.blocks.layout.map(layout => {

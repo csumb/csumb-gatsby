@@ -12,7 +12,7 @@ const CollapsibleIcon = styled(FontAwesomeIcon)`
 const CollapsibleHeading = styled('button')`
   background: transparent;
   border: none;
-  padding: none;
+  padding: 0;
   display: block;
   width: 100%;
   text-align: left;
