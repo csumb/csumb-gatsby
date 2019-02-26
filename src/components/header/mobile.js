@@ -197,7 +197,7 @@ class HeaderMobile extends React.Component {
         {isOpen && (
           <>
             <Container>
-              <UserWidget />
+              <UserWidget loginLink={this.props.loginLink} />
               <HeaderMobileSearch>
                 <Search
                   swiftypeId={this.props.swiftypeId}
