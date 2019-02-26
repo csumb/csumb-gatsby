@@ -11,7 +11,6 @@ import { LeadParagraph } from 'components/type'
 import {
   AccountGroup,
   AccountTitle,
-  AccountData,
   AccountSidebar,
 } from 'components/pages/account'
 
