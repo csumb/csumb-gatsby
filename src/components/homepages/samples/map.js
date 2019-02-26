@@ -6,6 +6,7 @@ import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import { LeadParagraph } from 'components/type'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'
+import MapPlaceholder from 'components/map-placeholder'
 
 const InfoWindowContent = styled('p')`
   font-weight: bold;
@@ -81,7 +82,13 @@ class HomepageHero extends React.Component {
 
   render() {
     const { google } = this.props
-    const { isMobile, activeMarker, showInfoWindow, selectedPlace } = this.state
+    const {
+      isMobile,
+      activeMarker,
+      showInfoWindow,
+      selectedPlace,
+      showPlaceholder,
+    } = this.state
     return (
       <>
         {isMobile && (
@@ -111,42 +118,44 @@ class HomepageHero extends React.Component {
               </FloatText>
             </FloatBox>
           )}
-          <Map
-            google={google}
-            zoom={10}
-            zoomControl={true}
-            scaleControl={false}
-            mapTypeControl={false}
-            streetViewControl={false}
-            mapType="TERRAIN"
-            style={{
-              height: '500px',
-              width: '100%',
-              position: 'relative',
-            }}
-            initialCenter={{
-              lat: 36.6536502,
-              lng: -121.7989176,
-            }}
-          >
-            {mapData.map((item, key) => (
-              <Marker
-                key={key}
-                name={item.text}
-                position={{ lat: item.lat, lng: item.lon }}
-                onClick={this.onMarkerClick.bind(this)}
-              />
-            ))}
-            <InfoWindow
-              marker={activeMarker}
-              visible={showInfoWindow}
-              onClose={this.onInfoWindowClose.bind(this)}
+          <MapPlaceholder style={{ height: '500px' }}>
+            <Map
+              google={google}
+              zoom={10}
+              zoomControl={true}
+              scaleControl={false}
+              mapTypeControl={false}
+              streetViewControl={false}
+              mapType="TERRAIN"
+              style={{
+                height: '500px',
+                width: '100%',
+                position: 'relative',
+              }}
+              initialCenter={{
+                lat: 36.6536502,
+                lng: -121.7989176,
+              }}
             >
-              <InfoWindowContent
-                dangerouslySetInnerHTML={{ __html: selectedPlace.name }}
-              />
-            </InfoWindow>
-          </Map>
+              {mapData.map((item, key) => (
+                <Marker
+                  key={key}
+                  name={item.text}
+                  position={{ lat: item.lat, lng: item.lon }}
+                  onClick={this.onMarkerClick.bind(this)}
+                />
+              ))}
+              <InfoWindow
+                marker={activeMarker}
+                visible={showInfoWindow}
+                onClose={this.onInfoWindowClose.bind(this)}
+              >
+                <InfoWindowContent
+                  dangerouslySetInnerHTML={{ __html: selectedPlace.name }}
+                />
+              </InfoWindow>
+            </Map>
+          </MapPlaceholder>
         </StaticHero>
       </>
     )
