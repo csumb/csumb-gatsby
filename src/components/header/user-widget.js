@@ -131,11 +131,8 @@ class UserDropdown extends React.Component {
 }
 
 class UserWidget extends React.Component {
-  handleLogin(event) {
-    window.location.href = this.props.loginLink
-  }
-
   render() {
+    const { loginLink } = this.props
     return (
       <>
         <UserContext.Consumer>
@@ -146,9 +143,7 @@ class UserWidget extends React.Component {
               ) : (
                 <>
                   {context.user.anonymous ? (
-                    <UserLoginLink onClick={this.handleLogin.bind(this)}>
-                      Log in
-                    </UserLoginLink>
+                    <UserLoginLink href={loginLink}>Log in</UserLoginLink>
                   ) : (
                     <>
                       <UserDashboardLink to="/dashboard">

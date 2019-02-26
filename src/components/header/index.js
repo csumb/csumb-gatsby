@@ -45,6 +45,7 @@ class Header extends React.Component {
           <HeaderMobile
             swiftypeId={metadata.swiftypeId}
             siteNavigation={siteNavigation}
+            loginLink={metadata.okta.login}
             siteTitle={siteTitle}
           />
         ) : (
