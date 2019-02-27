@@ -2,15 +2,33 @@ import React from 'react'
 import { EventFeedItem } from 'components/pages/event'
 import { ContainerContext, ContainerElement } from '../container-context'
 
-class BlockEvent extends React.Component {
+const displayEvent = item => {
+  return true
+  const time = new Date()
+  const currentTime = time.getTime() / 1000
+  let display = false
+  item.date_stamps.forEach(stamp => {
+    if (stamp.endStamp > currentTime) {
+      display = true
+    }
+  })
+  return display
+}
+
+class BlockEventFeed extends React.Component {
   render() {
-    const { events } = this.props
+    const { events, title, limit } = this.props
     return (
       <ContainerContext.Consumer>
         {container => (
           <ContainerElement container={container}>
-            {events.map(event => (
-              <EventFeedItem event={event} />
+            {title && <h3>{title}</h3>}
+            {events.map((event, index) => (
+              <>
+                {displayEvent(event) && index < limit && (
+                  <EventFeedItem event={event} />
+                )}
+              </>
             ))}
           </ContainerElement>
         )}
@@ -19,4 +37,4 @@ class BlockEvent extends React.Component {
   }
 }
 
-export default BlockEvent
+export default BlockEventFeed

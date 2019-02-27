@@ -30,9 +30,15 @@ const Event = ({ event }) => (
 
 const EventFeedItem = ({ event }) => (
   <>
-    <Link to={event.link}>
+    <Link to={`/${event.link}`}>
       <h4>{event.title}</h4>
     </Link>
+    <p>
+      {event.date_stamps.map(stamp => (
+        <>{<>{moment.unix(stamp.start_stamp).format('MMMM D, YYYY')}</>}</>
+      ))}{' '}
+      {event.times.start} — {event.times.end}
+    </p>
   </>
 )
 
