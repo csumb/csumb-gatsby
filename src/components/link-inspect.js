@@ -17,6 +17,9 @@ class LinkInspect extends React.Component {
         </>
       )
     }
+    if (to.substr(0, 1) != '/') {
+      to = `/${to}`
+    }
     return (
       <>
         <Link to={to} {...props}>

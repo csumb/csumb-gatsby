@@ -4,6 +4,7 @@ import Container from 'components/container'
 import { LeadParagraph } from 'components/type'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'
+import LinkInspect from 'components/link-inspect'
 import styled from 'react-emotion'
 import moment from 'moment'
 
@@ -30,9 +31,9 @@ const Event = ({ event }) => (
 
 const EventFeedItem = ({ event }) => (
   <>
-    <Link to={event.link}>
+    <LinkInspect to={event.link}>
       <h4>{event.title}</h4>
-    </Link>
+    </LinkInspect>
   </>
 )
 
