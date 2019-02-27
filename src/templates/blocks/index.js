@@ -125,8 +125,7 @@ class Blocks extends React.Component {
   constructor(props) {
     super(props)
     let { blocks } = props
-    blocks = JSON.parse(blocks)
-    this.blocks = blocks
+    this.blocks = JSON.parse(blocks)
     this.addBlockHeaderRelationships()
   }
 
