@@ -6,7 +6,7 @@ import { MobileNavigationLink } from './navigation-link'
 import VisuallyHidden from 'components/visually-hidden'
 import Search from './search'
 import Container from 'components/container'
-import UserWidget from './user-widget'
+import { UserContext } from 'components/contexts/user'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Flex, Box } from '@rebass/grid/emotion'
@@ -94,6 +94,136 @@ const SiteNavigationSubItem = styled('div')`
     color: ${colors.white};
   }
 `
+
+const userLinkStyle = `
+
+font-weight: bold;
+text-decoration: none;
+display: block;
+text-align: center;
+margin-bottom: 0.5rem;
+color: ${colors.primary.darkest} !important;
+cursor: pointer;
+`
+
+const UserLoginLink = styled('a')`
+  ${userLinkStyle};
+`
+
+const UserDashboardLink = styled(Link)`
+  ${userLinkStyle};
+`
+
+const UserToggle = styled('button')`
+  background: transparent;
+  border: 0;
+  width: 100%;
+  ${userLinkStyle};
+`
+
+const YourAccountLink = styled(Link)`
+  display: block;
+  font-weight: bold;
+  color: ${colors.primary.darkest};
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+`
+
+const YourAccountWrapper = styled('div')`
+  a {
+    color: ${colors.primary.darkest};
+  }
+  margin-bottom: 1.5rem;
+`
+
+class MobileUserWidget extends React.Component {
+  state = {
+    isExpanded: false,
+  }
+
+  handleLogout(event) {
+    event.preventDefault()
+    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
+      credentials: 'include',
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(session => {
+        if (session && session.id) {
+          fetch(
+            `https://api.csumb.edu/okta/session/end?token=${session.id}`
+          ).then(response => {
+            window.location.href = `${window.location.protocol}//${
+              window.location.host
+            }`
+          })
+        }
+      })
+  }
+
+  render() {
+    const { isExpanded } = this.state
+    const { loginLink } = this.props
+    return (
+      <>
+        <UserContext.Consumer>
+          {context => (
+            <>
+              {context.user.anonymous ? (
+                <UserLoginLink href={loginLink}>Log in</UserLoginLink>
+              ) : (
+                <>
+                  <Flex flexWrap="wrap">
+                    <Box width={1 / 2}>
+                      <UserDashboardLink to="/dashboard">
+                        Dashboard
+                      </UserDashboardLink>
+                    </Box>
+                    <Box
+                      width={1 / 2}
+                      style={{
+                        borderLeft: `1px solid ${colors.primary.darkest}`,
+                      }}
+                    >
+                      <UserToggle
+                        onClick={event => {
+                          event.preventDefault()
+                          this.setState({
+                            isExpanded: !isExpanded,
+                          })
+                        }}
+                      >
+                        Your Account
+                      </UserToggle>
+                    </Box>
+                  </Flex>
+                  {isExpanded && <YourAccountList user={context.user} />}
+                </>
+              )}
+            </>
+          )}
+        </UserContext.Consumer>
+      </>
+    )
+  }
+}
+
+const YourAccountList = ({ user }) => (
+  <YourAccountWrapper>
+    <YourAccountLink to="/account">Manage account</YourAccountLink>
+    {user._isEmployee && (
+      <YourAccountLink to="/account/profile">Public profile</YourAccountLink>
+    )}
+    <YourAccountLink to="/account/card">OtterCard</YourAccountLink>
+    {(user._isStudent || true) && (
+      <YourAccountLink to="/account/laundry">Laundry</YourAccountLink>
+    )}
+    <YourAccountLink to="/account/print">Print balance</YourAccountLink>
+    <YourAccountLink to="/account/emergency">Emergency alerts</YourAccountLink>
+    <YourAccountLink>Log out</YourAccountLink>
+  </YourAccountWrapper>
+)
 
 class MobileSiteNavigationSubMenu extends React.Component {
   state = {
@@ -197,7 +327,6 @@ class HeaderMobile extends React.Component {
         {isOpen && (
           <>
             <Container>
-              <UserWidget loginLink={this.props.loginLink} />
               <HeaderMobileSearch>
                 <Search
                   swiftypeId={this.props.swiftypeId}
@@ -205,6 +334,7 @@ class HeaderMobile extends React.Component {
                   isMobile={true}
                 />
               </HeaderMobileSearch>
+              <MobileUserWidget loginLink={this.props.loginLink} />
             </Container>
             <HeaderMobileNavigation
               tabIndex="-1"
