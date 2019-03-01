@@ -1,5 +1,4 @@
 import React from 'react'
-//import Link from 'gatsby'
 import Blocks from './blocks'
 import PageFeedback from 'components/page-feedback'
 import Layout from 'components/layouts/default'
