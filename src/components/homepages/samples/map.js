@@ -95,7 +95,9 @@ class HomepageHero extends React.Component {
           <MobileFloatBox>
             <FloatText>
               <h1>
-                <Link to="/service">Serving our community</Link>
+                <Link to="/service/service-learning-quick-facts">
+                  Serving our community
+                </Link>
               </h1>
               <LeadParagraph>
                 Last year, 3,310 students provided 114,651 hours of service in
@@ -109,7 +111,9 @@ class HomepageHero extends React.Component {
             <FloatBox>
               <FloatText>
                 <h1>
-                  <Link to="/service">Serving our community</Link>
+                  <Link to="/service/service-learning-quick-facts">
+                    Serving our community
+                  </Link>
                 </h1>
                 <LeadParagraph>
                   Last year, 3,310 students provided 114,651 hours of service in

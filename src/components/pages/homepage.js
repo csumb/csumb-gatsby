@@ -72,11 +72,6 @@ const NuggetsList = styled('ul')`
   }
 `
 
-const NuggetArrow = styled('span')`
-  display: inline-block;
-  float: right;
-`
-
 const NuggetSource = styled('div')`
   font-variant: italic;
   font-size: 0.8rem;
@@ -231,9 +226,7 @@ const getNewsLink = (newsStory, link) => {
 
 const Nuggets = ({ nuggets }) => (
   <NuggetsWrapper>
-    <NuggetsHeader>
-      <NuggetArrow>↗</NuggetArrow>In the news
-    </NuggetsHeader>
+    <NuggetsHeader>In the news</NuggetsHeader>
     <NuggetsList>
       {nuggets.map(({ contentful_id, link, title, source }) => (
         <li key={contentful_id}>
