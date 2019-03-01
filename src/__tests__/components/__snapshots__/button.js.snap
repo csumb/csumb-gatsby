@@ -34,7 +34,7 @@ exports[`Button renders default button type correctly 3`] = `
 
 exports[`Button renders huge button type correctly 1`] = `
 <button
-  className="css-rawig0"
+  className="css-9jomw4"
 >
   A huge button!
 </button>
