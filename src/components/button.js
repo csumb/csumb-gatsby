@@ -19,7 +19,7 @@ const ButtonStyle = props => {
   }
   ${props.huge &&
     `
-    font-size: 4rem;
+    font-size: 3rem;
     padding: 1rem;
   `}
 

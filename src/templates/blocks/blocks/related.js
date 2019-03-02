@@ -9,11 +9,11 @@ import { ContainerElement, containerStyle } from '../container-context'
 const relatedBreakpoints = bp({
   margin: ['0.5rem 0', '0.5rem 0 0.5rem 0.5rem'],
   width: ['auto', '30%'],
+  float: ['none', 'right', 'right'],
 })
 
 const RelatedContent = styled('div')`
   ${relatedBreakpoints};
-  float: right;
   border-top: 1px solid ${colors.muted.bright};
   border-bottom: 1px solid ${colors.muted.bright};
   padding: 0.25rem;
