@@ -81,14 +81,26 @@ const ResidencyQuestion = ({ handler }) => (
   <>
     <HeroParagraph>Are you a California resident?</HeroParagraph>
     <Flex flexWrap="wrap">
-      <Box width={[1 / 2]} px={2}>
-        <Button huge block onClick={handler} data-value="yes">
+      <Box width={[1 / 2]} pr={[2, 4]}>
+        <Button
+          style={{ width: '80%', margin: '0 auto' }}
+          huge
+          block
+          onClick={handler}
+          data-value="yes"
+        >
           Yes
           <VisuallyHidden>, I am a california resident</VisuallyHidden>
         </Button>
       </Box>
-      <Box width={[1 / 2]} px={2}>
-        <Button huge block onClick={handler} data-value="no">
+      <Box width={[1 / 2]}>
+        <Button
+          style={{ width: '80%', margin: '0 auto' }}
+          huge
+          block
+          onClick={handler}
+          data-value="no"
+        >
           No
           <VisuallyHidden>, I am not a california resident</VisuallyHidden>
         </Button>
