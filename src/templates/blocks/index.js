@@ -167,8 +167,6 @@ class Blocks extends React.Component {
     })
   }
 
-  handleCollapseHeader(event) {}
-
   render() {
     const blocks = this.blocks
     const { expandedBlocks } = this.state
