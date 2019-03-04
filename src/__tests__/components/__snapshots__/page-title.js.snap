@@ -2,7 +2,7 @@
 
 exports[`Breadcrumbs renders a page title 1`] = `
 <h1
-  className="css-qi0b1h"
+  className="css-1b2x0kn"
 >
   The page title
 </h1>
@@ -10,7 +10,7 @@ exports[`Breadcrumbs renders a page title 1`] = `
 
 exports[`Breadcrumbs renders sub titles for sites 1`] = `
 <h1
-  className="css-qi0b1h"
+  className="css-1b2x0kn"
 >
   The page title
   <small
