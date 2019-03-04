@@ -9,7 +9,7 @@ import {
   FeaturedStory,
   Nuggets,
 } from 'components/pages/homepage'
-import HomepageHero from 'components/homepages/samples/map'
+import HomepageHero from 'components/homepages/2019/service-learning'
 
 const sortItems = (items, featured, ignore) => {
   let result = []
