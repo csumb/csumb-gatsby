@@ -28,6 +28,7 @@ const SiteNavigationList = styled('ul')`
 const SiteNavigationLink = styled(LinkInspect)`
   text-decoration: none;
   padding: 1rem 1rem 1rem 0;
+  display: inline-block;
   &[aria-current='page'] {
     text-decoration: underline;
   }
