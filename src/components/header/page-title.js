@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 
 const PageTitleHeader = styled('h1')`
-  color: ${colors.primary.darkest};
   margin-top: 1rem;
 `
 
