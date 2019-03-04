@@ -92,6 +92,9 @@ const AllPrograms = () => (
           </a>
         </li>
         <li>
+          <a href="/catalog/statistics-bs">Statistics B.A.</a>
+        </li>
+        <li>
           <a href="/business/bs-sustainable-hospitality-management">
             Sustainable Hospitality Management B.S.
           </a>
