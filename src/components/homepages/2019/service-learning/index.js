@@ -9,10 +9,12 @@ import Link from 'gatsby-link'
 import MapPlaceholder from 'components/map-placeholder'
 import Container from 'components/container'
 
-const InfoWindowContent = styled('p')`
-  font-weight: bold;
-  font-size: 0.9rem;
+const InfoWindowContent = styled('div')`
+  max-width: 350px;
   margin-bottom: 0;
+  p {
+    font-size: 1rem;
+  }
 `
 
 const MobileFloatBox = styled('div')`
