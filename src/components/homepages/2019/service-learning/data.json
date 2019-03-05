@@ -203,13 +203,6 @@
     "lon": -121.760529
   },
   {
-    "org": "Celebration Center",
-    "students": 1,
-    "hours": 32,
-    "lat": 37.09024,
-    "lon": -95.712891
-  },
-  {
     "org": "Center for Community Advocacy (CCA)",
     "students": 2,
     "hours": 64,
@@ -635,13 +628,6 @@
     "hours": 160,
     "lat": 36.7135368,
     "lon": -121.6151401
-  },
-  {
-    "org": "Everyone's Harvest - Cosecha Para Todos",
-    "students": 21,
-    "hours": 672,
-    "lat": 37.09024,
-    "lon": -95.712891
   },
   {
     "org": "Fairview Middle School - Gonzales Unified School District",
@@ -1183,13 +1169,6 @@
     "lon": -121.7538932
   },
   {
-    "org": "Mission Conservation Program",
-    "students": 15,
-    "hours": 480,
-    "lat": 37.09024,
-    "lon": -95.712891
-  },
-  {
     "org": "Mission Park Elementary School - Salinas City Elementary School District",
     "students": 3,
     "hours": 96,
@@ -1398,13 +1377,6 @@
     "hours": 64,
     "lat": 36.672763,
     "lon": -121.6552614
-  },
-  {
-    "org": "Mount Toro High School - SUHSD",
-    "students": 2,
-    "hours": 64,
-    "lat": 37.09024,
-    "lon": -95.712891
   },
   {
     "org": "National Steinbeck Center",
