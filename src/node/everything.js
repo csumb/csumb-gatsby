@@ -18,7 +18,7 @@ module.exports = (graphql, actions) => {
                   topLevelItem
                   childContentfulNavigationItemDescriptionTextNode {
                     childMarkdownRemark {
-                      html
+                      rawMarkdownBody
                     }
                   }
                   contentfulchildren {
