@@ -1,5 +1,4 @@
 import React from 'react'
-import { StaticHero } from 'components/homepages/hero'
 import mapData from './data.json'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
@@ -96,7 +95,7 @@ class HomepageHero extends React.Component {
     const { google } = this.props
     const { isMobile, activeMarker, showInfoWindow, selectedPlace } = this.state
     return (
-      <MapWrapper>
+      <>
         {isMobile && (
           <MobileFloatBox>
             <FloatText>
@@ -112,24 +111,24 @@ class HomepageHero extends React.Component {
             </FloatText>
           </MobileFloatBox>
         )}
-        <StaticHero>
-          {!isMobile && (
-            <FloatBox>
-              <Container>
-                <FloatText>
-                  <h1>
-                    <Link to="/service/service-learning-quick-facts">
-                      Serving our community
-                    </Link>
-                  </h1>
-                  <LeadParagraph>
-                    Last year, 3,310 students provided 114,651 hours of service
-                    in our community.
-                  </LeadParagraph>
-                </FloatText>
-              </Container>
-            </FloatBox>
-          )}
+        {!isMobile && (
+          <FloatBox>
+            <Container>
+              <FloatText>
+                <h1>
+                  <Link to="/service/service-learning-quick-facts">
+                    Serving our community
+                  </Link>
+                </h1>
+                <LeadParagraph>
+                  Last year, 3,310 students provided 114,651 hours of service in
+                  our community.
+                </LeadParagraph>
+              </FloatText>
+            </Container>
+          </FloatBox>
+        )}
+        <MapWrapper>
           <Map
             google={google}
             zoom={10}
@@ -172,8 +171,8 @@ class HomepageHero extends React.Component {
               </InfoWindowContent>
             </InfoWindow>
           </Map>
-        </StaticHero>
-      </MapWrapper>
+        </MapWrapper>
+      </>
     )
   }
 }
