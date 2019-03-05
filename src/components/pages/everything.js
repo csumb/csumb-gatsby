@@ -103,13 +103,12 @@ const EverythingContent = ({ item }) => {
   return (
     <>
       {item.childContentfulNavigationItemDescriptionTextNode && (
-        <div
-          dangerouslySetInnerHTML={{
-            __html:
-              item.childContentfulNavigationItemDescriptionTextNode
-                .childMarkdownRemark.html,
-          }}
-        />
+        <p>
+          {
+            item.childContentfulNavigationItemDescriptionTextNode
+              .childMarkdownRemark.rawMarkdownBody
+          }
+        </p>
       )}
     </>
   )
@@ -118,15 +117,7 @@ const EverythingContent = ({ item }) => {
 const SubItemContent = ({ item }) => (
   <>
     <h3>{item.title}</h3>
-    {item.childContentfulNavigationItemDescriptionTextNode && (
-      <p
-        dangerouslySetInnerHTML={{
-          __html:
-            item.childContentfulNavigationItemDescriptionTextNode
-              .childMarkdownRemark.html,
-        }}
-      />
-    )}
+    <EverythingContent item={item} />
   </>
 )
 
