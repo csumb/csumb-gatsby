@@ -6,7 +6,7 @@ import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import { LeadParagraph } from 'components/type'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'
-import MapPlaceholder from 'components/map-placeholder'
+import { css } from '@emotion/core'
 import Container from 'components/container'
 
 const InfoWindowContent = styled('div')`
@@ -43,6 +43,15 @@ const FloatText = styled('div')`
       }
     }
   }
+`
+
+const mapStyle = {
+  height: '500px',
+  width: '100%',
+}
+
+const MapWrapper = styled('div')`
+  ${css(mapStyle)};
 `
 
 class HomepageHero extends React.Component {
@@ -85,15 +94,9 @@ class HomepageHero extends React.Component {
 
   render() {
     const { google } = this.props
-    const {
-      isMobile,
-      activeMarker,
-      showInfoWindow,
-      selectedPlace,
-      showPlaceholder,
-    } = this.state
+    const { isMobile, activeMarker, showInfoWindow, selectedPlace } = this.state
     return (
-      <>
+      <MapWrapper>
         {isMobile && (
           <MobileFloatBox>
             <FloatText>
@@ -127,58 +130,50 @@ class HomepageHero extends React.Component {
               </Container>
             </FloatBox>
           )}
-          <MapPlaceholder style={{ height: '500px' }}>
-            <Map
-              google={google}
-              zoom={10}
-              zoomControl={true}
-              scaleControl={false}
-              mapTypeControl={false}
-              streetViewControl={false}
-              mapType="TERRAIN"
-              style={{
-                height: '500px',
-                width: '100%',
-                position: 'relative',
-              }}
-              initialCenter={{
-                lat: 36.6536502,
-                lng: -121.7989176,
-              }}
+          <Map
+            google={google}
+            zoom={10}
+            zoomControl={true}
+            scaleControl={false}
+            mapTypeControl={false}
+            streetViewControl={false}
+            mapType="TERRAIN"
+            style={mapStyle}
+            initialCenter={{
+              lat: 36.6536502,
+              lng: -121.7989176,
+            }}
+          >
+            {mapData.map((item, key) => (
+              <Marker
+                key={key}
+                name={item.org}
+                students={item.students}
+                hours={item.hours}
+                position={{ lat: item.lat, lng: item.lon }}
+                onClick={this.onMarkerClick.bind(this)}
+              />
+            ))}
+            <InfoWindow
+              marker={activeMarker}
+              visible={showInfoWindow}
+              onClose={this.onInfoWindowClose.bind(this)}
             >
-              {mapData.map((item, key) => (
-                <Marker
-                  key={key}
-                  name={item.org}
-                  students={item.students}
-                  hours={item.hours}
-                  position={{ lat: item.lat, lng: item.lon }}
-                  onClick={this.onMarkerClick.bind(this)}
-                />
-              ))}
-              <InfoWindow
-                marker={activeMarker}
-                visible={showInfoWindow}
-                onClose={this.onInfoWindowClose.bind(this)}
-              >
-                <InfoWindowContent>
-                  <h4
-                    dangerouslySetInnerHTML={{ __html: selectedPlace.name }}
-                  />
-                  <p>
-                    <strong>Number of students: </strong>
-                    {selectedPlace.students}
-                  </p>
-                  <p>
-                    <strong>Number of hours: </strong>
-                    {selectedPlace.hours}
-                  </p>
-                </InfoWindowContent>
-              </InfoWindow>
-            </Map>
-          </MapPlaceholder>
+              <InfoWindowContent>
+                <h4 dangerouslySetInnerHTML={{ __html: selectedPlace.name }} />
+                <p>
+                  <strong>Number of students: </strong>
+                  {selectedPlace.students}
+                </p>
+                <p>
+                  <strong>Number of hours: </strong>
+                  {selectedPlace.hours}
+                </p>
+              </InfoWindowContent>
+            </InfoWindow>
+          </Map>
         </StaticHero>
-      </>
+      </MapWrapper>
     )
   }
 }
