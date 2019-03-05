@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
+import moment from 'moment'
 import PageTitle from 'components/header/page-title'
 import Well from 'components/well'
 import { HeroParagraph, LeadParagraph } from 'components/type'
@@ -22,7 +23,7 @@ class StatusPage extends React.Component {
           updown: status,
         })
       })
-    fetch('/_last-build.json')
+    fetch(`/_last-build.json?t=${moment.unix()}`)
       .then(result => {
         return result.json()
       })
@@ -37,7 +38,7 @@ class StatusPage extends React.Component {
   render() {
     const { updown, lastBuild } = this.state
     return (
-      <Layout pageTitle="Library">
+      <Layout pageTitle="Website status">
         <Container>
           <PageTitle>Website status</PageTitle>
           <Well>
@@ -47,6 +48,9 @@ class StatusPage extends React.Component {
               The <strong>build time</strong> is the last time content has been
               published to the campus website. Any changes to profiles, or
               website information after this time is not published yet.
+            </p>
+            <p>
+              The website is built <strong>every 15 minutes</strong>.
             </p>
           </Well>
           <Well>

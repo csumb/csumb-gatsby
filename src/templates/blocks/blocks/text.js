@@ -1,5 +1,4 @@
 import React from 'react'
-import filterCourses from './filter-courses'
 import styled from '@emotion/styled'
 import { ContainerContext, ContainerElement } from '../container-context'
 import LinkInspect from 'components/link-inspect'
@@ -36,7 +35,7 @@ const BlockText = ({ lead, text }) => {
       {container => (
         <ContainerElement container={container}>
           <Paragraph lead={lead} container={container}>
-            {parse(filterCourses(text), parserOptions)}
+            {parse(text, parserOptions)}
           </Paragraph>
         </ContainerElement>
       )}
