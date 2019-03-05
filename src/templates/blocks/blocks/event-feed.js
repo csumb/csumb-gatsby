@@ -3,7 +3,6 @@ import { EventFeedItem } from 'components/pages/event'
 import { ContainerContext, ContainerElement } from '../container-context'
 
 const displayEvent = item => {
-  return true
   const time = new Date()
   const currentTime = time.getTime() / 1000
   let display = false
