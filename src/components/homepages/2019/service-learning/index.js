@@ -3,6 +3,7 @@ import mapData from './data.json'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import { LeadParagraph } from 'components/type'
+import { StaticHero } from 'components/homepages/hero'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'
 import { css } from '@emotion/core'
@@ -95,7 +96,7 @@ class HomepageHero extends React.Component {
     const { google } = this.props
     const { isMobile, activeMarker, showInfoWindow, selectedPlace } = this.state
     return (
-      <>
+      <StaticHero style={{ height: '500px' }}>
         {isMobile && (
           <MobileFloatBox>
             <FloatText>
@@ -172,7 +173,7 @@ class HomepageHero extends React.Component {
             </InfoWindow>
           </Map>
         </MapWrapper>
-      </>
+      </StaticHero>
     )
   }
 }
