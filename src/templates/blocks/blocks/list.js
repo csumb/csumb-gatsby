@@ -1,6 +1,7 @@
 import React from 'react'
 import { ContainerContext, ContainerElement } from '../container-context'
 import styled from '@emotion/styled'
+import filterCourses from './filter-courses'
 
 class BlockList extends React.Component {
   render() {
@@ -24,7 +25,9 @@ class BlockList extends React.Component {
                 <>
                   {item.text && item.text.trim().length > 0 && (
                     <li
-                      dangerouslySetInnerHTML={{ __html: item.text }}
+                      dangerouslySetInnerHTML={{
+                        __html: filterCourses(item.text),
+                      }}
                       key={key}
                     />
                   )}
