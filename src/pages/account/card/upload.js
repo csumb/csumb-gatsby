@@ -74,7 +74,6 @@ class OtterCardPage extends React.Component {
   }
 
   handleUploadedPhoto(event) {
-    console.log(event)
     this.setState({
       photo: true,
       showUpload: true,

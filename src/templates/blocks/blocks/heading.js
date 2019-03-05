@@ -47,6 +47,7 @@ class BlockHeading extends React.Component {
                   }}
                 >
                   <CollapsibleIcon
+                    size="1rem"
                     icon={isOpen ? faChevronUp : faChevronDown}
                   />
                   {text}

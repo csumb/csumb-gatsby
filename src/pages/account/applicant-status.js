@@ -122,7 +122,6 @@ class ApplicantStatus extends React.Component {
           let location = url.parse(window.location.href, true)
           if (location.query && typeof location.query.app !== 'undefined') {
             applications.forEach((application, index) => {
-              console.log(application.application)
               if (
                 application.application.application_number ===
                 location.query.app

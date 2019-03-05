@@ -24,7 +24,9 @@ class BlockList extends React.Component {
                 <>
                   {item.text && item.text.trim().length > 0 && (
                     <li
-                      dangerouslySetInnerHTML={{ __html: item.text }}
+                      dangerouslySetInnerHTML={{
+                        __html: item.text,
+                      }}
                       key={key}
                     />
                   )}

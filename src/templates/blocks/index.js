@@ -130,40 +130,31 @@ class Blocks extends React.Component {
   }
 
   addBlockHeaderRelationships() {
+    let lastHeaders = {
+      2: false,
+      3: false,
+      4: false,
+    }
     let lastHeader = false
-    let lastSize = 0
-    this.blocks.layout.map(layout => {
+    this.blocks.layout.forEach(layout => {
       const block = this.blocks.blocks[layout.id]
       if (!this.blocks.blocks[layout.id]) {
-        return lastHeader
+        return
       }
-      if (
-        block.type === 'heading' &&
-        lastHeader &&
-        lastSize &&
-        lastSize < block.data.level
-      ) {
-        this.blocks.blocks[layout.id]._collapsedHeader = lastHeader
+      if (block.type === 'heading' && lastHeaders[block.data.level - 2]) {
+        block._collapsedHeader = lastHeaders[block.data.level - 2]
+      }
+      if (block.type === 'heading' && lastHeaders[block.data.level - 1]) {
+        block._collapsedHeader = lastHeaders[block.data.level - 1]
       }
       if (block.type === 'heading' && block.data.collapsible) {
+        lastHeaders[block.data.level] = layout.id
         lastHeader = layout.id
-        lastSize = block.data.level
-        return lastHeader
-      }
-      if (
-        lastHeader &&
-        block.type === 'heading' &&
-        block.data.level === lastSize
-      ) {
-        lastHeader = false
-        lastSize = 0
-        return lastHeader
+        return
       }
       if (lastHeader) {
-        this.blocks.blocks[layout.id]._collapsedHeader = lastHeader
-        return lastHeader
+        block._collapsedHeader = lastHeader
       }
-      return lastHeader
     })
   }
 
