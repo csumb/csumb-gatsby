@@ -38,7 +38,7 @@ class StatusPage extends React.Component {
   render() {
     const { updown, lastBuild } = this.state
     return (
-      <Layout pageTitle="Library">
+      <Layout pageTitle="Website status">
         <Container>
           <PageTitle>Website status</PageTitle>
           <Well>
