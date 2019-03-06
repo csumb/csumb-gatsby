@@ -56,7 +56,7 @@ class Block extends React.Component {
   }
 
   render() {
-    const { type, block, hidden, headerHandler } = this.props
+    const { type, block, hidden, headerHandler, inColumn } = this.props
     if (typeof this.blockComponents[type] === 'undefined') {
       return null
     }
@@ -70,6 +70,7 @@ class Block extends React.Component {
               {...block.data}
               uuid={block.uuid}
               headerHandler={headerHandler}
+              inColumn={inColumn}
             />
           </VisuallyHidden>
         ) : (
@@ -77,6 +78,7 @@ class Block extends React.Component {
             {...block.data}
             uuid={block.uuid}
             headerHandler={headerHandler}
+            inColumn={inColumn}
           />
         )}
       </ContainerContext.Provider>
