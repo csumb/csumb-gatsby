@@ -61,7 +61,6 @@ const HeroText = ({ headline, text, buttonUrl, buttonText }) => (
 class BlockHeroImage extends React.Component {
   state = {
     isMobile: false,
-    marginFromLeft: 0,
   }
 
   componentDidMount() {
@@ -81,7 +80,7 @@ class BlockHeroImage extends React.Component {
 
   render() {
     const { image, position } = this.props
-    const { isMobile, marginFromLeft } = this.state
+    const { isMobile } = this.state
     return (
       <>
         {isMobile && (
