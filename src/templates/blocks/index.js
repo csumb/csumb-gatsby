@@ -97,7 +97,7 @@ const Columns = ({ layout, blocks }) => {
         <Box
           width={[1, 1, width / 12, width / 12]}
           key={`column-${layout.id}-${key}`}
-          px={2}
+          px={5}
         >
           {Array.isArray(layout._children[key + 1]) && (
             <>

@@ -17,8 +17,8 @@ import VisuallyHidden from 'components/visually-hidden'
 
 const SiteFooterWrapper = styled('footer')`
   padding: 2rem 0;
-  background: ${colors.primary.light};
-  border-top: 3px solid ${colors.primary.darkest};
+  background: ${colors.muted.highlight};
+  border-top: 2px solid ${colors.muted.dark};
   margin-top: 1.5rem;
 `
 
@@ -36,13 +36,13 @@ const SiteFooterItems = styled('dl')`
 `
 
 const SiteFooterSocialIconLink = styled('a')`
-  color: ${colors.primary.dark};
+  color: ${colors.muted.dark};
   font-size: 1.5rem;
   display: inline-block;
   margin-right: 1rem;
   margin-bottom: 1rem;
   &:visited {
-    color: ${colors.primary.dark};
+    color: ${colors.muted.dark};
   }
 `
 
