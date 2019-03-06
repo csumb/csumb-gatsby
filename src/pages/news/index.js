@@ -21,7 +21,7 @@ const NewsPage = ({ data }) => {
 }
 
 export default NewsPage
-/*
+
 export const query = graphql`
   {
     allCsumbNavigation(filter: { site: { eq: "news" } }) {
@@ -33,4 +33,3 @@ export const query = graphql`
     }
   }
 `
-*/
