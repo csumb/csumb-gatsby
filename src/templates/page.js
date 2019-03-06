@@ -62,7 +62,7 @@ class PageTemplate extends React.Component {
         )}
         <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
         {((site.contact && (site.contact.phone || site.contact.email)) ||
-          site.social.length ||
+          (site.social && site.social.length) ||
           site.staffPage) && <SiteFooter site={site} />}
       </Layout>
     )
