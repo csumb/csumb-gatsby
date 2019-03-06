@@ -9,11 +9,17 @@ import SiteNavigation from 'components/navigation/site'
 import Blocks from 'templates/blocks'
 import { colors } from 'style/theme'
 import { InputText, InputSelect, Submit } from 'components/forms'
+import oneSearchLogo from 'assets/images/library-one-search.png'
 
 const LibrarySearchWrapper = styled('form')`
-  background: ${colors.muted.light};
+  background: ${colors.muted.highlight};
   padding: 1rem;
   margin: 1rem;
+`
+
+const AdvancedSearch = styled('a')`
+  display: block;
+  margin-top: 1rem;
 `
 
 class LibrarySearch extends React.Component {
@@ -37,7 +43,7 @@ class LibrarySearch extends React.Component {
         <input type="hidden" name="lang" value="en_US" />
         <input type="hidden" name="offset" value="0" />
         <input type="hidden" name="query" value={this.state.query} />
-        <h2>Search the library</h2>
+        <img src={oneSearchLogo} alt="One Search - Search the library" />
         <Flex flexWrap="wrap">
           <Box width={[1, 6 / 12]} px={2}>
             <InputText
@@ -68,6 +74,9 @@ class LibrarySearch extends React.Component {
           </Box>
           <Box width={[1, 2 / 12]} px={2}>
             <Submit value="Search" nomargin={true} huge />
+            <AdvancedSearch href="https://csumb-primo.hosted.exlibrisgroup.com/primo-explore/search?sortby=rank&vid=01CALS_UMB&lang=en_US&mode=advanced">
+              Advanced search
+            </AdvancedSearch>
           </Box>
         </Flex>
       </LibrarySearchWrapper>
