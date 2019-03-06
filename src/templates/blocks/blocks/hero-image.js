@@ -4,6 +4,9 @@ import { colors } from 'style/theme'
 import color from 'color'
 import LazyHero from 'react-lazy-hero'
 import LinkInspect from 'components/link-inspect'
+import Container from 'components/container'
+
+const heroHeight = '60vh'
 
 const background = color(colors.primary.dark)
   .rgb()
@@ -23,19 +26,26 @@ const HeroImageTextWrapper = styled('div')`
   background: rgba(${background[0]}, ${background[1]}, ${background[2]}, 0.8);
   position: absolute;
   width: 33.33333333%;
-  min-height: 75vh;
+  max-height: ${heroHeight};
   padding: 2rem;
   ${props =>
     props.position === 'right' &&
     `
-    right: 0;
-  `}
+    right: 0;`}
 `
 
 const MobileHeroTextWrapper = styled('div')`
   color: ${colors.white};
   background: ${colors.primary.dark};
   padding: 1rem;
+`
+
+const HeroContainer = styled('div')`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 `
 
 const HeroText = ({ headline, text, buttonUrl, buttonText }) => (
@@ -51,7 +61,9 @@ const HeroText = ({ headline, text, buttonUrl, buttonText }) => (
 class BlockHeroImage extends React.Component {
   state = {
     isMobile: false,
+    marginFromLeft: 0,
   }
+
   componentDidMount() {
     const mobileBreakpoint = 830
     const that = this
@@ -69,7 +81,7 @@ class BlockHeroImage extends React.Component {
 
   render() {
     const { image, position } = this.props
-    const { isMobile } = this.state
+    const { isMobile, marginFromLeft } = this.state
     return (
       <>
         {isMobile && (
@@ -83,14 +95,20 @@ class BlockHeroImage extends React.Component {
           transitionDuration={0}
           isCentered={false}
           imageSrc={image.url}
-          minHeight="75vh"
+          minHeight={heroHeight}
         >
           {!isMobile && (
-            <HeroImageTextWrapper
-              position={['ne', 'se'].indexOf(position) > -1 ? 'right' : 'left'}
-            >
-              <HeroText {...this.props} />
-            </HeroImageTextWrapper>
+            <HeroContainer>
+              <Container>
+                <HeroImageTextWrapper
+                  position={
+                    ['ne', 'se'].indexOf(position) > -1 ? 'right' : 'left'
+                  }
+                >
+                  <HeroText {...this.props} />
+                </HeroImageTextWrapper>
+              </Container>
+            </HeroContainer>
           )}
         </LazyHero>
       </>

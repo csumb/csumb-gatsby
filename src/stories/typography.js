@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { LeadParagraph, HelpParagraph } from 'components/type'
-import typography from 'utils/typography'
+import typography from 'style/typography'
 import { sampleText, shortSampleText } from './sample-text'
 
 typography.injectStyles()

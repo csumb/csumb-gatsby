@@ -5,7 +5,7 @@ import Applicant from 'components/header/applicant'
 import Header from 'components/header'
 import SiteHeader from 'components/header/site-header'
 import { NavigationLink } from 'components/header/navigation-link'
-import typography from 'utils/typography'
+import typography from 'style/typography'
 import { UserContext } from 'components/contexts/user'
 
 typography.injectStyles()
