@@ -7,6 +7,8 @@ import bp from 'style/breakpoints'
 const Cite = styled('cite')`
   display: block;
   margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
 `
 
 const Quote = styled('div')`
