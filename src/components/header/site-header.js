@@ -19,10 +19,10 @@ const SiteHeaderWrapper = styled('div')`
   }
   a,
   a:visited {
-    color: #fff;
+    color: ${colors.white};
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      border-bottom: 1px solid ${colors.white};
     }
   }
 `
