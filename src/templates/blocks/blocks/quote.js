@@ -9,6 +9,7 @@ const Cite = styled('cite')`
   margin-top: 1rem;
   font-size: 1rem;
   font-weight: 700;
+  font-style: normal;
 `
 
 const Quote = styled('div')`

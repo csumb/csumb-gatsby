@@ -5,6 +5,9 @@ import { ContainerContext, ContainerElement } from '../container-context'
 const ImageContainer = styled('div')`
   ${props => props.container} ${props =>
     props.pullRight ? ` float: right;` : ``};
+  img {
+    margin-bottom: 0;
+  }
 `
 
 class BlockImage extends React.Component {
@@ -22,7 +25,8 @@ class BlockImage extends React.Component {
                 src={image.url.replace('http://', 'https://')}
                 alt={description}
                 style={{
-                  height: height ? `${height}px` : 'auto',
+                  height:
+                    height && parseInt(height) > 10 ? `${height}px` : 'auto',
                   width: 'auto',
                 }}
               />
