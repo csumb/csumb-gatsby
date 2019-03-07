@@ -22,7 +22,8 @@ class BlockImage extends React.Component {
                 src={image.url.replace('http://', 'https://')}
                 alt={description}
                 style={{
-                  height: height ? `${height}px` : 'auto',
+                  height:
+                    height && parseInt(height) > 10 ? `${height}px` : 'auto',
                   width: 'auto',
                 }}
               />
