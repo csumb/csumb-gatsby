@@ -21,7 +21,7 @@ import BlockRelated from 'templates/blocks/blocks/related'
 import BlockSound from 'templates/blocks/blocks/sound'
 import BlockTable from 'templates/blocks/blocks/table'
 import BlockMap from 'templates/blocks/blocks/map'
-import typography from 'utils/typography'
+import typography from 'style/typography'
 import {
   ContainerContext,
   containerStyle,
@@ -276,6 +276,7 @@ storiesOf('Blocks/Hero Image', module).add('Hero Image', () => (
     <BlockHeroImage
       {...{
         buttonUrl: '#here',
+        buttonText: 'This is a button',
         image: {
           url: 'https://placekitten.com/g/2000/900',
         },

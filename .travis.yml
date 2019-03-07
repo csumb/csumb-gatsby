@@ -6,6 +6,7 @@ before_script:
   - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-content.git _web-content
   - npm run test
 script:
+  - set -e
   - ./node_modules/.bin/gatsby build
   - npm run directoryJson
   - npm run buildJson

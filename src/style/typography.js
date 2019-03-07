@@ -37,6 +37,9 @@ const type = {
     form: {
       margin: 0,
     },
+    'h2,h3,h4,h5': {
+      marginBottom: rhythm(3 / 4),
+    },
   }),
 }
 

@@ -23,6 +23,7 @@ module.exports = {
       'about/about-our-students',
       'search',
       'scienceillustration/graduate-gallery',
+      'news',
     ],
   },
   plugins: [
