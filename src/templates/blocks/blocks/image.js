@@ -5,6 +5,9 @@ import { ContainerContext, ContainerElement } from '../container-context'
 const ImageContainer = styled('div')`
   ${props => props.container} ${props =>
     props.pullRight ? ` float: right;` : ``};
+  img {
+    margin-bottom: 0;
+  }
 `
 
 class BlockImage extends React.Component {
