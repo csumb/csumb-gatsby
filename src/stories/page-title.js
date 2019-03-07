@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import PageTitle from 'components/header/page-title'
-import typography from 'utils/typography'
+import typography from 'style/typography'
 
 typography.injectStyles()
 

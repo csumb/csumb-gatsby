@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Table, TableRow, TableHeader, TableCell } from 'components/table'
-import typography from 'utils/typography'
+import typography from 'style/typography'
 
 typography.injectStyles()
 

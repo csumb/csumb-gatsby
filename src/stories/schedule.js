@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Button, ButtonLink } from 'components/button'
-import typography from 'utils/typography'
+import typography from 'style/typography'
 import {
   ScheduleList,
   ScheduleListItem,
