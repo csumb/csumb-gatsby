@@ -118,6 +118,9 @@ class UserDropdown extends React.Component {
               Laundry
             </UserDropdownMenuLink>
           )}
+          <UserDropdownMenuLink component="a" href="/account/labs">
+            Computer labs
+          </UserDropdownMenuLink>
           <UserDropdownMenuLink component="a" href="/account/print">
             Print balance
           </UserDropdownMenuLink>
