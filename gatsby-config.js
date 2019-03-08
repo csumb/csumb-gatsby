@@ -24,6 +24,7 @@ module.exports = {
       'search',
       'scienceillustration/graduate-gallery',
       'news',
+      'about/map-directions',
     ],
   },
   plugins: [
