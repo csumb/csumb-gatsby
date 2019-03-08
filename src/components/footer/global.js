@@ -47,6 +47,10 @@ const FooterElement = styled('footer')`
   h2 {
     margin-top: 0;
   }
+
+  @media print {
+    display: none;
+  }
 `
 
 const FooterList = styled('ul')`
