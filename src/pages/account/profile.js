@@ -36,7 +36,7 @@ const updateProfileField = (field, value) => {
     })
     .then(response => {
       fetch(
-        `http://api.csumb.edu/profile/data/update?token=${
+        `https://api.csumb.edu/profile/data/update?token=${
           response.id
         }&field=${field}&value=${value}`
       )
