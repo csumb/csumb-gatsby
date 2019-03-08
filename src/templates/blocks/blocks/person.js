@@ -51,7 +51,7 @@ class BlockPerson extends React.Component {
     const { person } = this.state
     const { compact } = this.props
     return (
-      <ContainerElement isFull>
+      <ContainerElement>
         {person && (
           <Person>
             {compact ? (
