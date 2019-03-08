@@ -29,7 +29,7 @@ const PersonTemplate = ({ pageContext }) => {
           {user.firstName} {user.lastName}
         </PageTitle>
         <Flex flexWrap="wrap">
-          <Box width={[1, 1, 1 / 2, 1 / 2]}>
+          <Box width={[1, 1, 3 / 4]}>
             {user.directoryDepartment.map((department, key) => (
               <DirectoryPosition key={key}>
                 <DirectoryTitle>{user.directoryTitle[key]}</DirectoryTitle>
@@ -46,7 +46,7 @@ const PersonTemplate = ({ pageContext }) => {
               </p>
             )}
           </Box>
-          <Box width={[1, 1, 1 / 2, 1 / 2]}>
+          <Box width={[1, 1, 1 / 4]}>
             {_publicProfile && _publicProfile.photo && (
               <img src={_publicProfile.photo} alt="" />
             )}
