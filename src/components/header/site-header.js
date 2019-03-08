@@ -25,6 +25,10 @@ const SiteHeaderWrapper = styled('div')`
       border-bottom: 1px solid ${colors.white};
     }
   }
+
+  @media print {
+    display: none;
+  }
 `
 
 const SiteHeader = ({ path, children }) => (
