@@ -113,11 +113,14 @@ class UserDropdown extends React.Component {
           <UserDropdownMenuLink component="a" href="/account/card">
             OtterCard
           </UserDropdownMenuLink>
-          {(user._isStudent || true) && (
+          {user._isStudent && (
             <UserDropdownMenuLink component="a" href="/account/laundry">
               Laundry
             </UserDropdownMenuLink>
           )}
+          <UserDropdownMenuLink component="a" href="/account/labs">
+            Computer labs
+          </UserDropdownMenuLink>
           <UserDropdownMenuLink component="a" href="/account/print">
             Print balance
           </UserDropdownMenuLink>

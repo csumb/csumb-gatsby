@@ -18,7 +18,7 @@ class BlockForm extends React.Component {
       }/viewform?embedded=true`
     }
     return (
-      <ContainerElement isFull>
+      <ContainerElement>
         <FormIframe
           style={{ height: height + 'px' }}
           src={formUrl}
