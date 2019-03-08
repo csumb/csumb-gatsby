@@ -15,6 +15,7 @@ import BlockByline from './blocks/byline'
 import BlockHeroImage from './blocks/hero-image'
 import BlockSound from './blocks/sound'
 import BlockFeed from './blocks/feed'
+import BlockPathway from './blocks/pathway'
 import BlockForm from './blocks/form'
 import BlockImageGrid from './blocks/image-grid'
 import BlockMap from './blocks/map'
@@ -53,6 +54,7 @@ class Block extends React.Component {
     person: BlockPerson,
     event: BlockEvent,
     eventfeed: BlockEventFeed,
+    pathway: BlockPathway,
   }
 
   render() {

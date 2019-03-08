@@ -13,6 +13,9 @@ import styled from '@emotion/styled'
 const HeaderWrapper = styled('header')`
   padding-top: 0.75rem;
   padding-bottom: 0.5rem;
+  @media print {
+    display: none;
+  }
 `
 
 class Header extends React.Component {
