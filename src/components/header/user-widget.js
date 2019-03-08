@@ -96,6 +96,9 @@ class UserDropdown extends React.Component {
 
   render() {
     const { user } = this.props
+    if (!user) {
+      return null
+    }
     return (
       <Menu>
         <UserDropdownButton>
@@ -105,19 +108,15 @@ class UserDropdown extends React.Component {
           <UserDropdownMenuLink component="a" href="/account">
             Manage account
           </UserDropdownMenuLink>
-          {user._isEmployee && (
-            <UserDropdownMenuLink component="a" href="/account/profile">
-              Public profile
-            </UserDropdownMenuLink>
-          )}
+          <UserDropdownMenuLink component="a" href="/account/profile">
+            Public profile
+          </UserDropdownMenuLink>
           <UserDropdownMenuLink component="a" href="/account/card">
             OtterCard
           </UserDropdownMenuLink>
-          {user._isStudent && (
-            <UserDropdownMenuLink component="a" href="/account/laundry">
-              Laundry
-            </UserDropdownMenuLink>
-          )}
+          <UserDropdownMenuLink component="a" href="/account/laundry">
+            Laundry
+          </UserDropdownMenuLink>
           <UserDropdownMenuLink component="a" href="/account/labs">
             Computer labs
           </UserDropdownMenuLink>
