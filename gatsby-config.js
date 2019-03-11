@@ -43,6 +43,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-polyfill-io`,
+      options: {
+        features: [`Array.prototype.map`, `fetch`],
+      },
+    },
+    {
       resolve: 'gatsby-source-airtable',
       options: {
         apiKey: process.env.AIRTABLE_SCIENCEILLUSTRATION,
@@ -97,21 +103,19 @@ module.exports = {
         fields: ['type', 'name', 'program', 'link', 'description'],
       },
     },
-    /*
-    ENABLE BEFORE GO LIVE
     {
-      resolve: "gatsby-plugin-guess-js",
+      resolve: 'gatsby-plugin-guess-js',
       options: {
         // Find the view id in the GA admin in a section labeled "views"
-        GAViewID: '9784827',
+        GAViewID: '172805783',
         minimumThreshold: 0.03,
         // The "period" for fetching analytic data.
         period: {
-          startDate: new Date("2018-1-1"),
+          startDate: new Date('2019-1-1'),
           endDate: new Date(),
         },
       },
-    },*/
+    },
     {
       resolve: 'gatsby-plugin-prefetch-google-fonts',
       options: {
