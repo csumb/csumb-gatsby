@@ -104,19 +104,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-guess-js',
-      options: {
-        // Find the view id in the GA admin in a section labeled "views"
-        GAViewID: '172805783',
-        minimumThreshold: 0.03,
-        // The "period" for fetching analytic data.
-        period: {
-          startDate: new Date('2019-1-1'),
-          endDate: new Date(),
-        },
-      },
-    },
-    {
       resolve: 'gatsby-plugin-prefetch-google-fonts',
       options: {
         fonts: [
