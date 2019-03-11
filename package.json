@@ -44,7 +44,6 @@
     "gatsby-plugin-favicon": "^3.1.5",
     "gatsby-plugin-google-analytics": "^2.0.8",
     "gatsby-plugin-google-gtag": "^1.0.13",
-    "gatsby-plugin-guess-js": "^1.0.3",
     "gatsby-plugin-manifest": "^2.0.11",
     "gatsby-plugin-nprogress": "^2.0.8",
     "gatsby-plugin-polyfill-io": "^1.1.0",
