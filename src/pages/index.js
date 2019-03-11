@@ -7,7 +7,7 @@ import moment from 'moment'
 import {
   NonFeaturedStory,
   FeaturedStory,
-  Nuggets,
+  InTheNews,
 } from 'components/pages/homepage'
 import HomepageHero from 'components/homepages/2019/service-learning'
 
@@ -41,7 +41,6 @@ const IndexPage = ({ data }) => {
     [allContentfulHomepageStory, allContentfulHomepageEvent],
     false
   )
-  const nuggets = sortItems([allContentfulHomepageInTheNews], null, true)
   const colPadding = [0, 0, 3, 3]
   return (
     <Layout>
@@ -69,7 +68,7 @@ const IndexPage = ({ data }) => {
             ))}
           </Box>
           <Box width={[1, 1, 1, 3 / 12]} order={3} pl={colPadding}>
-            <Nuggets nuggets={nuggets} />
+            <InTheNews articles={allContentfulHomepageInTheNews.edges} />
           </Box>
         </Flex>
       </Container>
