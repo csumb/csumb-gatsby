@@ -51,12 +51,12 @@ const FeaturedEventDate = styled('div')`
   color: ${colors.muted.dark};
 `
 
-const NuggetsWrapper = styled('div')`
+const InTheNewsWrapper = styled('div')`
   background: ${colors.muted.light};
   padding: 0.7rem;
 `
 
-const NuggetsList = styled('ul')`
+const InTheNewsList = styled('ul')`
   margin: 0;
   list-style-type: none;
   li {
@@ -72,12 +72,12 @@ const NuggetsList = styled('ul')`
   }
 `
 
-const NuggetSource = styled('div')`
+const InTheNewsSource = styled('div')`
   font-variant: italic;
   font-size: 0.8rem;
 `
 
-const NuggetsHeader = styled('h3')`
+const InTheNewsHeader = styled('h3')`
   font-size: 1rem;
   font-weight: 700;
   padding-bottom: 0.5rem;
@@ -224,22 +224,22 @@ const getNewsLink = (newsStory, link) => {
     .toLowerCase()}/${newsStory[0].slug}`
 }
 
-const Nuggets = ({ nuggets }) => (
-  <NuggetsWrapper>
-    <NuggetsHeader>In the news</NuggetsHeader>
-    <NuggetsList>
-      {nuggets.map(({ contentful_id, link, title, source }) => (
-        <li key={contentful_id}>
-          <a href={link}>
+const InTheNews = ({ articles }) => (
+  <InTheNewsWrapper>
+    <InTheNewsHeader>In the news</InTheNewsHeader>
+    <InTheNewsList>
+      {articles.map(({ node }) => (
+        <li key={node.contentful_id}>
+          <a href={node.link}>
             <>
-              {title}
-              {source && <NuggetSource>{source}</NuggetSource>}
+              {node.title}
+              {node.source && <InTheNewsSource>{node.source}</InTheNewsSource>}
             </>
           </a>
         </li>
       ))}
-    </NuggetsList>
-  </NuggetsWrapper>
+    </InTheNewsList>
+  </InTheNewsWrapper>
 )
 
 export {
@@ -247,5 +247,5 @@ export {
   HomepageNavigation,
   NonFeaturedStory,
   FeaturedStory,
-  Nuggets,
+  InTheNews,
 }
