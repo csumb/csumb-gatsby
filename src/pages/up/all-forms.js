@@ -127,7 +127,7 @@ export const query = graphql`
         }
       }
     }
-    allCsumbPage(filter: { layout: { eq: "site" }, site: { eq: "up" } }) {
+    allCsumbPage(filter: { pagePath: { eq: "up/all-forms" } }) {
       edges {
         node {
           pageContent
