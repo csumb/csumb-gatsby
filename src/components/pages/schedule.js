@@ -5,6 +5,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'style/theme'
 import PageTitle from 'components/header/page-title'
 import moment from 'moment'
+import bp from 'style/breakpoints'
 
 const ScheduleList = styled('ul')`
   list-style-type: none;
@@ -182,6 +183,9 @@ const CourseListItem = ({ course, term }) => {
 }
 
 const CourseListItemHeaderFlex = styled(Flex)`
+  ${bp({
+    display: ['none', 'flex'],
+  })};
   background: ${colors.primary.darkest};
   color: ${colors.white};
   margin-bottom: 0.5rem;
