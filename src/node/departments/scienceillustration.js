@@ -10,7 +10,16 @@ module.exports = (graphql, actions) => {
     resolve(
       graphql(`
         {
-          allAirtable(filter: { table: { in: ["Graduates", "Images"] } }) {
+          allAirtable(
+            filter: {
+              queryName: {
+                in: [
+                  "ScienceIllustrationGraduates"
+                  "ScienceIllustrationImages"
+                ]
+              }
+            }
+          ) {
             edges {
               node {
                 id

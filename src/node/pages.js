@@ -68,6 +68,7 @@ module.exports = (graphql, actions) => {
                   title
                   site
                   pageContent
+                  drupalNid
                   topHero {
                     headline
                     text
@@ -107,6 +108,32 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
+            allAirtable(
+              filter: { queryName: { in: ["UniversityPersonnelPages"] } }
+            ) {
+              edges {
+                node {
+                  id
+                  table
+                  recordId
+                  data {
+                    Name
+                    Notes
+                    Page_ID
+                    Documents {
+                      id
+                      data {
+                        Name
+                        Notes
+                        Attachments {
+                          url
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         `
       ).then(result => {
@@ -116,6 +143,15 @@ module.exports = (graphql, actions) => {
         }
         const overridePages = result.data.site.siteMetadata.overridePages
         let count = 0
+
+        const upForms = {}
+
+        result.data.allAirtable.edges.forEach(({ node }) => {
+          const data = node.data
+          if (data.Page_ID) {
+            upForms[data.Page_ID] = data
+          }
+        })
 
         result.data.allCsumbSite.edges.forEach(({ node }) => {
           if (typeof sites[node.site] === 'undefined') {
@@ -149,6 +185,11 @@ module.exports = (graphql, actions) => {
                 site: sites[node.site].site,
                 breadcrumbs: node.breadcrumbs,
                 pageNavigation: node.navigation,
+                upForms:
+                  typeof node.drupalNid !== 'undefined' &&
+                  typeof upForms[parseInt(node.drupalNid)] !== 'undefined'
+                    ? upForms[parseInt(node.drupalNid)]
+                    : false,
                 feedbackEmail: encryptFeedback(node.feedbackEmail),
                 layout: node.layout,
                 navigation: sites[node.site].navigation,

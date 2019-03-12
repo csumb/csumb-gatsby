@@ -8,8 +8,8 @@ module.exports = {
     },
     swiftypeId: 'Gu7FdGTPV49T6dsYVBSV',
     schedule: {
-      currentTerm: 2184,
-      currentTermName: '2018fall',
+      currentTerm: 2192,
+      currentTermName: '2019spring',
       endpoint: 'https://api.csumb.edu/schedule/',
     },
     labs: {
@@ -25,6 +25,7 @@ module.exports = {
       'scienceillustration/graduate-gallery',
       'news',
       'about/map-directions',
+      'up/all-forms',
     ],
   },
   plugins: [
@@ -51,15 +52,28 @@ module.exports = {
     {
       resolve: 'gatsby-source-airtable',
       options: {
-        apiKey: process.env.AIRTABLE_SCIENCEILLUSTRATION,
+        apiKey: process.env.AIRTABLE_KEY,
         tables: [
           {
             baseId: 'appW5yp8SpOvxD3Al',
             tableName: 'Graduates',
+            queryName: 'ScienceIllustrationGraduates',
           },
           {
             baseId: 'appW5yp8SpOvxD3Al',
             tableName: 'Images',
+            queryName: 'ScienceIllustrationImages',
+          },
+          {
+            baseId: 'appRBrbuxszZziJNY',
+            tableName: 'Pages',
+            queryName: 'UniversityPersonnelPages',
+            tableLinks: ['Documents'],
+          },
+          {
+            baseId: 'appRBrbuxszZziJNY',
+            tableName: 'Documents',
+            queryName: 'UniversityPersonnelDocuments',
           },
         ],
       },
@@ -126,7 +140,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingIds: ['UA-4860091-14'],
+        trackingIds: ['UA-4860091-1'],
         pluginConfig: {
           anonymize_ip: true,
           head: false,
@@ -141,6 +155,13 @@ module.exports = {
       resolve: 'gatsby-plugin-favicon',
       options: {
         logo: './src/assets/images/favicon.png',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: 1234615,
+        sv: 6,
       },
     },
     {

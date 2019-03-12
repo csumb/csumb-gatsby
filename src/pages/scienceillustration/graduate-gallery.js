@@ -9,12 +9,16 @@ import { graphql } from 'gatsby'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
 import { InputText, Submit } from 'components/forms'
+import bp from 'style/breakpoints'
 import Well from 'components/well'
 import styled from '@emotion/styled'
 
 const GraduateList = styled('ul')`
   list-style-type: none;
   margin: 0;
+  ${bp({
+    columnCount: [1, 2, 3],
+  })}
   li {
     padding-left: 0;
   }
@@ -23,9 +27,8 @@ const GraduateList = styled('ul')`
 const ViewGraduate = ({ graduate }) => (
   <li>
     <Link to={`/scienceillustration/graduate/${graduate.data.slug}`}>
-      {`${graduate.data.first_name} ${graduate.data.last_name} (${
-        graduate.data.class
-      })`}
+      {`${graduate.data.first_name} ${graduate.data.last_name}`}
+      {graduate.data.class && <>({graduate.data.class})</>}
     </Link>
   </li>
 )
@@ -139,7 +142,7 @@ export const query = graphql`
       }
     }
     allAirtable(
-      filter: { table: { eq: "Graduates" } }
+      filter: { queryName: { eq: "ScienceIllustrationGraduates" } }
       sort: { fields: [data___last_name, data___first_name] }
     ) {
       edges {
