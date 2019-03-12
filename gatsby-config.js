@@ -68,7 +68,7 @@ module.exports = {
             baseId: 'appRBrbuxszZziJNY',
             tableName: 'Pages',
             queryName: 'UniversityPersonnelPages',
-            tableLinks: ['Documents'],
+            tableLinks: ['Documents', 'Parent'],
           },
           {
             baseId: 'appRBrbuxszZziJNY',
@@ -106,15 +106,6 @@ module.exports = {
       options: {
         path: './src/static',
         name: 'static-content',
-      },
-    },
-    {
-      resolve: 'gatsby-source-google-public-sheet',
-      options: {
-        sheet:
-          'https://spreadsheets.google.com/feeds/list/1jtwi1CnRBt2JzfoZVSPngmkaucVpw0aZ_WSKIceXlMw/od6/public/values?alt=json',
-        id: 'academicPrograms',
-        fields: ['type', 'name', 'program', 'link', 'description'],
       },
     },
     {
