@@ -185,16 +185,17 @@ module.exports = (graphql, actions) => {
                 site: sites[node.site].site,
                 breadcrumbs: node.breadcrumbs,
                 pageNavigation: node.navigation,
-                upForms:
-                  typeof node.drupalNid !== 'undefined' &&
-                  typeof upForms[parseInt(node.drupalNid)] !== 'undefined'
-                    ? upForms[parseInt(node.drupalNid)]
-                    : false,
                 feedbackEmail: encryptFeedback(node.feedbackEmail),
                 layout: node.layout,
                 navigation: sites[node.site].navigation,
                 pageContent: node.pageContent,
               },
+            }
+            if (
+              typeof node.drupalNid !== 'undefined' &&
+              typeof upForms[parseInt(node.drupalNid)] !== 'undefined'
+            ) {
+              pageNode.context.upForms = upForms[parseInt(node.drupalNid)]
             }
             if (typeof node.event !== 'undefined') {
               pageNode.context.event = node.event

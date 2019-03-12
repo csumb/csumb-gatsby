@@ -1,30 +1,32 @@
 import React from 'react'
-//import Link from 'gatsby'
+import SiteHeader from 'components/header/site-header'
+import PageTitle from 'components/header/page-title'
 import Layout from 'components/layouts/default'
 import Container from 'components/container'
 
-class PageTemplate extends React.Component {
+class CourseTemplate extends React.Component {
   render() {
     const { course } = this.props.pageContext
     const pageTitle = `${course.SUBJECT} ${course.CATALOG_NBR}`
     return (
       <Layout pageTitle={pageTitle}>
+        <SiteHeader path="/catalog">Catalog</SiteHeader>
         <Container>
-          <div>
-            <h1>
-              {course.SUBJECT} {course.CATALOG_NBR}: {course.COURSE_TITLE_LONG}
-            </h1>
+          <PageTitle>
+            {course.SUBJECT} {course.CATALOG_NBR}: {course.COURSE_TITLE_LONG}
+          </PageTitle>
+          <>
             <h2>Course description</h2>
             <p>{course.DESCRLONG}</p>
             <p>
               <strong>Units:</strong>
               {course.UNITS_MAXIMUM}
             </p>
-          </div>
+          </>
         </Container>
       </Layout>
     )
   }
 }
 
-export default PageTemplate
+export default CourseTemplate

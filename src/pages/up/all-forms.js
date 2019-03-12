@@ -44,7 +44,6 @@ class UniversityPersonnelAllformsSearch extends React.Component {
 
   render() {
     const { results } = this.state
-    const { forms } = this.props
     return (
       <Well>
         <form onSubmit={this.handleSubmit.bind(this)}>
@@ -127,7 +126,7 @@ export const query = graphql`
         }
       }
     }
-    allCsumbPage(filter: { layout: { eq: "site" }, site: { eq: "up" } }) {
+    allCsumbPage(filter: { pagePath: { eq: "up/all-forms" } }) {
       edges {
         node {
           pageContent
