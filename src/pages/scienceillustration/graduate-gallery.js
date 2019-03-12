@@ -27,9 +27,8 @@ const GraduateList = styled('ul')`
 const ViewGraduate = ({ graduate }) => (
   <li>
     <Link to={`/scienceillustration/graduate/${graduate.data.slug}`}>
-      {`${graduate.data.first_name} ${graduate.data.last_name} (${
-        graduate.data.class
-      })`}
+      {`${graduate.data.first_name} ${graduate.data.last_name}`}
+      {graduate.data.class && <>({graduate.data.class})</>}
     </Link>
   </li>
 )
@@ -143,7 +142,7 @@ export const query = graphql`
       }
     }
     allAirtable(
-      filter: { table: { eq: "Graduates" } }
+      filter: { queryName: { eq: "ScienceIllustrationGraduates" } }
       sort: { fields: [data___last_name, data___first_name] }
     ) {
       edges {
