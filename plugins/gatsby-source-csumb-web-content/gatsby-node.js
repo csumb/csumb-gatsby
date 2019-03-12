@@ -85,6 +85,7 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       title: content.title,
       layout: content.layout,
       site: content.site,
+      drupalNid: content.drupalNid,
       pagePath: pagePath,
       topHero: topHero,
       breadcrumbs: breadcrumbs,

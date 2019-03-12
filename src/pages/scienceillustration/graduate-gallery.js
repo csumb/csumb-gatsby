@@ -9,12 +9,16 @@ import { graphql } from 'gatsby'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
 import { InputText, Submit } from 'components/forms'
+import bp from 'style/breakpoints'
 import Well from 'components/well'
 import styled from '@emotion/styled'
 
 const GraduateList = styled('ul')`
   list-style-type: none;
   margin: 0;
+  ${bp({
+    columnCount: [1, 2, 3],
+  })}
   li {
     padding-left: 0;
   }

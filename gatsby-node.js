@@ -17,10 +17,10 @@ exports.createPages = ({ stage, graphql, actions }) => {
     coursePages(graphql, actions)
       .then(() => {
         return newsStoryPages(graphql, actions)
-      })
+      }) /*
       .then(() => {
         return scienceIllustrationPages(graphql, actions)
-      })
+      })*/
       .then(() => {
         return contentPages(graphql, actions)
       })
