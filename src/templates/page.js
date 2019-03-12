@@ -12,6 +12,7 @@ import PageNavigation from 'components/navigation/page'
 import Breadcrumbs from 'components/header/breadcrumbs'
 import BlockHero from './blocks/blocks/hero-image'
 import SiteFooter from 'components/footer/site'
+import { UniversityPersonnelFormList } from 'components/pages/university-personnel'
 
 class PageTemplate extends React.Component {
   render() {
@@ -27,6 +28,7 @@ class PageTemplate extends React.Component {
       feedbackEmail,
       pageUrl,
       topHero,
+      upForms,
     } = this.props.pageContext
 
     const showNavigation = pageNavigation && pageNavigation.length
@@ -44,8 +46,15 @@ class PageTemplate extends React.Component {
         <Container>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
+          {upForms && upForms.Documents && (
+            <UniversityPersonnelFormList
+              forms={upForms}
+              fullWidth={pageContent.search('airtable-related-documents') > -1}
+            />
+          )}
         </Container>
         {event && <EventPage event={event} />}
+
         {showNavigation ? (
           <Container>
             <Flex flexWrap="wrap">
