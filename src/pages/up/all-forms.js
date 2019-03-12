@@ -44,7 +44,6 @@ class UniversityPersonnelAllformsSearch extends React.Component {
 
   render() {
     const { results } = this.state
-    const { forms } = this.props
     return (
       <Well>
         <form onSubmit={this.handleSubmit.bind(this)}>
