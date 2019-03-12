@@ -8,6 +8,7 @@ import Blocks from 'templates/blocks'
 import { UniversityPersonnelForm } from 'components/pages/university-personnel'
 import { InputText, Submit } from 'components/forms'
 import Well from 'components/well'
+import PageTitle from 'components/header/page-title'
 import { Flex, Box } from '@rebass/grid/emotion'
 
 class UniversityPersonnelAllformsSearch extends React.Component {
@@ -84,6 +85,7 @@ class UniversityPersonnelFormsPage extends React.Component {
     return (
       <Layout pageTitle="University Personnel">
         <SiteHeader path="/up">University Personnel</SiteHeader>
+        <PageTitle>All forms</PageTitle>
         {data.allCsumbNavigation && (
           <SiteNavigation
             navigation={data.allCsumbNavigation.edges[0].node.navigation}
