@@ -97,7 +97,7 @@ export const query = graphql`
           topLevelItem
           childContentfulNavigationItemDescriptionTextNode {
             childMarkdownRemark {
-              html
+              rawMarkdownBody
             }
           }
           contentfulchildren {
