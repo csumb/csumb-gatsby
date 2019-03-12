@@ -85,13 +85,13 @@ class UniversityPersonnelFormsPage extends React.Component {
     return (
       <Layout pageTitle="University Personnel">
         <SiteHeader path="/up">University Personnel</SiteHeader>
-        <PageTitle>All forms</PageTitle>
         {data.allCsumbNavigation && (
           <SiteNavigation
             navigation={data.allCsumbNavigation.edges[0].node.navigation}
           />
         )}
         <Container>
+          <PageTitle>All forms</PageTitle>
           {data.allCsumbPage && (
             <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
           )}

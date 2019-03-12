@@ -68,6 +68,7 @@ module.exports = {
             baseId: 'appRBrbuxszZziJNY',
             tableName: 'Pages',
             queryName: 'UniversityPersonnelPages',
+            tableLinks: ['Documents'],
           },
           {
             baseId: 'appRBrbuxszZziJNY',
