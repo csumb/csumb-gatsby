@@ -51,15 +51,27 @@ module.exports = {
     {
       resolve: 'gatsby-source-airtable',
       options: {
-        apiKey: process.env.AIRTABLE_SCIENCEILLUSTRATION,
+        apiKey: process.env.AIRTABLE_KEY,
         tables: [
           {
             baseId: 'appW5yp8SpOvxD3Al',
             tableName: 'Graduates',
+            queryName: 'ScienceIllustrationGraduates',
           },
           {
             baseId: 'appW5yp8SpOvxD3Al',
             tableName: 'Images',
+            queryName: 'ScienceIllustrationImages',
+          },
+          {
+            baseId: 'appRBrbuxszZziJNY',
+            tableName: 'Pages',
+            queryName: 'UniversityPersonnelPages',
+          },
+          {
+            baseId: 'appRBrbuxszZziJNY',
+            tableName: 'Documents',
+            queryName: 'UniversityPersonnelDocuments',
           },
         ],
       },
@@ -126,7 +138,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingIds: ['UA-4860091-14'],
+        trackingIds: ['UA-4860091-1'],
         pluginConfig: {
           anonymize_ip: true,
           head: false,
