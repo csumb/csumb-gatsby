@@ -54,6 +54,11 @@ const UserDropdownMenuLink = styled(MenuLink)`
     background: ${colors.primary.darkest};
     color: ${colors.white};
   }
+  ${props =>
+    props.isHidden &&
+    `
+    display: none;UserDropdownMenuLink
+  `}
 `
 
 const UserDropdownMenuLinkButton = styled(MenuItem)`
@@ -108,7 +113,11 @@ class UserDropdown extends React.Component {
           <UserDropdownMenuLink component="a" href="/account">
             Manage account
           </UserDropdownMenuLink>
-          <UserDropdownMenuLink component="a" href="/account/profile">
+          <UserDropdownMenuLink
+            component="a"
+            href="/account/profile"
+            isHidden={!user._isEmployee}
+          >
             Public profile
           </UserDropdownMenuLink>
           <UserDropdownMenuLink component="a" href="/account/card">
