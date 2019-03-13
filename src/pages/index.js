@@ -4,6 +4,7 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import { ButtonLink } from 'components/button'
+import { css } from '@emotion/core'
 import moment from 'moment'
 import {
   NonFeaturedStory,
@@ -48,6 +49,7 @@ const IndexPage = ({ data }) => {
     <Layout noFooterMargin={true}>
       <HomepageHero />
       <Container topPadding>
+        <h2>News &amp; events</h2>
         <Flex flexWrap="wrap">
           <Box width={[1, 1, 1 / 2, 3 / 12]} order={[2, 1, 1]} pr={colPadding}>
             {notFeatured.map(item => (
@@ -72,17 +74,11 @@ const IndexPage = ({ data }) => {
             <InTheNews articles={allContentfulHomepageInTheNews.edges} />
           </Box>
         </Flex>
-        <Flex flexWrap="wrap" style={{ margin: '1.5rem 0' }}>
-          <Box width={[1, 1, 1 / 2, 3 / 12]} order={[2, 1, 1]} pr={colPadding}>
-            <ButtonLink to="/events">View more events</ButtonLink>
-          </Box>
-          <Box
-            width={[1, 1, 1 / 2, 6 / 12]}
-            order={[1, 2, 2]}
-            pl={colPadding}
-            pr={colPadding}
-          >
-            {' '}
+        <Flex flexWrap="wrap">
+          <Box width={[1, 1, 1 / 2, 6 / 12]} ml={7}>
+            <ButtonLink style={{ marginRight: '1rem' }} to="/events">
+              View more events
+            </ButtonLink>
             <ButtonLink to="/news">Read more news</ButtonLink>
           </Box>
         </Flex>
