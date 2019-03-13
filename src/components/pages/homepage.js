@@ -6,6 +6,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { colors, fonts } from 'style/theme'
 import LazyHero from 'react-lazy-hero'
 import { LeadParagraph } from 'components/type'
+import showdown from 'showdown'
 
 const dateFormat = 'MMMM D, YYYY'
 
@@ -224,23 +225,35 @@ const getNewsLink = (newsStory, link) => {
     .toLowerCase()}/${newsStory[0].slug}`
 }
 
-const InTheNews = ({ articles }) => (
-  <InTheNewsWrapper>
-    <InTheNewsHeader>In the news</InTheNewsHeader>
-    <InTheNewsList>
-      {articles.map(({ node }) => (
-        <li key={node.contentful_id}>
-          <a href={node.link}>
-            <>
-              {node.title}
-              {node.source && <InTheNewsSource>{node.source}</InTheNewsSource>}
-            </>
-          </a>
-        </li>
-      ))}
-    </InTheNewsList>
-  </InTheNewsWrapper>
-)
+const InTheNews = ({ articles }) => {
+  const converter = new showdown.Converter()
+  return (
+    <InTheNewsWrapper>
+      <InTheNewsHeader>In the news</InTheNewsHeader>
+      <InTheNewsList>
+        {articles.map(({ node }) => (
+          <li key={node.contentful_id}>
+            <a href={node.link}>
+              <>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: converter.makeHtml(
+                      node.childContentfulHomepageInTheNewsHeadlineTextNode
+                        .childMarkdownRemark.rawMarkdownBody
+                    ),
+                  }}
+                />
+                {node.source && (
+                  <InTheNewsSource>{node.source}</InTheNewsSource>
+                )}
+              </>
+            </a>
+          </li>
+        ))}
+      </InTheNewsList>
+    </InTheNewsWrapper>
+  )
+}
 
 export {
   HomepageHero,

@@ -3,6 +3,8 @@ import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
+import { ButtonLink } from 'components/button'
+import { colors } from 'style/theme'
 import moment from 'moment'
 import {
   NonFeaturedStory,
@@ -45,7 +47,6 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HomepageHero />
-
       <Container topPadding>
         <Flex flexWrap="wrap">
           <Box width={[1, 1, 1 / 2, 3 / 12]} order={[2, 1, 1]} pr={colPadding}>
@@ -71,7 +72,52 @@ const IndexPage = ({ data }) => {
             <InTheNews articles={allContentfulHomepageInTheNews.edges} />
           </Box>
         </Flex>
+        <Flex flexWrap="wrap" style={{ margin: '1.5rem 0' }}>
+          <Box width={[1, 1, 1 / 2, 3 / 12]} order={[2, 1, 1]} pr={colPadding}>
+            <ButtonLink to="/events">View more events</ButtonLink>
+          </Box>
+          <Box
+            width={[1, 1, 1 / 2, 6 / 12]}
+            order={[1, 2, 2]}
+            pl={colPadding}
+            pr={colPadding}
+          >
+            {' '}
+            <ButtonLink to="/news">Read more news</ButtonLink>
+          </Box>
+        </Flex>
       </Container>
+
+      <div style={{ background: colors.primary.darkest }}>
+        <Container topPadding>
+          <Flex flexWrap="wrap">
+            <Box width={[1, 1 / 3]} px={3}>
+              <img
+                src="https://csumb.edu/sites/default/files/styles/homepage_news/public/Heyley_Fein.jpeg?itok=TxqKeEE5"
+                alt=""
+                style={{ marginBottom: 0 }}
+              />
+              <p style={{ color: 'white' }}>Athletics</p>
+            </Box>
+            <Box width={[1, 1 / 3]} px={3}>
+              <img
+                src="https://csumb.edu/sites/default/files/styles/homepage_news/public/IMG_7941_0.jpg?itok=K6gmc933"
+                alt=""
+                style={{ marginBottom: 0 }}
+              />
+              <p style={{ color: 'white' }}>Majors &amp; Programs</p>
+            </Box>
+            <Box width={[1, 1 / 3]} px={3}>
+              <img
+                src="https://csumb.edu/sites/default/files/styles/homepage_news/public/IMG_7809.jpg?itok=EUUETuff"
+                alt=""
+                style={{ marginBottom: 0 }}
+              />
+              <p style={{ color: 'white' }}>Residential Life</p>
+            </Box>
+          </Flex>
+        </Container>
+      </div>
     </Layout>
   )
 }
@@ -119,7 +165,11 @@ export const query = graphql`
     ) {
       edges {
         node {
-          title
+          childContentfulHomepageInTheNewsHeadlineTextNode {
+            childMarkdownRemark {
+              rawMarkdownBody
+            }
+          }
           link
           source
           goLiveDate
