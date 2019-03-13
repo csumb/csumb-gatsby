@@ -13,6 +13,7 @@ import { AlertFyi } from 'components/alert'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 import { EverythingContent } from 'components/pages/everything'
+import { graphql } from 'gatsby'
 
 const PageNotFoundContainer = styled('div')`
   max-width: 60ch;
