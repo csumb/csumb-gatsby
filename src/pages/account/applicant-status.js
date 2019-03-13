@@ -9,6 +9,7 @@ import url from 'url'
 import { AlertWarning } from 'components/alert'
 import { LeadParagraph } from 'components/type'
 import Link from 'gatsby-link'
+import Well from 'components/well'
 
 class AccountApplicantStatusPage extends React.Component {
   render() {
@@ -30,7 +31,20 @@ class AccountApplicantStatusPage extends React.Component {
                     )}
                   </PageTitle>
                   {context.user.anonymous ? (
-                    <h3>You must be logged in first.</h3>
+                    <Well>
+                      <h3>You are not logged in</h3>
+                      <p>
+                        If you have already set up your CSUMB account, click the{' '}
+                        <strong>log in</strong> link on the top of the page.
+                      </p>
+                      <p>
+                        If you have not yet setup your CSUMB account,{' '}
+                        <a href="https://claim.csumb.edu">
+                          you can start the process here
+                        </a>
+                        .
+                      </p>
+                    </Well>
                   ) : (
                     <>
                       <ApplicantStatus user={context.user} />
