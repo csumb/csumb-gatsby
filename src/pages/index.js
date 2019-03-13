@@ -127,7 +127,7 @@ export const query = graphql`
 
     allContentfulHomepageInTheNews(
       limit: 10
-      sort: { fields: [goLiveDate, title], order: [DESC, ASC] }
+      sort: { fields: [goLiveDate], order: [DESC, ASC] }
     ) {
       edges {
         node {
