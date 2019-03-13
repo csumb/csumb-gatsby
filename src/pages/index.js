@@ -4,7 +4,6 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import { ButtonLink } from 'components/button'
-import { css } from '@emotion/core'
 import moment from 'moment'
 import {
   NonFeaturedStory,
@@ -128,7 +127,7 @@ export const query = graphql`
 
     allContentfulHomepageInTheNews(
       limit: 10
-      sort: { fields: [goLiveDate, title], order: [DESC, ASC] }
+      sort: { fields: [goLiveDate], order: [DESC, ASC] }
     ) {
       edges {
         node {
