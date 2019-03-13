@@ -12,7 +12,10 @@ import PageNavigation from 'components/navigation/page'
 import Breadcrumbs from 'components/header/breadcrumbs'
 import BlockHero from './blocks/blocks/hero-image'
 import SiteFooter from 'components/footer/site'
-import { UniversityPersonnelFormList } from 'components/pages/university-personnel'
+import {
+  UniversityPersonnelFormList,
+  UniversityPersonnelPageList,
+} from 'components/pages/university-personnel'
 
 class PageTemplate extends React.Component {
   render() {
@@ -29,6 +32,7 @@ class PageTemplate extends React.Component {
       pageUrl,
       topHero,
       upForms,
+      upPages,
     } = this.props.pageContext
 
     const showNavigation = pageNavigation && pageNavigation.length
@@ -68,6 +72,11 @@ class PageTemplate extends React.Component {
           </Container>
         ) : (
           <Blocks blocks={pageContent} />
+        )}
+        {upPages && (
+          <Container>
+            <UniversityPersonnelPageList pages={upPages} />
+          </Container>
         )}
         <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
         {((site.contact && (site.contact.phone || site.contact.email)) ||
