@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
 import { ContainerElement, ContainerContext } from '../container-context'
-import bp from 'style/breakpoints'
+import { Flex, Box } from '@rebass/grid/emotion'
 
 const FeedItem = styled('li')``
 const FeedList = styled('ul')`
@@ -13,14 +13,6 @@ const FeedList = styled('ul')`
 const FeedItemHeader = styled('h3')``
 
 const FeedItemTeaser = styled('p')``
-
-const FeedItemImage = styled('img')`
-  ${bp({
-    width: ['100%', '30%'],
-    float: ['none', 'right'],
-    margin: ['1rem 0', '0 0 0.5rem 0.5rem'],
-  })}
-`
 
 class BlockFeed extends React.Component {
   render() {
@@ -38,18 +30,23 @@ class BlockFeed extends React.Component {
                   {displayShort ? (
                     <LinkInspect to={item.page_link}>{item.title}</LinkInspect>
                   ) : (
-                    <>
-                      <FeedItemHeader>
-                        <LinkInspect
-                          to={item.page_link}
-                          dangerouslySetInnerHTML={{ __html: item.title }}
+                    <Flex flexWrap="wrap">
+                      <Box width={[1, 3 / 4]} pr={[0, 3]}>
+                        <FeedItemHeader>
+                          <LinkInspect
+                            to={item.page_link}
+                            dangerouslySetInnerHTML={{ __html: item.title }}
+                          />
+                        </FeedItemHeader>
+
+                        <FeedItemTeaser
+                          dangerouslySetInnerHTML={{ __html: item.teaser }}
                         />
-                      </FeedItemHeader>
-                      {item.image && <FeedItemImage src={item.image} alt="" />}
-                      <FeedItemTeaser
-                        dangerouslySetInnerHTML={{ __html: item.teaser }}
-                      />
-                    </>
+                      </Box>
+                      <Box width={[1, 1 / 4]}>
+                        {item.image && <img src={item.image} alt="" />}
+                      </Box>
+                    </Flex>
                   )}
                 </FeedItem>
               ))}

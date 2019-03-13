@@ -26,7 +26,6 @@ import BlockEvent from './blocks/event'
 import BlockEventFeed from './blocks/event-feed'
 import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
-import VisuallyHidden from 'components/visually-hidden'
 
 const containerWidth = containerStyle.full
 class Block extends React.Component {
