@@ -12,6 +12,20 @@ const ImageGridImage = styled('img')`
   margin-bottom: 0.5rem;
 `
 
+const ImageGridItem = ({ item }) => (
+  <>
+    <ImageGridImage
+      src={
+        item.image.url
+          ? item.image.url
+          : `https://s3.amazonaws.com/csumb-uploads/${item.image.image.key}`
+      }
+      alt=""
+    />
+    <ImageGridHeader>{item.headline}</ImageGridHeader>
+  </>
+)
+
 class BlockImageGrid extends React.Component {
   render() {
     const { images, columnWidth } = this.props
@@ -20,18 +34,16 @@ class BlockImageGrid extends React.Component {
         {container => (
           <ContainerElement container={container}>
             <Flex flexWrap="wrap">
-              {images.map(image => (
+              {images.map(item => (
                 <Box width={[1, 1, columnWidth / 12, columnWidth / 12]} px={2}>
-                  <LinkInspect to={image.link}>
-                    <ImageGridImage
-                      src={`https://s3.amazonaws.com/csumb-uploads/${
-                        image.image.key
-                      }`}
-                      alt=""
-                    />
-                    <ImageGridHeader>{image.headline}</ImageGridHeader>
-                  </LinkInspect>
-                  {image.text && <p>{image.text}</p>}
+                  {item.link ? (
+                    <LinkInspect to={item.link}>
+                      <ImageGridItem item={item} />
+                    </LinkInspect>
+                  ) : (
+                    <ImageGridItem item={item} />
+                  )}
+                  {item.text && <p>{item.text}</p>}
                 </Box>
               ))}
             </Flex>

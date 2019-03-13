@@ -61,6 +61,7 @@ const HeroText = ({ headline, text, buttonUrl, buttonText }) => (
 class BlockHeroImage extends React.Component {
   state = {
     isMobile: false,
+    isReady: false,
   }
 
   componentDidMount() {
@@ -76,11 +77,17 @@ class BlockHeroImage extends React.Component {
     window.addEventListener('resize', setWindowSize)
 
     setWindowSize()
+    this.setState({
+      isReady: true,
+    })
   }
 
   render() {
     const { image, position } = this.props
-    const { isMobile } = this.state
+    const { isMobile, isReady } = this.state
+    if (!isReady) {
+      return null
+    }
     return (
       <>
         {isMobile && (
