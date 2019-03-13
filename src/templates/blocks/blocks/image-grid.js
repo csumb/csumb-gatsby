@@ -24,9 +24,13 @@ class BlockImageGrid extends React.Component {
                 <Box width={[1, 1, columnWidth / 12, columnWidth / 12]} px={2}>
                   <LinkInspect to={image.link}>
                     <ImageGridImage
-                      src={`https://s3.amazonaws.com/csumb-uploads/${
-                        image.image.key
-                      }`}
+                      src={
+                        image.url
+                          ? image.url
+                          : `https://s3.amazonaws.com/csumb-uploads/${
+                              image.image.key
+                            }`
+                      }
                       alt=""
                     />
                     <ImageGridHeader>{image.headline}</ImageGridHeader>
