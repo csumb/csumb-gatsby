@@ -1,16 +1,23 @@
 import React from 'react'
+import PlainLayout from 'components/layouts/plain'
 import Layout from 'components/layouts/default'
-import { graphql } from 'gatsby'
 import PageTitle from 'components/header/page-title'
 import Container from 'components/container'
-import { TopLevelBox, EverythingContent } from 'components/pages/everything'
 import { LeadParagraph } from 'components/type'
 import { Flex, Box } from '@rebass/grid/emotion'
 import EventsSidebar from 'components/events-sidebar'
 import SiteHeader from 'components/header/site-header'
-import Link from 'gatsby-link'
+import Brand from 'components/header/brand'
 import moment from 'moment'
 import { AlertFyi } from 'components/alert'
+import styled from '@emotion/styled'
+import Link from 'gatsby-link'
+import { EverythingContent } from 'components/pages/everything'
+
+const PageNotFoundContainer = styled('div')`
+  max-width: 60ch;
+  margin: 3rem auto;
+`
 
 const ErrorEventPage = () => {
   const dateParts = window.location.pathname.replace('/events/', '').split('/')
@@ -46,40 +53,39 @@ const ErrorPage = props => {
     window.location.href.search('/events/') > -1
 
   return (
-    <Layout pageTitle="Page not found">
+    <>
       {isEvent ? (
-        <ErrorEventPage />
+        <Layout>
+          <ErrorEventPage />
+        </Layout>
       ) : (
-        <Container>
-          <PageTitle>Page not found</PageTitle>
+        <PlainLayout>
+          <PageNotFoundContainer>
+            <Brand style={{ maxWidth: '350px' }} />
+            <PageTitle>Page not found</PageTitle>
 
-          <LeadParagraph>
-            We couldn't find that page, but here's a great way to find what
-            you're looking for:
-          </LeadParagraph>
-          <Flex flexWrap="wrap">
+            <LeadParagraph>
+              We couldn't find that page, but here's a great way to find what
+              you're looking for:
+            </LeadParagraph>
             {items.map(edge => (
               <>
                 {edge.node.topLevelItem && (
-                  <TopLevelBox
-                    key={edge.node.contentful_id}
-                    width={[1, 1, 1 / 3]}
-                    px={2}
-                  >
+                  <>
                     <h3>
                       <Link to={`/everything/${edge.node.slug}`}>
                         {edge.node.title}
                       </Link>
                     </h3>
                     <EverythingContent item={edge.node} />
-                  </TopLevelBox>
+                  </>
                 )}
               </>
             ))}
-          </Flex>
-        </Container>
+          </PageNotFoundContainer>
+        </PlainLayout>
       )}
-    </Layout>
+    </>
   )
 }
 
