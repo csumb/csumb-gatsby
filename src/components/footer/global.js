@@ -32,7 +32,7 @@ const SocialIconWrapper = styled('div')`
 
 const FooterElement = styled('footer')`
   background: ${colors.primary.darkest};
-  ${props => (props.hasSiteFooter ? `` : `margin-top: 1rem;`)}
+  ${props => (props.noFooterMargin ? `` : `margin-top: 1rem;`)}
   padding: 1rem 0;
   color: ${colors.white};
   font-size: 0.9rem;
@@ -91,7 +91,7 @@ const FooterSocialIcon = ({ href, name, icon }) => (
 class Footer extends React.Component {
   render() {
     return (
-      <FooterElement hasSiteFooter={this.props.hasSiteFooter}>
+      <FooterElement noFooterMargin={this.props.noFooterMargin}>
         <Container>
           <Flex flexWrap="wrap">
             <Box width={[1, 7 / 12]} pr={2}>

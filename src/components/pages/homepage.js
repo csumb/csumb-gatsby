@@ -7,6 +7,10 @@ import { colors, fonts } from 'style/theme'
 import LazyHero from 'react-lazy-hero'
 import { LeadParagraph } from 'components/type'
 import showdown from 'showdown'
+import Container from 'components/container'
+import footerAthletics from 'assets/images/homepage/athletics.jpg'
+import footerMajorsPrograms from 'assets/images/homepage/majors-programs.jpg'
+import footerResidentialLife from 'assets/images/homepage/residential-life.jpg'
 
 const dateFormat = 'MMMM D, YYYY'
 
@@ -136,6 +140,53 @@ const StoryLabel = styled('p')`
   margin-bottom: 0.2rem;
 `
 
+const HomepageFooterWrapper = styled('div')`
+  background: ${colors.primary.dark};
+  margin-top: 1rem;
+  padding: 1.5rem 0;
+  img {
+    margin: 0;
+    max-height: 200px;
+  }
+  h3 {
+    margin: 0;
+  }
+  a {
+    color: ${colors.white};
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
+const HomepageFooter = () => (
+  <HomepageFooterWrapper>
+    <Container>
+      <Flex flexWrap="wrap">
+        <Box width={[1, 1 / 3]} pr={[0, 3]}>
+          <a href="https://otterathletics.org">
+            <img src={footerAthletics} alt="" />
+            <h3>Athletics</h3>
+          </a>
+        </Box>
+        <Box width={[1, 1 / 3]} pr={[0, 3]}>
+          <Link to="/academics">
+            <img src={footerMajorsPrograms} alt="" />
+            <h3>Majors &amp; Programs</h3>
+          </Link>
+        </Box>
+        <Box width={[1, 1 / 3]}>
+          <Link to="/housing">
+            <img src={footerResidentialLife} alt="" />
+            <h3>Residential Life</h3>
+          </Link>
+        </Box>
+      </Flex>
+    </Container>
+  </HomepageFooterWrapper>
+)
+
 const StoryType = ({ isEvent }) => (
   <StoryLabel>{isEvent ? <>Event</> : <>News</>}</StoryLabel>
 )
@@ -261,4 +312,5 @@ export {
   NonFeaturedStory,
   FeaturedStory,
   InTheNews,
+  HomepageFooter,
 }
