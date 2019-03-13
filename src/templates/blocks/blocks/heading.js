@@ -12,11 +12,14 @@ const CollapsibleIcon = styled(FontAwesomeIcon)`
 const CollapsibleHeading = styled('button')`
   background: transparent;
   border: none;
-  padding: 0;
   display: block;
   width: 100%;
   text-align: left;
   cursor: pointer;
+`
+
+const CollapsibleTextWrapper = styled('span')`
+  padding-right: 1.5rem;
 `
 
 class BlockHeading extends React.Component {
@@ -32,13 +35,14 @@ class BlockHeading extends React.Component {
 
   render() {
     let HeadingTag = styled(`h${this.props.level}`)``
+
     const { url, text, uuid, collapsible, headerHandler } = this.props
     const { isOpen } = this.state
     return (
       <ContainerContext.Consumer>
         {container => (
           <ContainerElement container={container}>
-            <HeadingTag id={`heading-${uuid}`}>
+            <HeadingTag id={`heading-${uuid}`} collapsible={collapsible}>
               {collapsible ? (
                 <CollapsibleHeading
                   onClick={() => {
@@ -50,7 +54,7 @@ class BlockHeading extends React.Component {
                     size="1rem"
                     icon={isOpen ? faChevronUp : faChevronDown}
                   />
-                  {text}
+                  <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>
                 </CollapsibleHeading>
               ) : (
                 <>
