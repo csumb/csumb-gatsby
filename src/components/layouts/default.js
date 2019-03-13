@@ -36,7 +36,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { siteNavigation, siteTitle, pageTitle, hasSiteFooter } = this.props
+    const { siteNavigation, siteTitle, pageTitle, noFooterMargin } = this.props
 
     return (
       <UserContext.Provider value={{ user: this.state.user }}>
@@ -76,7 +76,7 @@ class Layout extends React.Component {
         />
         <SkipNavContent />
         {this.props.children}
-        <Footer hasSiteFooter={hasSiteFooter ? true : false} />
+        <Footer noFooterMargin={noFooterMargin ? true : false} />
         <FeedbackTab />
       </UserContext.Provider>
     )

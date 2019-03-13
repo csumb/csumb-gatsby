@@ -42,7 +42,7 @@ class PageTemplate extends React.Component {
         pageTitle={title}
         siteNavigation={navigation}
         siteTitle={site.title}
-        hasSiteFooter={site.contact || site.staffPage ? true : false}
+        noFooterMargin={site.contact || site.staffPage ? true : false}
       >
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
