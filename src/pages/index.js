@@ -4,12 +4,12 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import { ButtonLink } from 'components/button'
-import { colors } from 'style/theme'
 import moment from 'moment'
 import {
   NonFeaturedStory,
   FeaturedStory,
   InTheNews,
+  HomepageFooter,
 } from 'components/pages/homepage'
 import HomepageHero from 'components/homepages/2019/service-learning'
 
@@ -45,7 +45,7 @@ const IndexPage = ({ data }) => {
   )
   const colPadding = [0, 0, 3, 3]
   return (
-    <Layout>
+    <Layout noFooterMargin={true}>
       <HomepageHero />
       <Container topPadding>
         <Flex flexWrap="wrap">
@@ -88,36 +88,7 @@ const IndexPage = ({ data }) => {
         </Flex>
       </Container>
 
-      <div style={{ background: colors.primary.darkest }}>
-        <Container topPadding>
-          <Flex flexWrap="wrap">
-            <Box width={[1, 1 / 3]} px={3}>
-              <img
-                src="https://csumb.edu/sites/default/files/styles/homepage_news/public/Heyley_Fein.jpeg?itok=TxqKeEE5"
-                alt=""
-                style={{ marginBottom: 0 }}
-              />
-              <p style={{ color: 'white' }}>Athletics</p>
-            </Box>
-            <Box width={[1, 1 / 3]} px={3}>
-              <img
-                src="https://csumb.edu/sites/default/files/styles/homepage_news/public/IMG_7941_0.jpg?itok=K6gmc933"
-                alt=""
-                style={{ marginBottom: 0 }}
-              />
-              <p style={{ color: 'white' }}>Majors &amp; Programs</p>
-            </Box>
-            <Box width={[1, 1 / 3]} px={3}>
-              <img
-                src="https://csumb.edu/sites/default/files/styles/homepage_news/public/IMG_7809.jpg?itok=EUUETuff"
-                alt=""
-                style={{ marginBottom: 0 }}
-              />
-              <p style={{ color: 'white' }}>Residential Life</p>
-            </Box>
-          </Flex>
-        </Container>
-      </div>
+      <HomepageFooter />
     </Layout>
   )
 }
