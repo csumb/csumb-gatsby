@@ -59,38 +59,27 @@ class Block extends React.Component {
 
   render() {
     const { type, block, hidden, headerHandler, inColumn } = this.props
-    if (typeof this.blockComponents[type] === 'undefined') {
+    if (typeof this.blockComponents[type] === 'undefined' || hidden) {
       return null
     }
     let BlockType = this.blockComponents[type]
 
     return (
       <ContainerContext.Provider value={containerWidth}>
-        {hidden ? (
-          <VisuallyHidden>
-            <BlockType
-              {...block.data}
-              uuid={block.uuid}
-              headerHandler={headerHandler}
-              inColumn={inColumn}
-            />
-          </VisuallyHidden>
-        ) : (
-          <BlockType
-            {...block.data}
-            uuid={block.uuid}
-            headerHandler={headerHandler}
-            inColumn={inColumn}
-          />
-        )}
+        <BlockType
+          {...block.data}
+          uuid={block.uuid}
+          headerHandler={headerHandler}
+          inColumn={inColumn}
+        />
       </ContainerContext.Provider>
     )
   }
 }
 
-const Columns = ({ layout, blocks }) => {
+const Columns = ({ layout, blocks, hidden }) => {
   const block = blocks[layout.id]
-  if (typeof block.data.columns === 'undefined') {
+  if (typeof block.data.columns === 'undefined' || hidden) {
     return <></>
   }
   return (
@@ -151,6 +140,16 @@ class Blocks extends React.Component {
       if (block.type === 'heading' && lastHeaders[block.data.level - 1]) {
         block._collapsedHeader = lastHeaders[block.data.level - 1]
       }
+      if (
+        block.type === 'heading' &&
+        lastHeaders[block.data.level] &&
+        !block.data.collapsible
+      ) {
+        lastHeaders[block.data.level] = false
+        block._collapsedHeader = false
+        lastHeader = false
+        return
+      }
       if (block.type === 'heading' && block.data.collapsible) {
         lastHeaders[block.data.level] = layout.id
         lastHeader = layout.id
@@ -179,7 +178,17 @@ class Blocks extends React.Component {
             {blocks.blocks[layout.id] && (
               <>
                 {layout._children ? (
-                  <Columns layout={layout} blocks={blocks.blocks} />
+                  <Columns
+                    layout={layout}
+                    blocks={blocks.blocks}
+                    hidden={
+                      blocks.blocks[layout.id]._collapsedHeader &&
+                      (!expandedBlocks.length ||
+                        expandedBlocks.indexOf(
+                          blocks.blocks[layout.id]._collapsedHeader
+                        ) === -1)
+                    }
+                  />
                 ) : (
                   <Block
                     key={layout.id}
