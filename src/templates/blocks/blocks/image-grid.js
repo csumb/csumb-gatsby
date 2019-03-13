@@ -20,22 +20,22 @@ class BlockImageGrid extends React.Component {
         {container => (
           <ContainerElement container={container}>
             <Flex flexWrap="wrap">
-              {images.map(image => (
+              {images.map(item => (
                 <Box width={[1, 1, columnWidth / 12, columnWidth / 12]} px={2}>
-                  <LinkInspect to={image.link}>
+                  <LinkInspect to={item.link}>
                     <ImageGridImage
                       src={
-                        image.url
-                          ? image.url
+                        item.image.url
+                          ? item.image.url
                           : `https://s3.amazonaws.com/csumb-uploads/${
-                              image.image.key
+                              item.image.image.key
                             }`
                       }
                       alt=""
                     />
-                    <ImageGridHeader>{image.headline}</ImageGridHeader>
+                    <ImageGridHeader>{item.headline}</ImageGridHeader>
                   </LinkInspect>
-                  {image.text && <p>{image.text}</p>}
+                  {item.text && <p>{item.text}</p>}
                 </Box>
               ))}
             </Flex>
