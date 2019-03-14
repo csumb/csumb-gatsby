@@ -7,7 +7,7 @@ before_script:
   - npm run test
 script:
   - set -e
-  - ./node_modules/.bin/gatsby build
+  - node --max_old_space_size=12000 ./node_modules/.bin/gatsby build
   - npm run directoryJson
   - npm run buildJson
   - npm run configFirebase
