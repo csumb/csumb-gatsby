@@ -14,14 +14,16 @@ const ImageGridImage = styled('img')`
 
 const ImageGridItem = ({ item }) => (
   <>
-    <ImageGridImage
-      src={
-        item.image.url
-          ? item.image.url
-          : `https://s3.amazonaws.com/csumb-uploads/${item.image.image.key}`
-      }
-      alt=""
-    />
+    {item.image && (
+      <ImageGridImage
+        src={
+          item.image.url
+            ? item.image.url
+            : `https://s3.amazonaws.com/csumb-uploads/${item.image.image.key}`
+        }
+        alt=""
+      />
+    )}
     <ImageGridHeader>{item.headline}</ImageGridHeader>
   </>
 )
