@@ -139,11 +139,7 @@ class Blocks extends React.Component {
       if (block.type === 'heading' && lastHeaders[block.data.level - 1]) {
         block._collapsedHeader = lastHeaders[block.data.level - 1]
       }
-      if (
-        block.type === 'heading' &&
-        lastHeaders[block.data.level] &&
-        !block.data.collapsible
-      ) {
+      if (block.type === 'heading' && !block.data.collapsible) {
         lastHeaders[block.data.level] = false
         block._collapsedHeader = false
         lastHeader = false
