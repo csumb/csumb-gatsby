@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
+import { colors } from 'style/theme'
 import { ContainerContext, ContainerElement } from '../container-context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
@@ -16,6 +17,8 @@ const CollapsibleHeading = styled('button')`
   width: 100%;
   text-align: left;
   cursor: pointer;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid ${colors.muted.mid};
 `
 
 const CollapsibleTextWrapper = styled('span')`
