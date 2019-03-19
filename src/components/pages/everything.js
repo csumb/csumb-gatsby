@@ -34,7 +34,7 @@ const TopLevelItemLink = styled(Link)`
   padding: 0.5rem;
   text-decoration: none;
   ${props =>
-    props.isActive &&
+    props.active &&
     `background: ${colors.primary.dark};
     color: ${colors.white} !important;`};
 `
@@ -69,7 +69,7 @@ const SubItemArrowElement = styled(FontAwesomeIcon)`
 `
 
 const SubItemArrow = () => (
-  <SubItemArrowElement size="1rem" icon={faChevronRight} />
+  <SubItemArrowElement size="1x" icon={faChevronRight} />
 )
 
 const HiddenButton = styled('button')`

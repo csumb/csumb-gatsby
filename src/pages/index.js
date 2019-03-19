@@ -13,36 +13,36 @@ import {
 } from 'components/pages/homepage'
 import HomepageHero from 'components/homepages/2019/service-learning'
 
-const sortItems = (items, featured, ignore) => {
-  let result = []
-  items.forEach(type => {
+const sortItems = ({
+  allContentfulHomepageEvent,
+  allContentfulHomepageStory,
+}) => {
+  let result = {
+    featured: [],
+    notFeatured: [],
+  }
+
+  const stories = [allContentfulHomepageEvent, allContentfulHomepageStory]
+
+  stories.forEach(type => {
     type.edges.forEach(item => {
-      if (ignore || item.node.featured === featured) {
-        result.push(item.node)
-      }
+      const key = item.node.featured ? 'featured' : 'notFeatured'
+      result[key].push(item.node)
     })
   })
-  result.sort((a, b) => {
+  const sortByDate = (a, b) => {
     return moment(a.goLiveDate).unix() > moment(b.goLiveDate).unix()
-  })
+  }
+  result.featured.sort(sortByDate)
+  result.notFeatured.sort(sortByDate)
   return result
 }
 
 const IndexPage = ({ data }) => {
-  const {
-    allContentfulHomepageStory,
-    allContentfulHomepageEvent,
-    allContentfulHomepageInTheNews,
-  } = data
+  const { allContentfulHomepageInTheNews } = data
 
-  /*const featured = sortItems(
-    [allContentfulHomepageStory, allContentfulHomepageEvent],
-    true
-  )*/
-  const notFeatured = sortItems(
-    [allContentfulHomepageStory, allContentfulHomepageEvent],
-    false
-  )
+  const { featured, notFeatured } = sortItems(data)
+
   const colPadding = [0, 0, 3, 3]
   return (
     <Layout noFooterMargin={true}>
@@ -61,12 +61,8 @@ const IndexPage = ({ data }) => {
             pl={colPadding}
             pr={colPadding}
           >
-            {allContentfulHomepageStory.edges.map(item => (
-              <>
-                {item.node.featured && (
-                  <FeaturedStory key={item.node.contentful_id} {...item.node} />
-                )}
-              </>
+            {featured.map(item => (
+              <FeaturedStory key={item.contentful_id} {...item} />
             ))}
           </Box>
           <Box width={[1, 1, 1, 3 / 12]} order={3} pl={colPadding}>

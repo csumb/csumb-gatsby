@@ -69,8 +69,8 @@ const SiteFooterSocialIcon = ({ href, name }) => {
 
 const SiteFooterSocial = ({ social }) => (
   <>
-    {social.map(item => (
-      <SiteFooterSocialIcon name={item.site} href={item.url} />
+    {social.map((item, key) => (
+      <SiteFooterSocialIcon name={item.site} href={item.url} key={key} />
     ))}
   </>
 )

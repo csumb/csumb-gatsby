@@ -28,18 +28,44 @@ const Event = ({ event }) => (
   </>
 )
 
-const EventFeedItem = ({ event }) => (
-  <>
-    <Link to={`/${event.link}`}>
-      <h4>{event.title}</h4>
-    </Link>
-    <p>
-      {event.date_stamps.map(stamp => (
-        <>{<>{moment.unix(stamp.start_stamp).format('MMMM D, YYYY')}</>}</>
-      ))}{' '}
-      {event.times.start} — {event.times.end}
-    </p>
-  </>
+const EventFeedItemDate = styled('p')`
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+`
+
+const EventFeedItemTitle = styled('h3')`
+  margin-bottom: 0.5rem;
+`
+
+const EventFeedItem = ({
+  title,
+  link,
+  times,
+  date_stamps,
+  image,
+  description,
+}) => (
+  <Flex flexWrap="wrap">
+    <Box width={[1, 3 / 4]} pr={[0, 2]}>
+      <Link to={`/${link}`}>
+        <EventFeedItemTitle>{title}</EventFeedItemTitle>
+      </Link>
+      <EventFeedItemDate>
+        {date_stamps.map(stamp => (
+          <>{<>{moment.unix(stamp.start_stamp).format('MMMM D, YYYY')}</>}</>
+        ))}{' '}
+        {times.start} — {times.end}
+      </EventFeedItemDate>
+      <p>{description}</p>
+    </Box>
+    <Box width={[1, 1 / 4]}>
+      {image && (
+        <Link to={`/${link}`}>
+          <img src={image} alt={title} />
+        </Link>
+      )}
+    </Box>
+  </Flex>
 )
 
 const EventPage = ({ event }) => (

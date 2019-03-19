@@ -21,16 +21,15 @@ class BlockList extends React.Component {
           <ContainerElement container={container}>
             <ListTag>
               {list.map((item, key) => (
-                <>
+                <React.Fragment key={key}>
                   {item.text && item.text.trim().length > 0 && (
                     <li
                       dangerouslySetInnerHTML={{
                         __html: item.text,
                       }}
-                      key={key}
                     />
                   )}
-                </>
+                </React.Fragment>
               ))}
             </ListTag>
           </ContainerElement>
