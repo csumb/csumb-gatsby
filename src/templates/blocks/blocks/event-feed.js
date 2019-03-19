@@ -7,7 +7,7 @@ const displayEvent = item => {
   const currentTime = time.getTime() / 1000
   let display = false
   item.date_stamps.forEach(stamp => {
-    if (stamp.endStamp > currentTime) {
+    if (stamp.end_stamp >= currentTime) {
       display = true
     }
   })
@@ -23,11 +23,11 @@ class BlockEventFeed extends React.Component {
           <ContainerElement container={container}>
             {title && <h3>{title}</h3>}
             {events.map((event, index) => (
-              <>
+              <React.Fragment key={index}>
                 {displayEvent(event) && index < limit && (
-                  <EventFeedItem event={event} />
+                  <EventFeedItem {...event} />
                 )}
-              </>
+              </React.Fragment>
             ))}
           </ContainerElement>
         )}
