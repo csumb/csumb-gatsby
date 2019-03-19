@@ -82,8 +82,11 @@ const Columns = ({ layout, blocks, hidden }) => {
   if (typeof block.data.columns === 'undefined' || hidden) {
     return <></>
   }
+  const containerWidth = block._collapsedHeader
+    ? containerStyle.inCollapsedHeader
+    : containerStyle.full
   return (
-    <Flex flexWrap="wrap" className={css(containerStyle.full)}>
+    <Flex flexWrap="wrap" className={css(containerWidth)}>
       {block.data.columns.map((width, key) => (
         <Box
           width={[1, 1, width / 12, width / 12]}
