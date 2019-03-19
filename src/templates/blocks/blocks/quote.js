@@ -32,7 +32,7 @@ class BlockQuote extends React.Component {
           <ContainerElement container={container}>
             <Quote>
               <Blockquote>
-                {quote}
+                <div dangerouslySetInnerHTML={{ __html: quote }} />
                 {source && (
                   <Cite>
                     {url ? (

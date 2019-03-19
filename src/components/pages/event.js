@@ -3,9 +3,15 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/container'
 import { LeadParagraph } from 'components/type'
 import { colors } from 'style/theme'
+import { ButtonLink } from 'components/button'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
 import moment from 'moment'
+
+const EventDateItem = styled('p')`
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+`
 
 const Event = ({ event }) => (
   <>
@@ -14,13 +20,24 @@ const Event = ({ event }) => (
         {event.title && <h2>{event.title}</h2>}
         <LeadParagraph>{event.description}</LeadParagraph>
         <Flex flexWrap="wrap">
-          <Box width={[1, 1 / 3]} px={2}>
+          <Box width={[1, 1 / 3]} pr={[0, 2]}>
             {event.dates.map(date => (
-              <p>{date.start}</p>
+              <EventDateItem>
+                {moment(date.start).format('MMMM D, YYYY')}
+              </EventDateItem>
             ))}
-            <p>
+            <EventDateItem>
               {event.times.start} — {event.times.end}
-            </p>
+            </EventDateItem>
+            {event.cost_message && <p>{event.cost_message}</p>}
+            {event.ticket && (
+              <ButtonLink to={event.ticket.url}>
+                {event.ticket.title}
+              </ButtonLink>
+            )}
+          </Box>
+          <Box width={[1, 1 / 3]}>
+            {event.location.type === 'on-campus' && <p>On campus</p>}
           </Box>
         </Flex>
       </>
