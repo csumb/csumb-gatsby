@@ -25,7 +25,7 @@ class BlockEventFeed extends React.Component {
             {events.map((event, index) => (
               <React.Fragment key={index}>
                 {displayEvent(event) && index < limit && (
-                  <EventFeedItem {...event} />
+                  <EventFeedItem {...event} key={index} />
                 )}
               </React.Fragment>
             ))}
