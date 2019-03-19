@@ -56,7 +56,7 @@ class EverythingSubLevelPage extends React.Component {
                     <TopLevelItem key={item.contentful_id}>
                       <TopLevelItemLink
                         to={`/everything/${item.slug}`}
-                        isActive={
+                        active={
                           item.contentful_id ===
                           pageContext.currentItem.contentful_id
                         }

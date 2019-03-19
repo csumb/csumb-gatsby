@@ -34,7 +34,7 @@ const TopLevelItemLink = styled(Link)`
   padding: 0.5rem;
   text-decoration: none;
   ${props =>
-    props.isActive &&
+    props.active &&
     `background: ${colors.primary.dark};
     color: ${colors.white} !important;`};
 `
