@@ -27,7 +27,6 @@ import BlockEventFeed from './blocks/event-feed'
 import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
 
-const containerWidth = containerStyle.full
 class Block extends React.Component {
   blockComponents = {
     feed: BlockFeed,
@@ -62,7 +61,9 @@ class Block extends React.Component {
       return null
     }
     let BlockType = this.blockComponents[type]
-
+    const containerWidth = block._collapsedHeader
+      ? containerStyle.inCollapsedHeader
+      : containerStyle.full
     return (
       <ContainerContext.Provider value={containerWidth}>
         <BlockType

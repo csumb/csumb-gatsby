@@ -18,6 +18,12 @@ const containerStyle = {
     marginRight: ['1rem', '1rem', 'auto'],
     maxWidth: '1100px',
   }),
+  inCollapsedHeader: bp({
+    marginLeft: ['1rem', '1rem', 'auto'],
+    marginRight: ['1rem', '1rem', 'auto'],
+    maxWidth: '1100px',
+    paddingLeft: '1.5rem',
+  }),
   slightlyLarger: bp({
     marginLeft: ['1rem', '1rem', 'auto'],
     marginRight: ['1rem', '1rem', 'auto'],
