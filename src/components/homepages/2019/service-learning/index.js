@@ -56,6 +56,11 @@ const FloatText = styled('div')`
   }
 `
 
+const LoadingContainer = styled('div')`
+  height: 500px;
+  background: ${colors.primary.light};
+`
+
 const mapStyle = {
   height: '500px',
   width: '100%',
@@ -73,6 +78,7 @@ class ServiceLearningMap extends React.Component {
     activeMarker: false,
     showInfoWindow: false,
   }
+
   onMarkerClick(props, marker, e) {
     this.setState({
       selectedPlace: props,
@@ -87,6 +93,7 @@ class ServiceLearningMap extends React.Component {
       activeMarker: false,
     })
   }
+
   render() {
     const { activeMarker, showInfoWindow, selectedPlace } = this.state
     const { google } = this.props
@@ -206,4 +213,5 @@ class HomepageHero extends React.Component {
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyBFx5aEy_xuJguWMfFEEkqTZAy1q5HF_H0',
+  LoadingContainer: LoadingContainer,
 })(HomepageHero)
