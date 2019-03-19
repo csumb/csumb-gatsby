@@ -69,7 +69,7 @@ const SubItemArrowElement = styled(FontAwesomeIcon)`
 `
 
 const SubItemArrow = () => (
-  <SubItemArrowElement size="1rem" icon={faChevronRight} />
+  <SubItemArrowElement size="1x" icon={faChevronRight} />
 )
 
 const HiddenButton = styled('button')`
