@@ -1,6 +1,5 @@
 import React from 'react'
 import { ButtonLink } from 'components/button'
-import { ContainerContext, ContainerElement } from '../container-context'
 import styled from '@emotion/styled'
 
 const Button = styled(ButtonLink)`

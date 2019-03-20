@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
-import { ContainerElement, ContainerContext } from '../container-context'
 import bp from 'style/breakpoints'
 
 const Cite = styled('cite')`

@@ -5,7 +5,7 @@ import { colors } from 'style/theme'
 
 const EventFeedWrapper = styled('section')`
   background: ${colors.primary.lightest};
-  padding: 1.5rem 0;
+  padding: 1.5rem;
   margin: 2rem 0;
 `
 
