@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { ContainerContext, ContainerElement } from '../container-context'
 import LinkInspect from 'components/link-inspect'
 import parse from 'html-react-parser'
 import domToReact from 'html-react-parser/lib/dom-to-react'
@@ -31,15 +30,9 @@ const BlockText = ({ lead, text }) => {
     return null
   }
   return (
-    <ContainerContext.Consumer>
-      {container => (
-        <ContainerElement container={container}>
-          <Paragraph lead={lead} container={container}>
-            {parse(text, parserOptions)}
-          </Paragraph>
-        </ContainerElement>
-      )}
-    </ContainerContext.Consumer>
+    <Paragraph lead={lead} container={container}>
+      {parse(text, parserOptions)}
+    </Paragraph>
   )
 }
 

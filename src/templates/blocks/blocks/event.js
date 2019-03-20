@@ -1,6 +1,5 @@
 import React from 'react'
 import { Event } from 'components/pages/event'
-import { ContainerContext, ContainerElement } from '../container-context'
 
 class BlockEvent extends React.Component {
   render() {
@@ -8,15 +7,7 @@ class BlockEvent extends React.Component {
     if (!event) {
       return null
     }
-    return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            <Event event={event} />
-          </ContainerElement>
-        )}
-      </ContainerContext.Consumer>
-    )
+    return <Event event={event} />
   }
 }
 

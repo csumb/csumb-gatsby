@@ -27,26 +27,20 @@ class BlockQuote extends React.Component {
   render() {
     const { quote, source, url } = this.props
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            <Quote>
-              <Blockquote>
-                <div dangerouslySetInnerHTML={{ __html: quote }} />
-                {source && (
-                  <Cite>
-                    {url ? (
-                      <LinkInspect to={url}>{source}</LinkInspect>
-                    ) : (
-                      <>{source}</>
-                    )}
-                  </Cite>
-                )}
-              </Blockquote>
-            </Quote>
-          </ContainerElement>
-        )}
-      </ContainerContext.Consumer>
+      <Quote>
+        <Blockquote>
+          <div dangerouslySetInnerHTML={{ __html: quote }} />
+          {source && (
+            <Cite>
+              {url ? (
+                <LinkInspect to={url}>{source}</LinkInspect>
+              ) : (
+                <>{source}</>
+              )}
+            </Cite>
+          )}
+        </Blockquote>
+      </Quote>
     )
   }
 }

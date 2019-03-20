@@ -1,6 +1,5 @@
 import React from 'react'
 import { EventFeedItem } from 'components/pages/event'
-import { ContainerContext, ContainerElement } from '../container-context'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 
@@ -27,20 +26,14 @@ class BlockEventFeed extends React.Component {
     const { events, title, limit } = this.props
     return (
       <EventFeedWrapper>
-        <ContainerContext.Consumer>
-          {container => (
-            <ContainerElement container={container}>
-              {title && <h3>{title}</h3>}
-              {events.map((event, index) => (
-                <React.Fragment key={index}>
-                  {displayEvent(event) && index < limit && (
-                    <EventFeedItem {...event} key={index} />
-                  )}
-                </React.Fragment>
-              ))}
-            </ContainerElement>
-          )}
-        </ContainerContext.Consumer>
+        {title && <h3>{title}</h3>}
+        {events.map((event, index) => (
+          <React.Fragment key={index}>
+            {displayEvent(event) && index < limit && (
+              <EventFeedItem {...event} key={index} />
+            )}
+          </React.Fragment>
+        ))}
       </EventFeedWrapper>
     )
   }

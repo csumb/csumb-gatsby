@@ -20,40 +20,36 @@ class BlockFeed extends React.Component {
     let { items } = this.props
     items.splice(limit, items.length)
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            {title && <h3>{title}</h3>}
-            <FeedList>
-              {items.map(item => (
-                <FeedItem>
-                  {displayShort ? (
-                    <LinkInspect to={item.page_link}>{item.title}</LinkInspect>
-                  ) : (
-                    <Flex flexWrap="wrap">
-                      <Box width={[1, 3 / 4]} pr={[0, 3]}>
-                        <FeedItemHeader>
-                          <LinkInspect
-                            to={item.page_link}
-                            dangerouslySetInnerHTML={{ __html: item.title }}
-                          />
-                        </FeedItemHeader>
+      <>
+        {title && <h3>{title}</h3>}
+        <FeedList>
+          {items.map(item => (
+            <FeedItem>
+              {displayShort ? (
+                <LinkInspect to={item.page_link}>{item.title}</LinkInspect>
+              ) : (
+                <Flex flexWrap="wrap">
+                  <Box width={[1, 3 / 4]} pr={[0, 3]}>
+                    <FeedItemHeader>
+                      <LinkInspect
+                        to={item.page_link}
+                        dangerouslySetInnerHTML={{ __html: item.title }}
+                      />
+                    </FeedItemHeader>
 
-                        <FeedItemTeaser
-                          dangerouslySetInnerHTML={{ __html: item.teaser }}
-                        />
-                      </Box>
-                      <Box width={[1, 1 / 4]}>
-                        {item.image && <img src={item.image} alt="" />}
-                      </Box>
-                    </Flex>
-                  )}
-                </FeedItem>
-              ))}
-            </FeedList>
-          </ContainerElement>
-        )}
-      </ContainerContext.Consumer>
+                    <FeedItemTeaser
+                      dangerouslySetInnerHTML={{ __html: item.teaser }}
+                    />
+                  </Box>
+                  <Box width={[1, 1 / 4]}>
+                    {item.image && <img src={item.image} alt="" />}
+                  </Box>
+                </Flex>
+              )}
+            </FeedItem>
+          ))}
+        </FeedList>
+      </>
     )
   }
 }
