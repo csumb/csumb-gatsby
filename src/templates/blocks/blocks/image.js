@@ -3,15 +3,33 @@ import styled from '@emotion/styled'
 
 const ImageContainer = styled('div')`
   ${props => props.container} ${props =>
-    props.pullRight ? ` float: right;` : ``};
+    props.pullRight
+      ? `
+    float: right;
+    margin: 0 0 0.5rem 0.5rem;
+    width: 30%;
+      `
+      : ``};
   img {
     margin-bottom: 0;
   }
 `
 
+const Caption = styled('div')`
+  font-style: italic;
+  font-size: 0.8rem;
+`
+
 class BlockImage extends React.Component {
   render() {
-    const { image, description, height, pullRight, inColumn } = this.props
+    const {
+      image,
+      description,
+      height,
+      caption,
+      pullRight,
+      inColumn,
+    } = this.props
     if (!image) {
       return null
     }
@@ -28,6 +46,7 @@ class BlockImage extends React.Component {
             width: 'auto',
           }}
         />
+        {caption && <Caption>{caption}</Caption>}
       </ImageContainer>
     )
   }
