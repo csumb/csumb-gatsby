@@ -20,6 +20,7 @@ module.exports = {
       'cost',
       'it',
       'library',
+      'library/ask-librarian',
       'about/about-our-students',
       'search',
       'scienceillustration/graduate-gallery',

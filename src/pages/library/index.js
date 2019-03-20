@@ -87,6 +87,17 @@ class LibrarySearch extends React.Component {
 }
 
 class LibraryPage extends React.Component {
+  chatRef = React.createRef()
+
+  componentDidMount() {
+    if (typeof window === 'undefined') {
+      return
+    }
+    const script = window.document.createElement('script')
+    script.src = '//us.libraryh3lp.com/js/libraryh3lp.js?8169'
+    this.chatRef.current.parentNode.insertBefore(script, this.chatRef.current)
+  }
+
   render() {
     const { data } = this.props
     return (
@@ -99,6 +110,14 @@ class LibraryPage extends React.Component {
         )}
         <Container>
           <LibrarySearch />
+          <Flex flexWrap="wrap">
+            <Box width={[0, 2 / 3]} />
+            <Box width={[1, 1 / 3]}>
+              <style>{`.libraryh3lp img { width: 150px;}`}</style>
+              <strong>Chat with a librarian</strong>
+              <div className="needs-js" ref={this.chatRef} />
+            </Box>
+          </Flex>
           {data.allCsumbPage && (
             <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
           )}
