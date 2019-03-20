@@ -1,16 +1,46 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/container'
-import { LeadParagraph } from 'components/type'
+import { LeadParagraph, UnstyledList } from 'components/type'
 import { colors } from 'style/theme'
 import { ButtonLink } from 'components/button'
 import Link from 'gatsby-link'
 import styled from 'react-emotion'
 import moment from 'moment'
 
+const dateFormat = 'MMMM D, YYYY'
+
+const getNextEventDate = dates => {
+  let nextDate = false
+  let lastDate = false
+  let now = moment()
+  dates.map(date => {
+    const start = moment(date.start)
+    if (!nextDate) {
+      nextDate = start
+    }
+    const diff = start.diff(now)
+    if (!lastDate || lastDate.diff(now) < diff) {
+      lastDate = start
+    }
+    if (diff > -1 && (nextDate.diff(now) < -1 || diff < nextDate.diff(now))) {
+      nextDate = start
+    }
+    return nextDate
+  })
+  if (!nextDate) {
+    nextDate = lastDate
+  }
+  if (nextDate) {
+    return nextDate.format(dateFormat)
+  }
+  return null
+}
+
 const EventDateItem = styled('p')`
   font-weight: bold;
   margin-bottom: 0.5rem;
+  font-size: 1.3rem;
 `
 
 const Event = ({ event }) => (
@@ -20,15 +50,30 @@ const Event = ({ event }) => (
         {event.title && <h2>{event.title}</h2>}
         <LeadParagraph>{event.description}</LeadParagraph>
         <Flex flexWrap="wrap">
-          <Box width={[1, 1 / 3]} pr={[0, 2]}>
-            {event.dates.map(date => (
-              <EventDateItem>
-                {moment(date.start).format('MMMM D, YYYY')}
-              </EventDateItem>
-            ))}
+          {event.image && (
+            <Box width={[1, 4 / 12]} pr={[0, 2]}>
+              <img src={event.image} alt="" />
+            </Box>
+          )}
+          <Box width={[1, 5 / 12]} pr={[0, 2]}>
+            <EventDateItem>{getNextEventDate(event.dates)}</EventDateItem>
             <EventDateItem>
               {event.times.start} — {event.times.end}
             </EventDateItem>
+            {event.location.type === 'on-campus' && (
+              <p>
+                <Link to={`/building/${event.location.building.code}`}>
+                  {event.location.building.name}
+                </Link>
+                {event.location.room && (
+                  <>
+                    <br />
+                    {event.location.room}
+                  </>
+                )}
+              </p>
+            )}
+            {event.location.description && <p>{event.location.description}</p>}
             {event.cost_message && <p>{event.cost_message}</p>}
             {event.ticket && (
               <ButtonLink to={event.ticket.url}>
@@ -36,8 +81,19 @@ const Event = ({ event }) => (
               </ButtonLink>
             )}
           </Box>
-          <Box width={[1, 1 / 3]}>
-            {event.location.type === 'on-campus' && <p>On campus</p>}
+          <Box width={[1, 3 / 12]}>
+            {event.dates.length > 1 && (
+              <>
+                <h4>All dates</h4>
+                <UnstyledList>
+                  {event.dates.map(date => (
+                    <li key={date.start}>
+                      {moment(date.start).format(dateFormat)}
+                    </li>
+                  ))}
+                </UnstyledList>
+              </>
+            )}
           </Box>
         </Flex>
       </>
@@ -69,7 +125,7 @@ const EventFeedItem = ({
       </Link>
       <EventFeedItemDate>
         {date_stamps.map(stamp => (
-          <>{<>{moment.unix(stamp.start_stamp).format('MMMM D, YYYY')}</>}</>
+          <>{<>{moment.unix(stamp.start_stamp).format(dateFormat)}</>}</>
         ))}{' '}
         {times.start} — {times.end}
       </EventFeedItemDate>
@@ -130,7 +186,7 @@ const PublicEvent = ({ event, showDate, showTime }) => (
               {showDate && (
                 <PublicEventDate>
                   {event.event.date_stamps.map(stamp => (
-                    <>{moment.unix(stamp.start_stamp).format('MMMM D, YYYY')}</>
+                    <>{moment.unix(stamp.start_stamp).format(dateFormat)}</>
                   ))}
                 </PublicEventDate>
               )}
