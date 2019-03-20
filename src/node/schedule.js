@@ -36,6 +36,18 @@ module.exports = (graphql, actions) => {
       graphql(
         `
           {
+            allCsumbDirectory {
+              edges {
+                node {
+                  user {
+                    firstName
+                    lastName
+                    login
+                    email
+                  }
+                }
+              }
+            }
             allSubjectsCsv {
               edges {
                 node {
@@ -62,6 +74,7 @@ module.exports = (graphql, actions) => {
                   SECTION
                   TITLE
                   CRN
+                  INSTR_OTTERID
                   CONSENT
                   UNITS
                   DESCR
@@ -119,6 +132,12 @@ module.exports = (graphql, actions) => {
         let allTerms = {}
         let allMeetingPatterns = {}
         let allBuildings = {}
+        let allDirectory = {}
+
+        result.data.allCsumbDirectory.edges.forEach(person => {
+          const login = person.node.user.login.split('@').shift()
+          allDirectory[login] = person.node.user
+        })
 
         result.data.allCsumbBuilding.edges.forEach(edge => {
           allBuildings[edge.node.code] = edge.node
@@ -143,6 +162,15 @@ module.exports = (graphql, actions) => {
         })
 
         let allCourses = result.data.allScheduleCsv.edges.map(edge => {
+          let instructors = edge.node.INSTR_OTTERID
+          edge.node._instructors = []
+          if (instructors) {
+            instructors.split(',').forEach(instructor => {
+              if (typeof allDirectory[instructor.trim()] !== 'undefined') {
+                edge.node._instructors.push(allDirectory[instructor.trim()])
+              }
+            })
+          }
           edge.node._meetingPattern = false
           if (
             typeof allMeetingPatterns[edge.node.STRM][edge.node.CRN] !==

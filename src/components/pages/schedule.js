@@ -3,6 +3,8 @@ import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'style/theme'
+import { Submit } from 'components/forms'
+import { UnstyledList } from 'components/type'
 import PageTitle from 'components/header/page-title'
 import moment from 'moment'
 import bp from 'style/breakpoints'
@@ -225,7 +227,7 @@ const CourseListItemHeader = () => (
 const CourseSectionElement = styled('div')``
 
 const CourseSectionLegend = styled('h3')`
-  font-size: 1rem;
+  font-size: 1.3rem;
 `
 
 const CourseSection = ({ legend, children }) => (
@@ -286,6 +288,24 @@ const CoursePage = ({ course, term }) => (
             <dd>{course.ENRL_MAX}</dd>
           </EnrollmentList>
         </CourseSection>
+        {course._instructors && (
+          <CourseSection legend="Instructor">
+            <UnstyledList>
+              {course._instructors.map(instructor => (
+                <li>
+                  <Link
+                    to={`/directory/person/${instructor.email
+                      .split('@')
+                      .shift()
+                      .toLowerCase()}`}
+                  >
+                    {instructor.firstName} {instructor.lastName}
+                  </Link>
+                </li>
+              ))}
+            </UnstyledList>
+          </CourseSection>
+        )}
       </Box>
       <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
         <p>{course.DESCR}</p>
@@ -311,8 +331,24 @@ const CoursePage = ({ course, term }) => (
             <Link to="/registration-process">
               register for the course in OASIS
             </Link>
-            :<CourseNumber>{course.CRN}</CourseNumber>
           </p>
+          <CourseNumber>{course.CRN}</CourseNumber>
+        </CourseSection>
+        <CourseSection legend="Buy books">
+          <p>Purchase books for this course from the CSUMB bookstore</p>
+          <form
+            method="post"
+            target="_blank"
+            action="http://www.bkstr.com/webapp/wcs/stores/servlet/booklookServlet"
+          >
+            <input type="hidden" name="bookstore_id-1" value="2029" />
+            <input type="hidden" name="term_id-1" value={course.STRM} />
+            <input type="hidden" name="div-1" value=" " />
+            <input type="hidden" name="dept-1" value={course.SUBJECT} />
+            <input type="hidden" name="course-1" value={course.CATALOG_NBR} />
+            <input type="hidden" name="section-1" value={course.SECTION} />
+            <Submit value="Find books" />
+          </form>
         </CourseSection>
       </Box>
     </Flex>
