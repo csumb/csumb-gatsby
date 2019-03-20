@@ -39,10 +39,12 @@ module.exports = (graphql, actions) => {
             allCsumbDirectory {
               edges {
                 node {
-                  firstName
-                  lastName
-                  login
-                  email
+                  user {
+                    firstName
+                    lastName
+                    login
+                    email
+                  }
                 }
               }
             }
@@ -133,8 +135,8 @@ module.exports = (graphql, actions) => {
         let allDirectory = {}
 
         result.data.allCsumbDirectory.edges.forEach(person => {
-          const login = person.node.login.split('@').shift()
-          allDirectory[login] = person.node
+          const login = person.node.user.login.split('@').shift()
+          allDirectory[login] = person.node.user
         })
 
         result.data.allCsumbBuilding.edges.forEach(edge => {
@@ -165,7 +167,7 @@ module.exports = (graphql, actions) => {
           if (instructors) {
             instructors.split(',').forEach(instructor => {
               if (typeof allDirectory[instructor.trim()] !== 'undefined') {
-                edge.node._instructors.push(instructor)
+                edge.node._instructors.push(allDirectory[instructor.trim()])
               }
             })
           }

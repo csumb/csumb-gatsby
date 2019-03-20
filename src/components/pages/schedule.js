@@ -4,6 +4,7 @@ import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'style/theme'
 import { Submit } from 'components/forms'
+import { UnstyledList } from 'components/type'
 import PageTitle from 'components/header/page-title'
 import moment from 'moment'
 import bp from 'style/breakpoints'
@@ -287,17 +288,24 @@ const CoursePage = ({ course, term }) => (
             <dd>{course.ENRL_MAX}</dd>
           </EnrollmentList>
         </CourseSection>
-        <CourseSection legend="Instructor">
-          {course._instructors.map(instructor => (
-            <Link
-              to={`/directory/person/${instructor.email
-                .split('@')
-                .shift.toLowerCase()}`}
-            >
-              {instructor.firstName} {instructor.lastName}
-            </Link>
-          ))}
-        </CourseSection>
+        {course._instructors && (
+          <CourseSection legend="Instructor">
+            <UnstyledList>
+              {course._instructors.map(instructor => (
+                <li>
+                  <Link
+                    to={`/directory/person/${instructor.email
+                      .split('@')
+                      .shift()
+                      .toLowerCase()}`}
+                  >
+                    {instructor.firstName} {instructor.lastName}
+                  </Link>
+                </li>
+              ))}
+            </UnstyledList>
+          </CourseSection>
+        )}
       </Box>
       <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
         <p>{course.DESCR}</p>
