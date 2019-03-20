@@ -1,5 +1,4 @@
 import React from 'react'
-import { ContainerElement } from '../container-context'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 
 class BlockMap extends React.Component {
@@ -11,14 +10,12 @@ class BlockMap extends React.Component {
     const { zoom, center } = this.props
 
     return (
-      <ContainerElement isFull>
-        <Map
-          google={this.props.google}
-          zoom={zoom}
-          initialCenter={center}
-          onReady={this.onReady.bind(this)}
-        />
-      </ContainerElement>
+      <Map
+        google={this.props.google}
+        zoom={zoom}
+        initialCenter={center}
+        onReady={this.onReady.bind(this)}
+      />
     )
   }
 }

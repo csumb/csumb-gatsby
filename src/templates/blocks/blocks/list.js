@@ -1,5 +1,4 @@
 import React from 'react'
-import { ContainerContext, ContainerElement } from '../container-context'
 import styled from '@emotion/styled'
 
 class BlockList extends React.Component {
@@ -12,29 +11,21 @@ class BlockList extends React.Component {
             list-style-type: none;
             margin-left: 0;
           `
-        : styled(type)`
-            ${props => props.container};
-          `
+        : styled(type)``
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            <ListTag>
-              {list.map((item, key) => (
-                <React.Fragment key={key}>
-                  {item.text && item.text.trim().length > 0 && (
-                    <li
-                      dangerouslySetInnerHTML={{
-                        __html: item.text,
-                      }}
-                    />
-                  )}
-                </React.Fragment>
-              ))}
-            </ListTag>
-          </ContainerElement>
-        )}
-      </ContainerContext.Consumer>
+      <ListTag>
+        {list.map((item, key) => (
+          <React.Fragment key={key}>
+            {item.text && item.text.trim().length > 0 && (
+              <li
+                dangerouslySetInnerHTML={{
+                  __html: item.text,
+                }}
+              />
+            )}
+          </React.Fragment>
+        ))}
+      </ListTag>
     )
   }
 }
