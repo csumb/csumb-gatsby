@@ -106,9 +106,18 @@ module.exports = (graphql, actions) => {
                       type
                       description
                       room
+                      url
                       building {
                         name
                         code
+                      }
+                      address {
+                        organisation
+                        street
+                        premise
+                        city
+                        state
+                        zip
                       }
                     }
                   }
