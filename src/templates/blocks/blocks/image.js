@@ -13,16 +13,19 @@ const ImageContainer = styled('div')`
 class BlockImage extends React.Component {
   render() {
     const { image, description, height, pullRight, inColumn } = this.props
-    if (!image || !image.url) {
+    if (!image) {
       return null
     }
+    const imageSource = image.key
+      ? `https://s3.amazonaws.com/csumb-uploads/${image.key}`
+      : image.url.replace('http://', 'https://')
     return (
       <ContainerContext.Consumer>
         {container => (
           <ContainerElement container={container}>
             <ImageContainer pullRight={pullRight && !inColumn}>
               <img
-                src={image.url.replace('http://', 'https://')}
+                src={imageSource}
                 alt={description}
                 style={{
                   height:

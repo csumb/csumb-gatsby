@@ -24,10 +24,11 @@ import BlockTable from './blocks/table'
 import BlockPerson from './blocks/person'
 import BlockEvent from './blocks/event'
 import BlockEventFeed from './blocks/event-feed'
+import BlockSocial from './blocks/social'
+import BlockHtml from './blocks/html'
 import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
 
-const containerWidth = containerStyle.full
 class Block extends React.Component {
   blockComponents = {
     feed: BlockFeed,
@@ -54,6 +55,8 @@ class Block extends React.Component {
     event: BlockEvent,
     eventfeed: BlockEventFeed,
     pathway: BlockPathway,
+    social: BlockSocial,
+    html: BlockHtml,
   }
 
   render() {
@@ -62,7 +65,9 @@ class Block extends React.Component {
       return null
     }
     let BlockType = this.blockComponents[type]
-
+    const containerWidth = block._collapsedHeader
+      ? containerStyle.inCollapsedHeader
+      : containerStyle.full
     return (
       <ContainerContext.Provider value={containerWidth}>
         <BlockType
@@ -81,8 +86,11 @@ const Columns = ({ layout, blocks, hidden }) => {
   if (typeof block.data.columns === 'undefined' || hidden) {
     return <></>
   }
+  const containerWidth = block._collapsedHeader
+    ? containerStyle.inCollapsedHeader
+    : containerStyle.full
   return (
-    <Flex flexWrap="wrap" className={css(containerStyle.full)}>
+    <Flex flexWrap="wrap" className={css(containerWidth)}>
       {block.data.columns.map((width, key) => (
         <Box
           width={[1, 1, width / 12, width / 12]}

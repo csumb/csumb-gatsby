@@ -10,6 +10,7 @@ import Blocks from 'templates/blocks'
 import { colors } from 'style/theme'
 import { InputText, InputSelect, Submit } from 'components/forms'
 import oneSearchLogo from 'assets/images/library-one-search.png'
+import bp from 'style/breakpoints'
 
 const LibrarySearchWrapper = styled('form')`
   background: ${colors.muted.highlight};
@@ -17,9 +18,10 @@ const LibrarySearchWrapper = styled('form')`
   margin: 1rem;
 `
 
-const AdvancedSearch = styled('a')`
-  display: block;
-  margin-top: 1rem;
+const AdvancedSearchLink = styled('a')`
+  ${bp({
+    float: ['none', 'right'],
+  })}
 `
 
 class LibrarySearch extends React.Component {
@@ -45,38 +47,38 @@ class LibrarySearch extends React.Component {
         <input type="hidden" name="query" value={this.state.query} />
         <img src={oneSearchLogo} alt="One Search - Search the library" />
         <Flex flexWrap="wrap">
-          <Box width={[1, 6 / 12]} px={2}>
+          <Box width={[1, 5 / 12]} pr={4}>
             <InputText
               name="_extra_query"
               label="Search the library"
               placeholder="Search"
               hideLabel={true}
               onChange={this.handleChangeQuery.bind(this)}
-              huge
             />
           </Box>
-          <Box width={[1, 4 / 12]} px={2}>
+          <Box width={[1, 4 / 12]} pr={4}>
             <InputSelect
               name="search_scope"
               label="Limit search"
               hideLabel={true}
-              huge
-              placeholder="Filter"
               defaultValue="EVERYTHING"
+              placeholder="Everything"
               options={[
                 { value: 'EVERYTHING', label: 'Everything', selected: true },
                 { value: 'PRIMO_CENTRAL', label: 'Articles' },
-                { value: '01CALS_UMB', label: 'Books & media at CSUMB' },
-                { value: '01CALS', label: 'Books & media in the CSU system' },
+                { value: '01CALS_UMB', label: 'Books & media (CSUMB)' },
+                { value: '01CALS', label: 'Books & media (All CSU)' },
                 { value: '01CALS_UMB_CR', label: 'Course Reserves' },
               ]}
             />
           </Box>
-          <Box width={[1, 2 / 12]} px={2}>
-            <Submit value="Search" nomargin={true} huge />
-            <AdvancedSearch href="https://csumb-primo.hosted.exlibrisgroup.com/primo-explore/search?sortby=rank&vid=01CALS_UMB&lang=en_US&mode=advanced">
+          <Box width={[1, 1 / 12]} pr={4}>
+            <Submit value="Search" nomargin={true} small />
+          </Box>
+          <Box width={[1, 2 / 12]}>
+            <AdvancedSearchLink href="https://csumb-primo.hosted.exlibrisgroup.com/primo-explore/search?sortby=rank&vid=01CALS_UMB&lang=en_US&mode=advanced">
               Advanced search
-            </AdvancedSearch>
+            </AdvancedSearchLink>
           </Box>
         </Flex>
       </LibrarySearchWrapper>
@@ -85,6 +87,17 @@ class LibrarySearch extends React.Component {
 }
 
 class LibraryPage extends React.Component {
+  chatRef = React.createRef()
+
+  componentDidMount() {
+    if (typeof window === 'undefined') {
+      return
+    }
+    const script = window.document.createElement('script')
+    script.src = '//us.libraryh3lp.com/js/libraryh3lp.js?8169'
+    this.chatRef.current.parentNode.insertBefore(script, this.chatRef.current)
+  }
+
   render() {
     const { data } = this.props
     return (
@@ -97,6 +110,9 @@ class LibraryPage extends React.Component {
         )}
         <Container>
           <LibrarySearch />
+          <div ref={this.chatRef} />
+          <style>{`.libraryh3lp img { width: 150px;}`}</style>
+
           {data.allCsumbPage && (
             <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
           )}
