@@ -126,24 +126,14 @@ const EventFeedItemTitle = styled('h3')`
   margin-bottom: 0.5rem;
 `
 
-const EventFeedItem = ({
-  title,
-  link,
-  times,
-  date_stamps,
-  image,
-  description,
-}) => (
+const EventFeedItem = ({ title, link, times, dates, image, description }) => (
   <Flex flexWrap="wrap">
     <Box width={[1, 3 / 4]} pr={[0, 2]}>
       <Link to={`/${link}`}>
         <EventFeedItemTitle>{title}</EventFeedItemTitle>
       </Link>
       <EventFeedItemDate>
-        {date_stamps.map(stamp => (
-          <>{<>{moment.unix(stamp.start_stamp).format(dateFormat)}</>}</>
-        ))}{' '}
-        {times.start} — {times.end}
+        {getNextEventDate(dates)} {times.start} — {times.end}
       </EventFeedItemDate>
       <p>{description}</p>
     </Box>
