@@ -28,7 +28,7 @@ const sortItems = ({
     type.edges.map(item => {
       const key = item.node.featured ? 'featured' : 'notFeatured'
       result[key].push(item.node)
-      return result[key]
+      return item
     })
     return type
   })
