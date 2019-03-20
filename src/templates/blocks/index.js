@@ -1,5 +1,6 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
+import styled from '@emotion/styled'
 import Container from 'components/container'
 import BlockList from './blocks/list'
 import BlockText from './blocks/text'
@@ -27,6 +28,17 @@ import BlockEvent from './blocks/event'
 import BlockEventFeed from './blocks/event-feed'
 import BlockSocial from './blocks/social'
 import BlockHtml from './blocks/html'
+
+const CollapsePadding = styled('div')`
+  margin-left: 1rem;
+`
+
+const CollapseWrapper = ({ inCollapsedHeader, children }) => {
+  if (!inCollapsedHeader) {
+    return <>{children}</>
+  }
+  return <CollapsePadding>{children}</CollapsePadding>
+}
 
 class Block extends React.Component {
   blockComponents = {
@@ -59,18 +71,27 @@ class Block extends React.Component {
   }
 
   render() {
-    const { type, block, hidden, headerHandler, inColumn } = this.props
+    const {
+      type,
+      block,
+      hidden,
+      headerHandler,
+      inCollapsedHeader,
+      inColumn,
+    } = this.props
     if (typeof this.blockComponents[type] === 'undefined' || hidden) {
       return null
     }
     let BlockType = this.blockComponents[type]
     return (
-      <BlockType
-        {...block.data}
-        uuid={block.uuid}
-        headerHandler={headerHandler}
-        inColumn={inColumn}
-      />
+      <CollapseWrapper inCollapsedHeader={inCollapsedHeader}>
+        <BlockType
+          {...block.data}
+          uuid={block.uuid}
+          headerHandler={headerHandler}
+          inColumn={inColumn}
+        />
+      </CollapseWrapper>
     )
   }
 }
@@ -172,6 +193,9 @@ class Blocks extends React.Component {
                   <Columns
                     layout={layout}
                     blocks={blocks.blocks}
+                    inCollapsedHeader={
+                      blocks.blocks[layout.id]._collapsedHeader
+                    }
                     hidden={
                       blocks.blocks[layout.id]._collapsedHeader &&
                       (!expandedBlocks.length ||
@@ -185,6 +209,9 @@ class Blocks extends React.Component {
                     key={layout.id}
                     type={blocks.blocks[layout.id].type}
                     block={blocks.blocks[layout.id]}
+                    inCollapsedHeader={
+                      blocks.blocks[layout.id]._collapsedHeader
+                    }
                     headerHandler={() => {
                       let { expandedBlocks } = this.state
                       const index = expandedBlocks.indexOf(layout.id)
