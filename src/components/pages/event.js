@@ -73,6 +73,22 @@ const Event = ({ event }) => (
                 )}
               </p>
             )}
+            {event.location.type === 'off-campus' && (
+              <address>
+                {event.location.address.organisation}
+                <br />
+                {event.location.address.street}
+                <br />
+                {event.location.address.premise}
+                <br />
+                {event.location.address.city}, {event.location.address.state}
+                {'  '}
+                {event.location.address.zip}
+              </address>
+            )}
+            {event.location.type === 'online' && (
+              <ButtonLink to={event.location.url}>Go to event</ButtonLink>
+            )}
             {event.location.description && <p>{event.location.description}</p>}
             {event.cost_message && <p>{event.cost_message}</p>}
             {event.ticket && (
