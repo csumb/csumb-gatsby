@@ -17,7 +17,7 @@ class BlockImage extends React.Component {
       return null
     }
     const imageSource = image.key
-      ? `'https://s3.amazonaws.com/csumb-uploads/${image.key}`
+      ? `https://s3.amazonaws.com/csumb-uploads/${image.key}`
       : image.url.replace('http://', 'https://')
     return (
       <ContainerContext.Consumer>
