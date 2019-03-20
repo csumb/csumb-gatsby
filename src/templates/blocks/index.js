@@ -129,6 +129,9 @@ class Blocks extends React.Component {
       lastHeader = false
       this.blocks.layout.forEach(layout => {
         const block = this.blocks.blocks[layout.id]
+        if (!block) {
+          return
+        }
         const level = parseInt(block.data.level)
         if (
           block.type === 'heading' &&
