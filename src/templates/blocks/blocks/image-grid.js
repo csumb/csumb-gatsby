@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
-import { ContainerContext, ContainerElement } from '../container-context'
 import { Flex, Box } from '@rebass/grid/emotion'
 
 const ImageGridHeader = styled('h3')`
@@ -32,26 +31,20 @@ class BlockImageGrid extends React.Component {
   render() {
     const { images, columnWidth } = this.props
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            <Flex flexWrap="wrap">
-              {images.map(item => (
-                <Box width={[1, 1, columnWidth / 12, columnWidth / 12]} px={2}>
-                  {item.link ? (
-                    <LinkInspect to={item.link}>
-                      <ImageGridItem item={item} />
-                    </LinkInspect>
-                  ) : (
-                    <ImageGridItem item={item} />
-                  )}
-                  {item.text && <p>{item.text}</p>}
-                </Box>
-              ))}
-            </Flex>
-          </ContainerElement>
-        )}
-      </ContainerContext.Consumer>
+      <Flex flexWrap="wrap">
+        {images.map(item => (
+          <Box width={[1, 1, columnWidth / 12, columnWidth / 12]} px={2}>
+            {item.link ? (
+              <LinkInspect to={item.link}>
+                <ImageGridItem item={item} />
+              </LinkInspect>
+            ) : (
+              <ImageGridItem item={item} />
+            )}
+            {item.text && <p>{item.text}</p>}
+          </Box>
+        ))}
+      </Flex>
     )
   }
 }

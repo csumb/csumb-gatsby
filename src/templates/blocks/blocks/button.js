@@ -11,15 +11,9 @@ class BlockButton extends React.Component {
   render() {
     const { url, text } = this.props
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ButtonContainer container={container}>
-            <ButtonLink to={url} buttonType="default">
-              {text}
-            </ButtonLink>
-          </ButtonContainer>
-        )}
-      </ContainerContext.Consumer>
+      <ButtonLink to={url} buttonType="default">
+        {text}
+      </ButtonLink>
     )
   }
 }

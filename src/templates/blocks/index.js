@@ -1,5 +1,6 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
+import Container from 'components/container'
 import BlockList from './blocks/list'
 import BlockText from './blocks/text'
 import BlockHeading from './blocks/heading'
@@ -26,8 +27,6 @@ import BlockEvent from './blocks/event'
 import BlockEventFeed from './blocks/event-feed'
 import BlockSocial from './blocks/social'
 import BlockHtml from './blocks/html'
-import { ContainerContext, containerStyle } from './container-context'
-import { css } from 'emotion'
 
 class Block extends React.Component {
   blockComponents = {
@@ -65,18 +64,13 @@ class Block extends React.Component {
       return null
     }
     let BlockType = this.blockComponents[type]
-    const containerWidth = block._collapsedHeader
-      ? containerStyle.inCollapsedHeader
-      : containerStyle.full
     return (
-      <ContainerContext.Provider value={containerWidth}>
-        <BlockType
-          {...block.data}
-          uuid={block.uuid}
-          headerHandler={headerHandler}
-          inColumn={inColumn}
-        />
-      </ContainerContext.Provider>
+      <BlockType
+        {...block.data}
+        uuid={block.uuid}
+        headerHandler={headerHandler}
+        inColumn={inColumn}
+      />
     )
   }
 }
@@ -86,11 +80,8 @@ const Columns = ({ layout, blocks, hidden }) => {
   if (typeof block.data.columns === 'undefined' || hidden) {
     return <></>
   }
-  const containerWidth = block._collapsedHeader
-    ? containerStyle.inCollapsedHeader
-    : containerStyle.full
   return (
-    <Flex flexWrap="wrap" className={css(containerWidth)}>
+    <Flex flexWrap="wrap">
       {block.data.columns.map((width, key) => (
         <Box
           width={[1, 1, width / 12, width / 12]}
@@ -175,7 +166,7 @@ class Blocks extends React.Component {
       return null
     }
     return (
-      <>
+      <Container>
         {blocks.layout.map(layout => (
           <React.Fragment key={layout.id}>
             {blocks.blocks[layout.id] && (
@@ -222,7 +213,7 @@ class Blocks extends React.Component {
             )}
           </React.Fragment>
         ))}
-      </>
+      </Container>
     )
   }
 }
