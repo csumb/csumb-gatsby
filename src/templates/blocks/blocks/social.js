@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
-import { ContainerContext, ContainerElement } from '../container-context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -28,16 +27,10 @@ class BlockSocial extends React.Component {
   render() {
     const { provider, url } = this.props
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            <a href={url}>
-              <SocialIcon icon={providers[provider]} />
-              <VisuallyHidden>{provider}</VisuallyHidden>
-            </a>
-          </ContainerElement>
-        )}
-      </ContainerContext.Consumer>
+      <a href={url}>
+        <SocialIcon icon={providers[provider]} />
+        <VisuallyHidden>{provider}</VisuallyHidden>
+      </a>
     )
   }
 }
