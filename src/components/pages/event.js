@@ -51,11 +51,11 @@ const Event = ({ event }) => (
         <LeadParagraph>{event.description}</LeadParagraph>
         <Flex flexWrap="wrap">
           {event.image && (
-            <Box width={[1, 4 / 12]} pr={[0, 2]}>
+            <Box width={[1, 4 / 12]} pr={[0, 4]}>
               <img src={event.image} alt="" />
             </Box>
           )}
-          <Box width={[1, 5 / 12]} pr={[0, 2]}>
+          <Box width={[1, 5 / 12]} pr={[0, 4]}>
             <EventDateItem>{getNextEventDate(event.dates)}</EventDateItem>
             <EventDateItem>
               {event.times.start} — {event.times.end}
