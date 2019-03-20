@@ -6,7 +6,6 @@ import { graphql } from 'gatsby'
 import SiteNavigation from 'components/navigation/site'
 import Blocks from 'templates/blocks'
 import PageTitle from 'components/header/page-title'
-import { Flex, Box } from '@rebass/grid/emotion'
 
 class LibraryPage extends React.Component {
   chatRef = React.createRef()

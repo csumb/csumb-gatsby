@@ -2,7 +2,6 @@ import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
 import { colors } from 'style/theme'
-import { ContainerContext, ContainerElement } from '../container-context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
@@ -42,36 +41,24 @@ class BlockHeading extends React.Component {
     const { url, text, uuid, collapsible, headerHandler } = this.props
     const { isOpen } = this.state
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            <HeadingTag id={`heading-${uuid}`} collapsible={collapsible}>
-              {collapsible ? (
-                <CollapsibleHeading
-                  onClick={() => {
-                    headerHandler()
-                    this.handleToggle()
-                  }}
-                >
-                  <CollapsibleIcon
-                    size="1x"
-                    icon={isOpen ? faChevronUp : faChevronDown}
-                  />
-                  <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>
-                </CollapsibleHeading>
-              ) : (
-                <>
-                  {url ? (
-                    <LinkInspect to={url}>{text}</LinkInspect>
-                  ) : (
-                    <>{text}</>
-                  )}
-                </>
-              )}
-            </HeadingTag>
-          </ContainerElement>
+      <HeadingTag id={`heading-${uuid}`} collapsible={collapsible}>
+        {collapsible ? (
+          <CollapsibleHeading
+            onClick={() => {
+              headerHandler()
+              this.handleToggle()
+            }}
+          >
+            <CollapsibleIcon
+              size="1x"
+              icon={isOpen ? faChevronUp : faChevronDown}
+            />
+            <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>
+          </CollapsibleHeading>
+        ) : (
+          <>{url ? <LinkInspect to={url}>{text}</LinkInspect> : <>{text}</>}</>
         )}
-      </ContainerContext.Consumer>
+      </HeadingTag>
     )
   }
 }

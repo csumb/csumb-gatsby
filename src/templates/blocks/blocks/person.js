@@ -1,5 +1,4 @@
 import React from 'react'
-import { ContainerContext, ContainerElement } from '../container-context'
 import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
@@ -51,13 +50,21 @@ class BlockPerson extends React.Component {
     const { person } = this.state
     const { compact } = this.props
     return (
-      <ContainerContext.Consumer>
-        {container => (
-          <ContainerElement container={container}>
-            {person && (
-              <Person>
-                {compact ? (
-                  <p>
+      <>
+        {person && (
+          <Person>
+            {compact ? (
+              <p>
+                <Link
+                  to={`/directory/person/${person.email.split('@').shift()}`}
+                >
+                  {person.firstName} {person.lastName}
+                </Link>
+              </p>
+            ) : (
+              <Flex flexWrap="wrap">
+                <Box width={[1, 3 / 4]} pr={2}>
+                  <h3>
                     <Link
                       to={`/directory/person/${person.email
                         .split('@')
@@ -65,39 +72,25 @@ class BlockPerson extends React.Component {
                     >
                       {person.firstName} {person.lastName}
                     </Link>
-                  </p>
-                ) : (
-                  <Flex flexWrap="wrap">
-                    <Box width={[1, 3 / 4]} pr={2}>
-                      <h3>
-                        <Link
-                          to={`/directory/person/${person.email
-                            .split('@')
-                            .shift()}`}
-                        >
-                          {person.firstName} {person.lastName}
-                        </Link>
-                      </h3>
-                      {person.directoryTitle.map((title, key) => (
-                        <PersonPosition>
-                          <PersonPositionTitle>{title}</PersonPositionTitle>
-                          <Link>{person.directoryDepartment[key]}</Link>
-                        </PersonPosition>
-                      ))}
-                      <a href={`mailto:${person.email}`}>{person.email}</a>
-                    </Box>
-                    <Box width={[1, 1 / 4]}>
-                      {person.directoryPhoto && (
-                        <PersonPhoto src={person.directoryPhoto} alt="" />
-                      )}
-                    </Box>
-                  </Flex>
-                )}
-              </Person>
+                  </h3>
+                  {person.directoryTitle.map((title, key) => (
+                    <PersonPosition>
+                      <PersonPositionTitle>{title}</PersonPositionTitle>
+                      <Link>{person.directoryDepartment[key]}</Link>
+                    </PersonPosition>
+                  ))}
+                  <a href={`mailto:${person.email}`}>{person.email}</a>
+                </Box>
+                <Box width={[1, 1 / 4]}>
+                  {person.directoryPhoto && (
+                    <PersonPhoto src={person.directoryPhoto} alt="" />
+                  )}
+                </Box>
+              </Flex>
             )}
-          </ContainerElement>
+          </Person>
         )}
-      </ContainerContext.Consumer>
+      </>
     )
   }
 }

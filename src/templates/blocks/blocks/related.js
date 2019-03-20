@@ -4,7 +4,6 @@ import { colors } from 'style/theme'
 import LinkInspect from 'components/link-inspect'
 import VisuallyHidden from 'components/visually-hidden'
 import bp from 'style/breakpoints'
-import { ContainerElement, containerStyle } from '../container-context'
 
 const relatedBreakpoints = bp({
   margin: ['0.5rem 0', '0.5rem 0 0.5rem 0.5rem'],
@@ -34,16 +33,14 @@ class BlockRelated extends React.Component {
   render() {
     const { source, title, description, url } = this.props
     return (
-      <ContainerElement container={containerStyle.slightlyLarger}>
-        <RelatedContent>
-          <VisuallyHidden>Related content</VisuallyHidden>
-          <RelatedContentSource>{source}</RelatedContentSource>
-          <RelatedContentTitle>
-            <LinkInspect to={url}>{title}</LinkInspect>
-          </RelatedContentTitle>
-          <RelatedContentDescription>{description}</RelatedContentDescription>
-        </RelatedContent>
-      </ContainerElement>
+      <RelatedContent>
+        <VisuallyHidden>Related content</VisuallyHidden>
+        <RelatedContentSource>{source}</RelatedContentSource>
+        <RelatedContentTitle>
+          <LinkInspect to={url}>{title}</LinkInspect>
+        </RelatedContentTitle>
+        <RelatedContentDescription>{description}</RelatedContentDescription>
+      </RelatedContent>
     )
   }
 }

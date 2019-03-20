@@ -1,5 +1,7 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
+import styled from '@emotion/styled'
+import Container from 'components/container'
 import BlockList from './blocks/list'
 import BlockText from './blocks/text'
 import BlockHeading from './blocks/heading'
@@ -26,8 +28,17 @@ import BlockEvent from './blocks/event'
 import BlockEventFeed from './blocks/event-feed'
 import BlockSocial from './blocks/social'
 import BlockHtml from './blocks/html'
-import { ContainerContext, containerStyle } from './container-context'
-import { css } from 'emotion'
+
+const CollapsePadding = styled('div')`
+  margin-left: 1rem;
+`
+
+const CollapseWrapper = ({ inCollapsedHeader, children }) => {
+  if (!inCollapsedHeader) {
+    return <>{children}</>
+  }
+  return <CollapsePadding>{children}</CollapsePadding>
+}
 
 class Block extends React.Component {
   blockComponents = {
@@ -60,23 +71,27 @@ class Block extends React.Component {
   }
 
   render() {
-    const { type, block, hidden, headerHandler, inColumn } = this.props
+    const {
+      type,
+      block,
+      hidden,
+      headerHandler,
+      inCollapsedHeader,
+      inColumn,
+    } = this.props
     if (typeof this.blockComponents[type] === 'undefined' || hidden) {
       return null
     }
     let BlockType = this.blockComponents[type]
-    const containerWidth = block._collapsedHeader
-      ? containerStyle.inCollapsedHeader
-      : containerStyle.full
     return (
-      <ContainerContext.Provider value={containerWidth}>
+      <CollapseWrapper inCollapsedHeader={inCollapsedHeader}>
         <BlockType
           {...block.data}
           uuid={block.uuid}
           headerHandler={headerHandler}
           inColumn={inColumn}
         />
-      </ContainerContext.Provider>
+      </CollapseWrapper>
     )
   }
 }
@@ -86,11 +101,8 @@ const Columns = ({ layout, blocks, hidden }) => {
   if (typeof block.data.columns === 'undefined' || hidden) {
     return <></>
   }
-  const containerWidth = block._collapsedHeader
-    ? containerStyle.inCollapsedHeader
-    : containerStyle.full
   return (
-    <Flex flexWrap="wrap" className={css(containerWidth)}>
+    <Flex flexWrap="wrap">
       {block.data.columns.map((width, key) => (
         <Box
           width={[1, 1, width / 12, width / 12]}
@@ -130,37 +142,34 @@ class Blocks extends React.Component {
   }
 
   addBlockHeaderRelationships() {
-    let lastHeaders = {
-      2: false,
-      3: false,
-      4: false,
-    }
     let lastHeader = false
-    this.blocks.layout.forEach(layout => {
-      const block = this.blocks.blocks[layout.id]
-      if (!this.blocks.blocks[layout.id]) {
-        return
-      }
-      if (block.type === 'heading' && lastHeaders[block.data.level - 2]) {
-        block._collapsedHeader = lastHeaders[block.data.level - 2]
-      }
-      if (block.type === 'heading' && lastHeaders[block.data.level - 1]) {
-        block._collapsedHeader = lastHeaders[block.data.level - 1]
-      }
-      if (block.type === 'heading' && !block.data.collapsible) {
-        lastHeaders[block.data.level] = false
-        block._collapsedHeader = false
-        lastHeader = false
-        return
-      }
-      if (block.type === 'heading' && block.data.collapsible) {
-        lastHeaders[block.data.level] = layout.id
-        lastHeader = layout.id
-        return
-      }
-      if (lastHeader) {
-        block._collapsedHeader = lastHeader
-      }
+
+    const headerLevels = [4, 3, 2]
+
+    headerLevels.forEach(headerLevel => {
+      lastHeader = false
+      this.blocks.layout.forEach(layout => {
+        const block = this.blocks.blocks[layout.id]
+        if (!block || typeof block.data === 'undefined') {
+          return
+        }
+        const level = parseInt(block.data.level)
+        if (
+          block.type === 'heading' &&
+          level === headerLevel &&
+          block.data.collapsible
+        ) {
+          lastHeader = block.uuid
+        } else {
+          if (block.type === 'heading' && level <= headerLevel) {
+            lastHeader = false
+          } else {
+            if (lastHeader && !block._collapsedHeader) {
+              block._collapsedHeader = lastHeader
+            }
+          }
+        }
+      })
     })
   }
 
@@ -175,7 +184,7 @@ class Blocks extends React.Component {
       return null
     }
     return (
-      <>
+      <Container>
         {blocks.layout.map(layout => (
           <React.Fragment key={layout.id}>
             {blocks.blocks[layout.id] && (
@@ -184,6 +193,9 @@ class Blocks extends React.Component {
                   <Columns
                     layout={layout}
                     blocks={blocks.blocks}
+                    inCollapsedHeader={
+                      blocks.blocks[layout.id]._collapsedHeader
+                    }
                     hidden={
                       blocks.blocks[layout.id]._collapsedHeader &&
                       (!expandedBlocks.length ||
@@ -197,6 +209,9 @@ class Blocks extends React.Component {
                     key={layout.id}
                     type={blocks.blocks[layout.id].type}
                     block={blocks.blocks[layout.id]}
+                    inCollapsedHeader={
+                      blocks.blocks[layout.id]._collapsedHeader
+                    }
                     headerHandler={() => {
                       let { expandedBlocks } = this.state
                       const index = expandedBlocks.indexOf(layout.id)
@@ -222,7 +237,7 @@ class Blocks extends React.Component {
             )}
           </React.Fragment>
         ))}
-      </>
+      </Container>
     )
   }
 }
