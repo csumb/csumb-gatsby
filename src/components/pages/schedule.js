@@ -287,6 +287,17 @@ const CoursePage = ({ course, term }) => (
             <dd>{course.ENRL_MAX}</dd>
           </EnrollmentList>
         </CourseSection>
+        <CourseSection legend="Instructor">
+          {course._instructors.map(instructor => (
+            <Link
+              to={`/directory/person/${instructor.email
+                .split('@')
+                .shift.toLowerCase()}`}
+            >
+              {instructor.firstName} {instructor.lastName}
+            </Link>
+          ))}
+        </CourseSection>
       </Box>
       <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
         <p>{course.DESCR}</p>
