@@ -56,7 +56,7 @@ class LibrarySearch extends React.Component {
               onChange={this.handleChangeQuery.bind(this)}
             />
           </Box>
-          <Box width={[1, 3 / 12]} pr={4}>
+          <Box width={[1, 4 / 12]} pr={4}>
             <InputSelect
               name="search_scope"
               label="Limit search"
@@ -66,8 +66,8 @@ class LibrarySearch extends React.Component {
               options={[
                 { value: 'EVERYTHING', label: 'Everything', selected: true },
                 { value: 'PRIMO_CENTRAL', label: 'Articles' },
-                { value: '01CALS_UMB', label: 'Books & media at CSUMB' },
-                { value: '01CALS', label: 'Books & media in the CSU system' },
+                { value: '01CALS_UMB', label: 'Books & media (CSUMB)' },
+                { value: '01CALS', label: 'Books & media (All CSU)' },
                 { value: '01CALS_UMB_CR', label: 'Course Reserves' },
               ]}
             />
