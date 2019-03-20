@@ -121,37 +121,31 @@ class Blocks extends React.Component {
   }
 
   addBlockHeaderRelationships() {
-    let lastHeaders = {
-      2: false,
-      3: false,
-      4: false,
-    }
     let lastHeader = false
-    this.blocks.layout.forEach(layout => {
-      const block = this.blocks.blocks[layout.id]
-      if (!this.blocks.blocks[layout.id]) {
-        return
-      }
-      if (block.type === 'heading' && lastHeaders[block.data.level - 2]) {
-        block._collapsedHeader = lastHeaders[block.data.level - 2]
-      }
-      if (block.type === 'heading' && lastHeaders[block.data.level - 1]) {
-        block._collapsedHeader = lastHeaders[block.data.level - 1]
-      }
-      if (block.type === 'heading' && !block.data.collapsible) {
-        lastHeaders[block.data.level] = false
-        block._collapsedHeader = false
-        lastHeader = false
-        return
-      }
-      if (block.type === 'heading' && block.data.collapsible) {
-        lastHeaders[block.data.level] = layout.id
-        lastHeader = layout.id
-        return
-      }
-      if (lastHeader) {
-        block._collapsedHeader = lastHeader
-      }
+
+    const headerLevels = [4, 3, 2]
+
+    headerLevels.forEach(headerLevel => {
+      lastHeader = false
+      this.blocks.layout.forEach(layout => {
+        const block = this.blocks.blocks[layout.id]
+        const level = parseInt(block.data.level)
+        if (
+          block.type === 'heading' &&
+          level === headerLevel &&
+          block.data.collapsible
+        ) {
+          lastHeader = block.uuid
+        } else {
+          if (block.type === 'heading' && level <= headerLevel) {
+            lastHeader = false
+          } else {
+            if (lastHeader && !block._collapsedHeader) {
+              block._collapsedHeader = lastHeader
+            }
+          }
+        }
+      })
     })
   }
 
