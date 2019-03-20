@@ -129,7 +129,7 @@ class Blocks extends React.Component {
       lastHeader = false
       this.blocks.layout.forEach(layout => {
         const block = this.blocks.blocks[layout.id]
-        if (!block) {
+        if (!block || typeof block.data === 'undefined') {
           return
         }
         const level = parseInt(block.data.level)
