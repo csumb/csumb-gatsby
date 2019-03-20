@@ -95,6 +95,7 @@ module.exports = (graphql, actions) => {
                       start
                       end
                     }
+                    image
                     description
                     ticket {
                       url
@@ -103,6 +104,12 @@ module.exports = (graphql, actions) => {
                     cost_message
                     location {
                       type
+                      description
+                      room
+                      building {
+                        name
+                        code
+                      }
                     }
                   }
                 }
