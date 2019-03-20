@@ -17,11 +17,6 @@ const LibrarySearchWrapper = styled('form')`
   margin: 1rem;
 `
 
-const AdvancedSearch = styled('a')`
-  display: block;
-  margin-top: 1rem;
-`
-
 class LibrarySearch extends React.Component {
   state = {
     query: false,
@@ -45,24 +40,22 @@ class LibrarySearch extends React.Component {
         <input type="hidden" name="query" value={this.state.query} />
         <img src={oneSearchLogo} alt="One Search - Search the library" />
         <Flex flexWrap="wrap">
-          <Box width={[1, 6 / 12]} px={2}>
+          <Box width={[1, 5 / 12]} pr={4}>
             <InputText
               name="_extra_query"
               label="Search the library"
               placeholder="Search"
               hideLabel={true}
               onChange={this.handleChangeQuery.bind(this)}
-              huge
             />
           </Box>
-          <Box width={[1, 4 / 12]} px={2}>
+          <Box width={[1, 3 / 12]} pr={4}>
             <InputSelect
               name="search_scope"
               label="Limit search"
               hideLabel={true}
-              huge
-              placeholder="Filter"
               defaultValue="EVERYTHING"
+              placeholder="Everything"
               options={[
                 { value: 'EVERYTHING', label: 'Everything', selected: true },
                 { value: 'PRIMO_CENTRAL', label: 'Articles' },
@@ -72,11 +65,13 @@ class LibrarySearch extends React.Component {
               ]}
             />
           </Box>
-          <Box width={[1, 2 / 12]} px={2}>
-            <Submit value="Search" nomargin={true} huge />
-            <AdvancedSearch href="https://csumb-primo.hosted.exlibrisgroup.com/primo-explore/search?sortby=rank&vid=01CALS_UMB&lang=en_US&mode=advanced">
+          <Box width={[1, 1 / 12]} pr={4}>
+            <Submit value="Search" nomargin={true} small />
+          </Box>
+          <Box width={[1, 2 / 12]}>
+            <a href="https://csumb-primo.hosted.exlibrisgroup.com/primo-explore/search?sortby=rank&vid=01CALS_UMB&lang=en_US&mode=advanced">
               Advanced search
-            </AdvancedSearch>
+            </a>
           </Box>
         </Flex>
       </LibrarySearchWrapper>
