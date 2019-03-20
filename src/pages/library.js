@@ -10,11 +10,18 @@ import Blocks from 'templates/blocks'
 import { colors } from 'style/theme'
 import { InputText, InputSelect, Submit } from 'components/forms'
 import oneSearchLogo from 'assets/images/library-one-search.png'
+import bp from 'style/breakpoints'
 
 const LibrarySearchWrapper = styled('form')`
   background: ${colors.muted.highlight};
   padding: 1rem;
   margin: 1rem;
+`
+
+const AdvancedSearchLink = styled('a')`
+  ${bp({
+    float: ['none', 'right'],
+  })}
 `
 
 class LibrarySearch extends React.Component {
@@ -69,9 +76,9 @@ class LibrarySearch extends React.Component {
             <Submit value="Search" nomargin={true} small />
           </Box>
           <Box width={[1, 2 / 12]}>
-            <a href="https://csumb-primo.hosted.exlibrisgroup.com/primo-explore/search?sortby=rank&vid=01CALS_UMB&lang=en_US&mode=advanced">
+            <AdvancedSearchLink href="https://csumb-primo.hosted.exlibrisgroup.com/primo-explore/search?sortby=rank&vid=01CALS_UMB&lang=en_US&mode=advanced">
               Advanced search
-            </a>
+            </AdvancedSearchLink>
           </Box>
         </Flex>
       </LibrarySearchWrapper>
