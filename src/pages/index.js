@@ -24,11 +24,13 @@ const sortItems = ({
 
   const stories = [allContentfulHomepageEvent, allContentfulHomepageStory]
 
-  stories.forEach(type => {
-    type.edges.forEach(item => {
+  stories.map(type => {
+    type.edges.map(item => {
       const key = item.node.featured ? 'featured' : 'notFeatured'
       result[key].push(item.node)
+      return result[key]
     })
+    return type
   })
   const sortByDate = (a, b) => {
     return moment(a.goLiveDate).unix() > moment(b.goLiveDate).unix()
