@@ -29,11 +29,7 @@ const BlockText = ({ lead, text }) => {
   if (!text) {
     return null
   }
-  return (
-    <Paragraph lead={lead} container={container}>
-      {parse(text, parserOptions)}
-    </Paragraph>
-  )
+  return <Paragraph lead={lead}>{parse(text, parserOptions)}</Paragraph>
 }
 
 export default BlockText
