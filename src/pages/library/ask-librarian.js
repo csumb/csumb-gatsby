@@ -32,20 +32,10 @@ class LibraryPage extends React.Component {
         )}
         <Container>
           <PageTitle>Ask a librarian</PageTitle>
-          <Flex flexWrap="wrap">
-            <Box width={[1, 1 / 2]} pr={[0, 4]}>
-              <h3>Chat with us</h3>
-              <style>{`.libraryh3lp img { width: 150px;}`}</style>
-              <div className="needs-js" ref={this.chatRef} />
-            </Box>
-            <Box width={[1, 1 / 2]}>
-              <h3>Text us</h3>
-              <p>
-                Text us from your cell phone at <strong>(831) 621-5866</strong>.
-                Standard text messaging rates may apply.
-              </p>
-            </Box>
-          </Flex>
+
+          <div ref={this.chatRef} />
+          <style>{`.libraryh3lp img { width: 150px;}`}</style>
+
           {data.allCsumbPage && (
             <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
           )}
