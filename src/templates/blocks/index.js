@@ -25,6 +25,7 @@ import BlockPerson from './blocks/person'
 import BlockEvent from './blocks/event'
 import BlockEventFeed from './blocks/event-feed'
 import BlockSocial from './blocks/social'
+import BlockHtml from './blocks/html'
 import { ContainerContext, containerStyle } from './container-context'
 import { css } from 'emotion'
 
@@ -55,6 +56,7 @@ class Block extends React.Component {
     eventfeed: BlockEventFeed,
     pathway: BlockPathway,
     social: BlockSocial,
+    html: BlockHtml,
   }
 
   render() {

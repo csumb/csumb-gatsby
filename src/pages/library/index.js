@@ -110,14 +110,9 @@ class LibraryPage extends React.Component {
         )}
         <Container>
           <LibrarySearch />
-          <Flex flexWrap="wrap">
-            <Box width={[0, 2 / 3]} />
-            <Box width={[1, 1 / 3]}>
-              <style>{`.libraryh3lp img { width: 150px;}`}</style>
-              <strong>Chat with a librarian</strong>
-              <div className="needs-js" ref={this.chatRef} />
-            </Box>
-          </Flex>
+          <div ref={this.chatRef} />
+          <style>{`.libraryh3lp img { width: 150px;}`}</style>
+
           {data.allCsumbPage && (
             <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
           )}
