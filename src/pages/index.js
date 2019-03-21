@@ -28,13 +28,10 @@ const sortItems = ({
     type.edges.forEach(item => {
       const key = item.node.featured ? 'featured' : 'notFeatured'
       result[key].push(item.node)
+      return item
     })
+    return type
   })
-  const sortByDate = (a, b) => {
-    return moment(a.goLiveDate).unix() > moment(b.goLiveDate).unix()
-  }
-  result.featured.sort(sortByDate)
-  result.notFeatured.sort(sortByDate)
   return result
 }
 
