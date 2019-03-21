@@ -5,41 +5,15 @@ import Footer from 'components/footer/global'
 import Helmet from 'react-helmet'
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
-import { UserContext, setUserRole } from 'components/contexts/user'
 import Emergency from 'components/emergency'
 import FeedbackTab from 'components/feedback-tab'
 
 class Layout extends React.Component {
-  state = {
-    user: false,
-  }
-
-  async componentDidMount() {
-    window
-      .fetch('https://csumb.okta.com/api/v1/users/me', {
-        credentials: 'include',
-      })
-      .then(response => {
-        return response.json()
-      })
-      .then(user => {
-        user = setUserRole(user)
-        this.setState({
-          user: user,
-        })
-      })
-      .catch(error => {
-        this.setState({
-          user: { anonymous: true },
-        })
-      })
-  }
-
   render() {
     const { siteNavigation, siteTitle, pageTitle, noFooterMargin } = this.props
 
     return (
-      <UserContext.Provider value={{ user: this.state.user }}>
+      <>
         <Emergency />
         <SkipNavLink />
         <Helmet>
@@ -78,7 +52,7 @@ class Layout extends React.Component {
         {this.props.children}
         <Footer noFooterMargin={noFooterMargin ? true : false} />
         <FeedbackTab />
-      </UserContext.Provider>
+      </>
     )
   }
 }
