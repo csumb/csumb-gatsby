@@ -1,7 +1,41 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+import React from 'react'
+import { UserContext, setUserRole } from 'components/contexts/user'
 
- // You can delete this file if you're not using it
+class UserComponent extends React.Component {
+  state = {
+    user: false,
+  }
+
+  async componentDidMount() {
+    window
+      .fetch('https://csumb.okta.com/api/v1/users/me', {
+        credentials: 'include',
+      })
+      .then(response => {
+        return response.json()
+      })
+      .then(user => {
+        user = setUserRole(user)
+        this.setState({
+          user: user,
+        })
+      })
+      .catch(error => {
+        this.setState({
+          user: { anonymous: true },
+        })
+      })
+  }
+
+  render() {
+    return (
+      <UserContext.Provider value={{ user: this.state.user }}>
+        {this.props.children}
+      </UserContext.Provider>
+    )
+  }
+}
+
+export const wrapPageElement = ({ element, props }) => {
+  return <UserComponent {...props}>{element}</UserComponent>
+}
