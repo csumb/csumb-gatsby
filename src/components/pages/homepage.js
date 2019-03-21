@@ -165,7 +165,7 @@ const HomepageFooter = () => (
     <Container>
       <Flex flexWrap="wrap">
         <Box width={[1, 1 / 3]} pr={[0, 3]}>
-          <a href="https://otterathletics.org">
+          <a href="https://otterathletics.com">
             <img src={footerAthletics} alt="" />
             <h3>Athletics</h3>
           </a>
