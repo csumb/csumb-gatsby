@@ -3,10 +3,14 @@ import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
 import { colors } from 'style/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import {
+  faChevronDown,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons'
 
 const CollapsibleIcon = styled(FontAwesomeIcon)`
-  float: right;
+  margin-right: 0.8rem;
+  font-size: 1rem;
 `
 
 const CollapsibleHeading = styled('button')`
@@ -51,7 +55,7 @@ class BlockHeading extends React.Component {
           >
             <CollapsibleIcon
               size="1x"
-              icon={isOpen ? faChevronUp : faChevronDown}
+              icon={isOpen ? faChevronDown : faChevronRight}
             />
             <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>
           </CollapsibleHeading>
