@@ -4,7 +4,6 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import { ButtonLink } from 'components/button'
-import moment from 'moment'
 import {
   NonFeaturedStory,
   FeaturedStory,
