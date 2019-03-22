@@ -80,7 +80,7 @@ const PersonTemplate = ({ pageContext }) => {
         {biography && (
           <div
             dangerouslySetInnerHTML={{
-              __html: biography,
+              __html: converter.makeHtml(biography),
             }}
           />
         )}
