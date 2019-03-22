@@ -100,11 +100,14 @@ const PersonTemplate = ({ pageContext }) => {
           </Box>
         </Flex>
         {biography && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: converter.makeHtml(biography),
-            }}
-          />
+          <>
+            <h4>Biography</h4>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: converter.makeHtml(biography),
+              }}
+            />
+          </>
         )}
       </Container>
     </Layout>

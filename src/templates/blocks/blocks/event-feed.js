@@ -24,9 +24,8 @@ const displayEvent = item => {
 class BlockEventFeed extends React.Component {
   render() {
     const { events, title, limit } = this.props
-    let count = 0
     const displayEvents = []
-    events.map(event => {
+    events.forEach(event => {
       if (displayEvent(event) && displayEvents.length < limit) {
         displayEvents.push(event)
       }
