@@ -83,6 +83,17 @@ class BlockPerson extends React.Component {
                   {person._publicDirectory && person._publicDirectory.phone && (
                     <p>{person._publicDirectory.phone}</p>
                   )}
+                  {person._publicDirectory.building && (
+                    <p>
+                      <Link
+                        to={`/building/${person._publicDirectory.buildingCode}`}
+                      >
+                        {person._publicDirectory.building}
+                      </Link>
+                      <br />
+                      {person._publicDirectory.location.split('-').pop()}
+                    </p>
+                  )}
                 </Box>
                 <Box width={[1, 1 / 4]}>
                   {person._publicDirectory && person._publicDirectory.photo && (

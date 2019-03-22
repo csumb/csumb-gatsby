@@ -1,20 +1,27 @@
 const fs = require('fs-extra')
+fs.readJson('./_web-content/_data/buildings.json', (err, buildings) => {
+  fs.readJson('./_web-content/_data/directory.json', (err, directory) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+    directory.forEach(person => {
+      let email = person.email.split('@').shift()
+      let login = person.login.split('@').shift()
+      fs.readJson(
+        `./_web-content/_data/public-directory/${login}.json`,
+        (err, directory) => {
+          if (
+            directory &&
+            typeof buildings[directory.buildingCode] !== 'undefined'
+          ) {
+            directory.building = buildings[directory.buildingCode].name
+          }
+          person._publicDirectory = directory ? directory : false
 
-fs.readJson('./_web-content/_data/directory.json', (err, directory) => {
-  if (err) {
-    console.log(err)
-    return
-  }
-  directory.forEach(person => {
-    let email = person.email.split('@').shift()
-    let login = person.login.split('@').shift()
-    fs.readJson(
-      `./_web-content/_data/public-directory/${login}.json`,
-      (err, directory) => {
-        person._publicDirectory = directory ? directory : false
-
-        fs.outputJson(`./public/directory/json/${email}.json`, person)
-      }
-    )
+          fs.outputJson(`./public/directory/json/${email}.json`, person)
+        }
+      )
+    })
   })
 })
