@@ -5,7 +5,6 @@ module.exports = (graphql, actions) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
     const directoryTemplate = path.resolve(`src/templates/directory/person.js`)
-    const jsonTemplate = path.resolve(`src/templates/json.js`)
     resolve(
       graphql(
         `
@@ -50,6 +49,14 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
+            allCsumbBuilding {
+              edges {
+                node {
+                  buildingName
+                  code
+                }
+              }
+            }
           }
         `
       ).then(result => {
@@ -57,22 +64,27 @@ module.exports = (graphql, actions) => {
           reject(result.errors)
           return
         }
+        const buildings = {}
+        result.data.allCsumbBuilding.edges.forEach(building => {
+          buildings[building.node.code] = building.node.buildingName
+        })
+
         let files = {}
         result.data.allCsumbDirectory.edges.forEach(async edge => {
           const emailPrefix = edge.node.user.email.split('@').shift()
+          const building =
+            edge.node.user._publicProfile &&
+            edge.node.user._publicProfile.buildingCode &&
+            typeof buildings[edge.node.user._publicProfile.buildingCode] !==
+              'undefined'
+              ? buildings[edge.node.user._publicProfile.buildingCode]
+              : ''
           createPage({
             path: `directory/person/${emailPrefix}`,
             component: directoryTemplate,
             context: {
               user: edge.node.user,
-            },
-          })
-          createPage({
-            path: `directory/person/json/${emailPrefix}`,
-            component: jsonTemplate,
-            isJson: true,
-            context: {
-              content: edge.node.user,
+              building: building,
             },
           })
         })
