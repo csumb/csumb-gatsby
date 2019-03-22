@@ -7,6 +7,7 @@ import { InputText } from 'components/forms'
 import Container from 'components/container'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
+import { DirectoryNavigation } from 'components/pages/directory'
 
 const BuildingList = styled('ul')`
   margin: 0;
@@ -48,6 +49,7 @@ class DirectoryPage extends React.Component {
     return (
       <Layout>
         <SiteHeader path="/directory">Directory</SiteHeader>
+        <DirectoryNavigation />
         <Container>
           <PageTitle>All campus buildings</PageTitle>
           <InputText

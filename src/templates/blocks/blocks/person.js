@@ -80,10 +80,30 @@ class BlockPerson extends React.Component {
                     </PersonPosition>
                   ))}
                   <a href={`mailto:${person.email}`}>{person.email}</a>
+                  {person._publicDirectory && person._publicDirectory.phone && (
+                    <p>{person._publicDirectory.phone}</p>
+                  )}
+                  {person._publicDirectory.building && (
+                    <p>
+                      <Link
+                        to={`/building/${person._publicDirectory.buildingCode}`}
+                      >
+                        {person._publicDirectory.building}
+                      </Link>
+                      <br />
+                      {person._publicDirectory.location.split('-').pop()}
+                    </p>
+                  )}
                 </Box>
                 <Box width={[1, 1 / 4]}>
-                  {person.directoryPhoto && (
-                    <PersonPhoto src={person.directoryPhoto} alt="" />
+                  {person._publicDirectory && person._publicDirectory.photo && (
+                    <PersonPhoto
+                      src={person._publicDirectory.photo.replace(
+                        'csumb.edu',
+                        'edit.csumb.edu'
+                      )}
+                      alt=""
+                    />
                   )}
                 </Box>
               </Flex>

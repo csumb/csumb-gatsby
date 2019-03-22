@@ -8,10 +8,12 @@ import Link from 'gatsby-link'
 import { Box, Flex } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import phoneFormatter from 'phone-formatter'
+import { DirectoryNavigation } from 'components/pages/directory'
 
 const DirectoryPage = ({ data }) => (
   <Layout>
     <SiteHeader path="/directory">Directory</SiteHeader>
+    <DirectoryNavigation />
     <Container topPadding>
       <DirectoryForm directory={data.allCsumbDirectory.edges} />
       <Flex flexWrap="wrap">
@@ -124,8 +126,9 @@ class DirectoryForm extends React.Component {
       } else {
         if (
           query.length > 3 &&
-          user.directoryPhone &&
-          user.directoryPhone.replace(/\D/g, '').search(query) > -1
+          user._publicProfile &&
+          user._publicProfile.phone &&
+          user._publicProfile.phone.replace(/\D/g, '').search(query) > -1
         ) {
           search.push(user)
         }

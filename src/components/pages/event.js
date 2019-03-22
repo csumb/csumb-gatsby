@@ -52,7 +52,10 @@ const Event = ({ event }) => (
         <Flex flexWrap="wrap">
           {event.image && (
             <Box width={[1, 4 / 12]} pr={[0, 4]}>
-              <img src={event.image} alt="" />
+              <img
+                src={event.image.replace('csumb.edu', 'edit.csumb.edu')}
+                alt=""
+              />
             </Box>
           )}
           <Box width={[1, 5 / 12]} pr={[0, 4]}>
@@ -140,7 +143,7 @@ const EventFeedItem = ({ title, link, times, dates, image, description }) => (
     <Box width={[1, 1 / 4]}>
       {image && (
         <Link to={`/${link}`}>
-          <img src={image} alt={title} />
+          <img src={image.replace('csumb.edu', 'edit.csumb.edu')} alt={title} />
         </Link>
       )}
     </Box>
@@ -183,7 +186,12 @@ const PublicEvent = ({ event, showDate, showTime }) => (
     <Link to={event.pagePath}>
       <Flex flexWrap="wrap">
         <Box width={[0, 3 / 12, 3 / 12]} pr={[0, 4, 4]}>
-          {event.event.image && <img src={event.event.image} alt="" />}
+          {event.event.image && (
+            <img
+              src={event.event.image.replace('csumb.edu', 'edit.csumb.edu')}
+              alt=""
+            />
+          )}
         </Box>
         <Box width={[1, 9 / 12, 9 / 12]}>
           <h3>{event.title}</h3>

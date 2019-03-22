@@ -10,6 +10,7 @@ import LinkInspect from 'components/link-inspect'
 import SiteHeader from 'components/header/site-header'
 import { graphql } from 'gatsby'
 import phoneFormatter from 'phone-formatter'
+import { DirectoryNavigation } from 'components/pages/directory'
 
 const DirectoryItem = styled('div')`
   margin-bottom: 2rem;
@@ -263,6 +264,7 @@ class DirectorySearchPage extends React.Component {
     return (
       <Layout>
         <SiteHeader path="/directory">Directory</SiteHeader>
+        <DirectoryNavigation />
         <Container topPadding>
           <form
             method="get"

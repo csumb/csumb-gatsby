@@ -7,6 +7,9 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import styled from '@emotion/styled'
 import phoneFormatter from 'phone-formatter'
 import showdown from 'showdown'
+import Link from 'gatsby-link'
+import sanitizeHtml from 'sanitize-html'
+import { DirectoryNavigation } from 'components/pages/directory'
 
 const DirectoryTitle = styled('div')`
   font-size: 1.5rem;
@@ -17,13 +20,40 @@ const DirectoryPosition = styled('div')`
   margin-bottom: 1.5rem;
 `
 
+const DirectoryItem = styled('p')`
+  margin-bottom: 0.5rem;
+`
+
 const PersonTemplate = ({ pageContext }) => {
-  const { user } = pageContext
+  const { user, building } = pageContext
   const { _publicProfile } = user
   const converter = new showdown.Converter()
+  const biography =
+    _publicProfile && _publicProfile.biography
+      ? sanitizeHtml(_publicProfile.biography, {
+          allowedTags: [
+            'b',
+            'i',
+            'em',
+            'h2',
+            'h3',
+            'ul',
+            'ol',
+            'li',
+            'blockquote',
+            'strong',
+            'a',
+          ],
+        })
+      : false
+  const room =
+    _publicProfile && _publicProfile.location
+      ? _publicProfile.location.split('-').pop()
+      : false
   return (
     <Layout pageTitle={`${user.firstName} ${user.lastName} Directory`}>
       <SiteHeader path="/directory">Directory</SiteHeader>
+      <DirectoryNavigation />
       <Container>
         <PageTitle>
           {user.firstName} {user.lastName}
@@ -37,27 +67,49 @@ const PersonTemplate = ({ pageContext }) => {
               </DirectoryPosition>
             ))}
             <h2>Contact information</h2>
-            <p>
+            <DirectoryItem>
               <a href={`mailto:${user.email}`}>{user.email}</a>
-            </p>
+            </DirectoryItem>
             {_publicProfile && _publicProfile.phone && (
-              <p>
+              <DirectoryItem>
                 {phoneFormatter.format(_publicProfile.phone, '(NNN) NNN-NNNN')}
-              </p>
+              </DirectoryItem>
+            )}
+            {building && (
+              <DirectoryItem>
+                <Link to={`/building/${_publicProfile.buildingCode}`}>
+                  {building}
+                </Link>
+                {room && (
+                  <>
+                    <br />
+                    {room}
+                  </>
+                )}
+              </DirectoryItem>
             )}
           </Box>
           <Box width={[1, 1, 1 / 4]}>
             {_publicProfile && _publicProfile.photo && (
-              <img src={_publicProfile.photo} alt="" />
+              <img
+                src={_publicProfile.photo.replace(
+                  'csumb.edu',
+                  'edit.csumb.edu'
+                )}
+                alt=""
+              />
             )}
           </Box>
         </Flex>
-        {_publicProfile && _publicProfile.biography && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: converter.makeHtml(_publicProfile.biography),
-            }}
-          />
+        {biography && (
+          <>
+            <h4>Biography</h4>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: converter.makeHtml(biography),
+              }}
+            />
+          </>
         )}
       </Container>
     </Layout>

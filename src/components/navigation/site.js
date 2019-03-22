@@ -151,11 +151,16 @@ class SiteNavigation extends React.Component {
   }
 
   render() {
-    if (!this.props.navigation || !this.state.isDesktop) {
+    if (
+      (!this.props.navigation && !this.props.overrideNavigation) ||
+      !this.state.isDesktop
+    ) {
       return null
     }
 
-    const navigation = JSON.parse(this.props.navigation)
+    const navigation = this.props.overrideNavigation
+      ? this.props.overrideNavigation
+      : JSON.parse(this.props.navigation)
     return (
       <SiteNavigationBar>
         <Container>
