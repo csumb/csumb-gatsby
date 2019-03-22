@@ -27,6 +27,7 @@ module.exports = {
       'news',
       'about/map-directions',
       'up/all-forms',
+      'up/index',
       'educationabroad/semesteryear-programs-subject-area',
     ],
   },
