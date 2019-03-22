@@ -48,7 +48,13 @@ const PersonTemplate = ({ pageContext }) => {
           </Box>
           <Box width={[1, 1, 1 / 4]}>
             {_publicProfile && _publicProfile.photo && (
-              <img src={_publicProfile.photo} alt="" />
+              <img
+                src={_publicProfile.photo.replace(
+                  'csumb.edu',
+                  'edit.csumb.edu'
+                )}
+                alt=""
+              />
             )}
           </Box>
         </Flex>
