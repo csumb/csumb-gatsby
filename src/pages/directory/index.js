@@ -124,8 +124,9 @@ class DirectoryForm extends React.Component {
       } else {
         if (
           query.length > 3 &&
-          user.directoryPhone &&
-          user.directoryPhone.replace(/\D/g, '').search(query) > -1
+          user._publicProfile &&
+          user._publicProfile.phone &&
+          user._publicProfile.phone.replace(/\D/g, '').search(query) > -1
         ) {
           search.push(user)
         }

@@ -7,6 +7,14 @@ fs.readJson('./_web-content/_data/directory.json', (err, directory) => {
   }
   directory.forEach(person => {
     let email = person.email.split('@').shift()
-    fs.outputJson(`./public/directory/json/${email}.json`, person)
+    let login = person.login.split('@').shift()
+    fs.readJson(
+      `./_web-content/_data/public-directory/${login}.json`,
+      (err, directory) => {
+        person._publicDirectory = directory ? directory : false
+
+        fs.outputJson(`./public/directory/json/${email}.json`, person)
+      }
+    )
   })
 })

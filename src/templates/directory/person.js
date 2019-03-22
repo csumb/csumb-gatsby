@@ -7,6 +7,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import styled from '@emotion/styled'
 import phoneFormatter from 'phone-formatter'
 import showdown from 'showdown'
+import sanitizeHtml from 'sanitize-html'
 
 const DirectoryTitle = styled('div')`
   font-size: 1.5rem;
@@ -21,6 +22,24 @@ const PersonTemplate = ({ pageContext }) => {
   const { user } = pageContext
   const { _publicProfile } = user
   const converter = new showdown.Converter()
+  const biography =
+    _publicProfile && _publicProfile.biography
+      ? sanitizeHtml(_publicProfile.biography, {
+          allowedTags: [
+            'b',
+            'i',
+            'em',
+            'h2',
+            'h3',
+            'ul',
+            'ol',
+            'li',
+            'blockquote',
+            'strong',
+            'a',
+          ],
+        })
+      : false
   return (
     <Layout pageTitle={`${user.firstName} ${user.lastName} Directory`}>
       <SiteHeader path="/directory">Directory</SiteHeader>
@@ -58,10 +77,10 @@ const PersonTemplate = ({ pageContext }) => {
             )}
           </Box>
         </Flex>
-        {_publicProfile && _publicProfile.biography && (
+        {biography && (
           <div
             dangerouslySetInnerHTML={{
-              __html: converter.makeHtml(_publicProfile.biography),
+              __html: biography,
             }}
           />
         )}

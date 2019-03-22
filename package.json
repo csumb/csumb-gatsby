@@ -84,6 +84,7 @@
     "react-transition-group": "^2.5.3",
     "react-typography": "^0.16.13",
     "react-vivus": "0.0.2",
+    "sanitize-html": "^1.20.0",
     "showdown": "^1.9.0",
     "styled-components": "^4.1.2",
     "typography": "^0.16.17",
