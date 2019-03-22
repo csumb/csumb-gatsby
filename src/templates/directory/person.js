@@ -9,6 +9,7 @@ import phoneFormatter from 'phone-formatter'
 import showdown from 'showdown'
 import Link from 'gatsby-link'
 import sanitizeHtml from 'sanitize-html'
+import { DirectoryNavigation } from 'components/pages/directory'
 
 const DirectoryTitle = styled('div')`
   font-size: 1.5rem;
@@ -52,6 +53,7 @@ const PersonTemplate = ({ pageContext }) => {
   return (
     <Layout pageTitle={`${user.firstName} ${user.lastName} Directory`}>
       <SiteHeader path="/directory">Directory</SiteHeader>
+      <DirectoryNavigation />
       <Container>
         <PageTitle>
           {user.firstName} {user.lastName}

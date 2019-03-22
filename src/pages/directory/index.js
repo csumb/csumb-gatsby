@@ -8,10 +8,12 @@ import Link from 'gatsby-link'
 import { Box, Flex } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import phoneFormatter from 'phone-formatter'
+import { DirectoryNavigation } from 'components/pages/directory'
 
 const DirectoryPage = ({ data }) => (
   <Layout>
     <SiteHeader path="/directory">Directory</SiteHeader>
+    <DirectoryNavigation />
     <Container topPadding>
       <DirectoryForm directory={data.allCsumbDirectory.edges} />
       <Flex flexWrap="wrap">
