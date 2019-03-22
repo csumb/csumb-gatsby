@@ -78,6 +78,7 @@ module.exports = (graphql, actions) => {
             typeof buildings[edge.node.user._publicProfile.buildingCode] !==
               'undefined'
               ? buildings[edge.node.user._publicProfile.buildingCode]
+                  .buildingName
               : ''
           createPage({
             path: `directory/person/${emailPrefix}`,

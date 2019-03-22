@@ -68,7 +68,6 @@ const mapStyle = {
 
 const MapWrapper = styled('div')`
   ${css(mapStyle)};
-  margin-bottom: 1rem;
   position: relative;
 `
 
