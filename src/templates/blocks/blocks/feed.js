@@ -41,7 +41,12 @@ class BlockFeed extends React.Component {
                     />
                   </Box>
                   <Box width={[1, 1 / 4]}>
-                    {item.image && <img src={item.image} alt="" />}
+                    {item.image && (
+                      <img
+                        src={item.image.replace('csumb.edu', 'edit.csumb.edu')}
+                        alt=""
+                      />
+                    )}
                   </Box>
                 </Flex>
               )}
