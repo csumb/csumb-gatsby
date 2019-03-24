@@ -14,7 +14,7 @@ import BlockHero from './blocks/blocks/hero-image'
 import SiteFooter from 'components/footer/site'
 import {
   UniversityPersonnelFormList,
-  UniversityPersonnelPageList,
+  UniversityPersonnelPages,
 } from 'components/pages/university-personnel'
 
 class PageTemplate extends React.Component {
@@ -33,6 +33,7 @@ class PageTemplate extends React.Component {
       topHero,
       upForms,
       upPages,
+      upPageID,
     } = this.props.pageContext
 
     const showNavigation = pageNavigation && pageNavigation.length
@@ -75,7 +76,7 @@ class PageTemplate extends React.Component {
         )}
         {upPages && (
           <Container>
-            <UniversityPersonnelPageList pages={upPages} />
+            <UniversityPersonnelPages pages={upPages} parentId={upPageID} />
           </Container>
         )}
         <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />

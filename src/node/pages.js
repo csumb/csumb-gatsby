@@ -134,7 +134,7 @@ module.exports = (graphql, actions) => {
                   recordId
                   data {
                     Name
-                    Notes
+                    Content
                     Page_ID
                     Link
                     Parent {
@@ -173,8 +173,8 @@ module.exports = (graphql, actions) => {
         const upForms = {}
         const upPages = {}
 
-        result.data.allAirtable.edges.forEach(({ node }) => {
-          const data = node.data
+        result.data.allAirtable.edges.forEach(edge => {
+          const data = edge.node.data
           if (data.Page_ID) {
             upForms[data.Page_ID] = data
             if (data.Parent) {
@@ -182,7 +182,7 @@ module.exports = (graphql, actions) => {
                 if (typeof upPages[parent.data.Page_ID] === 'undefined') {
                   upPages[parent.data.Page_ID] = []
                 }
-                upPages[parent.data.Page_ID].push(data)
+                upPages[parent.data.Page_ID].push(edge)
               })
             }
           }
@@ -237,6 +237,7 @@ module.exports = (graphql, actions) => {
               typeof upPages[parseInt(node.drupalNid)] !== 'undefined'
             ) {
               pageNode.context.upPages = upPages[parseInt(node.drupalNid)]
+              pageNode.context.upPageID = parseInt(node.drupalNid)
             }
             if (typeof node.event !== 'undefined') {
               pageNode.context.event = node.event
