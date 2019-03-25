@@ -3,12 +3,12 @@ import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
-import { ButtonLink } from 'components/button'
 import {
   NonFeaturedStory,
   FeaturedStory,
   InTheNews,
   HomepageImageNavigation,
+  MoreItemsButton,
 } from 'components/pages/homepage'
 import HomepageHero from 'components/homepages/2019/service-learning'
 
@@ -71,14 +71,12 @@ const IndexPage = ({ data }) => {
             <InTheNews articles={allContentfulHomepageInTheNews.edges} />
           </Box>
         </Flex>
-        <Flex flexWrap="wrap">
-          <Box width={[1, 1, 1 / 2, 6 / 12]} ml={7}>
-            <ButtonLink style={{ marginRight: '1rem' }} to="/events">
-              View more events
-            </ButtonLink>
-            <ButtonLink to="/news">Read more news</ButtonLink>
-          </Box>
-        </Flex>
+      </Container>
+      <Container topPadding>
+        <MoreItemsButton style={{ marginRight: '1rem' }} to="/events">
+          View more events
+        </MoreItemsButton>
+        <MoreItemsButton to="/news">Read more news</MoreItemsButton>
       </Container>
     </Layout>
   )
