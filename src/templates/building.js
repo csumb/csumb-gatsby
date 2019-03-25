@@ -7,6 +7,7 @@ import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { ButtonLink } from 'components/button'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
+import { DirectoryNavigation } from 'components/pages/directory'
 
 const BuildingMap = styled(Map)`
   width: 100%;
@@ -21,6 +22,7 @@ class BuildingTemplate extends React.Component {
     return (
       <Layout pageTitle={title}>
         <SiteHeader path="/directory">Directory</SiteHeader>
+        <DirectoryNavigation />
         <Container>
           <PageTitle>{buildingName}</PageTitle>
           <Flex flexWrap="wrap">
