@@ -65,7 +65,9 @@ const Event = ({ event }) => (
             </EventDateItem>
             {event.location.type === 'on-campus' && (
               <p>
-                <Link to={`/building/${event.location.building.code}`}>
+                <Link
+                  to={`/directory/building/${event.location.building.code}`}
+                >
                   {event.location.building.name}
                 </Link>
                 {event.location.room && (

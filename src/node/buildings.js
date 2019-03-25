@@ -14,6 +14,20 @@ module.exports = (graphql, actions) => {
                 node {
                   buildingName
                   code
+                  address {
+                    street
+                    city
+                    state
+                    zip
+                  }
+                  mailingAddress {
+                    display
+                    street
+                    building
+                    city
+                    state
+                    zip
+                  }
                   center {
                     lat
                     lng
@@ -34,7 +48,7 @@ module.exports = (graphql, actions) => {
         }
         result.data.allCsumbBuilding.edges.forEach(async edge => {
           createPage({
-            path: `building/${edge.node.code.toLowerCase().trim()}`,
+            path: `directory/building/${edge.node.code.toLowerCase().trim()}`,
             component: courseTemplate,
             context: {
               building: edge.node,

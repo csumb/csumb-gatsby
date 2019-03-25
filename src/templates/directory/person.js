@@ -77,7 +77,7 @@ const PersonTemplate = ({ pageContext }) => {
             )}
             {building && (
               <DirectoryItem>
-                <Link to={`/building/${_publicProfile.buildingCode}`}>
+                <Link to={`/directory/building/${_publicProfile.buildingCode}`}>
                   {building}
                 </Link>
                 {room && (

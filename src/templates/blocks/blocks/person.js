@@ -93,7 +93,9 @@ class BlockPerson extends React.Component {
                   {person._publicDirectory.building && (
                     <p>
                       <Link
-                        to={`/building/${person._publicDirectory.buildingCode}`}
+                        to={`/directory/building/${
+                          person._publicDirectory.buildingCode
+                        }`}
                       >
                         {person._publicDirectory.building}
                       </Link>
