@@ -291,7 +291,7 @@ class DashboardOtherApps extends React.Component {
               Close
             </Button>
             <MoreAppsMessage>
-              <a href="https://github.com/csumb/csumb-gatsby/wiki/The-%22More-apps%22-button-in-the-dashboard">
+              <a href="https://csumb.teamdynamix.com/TDClient/KB/ArticleDet?ID=74441">
                 Why are these apps here?
               </a>
             </MoreAppsMessage>
