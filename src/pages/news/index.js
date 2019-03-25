@@ -3,6 +3,7 @@ import Layout from 'components/layouts/default'
 import SiteHeader from 'components/header/site-header'
 import Container from 'components/container'
 import { graphql } from 'gatsby'
+import { NewsList, NewsListItem } from 'components/pages/news/list'
 import SiteNavigation from 'components/navigation/site'
 
 const NewsPage = ({ data }) => {
@@ -14,7 +15,18 @@ const NewsPage = ({ data }) => {
           navigation={data.allCsumbNavigation.edges[0].node.navigation}
         />
       )}
-      <Container />
+      <Container topPadding>
+        <h2>Latest news</h2>
+        <NewsList>
+          {data.allContentfulNewsStory.edges.map(story => (
+            <NewsListItem
+              showTags={true}
+              {...story.node}
+              key={story.node.contentful_id}
+            />
+          ))}
+        </NewsList>
+      </Container>
     </Layout>
   )
 }
@@ -27,6 +39,34 @@ export const query = graphql`
       edges {
         node {
           navigation
+        }
+      }
+    }
+    allContentfulNewsStory(sort: { order: DESC, fields: [goLiveDate] }) {
+      edges {
+        node {
+          contentful_id
+          slug
+          title
+          goLiveDate
+          bylineName
+          bylineDate
+          teaserHeadline
+          teaserImage {
+            file {
+              url
+              fileName
+              contentType
+            }
+          }
+          childContentfulNewsStoryTeaserDescriptionTextNode {
+            teaserDescription
+          }
+          tags {
+            id
+            name
+            slug
+          }
         }
       }
     }
