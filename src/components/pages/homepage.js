@@ -143,7 +143,9 @@ const HomepageImageNavigationWrapper = styled('div')`
   background: ${colors.primary.dark};
   padding: 1.5rem 0;
   h3 {
-    margin-bottom: 0;
+    ${bp({
+      marginBottom: ['1rem', 0],
+    })}
   }
   a {
     color: ${colors.white};
@@ -177,7 +179,7 @@ const HomepageImageNavigation = ({ navigation }) => {
       <Container>
         <Flex flexWrap="wrap">
           {images.map((image, key) => (
-            <Box width={[1, 1 / 4]} pr={[0, 3]}>
+            <Box width={[1, 1 / 4]} px={[0, 2]}>
               <LinkInspect to={links[key]}>
                 <NavigationImage src={image.file.url} alt={alt[key]} />
                 <h3>{titles[key]}</h3>

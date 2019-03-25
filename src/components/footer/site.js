@@ -123,7 +123,7 @@ const SiteFooter = ({ site }) => {
                   <dt>Building</dt>
                   <dd>
                     <Link
-                      to={`/building/${site.contact.building.code}`}
+                      to={`/directory/building/${site.contact.building.code}`}
                       dangerouslySetInnerHTML={{
                         __html: site.contact.building.name,
                       }}

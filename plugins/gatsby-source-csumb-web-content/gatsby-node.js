@@ -163,6 +163,8 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
         buildingName: building.name,
         center: building.center,
         outline: building.outline,
+        address: building.address,
+        mailingAddress: building.mailingAddress,
         internal: {
           type: `CsumbBuilding`,
         },
