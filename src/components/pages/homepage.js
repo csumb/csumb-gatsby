@@ -10,6 +10,7 @@ import showdown from 'showdown'
 import bp from 'style/breakpoints'
 import LinkInspect from 'components/link-inspect'
 import Container from 'components/container'
+import { ButtonLink } from 'components/button'
 
 const dateFormat = 'MMMM D, YYYY'
 
@@ -161,6 +162,10 @@ const NavigationImage = styled('img')`
     display: ['none', 'block'],
   })}
   margin-bottom: 0.2rem;
+`
+
+const MoreItemsButton = styled(ButtonLink)`
+  margin: 1rem 1.5rem;
 `
 
 const HomepageImageNavigation = ({ navigation }) => {
@@ -318,4 +323,5 @@ export {
   FeaturedStory,
   InTheNews,
   HomepageImageNavigation,
+  MoreItemsButton,
 }
