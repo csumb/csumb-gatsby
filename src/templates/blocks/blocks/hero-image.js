@@ -90,7 +90,7 @@ class BlockHeroImage extends React.Component {
     }
     return (
       <>
-        {isMobile && (
+        {isMobile && (this.props.headline || this.props.text) && (
           <MobileHeroTextWrapper>
             <HeroText {...this.props} />
           </MobileHeroTextWrapper>
@@ -106,13 +106,15 @@ class BlockHeroImage extends React.Component {
           {!isMobile && (
             <HeroContainer>
               <Container>
-                <HeroImageTextWrapper
-                  position={
-                    ['ne', 'se'].indexOf(position) > -1 ? 'right' : 'left'
-                  }
-                >
-                  <HeroText {...this.props} />
-                </HeroImageTextWrapper>
+                {(this.props.headline || this.props.text) && (
+                  <HeroImageTextWrapper
+                    position={
+                      ['ne', 'se'].indexOf(position) > -1 ? 'right' : 'left'
+                    }
+                  >
+                    <HeroText {...this.props} />
+                  </HeroImageTextWrapper>
+                )}
               </Container>
             </HeroContainer>
           )}
