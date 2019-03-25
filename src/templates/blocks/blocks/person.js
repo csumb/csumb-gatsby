@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
+import Loading from 'components/loading'
 
 const Person = styled('div')`
   margin: 0.5rem 0;
@@ -22,6 +23,7 @@ const PersonPhoto = styled('img')`
 class BlockPerson extends React.Component {
   state = {
     person: false,
+    didLoad: false,
   }
 
   componentDidMount() {
@@ -37,18 +39,23 @@ class BlockPerson extends React.Component {
       .then(person => {
         this.setState({
           person: person,
+          didLoad: true,
         })
       })
       .catch(error => {
         this.setState({
           person: false,
+          didLoad: true,
         })
       })
   }
 
   render() {
-    const { person } = this.state
+    const { person, didLoad } = this.state
     const { compact } = this.props
+    if (!didLoad) {
+      return <Loading />
+    }
     return (
       <>
         {person && (
