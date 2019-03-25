@@ -143,7 +143,9 @@ const HomepageImageNavigationWrapper = styled('div')`
   background: ${colors.primary.dark};
   padding: 1.5rem 0;
   h3 {
-    margin-bottom: 0;
+    ${bp({
+      marginBottom: ['1rem', 0],
+    })}
   }
   a {
     color: ${colors.white};
