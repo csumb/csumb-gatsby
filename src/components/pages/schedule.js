@@ -132,7 +132,7 @@ const MeetingItem = props => {
       {props.showLocation && props._building && (
         <>
           <br />
-          <Link to={`building/${props._building.code}`}>
+          <Link to={`/directory/building/${props._building.code}`}>
             {props._building.buildingName}
           </Link>{' '}
           - Room {props.MEETING_RM}
