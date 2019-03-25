@@ -8,9 +8,8 @@ module.exports = {
     },
     swiftypeId: 'Gu7FdGTPV49T6dsYVBSV',
     schedule: {
-      currentTerm: 2192,
-      currentTermName: '2019spring',
-      endpoint: 'https://api.csumb.edu/schedule/',
+      currentTerm: 2194,
+      currentTermName: '2019fall',
     },
     labs: {
       customerId: '200b96ee-10c7-4355-83a4-3ded9ab6e845',
