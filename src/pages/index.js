@@ -8,7 +8,7 @@ import {
   NonFeaturedStory,
   FeaturedStory,
   InTheNews,
-  HomepageFooter,
+  HomepageImageNavigation,
 } from 'components/pages/homepage'
 import HomepageHero from 'components/homepages/2019/service-learning'
 
@@ -35,7 +35,10 @@ const sortItems = ({
 }
 
 const IndexPage = ({ data }) => {
-  const { allContentfulHomepageInTheNews } = data
+  const {
+    allContentfulHomepageInTheNews,
+    allContentfulHomepageImageNavigation,
+  } = data
 
   const { featured, notFeatured } = sortItems(data)
 
@@ -43,6 +46,9 @@ const IndexPage = ({ data }) => {
   return (
     <Layout noFooterMargin={true}>
       <HomepageHero />
+      <HomepageImageNavigation
+        navigation={allContentfulHomepageImageNavigation.edges[0].node}
+      />
       <Container topPadding>
         <h2>News &amp; events</h2>
         <Flex flexWrap="wrap">
@@ -74,8 +80,6 @@ const IndexPage = ({ data }) => {
           </Box>
         </Flex>
       </Container>
-
-      <HomepageFooter />
     </Layout>
   )
 }
@@ -84,6 +88,35 @@ export default IndexPage
 
 export const query = graphql`
   {
+    allContentfulHomepageImageNavigation(limit: 1) {
+      edges {
+        node {
+          childContentfulHomepageImageNavigationDisplayNamesTextNode {
+            childMarkdownRemark {
+              rawMarkdownBody
+            }
+          }
+          childContentfulHomepageImageNavigationLinksTextNode {
+            childMarkdownRemark {
+              rawMarkdownBody
+            }
+          }
+          childContentfulHomepageImageNavigationAlternativeTextTextNode {
+            childMarkdownRemark {
+              rawMarkdownBody
+            }
+          }
+          images {
+            file {
+              url
+              fileName
+              contentType
+            }
+          }
+        }
+      }
+    }
+
     allContentfulHomepageStory(
       limit: 20
       sort: { fields: goLiveDate, order: DESC }

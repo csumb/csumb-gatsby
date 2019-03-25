@@ -7,10 +7,9 @@ import { colors, fonts } from 'style/theme'
 import LazyHero from 'react-lazy-hero'
 import { LeadParagraph } from 'components/type'
 import showdown from 'showdown'
+import bp from 'style/breakpoints'
+import LinkInspect from 'components/link-inspect'
 import Container from 'components/container'
-import footerAthletics from 'assets/images/homepage/athletics.jpg'
-import footerMajorsPrograms from 'assets/images/homepage/majors-programs.jpg'
-import footerResidentialLife from 'assets/images/homepage/residential-life.jpg'
 
 const dateFormat = 'MMMM D, YYYY'
 
@@ -140,16 +139,11 @@ const StoryLabel = styled('p')`
   margin-bottom: 0.2rem;
 `
 
-const HomepageFooterWrapper = styled('div')`
+const HomepageImageNavigationWrapper = styled('div')`
   background: ${colors.primary.dark};
-  margin-top: 1rem;
   padding: 1.5rem 0;
-  img {
-    margin: 0;
-    max-height: 200px;
-  }
   h3 {
-    margin: 0;
+    margin-bottom: 0;
   }
   a {
     color: ${colors.white};
@@ -160,32 +154,41 @@ const HomepageFooterWrapper = styled('div')`
   }
 `
 
-const HomepageFooter = () => (
-  <HomepageFooterWrapper>
-    <Container>
-      <Flex flexWrap="wrap">
-        <Box width={[1, 1 / 3]} pr={[0, 3]}>
-          <a href="https://otterathletics.com">
-            <img src={footerAthletics} alt="" />
-            <h3>Athletics</h3>
-          </a>
-        </Box>
-        <Box width={[1, 1 / 3]} pr={[0, 3]}>
-          <Link to="/academics">
-            <img src={footerMajorsPrograms} alt="" />
-            <h3>Majors &amp; Programs</h3>
-          </Link>
-        </Box>
-        <Box width={[1, 1 / 3]}>
-          <Link to="/housing">
-            <img src={footerResidentialLife} alt="" />
-            <h3>Residential Life</h3>
-          </Link>
-        </Box>
-      </Flex>
-    </Container>
-  </HomepageFooterWrapper>
-)
+const NavigationImage = styled('img')`
+  ${bp({
+    display: ['none', 'block'],
+  })}
+  margin-bottom: 0.2rem;
+`
+
+const HomepageImageNavigation = ({ navigation }) => {
+  const titles = navigation.childContentfulHomepageImageNavigationDisplayNamesTextNode.childMarkdownRemark.rawMarkdownBody.split(
+    '\n'
+  )
+  const links = navigation.childContentfulHomepageImageNavigationLinksTextNode.childMarkdownRemark.rawMarkdownBody.split(
+    '\n'
+  )
+  const alt = navigation.childContentfulHomepageImageNavigationAlternativeTextTextNode.childMarkdownRemark.rawMarkdownBody.split(
+    '\n'
+  )
+  const images = navigation.images
+  return (
+    <HomepageImageNavigationWrapper>
+      <Container>
+        <Flex flexWrap="wrap">
+          {images.map((image, key) => (
+            <Box width={[1, 1 / 4]} pr={[0, 3]}>
+              <LinkInspect to={links[key]}>
+                <NavigationImage src={image.file.url} alt={alt[key]} />
+                <h3>{titles[key]}</h3>
+              </LinkInspect>
+            </Box>
+          ))}
+        </Flex>
+      </Container>
+    </HomepageImageNavigationWrapper>
+  )
+}
 
 const StoryType = ({ isEvent }) => (
   <StoryLabel>{isEvent ? <>Event</> : <>News</>}</StoryLabel>
@@ -312,5 +315,5 @@ export {
   NonFeaturedStory,
   FeaturedStory,
   InTheNews,
-  HomepageFooter,
+  HomepageImageNavigation,
 }
