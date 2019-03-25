@@ -65,7 +65,7 @@ class DirectoryPage extends React.Component {
             <BuildingList>
               {buildings.map(building => (
                 <li>
-                  <Link to={`/buildings/${building.code}`}>
+                  <Link to={`/directory/building/${building.code}`}>
                     {building.buildingName}
                   </Link>
                 </li>
