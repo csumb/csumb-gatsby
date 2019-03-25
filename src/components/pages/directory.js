@@ -7,6 +7,7 @@ const DirectoryNavigation = () => (
       { url: '/directory', name: 'Search people & departments' },
       { url: '/about/map-directions', name: 'Campus map' },
       { url: '/directory/buildings', name: 'Buildings' },
+      { url: '/directory/departments', name: 'Departments' },
     ]}
   />
 )
