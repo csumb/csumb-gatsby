@@ -212,6 +212,14 @@ module.exports = (graphql, actions) => {
                   allTermCourses.ge[ge].push(edge.node)
                 })
               }
+              if (typeof attributes.UR !== 'undefined') {
+                attributes.UR.forEach(ge => {
+                  if (typeof allTermCourses.ge[ge] === 'undefined') {
+                    allTermCourses.ge[ge] = []
+                  }
+                  allTermCourses.ge[ge].push(edge.node)
+                })
+              }
             }
           })
 
