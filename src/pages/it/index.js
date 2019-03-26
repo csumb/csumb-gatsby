@@ -9,6 +9,15 @@ import SiteNavigation from 'components/navigation/site'
 import Well from 'components/well'
 import { ITSystemStatus, ITAlerts } from 'components/pages/it'
 import { InputText, Submit } from 'components/forms'
+import styled from '@emotion/styled'
+
+const ITServiceHeader = styled('h3')`
+  margin-bottom: 0.4rem;
+`
+
+const HelpFlex = styled(Flex)`
+  margin: 2rem 0 1.5rem;
+`
 
 class ITSearch extends React.Component {
   render() {
@@ -20,7 +29,7 @@ class ITSearch extends React.Component {
         >
           <h2>Search our services</h2>
           <Flex flexWrap="wrap">
-            <Box width={[1, 8 / 12]} px={2}>
+            <Box width={[1, 8 / 12]} pr={[0, 2]}>
               <InputText
                 name="s"
                 label="Search our services"
@@ -28,7 +37,7 @@ class ITSearch extends React.Component {
                 hideLabel={true}
               />
             </Box>
-            <Box width={[1, 4 / 12]} px={2}>
+            <Box width={[1, 4 / 12]}>
               <Submit value="Search" nomargin={true} small />
             </Box>
           </Flex>
@@ -51,17 +60,17 @@ class ITPage extends React.Component {
         )}
         <Container topPadding>
           <ITSearch />
-          <Flex flexWrap="wrap">
-            <Box width={[1, 1 / 4]} px={2}>
-              <h3>Call us</h3>
+          <HelpFlex flexWrap="wrap">
+            <Box width={[1, 1 / 4]} pr={[0, 3]}>
+              <ITServiceHeader>Call us</ITServiceHeader>
               <p>
                 Call 831-582-4357 (HELP)
                 <br />
                 Monday - Friday 8 a.m. to 5 p.m.
               </p>
             </Box>
-            <Box width={[1, 1 / 4]} px={2}>
-              <h3>Visit us </h3>
+            <Box width={[1, 1 / 4]} pr={[0, 3]}>
+              <ITServiceHeader>Visit us </ITServiceHeader>
               <p>
                 <Link to="it/library-it-service-desk">
                   Drop by our service desk
@@ -69,77 +78,77 @@ class ITPage extends React.Component {
                 at the Library.
               </p>
             </Box>
-            <Box width={[1, 1 / 4]} px={2}>
-              <h3>Drop in Open Labs</h3>
+            <Box width={[1, 1 / 4]} pr={[0, 3]}>
+              <ITServiceHeader>Drop in Open Labs</ITServiceHeader>
               <p>
                 Come by our weekly{' '}
                 <Link to="it/technology-open-lab">Technology Open Labs</Link>.
               </p>
             </Box>
-            <Box width={[1, 1 / 4]} px={2}>
-              <h3>Alerts</h3>
+            <Box width={[1, 1 / 4]}>
+              <ITServiceHeader>Alerts</ITServiceHeader>
               <ITAlerts />
             </Box>
-          </Flex>
+          </HelpFlex>
           <Flex flexWrap="wrap">
-            <Box width={[1, 3 / 4]} pr={[0, 4]}>
+            <Box width={[1, 2 / 3]} pr={[0, 4]}>
               <h2>Popular Services</h2>
-              <h3>
+              <ITServiceHeader>
                 <Link to="it/accounts-and-passwords">Your account</Link>
-              </h3>
+              </ITServiceHeader>
               <p>
                 Claim a new CSUMB username, remember your password, and fix
                 issues with your account.
               </p>
-              <h3>
+              <ITServiceHeader>
                 <a href="https://csumb.teamdynamix.com/TDClient/Requests/ServiceCatalog?CategoryID=8800">
                   Software
                 </a>
-              </h3>
+              </ITServiceHeader>
               <p>
                 Get new software installed on your computer, or fix a software
                 issue.
               </p>
-              <h3>
+              <ITServiceHeader>
                 <a href="https://csumb.teamdynamix.com/TDClient/Requests/ServiceCatalog?CategoryID=8798">
                   Hardware &amp; moving your computer{' '}
                 </a>
-              </h3>
+              </ITServiceHeader>
               <p>
                 Request a new computer, move one to a new location, or fix a
                 physical problem with your device.
               </p>
-              <h3>
+              <ITServiceHeader>
                 <a href="https://csumb.teamdynamix.com/TDClient/Requests/ServiceCatalog?CategoryID=8799">
                   Printing
                 </a>
-              </h3>
+              </ITServiceHeader>
               <p>Fix your printer or a printer in a lab.</p>
-              <h3>
+              <ITServiceHeader>
                 <a href="https://csumb.teamdynamix.com/TDClient/Requests/ServiceCatalog?CategoryID=5747">
                   Telephones &amp; voicemail
                 </a>
-              </h3>
+              </ITServiceHeader>
               <p>
                 Manage your voicemail, get new phone numbers, and move phones.
               </p>
-              <h3>
+              <ITServiceHeader>
                 <a href="https://csumb.teamdynamix.com/TDClient/Requests/ServiceCatalog?CategoryID=5598">
                   Internet
                 </a>
-              </h3>
+              </ITServiceHeader>
               <p>
                 Log into the campus network, and fix issues with getting online.
               </p>
-              <h3>
+              <ITServiceHeader>
                 <a href="https://csumb.teamdynamix.com/TDClient/Requests/ServiceCatalog">
                   Full list of services
                 </a>
-              </h3>
+              </ITServiceHeader>
               <p>Browse the complete list of services and submit a ticket.</p>
             </Box>
-            <Box width={[1, 1 / 4]}>
-              <h2>Current system status</h2>
+            <Box width={[1, 1 / 3]}>
+              <h2>System status</h2>
               <ITSystemStatus />
             </Box>
           </Flex>
