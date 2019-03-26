@@ -81,13 +81,9 @@ const Event = ({ event }) => (
             {event.location.type === 'off-campus' && (
               <address>
                 {event.location.address.organisation}
-                <br />
                 {event.location.address.street}
-                <br />
                 {event.location.address.premise}
-                <br />
-                {event.location.address.city}, {event.location.address.state}
-                {'  '}
+                {event.location.address.city}, {event.location.address.state}{' '}
                 {event.location.address.zip}
               </address>
             )}
