@@ -37,6 +37,29 @@ const LabelNumberElement = styled('span')`
   }
 `
 
+const LabBarKey = styled('span')`
+  color: ${colors.white};
+  font-weight: bold;
+  margin-left: 1rem;
+  margin-top: 0.3rem;
+  display: inline-block;
+`
+
+const LabKey = () => (
+  <Well>
+    <h4>Key</h4>
+    <LabBarElement>
+      <LabBarMeasure available style={{ width: `30%` }}>
+        <LabBarKey>Available</LabBarKey>
+      </LabBarMeasure>
+      <LabBarMeasure offline style={{ width: `30%` }}>
+        <LabBarKey>Offline</LabBarKey>
+      </LabBarMeasure>
+      <LabBarKey>Occupied</LabBarKey>
+    </LabBarElement>
+  </Well>
+)
+
 const LabNumber = ({ label, children }) => (
   <LabelNumberElement>
     <strong>{label}:</strong>
@@ -91,4 +114,4 @@ class Lab extends React.Component {
   }
 }
 
-export { Lab }
+export { Lab, LabKey }

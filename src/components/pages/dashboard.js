@@ -18,9 +18,59 @@ import { DialogOverlay, DialogContent } from '@reach/dialog'
 import '@reach/menu-button/styles.css'
 import '@reach/dialog/styles.css'
 import NProgress from 'nprogress'
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
 
 const loginUrl =
   'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7'
+
+const DashboardIntroWrapper = styled('div')`
+  padding: 0.2rem 0;
+  background: ${colors.indicators.low};
+  color: ${colors.white};
+  a {
+    color: ${colors.white};
+    font-weight: bold;
+  }
+`
+
+const DashboardIntroClose = styled('button')`
+  background: transparent;
+  border: 0;
+  float: right;
+  color: ${colors.white};
+  cursor: pointer;
+`
+class DashboardIntro extends React.Component {
+  state = {
+    hidden: false,
+  }
+
+  render() {
+    if (cookies.get('csumbDashboardIntro') || this.state.hidden) {
+      return null
+    }
+    return (
+      <DashboardIntroWrapper>
+        <Container>
+          <DashboardIntroClose
+            onClick={event => {
+              this.setState({
+                hidden: true,
+              })
+              cookies.set('csumbDashboardIntro', '1', { path: '/' })
+            }}
+          >
+            <VisuallyHidden>Hide intro message</VisuallyHidden>
+            <FontAwesomeIcon icon={faTimes} />
+          </DashboardIntroClose>
+          The dashboard has a new look. <a href="/dashboard/new">Learn more</a>.
+        </Container>
+      </DashboardIntroWrapper>
+    )
+  }
+}
 
 const DashboardAppsWrapper = styled('div')`
   background: ${colors.primary.dark};
@@ -682,4 +732,5 @@ export {
   DashboardApp,
   DashboardContent,
   DashboardMobileToolbar,
+  DashboardIntro,
 }
