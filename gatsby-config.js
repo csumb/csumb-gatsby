@@ -18,6 +18,7 @@ module.exports = {
     overridePages: [
       'cost',
       'it',
+      'it/alerts',
       'library',
       'library/ask-librarian',
       'about/about-our-students',
@@ -137,7 +138,7 @@ module.exports = {
         pluginConfig: {
           anonymize_ip: true,
           head: false,
-          exclude: ['/preview/**', '/do-not-track/me/too/'],
+          exclude: ['/preview/**'],
         },
         gtagConfig: {
           respectDNT: true,

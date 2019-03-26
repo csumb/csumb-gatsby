@@ -84,7 +84,6 @@ class DashboardPage extends React.Component {
                           <DashboardContent user={context.user} />
                         </Container>
                       </section>
-                      )}
                     </>
                   )}
                 </>
