@@ -135,7 +135,7 @@ class UserAccountProfileForm extends React.Component {
         return response.json()
       })
       .then(response => {
-        fetch(`http://api.csumb.edu/profile/data?token=${response.id}`)
+        fetch(`https://api.csumb.edu/profile/data?token=${response.id}`)
           .then(response => {
             NProgress.inc()
             return response.json()
