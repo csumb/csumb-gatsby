@@ -18,6 +18,7 @@ module.exports = {
     overridePages: [
       'cost',
       'it',
+      'it/alerts',
       'library',
       'library/ask-librarian',
       'about/about-our-students',
