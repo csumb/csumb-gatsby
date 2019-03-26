@@ -92,6 +92,7 @@
     "typography": "^0.16.17",
     "typography-theme-sutro": "^0.15.10",
     "typography-theme-us-web-design-standards": "^0.16.9",
+    "universal-cookie": "^3.1.0",
     "vivus": "^0.4.4",
     "walk": "^2.3.14"
   },

@@ -8,6 +8,7 @@ import {
   DashboardApps,
   DashboardContent,
   DashboardMobileToolbar,
+  DashboardIntro,
 } from 'components/pages/dashboard'
 
 class DashboardPage extends React.Component {
@@ -69,6 +70,8 @@ class DashboardPage extends React.Component {
                           </button>
                         </Container>
                       </DashboardMobileToolbar>
+                      <DashboardIntro />
+
                       <DashboardContent
                         user={context.user}
                         mobileTab={activeTab}
@@ -80,6 +83,8 @@ class DashboardPage extends React.Component {
                     <>
                       <DashboardApps apps={data.allCsumbApp.edges} />
                       <section>
+                        <DashboardIntro />
+
                         <Container topPadding>
                           <DashboardContent user={context.user} />
                         </Container>

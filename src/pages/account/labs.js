@@ -3,7 +3,7 @@ import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
 import PageTitle from 'components/header/page-title'
 import Container from 'components/container'
-import { Lab } from 'components/pages/labs'
+import { Lab, LabKey } from 'components/pages/labs'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { AlertFyi } from 'components/alert'
 import { UserContext } from 'components/contexts/user'
@@ -39,6 +39,7 @@ class LabsPage extends React.Component {
                         Cinematic Arts labs are only avaialble for Cinematic
                         Arts students, and may require special training.
                       </AlertFyi>
+                      <LabKey />
                       <Flex flexWrap="wrap">
                         {labs.map(lab => (
                           <Box width={[1, 1 / 2, 1 / 2]} px={2}>
