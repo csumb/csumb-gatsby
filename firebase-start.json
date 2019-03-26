@@ -2,10 +2,12 @@
   "hosting": {
     "public": "public",
     "trailingSlash": false,
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/api/it-alerts",
+        "function": "itAlerts"
+      }
     ]
   }
 }

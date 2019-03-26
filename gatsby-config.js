@@ -137,7 +137,7 @@ module.exports = {
         pluginConfig: {
           anonymize_ip: true,
           head: false,
-          exclude: ['/preview/**', '/do-not-track/me/too/'],
+          exclude: ['/preview/**'],
         },
         gtagConfig: {
           respectDNT: true,
