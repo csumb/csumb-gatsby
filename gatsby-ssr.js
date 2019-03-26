@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserContext, setUserRole } from 'components/contexts/user'
+import { UserContext } from 'components/contexts/user'
 
 class UserComponent extends React.Component {
   render() {
