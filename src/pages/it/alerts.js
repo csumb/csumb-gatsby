@@ -55,6 +55,10 @@ class ITAlertsPage extends React.Component {
         )}
         <Container topPadding>
           <PageTitle>Alerts</PageTitle>
+          <p>
+            Below are the <strong>active</strong> alerts currently affecting
+            users at CSUMB:
+          </p>
           <div ref={this.alertRef}>
             {posts ? (
               <>
