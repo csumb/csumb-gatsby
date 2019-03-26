@@ -7,7 +7,7 @@ import { graphql } from 'gatsby'
 import { Flex, Box } from '@rebass/grid/emotion'
 import SiteNavigation from 'components/navigation/site'
 import Well from 'components/well'
-import { ITSystemStatus } from 'components/pages/it'
+import { ITSystemStatus, ITAlerts } from 'components/pages/it'
 import { InputText, Submit } from 'components/forms'
 
 class ITSearch extends React.Component {
@@ -34,48 +34,6 @@ class ITSearch extends React.Component {
           </Flex>
         </form>
       </Well>
-    )
-  }
-}
-
-class ITAlerts extends React.Component {
-  state = {
-    alerts: false,
-    didLoad: false,
-  }
-
-  componentDidMount() {
-    fetch('http://csumbalerts.tumblr.com/api/read/json?callback=csumbAlerts')
-      .then(response => {
-        return response.json()
-      })
-      .then(response => {
-        this.setState({
-          didLoad: true,
-          alerts: window._csumbITAlerts,
-        })
-      })
-  }
-
-  render() {
-    const { alerts, didLoad } = this.state
-    if (!didLoad) {
-      return null
-    }
-    return (
-      <p>
-        {alerts.length > 0 ? (
-          <Link to="/it/alerts">
-            {alerts.length > 1 ? (
-              <>There are {alerts.length} active alerts</>
-            ) : (
-              <>There is one active alert</>
-            )}
-          </Link>
-        ) : (
-          <>There are no active alerts.</>
-        )}
-      </p>
     )
   }
 }
@@ -120,7 +78,6 @@ class ITPage extends React.Component {
             </Box>
             <Box width={[1, 1 / 4]} px={2}>
               <h3>Alerts</h3>
-              <p>See if we are already aware of a problem.</p>
               <ITAlerts />
             </Box>
           </Flex>
