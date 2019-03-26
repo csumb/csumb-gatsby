@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
+import { colors } from 'style/theme'
 
 const PageNavigationList = styled('ul')`
   list-style-type: none;
@@ -13,6 +14,10 @@ const PageNavigationList = styled('ul')`
     text-decoration: none;
     &:hover {
       text-decoration: underline;
+    }
+    &[aria-current='page'] {
+      text-decoration: underline;
+      color: ${colors.primary.darkest};
     }
   }
 `

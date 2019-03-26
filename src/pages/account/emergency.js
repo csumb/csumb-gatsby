@@ -80,7 +80,14 @@ class UserEmergencyForm extends React.Component {
 
   render() {
     const { isReady, everbridgeUser, error, showForm, userToken } = this.state
-
+    let everbridgePhone = false
+    if (!error && everbridgeUser) {
+      everbridgeUser.user.paths.forEach(path => {
+        if (path.pathId === 241901148045324) {
+          everbridgePhone = path.value
+        }
+      })
+    }
     return (
       <AccountGroup legend="Text messages">
         {isReady ? (
@@ -91,20 +98,20 @@ class UserEmergencyForm extends React.Component {
               </AlertDanger>
             ) : (
               <>
-                <p>
-                  This phone number will receive text messages when there is a
-                  campus emergency.
-                </p>
-
-                {everbridgeUser.user.paths.map(path => (
+                {everbridgePhone ? (
                   <>
-                    {path.pathId === 241901148045324 && (
-                      <AccountData key={path.pathId}>
-                        {phoneFormatter.format(path.value, '(NNN) NNN-NNNN')}
-                      </AccountData>
-                    )}
+                    <p>
+                      This phone number will receive text messages when there is
+                      a campus emergency.
+                    </p>
+                    <AccountData>
+                      {phoneFormatter.format(everbridgePhone, '(NNN) NNN-NNNN')}
+                    </AccountData>
                   </>
-                ))}
+                ) : (
+                  <p>You do not have an emergency phone number set up.</p>
+                )}
+
                 <p>
                   <Button onClick={this.handleShowForm.bind(this)}>
                     Edit phone number

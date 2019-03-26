@@ -46,7 +46,10 @@ module.exports = (graphql, actions) => {
           reject(result.errors)
           return
         }
-        result.data.allCsumbBuilding.edges.forEach(async edge => {
+        result.data.allCsumbBuilding.edges.forEach(edge => {
+          if (!edge.node.code) {
+            return
+          }
           createPage({
             path: `directory/building/${edge.node.code.toLowerCase().trim()}`,
             component: courseTemplate,
