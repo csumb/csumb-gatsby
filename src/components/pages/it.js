@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import color from 'color'
+import Link from 'gatsby-link'
 import Loading from 'components/loading'
 
 const ITSystemStatusWrapper = styled('div')`
@@ -68,11 +69,66 @@ class ITSystemStatus extends React.Component {
     return (
       <div>
         {status.map(item => (
-          <ITSystemStatusItem {...item} />
+          <ITSystemStatusItem key={item.alias} {...item} />
         ))}
       </div>
     )
   }
 }
 
-export { ITSystemStatus, ITSystemStatusItem }
+class ITAlerts extends React.Component {
+  alertRef = React.createRef()
+
+  state = {
+    alerts: false,
+  }
+
+  componentDidMount() {
+    if (typeof window === 'undefined') {
+      return
+    }
+    const that = this
+    const script = window.document.createElement('script')
+    script.src = '//csumbalerts.tumblr.com/api/read/json'
+    script.async = false
+    this.alertRef.current.parentNode.insertBefore(script, this.alertRef.current)
+    script.addEventListener('load', function() {
+      that.setState({
+        alerts: window.tumblr_api_read,
+      })
+    })
+  }
+
+  render() {
+    const { alerts } = this.state
+    let alertCount = 0
+    if (alerts && alerts.posts) {
+      alerts.posts.forEach(alert => {
+        if (alert.tags) {
+          alert.tags.forEach(tag => {
+            if (tag === 'active') {
+              alertCount++
+            }
+          })
+        }
+      })
+    }
+    return (
+      <p ref={this.alertRef}>
+        {alerts && alerts.posts.length > 0 ? (
+          <Link to="/it/alerts">
+            {alertCount > 1 ? (
+              <>There are {alertCount} active alerts</>
+            ) : (
+              <>There is one active alert</>
+            )}
+          </Link>
+        ) : (
+          <>There are no active alerts.</>
+        )}
+      </p>
+    )
+  }
+}
+
+export { ITAlerts, ITSystemStatus, ITSystemStatusItem }
