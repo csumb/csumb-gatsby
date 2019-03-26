@@ -16,9 +16,9 @@ const ImageGridItem = ({ item }) => (
     {item.image && (
       <ImageGridImage
         src={
-          item.image.url
-            ? item.image.url
-            : `https://s3.amazonaws.com/csumb-uploads/${item.image.image.key}`
+          item.image.key
+            ? `https://s3.amazonaws.com/csumb-uploads/${item.image.key}`
+            : item.image.url
         }
         alt=""
       />
