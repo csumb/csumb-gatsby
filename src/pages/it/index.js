@@ -10,6 +10,7 @@ import Well from 'components/well'
 import { ITSystemStatus, ITAlerts } from 'components/pages/it'
 import { InputText, Submit } from 'components/forms'
 import styled from '@emotion/styled'
+import Blocks from 'templates/blocks'
 
 const ITServiceHeader = styled('h3')`
   margin-bottom: 0.4rem;
@@ -152,6 +153,9 @@ class ITPage extends React.Component {
               <ITSystemStatus />
             </Box>
           </Flex>
+          {data.allCsumbPage && (
+            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+          )}
         </Container>
       </Layout>
     )
@@ -166,6 +170,14 @@ export const query = graphql`
       edges {
         node {
           navigation
+        }
+      }
+    }
+    allCsumbPage(filter: { layout: { eq: "site" }, site: { eq: "it" } }) {
+      edges {
+        node {
+          pageContent
+          layout
         }
       }
     }
