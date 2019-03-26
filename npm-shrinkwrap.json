@@ -3535,6 +3535,11 @@
         "@types/node": "*"
       }
     },
+    "@types/cookie": {
+      "version": "0.3.2",
+      "resolved": "https://registry.npmjs.org/@types/cookie/-/cookie-0.3.2.tgz",
+      "integrity": "sha512-aHQA072E10/8iUQsPH7mQU/KUyQBZAGzTVRCUvnSz8mSvbrYsP4xEO2RSA0Pjltolzi0j8+8ixrm//Hr4umPzw=="
+    },
     "@types/cors": {
       "version": "2.8.4",
       "resolved": "https://registry.npmjs.org/@types/cors/-/cors-2.8.4.tgz",
@@ -3648,6 +3653,11 @@
       "version": "7.0.70",
       "resolved": "https://registry.npmjs.org/@types/node/-/node-7.0.70.tgz",
       "integrity": "sha512-bAcW/1aM8/s5iFKhRpu/YJiQf/b1ZwnMRqqsWRCmAqEDQF2zY8Ez3Iu9AcZKFKc3vCJc8KJVpJ6Pn54sJ1BvXQ=="
+    },
+    "@types/object-assign": {
+      "version": "4.0.30",
+      "resolved": "https://registry.npmjs.org/@types/object-assign/-/object-assign-4.0.30.tgz",
+      "integrity": "sha1-iUk3HVqZ9Dge4PHfCpt6GH4H5lI="
     },
     "@types/prop-types": {
       "version": "15.5.6",
@@ -29092,6 +29102,17 @@
           "integrity": "sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==",
           "dev": true
         }
+      }
+    },
+    "universal-cookie": {
+      "version": "3.1.0",
+      "resolved": "https://registry.npmjs.org/universal-cookie/-/universal-cookie-3.1.0.tgz",
+      "integrity": "sha512-sP6WuFgqIUro7ikgI2ndrsw9Ro+YvVBe5O9cQfWnjTicpLaSMUEUUDjQF8m8utzWF2ONl7tRkcZd7v4n6NnzjQ==",
+      "requires": {
+        "@types/cookie": "^0.3.1",
+        "@types/object-assign": "^4.0.30",
+        "cookie": "^0.3.1",
+        "object-assign": "^4.1.0"
       }
     },
     "universalify": {
