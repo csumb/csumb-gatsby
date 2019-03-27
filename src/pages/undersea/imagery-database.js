@@ -34,7 +34,6 @@ const UnderseaArchive = ({ data }) => {
       })
     }
   })
-  console.log(regions)
 
   return (
     <>
