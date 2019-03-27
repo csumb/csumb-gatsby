@@ -47,13 +47,19 @@ const GEListItem = ({ to, children }) => (
 
 const CourseList = ({ courses, term }) => {
   courses.sort((a, b) => {
-    if (a.CATALOG_NBR === b.CATALOG_NBR && a.SECTION > b.SECTION) {
+    if (
+      parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
+      a.SECTION > b.SECTION
+    ) {
       return 1
     }
-    if (a.CATALOG_NBR === b.CATALOG_NBR && a.SECTION < b.SECTION) {
+    if (
+      parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
+      a.SECTION < b.SECTION
+    ) {
       return -1
     }
-    if (a.CATALOG_NBR > b.CATALOG_NBR) {
+    if (parseInt(a.CATALOG_NBR) > parseInt(b.CATALOG_NBR)) {
       return 1
     }
     if (a.SECTION > b.SECTION) {
