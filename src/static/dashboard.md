@@ -13,6 +13,8 @@ Apps that do not integrate with campus systems, or were not set up to be visible
 
 To reorder your apps, expand your apps using the arrow on the right, and click the **Edit order** button.
 
+If you own an app that you want to be moved from More apps to the main dashboard, [Submit an IT workorder](https://csumb.teamdynamix.com/TDClient/Requests/TicketRequests/NewForm?ID=e2K20GXGOlk_).
+
 ## Ottercard, print balance, and your account
 
 Everything about your account, including **Ottercard balance**, **print balance**, and account information is now under the **Your account** button on the top of every page of the campus website. Here you can quickly find:
