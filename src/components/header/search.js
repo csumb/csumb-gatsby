@@ -58,14 +58,17 @@ class Search extends React.Component {
     return (
       <>
         <VisuallyHidden>
-          <label for="csumb-search">Search campus website</label>
+          <label htmlFor="csumb-search">Search campus website</label>
         </VisuallyHidden>
         <Autocomplete
           items={results}
           value={value}
           getItemValue={item => item.title}
           renderItem={(item, isHighlighted) => (
-            <SearchAutocompleteItem isHighlighted={isHighlighted}>
+            <SearchAutocompleteItem
+              key={item.url}
+              isHighlighted={isHighlighted}
+            >
               {item.title}
               <SearchAutocompleteItemSite isHighlighted={isHighlighted}>
                 {item.site_name}
@@ -73,6 +76,9 @@ class Search extends React.Component {
             </SearchAutocompleteItem>
           )}
           renderMenu={(items, value, style) => {
+            if (value === '') {
+              return <span />
+            }
             return <SearchResultsAutocomplete children={items} />
           }}
           onSelect={(value, item) => {
