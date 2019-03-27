@@ -85,7 +85,13 @@ class Search extends React.Component {
             navigate(item.url.replace('https://csumb.edu', ''))
           }}
           renderInput={props => {
-            return <SearchInput id="csumb-search" {...props} />
+            return (
+              <SearchInput
+                placeholder="Search CSUMB"
+                id="csumb-search"
+                {...props}
+              />
+            )
           }}
           onChange={(event, value) => {
             this.setState({
