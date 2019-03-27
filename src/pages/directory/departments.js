@@ -11,6 +11,7 @@ import { DirectoryNavigation } from 'components/pages/directory'
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const existingLetters = {}
+
 const Letter = styled('a')`
   display: inline-block;
   margin-right: 0.5rem;
