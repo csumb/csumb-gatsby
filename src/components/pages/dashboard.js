@@ -343,7 +343,7 @@ class DashboardOtherApps extends React.Component {
               Close
             </Button>
             <MoreAppsMessage>
-              <Link href="/dashboard/new">Why are these apps here?</Link>
+              <Link to="/dashboard/new">Why are these apps here?</Link>
             </MoreAppsMessage>
           </MoreAppsDialog>
         </DialogOverlay>
