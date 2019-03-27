@@ -10,7 +10,58 @@ import {
   AccountSidebar,
 } from 'components/pages/account'
 import { UserContext } from 'components/contexts/user'
+import Link from 'gatsby-link'
+import styled from '@emotion/styled'
 import NProgress from 'nprogress'
+
+const getTermName = (term, scheduleFormat) => {
+  const names = {
+    1: 'Winter',
+    2: 'Spring',
+    3: 'Summer',
+    4: 'Fall',
+  }
+  term = term.toString().split('')
+  if (scheduleFormat) {
+    return `${term[0]}0${term[1]}${term[2]}${names[term[3]].toLowerCase()}`
+  }
+  return `${names[term[3]]} ${term[0]}0${term[1]}${term[2]}`
+}
+
+const weekDays = [
+  {
+    short: 'mon',
+    day: 'Monday',
+  },
+  {
+    short: 'tues',
+    day: 'Tuesday',
+  },
+  {
+    short: 'wed',
+    day: 'Wednesday',
+  },
+  {
+    short: 'thurs',
+    day: 'Thursday',
+  },
+  {
+    short: 'fri',
+    day: 'Friday',
+  },
+  {
+    short: 'sat',
+    day: 'Saturday',
+  },
+  {
+    short: 'sun',
+    day: 'Sunday',
+  },
+]
+
+const CourseMeeting = styled('p')`
+  margin-left: 1rem;
+`
 
 class AccountSchedulePage extends React.Component {
   render() {
@@ -61,17 +112,6 @@ class ClassScheduleForm extends React.Component {
     NProgress.start()
   }
 
-  getTermName(term) {
-    const names = {
-      1: 'Winter',
-      2: 'Spring',
-      3: 'Summer',
-      4: 'Fall',
-    }
-    term = term.toString().split('')
-    return `${names[term[3]]} ${term[0]}0${term[1]}${term[2]}`
-  }
-
   render() {
     const { user } = this.props
     if (!user.profile.studentEnrollmentDescription) {
@@ -88,7 +128,7 @@ class ClassScheduleForm extends React.Component {
     return (
       <>
         {terms.map((term, termCode) => (
-          <AccountGroup legend={this.getTermName(termCode)}>
+          <AccountGroup legend={getTermName(termCode)}>
             {term.map(course => (
               <ClassScheduleCourse {...course} />
             ))}
@@ -106,36 +146,6 @@ class ClassScheduleCourse extends React.Component {
   }
 
   componentDidMount() {
-    const weekDays = [
-      {
-        short: 'mon',
-        day: 'Monday',
-      },
-      {
-        short: 'tues',
-        day: 'Tuesday',
-      },
-      {
-        short: 'wed',
-        day: 'Wednesday',
-      },
-      {
-        short: 'thurs',
-        day: 'Thursday',
-      },
-      {
-        short: 'fri',
-        day: 'Friday',
-      },
-      {
-        short: 'sat',
-        day: 'Saturday',
-      },
-      {
-        short: 'sun',
-        day: 'Sunday',
-      },
-    ]
     const { term_code, crn } = this.props
     fetch(`/schedule/json/${term_code}/${crn}.json`)
       .then(response => {
@@ -166,6 +176,8 @@ class ClassScheduleCourse extends React.Component {
       course_number,
       section_number,
       status_code,
+      term_code,
+      crn,
     } = this.props
     if (status_code !== 'E') {
       return null
@@ -173,18 +185,22 @@ class ClassScheduleCourse extends React.Component {
     if (!isReady) {
       return (
         <h3>
-          {course_subject} {course_number}: {section_number}
+          <Link to={`/schedule/${getTermName(term_code, true)}/${crn}`}>
+            {course_subject} {course_number}: {section_number}
+          </Link>
         </h3>
       )
     }
     return (
       <div>
         <h3>
-          {course.subject} {course.catalog_nbr} ({course.section}):{' '}
-          {course.title}
+          <Link to={`/schedule/${getTermName(term_code, true)}/${crn}`}>
+            {course.subject} {course.catalog_nbr} ({course.section}):{' '}
+            {course.title}
+          </Link>
         </h3>
         {course._meetings.map((meeting, key) => (
-          <p key={key}>
+          <CourseMeeting key={key}>
             {meeting._days.map(day => (
               <span key={day}>{day}, </span>
             ))}
@@ -193,7 +209,7 @@ class ClassScheduleCourse extends React.Component {
             <br />
             Building {meeting.meeting_bldg.replace(/^0+/, '')}, room{' '}
             {meeting.meeting_rm}
-          </p>
+          </CourseMeeting>
         ))}
       </div>
     )
