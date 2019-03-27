@@ -343,9 +343,7 @@ class DashboardOtherApps extends React.Component {
               Close
             </Button>
             <MoreAppsMessage>
-              <a href="https://csumb.teamdynamix.com/TDClient/KB/ArticleDet?ID=74441">
-                Why are these apps here?
-              </a>
+              <Link href="/dashboard/new">Why are these apps here?</Link>
             </MoreAppsMessage>
           </MoreAppsDialog>
         </DialogOverlay>
