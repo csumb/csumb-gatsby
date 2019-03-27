@@ -8127,6 +8127,11 @@
       "resolved": "https://registry.npmjs.org/csstype/-/csstype-2.5.7.tgz",
       "integrity": "sha512-Nt5VDyOTIIV4/nRFswoCKps1R5CD1hkiyjBE9/thNaNZILLEviVw9yWQw15+O+CpNjQKB/uvdcxFFOrSflY3Yw=="
     },
+    "csv-parse": {
+      "version": "4.3.4",
+      "resolved": "https://registry.npmjs.org/csv-parse/-/csv-parse-4.3.4.tgz",
+      "integrity": "sha512-M1R4WL+vt81+GnkKzi0s1qQM6WXvHQKDecNkpozzAEG8LHvIW9bq5eBnOKFQn50fTuAos7JodBh/07MK+J6G2Q=="
+    },
     "csv-streamify": {
       "version": "3.0.4",
       "resolved": "https://registry.npmjs.org/csv-streamify/-/csv-streamify-3.0.4.tgz",
@@ -8794,6 +8799,11 @@
           "integrity": "sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg=="
         }
       }
+    },
+    "dom-scroll-into-view": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/dom-scroll-into-view/-/dom-scroll-into-view-1.0.1.tgz",
+      "integrity": "sha1-Mqu5Lw2P7KYhUWKu9D5LRJq42Zw="
     },
     "dom-serializer": {
       "version": "0.1.0",
@@ -24389,6 +24399,15 @@
         "fbjs": "^0.8.4",
         "loose-envify": "^1.3.1",
         "object-assign": "^4.1.0"
+      }
+    },
+    "react-autocomplete": {
+      "version": "1.8.1",
+      "resolved": "https://registry.npmjs.org/react-autocomplete/-/react-autocomplete-1.8.1.tgz",
+      "integrity": "sha1-67vEAABqqRrVOLLRRye55+XQYxA=",
+      "requires": {
+        "dom-scroll-into-view": "1.0.1",
+        "prop-types": "^15.5.10"
       }
     },
     "react-calendar": {

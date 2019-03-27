@@ -9,6 +9,7 @@ script:
   - set -e
   - node --max_old_space_size=12000 ./node_modules/.bin/gatsby build
   - npm run directoryJson
+  - npm run scheduleJson
   - npm run buildJson
   - npm run configFirebase
   - npm run canary

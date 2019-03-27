@@ -1,176 +1,117 @@
 import React from 'react'
-import Link from 'gatsby-link'
-import VisuallyHidden from 'components/visually-hidden'
-import Rect from '@reach/rect'
-import { InputText } from 'components/forms'
 import styled from '@emotion/styled'
-import Portal from 'components/portal'
 import { colors } from 'style/theme'
 import { navigate } from '@reach/router'
-
-/** A11Y
- *
- * The autocomplete needs work
- */
+import Autocomplete from 'react-autocomplete'
+import VisuallyHidden from 'components/visually-hidden'
 
 const SearchResultsAutocomplete = styled('div')`
-  position: absolute;
   background: ${colors.white};
   border: 1px solid ${colors.black};
   text-align: left;
+  position: absolute;
   z-index: 1000;
-  a {
-    line-height: normal;
-    display: block;
-    color: ${colors.black};
-    text-decoration: none;
-    padding: 0.5rem;
-    :focus,
-    :hover {
-      background: ${colors.primary.darkest};
-      color: ${colors.white};
-      span {
-        color: ${colors.white};
-      }
-    }
-  }
-`
-
-const SearchAutocompleteItemTitle = styled('span')`
-  font-weight: bold;
-  font-size: 80%;
 `
 
 const SearchAutocompleteItemSite = styled('span')`
-  font-size: 60%;
+  font-size: 0.6rem;
+  font-weight: normal;
   color: ${colors.muted.dark};
   display: block;
+  ${props =>
+    props.isHighlighted &&
+    `
+    color: ${colors.white};
+  `}
 `
 
-const SearchForm = styled('form')`
-  ${props => (props.inline ? `display: inline-block;` : `display: block;`)}
-  margin-bottom: 0;
+const SearchAutocompleteItem = styled('div')`
+  color: ${colors.black};
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  line-height: normal;
+  text-align: left;
+  ${props =>
+    props.isHighlighted &&
+    `
+    background: ${colors.primary.darkest};
+    color: ${colors.white};
+  `}
 `
 
+const SearchInput = styled('input')`
+  border: 1px solid ${colors.gray.deafult};
+  padding: 0.3rem;
+  width: 100%;
+`
 class Search extends React.Component {
   state = {
-    search: false,
-    query: false,
-    selected: 0,
+    value: '',
+    results: [],
   }
-
-  handleSubmit(event) {
-    event.preventDefault()
-    navigate(`/search?q=${this.state.query}`)
-    this.setState({
-      query: false,
-    })
-  }
-
-  handleChange(event) {
-    this.setState({
-      query: event.target.value.trim(),
-    })
-
-    if (
-      !event.target.value.trim().length ||
-      event.target.value.trim().length < 3
-    ) {
-      this.setState({
-        search: false,
-      })
-    }
-    window
-      .fetch(
-        `https://api.swiftype.com/api/v1/public/engines/suggest?engine_key=${
-          this.props.swiftypeId
-        }&q=${event.target.value.trim().toLowerCase()}`
-      )
-      .then(response => {
-        return response.json()
-      })
-      .then(search => {
-        this.setState({
-          search: search,
-        })
-      })
-      .catch(error => {
-        this.setState({
-          search: false,
-        })
-      })
-  }
-
-  handleKeyDown(event) {
-    if (event.key === 'Escape') {
-      this.setState({ search: false })
-    }
-  }
-
-  handleAutocompleteKeyDown(event) {
-    if (event.key === 'Escape') {
-      this.setState({ search: false })
-    }
-  }
-
   render() {
-    const { search } = this.state
-    const { isMobile } = this.props
+    const { swiftypeId } = this.props
+    const { results, value } = this.state
     return (
-      <Rect>
-        {({ rect, ref }) => (
-          <SearchForm
-            method="GET"
-            action="/search"
-            onSubmit={this.handleSubmit.bind(this)}
-            inline={!this.props.fullWidth}
-          >
-            <InputText
-              label="Search"
-              name="q"
-              forwardedRef={ref}
-              autoComplete="off"
-              hideLabel={true}
-              placeholder="Search"
-              onChange={this.handleChange.bind(this)}
-              onKeyDown={this.handleKeyDown.bind(this)}
-              inline={!this.props.fullWidth}
-              noMargin={!isMobile}
-            />
-            <Portal>
-              {search ? (
-                <SearchResultsAutocomplete
-                  onKeyDown={this.handleAutocompleteKeyDown.bind(this)}
-                  forwardedRef={node => {
-                    this.autocompleteRef = node
-                  }}
-                  style={{
-                    top: rect.top + rect.height,
-                    left: rect.left,
-                    width: rect.width,
-                  }}
-                >
-                  {search.records.page.map(item => (
-                    <div key={item.id}>
-                      <Link to={item.url.replace('https://csumb.edu', '')}>
-                        <SearchAutocompleteItemTitle>
-                          {item.title}
-                        </SearchAutocompleteItemTitle>
-                        <SearchAutocompleteItemSite>
-                          {item.site_name}
-                        </SearchAutocompleteItemSite>
-                      </Link>
-                    </div>
-                  ))}
-                </SearchResultsAutocomplete>
-              ) : null}
-            </Portal>
-            <VisuallyHidden>
-              <input type="submit" value="Search" />
-            </VisuallyHidden>
-          </SearchForm>
-        )}
-      </Rect>
+      <>
+        <VisuallyHidden>
+          <label htmlFor="csumb-search">Search campus website</label>
+        </VisuallyHidden>
+        <Autocomplete
+          items={results}
+          value={value}
+          getItemValue={item => item.title}
+          renderItem={(item, isHighlighted) => (
+            <SearchAutocompleteItem
+              key={item.url}
+              isHighlighted={isHighlighted}
+            >
+              {item.title}
+              <SearchAutocompleteItemSite isHighlighted={isHighlighted}>
+                {item.site_name}
+              </SearchAutocompleteItemSite>
+            </SearchAutocompleteItem>
+          )}
+          renderMenu={(items, value, style) => {
+            if (value === '') {
+              return <span />
+            }
+            return <SearchResultsAutocomplete children={items} />
+          }}
+          onSelect={(value, item) => {
+            navigate(item.url.replace('https://csumb.edu', ''))
+          }}
+          renderInput={props => {
+            return <SearchInput id="csumb-search" {...props} />
+          }}
+          onChange={(event, value) => {
+            this.setState({
+              value: value,
+            })
+            fetch(
+              `https://api.swiftype.com/api/v1/public/engines/suggest?engine_key=${swiftypeId}&q=${value
+                .trim()
+                .toLowerCase()}`
+            )
+              .then(response => {
+                return response.json()
+              })
+              .then(search => {
+                this.setState({
+                  results: search.records.page,
+                })
+              })
+              .catch(error => {
+                this.setState({
+                  results: false,
+                })
+              })
+          }}
+        />
+      </>
     )
   }
 }

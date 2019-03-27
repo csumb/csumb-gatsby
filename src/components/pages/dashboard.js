@@ -65,7 +65,9 @@ class DashboardIntro extends React.Component {
             <VisuallyHidden>Hide intro message</VisuallyHidden>
             <FontAwesomeIcon icon={faTimes} />
           </DashboardIntroClose>
-          The dashboard has a new look. <a href="/dashboard/new">Learn more</a>.
+          The dashboard has a new look. Your schedule, Ottercard, and more are
+          now under <strong>Your account</strong> above.{' '}
+          <a href="/dashboard/new">Learn more</a>.
         </Container>
       </DashboardIntroWrapper>
     )
