@@ -26,7 +26,7 @@ const UnderseaArchive = ({ data }) => {
   data.forEach(({ node }) => {
     if (node.table === 'Archives') {
       node._mpas = []
-      node.data.MPAs.map(mpaId => {
+      node.data.MPAs.forEach(mpaId => {
         node._mpas.push(MPAs[mpaId])
       })
       node.data.Region.forEach(regionId => {
