@@ -127,15 +127,21 @@ const MeetingItem = props => {
   const end = moment(props.MEETING_TIME_END)
   return (
     <li>
-      {meetingDays.length && meetingDays.join(', ')} {start.format('h:mma')} to{' '}
-      {end.format('h:mma')}
-      {props.showLocation && props._building && (
+      {parseInt(props.MEETING_BLDG) > 990 ? (
+        <em>Arranged</em>
+      ) : (
         <>
-          <br />
-          <Link to={`/directory/building/${props._building.code}`}>
-            {props._building.buildingName}
-          </Link>{' '}
-          - Room {props.MEETING_RM}
+          {meetingDays.length && meetingDays.join(', ')} {start.format('h:mma')}{' '}
+          to {end.format('h:mma')}
+          {props.showLocation && props._building && (
+            <>
+              <br />
+              <Link to={`/directory/building/${props._building.code}`}>
+                {props._building.buildingName}
+              </Link>{' '}
+              - Room {props.MEETING_RM}
+            </>
+          )}
         </>
       )}
     </li>

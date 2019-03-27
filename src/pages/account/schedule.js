@@ -207,16 +207,20 @@ class ClassScheduleCourse extends React.Component {
           </Link>
         </CourseHeader>
         {course._meetings.map((meeting, key) => (
-          <CourseMeeting key={key}>
-            {meeting._days.map(day => (
-              <span key={day}>{day}, </span>
-            ))}
-            {moment(meeting.meeting_time_start).format('h:mma')} to{' '}
-            {moment(meeting.meeting_time_end).format('h:mma')}
-            <br />
-            Building {meeting.meeting_bldg.replace(/^0+/, '')}, room{' '}
-            {meeting.meeting_rm}
-          </CourseMeeting>
+          <React.Fragment key={key}>
+            {parseInt(meeting.meeting_bldg) < 990 && (
+              <CourseMeeting key={key}>
+                {meeting._days.map(day => (
+                  <span key={day}>{day}, </span>
+                ))}
+                {moment(meeting.meeting_time_start).format('h:mma')} to{' '}
+                {moment(meeting.meeting_time_end).format('h:mma')}
+                <br />
+                Building {meeting.meeting_bldg.replace(/^0+/, '')}, room{' '}
+                {meeting.meeting_rm}
+              </CourseMeeting>
+            )}
+          </React.Fragment>
         ))}
       </div>
     )

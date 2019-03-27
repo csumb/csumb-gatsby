@@ -59,7 +59,7 @@ class BlockPerson extends React.Component {
     return (
       <>
         {person && (
-          <Person>
+          <Person id={`profile-${person.email.split('@').shift()}`}>
             {compact ? (
               <p>
                 <Link
