@@ -63,6 +63,10 @@ const CourseMeeting = styled('p')`
   margin-left: 1rem;
 `
 
+const CourseHeader = styled('h3')`
+  margin-bottom: 0.5rem;
+`
+
 class AccountSchedulePage extends React.Component {
   render() {
     return (
@@ -110,6 +114,9 @@ class AccountSchedulePage extends React.Component {
 class ClassScheduleForm extends React.Component {
   componentDidMount() {
     NProgress.start()
+    setTimeout(() => {
+      NProgress.done()
+    }, 3000)
   }
 
   render() {
@@ -184,21 +191,21 @@ class ClassScheduleCourse extends React.Component {
     }
     if (!isReady) {
       return (
-        <h3>
+        <CourseHeader>
           <Link to={`/schedule/${getTermName(term_code, true)}/${crn}`}>
             {course_subject} {course_number}: {section_number}
           </Link>
-        </h3>
+        </CourseHeader>
       )
     }
     return (
       <div>
-        <h3>
+        <CourseHeader>
           <Link to={`/schedule/${getTermName(term_code, true)}/${crn}`}>
             {course.subject} {course.catalog_nbr} ({course.section}):{' '}
             {course.title}
           </Link>
-        </h3>
+        </CourseHeader>
         {course._meetings.map((meeting, key) => (
           <CourseMeeting key={key}>
             {meeting._days.map(day => (
