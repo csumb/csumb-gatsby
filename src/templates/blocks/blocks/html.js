@@ -9,6 +9,7 @@ const approvedBlocks = [
   '14388716-3cea-43ee-bcd3-a4458088f7b6',
   '3be2d140-7b6a-44d9-9d95-4ba6950e37b9',
   'a6dda617-0a0f-4c9e-9ce3-80ec3adb3037',
+  'bf244476-74fb-4c1c-a7c4-c7e255a7e445',
 ]
 
 const BlockHtml = ({ uuid, html }) => {
