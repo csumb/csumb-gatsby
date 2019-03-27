@@ -10,8 +10,9 @@ import {
 } from '@reach/menu-button'
 import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
-
+import Cookies from 'universal-cookie'
 import '@reach/menu-button/styles.css'
+const cookies = new Cookies()
 
 const userLinkStyles = `
   color: ${colors.primary.darkest} !important;
@@ -80,6 +81,7 @@ const UserDashboardLink = styled(Link)`
 class UserDropdown extends React.Component {
   handleLogout(event) {
     event.preventDefault()
+    cookies.remove('csumb-sites')
     fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
     })
