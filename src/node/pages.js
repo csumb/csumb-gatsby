@@ -82,6 +82,10 @@ module.exports = (graphql, actions) => {
                   navigation {
                     url
                     name
+                    children {
+                      url
+                      name
+                    }
                   }
                   breadcrumbs
                   feedbackEmail
