@@ -47,6 +47,9 @@ const GEListItem = ({ to, children }) => (
 
 const CourseList = ({ courses, term }) => {
   courses.sort((a, b) => {
+    if(a.SUBJECT !== b.SUBJECT) {
+      return a.SUBJECT.localeCompare(b.SUBJECT)
+    }
     if (
       parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
       a.SECTION > b.SECTION
