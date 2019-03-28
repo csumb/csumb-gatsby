@@ -16,6 +16,15 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import VisuallyHidden from 'components/visually-hidden'
 
+const FooterGiftButton = styled('a')`
+  color: ${colors.white};
+  border: 2px solid white;
+  display: inline-block;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  text-decoration: none;
+`
+
 const FooterSocialIconLink = styled('a')`
   color: ${colors.white};
   text-decoration: none;
@@ -109,8 +118,8 @@ class Footer extends React.Component {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/donate" title="">
-                        Make a gift
+                      <Link to="/veterans" title="">
+                        Veterans
                       </Link>
                     </li>
                   </FooterList>
@@ -196,6 +205,11 @@ class Footer extends React.Component {
                   <strong>Mail:</strong> 100 Campus Center, Seaside, CA 93955
                 </FooterAddressListItem>
               </FooterAddressList>
+              <div>
+                <FooterGiftButton href="https://donate.csumb.edu">
+                  Make a gift
+                </FooterGiftButton>
+              </div>
               <LegalLink to="https://cm.maxient.com/reportingform.php?CSUMontereyBay&layout_id=0">
                 Report concerning behavior
               </LegalLink>{' '}
