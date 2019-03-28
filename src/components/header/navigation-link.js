@@ -5,15 +5,17 @@ import styled from '@emotion/styled'
 
 const NavigationLinkList = styled('li')`
   margin-left: 0.5rem;
+  margin-bottom: 0;
   display: inline-block;
   font-weight: 300;
+  font-size: 0.9rem;
   font-family: ${fonts.heading};
   a, a:visited {
     text-decoration: none;
     ${props =>
       props.last
-        ? `padding: 0.25rem 0 0.25rem 0.25rem;`
-        : `padding: 0.25rem 0.25rem;`}
+        ? `padding: 0.25rem 0 0 0.25rem;`
+        : `padding: 0.25rem 0.25rem 0 0.25rem;`}
     color: ${colors.primary.darkest};
     &:hover {
       text-decoration: underline;
