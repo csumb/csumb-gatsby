@@ -34,6 +34,19 @@ class BlockHeading extends React.Component {
   }
 
   handleToggle() {
+    if (typeof document === 'undefined') {
+      return
+    }
+    const collapsedBlocks = document.querySelectorAll(
+      `[data-collapse="heading-${this.props.uuid}"]`
+    )
+    collapsedBlocks.forEach(block => {
+      if (this.state.isOpen) {
+        block.classList.add('collapsed')
+      } else {
+        block.classList.remove('collapsed')
+      }
+    })
     this.setState({
       isOpen: !this.state.isOpen,
     })
@@ -42,19 +55,19 @@ class BlockHeading extends React.Component {
   render() {
     let HeadingTag = styled(`h${this.props.level}`)``
 
-    const { url, text, uuid, collapsible, headerHandler } = this.props
+    const { url, text, uuid, collapsible } = this.props
     const { isOpen } = this.state
     return (
-      <HeadingTag id={`heading-${uuid}`} collapsible={collapsible}>
+      <HeadingTag
+        id={`heading-${uuid}`}
+        data-collapsible={collapsible}
+        collapsible={collapsible}
+      >
         {collapsible ? (
-          <CollapsibleHeading
-            onClick={() => {
-              headerHandler()
-              this.handleToggle()
-            }}
-          >
+          <CollapsibleHeading onClick={this.handleToggle.bind(this)}>
             <CollapsibleIcon
               size="1x"
+              style={{ maxWidth: '100px' }}
               icon={isOpen ? faChevronDown : faChevronRight}
             />
             <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>
