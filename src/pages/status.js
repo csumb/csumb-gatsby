@@ -61,7 +61,7 @@ class StatusPage extends React.Component {
             </p>
           </Well>
           <Well>
-            <h2>Status &amp; uptime</h2>
+            <h2>Uptime</h2>
             {updown ? (
               <>
                 <LeadParagraph>
