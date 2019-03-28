@@ -6,7 +6,6 @@ import Helmet from 'react-helmet'
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 import Emergency from 'components/emergency'
-import FeedbackTab from 'components/feedback-tab'
 
 class Layout extends React.Component {
   render() {
@@ -51,7 +50,6 @@ class Layout extends React.Component {
         <SkipNavContent />
         {this.props.children}
         <Footer noFooterMargin={noFooterMargin ? true : false} />
-        <FeedbackTab />
       </>
     )
   }
