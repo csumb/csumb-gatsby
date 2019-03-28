@@ -53,11 +53,9 @@ class BlockPerson extends React.Component {
   render() {
     const { person, didLoad } = this.state
     const { compact } = this.props
-    if (!didLoad) {
-      return <Loading />
-    }
     return (
-      <>
+      <div>
+        {!didLoad && <Loading />}
         {person && (
           <Person id={`profile-${person.email.split('@').shift()}`}>
             {compact ? (
@@ -119,7 +117,7 @@ class BlockPerson extends React.Component {
             )}
           </Person>
         )}
-      </>
+      </div>
     )
   }
 }
