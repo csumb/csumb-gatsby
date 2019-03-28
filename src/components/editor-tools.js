@@ -5,7 +5,6 @@ import { colors } from 'style/theme'
 import styled from '@emotion/styled'
 
 const EditButtonLink = styled('a')`
-  float: right;
   margin: 0 0 0.5rem 0.5rem;
   color: ${colors.white};
   background: ${colors.primary.dark};
@@ -15,6 +14,11 @@ const EditButtonLink = styled('a')`
   &:visited {
     color: ${colors.white};
   }
+`
+
+const EditButtonWrapper = styled('div')`
+  margin-bottom: 0.5rem;
+  text-align: right;
 `
 
 const cookies = new Cookies()
@@ -70,12 +74,14 @@ class PageEditorUserTools extends React.Component {
       return null
     }
     return (
-      <EditButtonLink
-        target="_blank"
-        href={`https://edit.csumb.edu/node/${pageId}/edit`}
-      >
-        Edit page
-      </EditButtonLink>
+      <EditButtonWrapper>
+        <EditButtonLink
+          target="_blank"
+          href={`https://edit.csumb.edu/node/${pageId}/edit`}
+        >
+          Edit page
+        </EditButtonLink>
+      </EditButtonWrapper>
     )
   }
 }
