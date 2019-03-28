@@ -1,6 +1,5 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
-import styled from '@emotion/styled'
 import Container from 'components/container'
 import BlockList from './blocks/list'
 import BlockText from './blocks/text'
