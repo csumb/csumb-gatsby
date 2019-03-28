@@ -353,6 +353,7 @@ class HeaderMobile extends React.Component {
               <MobileNavigationLink to="/life">
                 Campus life
               </MobileNavigationLink>
+              <MobileNavigationLink to="/alumni">Alumni</MobileNavigationLink>
               <MobileNavigationLink to="/everything">
                 Everything else
               </MobileNavigationLink>
