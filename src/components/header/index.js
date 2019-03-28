@@ -12,7 +12,6 @@ import styled from '@emotion/styled'
 
 const HeaderWrapper = styled('header')`
   padding-top: 0.75rem;
-  padding-bottom: 0.5rem;
   @media print {
     display: none;
   }
@@ -86,6 +85,7 @@ class Header extends React.Component {
                       <NavigationLink to="/cost">Cost &amp; aid</NavigationLink>
                       <NavigationLink to="/academics">Academics</NavigationLink>
                       <NavigationLink to="/life">Campus life</NavigationLink>
+                      <NavigationLink to="/alumni">Alumni</NavigationLink>
                       <NavigationLink to="/everything" last={true}>
                         Everything else
                       </NavigationLink>

@@ -43,11 +43,19 @@ const EventDateItem = styled('p')`
   font-size: 1.3rem;
 `
 
-const Event = ({ event }) => (
+const Event = ({ event, linkToEvent }) => (
   <>
     {event && event.times && (
       <>
-        {event.title && <h2>{event.title}</h2>}
+        {event.title && (
+          <h2>
+            {linkToEvent ? (
+              <Link to={event.link}>{event.title}</Link>
+            ) : (
+              <>{event.title}</>
+            )}
+          </h2>
+        )}
         <LeadParagraph>{event.description}</LeadParagraph>
         <Flex flexWrap="wrap">
           {event.image && (

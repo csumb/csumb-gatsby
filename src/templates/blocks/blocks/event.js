@@ -7,7 +7,7 @@ class BlockEvent extends React.Component {
     if (!event) {
       return null
     }
-    return <Event event={event} />
+    return <Event event={event} linkToEvent={true} />
   }
 }
 

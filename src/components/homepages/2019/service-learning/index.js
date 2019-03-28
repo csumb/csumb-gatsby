@@ -8,6 +8,9 @@ import Link from 'gatsby-link'
 import { css } from '@emotion/core'
 import Container from 'components/container'
 
+const MapContainer = styled(Container)`
+  position: relative;
+`
 const InfoWindowContent = styled('div')`
   max-width: 350px;
   margin-bottom: 0;
@@ -35,7 +38,6 @@ const MobileFloatBox = styled('div')`
 const FloatBox = styled('div')`
   position: absolute;
   top: 40px;
-  left: 40px;
   max-width: 400px;
   z-index: 10000;
 `
@@ -188,8 +190,8 @@ class HomepageHero extends React.Component {
         {!isMobile && (
           <MapWrapper>
             <ServiceLearningMap google={google} />
-            <FloatBox>
-              <Container>
+            <MapContainer>
+              <FloatBox>
                 <FloatText>
                   <h1>
                     <Link to="/service/service-learning-quick-facts">
@@ -201,8 +203,8 @@ class HomepageHero extends React.Component {
                     in our community.
                   </LeadParagraph>
                 </FloatText>
-              </Container>
-            </FloatBox>
+              </FloatBox>
+            </MapContainer>
           </MapWrapper>
         )}
       </>
