@@ -18,8 +18,8 @@ fs.readJson('./_web-content/_data/redirects.json', (err, redirects) => {
     const destination = redirects[source]
     if (source != destination && source != 'schedule') {
       firebase.hosting.redirects.push({
-        source: source,
-        destination: destination,
+        source: `/${source}`,
+        destination: `/${destination}`,
         type: 301,
       })
     }
