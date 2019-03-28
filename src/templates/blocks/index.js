@@ -217,9 +217,25 @@ class Blocks extends React.Component {
                       const index = expandedBlocks.indexOf(layout.id)
                       if (index > -1) {
                         expandedBlocks.splice(index, 1)
+                        blocks.layout.forEach(subLayout => {
+                          const block = this.blocks.blocks[subLayout.id]
+                          if (!block || typeof block.data === 'undefined') {
+                            return
+                          }
+                          if (
+                            block.type === 'heading' &&
+                            block._collapsedHeader === layout.id
+                          ) {
+                            const subIndex = expandedBlocks.indexOf(
+                              subLayout.id
+                            )
+                            expandedBlocks.splice(subIndex, 1)
+                          }
+                        })
                       } else {
                         expandedBlocks.push(layout.id)
                       }
+
                       this.setState({
                         expandedBlocks: expandedBlocks,
                       })
