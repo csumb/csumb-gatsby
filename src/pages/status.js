@@ -52,6 +52,13 @@ class StatusPage extends React.Component {
             <p>
               The website is built <strong>every 15 minutes</strong>.
             </p>
+            <p>
+              Look like we're behind? Check{' '}
+              <a href="https://www.traviscistatus.com/">
+                the status of our website build tool
+              </a>
+              .
+            </p>
           </Well>
           <Well>
             <h2>Status &amp; uptime</h2>
