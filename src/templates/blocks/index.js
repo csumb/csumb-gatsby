@@ -1,5 +1,6 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
+import styled from '@emotion/styled'
 import Container from 'components/container'
 import BlockList from './blocks/list'
 import BlockText from './blocks/text'
@@ -27,7 +28,17 @@ import BlockEvent from './blocks/event'
 import BlockEventFeed from './blocks/event-feed'
 import BlockSocial from './blocks/social'
 import BlockHtml from './blocks/html'
-import 'style/collapse.css'
+
+const CollapsePadding = styled('div')`
+  margin-left: 1rem;
+`
+
+const CollapseWrapper = ({ inCollapsedHeader, children }) => {
+  if (!inCollapsedHeader) {
+    return <>{children}</>
+  }
+  return <CollapsePadding>{children}</CollapsePadding>
+}
 
 class Block extends React.Component {
   blockComponents = {
@@ -60,12 +71,28 @@ class Block extends React.Component {
   }
 
   render() {
-    const { type, block, hidden, inColumn } = this.props
+    const {
+      type,
+      block,
+      hidden,
+      headerHandler,
+      inCollapsedHeader,
+      inColumn,
+    } = this.props
     if (typeof this.blockComponents[type] === 'undefined' || hidden) {
       return null
     }
     let BlockType = this.blockComponents[type]
-    return <BlockType {...block.data} uuid={block.uuid} inColumn={inColumn} />
+    return (
+      <CollapseWrapper inCollapsedHeader={inCollapsedHeader}>
+        <BlockType
+          {...block.data}
+          uuid={block.uuid}
+          headerHandler={headerHandler}
+          inColumn={inColumn}
+        />
+      </CollapseWrapper>
+    )
   }
 }
 
@@ -103,47 +130,52 @@ const Columns = ({ layout, blocks, hidden }) => {
   )
 }
 class Blocks extends React.Component {
-  blocksRef = React.createRef()
+  state = {
+    expandedBlocks: [],
+  }
 
   constructor(props) {
     super(props)
     let { blocks } = props
     this.blocks = JSON.parse(blocks)
+    this.addBlockHeaderRelationships()
   }
 
-  componentDidMount() {
-    if (typeof document === 'undefined') {
-      return
-    }
-    if (!this.blocksRef || !this.blocksRef.current) {
-      return
-    }
-    const collapsibleHeaders = document.querySelectorAll(
-      'h2[data-collapsible="true"],h3[data-collapsible="true"],h4[data-collapsible="true"]'
-    )
-    if (!collapsibleHeaders.length) {
-      return
-    }
-    collapsibleHeaders.forEach(header => {
-      const nextHeader = []
-      const id = header.id
-      for (let i = header.tagName.replace(/h/i, ''); i > 0; i--) {
-        nextHeader.push(`h${i}[data-collapsible]`)
-      }
-      const selector = nextHeader.join(',')
-      let element = header.nextElementSibling
-      while (element) {
-        if (element.matches(selector)) break
-        element.setAttribute('data-collapse', id)
-        element.classList.add('collapsible')
-        element.classList.add('collapsed')
-        element = element.nextElementSibling
-      }
+  addBlockHeaderRelationships() {
+    let lastHeader = false
+
+    const headerLevels = [4, 3, 2]
+
+    headerLevels.forEach(headerLevel => {
+      lastHeader = false
+      this.blocks.layout.forEach(layout => {
+        const block = this.blocks.blocks[layout.id]
+        if (!block || typeof block.data === 'undefined') {
+          return
+        }
+        const level = parseInt(block.data.level)
+        if (
+          block.type === 'heading' &&
+          level === headerLevel &&
+          block.data.collapsible
+        ) {
+          lastHeader = block.uuid
+        } else {
+          if (block.type === 'heading' && level <= headerLevel) {
+            lastHeader = false
+          } else {
+            if (lastHeader && !block._collapsedHeader) {
+              block._collapsedHeader = lastHeader
+            }
+          }
+        }
+      })
     })
   }
 
   render() {
     const blocks = this.blocks
+    const { expandedBlocks } = this.state
 
     if (
       typeof blocks.layout === 'undefined' ||
@@ -152,18 +184,53 @@ class Blocks extends React.Component {
       return null
     }
     return (
-      <Container ref={this.blocksRef}>
+      <Container>
         {blocks.layout.map(layout => (
           <React.Fragment key={layout.id}>
             {blocks.blocks[layout.id] && (
               <>
                 {layout._children ? (
-                  <Columns layout={layout} blocks={blocks.blocks} />
+                  <Columns
+                    layout={layout}
+                    blocks={blocks.blocks}
+                    inCollapsedHeader={
+                      blocks.blocks[layout.id]._collapsedHeader
+                    }
+                    hidden={
+                      blocks.blocks[layout.id]._collapsedHeader &&
+                      (!expandedBlocks.length ||
+                        expandedBlocks.indexOf(
+                          blocks.blocks[layout.id]._collapsedHeader
+                        ) === -1)
+                    }
+                  />
                 ) : (
                   <Block
                     key={layout.id}
                     type={blocks.blocks[layout.id].type}
                     block={blocks.blocks[layout.id]}
+                    inCollapsedHeader={
+                      blocks.blocks[layout.id]._collapsedHeader
+                    }
+                    headerHandler={() => {
+                      let { expandedBlocks } = this.state
+                      const index = expandedBlocks.indexOf(layout.id)
+                      if (index > -1) {
+                        expandedBlocks.splice(index, 1)
+                      } else {
+                        expandedBlocks.push(layout.id)
+                      }
+                      this.setState({
+                        expandedBlocks: expandedBlocks,
+                      })
+                    }}
+                    hidden={
+                      blocks.blocks[layout.id]._collapsedHeader &&
+                      (!expandedBlocks.length ||
+                        expandedBlocks.indexOf(
+                          blocks.blocks[layout.id]._collapsedHeader
+                        ) === -1)
+                    }
                   />
                 )}
               </>
