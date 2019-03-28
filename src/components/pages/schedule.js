@@ -47,13 +47,22 @@ const GEListItem = ({ to, children }) => (
 
 const CourseList = ({ courses, term }) => {
   courses.sort((a, b) => {
-    if (a.CATALOG_NBR === b.CATALOG_NBR && a.SECTION > b.SECTION) {
+    if(a.SUBJECT !== b.SUBJECT) {
+      return a.SUBJECT.localeCompare(b.SUBJECT)
+    }
+    if (
+      parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
+      a.SECTION > b.SECTION
+    ) {
       return 1
     }
-    if (a.CATALOG_NBR === b.CATALOG_NBR && a.SECTION < b.SECTION) {
+    if (
+      parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
+      a.SECTION < b.SECTION
+    ) {
       return -1
     }
-    if (a.CATALOG_NBR > b.CATALOG_NBR) {
+    if (parseInt(a.CATALOG_NBR) > parseInt(b.CATALOG_NBR)) {
       return 1
     }
     if (a.SECTION > b.SECTION) {
@@ -127,15 +136,21 @@ const MeetingItem = props => {
   const end = moment(props.MEETING_TIME_END)
   return (
     <li>
-      {meetingDays.length && meetingDays.join(', ')} {start.format('h:mma')} to{' '}
-      {end.format('h:mma')}
-      {props.showLocation && props._building && (
+      {parseInt(props.MEETING_BLDG) > 990 ? (
+        <em>Arranged</em>
+      ) : (
         <>
-          <br />
-          <Link to={`/directory/building/${props._building.code}`}>
-            {props._building.buildingName}
-          </Link>{' '}
-          - Room {props.MEETING_RM}
+          {meetingDays.length && meetingDays.join(', ')} {start.format('h:mma')}{' '}
+          to {end.format('h:mma')}
+          {props.showLocation && props._building && (
+            <>
+              <br />
+              <Link to={`/directory/building/${props._building.code}`}>
+                {props._building.buildingName}
+              </Link>{' '}
+              - Room {props.MEETING_RM}
+            </>
+          )}
         </>
       )}
     </li>

@@ -64,7 +64,8 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-            allScheduleCsv {
+            allScheduleCsv (sort:{fields:[SUBJECT, CATALOG_NBR, SECTION]}){
+
               edges {
                 node {
                   SUBJECT

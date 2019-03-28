@@ -12,6 +12,7 @@ import PageNavigation from 'components/navigation/page'
 import Breadcrumbs from 'components/header/breadcrumbs'
 import BlockHero from './blocks/blocks/hero-image'
 import SiteFooter from 'components/footer/site'
+import PageEditorTools from 'components/editor-tools'
 import {
   UniversityPersonnelFormList,
   UniversityPersonnelPages,
@@ -34,6 +35,7 @@ class PageTemplate extends React.Component {
       upForms,
       upPages,
       upPageID,
+      drupalNid,
     } = this.props.pageContext
 
     const showNavigation = pageNavigation && pageNavigation.length
@@ -50,6 +52,7 @@ class PageTemplate extends React.Component {
         {topHero && <BlockHero {...topHero} />}
         <Container>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
+          <PageEditorTools site={site} pageId={drupalNid} />
           {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
           {upForms && upForms.Documents && (
             <UniversityPersonnelFormList

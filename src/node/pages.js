@@ -243,6 +243,9 @@ module.exports = (graphql, actions) => {
               pageNode.context.upPages = upPages[parseInt(node.drupalNid)]
               pageNode.context.upPageID = parseInt(node.drupalNid)
             }
+            if (typeof node.drupalNid !== 'undefined') {
+              pageNode.context.drupalNid = node.drupalNid
+            }
             if (typeof node.event !== 'undefined') {
               pageNode.context.event = node.event
             }
