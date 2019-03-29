@@ -8,7 +8,7 @@ class BlockCourses extends React.Component {
   }
 
   componentDidMount() {
-    const { level, subjectCode } = this.props
+    const { subjectCode } = this.props
     fetch(`/catalog/json/subject/${subjectCode.toLowerCase()}.json`)
       .then(response => {
         return response.json()
