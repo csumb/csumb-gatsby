@@ -8,6 +8,8 @@ import LinkInspect from 'components/link-inspect'
 import Well from 'components/well'
 import { graphql } from 'gatsby'
 import { DirectoryNavigation } from 'components/pages/directory'
+import { InputText, Submit } from 'components/forms'
+import { Flex, Box } from '@rebass/grid/emotion'
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 const existingLetters = {}
@@ -27,6 +29,87 @@ const DepartmentListingItem = styled('div')`
   }
 `
 
+const DepartmentListing = ({ department }) => (
+  <DepartmentListingItem>
+    <h3>
+      {department.website ? (
+        <LinkInspect to={department.website}>{department.name}</LinkInspect>
+      ) : (
+        <>{department.name}</>
+      )}
+    </h3>
+    {department.email && (
+      <p>
+        <a href={`mailto:${department.email}`}>{department.email}</a>
+      </p>
+    )}
+    {department.phone && <p>{department.phone}</p>}
+  </DepartmentListingItem>
+)
+
+class DirectoryDepartmentSearchForm extends React.Component {
+  state = {
+    query: false,
+    results: [],
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    const query = this.state.query.toLowerCase().trim()
+    if (!query.length) {
+      this.setState({
+        results: false,
+      })
+      return
+    }
+    let results = []
+    this.props.departments.map(department => {
+      if (department.node.name.toLowerCase().search(query) > -1) {
+        results.push(department.node)
+      }
+      return results
+    })
+    this.setState({
+      results: results,
+    })
+  }
+
+  render() {
+    const { results } = this.state
+    return (
+      <Well>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <Flex flexWrap="wrap">
+            <Box width={[1, 6 / 12]} px={2}>
+              <InputText
+                name="search"
+                label="Search departments"
+                placeholder="Search"
+                hideLabel={true}
+                onChange={event => {
+                  this.setState({
+                    query: event.target.value,
+                  })
+                }}
+              />
+            </Box>
+            <Box width={[1, 3 / 12]}>
+              <Submit value="Search" nomargin small />
+            </Box>
+          </Flex>
+        </form>
+        {results.length ? (
+          <>
+            {results.map(department => (
+              <DepartmentListing department={department} />
+            ))}
+          </>
+        ) : null}
+      </Well>
+    )
+  }
+}
+
 const DirectoryDepartmentPage = ({ data }) => {
   const addLetter = letter => {
     existingLetters[letter.toLowerCase()] = letter
@@ -37,6 +120,9 @@ const DirectoryDepartmentPage = ({ data }) => {
       <DirectoryNavigation />
       <Container>
         <PageTitle>All departments</PageTitle>
+        <DirectoryDepartmentSearchForm
+          departments={data.allCsumbDepartment.edges}
+        />
         <Well>
           {alphabet.map(letter => (
             <Letter href={`#letter-${letter}`}>{letter.toUpperCase()}</Letter>
@@ -58,25 +144,7 @@ const DirectoryDepartmentPage = ({ data }) => {
                 </h2>
               </>
             )}
-            <DepartmentListingItem>
-              <h3>
-                {department.node.website ? (
-                  <LinkInspect to={department.node.website}>
-                    {department.node.name}
-                  </LinkInspect>
-                ) : (
-                  <>{department.node.name}</>
-                )}
-              </h3>
-              {department.node.email && (
-                <p>
-                  <a href={`mailto:${department.node.email}`}>
-                    {department.node.email}
-                  </a>
-                </p>
-              )}
-              {department.node.phone && <p>{department.node.phone}</p>}
-            </DepartmentListingItem>
+            <DepartmentListing department={department.node} />
           </React.Fragment>
         ))}
       </Container>
