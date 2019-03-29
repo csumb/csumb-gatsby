@@ -3,6 +3,7 @@ import Layout from 'components/layouts/default'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
+import moment from 'moment'
 import {
   NonFeaturedStory,
   FeaturedStory,
@@ -24,9 +25,15 @@ const sortItems = ({
   const stories = [allContentfulHomepageEvent, allContentfulHomepageStory]
 
   stories.forEach(type => {
+    let count = 0
     type.edges.forEach(item => {
       const key = item.node.featured ? 'featured' : 'notFeatured'
-      result[key].push(item.node)
+      if (moment(item.node.unpublishDate).unix() > moment().unix()) {
+        if (count < 10) {
+          result[key].push(item.node)
+        }
+        count++
+      }
       return item
     })
     return type
@@ -116,7 +123,7 @@ export const query = graphql`
     }
 
     allContentfulHomepageStory(
-      limit: 20
+      limit: 50
       sort: { fields: goLiveDate, order: DESC }
     ) {
       edges {
@@ -167,7 +174,7 @@ export const query = graphql`
       }
     }
     allContentfulHomepageEvent(
-      limit: 10
+      limit: 50
       sort: { fields: goLiveDate, order: DESC }
     ) {
       edges {
