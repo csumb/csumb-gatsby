@@ -11,6 +11,7 @@ const Document = styled('a')`
 
 const DocumentIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
+  max-width: 100px;
 `
 
 class BlockDocument extends React.Component {
