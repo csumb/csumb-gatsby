@@ -30,7 +30,7 @@ import BlockSocial from './blocks/social'
 import BlockHtml from './blocks/html'
 
 const CollapsePadding = styled('div')`
-  margin-left: 1rem;
+  margin-left: 2rem;
 `
 
 const CollapseWrapper = ({ inCollapsedHeader, children }) => {
