@@ -6,9 +6,16 @@ class BlockGe extends React.Component {
     courses: false,
   }
   componentDidMount() {
-    const { type, code } = fetch(
-      `/catalog/json/${type.toLowerCase()}/${code.toLowerCase()}.json`
-    )
+    const { type, code } = this.props
+    fetch(`/catalog/json/${type.toLowerCase()}/${code.toLowerCase()}.json`)
+      .then(response => {
+        return response.json()
+      })
+      .then(courses => {
+        this.setState({
+          courses: courses,
+        })
+      })
   }
 
   render() {
