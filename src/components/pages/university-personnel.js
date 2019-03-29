@@ -4,8 +4,16 @@ import { colors } from 'style/theme'
 import bp from 'style/breakpoints'
 import { LinkyButton } from 'components/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import {
+  faChevronRight,
+  faFileDownload,
+} from '@fortawesome/free-solid-svg-icons'
 import { Flex, Box } from '@rebass/grid/emotion'
+
+const DocumentIcon = styled(FontAwesomeIcon)`
+  margin-right: 0.5rem;
+  max-width: 100px;
+`
 
 const FormsList = styled('div')`
   ${props =>
@@ -26,7 +34,9 @@ const UniversityPersonnelForm = ({ form }) => {
   return (
     <>
       <dt>
-        <a href={form.data.Attachments[0].url}>{form.data.Name}</a>
+        <a href={form.data.Attachments[0].url}>
+          <DocumentIcon icon={faFileDownload} /> {form.data.Name}
+        </a>
       </dt>
       <dd>{form.data.Notes}</dd>
     </>
