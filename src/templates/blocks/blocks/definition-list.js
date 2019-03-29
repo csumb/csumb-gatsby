@@ -5,6 +5,9 @@ const DefinitionList = styled('dl')`
   dt {
     font-weight: bold;
   }
+  dd {
+    margin-left: 1rem;
+  }
 `
 
 class BlockDefinitionList extends React.Component {
