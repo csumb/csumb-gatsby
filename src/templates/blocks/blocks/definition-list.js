@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import parseHtml from '../parse-html'
 
 const DefinitionList = styled('dl')`
   dt {
@@ -17,16 +18,8 @@ class BlockDefinitionList extends React.Component {
       <DefinitionList>
         {list.map(item => (
           <>
-            <dt
-              dangerouslySetInnerHTML={{
-                __html: item.term,
-              }}
-            />
-            <dd
-              dangerouslySetInnerHTML={{
-                __html: item.definition,
-              }}
-            />
+            <dt>{parseHtml(item.term)}</dt>
+            <dd>{parseHtml(item.definition)}</dd>
           </>
         ))}
       </DefinitionList>

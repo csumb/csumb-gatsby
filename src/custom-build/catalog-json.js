@@ -27,12 +27,19 @@ fs.readFile('./_data/catalog.csv', (err, catalog) => {
   const courses = {
     ge: {},
     ur: {},
+    subject: {},
   }
   const parser = parse(parseOptions)
   parser.on('readable', () => {
     let record
     while ((record = parser.read())) {
       const attributes = processAttributes(record.CRSE_ATTR_LIST)
+      if (
+        typeof courses.subject[record.SUBJECT.toLowerCase()] === 'undefined'
+      ) {
+        courses.subject[record.SUBJECT.toLowerCase()] = []
+      }
+      courses.subject[record.SUBJECT.toLowerCase()].push(record)
       if (typeof attributes.GE !== 'undefined') {
         attributes.GE.forEach(code => {
           if (typeof courses.ge[code] === 'undefined') {

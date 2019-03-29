@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import parseHtml from '../parse-html'
 
 class BlockList extends React.Component {
   render() {
@@ -17,11 +18,7 @@ class BlockList extends React.Component {
         {list.map((item, key) => (
           <React.Fragment key={key}>
             {item.text && item.text.trim().length > 0 && (
-              <li
-                dangerouslySetInnerHTML={{
-                  __html: item.text,
-                }}
-              />
+              <li>{parseHtml(item.text)}</li>
             )}
           </React.Fragment>
         ))}

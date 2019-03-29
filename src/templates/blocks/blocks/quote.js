@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
 import bp from 'style/breakpoints'
+import parseHtml from '../parse-html'
 
 const Cite = styled('cite')`
   display: block;
@@ -28,7 +29,7 @@ class BlockQuote extends React.Component {
     return (
       <Quote>
         <Blockquote>
-          <div dangerouslySetInnerHTML={{ __html: quote }} />
+          <div>{parseHtml(quote)}></div>
           {source && (
             <Cite>
               {url ? (

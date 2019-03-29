@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table, TableHeader, TableRow, TableCell } from 'components/table'
+import parseHtml from '../parse-html'
 
 class BlockTable extends React.Component {
   render() {
@@ -17,7 +18,7 @@ class BlockTable extends React.Component {
           {tableData.map(row => (
             <TableRow>
               {row.map(cell => (
-                <TableCell dangerouslySetInnerHTML={{ __html: cell }} />
+                <TableCell>{parseHtml(cell)}</TableCell>
               ))}
             </TableRow>
           ))}

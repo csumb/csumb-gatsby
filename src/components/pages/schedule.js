@@ -47,7 +47,7 @@ const GEListItem = ({ to, children }) => (
 
 const CourseList = ({ courses, term }) => {
   courses.sort((a, b) => {
-    if(a.SUBJECT !== b.SUBJECT) {
+    if (a.SUBJECT !== b.SUBJECT) {
       return a.SUBJECT.localeCompare(b.SUBJECT)
     }
     if (
@@ -206,6 +206,9 @@ const CourseListItemHeaderFlex = styled(Flex)`
   background: ${colors.primary.darkest};
   color: ${colors.white};
   margin-bottom: 0.5rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 `
 
 const CourseListItemHeaderBox = styled(Box)`
