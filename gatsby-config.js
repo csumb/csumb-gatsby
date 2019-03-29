@@ -29,7 +29,6 @@ module.exports = {
       'up/all-forms',
       'up/index',
       'undersea/imagery-database',
-      'educationabroad/semesteryear-programs-subject-area',
     ],
   },
   plugins: [
