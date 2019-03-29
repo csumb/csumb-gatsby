@@ -14,8 +14,16 @@ class BlockDefinitionList extends React.Component {
       <DefinitionList>
         {list.map(item => (
           <>
-            <dt>{item.term}</dt>
-            <dd>{item.definition}</dd>
+            <dt
+              dangerouslySetInnerHTML={{
+                __html: item.term,
+              }}
+            />
+            <dd
+              dangerouslySetInnerHTML={{
+                __html: item.definition,
+              }}
+            />
           </>
         ))}
       </DefinitionList>
