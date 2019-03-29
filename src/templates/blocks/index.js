@@ -69,6 +69,7 @@ class Block extends React.Component {
     pathway: BlockPathway,
     social: BlockSocial,
     html: BlockHtml,
+    ge: BlockGe,
   }
 
   render() {
