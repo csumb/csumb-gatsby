@@ -29,6 +29,10 @@ const DepartmentListingItem = styled('div')`
   }
 `
 
+const DepartmentSearchResults = styled('div')`
+  margin-top: 1rem;
+`
+
 const DepartmentListing = ({ department }) => (
   <DepartmentListingItem>
     <h3>
@@ -80,7 +84,7 @@ class DirectoryDepartmentSearchForm extends React.Component {
       <Well>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <Flex flexWrap="wrap">
-            <Box width={[1, 6 / 12]} px={2}>
+            <Box width={[1, 6 / 12]} pr={2}>
               <InputText
                 name="search"
                 label="Search departments"
@@ -99,11 +103,11 @@ class DirectoryDepartmentSearchForm extends React.Component {
           </Flex>
         </form>
         {results.length ? (
-          <>
+          <DepartmentSearchResults>
             {results.map(department => (
               <DepartmentListing department={department} />
             ))}
-          </>
+          </DepartmentSearchResults>
         ) : null}
       </Well>
     )
