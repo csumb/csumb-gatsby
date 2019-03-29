@@ -5,6 +5,7 @@ import Container from 'components/container'
 import { graphql } from 'gatsby'
 import { NewsList, NewsListItem } from 'components/pages/news/list'
 import SiteNavigation from 'components/navigation/site'
+import Blocks from 'templates/blocks'
 
 const NewsPage = ({ data }) => {
   return (
@@ -26,6 +27,9 @@ const NewsPage = ({ data }) => {
             />
           ))}
         </NewsList>
+        {data.allCsumbPage && (
+          <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+        )}
       </Container>
     </Layout>
   )
@@ -39,6 +43,14 @@ export const query = graphql`
       edges {
         node {
           navigation
+        }
+      }
+    }
+    allCsumbPage(filter: { layout: { eq: "site" }, site: { eq: "news" } }) {
+      edges {
+        node {
+          pageContent
+          layout
         }
       }
     }
