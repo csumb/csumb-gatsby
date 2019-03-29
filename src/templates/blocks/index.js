@@ -28,6 +28,7 @@ import BlockEvent from './blocks/event'
 import BlockEventFeed from './blocks/event-feed'
 import BlockSocial from './blocks/social'
 import BlockHtml from './blocks/html'
+import BlockGe from './blocks/ge'
 
 const CollapsePadding = styled('div')`
   ${props => props.level && `margin-left: ${props.level}rem;`}

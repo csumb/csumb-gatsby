@@ -31,6 +31,7 @@ module.exports = (graphql, actions) => {
     })
     return result
   }
+
   return new Promise((resolve, reject) => {
     resolve(
       graphql(
@@ -64,8 +65,7 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-            allScheduleCsv (sort:{fields:[SUBJECT, CATALOG_NBR, SECTION]}){
-
+            allScheduleCsv(sort: { fields: [SUBJECT, CATALOG_NBR, SECTION] }) {
               edges {
                 node {
                   SUBJECT
