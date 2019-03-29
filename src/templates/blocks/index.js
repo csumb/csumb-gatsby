@@ -28,16 +28,17 @@ import BlockEvent from './blocks/event'
 import BlockEventFeed from './blocks/event-feed'
 import BlockSocial from './blocks/social'
 import BlockHtml from './blocks/html'
+import BlockGe from './blocks/ge'
 
 const CollapsePadding = styled('div')`
-  margin-left: 1rem;
+  ${props => props.level && `margin-left: ${props.level}rem;`}
 `
 
-const CollapseWrapper = ({ inCollapsedHeader, children }) => {
+const CollapseWrapper = ({ inCollapsedHeader, children, level }) => {
   if (!inCollapsedHeader) {
     return <>{children}</>
   }
-  return <CollapsePadding>{children}</CollapsePadding>
+  return <CollapsePadding level={level}>{children}</CollapsePadding>
 }
 
 class Block extends React.Component {
@@ -84,7 +85,10 @@ class Block extends React.Component {
     }
     let BlockType = this.blockComponents[type]
     return (
-      <CollapseWrapper inCollapsedHeader={inCollapsedHeader}>
+      <CollapseWrapper
+        inCollapsedHeader={inCollapsedHeader}
+        level={block._collapsedHeaderLevel}
+      >
         <BlockType
           {...block.data}
           uuid={block.uuid}
@@ -166,6 +170,7 @@ class Blocks extends React.Component {
           } else {
             if (lastHeader && !block._collapsedHeader) {
               block._collapsedHeader = lastHeader
+              block._collapsedHeaderLevel = headerLevel
             }
           }
         }
