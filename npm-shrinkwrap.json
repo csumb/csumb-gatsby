@@ -14810,6 +14810,11 @@
         "@babel/runtime": "^7.0.0"
       }
     },
+    "gatsby-plugin-rollbar": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/gatsby-plugin-rollbar/-/gatsby-plugin-rollbar-1.0.0.tgz",
+      "integrity": "sha512-RPF/8CyU1u56NOZOcvrCwYUkj7Beg4jElyYH97e3iipwPxM97hsgzULg8EhiquumpHmRNDH4TCNtw2dRkUfwUQ=="
+    },
     "gatsby-plugin-sharp": {
       "version": "2.0.20",
       "resolved": "https://registry.npmjs.org/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.0.20.tgz",
