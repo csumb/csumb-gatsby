@@ -3,7 +3,7 @@ import Layout from 'components/layouts/default'
 import SiteHeader from 'components/header/site-header'
 import Container from 'components/container'
 import { graphql } from 'gatsby'
-import { NewsList, NewsListItem } from 'components/pages/news/list'
+//import { NewsList, NewsListItem } from 'components/pages/news/list'
 import SiteNavigation from 'components/navigation/site'
 import Blocks from 'templates/blocks'
 
@@ -17,7 +17,7 @@ const NewsPage = ({ data }) => {
         />
       )}
       <Container topPadding>
-        <h2>Latest news</h2>
+        {/*<h2>Latest news</h2>
         <NewsList>
           {data.allContentfulNewsStory.edges.map(story => (
             <NewsListItem
@@ -26,7 +26,7 @@ const NewsPage = ({ data }) => {
               key={story.node.contentful_id}
             />
           ))}
-        </NewsList>
+          </NewsList>*/}
         {data.allCsumbPage && (
           <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
         )}
