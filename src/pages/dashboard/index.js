@@ -4,6 +4,7 @@ import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
 import SiteHeader from 'components/header/site-header'
 import { graphql } from 'gatsby'
+import Olark from 'components/olark'
 import {
   DashboardApps,
   DashboardContent,
@@ -50,6 +51,7 @@ class DashboardPage extends React.Component {
     const { isMobile, activeTab } = this.state
     return (
       <Layout pageTitle="Dashboard">
+        <Olark />
         <SiteHeader path="/dashboard">Dashboard</SiteHeader>
         <UserContext.Consumer>
           {context => (

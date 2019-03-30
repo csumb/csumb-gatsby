@@ -5,6 +5,7 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { AccountGroup } from 'components/pages/account'
 import styled from '@emotion/styled'
+import { Button } from 'components/button'
 import { UserContext } from 'components/contexts/user'
 import url from 'url'
 import { colors } from 'style/theme'
@@ -13,8 +14,10 @@ import { LeadParagraph } from 'components/type'
 import Link from 'gatsby-link'
 import Well from 'components/well'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckCircle, faBan } from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle, faBan, faInfo } from '@fortawesome/free-solid-svg-icons'
 import VisuallyHidden from 'components/visually-hidden'
+import moment from 'moment'
+import Loading from 'components/loading'
 
 class AccountApplicantStatusPage extends React.Component {
   render() {
@@ -65,7 +68,14 @@ class AccountApplicantStatusPage extends React.Component {
   }
 }
 
-const Application = ({ term, status, application, checklist, transcripts }) => (
+const Application = ({
+  term,
+  status,
+  application,
+  checklist,
+  transcripts,
+  transcriptHistory,
+}) => (
   <>
     <AccountGroup
       legend={`${term.gsx$name} - ${application.academic_plan_descr}`}
@@ -79,18 +89,64 @@ const Application = ({ term, status, application, checklist, transcripts }) => (
         <ApplicationChecklist checklist={checklist} />
       </Box>
       <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-        <ApplicationTranscripts transcripts={transcripts} />
+        <ApplicationTranscripts
+          transcripts={transcripts}
+          transcriptHistory={transcriptHistory}
+        />
       </Box>
     </Flex>
   </>
 )
 
-const ApplicationChecklist = ({ checklists }) => (
+const ApplicationChecklist = ({ checklist }) => (
   <AccountGroup legend="Checklist">
-    <p>
-      <a href="https://csumb.edu/admissions">Visit our website</a> for more
-      information about admissions requirements.
-    </p>
+    {checklist && checklist.length ? (
+      <>
+        {checklist.map(item => (
+          <Well key={item._row}>
+            <Flex>
+              <Box width={1 / 4} pr={2}>
+                {item._status_icon === 'done' && (
+                  <TranscriptDoneIcon icon={faCheckCircle}>
+                    <VisuallyHidden>Done</VisuallyHidden>
+                  </TranscriptDoneIcon>
+                )}
+                {item._status_icon === 'not done' && (
+                  <TranscriptNotDoneIcon icon={faBan}>
+                    <VisuallyHidden>Not done</VisuallyHidden>
+                  </TranscriptNotDoneIcon>
+                )}
+                {item._status_icon === 'informational' && (
+                  <TranscriptDoneIcon icon={faInfo}>
+                    <VisuallyHidden>Informational</VisuallyHidden>
+                  </TranscriptDoneIcon>
+                )}
+              </Box>
+              <Box width={[3 / 4]}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: item.message,
+                  }}
+                />
+                {!item._hide_due_date && (
+                  <p>
+                    <strong>Due</strong>{' '}
+                    {moment(item.checklist.d_due_dt, 'MM/DD/YYYY').format(
+                      'MMMM DD, YYYY'
+                    )}
+                  </p>
+                )}
+              </Box>
+            </Flex>
+          </Well>
+        ))}
+      </>
+    ) : (
+      <p>
+        <a href="https://csumb.edu/admissions">Visit our website</a> for more
+        information about admissions requirements.
+      </p>
+    )}
   </AccountGroup>
 )
 
@@ -104,54 +160,84 @@ const TranscriptNotDoneIcon = styled(FontAwesomeIcon)`
   color: ${colors.indicators.high};
 `
 
-const ApplicationTranscripts = ({ transcripts }) => (
-  <AccountGroup legend="Transcripts">
-    {!transcripts ? (
-      <p>We could not find any transcripts.</p>
-    ) : (
-      <>
-        {Object.keys(transcripts).map(transcriptKey => (
-          <Well key={transcriptKey}>
-            <h3>
-              {transcripts[transcriptKey]._name === 'unknown' ? (
-                <>Transcript still being processesed.</>
-              ) : (
-                <>{transcripts[transcriptKey]._name}</>
-              )}
-            </h3>
-            {Object.keys(transcripts[transcriptKey]._messages).map(
-              messageKey => (
-                <Flex key={messageKey}>
-                  <Box width={1 / 4} pr={2}>
-                    {transcripts[transcriptKey]._messages[messageKey].done ||
-                    transcripts[transcriptKey]._messages[messageKey]
-                      .in_progress ? (
-                      <TranscriptDoneIcon icon={faCheckCircle}>
-                        <VisuallyHidden>Done</VisuallyHidden>
-                      </TranscriptDoneIcon>
-                    ) : (
-                      <TranscriptNotDoneIcon icon={faBan}>
-                        <VisuallyHidden>Not done</VisuallyHidden>
-                      </TranscriptNotDoneIcon>
-                    )}
-                  </Box>
-                  <Box
-                    width={[3 / 4]}
-                    dangerouslySetInnerHTML={{
-                      __html:
+class ApplicationTranscripts extends React.Component {
+  state = {
+    showTranscriptHistory: false,
+  }
+
+  render() {
+    const { transcripts, transcriptHistory } = this.props
+    return (
+      <AccountGroup legend="Transcripts">
+        {!transcripts ? (
+          <p>We could not find any transcripts.</p>
+        ) : (
+          <>
+            {Object.keys(transcripts).map(transcriptKey => (
+              <Well key={transcriptKey}>
+                <h3>
+                  {transcripts[transcriptKey]._name === 'unknown' ? (
+                    <>Transcript still being processesed.</>
+                  ) : (
+                    <>{transcripts[transcriptKey]._name}</>
+                  )}
+                </h3>
+                {Object.keys(transcripts[transcriptKey]._messages).map(
+                  messageKey => (
+                    <Flex key={messageKey}>
+                      <Box width={1 / 4} pr={2}>
+                        {transcripts[transcriptKey]._messages[messageKey]
+                          .done ||
                         transcripts[transcriptKey]._messages[messageKey]
-                          .message,
-                    }}
-                  />
-                </Flex>
-              )
+                          .in_progress ? (
+                          <TranscriptDoneIcon icon={faCheckCircle}>
+                            <VisuallyHidden>Done</VisuallyHidden>
+                          </TranscriptDoneIcon>
+                        ) : (
+                          <TranscriptNotDoneIcon icon={faBan}>
+                            <VisuallyHidden>Not done</VisuallyHidden>
+                          </TranscriptNotDoneIcon>
+                        )}
+                      </Box>
+                      <Box
+                        width={[3 / 4]}
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            transcripts[transcriptKey]._messages[messageKey]
+                              .message,
+                        }}
+                      />
+                    </Flex>
+                  )
+                )}
+              </Well>
+            ))}
+            <p>
+              <Button
+                onClick={event => {
+                  event.preventDefault()
+                  this.setState({
+                    showTranscriptHistory: !this.state.showTranscriptHistory,
+                  })
+                }}
+              >
+                View transcript history
+              </Button>
+            </p>
+
+            {this.state.showTranscriptHistory && (
+              <ul>
+                {Object.keys(transcriptHistory).map(id => (
+                  <li key={id}>{transcriptHistory[id]._name}</li>
+                ))}
+              </ul>
             )}
-          </Well>
-        ))}
-      </>
-    )}
-  </AccountGroup>
-)
+          </>
+        )}
+      </AccountGroup>
+    )
+  }
+}
 
 const ApplicationMultipleMessage = ({ applications }) => (
   <>
@@ -234,11 +320,12 @@ class ApplicantStatus extends React.Component {
       let app = {
         term: term,
         application: application.application,
-        checklist: [],
+        checklist: apps.checklist[application.application.application_number],
         status:
           apps.applicant_status[application.application.application_number],
         transcripts:
           apps.transcript_checklist[application.application.application_number],
+        transcriptHistory: apps.transcripts,
       }
 
       applications.push(app)
@@ -250,7 +337,7 @@ class ApplicantStatus extends React.Component {
     return (
       <>
         {!this.state.applications ? (
-          <p>Loading applications</p>
+          <Loading>Loading applications</Loading>
         ) : (
           <>
             {this.state.noApplication ? (
