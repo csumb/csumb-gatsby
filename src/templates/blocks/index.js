@@ -103,37 +103,42 @@ class Block extends React.Component {
   }
 }
 
-const Columns = ({ layout, blocks, hidden }) => {
+const Columns = ({ layout, blocks, hidden, inCollapsedHeader }) => {
   const block = blocks[layout.id]
   if (typeof block.data.columns === 'undefined' || hidden) {
     return <></>
   }
   return (
-    <Flex flexWrap="wrap">
-      {block.data.columns.map((width, key) => (
-        <Box
-          width={[1, 1, width / 12, width / 12]}
-          key={`column-${layout.id}-${key}`}
-          px={2}
-        >
-          {Array.isArray(layout._children[key + 1]) && (
-            <>
-              {layout._children[key + 1].map(blockId => (
-                <React.Fragment key={blockId.id}>
-                  {blocks[blockId.id] && (
-                    <Block
-                      type={blocks[blockId.id].type}
-                      block={blocks[blockId.id]}
-                      inColumn
-                    />
-                  )}
-                </React.Fragment>
-              ))}
-            </>
-          )}
-        </Box>
-      ))}
-    </Flex>
+    <CollapseWrapper
+      inCollapsedHeader={inCollapsedHeader}
+      level={block._collapsedHeaderLevel}
+    >
+      <Flex flexWrap="wrap">
+        {block.data.columns.map((width, key) => (
+          <Box
+            width={[1, 1, width / 12, width / 12]}
+            key={`column-${layout.id}-${key}`}
+            px={2}
+          >
+            {Array.isArray(layout._children[key + 1]) && (
+              <>
+                {layout._children[key + 1].map(blockId => (
+                  <React.Fragment key={blockId.id}>
+                    {blocks[blockId.id] && (
+                      <Block
+                        type={blocks[blockId.id].type}
+                        block={blocks[blockId.id]}
+                        inColumn
+                      />
+                    )}
+                  </React.Fragment>
+                ))}
+              </>
+            )}
+          </Box>
+        ))}
+      </Flex>
+    </CollapseWrapper>
   )
 }
 class Blocks extends React.Component {
