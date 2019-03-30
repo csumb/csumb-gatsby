@@ -1,4 +1,4 @@
-module.exports = {
+const gatsbyConfig = {
   siteMetadata: {
     title: 'Cal State Monterey Bay',
     fileStack: 'A3ttdsdUR8aGvjvUnJBWUz',
@@ -188,3 +188,19 @@ module.exports = {
     },
   ],
 }
+
+if (process.env.CI) {
+  gatsbyConfig.plugins.push({
+    resolve: 'gatsby-plugin-rollbar',
+    options: {
+      accessToken: 'cede68eb11674ec28cd2da13d1d7a7f6',
+      captureUncaught: true,
+      captureUnhandledRejections: true,
+      payload: {
+        environment: process.env.TRAVIS_BRANCH,
+      },
+    },
+  })
+}
+
+module.exports = gatsbyConfig
