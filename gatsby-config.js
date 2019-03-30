@@ -7,6 +7,7 @@ module.exports = {
         'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7',
     },
     swiftypeId: 'Gu7FdGTPV49T6dsYVBSV',
+    olarkSiteId: '1001-610-10-3640',
     schedule: {
       currentTerm: 2194,
       currentTermName: '2019fall',
