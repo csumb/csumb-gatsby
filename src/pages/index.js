@@ -28,7 +28,10 @@ const sortItems = ({
     let count = 0
     type.edges.forEach(item => {
       const key = item.node.featured ? 'featured' : 'notFeatured'
-      if (moment(item.node.unpublishDate).unix() > moment().unix()) {
+      if (
+        moment(item.node.unpublishDate).unix() > moment().unix() &&
+        moment(item.node.goLiveDate).unix() <= moment().unix()
+      ) {
         if (count < 10) {
           result[key].push(item.node)
         }
