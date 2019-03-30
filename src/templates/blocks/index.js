@@ -103,39 +103,94 @@ class Block extends React.Component {
   }
 }
 
-const Columns = ({ layout, blocks, hidden }) => {
-  const block = blocks[layout.id]
-  if (typeof block.data.columns === 'undefined' || hidden) {
-    return <></>
+class Columns extends React.Component {
+  state = {
+    expandedBlocks: [],
   }
-  return (
-    <Flex flexWrap="wrap">
-      {block.data.columns.map((width, key) => (
-        <Box
-          width={[1, 1, width / 12, width / 12]}
-          key={`column-${layout.id}-${key}`}
-          px={2}
-        >
-          {Array.isArray(layout._children[key + 1]) && (
-            <>
-              {layout._children[key + 1].map(blockId => (
-                <React.Fragment key={blockId.id}>
-                  {blocks[blockId.id] && (
-                    <Block
-                      type={blocks[blockId.id].type}
-                      block={blocks[blockId.id]}
-                      inColumn
-                    />
-                  )}
-                </React.Fragment>
-              ))}
-            </>
-          )}
-        </Box>
-      ))}
-    </Flex>
-  )
+  render() {
+    const { layout, blocks, hidden, inCollapsedHeader } = this.props
+    const block = blocks[layout.id]
+
+    const { expandedBlocks } = this.state
+    if (typeof block.data.columns === 'undefined' || hidden) {
+      return <></>
+    }
+    return (
+      <CollapseWrapper
+        inCollapsedHeader={inCollapsedHeader}
+        level={block._collapsedHeaderLevel}
+      >
+        <Flex flexWrap="wrap">
+          {block.data.columns.map((width, key) => (
+            <Box
+              width={[1, 1, width / 12, width / 12]}
+              key={`column-${layout.id}-${key}`}
+              px={2}
+            >
+              {Array.isArray(layout._children[key + 1]) && (
+                <>
+                  {layout._children[key + 1].map(blockId => (
+                    <React.Fragment key={blockId.id}>
+                      {blocks[blockId.id] && (
+                        <Block
+                          type={blocks[blockId.id].type}
+                          block={blocks[blockId.id]}
+                          inColumn
+                          inCollapsedHeader={
+                            blocks[blockId.id]._collapsedHeader
+                          }
+                          headerHandler={() => {
+                            let { expandedBlocks } = this.state
+                            const index = expandedBlocks.indexOf(blockId.id)
+                            if (index > -1) {
+                              expandedBlocks.splice(index, 1)
+                              layout._children[key + 1].forEach(subLayout => {
+                                const block = blocks[subLayout.id]
+                                if (
+                                  !block ||
+                                  typeof block.data === 'undefined'
+                                ) {
+                                  return
+                                }
+                                if (
+                                  block.type === 'heading' &&
+                                  block._collapsedHeader === blockId.id
+                                ) {
+                                  const subIndex = expandedBlocks.indexOf(
+                                    subLayout.id
+                                  )
+                                  expandedBlocks.splice(subIndex, 1)
+                                }
+                              })
+                            } else {
+                              expandedBlocks.push(blockId.id)
+                            }
+
+                            this.setState({
+                              expandedBlocks: expandedBlocks,
+                            })
+                          }}
+                          hidden={
+                            blocks[blockId.id]._collapsedHeader &&
+                            (!expandedBlocks.length ||
+                              expandedBlocks.indexOf(
+                                blocks[blockId.id]._collapsedHeader
+                              ) === -1)
+                          }
+                        />
+                      )}
+                    </React.Fragment>
+                  ))}
+                </>
+              )}
+            </Box>
+          ))}
+        </Flex>
+      </CollapseWrapper>
+    )
+  }
 }
+
 class Blocks extends React.Component {
   state = {
     expandedBlocks: [],
@@ -145,20 +200,29 @@ class Blocks extends React.Component {
     super(props)
     let { blocks } = props
     this.blocks = JSON.parse(blocks)
-    this.addBlockHeaderRelationships()
+    this.addBlockHeaderRelationships(this.blocks.layout)
   }
 
-  addBlockHeaderRelationships() {
+  addBlockHeaderRelationships(blockList) {
     let lastHeader = false
 
     const headerLevels = [4, 3, 2]
 
     headerLevels.forEach(headerLevel => {
       lastHeader = false
-      this.blocks.layout.forEach(layout => {
+      const that = this
+      blockList.forEach(layout => {
         const block = this.blocks.blocks[layout.id]
         if (!block || typeof block.data === 'undefined') {
           return
+        }
+        if (
+          block.type === 'columns' &&
+          typeof layout._children !== 'undefined'
+        ) {
+          Object.keys(layout._children).forEach(columnId => {
+            that.addBlockHeaderRelationships(layout._children[columnId])
+          })
         }
         const level = parseInt(block.data.level)
         if (
@@ -180,6 +244,8 @@ class Blocks extends React.Component {
       })
     })
   }
+
+  headerHandler(event) {}
 
   render() {
     const blocks = this.blocks

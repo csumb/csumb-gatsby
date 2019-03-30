@@ -9,12 +9,16 @@ import HeaderMobile from './mobile'
 import { NavigationLink } from './navigation-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import styled from '@emotion/styled'
+import bp from 'style/breakpoints'
 
 const HeaderWrapper = styled('header')`
   padding-top: 0.75rem;
   @media print {
     display: none;
   }
+  ${bp({
+    display: ['none', 'block'],
+  })}
 `
 
 class Header extends React.Component {

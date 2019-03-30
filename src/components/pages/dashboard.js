@@ -121,7 +121,7 @@ const appToolsStyle = `
   }
 `
 
-const EditOrderButton = styled('a')`
+const EditOrderButton = styled('button')`
   ${appToolsStyle};
   text-decoration: none;
 `
@@ -238,10 +238,7 @@ class DashboardApps extends React.Component {
                 <DashboardOktaAppList apps={oktaApps.bottom} />
               </Box>
               <Box width={[1, 2 / 12, 2 / 12]}>
-                <EditOrderButton href="https://csumb.okta.com/" target="_blank">
-                  Edit order
-                  <VisuallyHidden> of apps</VisuallyHidden>
-                </EditOrderButton>
+                <DashboardEditOrderApps />
                 <DashboardOtherApps apps={apps} />
               </Box>
             </Flex>
@@ -308,6 +305,47 @@ const DashboardMobileToolbar = styled('div')`
   }
 `
 
+class DashboardEditOrderApps extends React.Component {
+  state = {
+    showDialog: false,
+  }
+
+  render() {
+    return (
+      <>
+        <EditOrderButton
+          onClick={event => {
+            event.preventDefault()
+            this.setState({ showDialog: true })
+          }}
+        >
+          Edit order
+          <VisuallyHidden> of apps</VisuallyHidden>
+        </EditOrderButton>
+        <DialogOverlay
+          style={{ background: 'rgba(0, 0, 0, 0.7)' }}
+          isOpen={this.state.showDialog}
+        >
+          <MoreAppsDialog>
+            <CloseDialog onClick={() => this.setState({ showDialog: false })}>
+              <VisuallyHidden>Close dialog</VisuallyHidden>
+              <FontAwesomeIcon icon={faTimes} />
+            </CloseDialog>
+            <h2>Edit app order</h2>
+            <p>
+              Your dashboard apps are managed in <strong>Okta</strong>. Continue
+              to your Okta Dashboard and drag to reorder your apps.
+            </p>
+            <ButtonLink to="https://csumb.okta.com/" target="_blank">
+              Open Okta Dashboard
+            </ButtonLink>
+          </MoreAppsDialog>
+        </DialogOverlay>
+      </>
+    )
+  }
+}
+
 class DashboardOtherApps extends React.Component {
   state = {
     showDialog: false,
@@ -332,8 +370,8 @@ class DashboardOtherApps extends React.Component {
             <h2>More apps</h2>
             <MoreAppsList>
               {apps.map(app => (
-                <li>
-                  <a key={app.node.name} component="a" href={app.node.url}>
+                <li key={app.node.name}>
+                  <a component="a" href={app.node.url}>
                     {app.node.name}
                   </a>
                 </li>
