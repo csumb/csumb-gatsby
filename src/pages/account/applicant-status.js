@@ -4,12 +4,17 @@ import PageTitle from 'components/header/page-title'
 import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { AccountGroup } from 'components/pages/account'
+import styled from '@emotion/styled'
 import { UserContext } from 'components/contexts/user'
 import url from 'url'
+import { colors } from 'style/theme'
 import { AlertWarning } from 'components/alert'
 import { LeadParagraph } from 'components/type'
 import Link from 'gatsby-link'
 import Well from 'components/well'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckCircle, faBan } from '@fortawesome/free-solid-svg-icons'
+import VisuallyHidden from 'components/visually-hidden'
 
 class AccountApplicantStatusPage extends React.Component {
   render() {
@@ -74,15 +79,79 @@ const Application = ({ term, status, application, checklist, transcripts }) => (
         <ApplicationChecklist checklist={checklist} />
       </Box>
       <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-        <ApplicationTranscripts checklist={transcripts} />
+        <ApplicationTranscripts transcripts={transcripts} />
       </Box>
     </Flex>
   </>
 )
 
-const ApplicationChecklist = props => <AccountGroup legend="Checklist" />
+const ApplicationChecklist = ({ checklists }) => (
+  <AccountGroup legend="Checklist">
+    <p>
+      <a href="https://csumb.edu/admissions">Visit our website</a> for more
+      information about admissions requirements.
+    </p>
+  </AccountGroup>
+)
 
-const ApplicationTranscripts = props => <AccountGroup legend="Transcripts" />
+const TranscriptDoneIcon = styled(FontAwesomeIcon)`
+  font-size: 3rem;
+  color: ${colors.indicators.low};
+`
+
+const TranscriptNotDoneIcon = styled(FontAwesomeIcon)`
+  font-size: 3rem;
+  color: ${colors.indicators.high};
+`
+
+const ApplicationTranscripts = ({ transcripts }) => (
+  <AccountGroup legend="Transcripts">
+    {!transcripts ? (
+      <p>We could not find any transcripts.</p>
+    ) : (
+      <>
+        {Object.keys(transcripts).map(transcriptKey => (
+          <Well key={transcriptKey}>
+            <h3>
+              {transcripts[transcriptKey]._name === 'unknown' ? (
+                <>Transcript still being processesed.</>
+              ) : (
+                <>{transcripts[transcriptKey]._name}</>
+              )}
+            </h3>
+            {Object.keys(transcripts[transcriptKey]._messages).map(
+              messageKey => (
+                <Flex key={messageKey}>
+                  <Box width={1 / 4} pr={2}>
+                    {transcripts[transcriptKey]._messages[messageKey].done ||
+                    transcripts[transcriptKey]._messages[messageKey]
+                      .in_progress ? (
+                      <TranscriptDoneIcon icon={faCheckCircle}>
+                        <VisuallyHidden>Done</VisuallyHidden>
+                      </TranscriptDoneIcon>
+                    ) : (
+                      <TranscriptNotDoneIcon icon={faBan}>
+                        <VisuallyHidden>Not done</VisuallyHidden>
+                      </TranscriptNotDoneIcon>
+                    )}
+                  </Box>
+                  <Box
+                    width={[3 / 4]}
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        transcripts[transcriptKey]._messages[messageKey]
+                          .message,
+                    }}
+                  />
+                </Flex>
+              )
+            )}
+          </Well>
+        ))}
+      </>
+    )}
+  </AccountGroup>
+)
 
 const ApplicationMultipleMessage = ({ applications }) => (
   <>
@@ -114,7 +183,7 @@ class ApplicantStatus extends React.Component {
   componentDidMount() {
     window
       .fetch(
-        `https://csumb-applicant-api-staging.herokuapp.com/?user=${this.props.user.profile.login.replace(
+        `http://applicant-api.csumb.edu/?user=${this.props.user.profile.login.replace(
           '@csumb.edu',
           ''
         )}`

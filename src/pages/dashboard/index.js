@@ -10,6 +10,7 @@ import {
   DashboardMobileToolbar,
   DashboardIntro,
 } from 'components/pages/dashboard'
+import { navigate } from '@reach/router'
 
 class DashboardPage extends React.Component {
   state = {
@@ -32,6 +33,18 @@ class DashboardPage extends React.Component {
     setWindowSize()
   }
 
+  redirectApplicant(user) {
+    if (
+      user &&
+      !user.anonymous &&
+      user._isApplicant &&
+      !user.isEmployee &&
+      !user.isStudent
+    ) {
+      navigate('/account/applicant-status')
+    }
+  }
+
   render() {
     const { data } = this.props
     const { isMobile, activeTab } = this.state
@@ -43,6 +56,7 @@ class DashboardPage extends React.Component {
             <>
               {context.user && (
                 <>
+                  {this.redirectApplicant(context.user)}
                   {isMobile ? (
                     <>
                       <DashboardMobileToolbar>
