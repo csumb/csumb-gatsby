@@ -103,7 +103,7 @@ class UserCardForm extends React.Component {
           {!isReady && <p>Loading Otter Card balance...</p>}
           {isReady && (
             <>
-              {error ? (
+              {error || !balance ? (
                 <>
                   <p>There was an error reading your Otter Card.</p>
                 </>
