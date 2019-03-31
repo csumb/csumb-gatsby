@@ -289,7 +289,11 @@ class UserAccountFormRole extends React.Component {
               `}
             >
               {this.props.roles.map(role => (
-                <li key={role}>{this.roles[role].name}</li>
+                <React.Fragment key={role}>
+                  {typeof this.roles[role] !== 'undefined' && (
+                    <li>{this.roles[role].name}</li>
+                  )}
+                </React.Fragment>
               ))}
             </ul>
           </AccountData>
