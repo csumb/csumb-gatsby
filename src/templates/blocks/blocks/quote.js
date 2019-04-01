@@ -29,7 +29,7 @@ class BlockQuote extends React.Component {
     return (
       <Quote>
         <Blockquote>
-          <div>{parseHtml(quote)}></div>
+          <div>{parseHtml(quote)}</div>
           {source && (
             <Cite>
               {url ? (
