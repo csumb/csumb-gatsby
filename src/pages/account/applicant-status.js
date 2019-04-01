@@ -5,7 +5,7 @@ import Container from 'components/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { AccountGroup } from 'components/pages/account'
 import styled from '@emotion/styled'
-import { Button } from 'components/button'
+import { Button, ButtonLink } from 'components/button'
 import { UserContext } from 'components/contexts/user'
 import url from 'url'
 import { colors } from 'style/theme'
@@ -340,6 +340,11 @@ class ApplicantStatus extends React.Component {
           <Loading>Loading applications</Loading>
         ) : (
           <>
+            <p>
+              <ButtonLink to="https://csumb.okta.com/home/csumb_oasis_1/0oaj48n6m2kKZX94z0x7/alnj48vefz4sQE6cL0x7">
+                Log into OASIS
+              </ButtonLink>
+            </p>
             {this.state.noApplication ? (
               <AlertWarning type="polite">
                 You do not have any applications.
