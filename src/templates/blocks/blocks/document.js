@@ -7,11 +7,12 @@ import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
 const Document = styled('a')`
   display: block;
   ${props => props.container} font-weight: bold;
+  margin: 1rem 0;
 `
 
 const DocumentIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
-  max-width: 100px;
+  max-width: 50px;
 `
 
 class BlockDocument extends React.Component {
