@@ -48,7 +48,7 @@ const ScheduleList = styled('ul')`
 `
 
 const ScheduleListItemElement = styled('li')`
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
   a {
     font-weight: bold;
     display: inline-block;
@@ -69,7 +69,7 @@ const GEList = styled('ul')`
 `
 
 const GEListItemElement = styled('li')`
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
 `
 
 const GEListItem = ({ to, children }) => (
