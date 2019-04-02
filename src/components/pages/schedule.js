@@ -78,6 +78,24 @@ const GEListItem = ({ to, children }) => (
   </GEListItemElement>
 )
 
+const CourseListSearchCount = styled('div')`
+  padding-bottom: 0.7rem;
+  padding-left: 8px;
+  margin-bottom: 0.7rem;
+  font-weight: bold;
+  border-bottom: 1px solid ${colors.muted.bright};
+`
+
+const DayOfWeekFilter = styled('div')`
+  label {
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+  }
+  input {
+    margin-right: 0.3rem;
+  }
+`
+
 class CourseList extends React.Component {
   state = {
     filter: false,
@@ -101,6 +119,7 @@ class CourseList extends React.Component {
     event.preventDefault()
     this.setState({
       isExpanded: !this.state.isExpanded,
+      filter: this.state.isExpanded ? false : this.state.filter,
     })
   }
 
@@ -114,9 +133,43 @@ class CourseList extends React.Component {
 
   render() {
     const { courses, term } = this.props
-    const { isExpanded, filter, filteredCourses } = this.state
+    const { isExpanded, filter, search } = this.state
+    let listCourses = filter ? [] : courses
+    if (filter) {
+      courses.forEach(course => {
+        if (
+          search.onlyOpen &&
+          parseInt(course.ENRL_TOT) >= parseInt(course.ENRL_MAX)
+        ) {
+          return
+        }
+        let matchDays = false
+        weekDays.forEach(day => {
+          if (search.days[day.short]) {
+            matchDays = true
+          }
+        })
+        if (matchDays) {
+          let daysMatch = false
+          weekDays.forEach(day => {
+            if (!search.days[day.short]) {
+              return
+            }
+            course._meetingPattern.forEach(pattern => {
+              if (pattern[day.short] === 'Y') {
+                daysMatch = true
+              }
+            })
+          })
+          if (!daysMatch) {
+            return
+          }
+        }
+        listCourses.push(course)
+      })
+    }
 
-    courses.sort((a, b) => {
+    listCourses.sort((a, b) => {
       if (a.SUBJECT !== b.SUBJECT) {
         return a.SUBJECT.localeCompare(b.SUBJECT)
       }
@@ -166,20 +219,41 @@ class CourseList extends React.Component {
                 }}
               />
               <h4>Days of the week</h4>
-              {weekDays.map(day => (
-                <InputCheckbox
-                  name={day.day}
-                  data-day={day.short}
-                  label={day.day}
-                  onClick={this.handleDayOfWeek.bind(this)}
-                />
-              ))}
-              <Submit value="Filter courses" />
+              <DayOfWeekFilter>
+                {weekDays.map(day => (
+                  <InputCheckbox
+                    key={day.day}
+                    name={day.day}
+                    data-day={day.short}
+                    label={day.day}
+                    inline={true}
+                    onClick={this.handleDayOfWeek.bind(this)}
+                  />
+                ))}
+              </DayOfWeekFilter>
+              <p>
+                <Submit value="Filter courses" />
+              </p>
+              <LinkyButton
+                onClick={event => {
+                  event.preventDefault()
+                  this.setState({
+                    filter: false,
+                  })
+                }}
+              >
+                Clear filter
+              </LinkyButton>
             </form>
           </Well>
         )}
         <CourseListItemHeader />
-        {courses.map((course, key) => (
+        {filter && (
+          <CourseListSearchCount>
+            Found {listCourses.length} out of {courses.length} sections.
+          </CourseListSearchCount>
+        )}
+        {listCourses.map((course, key) => (
           <CourseListItem key={key} course={course} term={term} />
         ))}
       </section>
