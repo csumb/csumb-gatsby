@@ -3,11 +3,44 @@ import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'style/theme'
-import { Submit } from 'components/forms'
+import { InputCheckbox, Submit } from 'components/forms'
 import { UnstyledList } from 'components/type'
+import { LinkyButton } from 'components/button'
 import PageTitle from 'components/header/page-title'
 import moment from 'moment'
 import bp from 'style/breakpoints'
+import Well from 'components/well'
+
+const weekDays = [
+  {
+    short: 'MON',
+    day: 'Monday',
+  },
+  {
+    short: 'TUES',
+    day: 'Tuesday',
+  },
+  {
+    short: 'WED',
+    day: 'Wednesday',
+  },
+  {
+    short: 'THURS',
+    day: 'Thursday',
+  },
+  {
+    short: 'FRI',
+    day: 'Friday',
+  },
+  {
+    short: 'SAT',
+    day: 'Saturday',
+  },
+  {
+    short: 'SUN',
+    day: 'Sunday',
+  },
+]
 
 const ScheduleList = styled('ul')`
   list-style-type: none;
@@ -45,40 +78,187 @@ const GEListItem = ({ to, children }) => (
   </GEListItemElement>
 )
 
-const CourseList = ({ courses, term }) => {
-  courses.sort((a, b) => {
-    if (a.SUBJECT !== b.SUBJECT) {
-      return a.SUBJECT.localeCompare(b.SUBJECT)
-    }
-    if (
-      parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
-      a.SECTION > b.SECTION
-    ) {
-      return 1
-    }
-    if (
-      parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
-      a.SECTION < b.SECTION
-    ) {
-      return -1
-    }
-    if (parseInt(a.CATALOG_NBR) > parseInt(b.CATALOG_NBR)) {
-      return 1
-    }
-    if (a.SECTION > b.SECTION) {
-      return 1
-    }
-    return -1
-  })
+const CourseListSearchCount = styled('div')`
+  padding-bottom: 0.7rem;
+  padding-left: 8px;
+  margin-bottom: 0.7rem;
+  font-weight: bold;
+  border-bottom: 1px solid ${colors.muted.bright};
+`
 
-  return (
-    <section>
-      <CourseListItemHeader />
-      {courses.map((course, key) => (
-        <CourseListItem key={key} course={course} term={term} />
-      ))}
-    </section>
-  )
+const DayOfWeekFilter = styled('div')`
+  label {
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+  }
+  input {
+    margin-right: 0.3rem;
+  }
+`
+
+class CourseList extends React.Component {
+  state = {
+    filter: false,
+    isExpanded: false,
+    filteredCourses: [],
+    search: {
+      onlyOpen: false,
+      days: {
+        MON: false,
+        TUES: false,
+        WED: false,
+        THURS: false,
+        FRI: false,
+        SAT: false,
+        SUN: false,
+      },
+    },
+  }
+
+  handleToggleFilter(event) {
+    event.preventDefault()
+    this.setState({
+      isExpanded: !this.state.isExpanded,
+      filter: this.state.isExpanded ? false : this.state.filter,
+    })
+  }
+
+  handleDayOfWeek(event) {
+    const search = this.state.search
+    search.days[event.target.dataset.day] = event.target.checked
+    this.setState({
+      search: search,
+    })
+  }
+
+  render() {
+    const { courses, term } = this.props
+    const { isExpanded, filter, search } = this.state
+    let listCourses = filter ? [] : courses
+    if (filter) {
+      courses.forEach(course => {
+        if (
+          search.onlyOpen &&
+          parseInt(course.ENRL_TOT) >= parseInt(course.ENRL_MAX)
+        ) {
+          return
+        }
+        let matchDays = false
+        weekDays.forEach(day => {
+          if (search.days[day.short]) {
+            matchDays = true
+          }
+        })
+        if (matchDays) {
+          let daysMatch = false
+          weekDays.forEach(day => {
+            if (!search.days[day.short]) {
+              return
+            }
+            course._meetingPattern.forEach(pattern => {
+              if (pattern[day.short] === 'Y') {
+                daysMatch = true
+              }
+            })
+          })
+          if (!daysMatch) {
+            return
+          }
+        }
+        listCourses.push(course)
+      })
+    }
+
+    listCourses.sort((a, b) => {
+      if (a.SUBJECT !== b.SUBJECT) {
+        return a.SUBJECT.localeCompare(b.SUBJECT)
+      }
+      if (
+        parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
+        a.SECTION > b.SECTION
+      ) {
+        return 1
+      }
+      if (
+        parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
+        a.SECTION < b.SECTION
+      ) {
+        return -1
+      }
+      if (parseInt(a.CATALOG_NBR) > parseInt(b.CATALOG_NBR)) {
+        return 1
+      }
+      if (a.SECTION > b.SECTION) {
+        return 1
+      }
+      return -1
+    })
+
+    return (
+      <section>
+        <LinkyButton onClick={this.handleToggleFilter.bind(this)}>
+          {isExpanded ? <>Hide filter</> : <>Filter courses</>}
+        </LinkyButton>
+        {isExpanded && (
+          <Well>
+            <form
+              onSubmit={event => {
+                event.preventDefault()
+                this.setState({ filter: true })
+              }}
+            >
+              <InputCheckbox
+                name="isOpen"
+                label="Show only open courses"
+                onClick={event => {
+                  const search = this.state.search
+                  search.onlyOpen = event.target.checked
+                  this.setState({
+                    search: search,
+                  })
+                }}
+              />
+              <h4>Days of the week</h4>
+              <DayOfWeekFilter>
+                {weekDays.map(day => (
+                  <InputCheckbox
+                    key={day.day}
+                    name={day.day}
+                    data-day={day.short}
+                    label={day.day}
+                    inline={true}
+                    onClick={this.handleDayOfWeek.bind(this)}
+                  />
+                ))}
+              </DayOfWeekFilter>
+              <p>
+                <Submit value="Filter courses" />
+              </p>
+              <LinkyButton
+                onClick={event => {
+                  event.preventDefault()
+                  this.setState({
+                    filter: false,
+                  })
+                }}
+              >
+                Clear filter
+              </LinkyButton>
+            </form>
+          </Well>
+        )}
+        <CourseListItemHeader />
+        {filter && (
+          <CourseListSearchCount>
+            Found {listCourses.length} out of {courses.length} sections.
+          </CourseListSearchCount>
+        )}
+        {listCourses.map((course, key) => (
+          <CourseListItem key={key} course={course} term={term} />
+        ))}
+      </section>
+    )
+  }
 }
 
 const CourseListItemRow = styled('div')`
@@ -94,37 +274,6 @@ const MeetingList = styled('ul')`
 `
 
 const MeetingItem = props => {
-  const weekDays = [
-    {
-      short: 'MON',
-      day: 'Monday',
-    },
-    {
-      short: 'TUES',
-      day: 'Tuesday',
-    },
-    {
-      short: 'WED',
-      day: 'Wednesday',
-    },
-    {
-      short: 'THURS',
-      day: 'Thursday',
-    },
-    {
-      short: 'FRI',
-      day: 'Friday',
-    },
-    {
-      short: 'SAT',
-      day: 'Saturday',
-    },
-    {
-      short: 'SUN',
-      day: 'Sunday',
-    },
-  ]
-
   let meetingDays = []
   weekDays.forEach(day => {
     if (props[day.short] === 'Y') {
