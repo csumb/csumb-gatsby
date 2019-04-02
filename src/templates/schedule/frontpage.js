@@ -23,7 +23,7 @@ class ScheduleFront extends React.Component {
           <ScheduleTermList terms={allTerms} currentTerm={term} />
           <Flex flexWrap="wrap">
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-              <h3>Subjects</h3>
+              <h2>Subjects</h2>
               <ScheduleList>
                 {termSubjects.map(subject => (
                   <ScheduleListItem
@@ -40,7 +40,7 @@ class ScheduleFront extends React.Component {
               </ScheduleList>
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-              <h3>General Education</h3>
+              <h2>University requirements</h2>
               <GEList>
                 {allGe.map(ge => (
                   <GEListItem

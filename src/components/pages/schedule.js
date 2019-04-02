@@ -48,7 +48,7 @@ const ScheduleList = styled('ul')`
 `
 
 const ScheduleListItemElement = styled('li')`
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
   a {
     font-weight: bold;
     display: inline-block;
@@ -69,7 +69,7 @@ const GEList = styled('ul')`
 `
 
 const GEListItemElement = styled('li')`
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
 `
 
 const GEListItem = ({ to, children }) => (
@@ -323,24 +323,31 @@ const CourseListItem = ({ course, term }) => {
           <Link to={link}>{course.TITLE}</Link>
         </Box>
         <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+          <CourseListMobileLabel>Section</CourseListMobileLabel>
           {parseInt(course.SECTION)}
         </Box>
         <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+          <CourseListMobileLabel>Registration number</CourseListMobileLabel>
           {course.CRN}
         </Box>
         <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+          <CourseListMobileLabel>Units</CourseListMobileLabel>
           {course.UNITS}
         </Box>
         <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+          <CourseListMobileLabel>Enrollment</CourseListMobileLabel>
           {course.ENRL_TOT}/{course.ENRL_MAX}
         </Box>
         <Box width={[1, 1, 3 / 12, 4 / 12]} px={2}>
           {course._meetingPattern && (
-            <MeetingList>
-              {course._meetingPattern.map((meeting, key) => (
-                <MeetingItem key={key} {...meeting} />
-              ))}
-            </MeetingList>
+            <>
+              <CourseListMobileLabel>Days &amp; times</CourseListMobileLabel>
+              <MeetingList>
+                {course._meetingPattern.map((meeting, key) => (
+                  <MeetingItem key={key} {...meeting} />
+                ))}
+              </MeetingList>
+            </>
           )}
         </Box>
       </Flex>
@@ -362,6 +369,12 @@ const CourseListItemHeaderFlex = styled(Flex)`
 
 const CourseListItemHeaderBox = styled(Box)`
   padding: 0.5rem;
+`
+
+const CourseListMobileLabel = styled('strong')`
+  ${bp({
+    display: ['block', 'none'],
+  })}
 `
 
 const CourseListItemHeader = () => (

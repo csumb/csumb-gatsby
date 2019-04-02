@@ -58,6 +58,7 @@ const gatsbyConfig = {
       options: {
         apiKey: process.env.AIRTABLE_KEY,
         tables: [
+          // Science illustration
           {
             baseId: 'appW5yp8SpOvxD3Al',
             tableName: 'Graduates',
@@ -68,6 +69,7 @@ const gatsbyConfig = {
             tableName: 'Images',
             queryName: 'ScienceIllustrationImages',
           },
+          // University personnel
           {
             baseId: 'appRBrbuxszZziJNY',
             tableName: 'Pages',
@@ -79,6 +81,7 @@ const gatsbyConfig = {
             tableName: 'Documents',
             queryName: 'UniversityPersonnelDocuments',
           },
+          //Undersea archive
           {
             baseId: 'appzX0a9ppEdDZl1P',
             tableName: 'Regions',
