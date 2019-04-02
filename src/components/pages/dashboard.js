@@ -532,7 +532,7 @@ class DashboardContent extends React.Component {
           session: session.id,
         })
         fetch(
-          `https://csumb.edu/api/dashboard?_session=${
+          `https://edit.csumb.edu/api/dashboard?_session=${
             session.id
           }&role=${userRoles}&_t=${Date.now()}`
         )
@@ -565,7 +565,7 @@ class DashboardContent extends React.Component {
 
   archive(id, session) {
     fetch(
-      `https://csumb.edu/api/dashboard/archive?_session=${session}&id=${id}`
+      `https://edit.csumb.edu/api/dashboard/archive?_session=${session}&id=${id}`
     )
   }
 
