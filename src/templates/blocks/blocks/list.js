@@ -52,12 +52,12 @@ class BlockList extends React.Component {
         {listItems.map((item, key) => (
           <li>
             {parseHtml(item.text)}
-            {item._children.length && (
+            {item._children.length > 0 && (
               <ListTag>
                 {item._children.map((secondItem, secondKey) => (
                   <li>
                     {parseHtml(secondItem.text)}
-                    {secondItem._children.length && (
+                    {secondItem._children.length > 0 && (
                       <ListTag>
                         {secondItem._children.map(thirdItem => (
                           <li>{parseHtml(thirdItem.text)}</li>
