@@ -114,7 +114,10 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-            allTermCsv(filter: { SESSION_CODE: { eq: "1" } }) {
+            allTermCsv(
+              filter: { SESSION_CODE: { eq: "1" } }
+              sort: { fields: [TERM] }
+            ) {
               edges {
                 node {
                   TERM
@@ -242,6 +245,7 @@ module.exports = (graphql, actions) => {
               term: edge.node,
               allGe: result.data.allGeCsv.edges,
               termSubjects: termSubjects,
+              allTerms: allTerms,
             },
           })
 

@@ -7,18 +7,20 @@ import PageTitle from 'components/header/page-title'
 import {
   ScheduleList,
   ScheduleListItem,
+  ScheduleTermList,
   GEList,
   GEListItem,
 } from 'components/pages/schedule'
 
 class ScheduleFront extends React.Component {
   render() {
-    const { term, termSubjects, allGe } = this.props.pageContext
+    const { term, termSubjects, allGe, allTerms } = this.props.pageContext
     return (
       <Layout>
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
         <Container topPadding>
           <PageTitle>{term.DESCR} Schedule</PageTitle>
+          <ScheduleTermList terms={allTerms} currentTerm={term} />
           <Flex flexWrap="wrap">
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h3>Subjects</h3>
