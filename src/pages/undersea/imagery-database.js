@@ -133,7 +133,7 @@ class UnderseaArchiveImages extends React.Component {
           View sample images
         </LinkyButton>
         {typeof images[0] !== 'undefined' && (
-          <img src={images[0].src} alt="Sample image" />
+          <img src={images[0].src} alt="Sample" />
         )}
 
         <Lightbox
