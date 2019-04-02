@@ -18,7 +18,7 @@ const ImageGridItem = ({ item }) => (
         src={
           item.image.key
             ? `https://s3.amazonaws.com/csumb-uploads/${item.image.key}`
-            : item.image.url
+            : item.image.url.replace('/csumb.edu/', '/edit.csumb.edu/')
         }
         alt=""
       />
