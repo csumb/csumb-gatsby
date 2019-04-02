@@ -11,7 +11,7 @@ firebase.hosting.redirects.push({
 
 firebase.hosting.redirects.push({
   source: 'planning/schedule',
-  destination: `schedule`,
+  destination: `schedule/${config.siteMetadata.schedule.currentTermName}`,
   type: 301,
 })
 
