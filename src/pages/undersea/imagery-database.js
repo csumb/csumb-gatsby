@@ -7,7 +7,8 @@ import SiteNavigation from 'components/navigation/site'
 import Blocks from 'templates/blocks'
 import PageTitle from 'components/header/page-title'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { ButtonLink } from 'components/button'
+import { ButtonLink, LinkyButton } from 'components/button'
+import Lightbox from 'react-images'
 
 const UnderseaArchive = ({ data }) => {
   const regions = {}
@@ -26,6 +27,18 @@ const UnderseaArchive = ({ data }) => {
   data.forEach(({ node }) => {
     if (node.table === 'Archives') {
       node._mpas = []
+      node._images = []
+      if (node.data.Archive_Images) {
+        node.data.Archive_Images.forEach(image => {
+          if (image.thumbnails) {
+            node._images.push({
+              width: 1,
+              height: 1,
+              src: image.thumbnails.large.url,
+            })
+          }
+        })
+      }
       node.data.MPAs.forEach(mpaId => {
         node._mpas.push(MPAs[mpaId])
       })
@@ -72,6 +85,9 @@ const UnderseaArchive = ({ data }) => {
                     </ButtonLink>
                   )}
                 </Box>
+                <Box width={[1, 1 / 2]}>
+                  <UnderseaArchiveImages images={archive._images} />
+                </Box>
               </Flex>
             </>
           ))}
@@ -79,6 +95,58 @@ const UnderseaArchive = ({ data }) => {
       ))}
     </>
   )
+}
+
+class UnderseaArchiveImages extends React.Component {
+  state = {
+    currentImage: 0,
+    lightboxIsOpen: false,
+  }
+
+  openLightbox(event, obj) {
+    this.setState({
+      lightboxIsOpen: true,
+    })
+  }
+
+  closeLightbox() {
+    this.setState({
+      currentImage: 0,
+      lightboxIsOpen: false,
+    })
+  }
+  gotoPrevious() {
+    this.setState({
+      currentImage: this.state.currentImage - 1,
+    })
+  }
+  gotoNext() {
+    this.setState({
+      currentImage: this.state.currentImage + 1,
+    })
+  }
+  render() {
+    const { images } = this.props
+    return (
+      <>
+        <LinkyButton onClick={this.openLightbox.bind(this)}>
+          View sample images
+        </LinkyButton>
+        {typeof images[0] !== 'undefined' && (
+          <img src={images[0].src} alt="Sample image" />
+        )}
+
+        <Lightbox
+          images={images}
+          onClose={this.closeLightbox.bind(this)}
+          onClickPrev={this.gotoPrevious.bind(this)}
+          onClickNext={this.gotoNext.bind(this)}
+          currentImage={this.state.currentImage}
+          isOpen={this.state.lightboxIsOpen}
+        />
+      </>
+    )
+  }
 }
 
 class UnderseaImageryDatabasePage extends React.Component {
@@ -132,8 +200,14 @@ export const query = graphql`
             Zip_File {
               url
             }
-            image {
-              id
+            Archive_Images {
+              thumbnails {
+                large {
+                  url
+                  width
+                  height
+                }
+              }
             }
           }
         }
