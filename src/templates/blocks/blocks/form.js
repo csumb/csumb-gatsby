@@ -16,6 +16,9 @@ class BlockForm extends React.Component {
         provider.form
       }/viewform?embedded=true`
     }
+    if (provider.provider === 'airtable') {
+      formUrl = `https://airtable.com/${provider.form}`
+    }
     return (
       <FormIframe
         style={{ height: height + 'px' }}
