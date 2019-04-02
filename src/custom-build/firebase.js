@@ -3,18 +3,6 @@ const config = require('../../gatsby-config')
 const firebase = fs.readJsonSync('./firebase-start.json')
 firebase.hosting.redirects = []
 
-firebase.hosting.redirects.push({
-  source: 'schedule',
-  destination: `schedule/${config.siteMetadata.schedule.currentTermName}`,
-  type: 301,
-})
-
-firebase.hosting.redirects.push({
-  source: 'planning/schedule',
-  destination: `schedule/${config.siteMetadata.schedule.currentTermName}`,
-  type: 301,
-})
-
 fs.readJson('./_web-content/_data/redirects.json', (err, redirects) => {
   if (err) {
     console.log(err)
@@ -29,6 +17,17 @@ fs.readJson('./_web-content/_data/redirects.json', (err, redirects) => {
         type: 301,
       })
     }
+  })
+  firebase.hosting.redirects.push({
+    source: '/schedule',
+    destination: `/schedule/${config.siteMetadata.schedule.currentTermName}`,
+    type: 301,
+  })
+
+  firebase.hosting.redirects.push({
+    source: '/planning/schedule',
+    destination: `/schedule/${config.siteMetadata.schedule.currentTermName}`,
+    type: 301,
   })
   console.log(`Wrote ${firebase.hosting.redirects.length} redirects`)
   fs.outputJson('./firebase.json', firebase, { spaces: 2 })
