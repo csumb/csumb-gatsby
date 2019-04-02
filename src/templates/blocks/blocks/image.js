@@ -35,7 +35,9 @@ class BlockImage extends React.Component {
     }
     const imageSource = image.key
       ? `https://s3.amazonaws.com/csumb-uploads/${image.key}`
-      : image.url.replace('http://', 'https://')
+      : image.url
+          .replace('http://', 'https://')
+          .replace('/csumb.edu/', '/edit.csumb.edu/')
     return (
       <ImageContainer pullRight={pullRight && !inColumn}>
         <img
