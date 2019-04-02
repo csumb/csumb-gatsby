@@ -9,6 +9,12 @@ firebase.hosting.redirects.push({
   type: 301,
 })
 
+firebase.hosting.redirects.push({
+  source: 'planning/schedule',
+  destination: `schedule`,
+  type: 301,
+})
+
 fs.readJson('./_web-content/_data/redirects.json', (err, redirects) => {
   if (err) {
     console.log(err)
