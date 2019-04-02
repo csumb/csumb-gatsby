@@ -108,57 +108,39 @@ class Footer extends React.Component {
                 <Box width={[1, 1 / 3]}>
                   <FooterList>
                     <li>
-                      <Link to="/jobs" title="">
-                        Jobs
-                      </Link>
+                      <Link to="/jobs">Jobs</Link>
                     </li>
                     <li>
-                      <Link to="/admissions/visit" title="">
-                        Tours
-                      </Link>
+                      <Link to="/admissions/visit">Tours</Link>
                     </li>
                     <li>
-                      <Link to="/parking" title="">
-                        Parking
-                      </Link>
+                      <Link to="/parking">Parking</Link>
                     </li>
                   </FooterList>
                 </Box>
                 <Box width={[1, 1 / 3]}>
                   <FooterList>
                     <li>
-                      <Link to="/library" title="">
-                        Library
-                      </Link>
+                      <Link to="/library">Library</Link>
                     </li>
                     <li>
-                      <Link to="/map" title="">
-                        Map
-                      </Link>
+                      <Link to="/map">Map</Link>
                     </li>
                     <li>
-                      <Link to="/mastercalendar" title="">
-                        Calendar
-                      </Link>
+                      <Link to="/mastercalendar">Calendar</Link>
                     </li>
                   </FooterList>
                 </Box>
                 <Box width={[1, 1 / 3]}>
                   <FooterList>
                     <li>
-                      <Link to="/directory" title="">
-                        Directory
-                      </Link>
+                      <Link to="/directory">Directory</Link>
                     </li>
                     <li>
-                      <Link to="/catalog" title="">
-                        Catalog
-                      </Link>
+                      <Link to="/catalog">Catalog</Link>
                     </li>
                     <li>
-                      <a href="/schedule" title="">
-                        Class schedule
-                      </a>
+                      <Link to="/schedule">Class schedule</Link>
                     </li>
                   </FooterList>
                 </Box>
