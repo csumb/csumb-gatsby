@@ -156,7 +156,7 @@ class Footer extends React.Component {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/planning/schedule" title="">
+                      <Link to="/schedule" title="">
                         Class schedule
                       </Link>
                     </li>
