@@ -126,6 +126,13 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
+            site {
+              siteMetadata {
+                schedule {
+                  currentTerm
+                }
+              }
+            }
           }
         `
       ).then(result => {
@@ -248,6 +255,31 @@ module.exports = (graphql, actions) => {
               allTerms: allTerms,
             },
           })
+          if (
+            parseInt(edge.node.TERM) ===
+            parseInt(result.data.site.siteMetadata.schedule.currentTerm)
+          ) {
+            createPage({
+              path: `schedule`,
+              component: scheduleFrontpageTemplate,
+              context: {
+                term: edge.node,
+                allGe: result.data.allGeCsv.edges,
+                termSubjects: termSubjects,
+                allTerms: allTerms,
+              },
+            })
+            createPage({
+              path: `planning/schedule`,
+              component: scheduleFrontpageTemplate,
+              context: {
+                term: edge.node,
+                allGe: result.data.allGeCsv.edges,
+                termSubjects: termSubjects,
+                allTerms: allTerms,
+              },
+            })
+          }
 
           termSubjects.forEach(subject => {
             createPage({
