@@ -477,7 +477,6 @@ const CoursePage = ({ course, term, requirements }) => {
   requirements.forEach(({ node }) => {
     codes[node.code] = node.name
   })
-  console.log(codes)
   return (
     <>
       <PageTitle
