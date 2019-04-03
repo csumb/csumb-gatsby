@@ -3,6 +3,10 @@ import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
 import bp from 'style/breakpoints'
 import parseHtml from '../parse-html'
+import { colors } from 'style/theme'
+import { Flex, Box } from '@rebass/grid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
 
 const Cite = styled('cite')`
   display: block;
@@ -12,35 +16,35 @@ const Cite = styled('cite')`
   font-style: normal;
 `
 
-const Quote = styled('div')`
-  ${props => props.container};
-`
-
-const Blockquote = styled('blockquote')`
-  font-size: 1.3rem;
-  ${bp({
-    padding: ['0 0.5rem', '0 1rem', '0 3.5rem'],
-  })}
+const QuoteIcon = styled(FontAwesomeIcon)`
+  color: ${colors.muted.dark};
+  font-size: 1.4rem;
 `
 
 class BlockQuote extends React.Component {
   render() {
     const { quote, source, url } = this.props
     return (
-      <Quote>
-        <Blockquote>
-          <div>{parseHtml(quote)}</div>
-          {source && (
-            <Cite>
-              {url ? (
-                <LinkInspect to={url}>{source}</LinkInspect>
-              ) : (
-                <>{source}</>
-              )}
-            </Cite>
-          )}
-        </Blockquote>
-      </Quote>
+      <blockquote>
+        <Flex flexWrap="wrap">
+          <Box width={1 / 12} pr={2}>
+            <QuoteIcon icon={faQuoteLeft} />
+          </Box>
+          <Box width={11 / 12}>
+            <div>{parseHtml(quote)}</div>
+            {source && (
+              <Cite>
+                {'— '}
+                {url ? (
+                  <LinkInspect to={url}>{source}</LinkInspect>
+                ) : (
+                  <>{source}</>
+                )}
+              </Cite>
+            )}
+          </Box>
+        </Flex>
+      </blockquote>
     )
   }
 }
