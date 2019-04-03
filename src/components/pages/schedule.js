@@ -506,8 +506,36 @@ const CoursePage = ({ course, term, requirements }) => {
               <dd>{course.ENRL_MAX}</dd>
             </EnrollmentList>
           </CourseSection>
+          <CourseSection legend="How to register">
+            {course.CONSENT === 'I' && (
+              <p>
+                To register, you need permission from the instructor.
+                <Link to="/permission-codes">
+                  Learn more about permission codes.
+                </Link>
+              </p>
+            )}
+            {course.CONSENT === 'D' && (
+              <p>
+                To register, you need permission from the department.{' '}
+                <Link to="/permission-codes">
+                  Learn more about permission codes.
+                </Link>
+              </p>
+            )}
+            <p>
+              Use this number to{' '}
+              <Link to="/registration-process">
+                register for the course in OASIS
+              </Link>
+              :
+            </p>
+            <CourseNumber>{course.CRN}</CourseNumber>
+          </CourseSection>
           {course._instructors && (
-            <CourseSection legend="Instructor">
+            <CourseSection
+              legend={`Instructor${course._instructors.length > 1 ? `s` : ``}`}
+            >
               <UnstyledList>
                 {course._instructors.map(instructor => (
                   <li>
@@ -555,31 +583,7 @@ const CoursePage = ({ course, term, requirements }) => {
               </p>
             )}
           </CourseSection>
-          <CourseSection legend="How to register">
-            {course.CONSENT === 'I' && (
-              <p>
-                To register, you need permission from the instructor.
-                <Link to="/permission-codes">
-                  Learn more about permission codes.
-                </Link>
-              </p>
-            )}
-            {course.CONSENT === 'D' && (
-              <p>
-                To register, you need permission from the department.
-                <Link to="/permission-codes">
-                  Learn more about permission codes.
-                </Link>
-              </p>
-            )}
-            <p>
-              Use this number to{' '}
-              <Link to="/registration-process">
-                register for the course in OASIS
-              </Link>
-            </p>
-            <CourseNumber>{course.CRN}</CourseNumber>
-          </CourseSection>
+
           <CourseSection legend="Buy books">
             <p>Purchase books for this course from the CSUMB bookstore</p>
             <form
