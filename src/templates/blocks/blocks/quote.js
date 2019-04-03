@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
-import bp from 'style/breakpoints'
 import parseHtml from '../parse-html'
 import { colors } from 'style/theme'
 import { Flex, Box } from '@rebass/grid'
