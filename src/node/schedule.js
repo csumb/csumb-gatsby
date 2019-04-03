@@ -207,6 +207,7 @@ module.exports = (graphql, actions) => {
           const term = edge.node
           allCourses.forEach(edge => {
             let attributes = processAttributes(edge.node.ATTRIBUTES)
+            edge.node._attributes = attributes
             if (edge.node.STRM == term.TERM) {
               termSubjects[edge.node.SUBJECT] = allSubjects[edge.node.SUBJECT]
               if (
@@ -325,6 +326,7 @@ module.exports = (graphql, actions) => {
             component: scheduleCourseTemplate,
             context: {
               term: term,
+              requirements: result.data.allGeCsv.edges,
               course: edge.node,
             },
           })
