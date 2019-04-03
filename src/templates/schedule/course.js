@@ -6,12 +6,12 @@ import { CoursePage } from 'components/pages/schedule'
 
 class CoursePageTemplate extends React.Component {
   render() {
-    const { term, course } = this.props.pageContext
+    const { term, course, requirements } = this.props.pageContext
     return (
       <Layout>
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
         <Container topPadding>
-          <CoursePage term={term} course={course} />
+          <CoursePage term={term} course={course} requirements={requirements} />
         </Container>
       </Layout>
     )

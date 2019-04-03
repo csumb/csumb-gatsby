@@ -306,6 +306,15 @@ const MeetingItem = props => {
   )
 }
 
+const CourseAttributeList = styled('ol')`
+  list-style-type: none;
+  font-size: 0.8rem;
+  margin: 0;
+  li {
+    margin: 0;
+  }
+`
+
 const CourseListItem = ({ course, term }) => {
   const link = `/schedule/${term.DESCR.toLowerCase().replace(' ', '')}/course/${
     course.CRN
@@ -314,31 +323,31 @@ const CourseListItem = ({ course, term }) => {
   return (
     <CourseListItemRow>
       <Flex flexWrap="wrap">
-        <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+        <Box width={[1, 1 / 12]} pr={[0, 2]}>
           <Link to={link}>
             {course.SUBJECT} {course.CATALOG_NBR}
           </Link>
         </Box>
-        <Box width={[1, 1, 3 / 12, 3 / 12]} px={2}>
+        <Box width={[1, 3 / 12]} pr={[0, 2]}>
           <Link to={link}>{course.TITLE}</Link>
         </Box>
-        <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+        <Box width={[1, 1 / 12]} pr={[0, 2]}>
           <CourseListMobileLabel>Section</CourseListMobileLabel>
           {parseInt(course.SECTION)}
         </Box>
-        <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+        <Box width={[1, 1 / 12]} pr={[0, 2]}>
           <CourseListMobileLabel>Registration number</CourseListMobileLabel>
           {course.CRN}
         </Box>
-        <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+        <Box width={[1, 1 / 12]} pr={[0, 2]}>
           <CourseListMobileLabel>Units</CourseListMobileLabel>
           {course.UNITS}
         </Box>
-        <Box width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+        <Box width={[1, 1 / 12]} pr={[0, 2]}>
           <CourseListMobileLabel>Enrollment</CourseListMobileLabel>
           {course.ENRL_TOT}/{course.ENRL_MAX}
         </Box>
-        <Box width={[1, 1, 3 / 12, 4 / 12]} px={2}>
+        <Box width={[1, 3 / 12]} pr={[0, 2]}>
           {course._meetingPattern && (
             <>
               <CourseListMobileLabel>Days &amp; times</CourseListMobileLabel>
@@ -348,6 +357,26 @@ const CourseListItem = ({ course, term }) => {
                 ))}
               </MeetingList>
             </>
+          )}
+        </Box>
+        <Box width={[1, 1 / 12]}>
+          {(course._attributes.GE || course._attributes.UR) && (
+            <CourseAttributeList>
+              {course._attributes.GE && (
+                <>
+                  {course._attributes.GE.map(ge => (
+                    <li>{ge}</li>
+                  ))}
+                </>
+              )}
+              {course._attributes.UR && (
+                <>
+                  {course._attributes.UR.map(ur => (
+                    <li>{ur}</li>
+                  ))}
+                </>
+              )}
+            </CourseAttributeList>
           )}
         </Box>
       </Flex>
@@ -379,27 +408,31 @@ const CourseListMobileLabel = styled('strong')`
 
 const CourseListItemHeader = () => (
   <CourseListItemHeaderFlex flexWrap="wrap">
-    <CourseListItemHeaderBox width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+    <CourseListItemHeaderBox width={[1, 1 / 12]} pr={[0, 2]}>
       Course
     </CourseListItemHeaderBox>
-    <CourseListItemHeaderBox width={[1, 1, 3 / 12, 3 / 12]} px={2}>
+    <CourseListItemHeaderBox width={[1, 3 / 12]} pr={[0, 2]}>
       Title
     </CourseListItemHeaderBox>
-    <CourseListItemHeaderBox width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+    <CourseListItemHeaderBox width={[1, 1 / 12]} pr={[0, 2]}>
       Section
     </CourseListItemHeaderBox>
-    <CourseListItemHeaderBox width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+    <CourseListItemHeaderBox width={[1, 1 / 12]} pr={[0, 2]}>
       Number
     </CourseListItemHeaderBox>
 
-    <CourseListItemHeaderBox width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+    <CourseListItemHeaderBox width={[1, 1 / 12]} pr={[0, 2]}>
       Units
     </CourseListItemHeaderBox>
-    <CourseListItemHeaderBox width={[1, 1, 1 / 12, 1 / 12]} px={2}>
+    <CourseListItemHeaderBox width={[1, 1 / 12]} pr={[0, 2]}>
       Seats
     </CourseListItemHeaderBox>
-    <CourseListItemHeaderBox width={[1, 1, 3 / 12, 3 / 12]} px={2}>
+    <CourseListItemHeaderBox width={[1, 3 / 12]} pr={[0, 2]}>
       Day &amp; time
+    </CourseListItemHeaderBox>
+
+    <CourseListItemHeaderBox width={[1, 1 / 12]} pr={[0, 2]}>
+      GE
     </CourseListItemHeaderBox>
   </CourseListItemHeaderFlex>
 )
@@ -439,101 +472,139 @@ const CourseNumber = styled('pre')`
   font-size: 1.5rem;
 `
 
-const CoursePage = ({ course, term }) => (
-  <>
-    <PageTitle
-      sub={`${course.SUBJECT} ${course.CATALOG_NBR} Section ${
-        course.SECTION
-      }, ${course.UNITS} units`}
-    >
-      {term.DESCR}
-    </PageTitle>
-    <CourseTitle>{course.TITLE}</CourseTitle>
-    <Flex flexWrap="wrap">
-      <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-        <CourseSection legend="Days, times, and locations">
-          <CourseMeetingList>
-            {course._meetingPattern.map((meeting, key) => (
-              <MeetingItem key={key} {...meeting} showLocation />
-            ))}
-          </CourseMeetingList>
-        </CourseSection>
-        <CourseSection legend="Enrollment">
-          <EnrollmentList>
-            <dt>Open seats</dt>
-            <dd>{course.ENRL_MAX - course.ENRL_TOT}</dd>
-            <dt>Total enrolled</dt>
-            <dd>{course.ENRL_TOT}</dd>
-            <dt>Maximum enrollment</dt>
-            <dd>{course.ENRL_MAX}</dd>
-          </EnrollmentList>
-        </CourseSection>
-        {course._instructors && (
-          <CourseSection legend="Instructor">
-            <UnstyledList>
-              {course._instructors.map(instructor => (
-                <li>
-                  <Link
-                    to={`/directory/person/${instructor.email
-                      .split('@')
-                      .shift()
-                      .toLowerCase()}`}
-                  >
-                    {instructor.firstName} {instructor.lastName}
-                  </Link>
-                </li>
+const CoursePage = ({ course, term, requirements }) => {
+  const codes = {}
+  requirements.forEach(({ node }) => {
+    codes[node.code] = node.name
+  })
+  return (
+    <>
+      <PageTitle
+        sub={`${course.SUBJECT} ${course.CATALOG_NBR} Section ${
+          course.SECTION
+        }, ${course.UNITS} units`}
+      >
+        {term.DESCR}
+      </PageTitle>
+      <CourseTitle>{course.TITLE}</CourseTitle>
+      <Flex flexWrap="wrap">
+        <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 2]}>
+          <CourseSection legend="Days, times, and locations">
+            <CourseMeetingList>
+              {course._meetingPattern.map((meeting, key) => (
+                <MeetingItem key={key} {...meeting} showLocation />
               ))}
-            </UnstyledList>
+            </CourseMeetingList>
           </CourseSection>
-        )}
-      </Box>
-      <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-        <p>{course.DESCR}</p>
-        <CourseSection legend="How to register">
-          {course.CONSENT === 'I' && (
+          <CourseSection legend="Enrollment">
+            <EnrollmentList>
+              <dt>Open seats</dt>
+              <dd>{course.ENRL_MAX - course.ENRL_TOT}</dd>
+              <dt>Total enrolled</dt>
+              <dd>{course.ENRL_TOT}</dd>
+              <dt>Maximum enrollment</dt>
+              <dd>{course.ENRL_MAX}</dd>
+            </EnrollmentList>
+          </CourseSection>
+          <CourseSection legend="How to register">
+            {course.CONSENT === 'I' && (
+              <p>
+                To register, you need permission from the instructor.
+                <Link to="/permission-codes">
+                  Learn more about permission codes.
+                </Link>
+              </p>
+            )}
+            {course.CONSENT === 'D' && (
+              <p>
+                To register, you need permission from the department.{' '}
+                <Link to="/permission-codes">
+                  Learn more about permission codes.
+                </Link>
+              </p>
+            )}
             <p>
-              To register, you need permission from the instructor.
-              <Link to="/permission-codes">
-                Learn more about permission codes.
+              Use this number to{' '}
+              <Link to="/registration-process">
+                register for the course in OASIS
               </Link>
+              :
             </p>
+            <CourseNumber>{course.CRN}</CourseNumber>
+          </CourseSection>
+          {course._instructors && (
+            <CourseSection
+              legend={`Instructor${course._instructors.length > 1 ? `s` : ``}`}
+            >
+              <UnstyledList>
+                {course._instructors.map(instructor => (
+                  <li>
+                    <Link
+                      to={`/directory/person/${instructor.email
+                        .split('@')
+                        .shift()
+                        .toLowerCase()}`}
+                    >
+                      {instructor.firstName} {instructor.lastName}
+                    </Link>
+                  </li>
+                ))}
+              </UnstyledList>
+            </CourseSection>
           )}
-          {course.CONSENT === 'D' && (
-            <p>
-              To register, you need permission from the department.
-              <Link to="/permission-codes">
-                Learn more about permission codes.
-              </Link>
-            </p>
-          )}
-          <p>
-            Use this number to{' '}
-            <Link to="/registration-process">
-              register for the course in OASIS
-            </Link>
-          </p>
-          <CourseNumber>{course.CRN}</CourseNumber>
-        </CourseSection>
-        <CourseSection legend="Buy books">
-          <p>Purchase books for this course from the CSUMB bookstore</p>
-          <form
-            method="post"
-            target="_blank"
-            action="http://www.bkstr.com/webapp/wcs/stores/servlet/booklookServlet"
-          >
-            <input type="hidden" name="bookstore_id-1" value="2029" />
-            <input type="hidden" name="term_id-1" value={course.STRM} />
-            <input type="hidden" name="div-1" value=" " />
-            <input type="hidden" name="dept-1" value={course.SUBJECT} />
-            <input type="hidden" name="course-1" value={course.CATALOG_NBR} />
-            <input type="hidden" name="section-1" value={course.SECTION} />
-            <Submit value="Find books" />
-          </form>
-        </CourseSection>
-      </Box>
-    </Flex>
-  </>
-)
+        </Box>
+        <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 2]}>
+          <p>{course.DESCR}</p>
+          <CourseSection legend="University requirements">
+            {course._attributes.GE || course._attributes.UR ? (
+              <ul>
+                {course._attributes.GE && (
+                  <>
+                    {course._attributes.GE.map(ge => (
+                      <li>{codes[ge]}</li>
+                    ))}
+                  </>
+                )}
+                {course._attributes.UR && (
+                  <>
+                    {course._attributes.UR.map(ur => (
+                      <li>{codes[ur]}</li>
+                    ))}
+                  </>
+                )}
+              </ul>
+            ) : (
+              <p>
+                This course does not fulfill any{' '}
+                <Link to="/catalog/undergraduate-programs">
+                  general university requirements
+                </Link>
+                .
+              </p>
+            )}
+          </CourseSection>
+
+          <CourseSection legend="Buy books">
+            <p>Purchase books for this course from the CSUMB bookstore</p>
+            <form
+              method="post"
+              target="_blank"
+              action="http://www.bkstr.com/webapp/wcs/stores/servlet/booklookServlet"
+            >
+              <input type="hidden" name="bookstore_id-1" value="2029" />
+              <input type="hidden" name="term_id-1" value={course.STRM} />
+              <input type="hidden" name="div-1" value=" " />
+              <input type="hidden" name="dept-1" value={course.SUBJECT} />
+              <input type="hidden" name="course-1" value={course.CATALOG_NBR} />
+              <input type="hidden" name="section-1" value={course.SECTION} />
+              <Submit value="Find books" />
+            </form>
+          </CourseSection>
+        </Box>
+      </Flex>
+    </>
+  )
+}
 
 const ScheduleBackLinkElement = styled(Link)`
   margin-bottom: 1rem;
