@@ -44,6 +44,7 @@ module.exports = (graphql, actions) => {
                       buildingCode
                       location
                       appointmentCalendar
+                      officeHours
                     }
                   }
                 }

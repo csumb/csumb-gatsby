@@ -88,6 +88,16 @@ const PersonTemplate = ({ pageContext }) => {
                 )}
               </DirectoryItem>
             )}
+            {_publicProfile && _publicProfile.officeHours && (
+              <DirectoryItem>
+                <h2>Office hours</h2>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: _publicProfile.officeHours.replace('\n', '<br/>'),
+                  }}
+                />
+              </DirectoryItem>
+            )}
           </Box>
           <Box width={[1, 1, 1 / 4]}>
             {_publicProfile && _publicProfile.photo && (

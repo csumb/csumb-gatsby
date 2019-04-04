@@ -7,7 +7,7 @@ import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
 import styled from '@emotion/styled'
 import ReactFilestack from 'filestack-react'
-import { InputText, InputSelect, Submit } from 'components/forms'
+import { InputText, InputSelect, InputTextarea, Submit } from 'components/forms'
 import { graphql } from 'gatsby'
 import { AlertSuccess } from 'components/alert'
 import {
@@ -127,6 +127,7 @@ class UserAccountProfileForm extends React.Component {
 
   componentDidMount() {
     const that = this
+    const now = new Date()
     fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
     })
@@ -135,7 +136,11 @@ class UserAccountProfileForm extends React.Component {
         return response.json()
       })
       .then(response => {
-        fetch(`https://api.csumb.edu/profile/data?token=${response.id}`)
+        fetch(
+          `https://api.csumb.edu/profile/data?token=${
+            response.id
+          }&_=${now.getTime()}`
+        )
           .then(response => {
             NProgress.inc()
             return response.json()
@@ -179,6 +184,10 @@ class UserAccountProfileForm extends React.Component {
         <UserAccountProfilePhone user={user} profile={profile} />
         <UserAccountProfileBio user={user} profile={profile} />
         <UserAccountProfileOfficeHours user={user} profile={profile} />
+        <UserAccountProfileOfficeHoursDescription
+          user={user}
+          profile={profile}
+        />
         <UserAccountProfilePhoto user={user} profile={profile} />
       </>
     )
@@ -256,6 +265,83 @@ class UserAccountProfileOfficeHoursForm extends React.Component {
           <AlertSuccess>
             Your appointment calendar has been updated. It might take a few
             hours for the change to make it to the public directory.
+          </AlertSuccess>
+        )}
+      </form>
+    )
+  }
+}
+
+class UserAccountProfileOfficeHoursDescription extends React.Component {
+  state = {
+    showForm: false,
+  }
+
+  handleShowForm(event) {
+    event.preventDefault()
+    this.setState({
+      showForm: !this.state.showForm,
+    })
+  }
+
+  render() {
+    const { profile } = this.props
+    return (
+      <AccountGroup legend="Office hours">
+        <p>Describe your office hours.</p>
+        {profile && profile.officeHours && (
+          <p
+            dangerouslySetInnerHTML={{
+              __html: profile.officeHours.replace('\n', '<br/>'),
+            }}
+          />
+        )}
+        <p>
+          <Button onClick={this.handleShowForm.bind(this)} to="#phone">
+            Change office hours
+          </Button>
+        </p>
+        {this.state.showForm && (
+          <UserAccountProfileOfficeHoursDescriptionForm />
+        )}
+      </AccountGroup>
+    )
+  }
+}
+
+class UserAccountProfileOfficeHoursDescriptionForm extends React.Component {
+  state = {
+    officeHours: false,
+    updated: false,
+  }
+  handleSubmit(event) {
+    event.preventDefault()
+    updateProfileField('officeHours', this.state.officeHours)
+    this.setState({
+      updated: true,
+    })
+  }
+
+  handleChange(event) {
+    this.setState({
+      officeHours: event.target.value.trim(),
+    })
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit.bind(this)}>
+        <InputTextarea
+          onKeyUp={this.handleChange.bind(this)}
+          label="Office hours"
+          name="officeHours"
+          small
+        />
+        <Submit value="Update office Hours" />
+        {this.state.updated && (
+          <AlertSuccess>
+            Your office hours has been updated. It might take a few hours for
+            the change to make it to the public directory.
           </AlertSuccess>
         )}
       </form>
