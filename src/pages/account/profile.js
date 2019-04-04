@@ -127,6 +127,7 @@ class UserAccountProfileForm extends React.Component {
 
   componentDidMount() {
     const that = this
+    const now = new Date()
     fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
     })
@@ -135,7 +136,11 @@ class UserAccountProfileForm extends React.Component {
         return response.json()
       })
       .then(response => {
-        fetch(`https://api.csumb.edu/profile/data?token=${response.id}`)
+        fetch(
+          `https://api.csumb.edu/profile/data?token=${
+            response.id
+          }&_=${now.getTime()}`
+        )
           .then(response => {
             NProgress.inc()
             return response.json()
@@ -285,9 +290,11 @@ class UserAccountProfileOfficeHoursDescription extends React.Component {
       <AccountGroup legend="Office hours">
         <p>Describe your office hours.</p>
         {profile && profile.officeHours && (
-          <AccountData>
-            <p>{profile.officeHours}</p>
-          </AccountData>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: profile.officeHours.replace('\n', '<br/>'),
+            }}
+          />
         )}
         <p>
           <Button onClick={this.handleShowForm.bind(this)} to="#phone">
