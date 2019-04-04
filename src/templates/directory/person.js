@@ -88,7 +88,7 @@ const PersonTemplate = ({ pageContext }) => {
                 )}
               </DirectoryItem>
             )}
-            {_publicProfile.officeHours && (
+            {_publicProfile && _publicProfile.officeHours && (
               <DirectoryItem>
                 <h2>Office hours</h2>
                 <p
