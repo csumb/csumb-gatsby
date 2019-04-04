@@ -2,10 +2,12 @@ import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/link-inspect'
 import parseHtml from '../parse-html'
-import { colors } from 'style/theme'
 import { Flex, Box } from '@rebass/grid'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
+import quoteIcon from 'assets/images/quote.svg'
+
+const Quote = styled('blockquote')`
+  font-size: 1.3rem;
+`
 
 const Cite = styled('cite')`
   display: block;
@@ -15,21 +17,20 @@ const Cite = styled('cite')`
   font-style: normal;
 `
 
-const QuoteIcon = styled(FontAwesomeIcon)`
-  color: ${colors.muted.dark};
-  font-size: 1.4rem;
+const QuoteIcon = styled('img')`
+  max-width: 50px;
 `
 
 class BlockQuote extends React.Component {
   render() {
     const { quote, source, url } = this.props
     return (
-      <blockquote>
+      <Quote>
         <Flex flexWrap="wrap">
-          <Box width={1 / 12} pr={2}>
-            <QuoteIcon icon={faQuoteLeft} />
+          <Box width={2 / 12} pr={2}>
+            <QuoteIcon src={quoteIcon} alt="" />
           </Box>
-          <Box width={11 / 12}>
+          <Box width={10 / 12}>
             <div>{parseHtml(quote)}</div>
             {source && (
               <Cite>
@@ -43,7 +44,7 @@ class BlockQuote extends React.Component {
             )}
           </Box>
         </Flex>
-      </blockquote>
+      </Quote>
     )
   }
 }
