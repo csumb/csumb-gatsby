@@ -90,14 +90,9 @@ export default EventsPage
 export const query = graphql`
   {
     allCsumbPage(
-      filter: {
-        event: {
-          public: { eq: true }
-          featured: { eq: true }
-          description: { ne: null }
-        }
-      }
+      filter: { event: { public: { eq: true }, description: { ne: null } } }
       sort: { fields: [event___date_stamps] }
+      limit: 25
     ) {
       edges {
         node {
