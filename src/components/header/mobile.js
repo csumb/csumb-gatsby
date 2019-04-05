@@ -295,11 +295,6 @@ const HeaderMobileNavigationButton = styled('button')`
   text-align: left;
 `
 
-const HeaderMobileToggleIcon = styled('span')`
-  display: block;
-  float: right;
-`
-
 class HeaderMobile extends React.Component {
   state = {
     isOpen: false,
@@ -362,10 +357,11 @@ class HeaderMobile extends React.Component {
                       })
                     }}
                   >
-                    <HeaderMobileToggleIcon aria-hidden="true">
-                      {isMainMenuExpanded ? <>▲</> : <>▼</>}
-                    </HeaderMobileToggleIcon>
                     CSUMB main menu
+                    <span aria-hidden="true">
+                      {' '}
+                      {isMainMenuExpanded ? <>▲</> : <>▼</>}
+                    </span>
                   </HeaderMobileNavigationButton>
                 </Container>
               </HeaderMobileNavigationExpand>
