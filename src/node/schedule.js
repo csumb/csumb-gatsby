@@ -62,6 +62,8 @@ module.exports = (graphql, actions) => {
                 node {
                   code
                   name
+                  type
+                  url
                 }
               }
             }
