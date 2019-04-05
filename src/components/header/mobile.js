@@ -358,10 +358,7 @@ class HeaderMobile extends React.Component {
                     }}
                   >
                     CSUMB main menu
-                    <span aria-hidden="true">
-                      {' '}
-                      {isMainMenuExpanded ? <>▲</> : <>▼</>}
-                    </span>
+                    <span aria-hidden="true"> ▾</span>
                   </HeaderMobileNavigationButton>
                 </Container>
               </HeaderMobileNavigationExpand>
