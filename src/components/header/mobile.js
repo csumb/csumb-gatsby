@@ -43,14 +43,6 @@ const HeaderMobileSearch = styled('div')`
   }
 `
 
-const HeaderMobileApply = styled(Link)`
-  color: ${colors.primary.darkest} !important;
-  border: 2px solid ${colors.primary.darkest};
-  padding: 0.3rem;
-  float: right;
-  text-decoration: none;
-`
-
 const MobileSiteNavigationLink = styled(LinkInspect)`
   text-decoration: none;
   color: ${colors.black};
@@ -297,6 +289,7 @@ const HeaderMobileNavigationButton = styled('button')`
   background: transparent;
   font-weight: bold;
   border: 0;
+  cursor: pointer;
   padding: 0.5rem 0;
 `
 
