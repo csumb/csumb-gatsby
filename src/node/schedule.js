@@ -138,6 +138,8 @@ module.exports = (graphql, actions) => {
           }
         `
       ).then(result => {
+        resolve()
+        return
         if (result.errors) {
           reject(result.errors)
         }
