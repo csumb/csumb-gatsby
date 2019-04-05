@@ -291,6 +291,13 @@ const HeaderMobileNavigationButton = styled('button')`
   border: 0;
   cursor: pointer;
   padding: 0.5rem 0;
+  width: 100%;
+  text-align: left;
+`
+
+const HeaderMobileToggleIcon = styled('span')`
+  display: block;
+  float: right;
 `
 
 class HeaderMobile extends React.Component {
@@ -355,6 +362,9 @@ class HeaderMobile extends React.Component {
                       })
                     }}
                   >
+                    <HeaderMobileToggleIcon aria-hidden="true">
+                      {isMainMenuExpanded ? <>▲</> : <>▼</>}
+                    </HeaderMobileToggleIcon>
                     CSUMB main menu
                   </HeaderMobileNavigationButton>
                 </Container>
