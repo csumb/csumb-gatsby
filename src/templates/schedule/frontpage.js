@@ -9,7 +9,6 @@ import {
   ScheduleListItem,
   ScheduleTermList,
   GEList,
-  GEListItem,
 } from 'components/pages/schedule'
 
 class ScheduleFront extends React.Component {
@@ -40,20 +39,10 @@ class ScheduleFront extends React.Component {
               </ScheduleList>
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
-              <h2>University requirements</h2>
-              <GEList>
-                {allGe.map(ge => (
-                  <GEListItem
-                    key={ge.node.code}
-                    to={`/schedule/${term.DESCR.toLowerCase().replace(
-                      ' ',
-                      ''
-                    )}/ge/${ge.node.code.toLowerCase()}`}
-                  >
-                    {ge.node.name}
-                  </GEListItem>
-                ))}
-              </GEList>
+              <h2>General Education</h2>
+              <GEList term={term} type="ge" ge={allGe} />
+              <h2>University Requirements</h2>
+              <GEList term={term} type="ur" ge={allGe} />
             </Box>
           </Flex>
         </Container>
