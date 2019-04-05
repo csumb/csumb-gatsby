@@ -21,7 +21,7 @@ const HeaderMobileToggle = styled('button')`
   border: 0;
   font-size: 1.8rem;
   display: inline-block;
-  float: left;
+  float: right;
   margin-right: 1rem;
   width: 0.875em;
   padding: 0;
@@ -38,14 +38,9 @@ const HeaderMobileNavigation = styled('ul')`
 const HeaderMobileSearch = styled('div')`
   background: white;
   padding: 0.5rem 0;
-`
-
-const HeaderMobileApply = styled(Link)`
-  color: ${colors.primary.darkest} !important;
-  border: 2px solid ${colors.primary.darkest};
-  padding: 0.3rem;
-  float: right;
-  text-decoration: none;
+  input {
+    width: 100%;
+  }
 `
 
 const MobileSiteNavigationLink = styled(LinkInspect)`
@@ -285,9 +280,25 @@ const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
   )
 }
 
+const HeaderMobileNavigationExpand = styled('div')`
+  background: ${colors.primary.darkest};
+`
+
+const HeaderMobileNavigationButton = styled('button')`
+  color: ${colors.white};
+  background: transparent;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  width: 100%;
+  text-align: left;
+`
+
 class HeaderMobile extends React.Component {
   state = {
     isOpen: false,
+    isMainMenuExpanded: false,
   }
 
   mobileToggle(event) {
@@ -298,7 +309,7 @@ class HeaderMobile extends React.Component {
   }
 
   render() {
-    const { isOpen } = this.state
+    const { isOpen, isMainMenuExpanded } = this.state
     const siteNavigation = this.props.siteNavigation
       ? JSON.parse(this.props.siteNavigation)
       : false
@@ -308,6 +319,9 @@ class HeaderMobile extends React.Component {
         <HeaderMobileWrapper>
           <Flex flexWrap="wrap">
             <Box width={[9 / 12]}>
+              <Brand mobile={true} />
+            </Box>
+            <Box width={[3 / 12]}>
               <HeaderMobileToggle
                 onClick={this.mobileToggle.bind(this)}
                 ref={node => {
@@ -317,10 +331,6 @@ class HeaderMobile extends React.Component {
                 <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
                 <VisuallyHidden>Menu</VisuallyHidden>
               </HeaderMobileToggle>
-              <Brand mobile={true} />
-            </Box>
-            <Box width={[3 / 12]}>
-              <HeaderMobileApply to="/apply">Apply</HeaderMobileApply>
             </Box>
           </Flex>
         </HeaderMobileWrapper>
@@ -336,28 +346,47 @@ class HeaderMobile extends React.Component {
               </HeaderMobileSearch>
               <MobileUserWidget loginLink={this.props.loginLink} />
             </Container>
-            <HeaderMobileNavigation
-              tabIndex="-1"
-              role="navigation"
-              ref={node => {
-                this.navRef = node
-              }}
-            >
-              <MobileNavigationLink to="/about">About</MobileNavigationLink>
-              <MobileNavigationLink to="/cost">
-                Cost &amp; aid
-              </MobileNavigationLink>
-              <MobileNavigationLink to="/academics">
-                Academics
-              </MobileNavigationLink>
-              <MobileNavigationLink to="/life">
-                Campus life
-              </MobileNavigationLink>
-              <MobileNavigationLink to="/alumni">Alumni</MobileNavigationLink>
-              <MobileNavigationLink to="/everything">
-                Everything else
-              </MobileNavigationLink>
-            </HeaderMobileNavigation>
+            {siteNavigation && (
+              <HeaderMobileNavigationExpand>
+                <Container>
+                  <HeaderMobileNavigationButton
+                    onClick={event => {
+                      event.preventDefault()
+                      this.setState({
+                        isMainMenuExpanded: !this.state.isMainMenuExpanded,
+                      })
+                    }}
+                  >
+                    CSUMB main menu
+                    <span aria-hidden="true"> ▾</span>
+                  </HeaderMobileNavigationButton>
+                </Container>
+              </HeaderMobileNavigationExpand>
+            )}
+            {(isMainMenuExpanded || !siteNavigation) && (
+              <HeaderMobileNavigation
+                tabIndex="-1"
+                role="navigation"
+                ref={node => {
+                  this.navRef = node
+                }}
+              >
+                <MobileNavigationLink to="/about">About</MobileNavigationLink>
+                <MobileNavigationLink to="/cost">
+                  Cost &amp; aid
+                </MobileNavigationLink>
+                <MobileNavigationLink to="/academics">
+                  Academics
+                </MobileNavigationLink>
+                <MobileNavigationLink to="/life">
+                  Campus life
+                </MobileNavigationLink>
+                <MobileNavigationLink to="/alumni">Alumni</MobileNavigationLink>
+                <MobileNavigationLink to="/everything">
+                  Everything else
+                </MobileNavigationLink>
+              </HeaderMobileNavigation>
+            )}
             {siteNavigation && (
               <HeaderMobileSiteNavigation>
                 <Container>
