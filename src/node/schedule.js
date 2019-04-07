@@ -67,7 +67,10 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-            allScheduleCsv(sort: { fields: [SUBJECT, CATALOG_NBR, SECTION] }) {
+            allScheduleCsv(
+              filter: { CLASS_STAT: { ne: "X" } }
+              sort: { fields: [SUBJECT, CATALOG_NBR, SECTION] }
+            ) {
               edges {
                 node {
                   SUBJECT
@@ -80,6 +83,7 @@ module.exports = (graphql, actions) => {
                   INSTR_OTTERID
                   UNITS
                   FEES
+
                   CONSENT
                   DESCR
                   ATTRIBUTES
@@ -104,6 +108,8 @@ module.exports = (graphql, actions) => {
                   SUN
                   MEETING_TIME_START
                   MEETING_TIME_END
+                  MEETING_DATE_START
+                  MEETING_DATE_END
                   MEETING_BLDG
                   MEETING_RM
                 }
@@ -172,7 +178,9 @@ module.exports = (graphql, actions) => {
           if (typeof allBuildings[buildingNumber] !== 'undefined') {
             edge.node._building = allBuildings[buildingNumber]
           }
-          allMeetingPatterns[edge.node.STRM][edge.node.CRN].push(edge.node)
+          if (edge.node.MEETING_TIME_START) {
+            allMeetingPatterns[edge.node.STRM][edge.node.CRN].push(edge.node)
+          }
         })
 
         let allCourses = result.data.allScheduleCsv.edges.map(edge => {
