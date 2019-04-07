@@ -78,8 +78,9 @@ module.exports = (graphql, actions) => {
                   TITLE
                   CRN
                   INSTR_OTTERID
-                  CONSENT
                   UNITS
+                  FEES
+                  CONSENT
                   DESCR
                   ATTRIBUTES
                   ENRL_TOT
@@ -138,8 +139,6 @@ module.exports = (graphql, actions) => {
           }
         `
       ).then(result => {
-        resolve()
-        return
         if (result.errors) {
           reject(result.errors)
         }
