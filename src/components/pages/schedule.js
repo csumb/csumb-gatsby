@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'style/theme'
+import color from 'color'
 import { InputCheckbox, Submit } from 'components/forms'
 import { UnstyledList } from 'components/type'
 import { LinkyButton } from 'components/button'
@@ -55,6 +56,36 @@ const ScheduleListItemElement = styled('li')`
     margin-right: 0.5rem;
   }
 `
+
+const ScheduleListAlert = styled('span')`
+  display: inline-block;
+  padding: 0.25rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+`
+
+const ScheduleListNotifier = ({ course }) => {
+  return (
+    <>
+      {course.ENRL_TOT >= course.ENRL_MAX && (
+        <ScheduleListAlert>Class full</ScheduleListAlert>
+      )}
+      {course.FEES && parseInt(course.FEES) > 0 && (
+        <ScheduleListAlert>Additional fees</ScheduleListAlert>
+      )}
+      {typeof course._attributes !== 'undefined' &&
+        typeof course._attributes.ZCCM !== 'undefined' && (
+          <ScheduleListAlert>Free course materials</ScheduleListAlert>
+        )}
+      {course.CONSENT !== 'N' && (
+        <ScheduleListAlert>Permission required</ScheduleListAlert>
+      )}
+    </>
+  )
+}
+
+//<span class="label label-warning"><?php print $course['_sessions']['name']; ?></span>
 
 const ScheduleListItem = ({ to, children, subject }) => (
   <ScheduleListItemElement>
@@ -404,6 +435,7 @@ const CourseListItem = ({ course, term }) => {
           )}
         </Box>
       </Flex>
+      <ScheduleListNotifier course={course} />
     </CourseListItemRow>
   )
 }
@@ -520,6 +552,11 @@ const CoursePage = ({ course, term, requirements }) => {
               ))}
             </CourseMeetingList>
           </CourseSection>
+          {course.FEES && parseInt(course.FEES) > 0 && (
+            <CourseSection legend="Additional fees">
+              <p>${course.FEES}</p>
+            </CourseSection>
+          )}
           <CourseSection legend="Enrollment">
             <EnrollmentList>
               <dt>Open seats</dt>

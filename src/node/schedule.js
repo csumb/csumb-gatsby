@@ -78,8 +78,9 @@ module.exports = (graphql, actions) => {
                   TITLE
                   CRN
                   INSTR_OTTERID
-                  CONSENT
                   UNITS
+                  FEES
+                  CONSENT
                   DESCR
                   ATTRIBUTES
                   ENRL_TOT
