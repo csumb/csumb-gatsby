@@ -47,47 +47,54 @@ const ErrorEventPage = () => {
   )
 }
 
-const ErrorPage = props => {
-  const items = props.data.allContentfulNavigationItem.edges
-  const isEvent =
-    typeof window !== 'undefined' &&
-    window.location.href.search('/events/') > -1
+class ErrorPage extends React.Component {
+  componentDidMount() {
+    if (typeof window !== 'undefined') {
+      window.gtag('event', 'pageNotFound', '404', window.location.href)
+    }
+  }
+  render() {
+    const items = this.props.data.allContentfulNavigationItem.edges
+    const isEvent =
+      typeof window !== 'undefined' &&
+      window.location.href.search('/events/') > -1
 
-  return (
-    <>
-      {isEvent ? (
-        <Layout>
-          <ErrorEventPage />
-        </Layout>
-      ) : (
-        <PlainLayout>
-          <PageNotFoundContainer>
-            <Brand style={{ maxWidth: '350px' }} />
-            <PageTitle>Page not found</PageTitle>
+    return (
+      <>
+        {isEvent ? (
+          <Layout>
+            <ErrorEventPage />
+          </Layout>
+        ) : (
+          <PlainLayout>
+            <PageNotFoundContainer>
+              <Brand style={{ maxWidth: '350px' }} />
+              <PageTitle>Page not found</PageTitle>
 
-            <LeadParagraph>
-              We couldn't find that page, but here's a great way to find what
-              you're looking for:
-            </LeadParagraph>
-            {items.map(edge => (
-              <>
-                {edge.node.topLevelItem && (
-                  <>
-                    <h3>
-                      <Link to={`/everything/${edge.node.slug}`}>
-                        {edge.node.title}
-                      </Link>
-                    </h3>
-                    <EverythingContent item={edge.node} />
-                  </>
-                )}
-              </>
-            ))}
-          </PageNotFoundContainer>
-        </PlainLayout>
-      )}
-    </>
-  )
+              <LeadParagraph>
+                We couldn't find that page, but here's a great way to find what
+                you're looking for:
+              </LeadParagraph>
+              {items.map(edge => (
+                <>
+                  {edge.node.topLevelItem && (
+                    <>
+                      <h3>
+                        <Link to={`/everything/${edge.node.slug}`}>
+                          {edge.node.title}
+                        </Link>
+                      </h3>
+                      <EverythingContent item={edge.node} />
+                    </>
+                  )}
+                </>
+              ))}
+            </PageNotFoundContainer>
+          </PlainLayout>
+        )}
+      </>
+    )
+  }
 }
 
 export default ErrorPage
