@@ -67,7 +67,10 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-            allScheduleCsv(sort: { fields: [SUBJECT, CATALOG_NBR, SECTION] }) {
+            allScheduleCsv(
+              filter: { CLASS_STAT: { ne: "X" } }
+              sort: { fields: [SUBJECT, CATALOG_NBR, SECTION] }
+            ) {
               edges {
                 node {
                   SUBJECT
@@ -80,6 +83,7 @@ module.exports = (graphql, actions) => {
                   INSTR_OTTERID
                   UNITS
                   FEES
+
                   CONSENT
                   DESCR
                   ATTRIBUTES
