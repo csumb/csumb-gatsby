@@ -172,7 +172,9 @@ module.exports = (graphql, actions) => {
           if (typeof allBuildings[buildingNumber] !== 'undefined') {
             edge.node._building = allBuildings[buildingNumber]
           }
-          allMeetingPatterns[edge.node.STRM][edge.node.CRN].push(edge.node)
+          if (edge.node.MEETING_DATE_START) {
+            allMeetingPatterns[edge.node.STRM][edge.node.CRN].push(edge.node)
+          }
         })
 
         let allCourses = result.data.allScheduleCsv.edges.map(edge => {
