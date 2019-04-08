@@ -147,7 +147,7 @@ const gatsbyConfig = {
       resolve: 'gatsby-plugin-typography',
       options: {
         pathToConfigModule: 'src/style/typography',
-        // omitGoogleFont: true   <--- turn back on for production!
+        omitGoogleFont: true,
       },
     },
     {
