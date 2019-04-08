@@ -136,9 +136,11 @@ const gatsbyConfig = {
         fonts: [
           {
             family: 'Hind',
+            variants: ['300', '400', '700'],
           },
           {
             family: 'Open Sans',
+            variants: ['300', '600', '700'],
           },
         ],
       },
