@@ -706,7 +706,6 @@ const DashboardImage = styled('img')`
 `
 
 const DashboardEventCalendarLink = styled('div')`
-  text-align: right;
   with: 100%;
   clear: both;
 `
