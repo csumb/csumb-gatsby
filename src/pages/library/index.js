@@ -111,7 +111,7 @@ class LibraryPage extends React.Component {
         <Container>
           <LibrarySearch />
           <div ref={this.chatRef} />
-          <style>{`.libraryh3lp img { width: 150px;}`}</style>
+          <style>{`.libraryh3lp img { height: 44px !important;}`}</style>
 
           {data.allCsumbPage && (
             <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />

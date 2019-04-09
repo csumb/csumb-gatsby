@@ -28,6 +28,7 @@ class BlockImage extends React.Component {
       height,
       caption,
       pullRight,
+      credit,
       inColumn,
     } = this.props
     if (!image) {
@@ -48,6 +49,11 @@ class BlockImage extends React.Component {
             width: 'auto',
           }}
         />
+        {credit && (
+          <Caption>
+            <strong>Photo by:</strong> {credit}
+          </Caption>
+        )}
         {caption && <Caption>{caption}</Caption>}
       </ImageContainer>
     )
