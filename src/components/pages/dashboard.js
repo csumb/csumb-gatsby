@@ -424,6 +424,7 @@ const DashboardCard = styled('div')`
 
 const DashboardCardHeader = styled('h3')`
   font-family: ${fonts.body};
+  padding-right: 1rem;
   ${props =>
     props.noMargin &&
     `
@@ -708,6 +709,7 @@ const DashboardImage = styled('img')`
 const DashboardEventCalendarLink = styled('div')`
   with: 100%;
   clear: both;
+  margin-top: 0.5rem;
 `
 
 class DashboardEvent extends React.Component {
