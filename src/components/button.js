@@ -17,6 +17,10 @@ const ButtonStyle = props => {
   &:hover {
     color: ${colors.white};
   }
+  ${props.disabled &&
+    `
+    cursor: not-allowed;
+  `}
   ${props.huge &&
     `
     font-size: 3rem;
