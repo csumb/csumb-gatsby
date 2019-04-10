@@ -7,6 +7,7 @@ const ButtonStyle = props => {
     props.buttonType = 'default'
   }
   return `
+  border-radius: 0;
   display: inline-block;
   padding: 0.75rem;
   text-decoration: none;

@@ -46,6 +46,7 @@ const SearchInput = styled('input')`
   border: 1px solid ${colors.gray.deafult};
   padding: 0.3rem;
   width: 100%;
+  border-radius: 0;
 `
 class Search extends React.Component {
   state = {
