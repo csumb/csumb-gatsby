@@ -103,6 +103,7 @@ const InputTextElement = styled('input')`
   &:focus {
     ${focusStyle};
   }
+  border-radius: 0;
   border: 1px solid ${colors.gray.deafult};
   padding: 0.3rem;
   width: ${props => (props.small ? '30%' : '100%')};
@@ -211,6 +212,8 @@ const InputTextareaElement = styled('textarea')`
   &:focus {
     ${focusStyle};
   }
+
+  border-radius: 0;
   border: 1px solid ${colors.gray.deafult};
   padding: 0.3rem;
   width: ${props => (props.small ? '30%' : '100%')};
@@ -380,6 +383,7 @@ const SubmitButton = styled('input')`
   }
   padding: 1rem;
   border: none;
+  border-radius: 0;
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
