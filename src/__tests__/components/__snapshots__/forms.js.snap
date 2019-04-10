@@ -548,7 +548,7 @@ exports[`InputText renders hidden labels correctly 1`] = `
     </label>
   </div>
   <input
-    className="css-infcjd"
+    className="css-151tu83"
     id="id7"
     label="Text input"
     name="text"
@@ -568,7 +568,7 @@ exports[`InputText renders huge text input correctly 1`] = `
     Text input
   </label>
   <input
-    className="css-12agsa0"
+    className="css-ku8b9n"
     id="id4"
     label="Text input"
     name="text"
@@ -588,7 +588,7 @@ exports[`InputText renders inline text input correctly 1`] = `
     Text input
   </label>
   <input
-    className="css-infcjd"
+    className="css-151tu83"
     id="id3"
     label="Text input"
     name="text"
@@ -613,7 +613,7 @@ exports[`InputText renders required text input correctly 1`] = `
     </strong>
   </label>
   <input
-    className="css-infcjd"
+    className="css-151tu83"
     id="id2"
     label="Text input"
     name="text"
@@ -633,7 +633,7 @@ exports[`InputText renders small text input correctly 1`] = `
     Text input
   </label>
   <input
-    className="css-mfxz2l"
+    className="css-1hah88t"
     id="id5"
     label="Text input"
     name="text"
@@ -653,7 +653,7 @@ exports[`InputText renders small text placeholders correctly 1`] = `
     Text input
   </label>
   <input
-    className="css-infcjd"
+    className="css-151tu83"
     id="id6"
     label="Text input"
     name="text"
@@ -674,7 +674,7 @@ exports[`InputText renders text input correctly 1`] = `
     Text input
   </label>
   <input
-    className="css-infcjd"
+    className="css-151tu83"
     id="id1"
     label="Text input"
     name="text"
@@ -698,7 +698,7 @@ exports[`InputTextarea renders hidden labels correctly 1`] = `
     </label>
   </div>
   <textarea
-    className="css-aaxd8k"
+    className="css-sbywaj"
     label="Text input"
     name="text"
     type="text"
@@ -722,7 +722,7 @@ exports[`InputTextarea renders required text input correctly 1`] = `
     </strong>
   </label>
   <textarea
-    className="css-aaxd8k"
+    className="css-sbywaj"
     label="Text input"
     name="text"
     type="text"
@@ -741,7 +741,7 @@ exports[`InputTextarea renders small text input correctly 1`] = `
     Text input
   </label>
   <textarea
-    className="css-d40cah"
+    className="css-1ca0ymm"
     label="Text input"
     name="text"
     type="text"
@@ -760,7 +760,7 @@ exports[`InputTextarea renders text input correctly 1`] = `
     Text input
   </label>
   <textarea
-    className="css-aaxd8k"
+    className="css-sbywaj"
     label="Text input"
     name="text"
     type="text"
@@ -797,7 +797,7 @@ exports[`Label renders labels correctly 1`] = `
 
 exports[`Submit renders huge buttons correctly 1`] = `
 <input
-  className="css-j1gy8k"
+  className="css-9uxajp"
   type="submit"
   value="Submit"
 />
@@ -805,7 +805,7 @@ exports[`Submit renders huge buttons correctly 1`] = `
 
 exports[`Submit renders marginless buttons correctly 1`] = `
 <input
-  className="css-bvtpfo"
+  className="css-1hozv59"
   type="submit"
   value="Submit"
 />
@@ -813,7 +813,7 @@ exports[`Submit renders marginless buttons correctly 1`] = `
 
 exports[`Submit renders submit buttons correctly 1`] = `
 <input
-  className="css-14weyid"
+  className="css-1gii5on"
   type="submit"
   value="Submit"
 />
