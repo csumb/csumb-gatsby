@@ -12,6 +12,14 @@ const StyledCalendar = styled(Calendar)`
   .react-calendar__navigation__label {
     font-weight: bold;
   }
+  .react-calendar__tile.react-calendar__month-view__days__day {
+    color: ${colors.white};
+    background: ${colors.primary.darkest};
+  }
+  .react-calendar__tile.react-calendar__month-view__days__day[disabled] {
+    color: ${colors.black};
+    background: ${colors.primary.lightest};
+  }
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
     background: ${colors.primary.darkest};
