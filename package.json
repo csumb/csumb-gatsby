@@ -112,6 +112,7 @@
     "directoryJson": "node src/custom-build/directory-json.js",
     "scheduleJson": "node src/custom-build/schedule-json.js",
     "catalogJson": "node src/custom-build/catalog-json.js",
+    "eventJson": "node src/custom-build/event-json.js",
     "buildJson": "node src/custom-build/build-time.js",
     "configFirebase": "node src/custom-build/firebase.js",
     "cleanup": "jest -u; prettier --write 'src/**/**.js';",
