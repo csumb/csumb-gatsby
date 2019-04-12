@@ -16,7 +16,8 @@ walker.on('file', function(root, fileStats, next) {
     if (
       typeof pageData.uuid === 'undefined' ||
       typeof pageData.event === 'undefined' ||
-      typeof pageData.event.dates === 'undefined'
+      typeof pageData.event.dates === 'undefined' ||
+      !pageData.event.public
     ) {
       next()
       return
