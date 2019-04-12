@@ -69,6 +69,10 @@ module.exports = (graphql, actions) => {
           return
         }
         const categories = result.data.site.siteMetadata.eventCategories
+        const eventCategoryLabels = {}
+        categories.forEach(category => {
+          eventCategoryLabels[category.slug] = category.name
+        })
         const template = path.resolve('src/templates/events/day.js')
         const categoryTemplate = path.resolve(
           'src/templates/events/category.js'
@@ -124,7 +128,7 @@ module.exports = (graphql, actions) => {
             component: categoryTemplate,
             context: {
               events: eventsByCategory[category],
-              category: category,
+              category: eventCategoryLabels[category],
               categories: categories,
             },
           })
