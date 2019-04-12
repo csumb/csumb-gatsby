@@ -27,14 +27,11 @@ walker.on('file', function(root, fileStats, next) {
         return
       }
       const key = start.format('YYYY/M')
-      const day = start.format('DD')
+      const day = start.format('D')
       if (typeof allEvents[key] === 'undefined') {
-        allEvents[key] = {}
+        allEvents[key] = []
       }
-      if (typeof allEvents[key][day] === 'undefined') {
-        allEvents[key][day] = 0
-      }
-      allEvents[key][day]++
+      allEvents[key].push(day)
     })
     next()
   })
@@ -43,6 +40,8 @@ walker.on('file', function(root, fileStats, next) {
 walker.on('end', () => {
   delete allEvents['Invalid date']
   Object.keys(allEvents).forEach(date => {
-    fs.outputJSON(`./public/events/json/${date}.json`, allEvents[date])
+    fs.outputJSON(`./public/events/json/${date}.json`, [
+      ...new Set(allEvents[date]),
+    ])
   })
 })
