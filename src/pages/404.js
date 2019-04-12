@@ -20,7 +20,7 @@ const PageNotFoundContainer = styled('div')`
   margin: 3rem auto;
 `
 
-const ErrorEventPage = () => {
+const ErrorEventPage = ({ categories }) => {
   const dateParts = window.location.pathname.replace('/events/', '').split('/')
   const dateFormat = moment()
     .set({
@@ -39,7 +39,7 @@ const ErrorEventPage = () => {
             <AlertFyi>Sorry, there are no events on {dateFormat}.</AlertFyi>
           </Box>
           <Box width={[1, 1 / 4, 1 / 4]}>
-            <EventsSidebar />
+            <EventsSidebar categories={categories} />
           </Box>
         </Flex>
       </Container>
@@ -63,7 +63,9 @@ class ErrorPage extends React.Component {
       <>
         {isEvent ? (
           <Layout>
-            <ErrorEventPage />
+            <ErrorEventPage
+              categories={this.props.data.site.siteMetadata.eventCategories}
+            />
           </Layout>
         ) : (
           <PlainLayout>
@@ -101,6 +103,14 @@ export default ErrorPage
 
 export const query = graphql`
   {
+    site {
+      siteMetadata {
+        eventCategories {
+          name
+          slug
+        }
+      }
+    }
     allContentfulNavigationItem(sort: { fields: [title] }) {
       edges {
         node {
