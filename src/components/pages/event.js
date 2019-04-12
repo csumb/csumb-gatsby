@@ -176,6 +176,16 @@ const EventPage = ({ event }) => (
 
 const PublicEventWrapper = styled('div')`
   margin-bottom: 1.5rem;
+  padding: 1rem;
+  ${props =>
+    props.featured &&
+    `
+    background: ${colors.primary.darkest};
+    color: ${colors.white};
+    a {
+      color: ${colors.white} !important;
+    }
+  `}
   p,
   h3 {
     margin-bottom: 0.5rem;
@@ -199,8 +209,8 @@ const PublicEventDate = styled('span')`
   margin-right: 1.5rem;
 `
 
-const PublicEvent = ({ event, showDate, showTime }) => (
-  <PublicEventWrapper>
+const PublicEvent = ({ event, showDate, showTime, showFeatured }) => (
+  <PublicEventWrapper featured={event.event.featured && showFeatured}>
     <Link to={event.pagePath}>
       <Flex flexWrap="wrap">
         <Box width={[0, 3 / 12, 3 / 12]} pr={[0, 4, 4]}>
