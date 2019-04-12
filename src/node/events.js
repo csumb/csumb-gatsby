@@ -120,7 +120,7 @@ module.exports = (graphql, actions) => {
 
         Object.keys(eventsByCategory).forEach(category => {
           createPage({
-            path: `events/caetgory/${category}`,
+            path: `events/category/${category}`,
             component: categoryTemplate,
             context: {
               events: eventsByCategory[category],
