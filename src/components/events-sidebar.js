@@ -2,6 +2,14 @@ import React from 'react'
 import Calendar from 'components/calendar'
 import { navigate } from 'gatsby'
 import moment from 'moment'
+import { UnstyledList } from 'components/type'
+import Well from 'components/well'
+import styled from '@emotion/styled'
+import Link from 'gatsby-link'
+
+const EventCategories = styled(Well)`
+  margin-top: 2rem;
+`
 
 class EventsSidebar extends React.Component {
   state = {
@@ -34,6 +42,7 @@ class EventsSidebar extends React.Component {
 
   render() {
     const { highlightedDays } = this.state
+    const { categories } = this.props
     return (
       <>
         <Calendar
@@ -51,6 +60,18 @@ class EventsSidebar extends React.Component {
             )
           }}
         />
+        <EventCategories>
+          <h4>Categories</h4>
+          <UnstyledList>
+            {categories.map(category => (
+              <li>
+                <Link to={`/events/category/${category.slug}`}>
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </UnstyledList>
+        </EventCategories>
       </>
     )
   }

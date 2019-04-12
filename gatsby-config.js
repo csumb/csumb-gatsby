@@ -31,6 +31,28 @@ const gatsbyConfig = {
       'up/index',
       'undersea/imagery-database',
     ],
+    eventCategories: [
+      {
+        name: 'Arts',
+        slug: 'arts',
+      },
+      {
+        name: 'Athletics',
+        slug: 'athletics',
+      },
+      {
+        name: 'Conferences',
+        slug: 'conferences',
+      },
+      {
+        name: 'Lectures',
+        slug: 'lectures',
+      },
+      {
+        name: 'Music',
+        slug: 'music',
+      },
+    ],
   },
   plugins: [
     'gatsby-plugin-emotion',

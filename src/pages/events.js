@@ -63,6 +63,7 @@ class EventsPage extends React.Component {
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
         <Container topPadding>
+          <PageTitle>Campus events</PageTitle>
           <Flex flexWrap="wrap">
             <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
               {featuredEvents && (
@@ -95,7 +96,9 @@ class EventsPage extends React.Component {
               )}
             </Box>
             <Box width={[1, 1 / 4, 1 / 4]}>
-              <EventsSidebar />
+              <EventsSidebar
+                categories={this.props.data.site.siteMetadata.eventCategories}
+              />
             </Box>
           </Flex>
         </Container>
@@ -108,6 +111,14 @@ export default EventsPage
 
 export const query = graphql`
   {
+    site {
+      siteMetadata {
+        eventCategories {
+          name
+          slug
+        }
+      }
+    }
     allCsumbPage(
       filter: { event: { public: { eq: true }, description: { ne: null } } }
       sort: { fields: [event___featured, event___date_stamps] }
@@ -123,6 +134,7 @@ export const query = graphql`
             description
             featured
             image
+            category
             location {
               type
               room

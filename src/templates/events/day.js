@@ -9,7 +9,7 @@ import EventsSidebar from 'components/events-sidebar'
 
 class EventsPage extends React.Component {
   render() {
-    const { events, dateFormat } = this.props.pageContext
+    const { events, dateFormat, categories } = this.props.pageContext
     return (
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
@@ -22,7 +22,7 @@ class EventsPage extends React.Component {
               ))}
             </Box>
             <Box width={[1, 1 / 4, 1 / 4]}>
-              <EventsSidebar />
+              <EventsSidebar categories={categories} />
             </Box>
           </Flex>
         </Container>
