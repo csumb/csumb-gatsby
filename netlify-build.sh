@@ -8,5 +8,4 @@ npm run scheduleJson
 npm run catalogJson
 npm run eventJson
 npm run buildJson
-npm run configFirebase
 npm run canary
