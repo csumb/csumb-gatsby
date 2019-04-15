@@ -1,4 +1,5 @@
 #!/bin/bash
+echo $GITHUB_TOKEN
 git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-data.git _data
 git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-content.git _web-content
 npm run test
