@@ -12,6 +12,7 @@ import { InputText, Submit } from 'components/forms'
 import bp from 'style/breakpoints'
 import Well from 'components/well'
 import styled from '@emotion/styled'
+import slugify from 'slugify'
 
 const GraduateList = styled('ul')`
   list-style-type: none;
@@ -24,14 +25,18 @@ const GraduateList = styled('ul')`
   }
 `
 
-const ViewGraduate = ({ graduate }) => (
-  <li>
-    <Link to={`/scienceillustration/graduate/${graduate.data.slug}`}>
-      {`${graduate.data.first_name} ${graduate.data.last_name}`}
-      {graduate.data.class && <>({graduate.data.class})</>}
-    </Link>
-  </li>
-)
+const ViewGraduate = ({ graduate }) => {
+  const name = `${graduate.data.first_name} ${graduate.data.last_name}`
+  const slug = slugify(name)
+  return (
+    <li>
+      <Link to={`/scienceillustration/graduate/${slug}`}>
+        {name}
+        {graduate.data.class && <>({graduate.data.class})</>}
+      </Link>
+    </li>
+  )
+}
 
 class ScienceIllustrationGallerySearch extends React.Component {
   state = {
