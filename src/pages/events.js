@@ -10,7 +10,7 @@ import EventsSidebar from 'components/events-sidebar'
 import PageTitle from 'components/header/page-title'
 
 class EventsPage extends React.Component {
-  getEvents(events) {
+  getEvents(events, featured) {
     const timeCutoff = moment()
       .subtract(1, 'day')
       .unix()
@@ -27,7 +27,7 @@ class EventsPage extends React.Component {
     }
 
     events.forEach(({ node }) => {
-      if (!showEvent(node)) {
+      if (!showEvent(node) || node.event.featured !== featured) {
         return
       }
       results.push(node)
@@ -54,29 +54,51 @@ class EventsPage extends React.Component {
   }
 
   render() {
-    const events = this.getEvents(this.props.data.allCsumbPage.edges)
+    const featuredEvents = this.getEvents(
+      this.props.data.allCsumbPage.edges,
+      true
+    )
+    const events = this.getEvents(this.props.data.allCsumbPage.edges, false)
     return (
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
         <Container topPadding>
-          <PageTitle>Featured events</PageTitle>
+          <PageTitle>Campus events</PageTitle>
           <Flex flexWrap="wrap">
             <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
+              {featuredEvents && (
+                <>
+                  <h2>Featured Events</h2>
+                  {featuredEvents.map(event => (
+                    <PublicEvent
+                      key={event.id}
+                      event={event}
+                      showTime={true}
+                      showDate={true}
+                      showFeatured={true}
+                    />
+                  ))}
+                </>
+              )}
               {events && (
                 <>
+                  {featuredEvents && <h2>Upcoming events</h2>}
                   {events.map(event => (
                     <PublicEvent
                       key={event.id}
                       event={event}
                       showTime={true}
                       showDate={true}
+                      showFeatured={false}
                     />
                   ))}
                 </>
               )}
             </Box>
             <Box width={[1, 1 / 4, 1 / 4]}>
-              <EventsSidebar />
+              <EventsSidebar
+                categories={this.props.data.site.siteMetadata.eventCategories}
+              />
             </Box>
           </Flex>
         </Container>
@@ -89,9 +111,17 @@ export default EventsPage
 
 export const query = graphql`
   {
+    site {
+      siteMetadata {
+        eventCategories {
+          name
+          slug
+        }
+      }
+    }
     allCsumbPage(
       filter: { event: { public: { eq: true }, description: { ne: null } } }
-      sort: { fields: [event___date_stamps] }
+      sort: { fields: [event___featured, event___date_stamps] }
       limit: 25
     ) {
       edges {
@@ -104,6 +134,7 @@ export const query = graphql`
             description
             featured
             image
+            category
             location {
               type
               room

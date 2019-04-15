@@ -8,6 +8,14 @@ module.exports = (graphql, actions) => {
     resolve(
       graphql(`
         {
+          site {
+            siteMetadata {
+              eventCategories {
+                name
+                slug
+              }
+            }
+          }
           allCsumbPage(
             filter: {
               event: { public: { eq: true }, description: { ne: null } }
@@ -24,6 +32,7 @@ module.exports = (graphql, actions) => {
                   description
                   featured
                   image
+                  category
                   location {
                     type
                     room
@@ -59,13 +68,28 @@ module.exports = (graphql, actions) => {
           reject(result.errors)
           return
         }
-        const template = path.resolve('src/templates/event-day.js')
+        const categories = result.data.site.siteMetadata.eventCategories
+        const eventCategoryLabels = {}
+        categories.forEach(category => {
+          eventCategoryLabels[category.slug] = category.name
+        })
+        const template = path.resolve('src/templates/events/day.js')
+        const categoryTemplate = path.resolve(
+          'src/templates/events/category.js'
+        )
         const eventsByDate = {}
+        const eventsByCategory = {}
         const timeCutoff = moment()
           .subtract(1, 'day')
           .unix()
         result.data.allCsumbPage.edges.forEach(edge => {
           const event = edge.node
+          if (event.event.category) {
+            if (typeof eventsByCategory[event.event.category] === 'undefined') {
+              eventsByCategory[event.event.category] = []
+            }
+            eventsByCategory[event.event.category].push(event)
+          }
           event.event.date_stamps.forEach(stamp => {
             if (stamp.start_stamp >= timeCutoff) {
               const date = moment.unix(stamp.start_stamp).format('YYYY/M/D')
@@ -93,6 +117,19 @@ module.exports = (graphql, actions) => {
               events: eventsByDate[date],
               date: date,
               dateFormat: dateFormat,
+              categories: categories,
+            },
+          })
+        })
+
+        Object.keys(eventsByCategory).forEach(category => {
+          createPage({
+            path: `events/category/${category}`,
+            component: categoryTemplate,
+            context: {
+              events: eventsByCategory[category],
+              category: eventCategoryLabels[category],
+              categories: categories,
             },
           })
         })

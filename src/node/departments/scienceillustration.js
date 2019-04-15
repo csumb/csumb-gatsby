@@ -1,5 +1,6 @@
 const path = require(`path`)
 const report = require(`gatsby-cli/lib/reporter`)
+const slugify = require('slugify')
 
 module.exports = (graphql, actions) => {
   const { createPage } = actions
@@ -72,8 +73,11 @@ module.exports = (graphql, actions) => {
                 }
               })
             }
+            const slug = slugify(
+              `${edge.node.data.first_name} ${edge.node.data.last_name}`
+            )
             createPage({
-              path: `scienceillustration/graduate/${edge.node.data.slug}`,
+              path: `scienceillustration/graduate/${slug}`,
               component: graduateTemplate,
               context: {
                 graduate: edge.node,

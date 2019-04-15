@@ -4,7 +4,7 @@ import { colors, fonts } from 'style/theme'
 import styled from '@emotion/styled'
 import Loading from 'components/loading'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { AlertEmpty, AlertFyi } from 'components/alert'
+import { AlertEmpty } from 'components/alert'
 import VisuallyHidden from 'components/visually-hidden'
 import Link from 'gatsby-link'
 import { ButtonLink, Button } from 'components/button'
@@ -19,7 +19,6 @@ import '@reach/menu-button/styles.css'
 import '@reach/dialog/styles.css'
 import NProgress from 'nprogress'
 import Cookies from 'universal-cookie'
-import { LinkyButton } from '../button'
 
 const cookies = new Cookies()
 
@@ -613,7 +612,6 @@ class DashboardContent extends React.Component {
       <>
         {ready ? (
           <>
-            <NewDashboardMessage />
             <Flex flexWrap="wrap">
               <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
                 <DashboardEventWrapper>
@@ -643,57 +641,6 @@ class DashboardContent extends React.Component {
           <Loading>Loading messages &amp; events</Loading>
         )}
       </>
-    )
-  }
-}
-
-class NewDashboardMessage extends React.Component {
-  state = {
-    isOpen: false,
-  }
-
-  render() {
-    const { isOpen } = this.state
-    return (
-      <AlertFyi type="polite">
-        Registering for classes?{' '}
-        <LinkyButton
-          onClick={event => {
-            this.setState({
-              isOpen: !this.state.isOpen,
-            })
-          }}
-        >
-          Find OASIS and other important sites
-        </LinkyButton>
-        {isOpen && (
-          <ul style={{ marginTop: '1rem' }}>
-            <li>
-              <strong>
-                <a href="https://cmsweb.cms.csumb.edu/psp/CMBPRD/EMPLOYEE/SA/h/?tab=DEFAULT">
-                  OASIS
-                </a>
-              </strong>{' '}
-              - OASIS and your other apps are available on the top of your
-              dashboard
-            </li>
-            <li>
-              <strong>
-                <a href="/schedule">Class schedule</a>
-              </strong>{' '}
-              - The class schedule is in the <strong>Academics</strong> main
-              menu
-            </li>
-            <li>
-              <strong>
-                <a href="/catalog">Catalog</a>
-              </strong>{' '}
-              - The official univeristy catalog is in the{' '}
-              <strong>Academics</strong> main menu
-            </li>
-          </ul>
-        )}
-      </AlertFyi>
     )
   }
 }
