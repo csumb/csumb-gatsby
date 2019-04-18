@@ -136,7 +136,9 @@ class ProgramTemplate extends React.Component {
                 ))}
               </p>
               {partner.data.Campus_website && (
-                <a href={partner.data.Campus_website}>Visit campus website</a>
+                <p>
+                  <a href={partner.data.Campus_website}>Visit campus website</a>
+                </p>
               )}
             </Box>
             <Box width={[1, 5 / 12]}>
