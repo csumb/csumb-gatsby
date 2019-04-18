@@ -119,6 +119,52 @@ const gatsbyConfig = {
             tableName: 'MPAs',
             queryName: 'UnderseaMPA',
           },
+          //Study abroad
+          {
+            baseId: 'appXrkUdaBbX4kxG5',
+            tableName: 'Partners',
+            queryName: 'StudyAbroadPartners',
+          },
+          {
+            baseId: 'appXrkUdaBbX4kxG5',
+            tableName: 'Areas',
+            queryName: 'StudyAbroadAreas',
+            tableLinks: ['Semester/Year Programs'],
+          },
+          {
+            baseId: 'appXrkUdaBbX4kxG5',
+            tableName: 'Majors',
+            queryName: 'StudyAbroadMajors',
+          },
+          {
+            baseId: 'appXrkUdaBbX4kxG5',
+            tableName: 'Application Dealines',
+            queryName: 'StudyAbroadDeadlines',
+          },
+          {
+            baseId: 'appXrkUdaBbX4kxG5',
+            tableName: 'Campus Services',
+            queryName: 'StudyAbroadServices',
+          },
+          {
+            baseId: 'appXrkUdaBbX4kxG5',
+            tableName: 'Program Website feed',
+            queryName: 'StudyAbroadProgram',
+            tableLinks: [
+              'Countries',
+              'Partner',
+              'Fall Application Deadline',
+              'Spring Application Deadline',
+              'Areas',
+              'Campus services',
+            ],
+          },
+          {
+            baseId: 'appXrkUdaBbX4kxG5',
+            tableName: 'Countries',
+            queryName: 'StudyAbroadCountries',
+            tableLinks: ['Countries', 'Partners'],
+          },
         ],
       },
     },
@@ -210,7 +256,7 @@ const gatsbyConfig = {
         background_color: '#fff',
         theme_color: '#fff',
         display: 'minimal-ui',
-        icon: 'src/assets/images/icon.png', // This path is relative to the root of the site.
+        icon: 'src/assets/images/icon.png',
       },
     },
   ],
