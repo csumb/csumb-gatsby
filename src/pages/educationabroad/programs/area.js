@@ -50,7 +50,7 @@ const SubjectArea = ({ area }) => (
                 <li>
                   <Link
                     to={`/educationabroad/program/${slugify(
-                      program.data.Name
+                      program.recordId.replace('rec', '')
                     )}`}
                   >
                     {program.data.Name}
@@ -223,6 +223,7 @@ export const query = graphql`
             Subject_Area
             Major
             Semester_Year_Programs {
+              recordId
               data {
                 Name
                 Program_Type
