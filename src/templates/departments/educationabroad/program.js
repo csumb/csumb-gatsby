@@ -16,6 +16,8 @@ import SiteNavigation from 'components/navigation/site'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
 import { colors } from 'style/theme'
 
+import { Table, TableRow, TableHeader, TableCell } from 'components/table'
+
 const CollapsibleIcon = styled(FontAwesomeIcon)`
   margin-right: 0.8rem;
   font-size: 1rem;
@@ -103,7 +105,7 @@ class ProgramDetails extends React.Component {
 class ProgramTemplate extends React.Component {
   render() {
     const { navigation, program } = this.props.pageContext
-    const { recordId, data } = program
+    const { data } = program
     const partner = data.Partner[0]
     const coordinates = []
     if (partner.data.Coordinates) {
@@ -202,6 +204,45 @@ class ProgramTemplate extends React.Component {
                 <p>{data.Housing_details}</p>
                 {data.Housing_link && (
                   <a href={data.Housing_link}>Learn more about housing</a>
+                )}
+              </ProgramDetails>
+              <ProgramDetails title="Estimated fees &amp; conditions">
+                <Table>
+                  <thead>
+                    <TableRow>
+                      <TableHeader>Description</TableHeader>
+                      <TableHeader>Cost</TableHeader>
+                    </TableRow>
+                  </thead>
+                  <tbody>
+                    <TableRow>
+                      <TableCell>
+                        Education Abroad Application Fee (non-refundable)
+                      </TableCell>
+                      <TableCell>
+                        {data.Education_Abroad_Application_Fee__non_refundable_}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Education Abroad Fee</TableCell>
+                      <TableCell>{data.Education_Abroad_Fee}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Health insurance</TableCell>
+                      <TableCell>{data.Health_Insurance}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Housing &amp; food</TableCell>
+                      <TableCell>{data.Housing___Food}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Round-trip airfare</TableCell>
+                      <TableCell>{data.Round_trip_Airfare}</TableCell>
+                    </TableRow>
+                  </tbody>
+                </Table>
+                {data.Additional_Fees_May_Apply && (
+                  <p>Additional fees may apply</p>
                 )}
               </ProgramDetails>
             </Box>
