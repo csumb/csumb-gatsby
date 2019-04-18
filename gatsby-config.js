@@ -148,14 +148,20 @@ const gatsbyConfig = {
           },
           {
             baseId: 'appXrkUdaBbX4kxG5',
+            tableName: 'Prerequisites',
+            queryName: 'StudyAbroadPrerequisites',
+          },
+          {
+            baseId: 'appXrkUdaBbX4kxG5',
             tableName: 'Program Website feed',
             queryName: 'StudyAbroadProgram',
             tableLinks: [
               'Countries',
               'Partner',
-              'Fall Application Deadline',
-              'Spring Application Deadline',
+              'Fall/Spring Application Deadline',
+              'Summer Application Deadline',
               'Areas',
+              'Admission Requirements',
               'Campus services',
             ],
           },
