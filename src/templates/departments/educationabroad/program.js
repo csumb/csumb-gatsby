@@ -127,7 +127,14 @@ class ProgramTemplate extends React.Component {
           <Flex flexWrap="wrap">
             <Box width={[1, 7 / 12]} pr={[0, 2]}>
               <h3>About the university</h3>
-              <p>{data.About_University}</p>
+              <p>
+                {data.About_University.split('\n').map((item, key) => (
+                  <React.Fragment key={`about-${key}`}>
+                    {item}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </p>
               {partner.data.Campus_website && (
                 <a href={partner.data.Campus_website}>Visit campus website</a>
               )}
