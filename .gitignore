@@ -8,6 +8,9 @@ coverage
 /public
 .DS_Store
 
+#Firebase config
+.runtimeconfig.json
+
 #CSUMB files
 _web-content
 _data
