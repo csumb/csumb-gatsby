@@ -505,6 +505,15 @@ class DashboardEmergency extends React.Component {
         return response.json()
       })
       .then(everbridge => {
+        if (
+          typeof window !== 'undefined' &&
+          window.location.search.search('_fake-emergency') > -1
+        ) {
+          this.setState({
+            showDialog: true,
+          })
+          return
+        }
         if (everbridge.error) {
           return
         }
@@ -575,9 +584,32 @@ class DashboardSecondaryEmail extends React.Component {
       <UserContext.Consumer>
         {context => (
           <>
-            {context.user !== false &&
-              (context.user._isStudent || context.user._isEmployee) &&
-              !context.user.profile.secondEmail && <p>Dude, email.</p>}
+            {((typeof window !== 'undefined' &&
+              window.location.search.search('_fake-secondary') > -1) ||
+              (context.user !== false &&
+                (context.user._isStudent || context.user._isEmployee) &&
+                !context.user.profile.secondEmail)) && (
+              <DialogOverlay
+                style={{ background: 'rgba(0, 0, 0, 0.7)' }}
+                isOpen={true}
+              >
+                <DialogContent>
+                  <h2>Update your secondary email</h2>
+                  <p>
+                    If you forget your password, you will need a{' '}
+                    <strong>secondary email</strong> to reset your CSUMB
+                    account. You can always change this by clicking the{' '}
+                    <strong>Your account</strong> link on the top of the CSUMB
+                    website.
+                  </p>
+                  <p>
+                    <ButtonLink to="https://csumb.okta.com/enduser/settings">
+                      Update secondary email
+                    </ButtonLink>
+                  </p>
+                </DialogContent>
+              </DialogOverlay>
+            )}
           </>
         )}
       </UserContext.Consumer>
