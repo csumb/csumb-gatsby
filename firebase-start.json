@@ -11,6 +11,14 @@
       {
         "source": "/cloud-functions/okta/session-end",
         "function": "oktaSessionEnd"
+      },
+      {
+        "source": "/cloud-functions/laundry",
+        "function": "laundry"
+      },
+      {
+        "source": "/cloud-functions/laundry/hall/:hall",
+        "function": "laundry"
       }
     ]
   }
