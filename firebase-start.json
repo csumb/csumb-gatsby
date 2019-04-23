@@ -6,7 +6,11 @@
     "rewrites": [
       {
         "source": "/cloud-functions/okta/secondary-email",
-        "function": "updateSecondaryEmail"
+        "function": "oktaSecondaryEmail"
+      },
+      {
+        "source": "/cloud-functions/okta/session-end",
+        "function": "oktaSessionEnd"
       }
     ]
   }
