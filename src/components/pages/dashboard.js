@@ -19,6 +19,7 @@ import '@reach/menu-button/styles.css'
 import '@reach/dialog/styles.css'
 import NProgress from 'nprogress'
 import Cookies from 'universal-cookie'
+import { UserContext } from 'components/contexts/user'
 
 const cookies = new Cookies()
 
@@ -568,6 +569,22 @@ class DashboardEmergency extends React.Component {
   }
 }
 
+class DashboardSecondaryEmail extends React.Component {
+  render() {
+    return (
+      <UserContext.Consumer>
+        {context => (
+          <>
+            {context.user !== false &&
+              (context.user._isStudent || context.user._isEmployee) &&
+              !context.user.profile.secondEmail && <p>Dude, email.</p>}
+          </>
+        )}
+      </UserContext.Consumer>
+    )
+  }
+}
+
 class DashboardContent extends React.Component {
   state = {
     ready: false,
@@ -693,6 +710,7 @@ class DashboardContent extends React.Component {
         {ready ? (
           <>
             <DashboardEmergency session={session} />
+            <DashboardSecondaryEmail />
             <Flex flexWrap="wrap">
               <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
                 <DashboardEventWrapper>

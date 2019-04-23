@@ -162,7 +162,7 @@ const gatsbyConfig = {
               'Fall/Spring Application Deadline',
               'Summer Application Deadline',
               'Areas',
-              'Admission Requirements',
+              'Prerequisites',
               'Campus services',
             ],
           },
