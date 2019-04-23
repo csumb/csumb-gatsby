@@ -7,7 +7,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { AlertEmpty } from 'components/alert'
 import VisuallyHidden from 'components/visually-hidden'
 import Link from 'gatsby-link'
-import { ButtonLink, Button } from 'components/button'
+import { ButtonLink, Button, LinkyButton } from 'components/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronUp,
@@ -488,6 +488,86 @@ class DashboardNotLoggedIn extends React.Component {
   }
 }
 
+class DashboardEmergency extends React.Component {
+  state = {
+    showDialog: false,
+  }
+
+  componentDidMount() {
+    const time = new Date()
+    fetch(
+      `https://api.csumb.edu/everbridge/get?token=${
+        this.props.session
+      }&_t=${time.getTime()}`
+    )
+      .then(response => {
+        return response.json()
+      })
+      .then(everbridge => {
+        if (everbridge.error) {
+          return
+        }
+        if (everbridge.user.optOut) {
+          return
+        }
+        let userHasPhone = false
+        everbridge.user.paths.forEach(path => {
+          if (path.pathId === 241901148045324) {
+            userHasPhone = true
+          }
+        })
+        if (!userHasPhone) {
+          this.setState({
+            showDialog: true,
+          })
+        }
+      })
+  }
+
+  handleOptOut() {
+    this.setState({
+      showDialog: false,
+    })
+    fetch(
+      `https://api.csumb.edu/everbridge/opt-out?token=${this.props.session}`
+    )
+  }
+
+  render() {
+    return (
+      <DialogOverlay
+        style={{ background: 'rgba(0, 0, 0, 0.7)' }}
+        isOpen={this.state.showDialog}
+      >
+        <DialogContent>
+          <CloseDialog onClick={() => this.setState({ showDialog: false })}>
+            <VisuallyHidden>Close dialog</VisuallyHidden>
+            <FontAwesomeIcon icon={faTimes} />
+          </CloseDialog>
+          <h2>Sign up for OTTERalert</h2>
+          <p>
+            OTTERalert is CSUMB's emergency notification system. It delivers
+            time-sensitive emergency notifications via email, text-messaging and
+            outdoor warning sirens to all members of the CSUMB community.
+          </p>
+          <p>
+            You can always manage your emergency preferences by selecting{' '}
+            <strong>Your account</strong> on the CSUMB website.
+          </p>
+          <p>
+            <ButtonLink to="/account/emergency">
+              Update emergency information
+            </ButtonLink>
+          </p>
+          <LinkyButton onClick={this.handleOptOut.bind(this)}>
+            Opt out of OTTERalert
+          </LinkyButton>
+        </DialogContent>
+      </DialogOverlay>
+    )
+  }
+}
+
 class DashboardContent extends React.Component {
   state = {
     ready: false,
@@ -612,6 +692,7 @@ class DashboardContent extends React.Component {
       <>
         {ready ? (
           <>
+            <DashboardEmergency session={session} />
             <Flex flexWrap="wrap">
               <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
                 <DashboardEventWrapper>
