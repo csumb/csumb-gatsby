@@ -2,6 +2,12 @@
   "hosting": {
     "public": "public",
     "trailingSlash": false,
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/cloud-functions/okta/secondary-email",
+        "function": "updateSecondaryEmail"
+      }
+    ]
   }
 }
