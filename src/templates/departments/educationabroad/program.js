@@ -127,14 +127,12 @@ class ProgramTemplate extends React.Component {
           <Flex flexWrap="wrap">
             <Box width={[1, 7 / 12]} pr={[0, 2]}>
               <h3>About the university</h3>
-              <p>
-                {data.About_University.split('\n').map((item, key) => (
-                  <React.Fragment key={`about-${key}`}>
-                    {item}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </p>
+              {data.About_Paragraph_1 && <p>{data.About_Paragraph_1}</p>}
+
+              {data.About_Paragraph_2 && <p>{data.About_Paragraph_2}</p>}
+
+              {data.About_Paragraph_3 && <p>{data.About_Paragraph_3}</p>}
+
               {partner.data.Campus_website && (
                 <p>
                   <a href={partner.data.Campus_website}>Visit campus website</a>
@@ -153,18 +151,20 @@ class ProgramTemplate extends React.Component {
             <h2>{data.Application_Deadline_Title}</h2>
             <Flex flexWrap="wrap">
               <Box width={[1, 1 / 2]} pr={[0, 2]}>
-                {data.Fall_Spring_Application_Deadline && (
-                  <p>
-                    <strong>Fall &amp; Spring deadline:</strong>
-                    {data.Fall_Spring_Application_Deadline[0].data.Name}
-                  </p>
-                )}
-                {data.Summer_Application_Deadline && (
-                  <p>
-                    <strong>Summer deadline:</strong>
-                    {data.Fall_Spring_Application_Deadline[0].data.Name}
-                  </p>
-                )}
+                {data.Fall_Spring_Application_Deadline &&
+                  data.Fall_Spring_Application_Deadline[0] && (
+                    <p>
+                      <strong>Fall &amp; Spring deadline:</strong>
+                      {data.Fall_Spring_Application_Deadline[0].data.Name}
+                    </p>
+                  )}
+                {data.Summer_Application_Deadline &&
+                  data.Summer_Application_Deadline[0] && (
+                    <p>
+                      <strong>Summer deadline:</strong>
+                      {data.Summer_Application_Deadline[0].data.Name}
+                    </p>
+                  )}
               </Box>
               <Box width={[1, 1 / 2]}>
                 <p>
@@ -200,17 +200,22 @@ class ProgramTemplate extends React.Component {
                   </p>
                 )}
               </ProgramDetails>
-              {data.Admission_Requirements && (
+              {data.Prerequisites && (
                 <ProgramDetails title="Prerequisites">
                   <ul>
-                    {data.Admission_Requirements.map(item => (
+                    {data.Prerequisites.map(item => (
                       <li>{item.data.Name}</li>
                     ))}
                   </ul>
                 </ProgramDetails>
               )}
               <ProgramDetails title="Housing &amp; food">
-                <p>{data.Housing_details}</p>
+                {data.Housing_Details_Paragraph_1 && (
+                  <p>{data.Housing_Details_Paragraph_1}</p>
+                )}
+                {data.Housing_Details_Paragraph_2 && (
+                  <p>{data.Housing_Details_Paragraph_2}</p>
+                )}
                 {data.Housing_link && (
                   <a href={data.Housing_link}>Learn more about housing</a>
                 )}
@@ -229,7 +234,7 @@ class ProgramTemplate extends React.Component {
                         Education Abroad Application Fee (non-refundable)
                       </TableCell>
                       <TableCell>
-                        {data.Education_Abroad_Application_Fee__non_refundable_}
+                        {data.Education_Abroad_Application_Fee}
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -242,7 +247,7 @@ class ProgramTemplate extends React.Component {
                     </TableRow>
                     <TableRow>
                       <TableCell>Housing &amp; food</TableCell>
-                      <TableCell>{data.Housing___Food}</TableCell>
+                      <TableCell>{data.Housing_Meals}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>Round-trip airfare</TableCell>
