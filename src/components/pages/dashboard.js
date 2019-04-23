@@ -477,9 +477,9 @@ class DashboardNotLoggedIn extends React.Component {
         <NotLoggedIn>
           <p>Logging you in...</p>
         </NotLoggedIn>
-        <p style={{ fontSize: '0.8rem;' }}>
+        <LoginMessage style={{ fontSize: '0.8rem;' }}>
           Not working? <a href={loginUrl}>Login here</a>
-        </p>
+        </LoginMessage>
       </>
     )
   }
