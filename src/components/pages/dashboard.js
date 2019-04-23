@@ -467,32 +467,20 @@ const LoginMessage = styled('p')`
 `
 
 class DashboardNotLoggedIn extends React.Component {
-  state = {
-    redirect: false,
-  }
-
   componentDidMount() {
-    const that = this
-    setTimeout(() => {
-      that.setState({
-        redirect: true,
-      })
-    }, 5000)
-  }
-
-  componentDidUpdate() {
-    if (this.state.redirect) {
-      window.location.href = loginUrl
-    }
+    window.location.href = loginUrl
   }
 
   render() {
     return (
-      <NotLoggedIn>
-        <p>You are not logged in.</p>
-        <ButtonLink to={loginUrl}>Log in</ButtonLink>
-        <LoginMessage>We'll log you in shortly....</LoginMessage>
-      </NotLoggedIn>
+      <>
+        <NotLoggedIn>
+          <p>Logging you in...</p>
+        </NotLoggedIn>
+        <p style={{ fontSize: '0.8rem;' }}>
+          Not working? <a href={loginUrl}>Login here</a>
+        </p>
+      </>
     )
   }
 }
