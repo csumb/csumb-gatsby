@@ -15,4 +15,4 @@ script:
   - npm run buildJson
   - npm run configFirebase
   - npm run canary
-  - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH
+  - ./node_modules/.bin/firebase --debug --only hosting deploy --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH

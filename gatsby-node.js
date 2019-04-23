@@ -8,6 +8,7 @@ const directoryPages = require(`./src/node/directory`)
 const everythingPages = require(`./src/node/everything`)
 const eventPages = require(`./src/node/events`)
 const scienceIllustrationPages = require(`./src/node/departments/scienceillustration`)
+const educationAbroadPages = require(`./src/node/departments/educationabroad`)
 const newsStoryPages = require(`./src/node/departments/news`)
 
 require(`gatsby-source-filesystem`)
@@ -20,6 +21,9 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return scienceIllustrationPages(graphql, actions)
+      })
+      .then(() => {
+        return educationAbroadPages(graphql, actions)
       })
       .then(() => {
         return contentPages(graphql, actions)

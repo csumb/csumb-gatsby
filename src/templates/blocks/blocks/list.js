@@ -4,7 +4,7 @@ import parseHtml from '../parse-html'
 
 class BlockList extends React.Component {
   render() {
-    const { type, list } = this.props
+    const { type, uuid, list } = this.props
 
     const ListTag =
       type === 'list-unstyled'
@@ -50,17 +50,21 @@ class BlockList extends React.Component {
     return (
       <ListTag>
         {listItems.map((item, key) => (
-          <li>
+          <li key={`list-${uuid}-${key}`}>
             {parseHtml(item.text)}
             {item._children.length > 0 && (
               <ListTag>
                 {item._children.map((secondItem, secondKey) => (
-                  <li>
+                  <li key={`list-${uuid}-${key}-${secondKey}`}>
                     {parseHtml(secondItem.text)}
                     {secondItem._children.length > 0 && (
                       <ListTag>
                         {secondItem._children.map(thirdItem => (
-                          <li>{parseHtml(thirdItem.text)}</li>
+                          <li
+                            key={`list-${uuid}-${key}-${secondKey}-${thirdItem}`}
+                          >
+                            {parseHtml(thirdItem.text)}
+                          </li>
                         ))}
                       </ListTag>
                     )}
