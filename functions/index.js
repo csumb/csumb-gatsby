@@ -10,17 +10,13 @@ const client = new oktaClient.Client({
   token: functions.config().okta.key,
 })
 
-exports.oktaSecondaryEmail = functions.https.onRequest(
-  async (request, response) => {
-    oktaSecondaryEmail(client, request, response)
-  }
-)
+exports.oktaSecondaryEmail = functions.https.onRequest((request, response) => {
+  oktaSecondaryEmail(client, request, response)
+})
 
-exports.oktaSessionEnd = functions.https.onRequest(
-  async (request, response) => {
-    oktaSessionEnd(client, request, response)
-  }
-)
+exports.oktaSessionEnd = functions.https.onRequest((request, response) => {
+  oktaSessionEnd(client, request, response)
+})
 
 exports.laundry = functions.https.onRequest(laundry)
 

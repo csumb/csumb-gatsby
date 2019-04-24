@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const cheerio = require('cheerio')
 
-module.exports = async (request, response) => {
+module.exports = (request, response) => {
   fetch(`https://www.laundryalert.com/cgi-bin/csumb721/LMPage`)
     .then(response => {
       return response.text()
@@ -54,6 +54,10 @@ module.exports = async (request, response) => {
         rooms.push(room)
       })
       response.write(JSON.stringify(rooms))
+      return response.end()
+    })
+    .catch(error => {
+      response.write(JSON.stringify({ error: true }))
       response.end()
     })
 }
