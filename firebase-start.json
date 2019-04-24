@@ -19,6 +19,10 @@
       {
         "source": "/cloud-functions/laundry/hall/:hall",
         "function": "laundryHall"
+      },
+      {
+        "source": "/cloud-functions/cashnet",
+        "function": "cashnet"
       }
     ]
   }
