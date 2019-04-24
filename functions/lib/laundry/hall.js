@@ -1,4 +1,4 @@
-module.export = async (hall, request, response) => {
+module.export = async (request, response) => {
   fetch(
     `https://www.laundryalert.com/cgi-bin/csumb721/LMRoom?XallingPage=LMPage&Halls=${
       request.params.hall
