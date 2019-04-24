@@ -18,7 +18,7 @@
       },
       {
         "source": "/cloud-functions/laundry/hall/:hall",
-        "function": "laundry"
+        "function": "laundryHall"
       }
     ]
   }
