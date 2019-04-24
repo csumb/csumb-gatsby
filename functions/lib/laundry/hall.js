@@ -1,3 +1,10 @@
+const fetch = require('node-fetch')
+const cheerio = require('cheerio')
+
+const cleanText = text => {
+  return text.replace('\n', '').trim()
+}
+
 module.export = (request, response) => {
   fetch(
     `https://www.laundryalert.com/cgi-bin/csumb721/LMRoom?XallingPage=LMPage&Halls=${

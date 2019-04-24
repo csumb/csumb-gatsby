@@ -1,6 +1,10 @@
 const fetch = require('node-fetch')
 const cheerio = require('cheerio')
 
+const cleanText = text => {
+  return text.replace('\n', '').trim()
+}
+
 module.exports = (request, response) => {
   fetch(`https://www.laundryalert.com/cgi-bin/csumb721/LMPage`)
     .then(response => {
@@ -57,6 +61,7 @@ module.exports = (request, response) => {
       return response.end()
     })
     .catch(error => {
+      console.log(error)
       response.write(JSON.stringify({ error: true }))
       response.end()
     })
