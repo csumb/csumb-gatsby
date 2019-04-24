@@ -22,6 +22,6 @@ exports.oktaSessionEnd = functions.https.onRequest(
   }
 )
 
-exports.laundry = functions.https.onRequest(laundry(request, response))
+exports.laundry = functions.https.onRequest(laundry)
 
-exports.laundryHall = functions.https.onRequest(laundryHall(request, response))
+exports.laundryHall = functions.https.onRequest(laundryHall)
