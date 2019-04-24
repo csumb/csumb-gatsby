@@ -1,4 +1,4 @@
-module.export = async (request, response) => {
+module.export = (request, response) => {
   fetch(
     `https://www.laundryalert.com/cgi-bin/csumb721/LMRoom?XallingPage=LMPage&Halls=${
       request.params.hall
@@ -42,6 +42,10 @@ module.export = async (request, response) => {
           machines.push(machine)
         })
       response.write(JSON.stringify(machines))
+      return response.end()
+    })
+    .catch(error => {
+      response.write(JSON.stringify({ error: true }))
       response.end()
     })
 }

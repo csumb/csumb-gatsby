@@ -2,11 +2,11 @@ module.exports = (client, request, response) => {
   client
     .getSession(request.query.token)
     .then(session => {
-      client
+      return client
         .getUser(session.userId)
         .then(oktaUser => {
           oktaUser.profile.secondEmail = request.query.email
-          oktaUser
+          return oktaUser
             .update()
             .catch(error => {
               response.write(JSON.stringify({ error: true }))
@@ -14,7 +14,7 @@ module.exports = (client, request, response) => {
             })
             .then(result => {
               response.write(JSON.stringify({ error: false }))
-              response.end()
+              return response.end()
             })
         })
         .catch(error => {
