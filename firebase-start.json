@@ -39,6 +39,14 @@
       {
         "source": "/cloud-functions/everbridge/opt-out",
         "function": "everbridgeOptOut"
+      },
+      {
+        "source": "/cloud-functions/profile/get",
+        "function": "profileGet"
+      },
+      {
+        "source": "/cloud-functions/profile/update",
+        "function": "profileUpdate"
       }
     ]
   }
