@@ -66,7 +66,7 @@ class EventsPage extends React.Component {
           <PageTitle>Campus events</PageTitle>
           <Flex flexWrap="wrap">
             <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
-              {featuredEvents && (
+              {featuredEvents && featuredEvents.length > 0 && (
                 <>
                   <h2>Featured Events</h2>
                   {featuredEvents.map(event => (
@@ -82,7 +82,9 @@ class EventsPage extends React.Component {
               )}
               {events && (
                 <>
-                  {featuredEvents && <h2>Upcoming events</h2>}
+                  {featuredEvents && featuredEvents.length > 0 && (
+                    <h2>Upcoming events</h2>
+                  )}
                   {events.map(event => (
                     <PublicEvent
                       key={event.id}
