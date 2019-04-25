@@ -50,11 +50,7 @@ class PageEditorUserTools extends React.Component {
       })
       return
     }
-    fetch(
-      `https://edit.csumb.edu/api/sites?name=${user.profile.login
-        .split('@')
-        .shift()}`
-    )
+    fetch(`https://edit.csumb.edu/api/sites?name=${user._username}`)
       .then(response => {
         return response.json()
       })

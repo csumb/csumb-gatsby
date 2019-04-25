@@ -18,7 +18,7 @@ class PertsPage extends React.Component {
         let location = url.parse(window.location.href, true)
         window.location = `https://neptune.perts.net/participate/portal/${
           location.query.code
-        }/${location.query.session}/${user.profile.login.split('@').shift()}`
+        }/${location.query.session}/${user._username}`
       })
       .catch(error => {
         this.setState({

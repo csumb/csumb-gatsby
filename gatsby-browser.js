@@ -16,6 +16,7 @@ class UserComponent extends React.Component {
       })
       .then(user => {
         user = setUserRole(user)
+        user._username = user.profile.login.split('@').shift()
         this.setState({
           user: user,
         })
