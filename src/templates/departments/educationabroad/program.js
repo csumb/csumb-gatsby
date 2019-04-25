@@ -158,6 +158,17 @@ class ProgramTemplate extends React.Component {
                   must be completed by the mandatory Education Abroad
                   pre-departure orientation.
                 </p>
+                <p>
+                  {data.Program_Type === 'Semester' ? (
+                    <Link to="/educationabroad/go-abroad-semesteryear-long-program">
+                      Application instructions
+                    </Link>
+                  ) : (
+                    <Link to="/educationabroad/go-abroad-short-term-program">
+                      Application instructions
+                    </Link>
+                  )}
+                </p>
                 {data.Apply_Now && (
                   <ButtonLink to={data.Apply_Now}>Apply now</ButtonLink>
                 )}
