@@ -493,7 +493,7 @@ class DashboardEmergency extends React.Component {
   componentDidMount() {
     const time = new Date()
     fetch(
-      `https://api.csumb.edu/everbridge/get?token=${
+      `/cloud-functions/everbridge/get?token=${
         this.props.session
       }&_t=${time.getTime()}`
     )

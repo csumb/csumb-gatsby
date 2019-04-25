@@ -18,4 +18,5 @@ _functions
 drive-api.json
 .firebase
 firebase.json
+firebase-debug.log
 style-guide
