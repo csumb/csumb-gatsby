@@ -73,9 +73,7 @@ class UserPrintForm extends React.Component {
     NProgress.start()
     window
       .fetch(
-        `https://winservices.csumb.edu/print/balance.php?u=${user.profile.login
-          .split('@')
-          .shift()}`
+        `https://winservices.csumb.edu/print/balance.php?u=${user._username}`
       )
       .then(response => {
         NProgress.inc()
