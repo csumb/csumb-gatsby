@@ -7,6 +7,8 @@ import { LeadParagraph } from 'components/type'
 import Well from 'components/well'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
+import Loading from 'components/loading'
+import { AlertDanger } from 'components/alert'
 
 const Username = styled('code')`
   font-weight: bold;
@@ -21,6 +23,7 @@ class LookupForm extends React.Component {
     lastName: false,
     dob: false,
     user: false,
+    isLoading: false,
   }
 
   handleChangeFirstName(event) {
@@ -42,6 +45,9 @@ class LookupForm extends React.Component {
   }
 
   handleSubmit(event) {
+    this.setState({
+      isLoading: true,
+    })
     const { firstName, lastName, dob } = this.state
     event.preventDefault()
     fetch(
@@ -53,12 +59,13 @@ class LookupForm extends React.Component {
       .then(user => {
         this.setState({
           user: user,
+          isLoading: false,
         })
       })
   }
 
   render() {
-    const { user } = this.state
+    const { isLoading, user } = this.state
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <InputText
@@ -77,10 +84,14 @@ class LookupForm extends React.Component {
           onChange={this.handleChangeDob.bind(this)}
         />
         <Submit value="Lookup username" />
+        {isLoading && <Loading>Looking up username</Loading>}
         {user && user.id && (
           <LeadParagraph>
             Your username is: <Username>{user.id}</Username>
           </LeadParagraph>
+        )}
+        {user && user.error && (
+          <AlertDanger>We could not find your username.</AlertDanger>
         )}
       </form>
     )
