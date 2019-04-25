@@ -25,11 +25,13 @@ module.exports = (client, request, response) => {
               response.end()
             }
           )
+          return true
         })
         .catch(error => {
           response.send(JSON.stringify({ error: true, type: 'github' }))
           response.end()
         })
+      return true
     })
     .catch(error => {
       response.send(JSON.stringify({ error: true, type: 'okta' }))

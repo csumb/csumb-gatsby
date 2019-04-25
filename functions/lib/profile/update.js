@@ -25,7 +25,12 @@ module.exports = (client, request, response) => {
                 path,
                 `Updated ${request.query.field} value for ${login[0]}`,
                 JSON.stringify(userData),
-                err => {}
+                error => {
+                  if (error) {
+                    response.send(JSON.stringify({ error: true }))
+                    response.end()
+                  }
+                }
               )
             } else {
               repo.updateContents(
@@ -33,16 +38,23 @@ module.exports = (client, request, response) => {
                 `Updated ${request.query.field} value for ${login[0]}`,
                 JSON.stringify(userData),
                 data.sha,
-                err => {}
+                error => {
+                  if (error) {
+                    response.send(JSON.stringify({ error: true }))
+                    response.end()
+                  }
+                }
               )
             }
             response.end()
           })
+          return true
         })
         .catch(error => {
           response.send(JSON.stringify({ error: true }))
           response.end()
         })
+      return true
     })
     .catch(error => {
       response.send(JSON.stringify({ error: true }))
