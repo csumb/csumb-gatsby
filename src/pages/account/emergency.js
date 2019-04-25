@@ -145,7 +145,7 @@ class UserEmergencyPhoneForm extends React.Component {
     event.preventDefault()
     const phone = phoneFormatter.normalize(this.state.number)
     fetch(
-      `https://api.csumb.edu/everbridge/phone?token=${
+      `/cloud-functions/everbridge/phone?token=${
         this.props.token
       }&phone=${phone}`
     )
