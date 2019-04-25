@@ -47,6 +47,10 @@
       {
         "source": "/cloud-functions/profile/update",
         "function": "profileUpdate"
+      },
+      {
+        "source": "/cloud-functions/feedback",
+        "function": "feedback"
       }
     ]
   }
