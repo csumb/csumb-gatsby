@@ -550,11 +550,10 @@ class DashboardEmergency extends React.Component {
             <VisuallyHidden>Close dialog</VisuallyHidden>
             <FontAwesomeIcon icon={faTimes} />
           </CloseDialog>
-          <h2>Sign up for OTTERalert</h2>
+          <h2>Get Otteralerts via text-message </h2>
           <p>
-            OTTERalert is CSUMB's emergency notification system. It delivers
-            time-sensitive emergency notifications via email, text-messaging and
-            outdoor warning sirens to all members of the CSUMB community.
+            To receive OTTERalert emergency notifications via text-message,
+            provide your cell phone number below.
           </p>
           <p>
             You can always manage your emergency preferences by selecting{' '}
@@ -629,9 +628,9 @@ class DashboardSecondaryEmail extends React.Component {
                 <DialogContent>
                   <h2>Update your secondary email</h2>
                   <p>
-                    If you forget your password, you will need a{' '}
-                    <strong>secondary email</strong> to reset your CSUMB
-                    account. You can always change this by clicking the{' '}
+                    If you ever forget your password, you will need a secondary
+                    email to regain access to your CSUMB account. You can always
+                    edit this email by clicking the{' '}
                     <strong>Your account</strong> link on the top of the CSUMB
                     website.
                   </p>
