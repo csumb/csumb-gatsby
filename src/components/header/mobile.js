@@ -372,6 +372,9 @@ class HeaderMobile extends React.Component {
                 }}
               >
                 <MobileNavigationLink to="/about">About</MobileNavigationLink>
+                <MobileNavigationLink to="/admissions">
+                  Apply
+                </MobileNavigationLink>
                 <MobileNavigationLink to="/cost">
                   Cost &amp; aid
                 </MobileNavigationLink>
