@@ -1,11 +1,11 @@
 const cryptex = require('node-cryptex')
-const feedbackTemplate = require('./feedback')
+const feedbackTemplate = require('./feedback-template')
 const functions = require('firebase-functions')
 const sgMail = require('@sendgrid/mail')
 
 sgMail.setApiKey(functions.config().sendgrid.key)
 
-module.export = (request, response) => {
+module.exports = (request, response) => {
   const iv = new Buffer(16)
   const feedbackEmail = cryptex.decrypt(
     request.query.feedbackEmail,
