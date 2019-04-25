@@ -13,8 +13,6 @@ import ReactFilestack, { client } from 'filestack-react'
 
 const apiKey = 'A3ttdsdUR8aGvjvUnJBWUz'
 
-const filestack = client.init(apiKey)
-
 const SamplePhoto = styled('img')`
   float: right;
 `
@@ -87,21 +85,23 @@ class OtterCardPage extends React.Component {
 
   handleApprovedPhoto(user, image) {
     const login = user._username
-    console.log(login)
-    console.log(image)
+    const filestack = client.init(apiKey)
+
     filestack
       .storeURL(image.url, {
         filename: `${login}.jpg`,
         path: `/${login}.jpg`,
-        location: 'dropbox',
+        location: ' dropbox',
       })
-      .then(() => {
+      .then(res => {
         this.setState({
           done: true,
         })
       })
       .catch(error => {
-        console.log(error)
+        this.setState({
+          done: true,
+        })
       })
   }
 
