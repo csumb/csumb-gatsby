@@ -13,6 +13,10 @@
         "function": "oktaSessionEnd"
       },
       {
+        "source": "/cloud-functions/okta/lookup",
+        "function": "oktaLookup"
+      },
+      {
         "source": "/cloud-functions/laundry",
         "function": "laundry"
       },
