@@ -20,7 +20,7 @@ module.exports = (request, response) => {
           .attr('href')
 
         room.id = path.match(/Halls=([0-9]*)/)[1]
-        room.lookup = `/cloud-functions/laundry/hall/${room.id}`
+        room.lookup = `/cloud-functions/laundry/hall?hall=${room.id}`
         room.name = cleanText(
           $(item)
             .find('a')
