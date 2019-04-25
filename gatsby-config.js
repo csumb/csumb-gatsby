@@ -62,6 +62,7 @@ const gatsbyConfig = {
     'gatsby-plugin-catch-links',
     'gatsby-source-csumb-directory',
     'gatsby-source-csumb-web-content',
+    'gatsby-plugin-csumb-json-catalog',
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
@@ -161,7 +162,7 @@ const gatsbyConfig = {
               'Fall/Spring Application Deadline',
               'Summer Application Deadline',
               'Areas',
-              'Admission Requirements',
+              'Prerequisites',
               'Campus services',
             ],
           },

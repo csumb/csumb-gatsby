@@ -36,7 +36,7 @@ const updateProfileField = (field, value) => {
     })
     .then(response => {
       fetch(
-        `https://api.csumb.edu/profile/data/update?token=${
+        `/cloud-functions/profile/update?token=${
           response.id
         }&field=${field}&value=${value}`
       )
@@ -137,9 +137,7 @@ class UserAccountProfileForm extends React.Component {
       })
       .then(response => {
         fetch(
-          `https://api.csumb.edu/profile/data?token=${
-            response.id
-          }&_=${now.getTime()}`
+          `/cloud-functions/profile/get?token=${response.id}&_=${now.getTime()}`
         )
           .then(response => {
             NProgress.inc()

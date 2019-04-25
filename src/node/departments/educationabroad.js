@@ -16,7 +16,6 @@ module.exports = (graphql, actions) => {
               data: { Publish: { eq: true } }
               queryName: { in: ["StudyAbroadProgram"] }
             }
-            sort: { fields: [data___Subject_Area, data___Name] }
           ) {
             edges {
               node {
@@ -44,8 +43,10 @@ module.exports = (graphql, actions) => {
                     }
                   }
                   Apply_Now
-                  Find_Courses_Link
-                  Housing_details
+                  Academics_Button_1_Title
+                  Academics_Button_1_Link
+                  Housing_Details_Paragraph_1
+                  Housing_Details_Paragraph_2
                   Housing_link
                   Campus_services {
                     recordId
@@ -55,18 +56,20 @@ module.exports = (graphql, actions) => {
                   }
                   Campus_Services_Link
                   Tuition
-                  Education_Abroad_Application_Fee__non_refundable_
+                  Education_Abroad_Application_Fee
                   Education_Abroad_Fee
                   Health_Insurance
                   Round_trip_Airfare
-                  Housing___Food
+                  Housing_Meals
                   Financial_Aid_Available
                   Additional_Fees_May_Apply
-                  About_University
+                  About_Paragraph_1
+                  About_Paragraph_2
+                  About_Paragraph_3
                   Map_Coordinates
                   Summer_start_Date
                   Summer_End_Date
-                  Admission_Requirements {
+                  Prerequisites {
                     recordId
                     data {
                       Name
@@ -113,13 +116,13 @@ module.exports = (graphql, actions) => {
           reject(result.errors)
           return
         }
-        result.data.allAirtable.edges.forEach(edge => {
-          const slug = slugify(edge.node.recordId.replace('rec', ''))
+        result.data.allAirtable.edges.forEach(({ node }) => {
+          const slug = slugify(node.recordId.replace('rec', ''))
           createPage({
             path: `educationabroad/program/${slug}`,
             component: template,
             context: {
-              program: edge.node,
+              program: node,
               navigation: result.data.allCsumbNavigation
                 ? result.data.allCsumbNavigation.edges[0].node.navigation
                 : '',

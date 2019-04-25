@@ -73,7 +73,7 @@ class UserAccountForm extends React.Component {
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h3>Username</h3>
               <p>Your CSUMB username is:</p>
-              <AccountData>{user.profile.login.split('@').shift()}</AccountData>
+              <AccountData>{user._username}</AccountData>
               <p>You cannot change your CSUMB username.</p>
             </Box>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>

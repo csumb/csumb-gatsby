@@ -11,6 +11,8 @@ import styled from '@emotion/styled'
 import { Button } from 'components/button'
 import ReactFilestack, { client } from 'filestack-react'
 
+const apiKey = 'A3ttdsdUR8aGvjvUnJBWUz'
+
 const SamplePhoto = styled('img')`
   float: right;
 `
@@ -82,12 +84,25 @@ class OtterCardPage extends React.Component {
   }
 
   handleApprovedPhoto(user, image) {
-    const login = user.profile.login.split('@').shift()
-    client.storeUrl(image.url, {
-      filename: `${login}.jpg`,
-      path: `/${login}.jpg`,
-      location: 'dropbox',
-    })
+    const login = user._username
+    const filestack = client.init(apiKey)
+
+    filestack
+      .storeURL(image.url, {
+        filename: `${login}.jpg`,
+        path: `/${login}.jpg`,
+        location: ' dropbox',
+      })
+      .then(res => {
+        this.setState({
+          done: true,
+        })
+      })
+      .catch(error => {
+        this.setState({
+          done: true,
+        })
+      })
   }
 
   render() {
@@ -115,9 +130,7 @@ class OtterCardPage extends React.Component {
                             <>
                               {showUpload ? (
                                 <>
-                                  <UploadCheck
-                                    photo={this.state.filePickerImage}
-                                  />
+                                  <UploadCheck photo={filePickerImage} />
                                   <Button
                                     onClick={event => {
                                       event.preventDefault()
@@ -125,9 +138,6 @@ class OtterCardPage extends React.Component {
                                         context.user,
                                         filePickerImage
                                       )
-                                      this.setState({
-                                        done: true,
-                                      })
                                     }}
                                   >
                                     Looks good!
@@ -137,7 +147,7 @@ class OtterCardPage extends React.Component {
                                 <>
                                   <UploadPreamble />
                                   <ReactFilestack
-                                    apikey="A3ttdsdUR8aGvjvUnJBWUz"
+                                    apikey={apiKey}
                                     onSuccess={this.handleUploadedPhoto.bind(
                                       this
                                     )}

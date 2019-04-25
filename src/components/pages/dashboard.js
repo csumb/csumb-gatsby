@@ -7,7 +7,9 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { AlertEmpty } from 'components/alert'
 import VisuallyHidden from 'components/visually-hidden'
 import Link from 'gatsby-link'
-import { ButtonLink, Button } from 'components/button'
+import { ButtonLink, Button, LinkyButton } from 'components/button'
+import { InputText, Submit } from 'components/forms'
+import Well from 'components/well'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronUp,
@@ -19,11 +21,18 @@ import '@reach/menu-button/styles.css'
 import '@reach/dialog/styles.css'
 import NProgress from 'nprogress'
 import Cookies from 'universal-cookie'
+import { UserContext } from 'components/contexts/user'
 
 const cookies = new Cookies()
 
 const loginUrl =
   'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7'
+
+const SecondaryEmailError = styled('p')`
+  color: ${colors.indicators.high};
+  margin: 0.5rem 0;
+  font-weight: bold;
+`
 
 const DashboardIntroWrapper = styled('div')`
   padding: 0.2rem 0;
@@ -458,32 +467,199 @@ const LoginMessage = styled('p')`
 `
 
 class DashboardNotLoggedIn extends React.Component {
-  state = {
-    redirect: false,
-  }
-
   componentDidMount() {
-    const that = this
-    setTimeout(() => {
-      that.setState({
-        redirect: true,
-      })
-    }, 5000)
-  }
-
-  componentDidUpdate() {
-    if (this.state.redirect) {
-      window.location.href = loginUrl
-    }
+    window.location.href = loginUrl
   }
 
   render() {
     return (
-      <NotLoggedIn>
-        <p>You are not logged in.</p>
-        <ButtonLink to={loginUrl}>Log in</ButtonLink>
-        <LoginMessage>We'll log you in shortly....</LoginMessage>
-      </NotLoggedIn>
+      <>
+        <NotLoggedIn>
+          <p>Logging you in...</p>
+        </NotLoggedIn>
+        <LoginMessage style={{ fontSize: '0.8rem;' }}>
+          Not working? <a href={loginUrl}>Login here</a>
+        </LoginMessage>
+      </>
+    )
+  }
+}
+
+class DashboardEmergency extends React.Component {
+  state = {
+    showDialog: false,
+  }
+
+  componentDidMount() {
+    const time = new Date()
+    fetch(
+      `/cloud-functions/everbridge/get?token=${
+        this.props.session
+      }&_t=${time.getTime()}`
+    )
+      .then(response => {
+        return response.json()
+      })
+      .then(everbridge => {
+        if (
+          typeof window !== 'undefined' &&
+          window.location.search.search('_fake-emergency') > -1
+        ) {
+          this.setState({
+            showDialog: true,
+          })
+          return
+        }
+        if (everbridge.error) {
+          return
+        }
+        if (everbridge.user.optOut) {
+          return
+        }
+        let userHasPhone = false
+        everbridge.user.paths.forEach(path => {
+          if (path.pathId === 241901148045324) {
+            userHasPhone = true
+          }
+        })
+        if (!userHasPhone) {
+          this.setState({
+            showDialog: true,
+          })
+        }
+      })
+  }
+
+  handleOptOut() {
+    this.setState({
+      showDialog: false,
+    })
+    fetch(`/cloud-functions/everbridge/opt-out?token=${this.props.session}`)
+  }
+
+  render() {
+    return (
+      <DialogOverlay
+        style={{ background: 'rgba(0, 0, 0, 0.7)' }}
+        isOpen={this.state.showDialog}
+      >
+        <DialogContent>
+          <CloseDialog onClick={() => this.setState({ showDialog: false })}>
+            <VisuallyHidden>Close dialog</VisuallyHidden>
+            <FontAwesomeIcon icon={faTimes} />
+          </CloseDialog>
+          <h2>Get Otteralerts via text-message </h2>
+          <p>
+            To receive OTTERalert emergency notifications via text-message,
+            provide your cell phone number below.
+          </p>
+          <p>
+            You can always manage your emergency preferences by selecting{' '}
+            <strong>Your account</strong> on the CSUMB website.
+          </p>
+          <p>
+            <ButtonLink to="/account/emergency">
+              Update emergency information
+            </ButtonLink>
+          </p>
+          <LinkyButton onClick={this.handleOptOut.bind(this)}>
+            Opt out of OTTERalert
+          </LinkyButton>
+        </DialogContent>
+      </DialogOverlay>
+    )
+  }
+}
+
+class DashboardSecondaryEmail extends React.Component {
+  state = {
+    secondaryEmail: false,
+    didUpdate: false,
+    isLoading: false,
+  }
+
+  handleSubmit(event) {
+    this.setState({
+      isLoading: true,
+    })
+    event.preventDefault()
+    fetch(
+      `/cloud-functions/okta/secondary-email?token=${
+        this.props.session
+      }&email=${this.state.secondaryEmail}`
+    )
+      .then(result => {
+        return result.json()
+      })
+      .then(result => {
+        this.setState({
+          didUpdate: true,
+          isLoading: false,
+        })
+      })
+      .catch(error => {
+        this.setState({
+          didUpdate: true,
+          isLoading: false,
+        })
+      })
+  }
+
+  render() {
+    const { didUpdate, isLoading } = this.state
+    if (didUpdate) {
+      return null
+    }
+    return (
+      <UserContext.Consumer>
+        {context => (
+          <>
+            {((typeof window !== 'undefined' &&
+              window.location.search.search('_fake-secondary') > -1) ||
+              (context.user !== false &&
+                (context.user._isStudent || context.user._isEmployee) &&
+                !context.user.profile.secondEmail)) && (
+              <DialogOverlay
+                style={{ background: 'rgba(0, 0, 0, 0.7)' }}
+                isOpen={true}
+              >
+                <DialogContent>
+                  <h2>Update your secondary email</h2>
+                  <p>
+                    If you ever forget your password, you will need a secondary
+                    email to regain access to your CSUMB account. You can always
+                    edit this email by clicking the{' '}
+                    <strong>Your account</strong> link on the top of the CSUMB
+                    website.
+                  </p>
+                  <Well>
+                    <form onSubmit={this.handleSubmit.bind(this)}>
+                      <InputText
+                        name="secondary-update"
+                        label="Enter secondary email"
+                        onChange={event => {
+                          this.setState({
+                            secondaryEmail: event.target.value,
+                          })
+                        }}
+                      />
+                      {this.state.secondaryEmail &&
+                        this.state.secondaryEmail.search('@csumb.edu') > -1 && (
+                          <SecondaryEmailError>
+                            You cannot use a csumb.edu email address as your
+                            secondary email.
+                          </SecondaryEmailError>
+                        )}
+                      <Submit value="Update secondary email" />
+                      {isLoading && <Loading>Updating email</Loading>}
+                    </form>
+                  </Well>
+                </DialogContent>
+              </DialogOverlay>
+            )}
+          </>
+        )}
+      </UserContext.Consumer>
     )
   }
 }
@@ -612,6 +788,8 @@ class DashboardContent extends React.Component {
       <>
         {ready ? (
           <>
+            <DashboardEmergency session={session} />
+            <DashboardSecondaryEmail session={session} />
             <Flex flexWrap="wrap">
               <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
                 <DashboardEventWrapper>

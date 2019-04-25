@@ -10,9 +10,9 @@ script:
   - node --max_old_space_size=12000 ./node_modules/.bin/gatsby build
   - npm run directoryJson
   - npm run scheduleJson
-  - npm run catalogJson
   - npm run eventJson
   - npm run buildJson
   - npm run configFirebase
   - npm run canary
-  - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH
+  - cd functions; npm i; cd ..
+  - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH -f

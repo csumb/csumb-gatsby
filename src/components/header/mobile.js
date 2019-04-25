@@ -146,13 +146,13 @@ class MobileUserWidget extends React.Component {
       })
       .then(session => {
         if (session && session.id) {
-          fetch(
-            `https://api.csumb.edu/okta/session/end?token=${session.id}`
-          ).then(response => {
-            window.location.href = `${window.location.protocol}//${
-              window.location.host
-            }`
-          })
+          fetch(`/cloud-functions/okta/session-end?token=${session.id}`).then(
+            response => {
+              window.location.href = `${window.location.protocol}//${
+                window.location.host
+              }`
+            }
+          )
         }
       })
   }
@@ -372,6 +372,9 @@ class HeaderMobile extends React.Component {
                 }}
               >
                 <MobileNavigationLink to="/about">About</MobileNavigationLink>
+                <MobileNavigationLink to="/admissions">
+                  Apply
+                </MobileNavigationLink>
                 <MobileNavigationLink to="/cost">
                   Cost &amp; aid
                 </MobileNavigationLink>

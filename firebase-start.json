@@ -2,6 +2,56 @@
   "hosting": {
     "public": "public",
     "trailingSlash": false,
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/cloud-functions/okta/secondary-email",
+        "function": "oktaSecondaryEmail"
+      },
+      {
+        "source": "/cloud-functions/okta/session-end",
+        "function": "oktaSessionEnd"
+      },
+      {
+        "source": "/cloud-functions/okta/lookup",
+        "function": "oktaLookup"
+      },
+      {
+        "source": "/cloud-functions/okta/profile",
+        "function": "oktaProfile"
+      },
+      {
+        "source": "/cloud-functions/laundry",
+        "function": "laundry"
+      },
+      {
+        "source": "/cloud-functions/laundry/hall",
+        "function": "laundryHall"
+      },
+      {
+        "source": "/cloud-functions/everbridge/get",
+        "function": "everbridgeGet"
+      },
+      {
+        "source": "/cloud-functions/everbridge/phone",
+        "function": "everbridgePhone"
+      },
+      {
+        "source": "/cloud-functions/everbridge/opt-out",
+        "function": "everbridgeOptOut"
+      },
+      {
+        "source": "/cloud-functions/profile/get",
+        "function": "profileGet"
+      },
+      {
+        "source": "/cloud-functions/profile/update",
+        "function": "profileUpdate"
+      },
+      {
+        "source": "/cloud-functions/feedback",
+        "function": "feedback"
+      }
+    ]
   }
 }
