@@ -2,9 +2,10 @@ const functions = require('firebase-functions')
 const oktaClient = require('@okta/okta-sdk-nodejs')
 const oktaSecondaryEmail = require('./lib/okta/secondary-email')
 const oktaSessionEnd = require('./lib/okta/secondary-email')
+const oktaProfile = require('./lib/okta/profile')
+const oktaLookup = require('./lib/okta/lookup')
 const laundry = require('./lib/laundry')
 const laundryHall = require('./lib/laundry/hall')
-const oktaLookup = require('./lib/okta/lookup')
 
 const client = new oktaClient.Client({
   orgUrl: `https://${functions.config().okta.domain}`,
@@ -21,6 +22,10 @@ exports.oktaSessionEnd = functions.https.onRequest((request, response) => {
 
 exports.oktaLookup = functions.https.onRequest((request, response) => {
   oktaLookup(client, request, response)
+})
+
+exports.oktaProfile = functions.https.onRequest((request, response) => {
+  oktaProfile(client, request, response)
 })
 
 exports.laundry = functions.https.onRequest(laundry)

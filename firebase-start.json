@@ -17,6 +17,10 @@
         "function": "oktaLookup"
       },
       {
+        "source": "/cloud-functions/okta/profile",
+        "function": "oktaProfile"
+      },
+      {
         "source": "/cloud-functions/laundry",
         "function": "laundry"
       },
