@@ -35,6 +35,10 @@
       {
         "source": "/cloud-functions/everbridge/phone",
         "function": "everbridgePhone"
+      },
+      {
+        "source": "/cloud-functions/everbridge/opt-out",
+        "function": "everbridgeOptOut"
       }
     ]
   }

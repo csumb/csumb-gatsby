@@ -534,9 +534,7 @@ class DashboardEmergency extends React.Component {
     this.setState({
       showDialog: false,
     })
-    fetch(
-      `https://api.csumb.edu/everbridge/opt-out?token=${this.props.session}`
-    )
+    fetch(`/cloud-functions/everbridge/opt-out?token=${this.props.session}`)
   }
 
   render() {
