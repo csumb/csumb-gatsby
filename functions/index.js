@@ -10,6 +10,7 @@ const everbridgeOptOut = require('./lib/everbridge/opt-out')
 const laundry = require('./lib/laundry')
 const laundryHall = require('./lib/laundry/hall')
 const profileGet = require('./lib/profile/get')
+const feedback = require('./lib/feedback')
 
 const client = new oktaClient.Client({
   orgUrl: `https://${functions.config().okta.domain}`,
@@ -66,3 +67,5 @@ exports.profileGet = functions.https.onRequest((request, response) => {
 exports.laundry = functions.https.onRequest(laundry)
 
 exports.laundryHall = functions.https.onRequest(laundryHall)
+
+exports.feedback = functions.https.onRequest(feedback)
