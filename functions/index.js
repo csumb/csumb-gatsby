@@ -4,6 +4,7 @@ const oktaSecondaryEmail = require('./lib/okta/secondary-email')
 const oktaSessionEnd = require('./lib/okta/secondary-email')
 const oktaProfile = require('./lib/okta/profile')
 const oktaLookup = require('./lib/okta/lookup')
+const everbridgeGet = require('./lib/everbridge/get')
 const laundry = require('./lib/laundry')
 const laundryHall = require('./lib/laundry/hall')
 
@@ -26,6 +27,10 @@ exports.oktaLookup = functions.https.onRequest((request, response) => {
 
 exports.oktaProfile = functions.https.onRequest((request, response) => {
   oktaProfile(client, request, response)
+})
+
+exports.everbridgeGet = functions.https.onRequest((request, response) => {
+  everbridgeGet(client, request, response)
 })
 
 exports.laundry = functions.https.onRequest(laundry)

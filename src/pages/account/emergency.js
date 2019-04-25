@@ -39,7 +39,7 @@ class UserEmergencyForm extends React.Component {
       .then(session => {
         const time = new Date()
         fetch(
-          `https://api.csumb.edu/everbridge/get?token=${
+          `/cloud-functions/everbridge/get?token=${
             session.id
           }&_t=${time.getTime()}`
         )
