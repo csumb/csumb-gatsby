@@ -6,7 +6,7 @@ module.exports = (client, request, response) => {
     'profileBio',
     'directoryPhoto',
   ]
-  if (allowedFields.indexOf(request.query.field) == -1) {
+  if (allowedFields.indexOf(request.query.field) === -1) {
     return 'Access denied'
   }
   client
@@ -14,21 +14,25 @@ module.exports = (client, request, response) => {
     .catch(error => {
       response.send(JSON.stringify({ success: false }))
       response.end()
-      return
     })
     .then(oktaUser => {
-      if (oktaUser.profile.authToken != request.query.token) {
+      if (oktaUser.profile.authToken !== request.query.token) {
         response.end(JSON.stringify({ success: false }))
         response.end()
-        return
+        return true
       }
       oktaUser.profile[request.query.field] = request.query.value
       oktaUser
         .update()
-        .catch(error => {})
         .then(result => {
           response.send(JSON.stringify({ success: true }))
-          response.end()
+          return response.end()
         })
+        .catch(error => {})
+      return true
+    })
+    .catch(error => {
+      response.send(JSON.stringify({ error: true }))
+      response.end()
     })
 }

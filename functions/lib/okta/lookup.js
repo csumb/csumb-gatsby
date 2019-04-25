@@ -8,7 +8,7 @@ module.exports = (client, request, response) => {
       filter: filter,
     })
     .each(user => {
-      if (user.profile.birthdate == request.query.dob) {
+      if (user.profile.birthdate === request.query.dob) {
         foundUser = true
         response.send(
           JSON.stringify({ id: user.profile.login.split('@').shift() })
@@ -22,6 +22,11 @@ module.exports = (client, request, response) => {
         response.send(JSON.stringify({ error: true }))
         response.end()
       }
+      return foundUser
+    })
+    .catch(error => {
+      response.send(JSON.stringify({ error: true }))
+      response.end()
     })
   /*
   okta.user.filter(filter, function(results) {
