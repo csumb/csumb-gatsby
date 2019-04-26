@@ -37,7 +37,7 @@ class PageFeedbackForm extends React.Component {
       link: `https://csumb.edu/${this.props.url}`,
     }
 
-    fetch(`/cloud-functions/feedback?${querystring.stringify(data)}`)
+    fetch(`https://api.csumb.edu/feedback?${querystring.stringify(data)}`)
 
     this.setState({
       feedbackSent: true,
