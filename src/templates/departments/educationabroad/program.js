@@ -15,6 +15,7 @@ import { ButtonLink } from 'components/button'
 import SiteNavigation from 'components/navigation/site'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
 import { colors } from 'style/theme'
+import Link from 'gatsby-link'
 
 import { Table, TableRow, TableHeader, TableCell } from 'components/table'
 
@@ -124,29 +125,7 @@ class ProgramTemplate extends React.Component {
         {navigation && <SiteNavigation navigation={navigation} />}
         <Container>
           <PageTitle>{data.Name}</PageTitle>
-          <Flex flexWrap="wrap">
-            <Box width={[1, 7 / 12]} pr={[0, 2]}>
-              <h3>About the university</h3>
-              {data.About_Paragraph_1 && <p>{data.About_Paragraph_1}</p>}
 
-              {data.About_Paragraph_2 && <p>{data.About_Paragraph_2}</p>}
-
-              {data.About_Paragraph_3 && <p>{data.About_Paragraph_3}</p>}
-
-              {partner.data.Campus_website && (
-                <p>
-                  <a href={partner.data.Campus_website}>Visit campus website</a>
-                </p>
-              )}
-            </Box>
-            <Box width={[1, 5 / 12]}>
-              <h3>Location</h3>
-              {partner.data.City}, {data.Countries[0].data.Name}
-              {coordinates.length > 0 && (
-                <ProgramMap coordinates={coordinates} />
-              )}
-            </Box>
-          </Flex>
           <Well>
             <h2>{data.Application_Deadline_Title}</h2>
             <Flex flexWrap="wrap">
@@ -179,94 +158,142 @@ class ProgramTemplate extends React.Component {
                   must be completed by the mandatory Education Abroad
                   pre-departure orientation.
                 </p>
+                <p>
+                  {data.Program_Type === 'Semester' ? (
+                    <Link to="/educationabroad/go-abroad-semesteryear-long-program">
+                      Application instructions
+                    </Link>
+                  ) : (
+                    <Link to="/educationabroad/go-abroad-short-term-program">
+                      Application instructions
+                    </Link>
+                  )}
+                </p>
                 {data.Apply_Now && (
                   <ButtonLink to={data.Apply_Now}>Apply now</ButtonLink>
                 )}
               </Box>
             </Flex>
           </Well>
-          <h2>Program details</h2>
-          <Flex flexWrap="wrap">
-            <Box width={[1, 3 / 4]} pr={[0, 2]}>
-              <ProgramDetails title="Program dates">
-                {data.Program_dates__Fall && (
-                  <p>
-                    <strong>Fall</strong> {data.Program_dates__Fall}
-                  </p>
-                )}
-                {data.Program_dates__Spring && (
-                  <p>
-                    <strong>Spring</strong> {data.Program_dates__Spring}
-                  </p>
-                )}
-              </ProgramDetails>
-              {data.Prerequisites && (
-                <ProgramDetails title="Prerequisites">
-                  <ul>
-                    {data.Prerequisites.map(item => (
-                      <li>{item.data.Name}</li>
-                    ))}
-                  </ul>
-                </ProgramDetails>
-              )}
-              <ProgramDetails title="Housing &amp; food">
-                {data.Housing_Details_Paragraph_1 && (
-                  <p>{data.Housing_Details_Paragraph_1}</p>
-                )}
-                {data.Housing_Details_Paragraph_2 && (
-                  <p>{data.Housing_Details_Paragraph_2}</p>
-                )}
-                {data.Housing_link && (
-                  <a href={data.Housing_link}>Learn more about housing</a>
-                )}
-              </ProgramDetails>
-              <ProgramDetails title="Estimated fees &amp; conditions">
-                <Table>
-                  <thead>
-                    <TableRow>
-                      <TableHeader>Description</TableHeader>
-                      <TableHeader>Cost</TableHeader>
-                    </TableRow>
-                  </thead>
-                  <tbody>
-                    <TableRow>
-                      <TableCell>
-                        Education Abroad Application Fee (non-refundable)
-                      </TableCell>
-                      <TableCell>
-                        {data.Education_Abroad_Application_Fee}
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Education Abroad Fee</TableCell>
-                      <TableCell>{data.Education_Abroad_Fee}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Health insurance</TableCell>
-                      <TableCell>{data.Health_Insurance}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Housing &amp; food</TableCell>
-                      <TableCell>{data.Housing_Meals}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>Round-trip airfare</TableCell>
-                      <TableCell>{data.Round_trip_Airfare}</TableCell>
-                    </TableRow>
-                  </tbody>
-                </Table>
-                {data.Additional_Fees_May_Apply && (
-                  <p>Additional fees may apply</p>
-                )}
-              </ProgramDetails>
-            </Box>
-            <Box width={[1, 1 / 4]}>
-              {partner.data.Campus_Images && (
+
+          {partner.data.Campus_Images && (
+            <Flex>
+              {partner.data.Campus_Images.map((image, key) => (
                 <>
-                  {partner.data.Campus_Images.map(image => (
-                    <CampusImage alt="" src={image.thumbnails.full.url} />
-                  ))}
+                  {key < 4 && (
+                    <Box width={[1, 1 / 4]} pr={[0, 2]} key={key}>
+                      <CampusImage alt="" src={image.thumbnails.full.url} />
+                    </Box>
+                  )}
                 </>
+              ))}
+            </Flex>
+          )}
+          <h2>Program details</h2>
+
+          <ProgramDetails title="Program dates">
+            {data.Program_dates__Fall && (
+              <p>
+                <strong>Fall</strong> {data.Program_dates__Fall}
+              </p>
+            )}
+            {data.Program_dates__Spring && (
+              <p>
+                <strong>Spring</strong> {data.Program_dates__Spring}
+              </p>
+            )}
+          </ProgramDetails>
+          {data.Prerequisites && (
+            <ProgramDetails title="Prerequisites">
+              <ul>
+                {data.Prerequisites.map(item => (
+                  <li>{item.data.Name}</li>
+                ))}
+              </ul>
+            </ProgramDetails>
+          )}
+          <ProgramDetails title="Housing &amp; food">
+            {data.Housing_Details_Paragraph_1 && (
+              <p>{data.Housing_Details_Paragraph_1}</p>
+            )}
+            {data.Housing_Details_Paragraph_2 && (
+              <p>{data.Housing_Details_Paragraph_2}</p>
+            )}
+            {data.Housing_link && (
+              <a href={data.Housing_link}>Learn more about housing</a>
+            )}
+          </ProgramDetails>
+          <ProgramDetails title="Estimated fees &amp; conditions">
+            <Table>
+              <thead>
+                <TableRow>
+                  <TableHeader>Description</TableHeader>
+                  <TableHeader>Cost</TableHeader>
+                </TableRow>
+              </thead>
+              <tbody>
+                <TableRow>
+                  <TableCell>Tuition (you pay CSUMB tuition)</TableCell>
+                  <TableCell>
+                    <Link to="/cost">Cost calculator</Link>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    Education Abroad Application Fee (non-refundable)
+                  </TableCell>
+                  <TableCell>{data.Education_Abroad_Application_Fee}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Education Abroad Fee</TableCell>
+                  <TableCell>{data.Education_Abroad_Fee}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Health insurance</TableCell>
+                  <TableCell>{data.Health_Insurance}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Housing &amp; food</TableCell>
+                  <TableCell>{data.Housing_Meals}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Round-trip airfare</TableCell>
+                  <TableCell>{data.Round_trip_Airfare}</TableCell>
+                </TableRow>
+              </tbody>
+            </Table>
+            {data.Additional_Fees_May_Apply && <p>Additional fees may apply</p>}
+          </ProgramDetails>
+          {data.Campus_services && data.Campus_services.length > 0 && (
+            <ProgramDetails title="Campus services">
+              <ul>
+                {data.Campus_services.map((service, key) => (
+                  <li key={`campus_service_${key}`}>{service.data.Name}</li>
+                ))}
+              </ul>
+            </ProgramDetails>
+          )}
+          <Flex flexWrap="wrap">
+            <Box width={[1, 7 / 12]} pr={[0, 2]}>
+              <h3>About {data.Name}</h3>
+              {data.About_Paragraph_1 && <p>{data.About_Paragraph_1}</p>}
+
+              {data.About_Paragraph_2 && <p>{data.About_Paragraph_2}</p>}
+
+              {data.About_Paragraph_3 && <p>{data.About_Paragraph_3}</p>}
+
+              {partner.data.Campus_website && (
+                <p>
+                  <a href={partner.data.Campus_website}>Visit campus website</a>
+                </p>
+              )}
+            </Box>
+            <Box width={[1, 5 / 12]}>
+              <h3>Location</h3>
+              {partner.data.City && <>{partner.data.City},</>}{' '}
+              {data.Countries[0].data.Name}
+              {coordinates.length > 0 && (
+                <ProgramMap coordinates={coordinates} />
               )}
             </Box>
           </Flex>

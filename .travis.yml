@@ -15,4 +15,5 @@ script:
   - npm run configFirebase
   - npm run canary
   - cd functions; npm i; cd ..
-  - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH -f
+  - ./node_modules/.bin/firebase --version
+  - ./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH -f
