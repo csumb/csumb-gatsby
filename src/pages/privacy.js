@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
-import PageTitle from 'components/header/page-title'
+import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/container'
 
 const PrivacyPage = props => {
