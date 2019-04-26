@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonLink } from 'components/button'
+import { ButtonLink } from 'components/common/button'
 import styled from '@emotion/styled'
 
 const Button = styled(ButtonLink)`

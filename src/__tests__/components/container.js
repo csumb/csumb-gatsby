@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Container from 'components/container'
+import Container from 'components/common/container'
 
 describe('Container', () => {
   it('renders container correctly', () => {

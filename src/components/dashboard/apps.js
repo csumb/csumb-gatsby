@@ -1,11 +1,11 @@
 import React from 'react'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
-import VisuallyHidden from 'components/visually-hidden'
+import VisuallyHidden from 'components/utilities/visually-hidden'
 import Link from 'gatsby-link'
-import { ButtonLink, Button } from 'components/button'
+import { ButtonLink, Button } from 'components/common/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronUp,

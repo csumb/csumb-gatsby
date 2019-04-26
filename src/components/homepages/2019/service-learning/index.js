@@ -6,7 +6,7 @@ import { LeadParagraph } from 'components/type'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'
 import { css } from '@emotion/core'
-import Container from 'components/container'
+import Container from 'components/common/container'
 
 const MapContainer = styled(Container)`
   position: relative;

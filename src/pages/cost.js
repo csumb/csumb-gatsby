@@ -1,17 +1,22 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import { LeadParagraph, HeroParagraph } from 'components/type'
 import { graphql } from 'gatsby'
-import { Button, LinkyButton } from 'components/button'
+import { Button, LinkyButton } from 'components/common/button'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
-import { InputText, Submit } from 'components/forms'
-import VisuallyHidden from 'components/visually-hidden'
-import { Table, TableRow, TableCell, TableHeader } from 'components/table'
+import { InputText, Submit } from 'components/common/forms'
+import VisuallyHidden from 'components/utilities/visually-hidden'
+import {
+  Table,
+  TableRow,
+  TableCell,
+  TableHeader,
+} from 'components/common/table'
 
 const tuition = [
   {

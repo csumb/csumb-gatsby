@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 import { colors } from 'style/theme'
-import Well from 'components/well'
+import Well from 'components/common/well'
 import PropTypes from 'prop-types'
 
 const AccountSidebarOptions = styled('ul')`

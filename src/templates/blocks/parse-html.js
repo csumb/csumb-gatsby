@@ -1,5 +1,5 @@
 import React from 'react'
-import LinkInspect from 'components/link-inspect'
+import LinkInspect from 'components/utilities/link-inspect'
 import parse from 'html-react-parser'
 import domToReact from 'html-react-parser/lib/dom-to-react'
 

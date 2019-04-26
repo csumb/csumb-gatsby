@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import Container from 'components/container'
+import Container from 'components/common/container'
 
 const Page = props => {
   const page = props.data.allMarkdownRemark.edges[0].node

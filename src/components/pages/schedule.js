@@ -3,13 +3,13 @@ import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors } from 'style/theme'
-import { InputCheckbox, Submit } from 'components/forms'
+import { InputCheckbox, Submit } from 'components/common/forms'
 import { UnstyledList } from 'components/type'
-import { LinkyButton } from 'components/button'
+import { LinkyButton } from 'components/common/button'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import moment from 'moment'
 import bp from 'style/breakpoints'
-import Well from 'components/well'
+import Well from 'components/common/well'
 
 const weekDays = [
   {

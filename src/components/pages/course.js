@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Layout from 'components/layouts/default'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Link from 'gatsby-link'
 

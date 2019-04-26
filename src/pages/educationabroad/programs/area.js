@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
@@ -10,8 +10,8 @@ import SiteNavigation from 'components/layouts/sections/navigation/site'
 import Link from 'gatsby-link'
 import { UnstyledList } from 'components/type'
 import slugify from 'slugify'
-import Well from 'components/well'
-import { InputText, InputSelect, Submit } from 'components/forms'
+import Well from 'components/common/well'
+import { InputText, InputSelect, Submit } from 'components/common/forms'
 
 const ProgramList = styled(UnstyledList)`
   li {

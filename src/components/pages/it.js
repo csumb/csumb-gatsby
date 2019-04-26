@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import color from 'color'
 import Link from 'gatsby-link'
-import Loading from 'components/loading'
+import Loading from 'components/common/loading'
 
 const ITSystemStatusWrapper = styled('div')`
   padding: 0.5rem;

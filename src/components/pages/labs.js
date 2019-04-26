@@ -1,8 +1,8 @@
 import React from 'react'
-import Well from 'components/well'
+import Well from 'components/common/well'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
-import Loading from 'components/loading'
+import Loading from 'components/common/loading'
 
 const LabBarElement = styled('div')`
   height: 2rem;

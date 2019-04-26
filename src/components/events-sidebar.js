@@ -3,7 +3,7 @@ import Calendar from 'components/calendar'
 import { navigate } from 'gatsby'
 import moment from 'moment'
 import { UnstyledList } from 'components/type'
-import Well from 'components/well'
+import Well from 'components/common/well'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 

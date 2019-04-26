@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import Chart from 'react-chartjs'
 import { Flex, Box } from '@rebass/grid/emotion'
 import SiteNavigation from 'components/layouts/sections/navigation/site'

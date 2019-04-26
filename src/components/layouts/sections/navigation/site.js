@@ -1,6 +1,6 @@
 import React from 'react'
-import LinkInspect from 'components/link-inspect'
-import Container from 'components/container'
+import LinkInspect from 'components/utilities/link-inspect'
+import Container from 'components/common/container'
 import styled from '@emotion/styled'
 import { colors, fonts } from 'style/theme'
 import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'

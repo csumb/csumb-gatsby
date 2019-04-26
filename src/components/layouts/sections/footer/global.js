@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import LinkInspect from 'components/link-inspect'
-import Container from 'components/container'
+import LinkInspect from 'components/utilities/link-inspect'
+import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
@@ -14,7 +14,7 @@ import {
   faLinkedin,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
-import VisuallyHidden from 'components/visually-hidden'
+import VisuallyHidden from 'components/utilities/visually-hidden'
 
 const FooterGiftButton = styled('a')`
   color: ${colors.white};

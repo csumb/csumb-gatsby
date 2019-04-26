@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
-import Loading from 'components/loading'
+import Loading from 'components/common/loading'
 
 const Person = styled('div')`
   margin: 0.5rem 0;

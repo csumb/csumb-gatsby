@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import { CourseList, ScheduleBackLink } from 'components/pages/schedule'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import SiteHeader from 'components/layouts/sections/header/site-header'

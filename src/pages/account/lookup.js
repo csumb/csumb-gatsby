@@ -1,14 +1,14 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import Container from 'components/container'
-import { InputText, InputDate, Submit } from 'components/forms'
+import Container from 'components/common/container'
+import { InputText, InputDate, Submit } from 'components/common/forms'
 import { LeadParagraph } from 'components/type'
-import Well from 'components/well'
+import Well from 'components/common/well'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import Loading from 'components/loading'
-import { AlertDanger } from 'components/alert'
+import Loading from 'components/common/loading'
+import { AlertDanger } from 'components/common/alert'
 
 const Username = styled('code')`
   font-weight: bold;

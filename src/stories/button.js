@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { Button, ButtonLink, LinkyButton } from 'components/button'
+import { Button, ButtonLink, LinkyButton } from 'components/common/button'
 import typography from 'style/typography'
 
 typography.injectStyles()
