@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
-import VisuallyHidden from 'components/visually-hidden'
+import VisuallyHidden from 'components/utilities/visually-hidden'
 import Link from 'gatsby-link'
 
 const Callout = styled('div')`

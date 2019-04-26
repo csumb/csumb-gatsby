@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import LinkInspect from 'components/link-inspect'
+import LinkInspect from 'components/utilities/link-inspect'
 import parseHtml from '../parse-html'
 import { Flex, Box } from '@rebass/grid'
 import quoteIcon from 'assets/images/quote.svg'

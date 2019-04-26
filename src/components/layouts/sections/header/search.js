@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import { navigate } from '@reach/router'
 import Autocomplete from 'react-autocomplete'
-import VisuallyHidden from 'components/visually-hidden'
+import VisuallyHidden from 'components/utilities/visually-hidden'
 
 const SearchResultsAutocomplete = styled('div')`
   background: ${colors.white};

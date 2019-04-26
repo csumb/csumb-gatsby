@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import AllPrograms from 'static/all-programs.js'

@@ -1,5 +1,10 @@
 import React from 'react'
-import { Table, TableHeader, TableRow, TableCell } from 'components/table'
+import {
+  Table,
+  TableHeader,
+  TableRow,
+  TableCell,
+} from 'components/common/table'
 import parseHtml from '../parse-html'
 
 class BlockTable extends React.Component {

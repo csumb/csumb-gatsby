@@ -6,7 +6,7 @@ import {
   AlertWarning,
   AlertEmpty,
   AlertFyi,
-} from '../../components/alert'
+} from '../../components/common/alert'
 
 describe('Alert', () => {
   it('renders a danger alert correctly', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from 'emotion'
 import Brand from './brand'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import Search from './search'
 import UserWidget from './user-widget'
 import Applicant from './applicant'

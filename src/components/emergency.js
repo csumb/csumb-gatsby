@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dialog } from '@reach/dialog'
-import VisuallyHidden from 'components/visually-hidden'
+import VisuallyHidden from 'components/utilities/visually-hidden'
 import styled from '@emotion/styled'
 import '@reach/dialog/styles.css'
 import { colors } from 'style/theme'

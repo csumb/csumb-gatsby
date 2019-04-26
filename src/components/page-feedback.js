@@ -1,9 +1,9 @@
 import React from 'react'
-import Container from 'components/container'
-import { LinkyButton } from 'components/button'
-import { InputText, Submit } from 'components/forms'
-import { AlertSuccess } from 'components/alert'
-import Well from 'components/well'
+import Container from 'components/common/container'
+import { LinkyButton } from 'components/common/button'
+import { InputText, Submit } from 'components/common/forms'
+import { AlertSuccess } from 'components/common/alert'
+import Well from 'components/common/well'
 import querystring from 'querystring'
 
 const FormPreamble = () => (

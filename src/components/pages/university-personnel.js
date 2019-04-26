@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import bp from 'style/breakpoints'
-import { LinkyButton } from 'components/button'
+import { LinkyButton } from 'components/common/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronRight,

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import { colors } from 'style/theme'
 import bp from 'style/breakpoints'
 

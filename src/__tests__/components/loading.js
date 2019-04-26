@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Loading from '../../components/loading'
+import Loading from '../../components/common/loading'
 
 describe('Loading', () => {
   it('renders a loading indicator correctly', () => {

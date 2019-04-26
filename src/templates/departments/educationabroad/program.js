@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,14 +10,19 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
 import styled from '@emotion/styled'
-import Well from 'components/well'
-import { ButtonLink } from 'components/button'
+import Well from 'components/common/well'
+import { ButtonLink } from 'components/common/button'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'
 
-import { Table, TableRow, TableHeader, TableCell } from 'components/table'
+import {
+  Table,
+  TableRow,
+  TableHeader,
+  TableCell,
+} from 'components/common/table'
 
 const CollapsibleIcon = styled(FontAwesomeIcon)`
   margin-right: 0.8rem;

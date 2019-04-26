@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import { Flex, Box } from '@rebass/grid/emotion'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import Link from 'gatsby-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -13,7 +13,7 @@ import {
   faYoutube,
   faFlickr,
 } from '@fortawesome/free-brands-svg-icons'
-import VisuallyHidden from 'components/visually-hidden'
+import VisuallyHidden from 'components/utilities/visually-hidden'
 
 const SiteFooterWrapper = styled('footer')`
   padding: 2rem 0;

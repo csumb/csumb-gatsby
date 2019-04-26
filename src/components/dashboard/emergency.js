@@ -1,6 +1,6 @@
 import React from 'react'
-import VisuallyHidden from 'components/visually-hidden'
-import { ButtonLink, LinkyButton } from 'components/button'
+import VisuallyHidden from 'components/utilities/visually-hidden'
+import { ButtonLink, LinkyButton } from 'components/common/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { DialogOverlay, DialogContent } from '@reach/dialog'

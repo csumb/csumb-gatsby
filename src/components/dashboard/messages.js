@@ -1,6 +1,6 @@
 import React from 'react'
-import { AlertEmpty } from 'components/alert'
-import VisuallyHidden from 'components/visually-hidden'
+import { AlertEmpty } from 'components/common/alert'
+import VisuallyHidden from 'components/utilities/visually-hidden'
 import Link from 'gatsby-link'
 
 import DashboardAlumni from './alumni'

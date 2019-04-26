@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { graphql } from 'gatsby'
 import moment from 'moment'

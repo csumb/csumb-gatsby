@@ -8,9 +8,9 @@ import LazyHero from 'react-lazy-hero'
 import { LeadParagraph } from 'components/type'
 import showdown from 'showdown'
 import bp from 'style/breakpoints'
-import LinkInspect from 'components/link-inspect'
-import Container from 'components/container'
-import { ButtonLink } from 'components/button'
+import LinkInspect from 'components/utilities/link-inspect'
+import Container from 'components/common/container'
+import { ButtonLink } from 'components/common/button'
 
 const dateFormat = 'MMMM D, YYYY'
 

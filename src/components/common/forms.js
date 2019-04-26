@@ -1,5 +1,5 @@
 import React from 'react'
-import VisuallyHidden from 'components/visually-hidden'
+import VisuallyHidden from 'components/utilities/visually-hidden'
 import PropTypes from 'prop-types'
 import idGenerator from 'react-id-generator'
 import styled from '@emotion/styled'

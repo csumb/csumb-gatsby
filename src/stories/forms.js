@@ -11,7 +11,7 @@ import {
   InputSelect,
   Fieldset,
   Submit,
-} from 'components/forms'
+} from 'components/common/forms'
 
 typography.injectStyles()
 

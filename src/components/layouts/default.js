@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import Header from 'components/header'
+import Header from 'components/layouts/sections/header'
 import Footer from 'components/layouts/sections/footer/global'
 import Helmet from 'react-helmet'
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
