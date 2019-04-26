@@ -9,8 +9,12 @@ import Link from 'gatsby-link'
 import slugify from 'slugify'
 import { colors } from 'style/theme'
 
-const EducationAbroadCountryWrapper = styled('div')`
+const EducationAbroadWrapper = styled('div')`
   margin-bottom: 1rem;
+`
+
+const EducationAbroadChildren = styled('div')`
+  margin-left: 1.5rem;
 `
 
 const CollapsibleIcon = styled(FontAwesomeIcon)`
@@ -18,7 +22,7 @@ const CollapsibleIcon = styled(FontAwesomeIcon)`
   font-size: 1rem;
 `
 
-const EducationAbroadCountryButton = styled('button')`
+const EducationExpandButton = styled('button')`
   padding: 0 0 0.3rem 0;
   cursor: pointer;
   border: 0;
@@ -37,9 +41,9 @@ class EducationAbroadCountry extends React.Component {
     const { isOpen } = this.state
     const { country, programs } = this.props
     return (
-      <EducationAbroadCountryWrapper>
+      <EducationAbroadWrapper>
         <h3>
-          <EducationAbroadCountryButton
+          <EducationExpandButton
             onClick={event => {
               event.preventDefault()
               this.setState({
@@ -52,7 +56,7 @@ class EducationAbroadCountry extends React.Component {
               icon={isOpen ? faChevronDown : faChevronRight}
             />
             {country}
-          </EducationAbroadCountryButton>
+          </EducationExpandButton>
         </h3>
         {isOpen && (
           <ul>
@@ -69,30 +73,82 @@ class EducationAbroadCountry extends React.Component {
             ))}
           </ul>
         )}
-      </EducationAbroadCountryWrapper>
+      </EducationAbroadWrapper>
+    )
+  }
+}
+
+class EducationAbroadContinent extends React.Component {
+  state = {
+    isOpen: false,
+  }
+
+  render() {
+    const { name, children } = this.props
+    const { isOpen } = this.state
+    return (
+      <EducationAbroadWrapper>
+        <h2>
+          <EducationExpandButton
+            onClick={event => {
+              event.preventDefault()
+              this.setState({
+                isOpen: !isOpen,
+              })
+            }}
+          >
+            <CollapsibleIcon
+              size="1x"
+              icon={isOpen ? faChevronDown : faChevronRight}
+            />
+            {name}
+          </EducationExpandButton>
+        </h2>
+        {isOpen && (
+          <EducationAbroadChildren>{children}</EducationAbroadChildren>
+        )}
+      </EducationAbroadWrapper>
     )
   }
 }
 
 const EducationAbroadProgramList = ({ programs }) => {
   const countryPrograms = {}
-  const countryNames = []
+  const continents = {
+    Africa: [],
+    Asia: [],
+    Australia: [],
+    Europe: [],
+    'North America': [],
+    'South America': [],
+  }
   programs.forEach(({ node }) => {
     const countryName = node.data.Countries[0].data.Name
+    const continent = node.data.Countries[0].data.Continent
     if (typeof countryPrograms[countryName] === 'undefined') {
       countryPrograms[countryName] = []
-      countryNames.push(countryName)
+      continents[continent].push(countryName)
     }
     countryPrograms[countryName].push(node)
   })
-  countryNames.sort()
+  Object.keys(continents).forEach(continentName => {
+    continents[continentName].sort()
+  })
   return (
     <>
-      {countryNames.map(country => (
-        <EducationAbroadCountry
-          country={country}
-          programs={countryPrograms[country]}
-        />
+      {Object.keys(continents).map(continentName => (
+        <>
+          {continents[continentName].length > 0 && (
+            <EducationAbroadContinent name={continentName}>
+              {continents[continentName].map(country => (
+                <EducationAbroadCountry
+                  country={country}
+                  programs={countryPrograms[country]}
+                />
+              ))}
+            </EducationAbroadContinent>
+          )}
+        </>
       ))}
     </>
   )

@@ -62,6 +62,7 @@ export const query = graphql`
               recordId
               data {
                 Name
+                Continent
               }
             }
             Partner {
