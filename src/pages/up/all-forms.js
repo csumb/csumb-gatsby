@@ -1,14 +1,14 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import SiteHeader from 'components/header/site-header'
+import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/container'
 import { graphql } from 'gatsby'
-import SiteNavigation from 'components/navigation/site'
+import SiteNavigation from 'components/layouts/sections/navigation/site'
 import Blocks from 'templates/blocks'
 import { UniversityPersonnelForm } from 'components/pages/university-personnel'
 import { InputText, Submit } from 'components/forms'
 import Well from 'components/well'
-import PageTitle from 'components/header/page-title'
+import PageTitle from 'components/layouts/sections/header/page-title'
 import { Flex, Box } from '@rebass/grid/emotion'
 
 class UniversityPersonnelAllformsSearch extends React.Component {

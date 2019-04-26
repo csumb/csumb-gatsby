@@ -1,11 +1,11 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import PageTitle from 'components/header/page-title'
+import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/container'
 import Chart from 'react-chartjs'
 import { Flex, Box } from '@rebass/grid/emotion'
-import SiteNavigation from 'components/navigation/site'
-import SiteHeader from 'components/header/site-header'
+import SiteNavigation from 'components/layouts/sections/navigation/site'
+import SiteHeader from 'components/layouts/sections/header/site-header'
 import { graphql } from 'gatsby'
 
 const chartData = {

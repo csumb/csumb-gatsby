@@ -1,8 +1,8 @@
 import React from 'react'
 import PlainLayout from 'components/layouts/plain'
-import PageTitle from 'components/header/page-title'
+import PageTitle from 'components/layouts/sections/header/page-title'
 import { LeadParagraph } from 'components/type'
-import Brand from 'components/header/brand'
+import Brand from 'components/layouts/sections/header/brand'
 import styled from '@emotion/styled'
 
 const OktaDeniedContainer = styled('div')`

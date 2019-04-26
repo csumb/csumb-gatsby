@@ -2,10 +2,10 @@ import React from 'react'
 import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
 import Container from 'components/container'
-import SiteHeader from 'components/header/site-header'
-import PageTitle from 'components/header/page-title'
+import SiteHeader from 'components/layouts/sections/header/site-header'
+import PageTitle from 'components/layouts/sections/header/page-title'
 import AllPrograms from 'static/all-programs.js'
-import SiteNavigation from 'components/navigation/site'
+import SiteNavigation from 'components/layouts/sections/navigation/site'
 
 const AcademicsPage = ({ data }) => (
   <Layout pageTitle="Academics">

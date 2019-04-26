@@ -1,10 +1,10 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import SiteHeader from 'components/header/site-header'
+import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/container'
 import { graphql } from 'gatsby'
-import SiteNavigation from 'components/navigation/site'
-import PageTitle from 'components/header/page-title'
+import SiteNavigation from 'components/layouts/sections/navigation/site'
+import PageTitle from 'components/layouts/sections/header/page-title'
 import Loading from 'components/loading'
 
 class ITAlertsPage extends React.Component {
