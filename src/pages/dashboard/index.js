@@ -10,7 +10,7 @@ import {
   DashboardContent,
   DashboardMobileToolbar,
   DashboardIntro,
-} from 'components/pages/dashboard'
+} from 'components/dashboard'
 import { navigate } from '@reach/router'
 
 class DashboardPage extends React.Component {
