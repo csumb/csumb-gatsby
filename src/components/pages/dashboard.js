@@ -493,7 +493,7 @@ class DashboardEmergency extends React.Component {
   componentDidMount() {
     const time = new Date()
     fetch(
-      `/cloud-functions/everbridge/get?token=${
+      `https://api.csumb.edu/everbridge/get?token=${
         this.props.session
       }&_t=${time.getTime()}`
     )
@@ -534,7 +534,9 @@ class DashboardEmergency extends React.Component {
     this.setState({
       showDialog: false,
     })
-    fetch(`/cloud-functions/everbridge/opt-out?token=${this.props.session}`)
+    fetch(
+      `https://api.csumb.edu/everbridge/opt-out?token=${this.props.session}`
+    )
   }
 
   render() {
@@ -584,7 +586,7 @@ class DashboardSecondaryEmail extends React.Component {
     })
     event.preventDefault()
     fetch(
-      `/cloud-functions/okta/secondary-email?token=${
+      `https://api.csumb.edu/okta/update-secondary?token=${
         this.props.session
       }&email=${this.state.secondaryEmail}`
     )
