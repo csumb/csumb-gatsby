@@ -4,7 +4,7 @@ import Alert from '@reach/alert'
 import { colors } from 'style/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import color from 'color'
-import VisuallyHidden from 'components/visually-hidden'
+import VisuallyHidden from 'components/utilities/visually-hidden'
 import {
   faCheckCircle,
   faExclamationTriangle,

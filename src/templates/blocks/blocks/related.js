@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
-import LinkInspect from 'components/link-inspect'
-import VisuallyHidden from 'components/visually-hidden'
+import LinkInspect from 'components/utilities/link-inspect'
+import VisuallyHidden from 'components/utilities/visually-hidden'
 import bp from 'style/breakpoints'
 
 const relatedBreakpoints = bp({

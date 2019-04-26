@@ -1,13 +1,18 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
-import { InputText, Submit } from 'components/forms'
-import Well from 'components/well'
-import Container from 'components/container'
-import SiteHeader from 'components/header/site-header'
-import PageTitle from 'components/header/page-title'
-import SiteNavigation from 'components/navigation/site'
-import { Table, TableRow, TableHeader, TableCell } from 'components/table'
+import { InputText, Submit } from 'components/common/forms'
+import Well from 'components/common/well'
+import Container from 'components/common/container'
+import SiteHeader from 'components/layouts/sections/header/site-header'
+import PageTitle from 'components/layouts/sections/header/page-title'
+import SiteNavigation from 'components/layouts/sections/navigation/site'
+import {
+  Table,
+  TableRow,
+  TableHeader,
+  TableCell,
+} from 'components/common/table'
 
 class AcademicsPage extends React.Component {
   state = {

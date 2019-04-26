@@ -4,11 +4,11 @@
  */
 import React from 'react'
 import Layout from 'components/layouts/default'
-import SiteHeader from 'components/header/site-header'
-import Container from 'components/container'
-import PageTitle from 'components/header/page-title'
+import SiteHeader from 'components/layouts/sections/header/site-header'
+import Container from 'components/common/container'
+import PageTitle from 'components/layouts/sections/header/page-title'
 import { graphql } from 'gatsby'
-import SiteNavigation from 'components/navigation/site'
+import SiteNavigation from 'components/layouts/sections/navigation/site'
 import { EducationAbroadProgramList } from 'components/pages/educationabroad'
 
 const EducationAbroadProgramsSemester = ({ data }) => (
@@ -62,6 +62,7 @@ export const query = graphql`
               recordId
               data {
                 Name
+                Continent
               }
             }
             Partner {

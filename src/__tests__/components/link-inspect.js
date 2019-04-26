@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import LinkInspect from 'components/link-inspect'
+import LinkInspect from 'components/utilities/link-inspect'
 
 describe('LinkInspect', () => {
   it('renders a base relative URL correctly', () => {

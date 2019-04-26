@@ -3,8 +3,8 @@ import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import color from 'color'
 import LazyHero from 'react-lazy-hero'
-import LinkInspect from 'components/link-inspect'
-import Container from 'components/container'
+import LinkInspect from 'components/utilities/link-inspect'
+import Container from 'components/common/container'
 
 const heroHeight = '60vh'
 

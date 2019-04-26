@@ -1,12 +1,12 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import PageTitle from 'components/header/page-title'
-import Container from 'components/container'
+import PageTitle from 'components/layouts/sections/header/page-title'
+import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { UserContext } from 'components/contexts/user'
-import { Button } from 'components/button'
-import Loading from 'components/loading'
-import { InputText, Submit } from 'components/forms'
+import { Button } from 'components/common/button'
+import Loading from 'components/common/loading'
+import { InputText, Submit } from 'components/common/forms'
 import {
   AccountGroup,
   AccountTitle,
@@ -14,7 +14,7 @@ import {
   AccountSidebar,
 } from 'components/pages/account'
 import Link from 'gatsby-link'
-import { AlertDanger, AlertSuccess } from 'components/alert'
+import { AlertDanger, AlertSuccess } from 'components/common/alert'
 import phoneFormatter from 'phone-formatter'
 import NProgress from 'nprogress'
 

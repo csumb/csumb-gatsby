@@ -1,4 +1,4 @@
-import LinkInspect from './link-inspect'
+import LinkInspect from '../utilities/link-inspect'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 

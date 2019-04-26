@@ -1,22 +1,27 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import PageTitle from 'components/header/page-title'
-import Container from 'components/container'
+import PageTitle from 'components/layouts/sections/header/page-title'
+import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
 import styled from '@emotion/styled'
 import ReactFilestack from 'filestack-react'
-import { InputText, InputSelect, InputTextarea, Submit } from 'components/forms'
+import {
+  InputText,
+  InputSelect,
+  InputTextarea,
+  Submit,
+} from 'components/common/forms'
 import { graphql } from 'gatsby'
-import { AlertSuccess } from 'components/alert'
+import { AlertSuccess } from 'components/common/alert'
 import {
   AccountGroup,
   AccountTitle,
   AccountData,
   AccountSidebar,
 } from 'components/pages/account'
-import { Button } from 'components/button'
+import { Button } from 'components/common/button'
 import SimpleMDE from 'react-simplemde-editor'
 import showdown from 'showdown'
 import { LeadParagraph } from 'components/type'

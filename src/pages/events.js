@@ -1,13 +1,13 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import SiteHeader from 'components/header/site-header'
+import SiteHeader from 'components/layouts/sections/header/site-header'
 import { graphql } from 'gatsby'
 import { Flex, Box } from '@rebass/grid/emotion'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import moment from 'moment'
 import { PublicEvent } from 'components/pages/event'
 import EventsSidebar from 'components/events-sidebar'
-import PageTitle from 'components/header/page-title'
+import PageTitle from 'components/layouts/sections/header/page-title'
 
 class EventsPage extends React.Component {
   getEvents(events, featured) {

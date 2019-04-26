@@ -2,9 +2,9 @@ import React from 'react'
 import { Flex } from '@rebass/grid/emotion'
 import { TopLevelBox, EverythingContent } from 'components/pages/everything'
 import Link from 'gatsby-link'
-import SiteHeader from 'components/header/site-header'
+import SiteHeader from 'components/layouts/sections/header/site-header'
 import Layout from 'components/layouts/default'
-import Container from 'components/container'
+import Container from 'components/common/container'
 
 const EverythingTopLevelPage = ({ pageContext }) => (
   <Layout pageTitle="Everything else">

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import LinkInspect from 'components/link-inspect'
+import LinkInspect from 'components/utilities/link-inspect'
 import { Flex, Box } from '@rebass/grid/emotion'
 
 const FeedItem = styled('li')``

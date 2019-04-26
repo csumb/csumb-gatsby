@@ -6,9 +6,9 @@ import { graphql } from 'gatsby'
 import { navigate } from '@reach/router'
 import url from 'url'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { InputText, Submit } from 'components/forms'
-import PageTitle from 'components/header/page-title'
-import Container from 'components/container'
+import { InputText, Submit } from 'components/common/forms'
+import PageTitle from 'components/layouts/sections/header/page-title'
+import Container from 'components/common/container'
 
 const ListResults = ({ results }) => {
   if (

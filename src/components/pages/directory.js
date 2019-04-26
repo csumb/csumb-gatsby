@@ -1,5 +1,5 @@
 import React from 'react'
-import SiteNavigation from 'components/navigation/site'
+import SiteNavigation from 'components/layouts/sections/navigation/site'
 
 const DirectoryNavigation = () => (
   <SiteNavigation

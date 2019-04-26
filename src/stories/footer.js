@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import typography from 'style/typography'
-import Footer from 'components/footer/global'
+import Footer from 'components/layouts/sections/footer/global'
 
 typography.injectStyles()
 

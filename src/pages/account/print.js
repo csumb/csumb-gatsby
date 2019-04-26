@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import PageTitle from 'components/header/page-title'
-import Container from 'components/container'
+import PageTitle from 'components/layouts/sections/header/page-title'
+import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import {
   AccountGroup,
@@ -9,7 +9,7 @@ import {
   AccountData,
   AccountSidebar,
 } from 'components/pages/account'
-import { InputText, Submit } from 'components/forms'
+import { InputText, Submit } from 'components/common/forms'
 import { UserContext } from 'components/contexts/user'
 import NProgress from 'nprogress'
 

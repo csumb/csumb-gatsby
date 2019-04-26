@@ -1,10 +1,10 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import PageTitle from 'components/header/page-title'
-import Container from 'components/container'
+import PageTitle from 'components/layouts/sections/header/page-title'
+import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { UserContext } from 'components/contexts/user'
-import { Button } from 'components/button'
+import { Button } from 'components/common/button'
 import Link from 'gatsby-link'
 import { css } from 'emotion'
 import {
@@ -13,7 +13,7 @@ import {
   AccountData,
   AccountSidebar,
 } from 'components/pages/account'
-import { ButtonLink } from 'components/button'
+import { ButtonLink } from 'components/common/button'
 
 class AccountPage extends React.Component {
   render() {

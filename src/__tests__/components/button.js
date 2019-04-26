@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { Button, ButtonLink } from 'components/button'
+import { Button, ButtonLink } from 'components/common/button'
 
 describe('Button', () => {
   it('renders native button correctly', () => {

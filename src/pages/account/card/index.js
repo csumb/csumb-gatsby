@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
-import PageTitle from 'components/header/page-title'
-import Container from 'components/container'
+import PageTitle from 'components/layouts/sections/header/page-title'
+import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import {
   AccountGroup,
@@ -9,8 +9,13 @@ import {
   AccountSidebar,
 } from 'components/pages/account'
 import { UserContext } from 'components/contexts/user'
-import { Table, TableRow, TableHeader, TableCell } from 'components/table'
-import { ButtonLink } from 'components/button'
+import {
+  Table,
+  TableRow,
+  TableHeader,
+  TableCell,
+} from 'components/common/table'
+import { ButtonLink } from 'components/common/button'
 import NProgress from 'nprogress'
 
 class AccountCardPage extends React.Component {

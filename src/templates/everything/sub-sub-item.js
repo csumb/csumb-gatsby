@@ -13,9 +13,9 @@ import {
   ThirdLevelTitle,
   EverythingContent,
 } from 'components/pages/everything'
-import SiteHeader from 'components/header/site-header'
+import SiteHeader from 'components/layouts/sections/header/site-header'
 import Layout from 'components/layouts/default'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
 

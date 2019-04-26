@@ -1,8 +1,8 @@
 import React from 'react'
-import SiteHeader from 'components/header/site-header'
-import PageTitle from 'components/header/page-title'
+import SiteHeader from 'components/layouts/sections/header/site-header'
+import PageTitle from 'components/layouts/sections/header/page-title'
 import Layout from 'components/layouts/default'
-import Container from 'components/container'
+import Container from 'components/common/container'
 
 class CourseTemplate extends React.Component {
   render() {

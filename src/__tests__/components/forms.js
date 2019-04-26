@@ -9,7 +9,7 @@ import {
   InputCheckbox,
   InputRadio,
   InputSelect,
-} from 'components/forms'
+} from 'components/common/forms'
 
 describe('Label', () => {
   it('renders labels correctly', () => {

@@ -1,16 +1,16 @@
 import React from 'react'
-import Container from 'components/container'
+import Container from 'components/common/container'
 import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
-import SiteHeader from 'components/header/site-header'
+import SiteHeader from 'components/layouts/sections/header/site-header'
 import { graphql } from 'gatsby'
-import Olark from 'components/olark'
+import Olark from 'components/utilities/olark'
 import {
   DashboardApps,
   DashboardContent,
   DashboardMobileToolbar,
   DashboardIntro,
-} from 'components/pages/dashboard'
+} from 'components/dashboard'
 import { navigate } from '@reach/router'
 
 class DashboardPage extends React.Component {
