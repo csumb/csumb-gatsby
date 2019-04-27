@@ -114,7 +114,6 @@
     "scheduleJson": "node src/custom-build/schedule-json.js",
     "catalogJson": "node src/custom-build/catalog-json.js",
     "eventJson": "node src/custom-build/event-json.js",
-    "buildJson": "node src/custom-build/build-time.js",
     "configFirebase": "node src/custom-build/firebase.js",
     "cleanup": "jest -u; prettier --write 'src/**/**.js';",
     "buildTrace": "gatsby build --open-tracing-config-file node_modules/gatsby/dist/utils/tracer/zipkin-local.js",
