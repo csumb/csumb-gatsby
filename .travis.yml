@@ -3,7 +3,6 @@ node_js:
   - '8'
 cache:
   directories:
-    - node_modules
     - .firebase
 before_script:
   - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-data.git _data
