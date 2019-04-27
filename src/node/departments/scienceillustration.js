@@ -33,7 +33,6 @@ module.exports = (graphql, actions) => {
                   website
                   class
                   Images
-                  slug
                   bio
                   title
                   caption
