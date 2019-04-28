@@ -21,6 +21,34 @@ class Layout extends React.Component {
           <title>{`${
             pageTitle ? `${pageTitle} |` : ''
           }Cal State Monterey Bay`}</title>
+
+          <meta
+            class="swiftype"
+            name="csumbedu"
+            data-type="integer"
+            content="1"
+          />
+          <meta property="og:site_name" content="Cal State Monterey Bay" />
+          {pageTitle && (
+            <>
+              <meta
+                class="swiftype"
+                name="title"
+                data-type="string"
+                content={pageTitle}
+              />
+
+              <meta name="twitter:title" content={pageTitle} />
+            </>
+          )}
+          {siteTitle && (
+            <meta
+              class="swiftype"
+              name="site_name"
+              data-type="string"
+              content={siteTitle}
+            />
+          )}
         </Helmet>
         <StaticQuery
           query={graphql`
