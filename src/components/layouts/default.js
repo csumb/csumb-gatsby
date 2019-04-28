@@ -18,10 +18,9 @@ class Layout extends React.Component {
         <Helmet>
           <html lang="en" />
           <meta charset="utf-8" />
-          <title>
-            {`${pageTitle ? `${pageTitle} |` : ''}
-              Cal State Monterey Bay`}
-          </title>
+          <title>{`${
+            pageTitle ? `${pageTitle} |` : ''
+          }Cal State Monterey Bay`}</title>
         </Helmet>
         <StaticQuery
           query={graphql`
