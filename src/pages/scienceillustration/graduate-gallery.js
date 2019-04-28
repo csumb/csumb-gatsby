@@ -158,7 +158,6 @@ export const query = graphql`
             first_name
             class
             last_name
-            slug
           }
         }
       }
