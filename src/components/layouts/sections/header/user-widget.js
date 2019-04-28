@@ -7,7 +7,7 @@ import {
   MenuItem,
   MenuButton,
   MenuLink,
-} from '@reach/menu-button'
+} from 'components/common/custom-reach-menu'
 import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
 import Cookies from 'universal-cookie'
@@ -107,7 +107,7 @@ class UserDropdown extends React.Component {
       return null
     }
     return (
-      <Menu>
+      <Menu buttonId="user-account-menu">
         <UserDropdownButton>
           Your account <span aria-hidden>▾</span>
         </UserDropdownButton>

@@ -5,7 +5,6 @@ import Loading from 'components/common/loading'
 import { Flex, Box } from '@rebass/grid/emotion'
 import NProgress from 'nprogress'
 
-import '@reach/menu-button/styles.css'
 import '@reach/dialog/styles.css'
 
 import DashboardIntro from './intro'

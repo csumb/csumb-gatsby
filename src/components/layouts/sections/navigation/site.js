@@ -3,10 +3,15 @@ import LinkInspect from 'components/utilities/link-inspect'
 import Container from 'components/common/container'
 import styled from '@emotion/styled'
 import { colors, fonts } from 'style/theme'
-import { Menu, MenuList, MenuButton, MenuLink } from '@reach/menu-button'
+import {
+  Menu,
+  MenuList,
+  MenuButton,
+  MenuLink,
+} from 'components/common/custom-reach-menu'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import slugify from 'slugify'
 import '@reach/menu-button/styles.css'
 
 const SiteNavigationList = styled('ul')`
@@ -100,7 +105,7 @@ class SiteNavigationSubMenu extends React.Component {
     const { children, navigationChildren } = this.props
     const { isExpanded } = this.state
     return (
-      <Menu>
+      <Menu buttonId={`site-menu-${slugify(children).toLowerCase()}`}>
         <SiteNavigationMenuButton
           onClick={() => {
             this.setState({
