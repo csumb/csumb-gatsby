@@ -30,17 +30,14 @@ class Layout extends React.Component {
           />
           <meta property="og:site_name" content="Cal State Monterey Bay" />
           {pageTitle && (
-            <>
-              <meta
-                class="swiftype"
-                name="title"
-                data-type="string"
-                content={pageTitle}
-              />
-
-              <meta name="twitter:title" content={pageTitle} />
-            </>
+            <meta
+              class="swiftype"
+              name="title"
+              data-type="string"
+              content={pageTitle}
+            />
           )}
+          {pageTitle && <meta name="twitter:title" content={pageTitle} />}
           {siteTitle && (
             <meta
               class="swiftype"
