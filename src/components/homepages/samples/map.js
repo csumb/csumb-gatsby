@@ -3,10 +3,10 @@ import { StaticHero } from 'components/homepages/hero'
 import mapData from './serviceLearning.json'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
-import { LeadParagraph } from 'components/type'
+import { LeadParagraph } from 'components/common/type'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'
-import MapPlaceholder from 'components/map-placeholder'
+import MapPlaceholder from 'components/utilities/map-placeholder'
 
 const InfoWindowContent = styled('p')`
   font-weight: bold;

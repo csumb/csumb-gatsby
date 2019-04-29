@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/common/container'
-import { LeadParagraph, UnstyledList } from 'components/type'
+import { LeadParagraph, UnstyledList } from 'components/common/type'
 import { colors } from 'style/theme'
 import { ButtonLink } from 'components/common/button'
 import Link from 'gatsby-link'

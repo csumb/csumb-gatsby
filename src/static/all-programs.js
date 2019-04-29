@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
-import { UnstyledList } from 'components/type'
+import { UnstyledList } from 'components/common/type'
 
 const AllPrograms = () => (
   <Flex flexWrap="wrap">
