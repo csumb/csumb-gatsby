@@ -52,7 +52,11 @@ class ITPage extends React.Component {
   render() {
     const { data } = this.props
     return (
-      <Layout pageTitle="Information Technology">
+      <Layout
+        pageTitle="Information Technology"
+        siteTitle="Information Technology"
+        isSiteHomepage={true}
+      >
         <SiteHeader path="/it">Information Technology</SiteHeader>
         {data.allCsumbNavigation && (
           <SiteNavigation

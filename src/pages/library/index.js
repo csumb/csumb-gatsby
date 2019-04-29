@@ -101,7 +101,7 @@ class LibraryPage extends React.Component {
   render() {
     const { data } = this.props
     return (
-      <Layout pageTitle="Library">
+      <Layout pageTitle="Library" siteTitle="Library" isSiteHomepage={true}>
         <SiteHeader path="/library">Library</SiteHeader>
         {data.allCsumbNavigation && (
           <SiteNavigation

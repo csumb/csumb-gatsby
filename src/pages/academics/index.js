@@ -8,7 +8,7 @@ import AllPrograms from 'static/all-programs.js'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 
 const AcademicsPage = ({ data }) => (
-  <Layout pageTitle="Academics">
+  <Layout pageTitle="Academics" siteTitle="Academics" isSiteHomepage={true}>
     <SiteHeader path="/academics">Academics</SiteHeader>
     {data.allCsumbNavigation && (
       <SiteNavigation
