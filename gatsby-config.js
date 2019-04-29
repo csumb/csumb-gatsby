@@ -261,7 +261,7 @@ const gatsbyConfig = {
         start_url: '/',
         background_color: '#fff',
         theme_color: '#fff',
-        display: 'minimal-ui',
+        display: 'standalone',
         icon: 'src/assets/images/icon.png',
       },
     },

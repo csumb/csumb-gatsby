@@ -13,7 +13,6 @@ const encryptFeedback = email => {
 module.exports = (graphql, actions) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
-    resolve()
     const pageTemplate = path.resolve(`src/templates/page.js`)
     let sites = {}
 
@@ -256,7 +255,7 @@ module.exports = (graphql, actions) => {
           }
         })
         report.success(`built ${count} web pages`)
-        resolve()
+        return
       })
     )
   })
