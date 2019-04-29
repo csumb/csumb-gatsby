@@ -207,21 +207,23 @@ class ProgramTemplate extends React.Component {
             </Flex>
           )}
           <h2>Program details</h2>
-          {(data.Program_dates__Fall.length > 0 ||
-            data.Program_dates__Spring.length > 0) && (
-            <ProgramDetails title="Program dates">
-              {data.Program_dates__Fall && (
-                <p>
-                  <strong>Fall</strong> {data.Program_dates__Fall}
-                </p>
-              )}
-              {data.Program_dates__Spring && (
-                <p>
-                  <strong>Spring</strong> {data.Program_dates__Spring}
-                </p>
-              )}
-            </ProgramDetails>
-          )}
+          {(typeof data.Program_dates__Fall !== 'undefined' ||
+            typeof data.Program_dates__Spring !== 'undefined') &&
+            (data.Program_dates__Fall.length > 0 ||
+              data.Program_dates__Spring.length > 0) && (
+              <ProgramDetails title="Program dates">
+                {data.Program_dates__Fall && (
+                  <p>
+                    <strong>Fall</strong> {data.Program_dates__Fall}
+                  </p>
+                )}
+                {data.Program_dates__Spring && (
+                  <p>
+                    <strong>Spring</strong> {data.Program_dates__Spring}
+                  </p>
+                )}
+              </ProgramDetails>
+            )}
           {data.Prerequisites && (
             <ProgramDetails title="Prerequisites">
               <ul>
