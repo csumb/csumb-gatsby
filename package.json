@@ -56,7 +56,7 @@
     "gatsby-plugin-styled-components": "^3.0.4",
     "gatsby-plugin-typography": "^2.2.2",
     "gatsby-source-airtable": "^2.0.4",
-    "gatsby-source-contentful": "^2.0.29",
+    "gatsby-source-contentful": "^2.0.53",
     "gatsby-source-filesystem": "^2.0.24",
     "gatsby-source-thirdparty": "^1.0.6",
     "gatsby-transformer-csv": "^1.3.11",
