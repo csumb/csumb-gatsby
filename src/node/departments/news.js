@@ -89,9 +89,12 @@ module.exports = (graphql, actions) => {
               component: newsStoryTemplate,
               context: {
                 story: node,
-                navigation: result.data.allCsumbNavigation
-                  ? result.data.allCsumbNavigation.edges[0].node.navigation
-                  : '',
+                navigation:
+                  result.data.allCsumbNavigation &&
+                  result.data.allCsumbNavigation.edges &&
+                  typeof result.data.allCsumbNavigation.edges[0] !== 'undefined'
+                    ? result.data.allCsumbNavigation.edges[0].node.navigation
+                    : '',
               },
             })
           }
@@ -106,9 +109,12 @@ module.exports = (graphql, actions) => {
             context: {
               tag: tag,
               stories: tag.stories,
-              navigation: result.data.allCsumbNavigation
-                ? result.data.allCsumbNavigation.edges[0].node.navigation
-                : '',
+              navigation:
+                result.data.allCsumbNavigation &&
+                result.data.allCsumbNavigation.edges &&
+                typeof result.data.allCsumbNavigation.edges[0] !== 'undefined'
+                  ? result.data.allCsumbNavigation.edges[0].node.navigation
+                  : '',
             },
           })
         })
