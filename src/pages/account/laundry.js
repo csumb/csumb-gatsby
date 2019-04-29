@@ -7,7 +7,7 @@ import { UserContext } from 'components/contexts/user'
 import { LinkyButton, ButtonLink } from 'components/common/button'
 
 import Loading from 'components/common/loading'
-import { LeadParagraph } from 'components/type'
+import { LeadParagraph } from 'components/common/type'
 import {
   AccountGroup,
   AccountTitle,

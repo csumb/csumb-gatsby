@@ -24,7 +24,7 @@ import {
 import { Button } from 'components/common/button'
 import SimpleMDE from 'react-simplemde-editor'
 import showdown from 'showdown'
-import { LeadParagraph } from 'components/type'
+import { LeadParagraph } from 'components/common/type'
 import 'simplemde/dist/simplemde.min.css'
 import NProgress from 'nprogress'
 

@@ -3,7 +3,7 @@ import LazyHero from 'react-lazy-hero'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import { LeadParagraph } from 'components/type'
+import { LeadParagraph } from 'components/common/type'
 
 const HeroItem = styled('div')`
   h2 {

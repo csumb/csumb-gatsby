@@ -3,9 +3,9 @@ import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/common/container'
-import { PublicEvent } from 'components/pages/event'
+import { PublicEvent } from 'components/events'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import EventsSidebar from 'components/events-sidebar'
+import EventsSidebar from 'components/events/sidebar'
 
 class EventsPage extends React.Component {
   render() {
