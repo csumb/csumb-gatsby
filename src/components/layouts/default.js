@@ -24,6 +24,7 @@ class Layout extends React.Component {
         <Helmet>
           <html lang="en" />
           <meta charset="utf-8" />
+          <link rel="preconnect" href="https://csumb.okta.com" />
           <title>{`${
             pageTitle ? `${pageTitle} |` : ''
           }Cal State Monterey Bay`}</title>

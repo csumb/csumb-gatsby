@@ -14635,43 +14635,46 @@
       }
     },
     "gatsby-plugin-prefetch-google-fonts": {
-      "version": "1.0.11",
-      "resolved": "https://registry.npmjs.org/gatsby-plugin-prefetch-google-fonts/-/gatsby-plugin-prefetch-google-fonts-1.0.11.tgz",
-      "integrity": "sha512-zbsoxYmDXvUYRc0bwrk1Ri0UD5wnd0fN1pCCZBYWDA3hj0rINifskWpFd5XP2LvFNUP6U+9oeRujByHVqqjVGA==",
+      "version": "1.4.2",
+      "resolved": "https://registry.npmjs.org/gatsby-plugin-prefetch-google-fonts/-/gatsby-plugin-prefetch-google-fonts-1.4.2.tgz",
+      "integrity": "sha512-aeeWsXAZtgvj3SfFa22tVFbki12W9df4xVWaQ/SEV2FKGve9sMaInWIRtUBgJZ7kPl8JBuhzcNz69XitxC0WqQ==",
       "requires": {
-        "babel-runtime": "^6.26.0",
+        "@babel/runtime": "^7.2.0",
         "clean-css": "^4.2.1",
         "download": "^7.1.0",
         "fs-extra": "^7.0.0",
         "get-urls": "^8.0.0",
         "globby": "^8.0.1",
-        "google-fonts-plugin": "^2.0.2",
+        "google-fonts-plugin": "2.0.2",
         "object-hash": "^1.3.0"
       },
       "dependencies": {
-        "fs-extra": {
-          "version": "7.0.0",
-          "resolved": "https://registry.npmjs.org/fs-extra/-/fs-extra-7.0.0.tgz",
-          "integrity": "sha512-EglNDLRpmaTWiD/qraZn6HREAEAHJcJOmxNEYwq6xeMKnVMAy3GUcFB+wXt2C6k4CNvB/mP1y/U3dzvKKj5OtQ==",
+        "@babel/runtime": {
+          "version": "7.4.4",
+          "resolved": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.4.4.tgz",
+          "integrity": "sha512-w0+uT71b6Yi7i5SE0co4NioIpSYS6lLiXvCzWzGSKvpK5vdQtCbICHMj+gbAKAOtxiV6HsVh/MBdaF9EQ6faSg==",
           "requires": {
-            "graceful-fs": "^4.1.2",
-            "jsonfile": "^4.0.0",
-            "universalify": "^0.1.0"
+            "regenerator-runtime": "^0.13.2"
           }
         },
         "globby": {
-          "version": "8.0.1",
-          "resolved": "https://registry.npmjs.org/globby/-/globby-8.0.1.tgz",
-          "integrity": "sha512-oMrYrJERnKBLXNLVTqhm3vPEdJ/b2ZE28xN4YARiix1NOIOBPEpOUnm844K1iu/BkphCaf2WNFwMszv8Soi1pw==",
+          "version": "8.0.2",
+          "resolved": "https://registry.npmjs.org/globby/-/globby-8.0.2.tgz",
+          "integrity": "sha512-yTzMmKygLp8RUpG1Ymu2VXPSJQZjNAZPD4ywgYEaG7e4tBJeUQBO8OpXrf1RCNcEs5alsoJYPAMiIHP0cmeC7w==",
           "requires": {
             "array-union": "^1.0.1",
-            "dir-glob": "^2.0.0",
+            "dir-glob": "2.0.0",
             "fast-glob": "^2.0.2",
             "glob": "^7.1.2",
             "ignore": "^3.3.5",
             "pify": "^3.0.0",
             "slash": "^1.0.0"
           }
+        },
+        "regenerator-runtime": {
+          "version": "0.13.2",
+          "resolved": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.2.tgz",
+          "integrity": "sha512-S/TQAZJO+D3m9xeN1WTI8dLKBBiRgXBlTJvbWjCThHWZj9EvHK70Ff50/tYj2J/fvBY6JtFVwRuazHN2E7M9BA=="
         }
       }
     },
