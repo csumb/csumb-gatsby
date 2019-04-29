@@ -1,18 +1,18 @@
 import React from 'react'
 import Blocks from './blocks'
-import PageFeedback from 'components/page-feedback'
+import PageFeedback from 'components/user-tools/page-feedback'
 import Layout from 'components/layouts/default'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import { EventPage } from 'components/pages/event'
+import { EventPage } from 'components/events'
 import { Flex, Box } from '@rebass/grid/emotion'
 import PageNavigation from 'components/layouts/sections/navigation/page'
 import Breadcrumbs from 'components/layouts/sections/header/breadcrumbs'
 import BlockHero from './blocks/blocks/hero-image'
 import SiteFooter from 'components/layouts/sections/footer/site'
-import PageEditorTools from 'components/editor-tools'
+import PageEditorTools from 'components/user-tools/editors'
 import {
   UniversityPersonnelFormList,
   UniversityPersonnelPages,

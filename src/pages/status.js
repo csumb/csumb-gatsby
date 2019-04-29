@@ -4,7 +4,7 @@ import Container from 'components/common/container'
 import moment from 'moment'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Well from 'components/common/well'
-import { HeroParagraph, LeadParagraph } from 'components/type'
+import { HeroParagraph, LeadParagraph } from 'components/common/type'
 import Loading from 'components/common/loading'
 
 class StatusPage extends React.Component {

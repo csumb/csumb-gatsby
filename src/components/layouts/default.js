@@ -5,7 +5,7 @@ import Footer from 'components/layouts/sections/footer/global'
 import Helmet from 'react-helmet'
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
-import Emergency from 'components/emergency'
+import Emergency from './alerts/emergency'
 
 class Layout extends React.Component {
   render() {

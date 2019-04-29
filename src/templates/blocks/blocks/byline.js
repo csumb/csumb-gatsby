@@ -1,5 +1,5 @@
 import React from 'react'
-import Byline from 'components/byline'
+import Byline from 'components/pages/news/byline'
 
 class BlockByline extends React.Component {
   state = {

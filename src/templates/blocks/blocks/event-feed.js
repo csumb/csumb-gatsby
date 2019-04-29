@@ -1,5 +1,5 @@
 import React from 'react'
-import { EventFeedItem } from 'components/pages/event'
+import { EventFeedItem } from 'components/events'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 
