@@ -9,7 +9,7 @@ import Blocks from 'templates/blocks'
 
 const NewsPage = ({ data }) => {
   return (
-    <Layout pageTitle="News">
+    <Layout pageTitle="News" siteTitle="News" isSiteHomepage={true}>
       <SiteHeader path="/news">News</SiteHeader>
       {data.allCsumbNavigation && (
         <SiteNavigation

@@ -9,7 +9,13 @@ import Emergency from 'components/emergency'
 
 class Layout extends React.Component {
   render() {
-    const { siteNavigation, siteTitle, pageTitle, noFooterMargin } = this.props
+    const {
+      siteNavigation,
+      siteTitle,
+      pageTitle,
+      noFooterMargin,
+      isSiteHomepage,
+    } = this.props
 
     return (
       <>
@@ -23,7 +29,7 @@ class Layout extends React.Component {
           }Cal State Monterey Bay`}</title>
 
           <meta
-            class="swiftype"
+            className="swiftype"
             name="csumbedu"
             data-type="integer"
             content="1"
@@ -31,7 +37,7 @@ class Layout extends React.Component {
           <meta property="og:site_name" content="Cal State Monterey Bay" />
           {pageTitle && (
             <meta
-              class="swiftype"
+              className="swiftype"
               name="title"
               data-type="string"
               content={pageTitle}
@@ -40,10 +46,24 @@ class Layout extends React.Component {
           {pageTitle && <meta name="twitter:title" content={pageTitle} />}
           {siteTitle && (
             <meta
-              class="swiftype"
+              className="swiftype"
               name="site_name"
               data-type="string"
               content={siteTitle}
+            />
+          )}
+          <meta
+            className="swiftype"
+            name="is_site"
+            data-type="string"
+            content={isSiteHomepage ? '1' : '0'}
+          />
+          {isSiteHomepage && (
+            <meta
+              className="swiftype"
+              name="site_name"
+              data-type="string"
+              content={pageTitle}
             />
           )}
         </Helmet>
