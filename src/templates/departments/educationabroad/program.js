@@ -24,6 +24,10 @@ import {
   TableCell,
 } from 'components/common/table'
 
+const ApplyNowButton = styled(ButtonLink)`
+  margin-left: 1rem;
+`
+
 const CollapsibleIcon = styled(FontAwesomeIcon)`
   margin-right: 0.8rem;
   font-size: 1rem;
@@ -130,23 +134,30 @@ class ProgramTemplate extends React.Component {
         {navigation && <SiteNavigation navigation={navigation} />}
         <Container>
           <PageTitle>{data.Name}</PageTitle>
-
           <Well>
-            <h2>{data.Application_Deadline_Title}</h2>
             <Flex flexWrap="wrap">
               <Box width={[1, 1 / 2]} pr={[0, 2]}>
+                <h2>{data.Application_Deadline_Title}</h2>
                 {data.Fall_Spring_Application_Deadline &&
                   data.Fall_Spring_Application_Deadline[0] && (
                     <p>
                       <strong>Fall &amp; Spring deadline:</strong>
-                      {data.Fall_Spring_Application_Deadline[0].data.Name}
+                      <ul>
+                        {data.Fall_Spring_Application_Deadline.map(deadline => (
+                          <li key={deadline.data.Name}>{deadline.data.Name}</li>
+                        ))}
+                      </ul>
                     </p>
                   )}
                 {data.Summer_Application_Deadline &&
                   data.Summer_Application_Deadline[0] && (
                     <p>
                       <strong>Summer deadline:</strong>
-                      {data.Summer_Application_Deadline[0].data.Name}
+                      <ul>
+                        {data.Summer_Application_Deadline.map(deadline => (
+                          <li key={deadline.data.Name}>{deadline.data.Name}</li>
+                        ))}
+                      </ul>
                     </p>
                   )}
               </Box>
@@ -165,22 +176,23 @@ class ProgramTemplate extends React.Component {
                 </p>
                 <p>
                   {data.Program_Type === 'Semester' ? (
-                    <Link to="/educationabroad/go-abroad-semesteryear-long-program">
+                    <ButtonLink to="/educationabroad/go-abroad-semesteryear-long-program">
                       Application instructions
-                    </Link>
+                    </ButtonLink>
                   ) : (
-                    <Link to="/educationabroad/go-abroad-short-term-program">
+                    <ButtonLink to="/educationabroad/go-abroad-short-term-program">
                       Application instructions
-                    </Link>
+                    </ButtonLink>
+                  )}
+                  {data.Apply_Now && (
+                    <ApplyNowButton to={data.Apply_Now}>
+                      Apply now
+                    </ApplyNowButton>
                   )}
                 </p>
-                {data.Apply_Now && (
-                  <ButtonLink to={data.Apply_Now}>Apply now</ButtonLink>
-                )}
               </Box>
             </Flex>
           </Well>
-
           {partner.data.Campus_Images && (
             <Flex>
               {partner.data.Campus_Images.map((image, key) => (
@@ -195,19 +207,21 @@ class ProgramTemplate extends React.Component {
             </Flex>
           )}
           <h2>Program details</h2>
-
-          <ProgramDetails title="Program dates">
-            {data.Program_dates__Fall && (
-              <p>
-                <strong>Fall</strong> {data.Program_dates__Fall}
-              </p>
-            )}
-            {data.Program_dates__Spring && (
-              <p>
-                <strong>Spring</strong> {data.Program_dates__Spring}
-              </p>
-            )}
-          </ProgramDetails>
+          {(data.Program_dates__Fall.length > 0 ||
+            data.Program_dates__Spring.length > 0) && (
+            <ProgramDetails title="Program dates">
+              {data.Program_dates__Fall && (
+                <p>
+                  <strong>Fall</strong> {data.Program_dates__Fall}
+                </p>
+              )}
+              {data.Program_dates__Spring && (
+                <p>
+                  <strong>Spring</strong> {data.Program_dates__Spring}
+                </p>
+              )}
+            </ProgramDetails>
+          )}
           {data.Prerequisites && (
             <ProgramDetails title="Prerequisites">
               <ul>
@@ -225,11 +239,13 @@ class ProgramTemplate extends React.Component {
               <p>{data.Housing_Details_Paragraph_2}</p>
             )}
             {data.Housing_link && (
-              <a href={data.Housing_link}>Learn more about housing</a>
+              <ButtonLink to={data.Housing_link}>
+                Learn more about housing
+              </ButtonLink>
             )}
           </ProgramDetails>
           <ProgramDetails title="Estimated fees &amp; conditions">
-            <Table>
+            <Table alternateRows={true}>
               <thead>
                 <TableRow>
                   <TableHeader>Description</TableHeader>
@@ -278,30 +294,21 @@ class ProgramTemplate extends React.Component {
               </ul>
             </ProgramDetails>
           )}
-          <Flex flexWrap="wrap">
-            <Box width={[1, 7 / 12]} pr={[0, 2]}>
-              <h3>About {data.Name}</h3>
-              {data.About_Paragraph_1 && <p>{data.About_Paragraph_1}</p>}
-
-              {data.About_Paragraph_2 && <p>{data.About_Paragraph_2}</p>}
-
-              {data.About_Paragraph_3 && <p>{data.About_Paragraph_3}</p>}
-
-              {partner.data.Campus_website && (
-                <p>
-                  <a href={partner.data.Campus_website}>Visit campus website</a>
-                </p>
-              )}
-            </Box>
-            <Box width={[1, 5 / 12]}>
-              <h3>Location</h3>
-              {partner.data.City && <>{partner.data.City},</>}{' '}
-              {data.Countries[0].data.Name}
-              {coordinates.length > 0 && (
-                <ProgramMap coordinates={coordinates} />
-              )}
-            </Box>
-          </Flex>
+          <h3>About {data.Name}</h3>
+          {data.About_Paragraph_1 && <p>{data.About_Paragraph_1}</p>}
+          {data.About_Paragraph_2 && <p>{data.About_Paragraph_2}</p>}
+          {data.About_Paragraph_3 && <p>{data.About_Paragraph_3}</p>}
+          {partner.data.Campus_website && (
+            <p>
+              <ButtonLink to={partner.data.Campus_website}>
+                Visit campus website
+              </ButtonLink>
+            </p>
+          )}
+          <h3>Location</h3>
+          {partner.data.City && <>{partner.data.City},</>}{' '}
+          {data.Countries[0].data.Name}
+          {coordinates.length > 0 && <ProgramMap coordinates={coordinates} />}
         </Container>
       </Layout>
     )
