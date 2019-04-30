@@ -96,4 +96,4 @@ class DashboardEvent extends React.Component {
   }
 }
 
-export default DashboardEvents
+export { DashboardEvents, DashboardEvent }

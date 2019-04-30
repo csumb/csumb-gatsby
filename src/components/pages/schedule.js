@@ -10,6 +10,7 @@ import PageTitle from 'components/layouts/sections/header/page-title'
 import moment from 'moment'
 import bp from 'style/breakpoints'
 import Well from 'components/common/well'
+import ReturnLink from 'components/common/return-link'
 
 const weekDays = [
   {
@@ -666,17 +667,10 @@ const CoursePage = ({ course, term, requirements }) => {
   )
 }
 
-const ScheduleBackLinkElement = styled(Link)`
-  margin-bottom: 1rem;
-  display: inline-block;
-`
-
 const ScheduleBackLink = ({ term }) => (
-  <ScheduleBackLinkElement
-    to={`/schedule/${term.DESCR.toLowerCase().replace(' ', '')}`}
-  >
-    ← Return to {term.DESCR}
-  </ScheduleBackLinkElement>
+  <ReturnLink to={`/schedule/${term.DESCR.toLowerCase().replace(' ', '')}`}>
+    Return to {term.DESCR}
+  </ReturnLink>
 )
 
 const ScheduleTerms = styled('ul')`

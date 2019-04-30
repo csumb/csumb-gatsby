@@ -10,10 +10,10 @@ import '@reach/dialog/styles.css'
 import DashboardIntro from './intro'
 import DashboardApps from './apps'
 import DashboardEmergency from './emergency'
-import DashboardEvents from './events'
+import { DashboardEvents } from './events'
 import DashboardSecondaryEmail from './secondary-email'
 import DashboardNotLoggedIn from './not-logged-in'
-import DashboardMessages from './messages'
+import { DashboardMessages } from './messages'
 
 const dashboardWrapperStyle = `
   padding: 1rem;

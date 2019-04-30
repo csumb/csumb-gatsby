@@ -2529,15 +2529,14 @@
       }
     },
     "@storybook/addon-info": {
-      "version": "4.1.4",
-      "resolved": "https://registry.npmjs.org/@storybook/addon-info/-/addon-info-4.1.4.tgz",
-      "integrity": "sha512-D6HUZ1qOEXN1jtIbcn9TuB/sKJlgOVTb7YwCyaKWIF1WIZ9xumoL4t8jl4inXAbtPcLZ9e+oE3owJFKYXCQUTQ==",
+      "version": "4.1.18",
+      "resolved": "https://registry.npmjs.org/@storybook/addon-info/-/addon-info-4.1.18.tgz",
+      "integrity": "sha512-hmFDHOj946rGlprlrkpnHHMUalmswOqjiyyVCs9fw5bvkwcjZCPbe9fcMysvUWoKIIkUUcBtrSIJQ3v//vG2kQ==",
       "dev": true,
       "requires": {
-        "@emotion/styled": "^0.10.6",
-        "@storybook/addons": "4.1.4",
-        "@storybook/client-logger": "4.1.4",
-        "@storybook/components": "4.1.4",
+        "@storybook/addons": "4.1.18",
+        "@storybook/client-logger": "4.1.18",
+        "@storybook/components": "4.1.18",
         "core-js": "^2.5.7",
         "global": "^4.3.2",
         "marksy": "^6.1.0",
@@ -2546,6 +2545,44 @@
         "react-addons-create-fragment": "^15.5.3",
         "react-lifecycles-compat": "^3.0.4",
         "util-deprecate": "^1.0.2"
+      },
+      "dependencies": {
+        "@storybook/addons": {
+          "version": "4.1.18",
+          "resolved": "https://registry.npmjs.org/@storybook/addons/-/addons-4.1.18.tgz",
+          "integrity": "sha512-WBWso2NyZci8/X6t63jNaLyV6ziHtu0cpa3xZ5A2m9KlUf+doyycFis36fBZ+v6xb1FTZuFjEkm3H3IuXE1GUQ==",
+          "dev": true,
+          "requires": {
+            "@storybook/channels": "4.1.18",
+            "@storybook/components": "4.1.18",
+            "global": "^4.3.2",
+            "util-deprecate": "^1.0.2"
+          }
+        },
+        "@storybook/channels": {
+          "version": "4.1.18",
+          "resolved": "https://registry.npmjs.org/@storybook/channels/-/channels-4.1.18.tgz",
+          "integrity": "sha512-SwAAqfrIu0+j2KmmR9QKwKoU9VS7DWrv7fEhy+fEO/YfHnc0G3jcnR/VooiWfZpSrgKB7Mz6Qjp/mj+wRe6wTg==",
+          "dev": true
+        },
+        "@storybook/components": {
+          "version": "4.1.18",
+          "resolved": "https://registry.npmjs.org/@storybook/components/-/components-4.1.18.tgz",
+          "integrity": "sha512-8vqjzgTE2X4dCrtpALRiMgB8FL7vGV16f/mA7UIL+Hfxm9d+vqoGDf7u+FNX6S39gH7HQrxlOIcWqWGyKvNAUw==",
+          "dev": true,
+          "requires": {
+            "@emotion/core": "^0.13.1",
+            "@emotion/provider": "^0.11.2",
+            "@emotion/styled": "^0.10.6",
+            "global": "^4.3.2",
+            "lodash": "^4.17.11",
+            "prop-types": "^15.6.2",
+            "react-inspector": "^2.3.0",
+            "react-split-pane": "^0.1.84",
+            "react-textarea-autosize": "^7.0.4",
+            "render-fragment": "^0.1.1"
+          }
+        }
       }
     },
     "@storybook/addon-links": {
@@ -2650,9 +2687,9 @@
       "dev": true
     },
     "@storybook/client-logger": {
-      "version": "4.1.4",
-      "resolved": "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-4.1.4.tgz",
-      "integrity": "sha512-fOrSNPa4Pg8m9UD8fTUFTewTtuzhckrt6zESpj+P7/MnWM+W71umvobb0HpPBGKvwSC8qJZhOwsH7tNI7K0PAw==",
+      "version": "4.1.18",
+      "resolved": "https://registry.npmjs.org/@storybook/client-logger/-/client-logger-4.1.18.tgz",
+      "integrity": "sha512-hcCcM3zT9+S/osDZTEK/mYU/3dnskVahJ7hSQDDfXKVv4zL3U2l+9PYc2MhEQ4egHxrNsl0pzfvNMFFIGryJtg==",
       "dev": true
     },
     "@storybook/components": {
@@ -14773,7 +14810,7 @@
         },
         "progress": {
           "version": "1.1.8",
-          "resolved": "http://registry.npmjs.org/progress/-/progress-1.1.8.tgz",
+          "resolved": "https://registry.npmjs.org/progress/-/progress-1.1.8.tgz",
           "integrity": "sha1-4mDHj2Fhzdmw5WzD4Khd4Xx6V74="
         },
         "semver": {
