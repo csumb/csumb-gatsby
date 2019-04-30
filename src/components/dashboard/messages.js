@@ -71,4 +71,4 @@ class DashboardMessage extends React.Component {
   }
 }
 
-export default DashboardMessages
+export { DashboardMessages, DashboardMessage }

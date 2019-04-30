@@ -16,6 +16,7 @@ import SiteNavigation from 'components/layouts/sections/navigation/site'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'
+import ReturnLink from 'components/common/return-link'
 
 import {
   Table,
@@ -134,6 +135,15 @@ class ProgramTemplate extends React.Component {
         {navigation && <SiteNavigation navigation={navigation} />}
         <Container>
           <PageTitle>{data.Name}</PageTitle>
+          {data.Program_Type === 'Semester' ? (
+            <ReturnLink to="/educationabroad/go-abroad-semesteryear-long-program">
+              View all Semester programs
+            </ReturnLink>
+          ) : (
+            <ReturnLink to="/educationabroad/go-abroad-short-term-program">
+              View all Summer programs
+            </ReturnLink>
+          )}
           <Well>
             <Flex flexWrap="wrap">
               <Box width={[1, 1 / 2]} pr={[0, 2]}>
