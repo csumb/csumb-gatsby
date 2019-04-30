@@ -7,6 +7,13 @@ const Table = styled('table')`
     padding: 0.4rem;
   }
   ${props =>
+    props.alternateRows &&
+    `
+      tbody tr:nth-child(even) {
+        background: ${colors.muted.light};
+      }
+    `}
+  ${props =>
     props.bordered
       ? `
       border-bottom: 1px solid ${colors.primary.dark};

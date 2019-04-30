@@ -19,7 +19,6 @@ const gatsbyConfig = {
     overridePages: [
       'cost',
       'it',
-      'academics',
       'it/alerts',
       'library',
       'library/ask-librarian',
