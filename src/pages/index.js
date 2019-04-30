@@ -10,8 +10,8 @@ import {
   InTheNews,
   HomepageImageNavigation,
   MoreItemsButton,
+  HomepageHero,
 } from 'components/pages/homepage'
-import HomepageHero from 'components/homepages/2019/service-learning'
 
 const sortItems = ({
   allContentfulHomepageEvent,
@@ -48,6 +48,7 @@ const IndexPage = ({ data }) => {
   const {
     allContentfulHomepageInTheNews,
     allContentfulHomepageImageNavigation,
+    allContentfulHomepageHeroImage,
   } = data
 
   const { featured, notFeatured } = sortItems(data)
@@ -55,7 +56,7 @@ const IndexPage = ({ data }) => {
   const colPadding = [0, 0, 3, 3]
   return (
     <Layout noFooterMargin={true}>
-      <HomepageHero />
+      <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
       <HomepageImageNavigation
         navigation={allContentfulHomepageImageNavigation.edges[0].node}
       />
@@ -205,7 +206,10 @@ export const query = graphql`
         }
       }
     }
-    allContentfulHomepageHeroImage(sort: { fields: goLiveDate }) {
+    allContentfulHomepageHeroImage(
+      sort: { fields: goLiveDate, order: DESC }
+      limit: 1
+    ) {
       edges {
         node {
           title
