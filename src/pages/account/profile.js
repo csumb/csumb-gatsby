@@ -653,7 +653,10 @@ class UserAccountProfilePhoto extends React.Component {
         </p>
         {profile.photo && (
           <AccountData>
-            <AccountPhoto src={profile.photo} alt="Your profile" />
+            <AccountPhoto
+              src={profile.photo.replace('/csumb.edu/', '/edit.csumb.edu/')}
+              alt="Your profile"
+            />
           </AccountData>
         )}
         <ReactFilestack
