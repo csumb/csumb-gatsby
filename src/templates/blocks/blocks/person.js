@@ -59,13 +59,34 @@ class BlockPerson extends React.Component {
         {person && (
           <Person id={`profile-${person.email.split('@').shift()}`}>
             {compact ? (
-              <p>
-                <Link
-                  to={`/directory/person/${person.email.split('@').shift()}`}
-                >
-                  {person.firstName} {person.lastName}
-                </Link>
-              </p>
+              <Flex flexWrap="wrap">
+                <Box width={[1, 1 / 3]} pr={[0, 2]}>
+                  <strong>
+                    <Link
+                      to={`/directory/person/${person.email
+                        .split('@')
+                        .shift()}`}
+                    >
+                      {person.firstName} {person.lastName}
+                    </Link>
+                  </strong>
+                </Box>
+                <Box width={[1, 1 / 3]} pr={[0, 2]}>
+                  {person.directoryTitle.map((title, key) => (
+                    <PersonPosition>
+                      <PersonPositionTitle>{title}</PersonPositionTitle>
+                      <Link>{person.directoryDepartment[key]}</Link>
+                    </PersonPosition>
+                  ))}
+                </Box>
+
+                <Box width={[1, 1 / 3]}>
+                  <a href={`mailto:${person.email}`}>{person.email}</a>
+                  {person._publicDirectory && person._publicDirectory.phone && (
+                    <p>{person._publicDirectory.phone}</p>
+                  )}
+                </Box>
+              </Flex>
             ) : (
               <Flex flexWrap="wrap">
                 <Box width={[1, 3 / 4]} pr={2}>
