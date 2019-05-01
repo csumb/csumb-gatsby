@@ -615,6 +615,11 @@ const CoursePage = ({ course, term, requirements }) => {
           )}
         </Box>
         <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 2]}>
+          {course.NOTES && (
+            <Well>
+              <strong>Note:</strong> {course.NOTES}
+            </Well>
+          )}
           <p>{course.DESCR}</p>
           <CourseSection legend="University requirements">
             {course._attributes.GE || course._attributes.UR ? (
