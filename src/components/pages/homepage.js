@@ -120,13 +120,15 @@ const NavigationItem = styled(Box)`
   }
 `
 const HeroItem = styled('div')`
+  ${props => props.darkImage && `color: ${colors.white};`}
   h2 {
     margin: 0;
     font-family: ${fonts.body};
     font-size: 2.5rem;
   }
   a {
-    color: ${colors.black};
+    ${props =>
+      props.darkImage ? `color: ${colors.white};` : `color: ${colors.black};`}
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -168,6 +170,8 @@ const MoreItemsButton = styled(ButtonLink)`
   margin: 1rem 1.5rem;
 `
 
+const HomepageHeroWrapper = styled('div')``
+
 const HomepageImageNavigation = ({ navigation }) => {
   const titles = navigation.childContentfulHomepageImageNavigationDisplayNamesTextNode.childMarkdownRemark.rawMarkdownBody.split(
     '\n'
@@ -202,20 +206,24 @@ const StoryType = ({ isEvent }) => (
 )
 
 const HomepageHero = ({ item }) => (
-  <LazyHero
-    opacity={item.lighten / 100}
-    parallaxOffset={item.fixedHeight ? 0 : 100}
-    transitionDuration={0}
-    imageSrc={item.image.file.url}
-    minHeight={item.fixedHeight ? `${item.imageHeight}px` : '80vh'}
+  <HomepageHeroWrapper
+    style={{ height: item.fixedHeight ? `${item.imageHeight}px` : '70vh' }}
   >
-    <HeroItem>
-      <h2>
-        <Link to={item.link}>{item.title}</Link>
-      </h2>
-      <LeadParagraph>{item.description}</LeadParagraph>
-    </HeroItem>
-  </LazyHero>
+    <LazyHero
+      opacity={item.lighten / 100}
+      parallaxOffset={item.fixedHeight ? 0 : 100}
+      transitionDuration={0}
+      imageSrc={item.image.file.url}
+      minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
+    >
+      <HeroItem darkImage={item.darkImage}>
+        <h2>
+          <Link to={item.link}>{item.title}</Link>
+        </h2>
+        <LeadParagraph>{item.description}</LeadParagraph>
+      </HeroItem>
+    </LazyHero>
+  </HomepageHeroWrapper>
 )
 
 const HomepageNavigation = ({ items }) => (
