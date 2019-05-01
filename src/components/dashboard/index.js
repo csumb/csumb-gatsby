@@ -9,9 +9,7 @@ import '@reach/dialog/styles.css'
 
 import DashboardIntro from './intro'
 import DashboardApps from './apps'
-import DashboardEmergency from './emergency'
 import { DashboardEvents } from './events'
-import DashboardSecondaryEmail from './secondary-email'
 import DashboardNotLoggedIn from './not-logged-in'
 import { DashboardMessages } from './messages'
 
@@ -167,8 +165,6 @@ class DashboardContent extends React.Component {
       <>
         {ready ? (
           <>
-            <DashboardEmergency session={session} />
-            <DashboardSecondaryEmail session={session} />
             <Flex flexWrap="wrap">
               <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
                 <DashboardEventWrapper>
