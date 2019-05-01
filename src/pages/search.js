@@ -113,7 +113,7 @@ class SearchPage extends React.Component {
       <Layout pageTitle="Search">
         <Container>
           <PageTitle>Search</PageTitle>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit.bind(this)}>
             <Flex flexWrap="wrap">
               <Box width={[1, 2 / 3]} px={2}>
                 <InputText
