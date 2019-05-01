@@ -13757,6 +13757,14 @@
         "escape-string-regexp": "^1.0.5"
       }
     },
+    "gatsby-plugin-client-side-redirect": {
+      "version": "0.0.2",
+      "resolved": "https://registry.npmjs.org/gatsby-plugin-client-side-redirect/-/gatsby-plugin-client-side-redirect-0.0.2.tgz",
+      "integrity": "sha512-SIWZnkP3ANvVK0fKPhdRlcvM1uzz8GtvPRlvjpuuVk6M1pAQ12MomI8dD5FddMdFROEBsbEyEIdtc/kW5vrIFg==",
+      "requires": {
+        "fs-extra": "^7.0.0"
+      }
+    },
     "gatsby-plugin-emotion": {
       "version": "2.0.7",
       "resolved": "https://registry.npmjs.org/gatsby-plugin-emotion/-/gatsby-plugin-emotion-2.0.7.tgz",

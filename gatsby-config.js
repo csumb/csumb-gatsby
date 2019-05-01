@@ -62,6 +62,7 @@ const gatsbyConfig = {
     'gatsby-plugin-catch-links',
     'gatsby-source-csumb-directory',
     'gatsby-source-csumb-web-content',
+    'gatsby-plugin-client-side-redirect',
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
