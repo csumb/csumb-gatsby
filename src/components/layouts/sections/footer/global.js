@@ -108,39 +108,39 @@ class Footer extends React.Component {
                 <Box width={[1, 1 / 3]}>
                   <FooterList>
                     <li>
-                      <Link to="/jobs">Jobs</Link>
+                      <a href="/jobs">Jobs</a>
                     </li>
                     <li>
-                      <Link to="/admissions/visit">Tours</Link>
+                      <a href="/admissions/visit">Tours</a>
                     </li>
                     <li>
-                      <Link to="/parking">Parking</Link>
-                    </li>
-                  </FooterList>
-                </Box>
-                <Box width={[1, 1 / 3]}>
-                  <FooterList>
-                    <li>
-                      <Link to="/library">Library</Link>
-                    </li>
-                    <li>
-                      <Link to="/map">Map</Link>
-                    </li>
-                    <li>
-                      <Link to="/mastercalendar">Calendar</Link>
+                      <a href="/parking">Parking</a>
                     </li>
                   </FooterList>
                 </Box>
                 <Box width={[1, 1 / 3]}>
                   <FooterList>
                     <li>
-                      <Link to="/directory">Directory</Link>
+                      <a href="/library">Library</a>
                     </li>
                     <li>
-                      <Link to="/catalog">Catalog</Link>
+                      <a href="/map">Map</a>
                     </li>
                     <li>
-                      <Link to="/schedule">Class schedule</Link>
+                      <a href="/mastercalendar">Calendar</a>
+                    </li>
+                  </FooterList>
+                </Box>
+                <Box width={[1, 1 / 3]}>
+                  <FooterList>
+                    <li>
+                      <a href="/directory">Directory</a>
+                    </li>
+                    <li>
+                      <a href="/catalog">Catalog</a>
+                    </li>
+                    <li>
+                      <a href="/schedule">Class schedule</a>
                     </li>
                   </FooterList>
                 </Box>

@@ -30,7 +30,7 @@ const SiteNavigationList = styled('ul')`
   }
 `
 
-const SiteNavigationLink = styled(LinkInspect)`
+const SiteNavigationLink = styled('a')`
   text-decoration: none;
   padding: 1rem 1rem 1rem 0;
   display: inline-block;
