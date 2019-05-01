@@ -183,7 +183,12 @@ class DashboardOtherApps extends React.Component {
             <MoreAppsList>
               {apps.map(app => (
                 <li key={app.node.name}>
-                  <a component="a" target="_blank" href={app.node.url}>
+                  <a
+                    component="a"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={app.node.url}
+                  >
                     {app.node.name}
                   </a>
                 </li>
