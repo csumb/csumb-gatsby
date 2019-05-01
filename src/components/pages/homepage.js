@@ -4,7 +4,7 @@ import moment from 'moment'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors, fonts } from 'style/theme'
-import LazyHero from 'react-lazy-hero'
+import LazyHero from 'components/lazy-hero-image'
 import { LeadParagraph } from 'components/common/type'
 import showdown from 'showdown'
 import bp from 'style/breakpoints'
@@ -211,7 +211,7 @@ const HomepageHero = ({ item }) => (
   >
     <LazyHero
       opacity={item.lighten / 100}
-      parallaxOffset={0}
+      parallaxOffset={item.fixedHeight ? 0 : 100}
       transitionDuration={0}
       imageSrc={item.image.file.url}
       minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
