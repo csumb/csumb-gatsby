@@ -2,6 +2,8 @@ const walk = require('walk')
 const fs = require('fs-extra')
 const crypto = require('crypto')
 
+const today = new Date()
+
 exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
   const { createNode } = actions
 
@@ -98,6 +100,14 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       },
     }
     if (content.event) {
+      content.event._passedEvent = true
+      if (typeof content.event.date_stamps !== 'undefined') {
+        content.event.date_stamps.forEach(date => {
+          if (date.start_stamp >= today.getTime() / 1000) {
+            content.event._passedEvent = false
+          }
+        })
+      }
       contentNode.event = content.event
     }
     createNode(contentNode)
