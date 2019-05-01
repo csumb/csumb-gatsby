@@ -71,7 +71,7 @@ const SiteNavigationItem = ({ to, children, navigationChildren, first }) => {
   return (
     <>
       {to ? (
-        <SiteNavigationLink to={to} first={first}>
+        <SiteNavigationLink href={to} first={first}>
           {children}
         </SiteNavigationLink>
       ) : (
