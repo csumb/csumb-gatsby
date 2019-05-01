@@ -108,39 +108,39 @@ class Footer extends React.Component {
                 <Box width={[1, 1 / 3]}>
                   <FooterList>
                     <li>
-                      <a href="/jobs">Jobs</a>
+                      <Link to="/jobs">Jobs</Link>
                     </li>
                     <li>
-                      <a href="/admissions/visit">Tours</a>
+                      <Link to="/admissions/visit">Tours</Link>
                     </li>
                     <li>
-                      <a href="/parking">Parking</a>
-                    </li>
-                  </FooterList>
-                </Box>
-                <Box width={[1, 1 / 3]}>
-                  <FooterList>
-                    <li>
-                      <a href="/library">Library</a>
-                    </li>
-                    <li>
-                      <a href="/map">Map</a>
-                    </li>
-                    <li>
-                      <a href="/mastercalendar">Calendar</a>
+                      <Link to="/parking">Parking</Link>
                     </li>
                   </FooterList>
                 </Box>
                 <Box width={[1, 1 / 3]}>
                   <FooterList>
                     <li>
-                      <a href="/directory">Directory</a>
+                      <Link to="/library">Library</Link>
                     </li>
                     <li>
-                      <a href="/catalog">Catalog</a>
+                      <Link to="/map">Map</Link>
                     </li>
                     <li>
-                      <a href="/schedule">Class schedule</a>
+                      <Link to="/mastercalendar">Calendar</Link>
+                    </li>
+                  </FooterList>
+                </Box>
+                <Box width={[1, 1 / 3]}>
+                  <FooterList>
+                    <li>
+                      <Link to="/directory">Directory</Link>
+                    </li>
+                    <li>
+                      <Link to="/catalog">Catalog</Link>
+                    </li>
+                    <li>
+                      <Link to="/schedule">Class schedule</Link>
                     </li>
                   </FooterList>
                 </Box>
