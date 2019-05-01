@@ -13,7 +13,7 @@ class EventsPage extends React.Component {
     const events = this.props.data.allCsumbPage.edges
     let featuredEvents = false
     events.forEach(({ node }) => {
-      if (node.featured) {
+      if (node.event.featured) {
         featuredEvents = true
       }
     })
@@ -29,7 +29,7 @@ class EventsPage extends React.Component {
                   <h2>Featured Events</h2>
                   {events.map(({ node }) => (
                     <React.Fragment key={node.id}>
-                      {node.featured && (
+                      {node.event.featured && (
                         <PublicEvent
                           event={node}
                           showTime={true}
@@ -46,7 +46,7 @@ class EventsPage extends React.Component {
                   {featuredEvents && <h2>Upcoming events</h2>}
                   {events.map(({ node }) => (
                     <React.Fragment key={node.id}>
-                      {!node.featured && (
+                      {!node.event.featured && (
                         <PublicEvent
                           event={node}
                           showTime={true}
