@@ -207,7 +207,7 @@ const StoryType = ({ isEvent }) => (
 
 const HomepageHero = ({ item }) => (
   <HomepageHeroWrapper
-    style={{ height: item.fixedHeight ? `${item.imageHeight}px` : '70vh' }}
+    style={{ height: item.fixedHeight ? `${item.imageHeight}px` : '75vh' }}
   >
     <LazyHero
       opacity={item.lighten / 100}
