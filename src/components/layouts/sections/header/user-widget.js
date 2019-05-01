@@ -133,7 +133,11 @@ class UserDropdown extends React.Component {
           >
             Class schedule
           </UserDropdownMenuLink>
-          <UserDropdownMenuLink component="a" href="/account/laundry">
+          <UserDropdownMenuLink
+            component="a"
+            href="/account/laundry"
+            isHidden={!user._isStudent}
+          >
             Laundry
           </UserDropdownMenuLink>
           <UserDropdownMenuLink component="a" href="/account/labs">
