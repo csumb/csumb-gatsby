@@ -211,7 +211,7 @@ const HomepageHero = ({ item }) => (
   >
     <LazyHero
       opacity={item.lighten / 100}
-      parallaxOffset={item.fixedHeight ? 0 : 100}
+      parallaxOffset={0}
       transitionDuration={0}
       imageSrc={item.image.file.url}
       minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
