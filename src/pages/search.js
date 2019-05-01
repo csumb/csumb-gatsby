@@ -51,25 +51,21 @@ const ListResults = ({ results }) => {
   )
 }
 class SearchPage extends React.Component {
-  constructor(props) {
-    super(props)
+  state = {
+    search: false,
+    query: '',
+  }
 
-    let state = {
-      search: false,
-      query: '',
-      existingQuery: false,
-    }
-    this.existingQuery = null
+  componentDidMount() {
     if (typeof window !== 'undefined') {
       let location = url.parse(window.location.href, true)
       if (location.query && typeof location.query.q !== 'undefined') {
-        state.query = location.query.q
-        state.existingQuery = state.query
-        this.search(state.query)
+        this.setState({
+          query: location.query.q,
+        })
+        this.search(location.query.q)
       }
     }
-
-    this.state = state
   }
 
   handleSubmit(event) {
@@ -108,7 +104,7 @@ class SearchPage extends React.Component {
   }
 
   render() {
-    const { existingQuery } = this.state
+    const { query } = this.state
     return (
       <Layout pageTitle="Search">
         <Container>
@@ -123,7 +119,7 @@ class SearchPage extends React.Component {
                   hideLabel
                   placeholder="Search"
                   onChange={this.handleChange.bind(this)}
-                  value={existingQuery ? existingQuery : null}
+                  value={query ? query : null}
                 />
               </Box>
               <Box width={[1, 1 / 3]} px={2}>
