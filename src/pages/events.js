@@ -122,7 +122,7 @@ export const query = graphql`
       }
     }
     allCsumbPage(
-      filter: { event: { public: { eq: true }, description: { ne: null } } }
+      filter: { event: { public: { eq: true } } }
       sort: { fields: [event___featured, event___date_stamps] }
       limit: 25
     ) {

@@ -125,7 +125,7 @@ const EducationAbroadProgramList = ({ programs }) => {
   programs.forEach(({ node }) => {
     const countryName = node.data.Countries[0].data.Name
     const continent = node.data.Countries[0].data.Continent
-    if (typeof countryPrograms[countryName] === 'undefined') {
+    if (typeof countryPrograms[countryName] === 'undefined' && typeof continents[continent] !== 'undefined') {
       countryPrograms[countryName] = []
       continents[continent].push(countryName)
     }
