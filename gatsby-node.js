@@ -1,6 +1,7 @@
 const path = require(`path`)
 const fs = require(`fs-extra`)
 const coursePages = require(`./src/node/courses`)
+const redirects = require('./src/node/redirects')
 const contentPages = require(`./src/node/pages`)
 const schedulePages = require(`./src/node/schedule`)
 const buildingPages = require(`./src/node/buildings`)
@@ -16,6 +17,9 @@ require(`gatsby-source-filesystem`)
 exports.createPages = ({ stage, graphql, actions }) => {
   return new Promise((resolve, reject) => {
     coursePages(graphql, actions)
+      .then(() => {
+        return redirects(graphql, actions)
+      })
       .then(() => {
         return newsStoryPages(graphql, actions)
       })
