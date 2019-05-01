@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import moment from 'moment'
-import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { colors, fonts } from 'style/theme'
 import LazyHero from 'components/lazy-hero-image'
@@ -218,7 +217,7 @@ const HomepageHero = ({ item }) => (
     >
       <HeroItem darkImage={item.darkImage}>
         <h2>
-          <Link to={item.link}>{item.title}</Link>
+          <LinkInspect to={item.link}>{item.title}</LinkInspect>
         </h2>
         <LeadParagraph>{item.description}</LeadParagraph>
       </HeroItem>

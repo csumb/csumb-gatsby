@@ -8,7 +8,7 @@ class LinkInspect extends React.Component {
       return null
     }
     to = to.replace('https://csumb.edu/', '')
-    if (to.search(/http(s?):/) > -1) {
+    if (to.search(/http(s?):/) > -1 || to.search('mailto:') > -1) {
       return (
         <>
           <a href={to} {...props}>

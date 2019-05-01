@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import LinkInspect from 'components/utilities/link-inspect'
 import { colors } from 'style/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -60,7 +59,7 @@ class BlockHeading extends React.Component {
             <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>
           </CollapsibleHeading>
         ) : (
-          <>{url ? <LinkInspect to={url}>{text}</LinkInspect> : <>{text}</>}</>
+          <>{url ? <a href={url}>{text}</a> : <>{text}</>}</>
         )}
       </HeadingTag>
     )

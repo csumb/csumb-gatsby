@@ -39,6 +39,10 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
     if (name.search('_data/directory.json') > -1) {
       return
     }
+    if (name.search('_data/redirects.json') > -1) {
+      redirectNodes(content)
+      return
+    }
     if (name.search('_data/departments.json') > -1) {
       departmentNodes(content)
       return
@@ -162,6 +166,28 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
         .update(JSON.stringify(departmentNode))
         .digest(`hex`)
       createNode(departmentNode)
+    })
+  }
+
+  const redirectNodes = content => {
+    Object.keys(content).forEach(source => {
+      let redirectNode = {
+        id: createNodeId(`${source} >>> CsumbRedirect`),
+        children: [],
+        redirect: {
+          source: source,
+          target: content[source],
+        },
+        parent: null,
+        internal: {
+          type: `CsumbRedirect`,
+        },
+      }
+      redirectNode.internal.contentDigest = crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(redirectNode))
+        .digest(`hex`)
+      createNode(redirectNode)
     })
   }
 

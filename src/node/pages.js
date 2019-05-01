@@ -129,6 +129,7 @@ module.exports = (graphql, actions) => {
             }
             allAirtable(
               filter: { queryName: { in: ["UniversityPersonnelPages"] } }
+              sort: { fields: [data___Name] }
             ) {
               edges {
                 node {

@@ -73,7 +73,11 @@ class PageEditorUserTools extends React.Component {
       <EditButtonWrapper>
         <EditButtonLink
           target="_blank"
-          href={`https://edit.csumb.edu/node/${pageId}/edit`}
+          href={
+            pageId
+              ? `https://edit.csumb.edu/node/${pageId}/edit`
+              : 'https://edit.csumb.edu'
+          }
         >
           Edit page
         </EditButtonLink>

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import LinkInspect from 'components/utilities/link-inspect'
 import { Flex, Box } from '@rebass/grid/emotion'
 
 const ImageGridHeader = styled('h3')`
@@ -35,9 +34,9 @@ class BlockImageGrid extends React.Component {
         {images.map(item => (
           <Box width={[1, 1, columnWidth / 12, columnWidth / 12]} px={2}>
             {item.link ? (
-              <LinkInspect to={item.link}>
+              <a href={item.link}>
                 <ImageGridItem item={item} />
-              </LinkInspect>
+              </a>
             ) : (
               <ImageGridItem item={item} />
             )}
