@@ -320,7 +320,11 @@ class ApplicantStatus extends React.Component {
       let app = {
         term: term,
         application: application.application,
-        checklist: apps.checklist[application.application.application_number],
+        checklist:
+          typeof apps.checklist[application.application.application_number] !==
+          'undefined'
+            ? apps.checklist[application.application.application_number]
+            : [],
         status:
           apps.applicant_status[application.application.application_number],
         transcripts:
