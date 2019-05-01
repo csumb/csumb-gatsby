@@ -83,7 +83,7 @@ module.exports = (graphql, actions) => {
                   INSTR_OTTERID
                   UNITS
                   FEES
-
+                  NOTES
                   CONSENT
                   DESCR
                   ATTRIBUTES
