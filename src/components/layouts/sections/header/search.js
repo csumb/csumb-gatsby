@@ -91,6 +91,11 @@ class Search extends React.Component {
                 placeholder="Search CSUMB"
                 id="csumb-search"
                 {...props}
+                onKeyDown={event => {
+                  if (event.key === 'Enter') {
+                    navigate(`/search?q=${event.target.value}`)
+                  }
+                }}
               />
             )
           }}
