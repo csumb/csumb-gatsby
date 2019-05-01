@@ -122,7 +122,7 @@ export const query = graphql`
       }
     }
     allCsumbPage(
-      filter: { event: { public: { eq: true } } }
+      filter: { event: { _passedEvent: { eq: false }, public: { eq: true } } }
       sort: { fields: [event___featured, event___date_stamps] }
       limit: 25
     ) {
