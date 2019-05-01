@@ -68,7 +68,7 @@ const ScheduleListAlert = styled('span')`
 const ScheduleListNotifier = ({ course }) => {
   return (
     <>
-      {course.ENRL_TOT >= course.ENRL_MAX && (
+      {parseInt(course.ENRL_TOT) >= parseInt(course.ENRL_MAX) && (
         <ScheduleListAlert>Class full</ScheduleListAlert>
       )}
       {course.FEES && parseInt(course.FEES) > 0 && (
