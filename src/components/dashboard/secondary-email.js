@@ -6,6 +6,10 @@ import { DialogOverlay, DialogContent } from '@reach/dialog'
 import { UserContext } from 'components/contexts/user'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
+import { LinkyButton } from 'components/common/button'
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
 
 const SecondaryEmailError = styled('p')`
   color: ${colors.indicators.high};
@@ -47,7 +51,23 @@ class DashboardSecondaryEmail extends React.Component {
       })
   }
 
+  handleIgnore(event) {
+    event.preventDefault()
+    this.setState({
+      didUpdate: true,
+    })
+    const expiration = new Date()
+    expiration.setDate(expiration.getDate() + 5)
+    cookies.set('csumbDashboardSecondary', '1', {
+      expires: expiration,
+      path: '/',
+    })
+  }
+
   render() {
+    if (cookies.get('csumbDashboardSecondary')) {
+      return null
+    }
     const { didUpdate, isLoading } = this.state
     if (didUpdate) {
       return null
@@ -96,6 +116,9 @@ class DashboardSecondaryEmail extends React.Component {
                       {isLoading && <Loading>Updating email</Loading>}
                     </form>
                   </Well>
+                  <LinkyButton onClick={this.handleIgnore.bind(this)}>
+                    Ignore for a while
+                  </LinkyButton>
                 </DialogContent>
               </DialogOverlay>
             )}
