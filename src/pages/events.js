@@ -51,7 +51,7 @@ class EventsPage extends React.Component {
                           event={node}
                           showTime={true}
                           showDate={true}
-                          showFeatured={true}
+                          showFeatured={false}
                         />
                       )}
                     </React.Fragment>
