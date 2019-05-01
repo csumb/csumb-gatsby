@@ -4,61 +4,19 @@ import SiteHeader from 'components/layouts/sections/header/site-header'
 import { graphql } from 'gatsby'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Container from 'components/common/container'
-import moment from 'moment'
 import { PublicEvent } from 'components/events'
 import EventsSidebar from 'components/events/sidebar'
 import PageTitle from 'components/layouts/sections/header/page-title'
 
 class EventsPage extends React.Component {
-  getEvents(events, featured) {
-    const timeCutoff = moment()
-      .subtract(1, 'day')
-      .unix()
-    const results = []
-
-    const showEvent = event => {
-      let show = false
-      event.event.date_stamps.forEach(stamp => {
-        if (stamp.start_stamp > timeCutoff) {
-          show = true
-        }
-      })
-      return show
-    }
-
-    events.forEach(({ node }) => {
-      if (!showEvent(node) || node.event.featured !== featured) {
-        return
-      }
-      results.push(node)
-    })
-
-    const getEarliestDate = event => {
-      let earliest = false
-      event.event.date_stamps.forEach(date => {
-        if (
-          !earliest ||
-          (date.start_stamp > timeCutoff && date.start_stamp < earliest)
-        ) {
-          earliest = date.start_stamp
-        }
-      })
-      return earliest
-    }
-
-    results.sort((a, b) => {
-      return getEarliestDate(a) > getEarliestDate(b)
-    })
-
-    return results
-  }
-
   render() {
-    const featuredEvents = this.getEvents(
-      this.props.data.allCsumbPage.edges,
-      true
-    )
-    const events = this.getEvents(this.props.data.allCsumbPage.edges, false)
+    const events = this.props.data.allCsumbPage.edges
+    let featuredEvents = false
+    events.forEach(({ node }) => {
+      if (node.event.featured) {
+        featuredEvents = true
+      }
+    })
     return (
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
@@ -66,33 +24,37 @@ class EventsPage extends React.Component {
           <PageTitle>Campus events</PageTitle>
           <Flex flexWrap="wrap">
             <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
-              {featuredEvents && featuredEvents.length > 0 && (
+              {featuredEvents && (
                 <>
                   <h2>Featured Events</h2>
-                  {featuredEvents.map(event => (
-                    <PublicEvent
-                      key={event.id}
-                      event={event}
-                      showTime={true}
-                      showDate={true}
-                      showFeatured={true}
-                    />
+                  {events.map(({ node }) => (
+                    <React.Fragment key={node.id}>
+                      {node.event.featured && (
+                        <PublicEvent
+                          event={node}
+                          showTime={true}
+                          showDate={true}
+                          showFeatured={true}
+                        />
+                      )}
+                    </React.Fragment>
                   ))}
                 </>
               )}
               {events && (
                 <>
-                  {featuredEvents && featuredEvents.length > 0 && (
-                    <h2>Upcoming events</h2>
-                  )}
-                  {events.map(event => (
-                    <PublicEvent
-                      key={event.id}
-                      event={event}
-                      showTime={true}
-                      showDate={true}
-                      showFeatured={false}
-                    />
+                  {featuredEvents && <h2>Upcoming events</h2>}
+                  {events.map(({ node }) => (
+                    <React.Fragment key={node.id}>
+                      {!node.event.featured && (
+                        <PublicEvent
+                          event={node}
+                          showTime={true}
+                          showDate={true}
+                          showFeatured={false}
+                        />
+                      )}
+                    </React.Fragment>
                   ))}
                 </>
               )}
@@ -123,7 +85,7 @@ export const query = graphql`
     }
     allCsumbPage(
       filter: { event: { _passedEvent: { eq: false }, public: { eq: true } } }
-      sort: { fields: [event___featured, event___date_stamps] }
+      sort: { fields: [event____sortDate], order: ASC }
       limit: 25
     ) {
       edges {
