@@ -19,7 +19,7 @@ class BlockDocument extends React.Component {
   render() {
     const { document, name } = this.props
     return (
-      <Document href={document.url}>
+      <Document href={document.url.replace('/csumb.edu/', '/edit.csumb.edu/')}>
         <DocumentIcon icon={faFileDownload} />
         {name}
         <VisuallyHidden>Download document</VisuallyHidden>
