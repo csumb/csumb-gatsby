@@ -9,11 +9,14 @@ fs.readJson('./_web-content/_data/redirects.json', (err, redirects) => {
     return
   }
   Object.keys(redirects).forEach(source => {
-    const destination = redirects[source]
+    let destination = redirects[source]
     if (source != destination && source != 'schedule') {
+      if (destination.search(/http(s?):\/\//) == -1) {
+        destination = `/${destination}`
+      }
       firebase.hosting.redirects.push({
         source: `/${source}`,
-        destination: `/${destination}`,
+        destination: destination,
         type: 301,
       })
     }
