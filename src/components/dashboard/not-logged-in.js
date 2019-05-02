@@ -17,7 +17,9 @@ const LoginMessage = styled('p')`
 
 class DashboardNotLoggedIn extends React.Component {
   componentDidMount() {
-    window.location.href = loginUrl
+    setTimeout(() => {
+      window.location.href = loginUrl
+    }, 3000)
   }
 
   render() {
