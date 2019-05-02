@@ -20,6 +20,19 @@ class UserComponent extends React.Component {
         this.setState({
           user: user,
         })
+        if (
+          typeof window !== 'undefined' &&
+          typeof window.Rollbar !== 'undefined'
+        ) {
+          Rollbar.configure({
+            payload: {
+              person: {
+                id: user._username,
+                email: user.profile.email,
+              },
+            },
+          })
+        }
       })
       .catch(error => {
         this.setState({
