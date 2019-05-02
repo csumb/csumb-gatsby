@@ -10,6 +10,13 @@ const Document = styled('a')`
   margin: 1rem 0;
 `
 
+const DocumentIconWrapper = styled('span')`
+  display: inline-block;
+  max-width: 1rem;
+  font-size: 1.2rem;
+  margin-right: 0.8rem;
+`
+
 const DocumentIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
   max-width: 50px;
@@ -20,7 +27,9 @@ class BlockDocument extends React.Component {
     const { document, name } = this.props
     return (
       <Document href={document.url.replace('/csumb.edu/', '/edit.csumb.edu/')}>
-        <DocumentIcon icon={faFileDownload} />
+        <DocumentIconWrapper>
+          <DocumentIcon icon={faFileDownload} />
+        </DocumentIconWrapper>
         {name}
         <VisuallyHidden>Download document</VisuallyHidden>
       </Document>

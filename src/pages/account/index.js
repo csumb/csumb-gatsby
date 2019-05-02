@@ -87,6 +87,12 @@ class UserAccountForm extends React.Component {
             </Box>
           </Flex>
         </AccountGroup>
+
+        <AccountGroup legend="Employee or student number">
+          <p>Your employee or student number is:</p>
+          <AccountData>{user.profile.employeeNumber}</AccountData>
+          <p>This is used on some forms around campus.</p>
+        </AccountGroup>
         <AccountFormAlumni user={user} />
         <AccountGroup legend="Role">
           <p>
@@ -95,8 +101,8 @@ class UserAccountForm extends React.Component {
           </p>
           <UserAccountFormRole roles={user.profile.cmsRole} />
           <p>
-            <strong>Changing your role:</strong> Your role is automatically
-            determined based on your employment, applicantion, and enrollment.
+            <strong>Changing your role:</strong> Your role is based on your
+            employment, application, and enrollment records.
           </p>
         </AccountGroup>
         <AccountGroup legend="Name">
@@ -166,11 +172,6 @@ class UserAccountForm extends React.Component {
               </ButtonLink>
             </>
           )}
-        </AccountGroup>
-        <AccountGroup legend="Employee or student number">
-          <p>Your employee or student number is:</p>
-          <AccountData>{user.profile.employeeNumber}</AccountData>
-          <p>This is used on some forms around campus.</p>
         </AccountGroup>
       </>
     )

@@ -27,6 +27,10 @@ const FormsList = styled('div')`
     })}
 `
 
+const FormsListClear = styled('div')`
+  clear: both;
+`
+
 const UniversityPersonnelForm = ({ form }) => {
   if (!form.data.Attachments) {
     return null
@@ -44,14 +48,17 @@ const UniversityPersonnelForm = ({ form }) => {
 }
 
 const UniversityPersonnelFormList = ({ forms, fullWidth }) => (
-  <FormsList fullWidth={fullWidth}>
-    <h3>Related documents &amp; forms</h3>
-    <dl>
-      {forms.Documents.map(form => (
-        <UniversityPersonnelForm form={form} />
-      ))}
-    </dl>
-  </FormsList>
+  <>
+    <FormsList fullWidth={fullWidth}>
+      <h3>Related documents &amp; forms</h3>
+      <dl>
+        {forms.Documents.map(form => (
+          <UniversityPersonnelForm form={form} />
+        ))}
+      </dl>
+    </FormsList>
+    <FormsListClear />
+  </>
 )
 
 const PageListItem = styled('div')`
