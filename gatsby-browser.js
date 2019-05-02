@@ -24,7 +24,7 @@ class UserComponent extends React.Component {
           typeof window !== 'undefined' &&
           typeof window.Rollbar !== 'undefined'
         ) {
-          Rollbar.configure({
+          window.Rollbar.configure({
             payload: {
               person: {
                 id: user._username,
