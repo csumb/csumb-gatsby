@@ -55,9 +55,15 @@ class StatusPage extends React.Component {
             <p>
               Look like we're behind? Check{' '}
               <a href="https://www.traviscistatus.com/">
-                the status of our website build tool
+                the status of our website build tool.
               </a>
-              .
+              <br />
+              <a href="https://travis-ci.com/csumb/csumb-gatsby/builds#">
+                <img
+                  src="https://travis-ci.com/csumb/csumb-gatsby.svg?branch=master"
+                  alt="Travis build status"
+                />
+              </a>
             </p>
           </Well>
           <Well>
