@@ -11,9 +11,9 @@ Apps appear on the top of your Dashboard. These are all apps **assigned** to you
 
 Apps that do not integrate with campus systems, or were not set up to be visible to everyone, are under the **More apps** button.
 
-To reorder your apps, expand your apps using the arrow on the right, and click the **Edit order** button.
+To reorder your apps, expand your apps using the arrow on the right, and click the **Edit order** button. Apps that are towards the end of your list are hidden by default.
 
-If you own an app that you want to be moved from More apps to the main dashboard, [Submit an IT workorder](https://csumb.teamdynamix.com/TDClient/Requests/TicketRequests/NewForm?ID=e2K20GXGOlk_).
+If you use an app in the **More apps** section frequenlty, we suggest you bookmark it in your browser.
 
 ## Ottercard, print balance, and your account
 
