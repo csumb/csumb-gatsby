@@ -9,7 +9,8 @@ import {
 
 const CollapsibleIcon = styled('span')`
   display: inline-block;
-  width: 1rem;
+  max-width: 1rem;
+  font-size: 1.2rem;
   margin-right: 0.8rem;
 `
 
