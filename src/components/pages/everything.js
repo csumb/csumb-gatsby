@@ -68,8 +68,15 @@ const SubItemArrowElement = styled(FontAwesomeIcon)`
   float: right;
 `
 
+const SubItemArrowWrapper = styled('div')`
+  float: right;
+  width: 1rem;
+`
+
 const SubItemArrow = () => (
-  <SubItemArrowElement size="1x" icon={faChevronRight} />
+  <SubItemArrowWrapper>
+    <SubItemArrowElement size="lg" icon={faChevronRight} />
+  </SubItemArrowWrapper>
 )
 
 const HiddenButton = styled('button')`

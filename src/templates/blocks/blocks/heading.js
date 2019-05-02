@@ -7,9 +7,11 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
 
-const CollapsibleIcon = styled(FontAwesomeIcon)`
+const CollapsibleIcon = styled('span')`
+  display: inline-block;
+  max-width: 1rem;
+  font-size: 1.2rem;
   margin-right: 0.8rem;
-  font-size: 1rem;
 `
 
 const CollapsibleHeading = styled('button')`
@@ -52,10 +54,12 @@ class BlockHeading extends React.Component {
               this.handleToggle()
             }}
           >
-            <CollapsibleIcon
-              size="1x"
-              icon={isOpen ? faChevronDown : faChevronRight}
-            />
+            <CollapsibleIcon>
+              <FontAwesomeIcon
+                size="1x"
+                icon={isOpen ? faChevronDown : faChevronRight}
+              />
+            </CollapsibleIcon>
             <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>
           </CollapsibleHeading>
         ) : (

@@ -55,6 +55,18 @@ const gatsbyConfig = {
     ],
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Cal State Monterey Bay',
+        short_name: 'CSUMB',
+        start_url: '/',
+        background_color: '#fff',
+        theme_color: '#fff',
+        display: 'standalone',
+        icon: 'src/assets/images/icon.png',
+      },
+    },
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-csv',
@@ -250,18 +262,6 @@ const gatsbyConfig = {
       options: {
         id: 1234615,
         sv: 6,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'Cal State Monterey Bay',
-        short_name: 'CSUMB',
-        start_url: '/',
-        background_color: '#fff',
-        theme_color: '#fff',
-        display: 'standalone',
-        icon: 'src/assets/images/icon.png',
       },
     },
   ],

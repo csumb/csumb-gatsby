@@ -2,8 +2,6 @@ import React from 'react'
 import url from 'url'
 import Loading from 'components/common/loading'
 
-const token = 'b58b207217dbab30bcb62aaf3dcb8056921960ceee182412ebaafced5e255898'
-
 class ContentfulPreviewHomepageHeroImage extends React.Component {
   state = {
     hero: false,

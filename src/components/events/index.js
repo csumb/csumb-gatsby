@@ -161,7 +161,10 @@ const EventFeedItem = ({ title, link, times, dates, image, description }) => (
     <Box width={[1, 1 / 4]}>
       {image && (
         <Link to={`/${link}`}>
-          <img src={image.replace('csumb.edu', 'edit.csumb.edu')} alt={title} />
+          <img
+            src={image.replace('/csumb.edu/', '/edit.csumb.edu/')}
+            alt={title}
+          />
         </Link>
       )}
     </Box>
