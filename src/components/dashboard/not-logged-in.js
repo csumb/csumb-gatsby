@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import Loading from 'components/common/loading'
 
 const loginUrl =
   'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7'
@@ -26,7 +27,10 @@ class DashboardNotLoggedIn extends React.Component {
     return (
       <>
         <NotLoggedIn>
-          <p>Logging you in...</p>
+          <p>
+            <Loading />
+            Logging you in...
+          </p>
         </NotLoggedIn>
         <LoginMessage style={{ fontSize: '0.8rem;' }}>
           Not working? <a href={loginUrl}>Login here</a>
