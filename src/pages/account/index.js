@@ -95,8 +95,8 @@ class UserAccountForm extends React.Component {
           </p>
           <UserAccountFormRole roles={user.profile.cmsRole} />
           <p>
-            <strong>Changing your role:</strong> Your role is automatically
-            determined based on your employment, applicantion, and enrollment.
+            <strong>Changing your role:</strong> Your role is based on your
+            employment, application, and enrollment records.
           </p>
         </AccountGroup>
         <AccountGroup legend="Name">
