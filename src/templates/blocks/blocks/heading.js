@@ -55,7 +55,7 @@ class BlockHeading extends React.Component {
           >
             <CollapsibleIcon>
               <FontAwesomeIcon
-                size="lg"
+                size="1x"
                 icon={isOpen ? faChevronDown : faChevronRight}
               />
             </CollapsibleIcon>
