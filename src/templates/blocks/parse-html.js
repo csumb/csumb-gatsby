@@ -4,10 +4,21 @@ import domToReact from 'html-react-parser/lib/dom-to-react'
 
 const strippedTags = ['span', 'div', 'font']
 
+const cleanHref = href => {
+  return href.replace(
+    'https://csumb.edu/sites/default/files/',
+    'https://edit.csumb.edu/sites/default/files/'
+  )
+}
+
 const parserOptions = {
   replace: ({ type, name, attribs, children }) => {
     if (type === 'tag' && name === 'a') {
-      return <a href={attribs.href}>{domToReact(children, parserOptions)}</a>
+      return (
+        <a href={cleanHref(attribs.href)}>
+          {domToReact(children, parserOptions)}
+        </a>
+      )
     }
 
     if (type === 'tag' && name === 'b') {
