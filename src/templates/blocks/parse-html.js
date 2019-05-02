@@ -5,6 +5,9 @@ import domToReact from 'html-react-parser/lib/dom-to-react'
 const strippedTags = ['span', 'div', 'font']
 
 const cleanHref = href => {
+  if (!href) {
+    return href
+  }
   return href.replace(
     'https://csumb.edu/sites/default/files/',
     'https://edit.csumb.edu/sites/default/files/'
