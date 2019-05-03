@@ -14,7 +14,7 @@ class ContentfulPreviewHomepageHeroImage extends React.Component {
     if (typeof window !== 'undefined') {
       const preview = url.parse(window.location.href, true)
       fetch(
-        `http://cdn.contentful.com/spaces/xh3694erm485/assets/${
+        `https://cdn.contentful.com/spaces/xh3694erm485/assets/${
           preview.query.image
         }?access_token=7e126891adfcb0b446c52306b099e3b645c94c5a97ff5c11b1ca0d7d6e8446a8`
       )
