@@ -358,7 +358,7 @@ const MeetingItem = props => {
             <MeetingItemDate>
               {startDate.format('MMMM D YYYY')}
               {props.MEETING_DATE_END !== props.MEETING_DATE_START && (
-                <>to {endDate.format('MMMM D YYYY')}</>
+                <> to {endDate.format('MMMM D YYYY')}</>
               )}
             </MeetingItemDate>
           )}
