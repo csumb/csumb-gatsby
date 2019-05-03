@@ -13,6 +13,7 @@ import Breadcrumbs from 'components/layouts/sections/header/breadcrumbs'
 import BlockHero from './blocks/blocks/hero-image'
 import SiteFooter from 'components/layouts/sections/footer/site'
 import PageEditorTools from 'components/user-tools/editors'
+import CatalogIndicator from 'components/pages/catalog-indicator'
 import {
   UniversityPersonnelFormList,
   UniversityPersonnelPages,
@@ -36,9 +37,12 @@ class PageTemplate extends React.Component {
       upPages,
       upPageID,
       drupalNid,
+      embedTargetSite,
     } = this.props.pageContext
 
     const showNavigation = pageNavigation && pageNavigation.length
+    const showCatalogIndicator =
+      embedTargetSite && embedTargetSite === 'catalog'
 
     return (
       <Layout
@@ -61,6 +65,7 @@ class PageTemplate extends React.Component {
               fullWidth={pageContent.search('airtable-related-documents') > -1}
             />
           )}
+          {showCatalogIndicator && <CatalogIndicator />}
         </Container>
         {event && <EventPage event={event} />}
 

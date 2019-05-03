@@ -68,6 +68,7 @@ module.exports = (graphql, actions) => {
                   site
                   pageContent
                   drupalNid
+                  embedTargetSite
                   topHero {
                     headline
                     text
@@ -228,6 +229,7 @@ module.exports = (graphql, actions) => {
                 layout: node.layout,
                 navigation: sites[node.site].navigation,
                 pageContent: node.pageContent,
+                embedTargetSite: node.embedTargetSite,
               },
             }
             if (
