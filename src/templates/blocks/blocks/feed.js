@@ -15,7 +15,8 @@ const FeedItemTeaser = styled('p')``
 
 class BlockFeed extends React.Component {
   render() {
-    const { limit, title, displayShort } = this.props
+    const { title, displayShort } = this.props
+    const limit = this.props.limit ? this.props.limit : 40
     let { items } = this.props
     items.splice(limit, items.length)
     return (
