@@ -127,8 +127,8 @@ class BlockPerson extends React.Component {
                   {person._publicDirectory && person._publicDirectory.photo && (
                     <PersonPhoto
                       src={person._publicDirectory.photo.replace(
-                        'csumb.edu',
-                        'edit.csumb.edu'
+                        '/csumb.edu/',
+                        '/edit.csumb.edu/'
                       )}
                       alt=""
                     />
