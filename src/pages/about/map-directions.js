@@ -1,8 +1,7 @@
 import React from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/common/container'
-//import { Box, Flex } from '@rebass/grid/emotion'
+import Blocks from 'templates/blocks'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import { graphql } from 'gatsby'
@@ -13,6 +12,7 @@ const MapMap = styled(Map)`
   position: relative !important;
   height: 80vh !important;
   min-height: 300px;
+  margin-bottom: 1.5rem;
 `
 
 class MapPage extends React.Component {
@@ -37,7 +37,7 @@ class MapPage extends React.Component {
   }
 
   render() {
-    const { google } = this.props
+    const { google, data } = this.props
 
     return (
       <Layout>
@@ -51,13 +51,9 @@ class MapPage extends React.Component {
           }}
           onReady={this.onReady.bind(this)}
         />
-        <Container topPadding>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: this.props.data.allMarkdownRemark.edges[0].node.html,
-            }}
-          />
-        </Container>
+        {data.allCsumbPage && (
+          <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+        )}
       </Layout>
     )
   }
@@ -85,10 +81,11 @@ export const query = graphql`
         }
       }
     }
-    allMarkdownRemark(filter: { frontmatter: { name: { eq: "map" } } }) {
+    allCsumbPage(filter: { pagePath: { eq: "about/map-directions" } }) {
       edges {
         node {
-          html
+          pageContent
+          layout
         }
       }
     }
