@@ -25,8 +25,11 @@ const DocumentIcon = styled(FontAwesomeIcon)`
 class BlockDocument extends React.Component {
   render() {
     const { document, name } = this.props
+    const url = document.key
+      ? `https://s3.amazonaws.com/csumb-uploads/${document.key}`
+      : document.url.replace('/csumb.edu/', '/edit.csumb.edu/')
     return (
-      <Document href={document.url.replace('/csumb.edu/', '/edit.csumb.edu/')}>
+      <Document href={url}>
         <DocumentIconWrapper>
           <DocumentIcon icon={faFileDownload} />
         </DocumentIconWrapper>
