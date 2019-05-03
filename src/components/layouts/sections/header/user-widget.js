@@ -149,7 +149,7 @@ class UserDropdown extends React.Component {
           <UserDropdownMenuLink component="a" href="/account/emergency">
             Emergency alerts
           </UserDropdownMenuLink>
-          <UserDropdownMenuLinkButton onClick={this.handleLogout.bind(this)}>
+          <UserDropdownMenuLinkButton onSelect={this.handleLogout.bind(this)}>
             Log out
           </UserDropdownMenuLinkButton>
         </UserDropdownMenuList>
