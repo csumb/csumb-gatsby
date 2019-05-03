@@ -23,7 +23,7 @@ class StatusPage extends React.Component {
           updown: status,
         })
       })
-    fetch(`/_last-build.json?t=${moment.unix()}`)
+    fetch(`/_last-build.json?t=${moment().unix()}`)
       .then(result => {
         return result.json()
       })
