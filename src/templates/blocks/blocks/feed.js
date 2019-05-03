@@ -2,8 +2,8 @@ import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/utilities/link-inspect'
 import { Flex, Box } from '@rebass/grid/emotion'
+import { Button } from 'components/common/button'
 
-const FeedItem = styled('li')``
 const FeedList = styled('ul')`
   list-style-type: none;
   margin: 0;
@@ -14,46 +14,69 @@ const FeedItemHeader = styled('h3')``
 const FeedItemTeaser = styled('p')``
 
 class BlockFeed extends React.Component {
+  state = {
+    showAll: false,
+  }
+
   render() {
-    const { title, displayShort } = this.props
-    const limit = this.props.limit ? this.props.limit : 40
+    const { title, displayShort, showMore } = this.props
+    const { showAll } = this.state
+    const limit = this.props.limit ? this.props.limit : 5
     let { items } = this.props
-    items.splice(limit, items.length)
     return (
       <>
         {title && <h3>{title}</h3>}
         <FeedList>
-          {items.map(item => (
-            <FeedItem>
-              {displayShort ? (
-                <LinkInspect to={item.page_link}>{item.title}</LinkInspect>
-              ) : (
-                <Flex flexWrap="wrap">
-                  <Box width={[1, 3 / 4]} pr={[0, 3]}>
-                    <FeedItemHeader>
-                      <LinkInspect
-                        to={item.page_link}
-                        dangerouslySetInnerHTML={{ __html: item.title }}
-                      />
-                    </FeedItemHeader>
+          {items.map((item, key) => (
+            <React.Fragment key={key}>
+              {(showAll || key <= limit) && (
+                <li>
+                  {displayShort ? (
+                    <LinkInspect to={item.page_link}>{item.title}</LinkInspect>
+                  ) : (
+                    <Flex flexWrap="wrap">
+                      <Box width={[1, 3 / 4]} pr={[0, 3]}>
+                        <FeedItemHeader>
+                          <LinkInspect
+                            to={item.page_link}
+                            dangerouslySetInnerHTML={{ __html: item.title }}
+                          />
+                        </FeedItemHeader>
 
-                    <FeedItemTeaser
-                      dangerouslySetInnerHTML={{ __html: item.teaser }}
-                    />
-                  </Box>
-                  <Box width={[1, 1 / 4]}>
-                    {item.image && (
-                      <img
-                        src={item.image.replace('csumb.edu', 'edit.csumb.edu')}
-                        alt=""
-                      />
-                    )}
-                  </Box>
-                </Flex>
+                        <FeedItemTeaser
+                          dangerouslySetInnerHTML={{ __html: item.teaser }}
+                        />
+                      </Box>
+                      <Box width={[1, 1 / 4]}>
+                        {item.image && (
+                          <img
+                            src={item.image.replace(
+                              'csumb.edu',
+                              'edit.csumb.edu'
+                            )}
+                            alt=""
+                          />
+                        )}
+                      </Box>
+                    </Flex>
+                  )}
+                </li>
               )}
-            </FeedItem>
+            </React.Fragment>
           ))}
         </FeedList>
+        {showMore && (
+          <Button
+            onClick={event => {
+              event.preventDefault()
+              this.setState({
+                showAll: !showAll,
+              })
+            }}
+          >
+            {showAll ? <>Hide items</> : <>Show more</>}
+          </Button>
+        )}
       </>
     )
   }
