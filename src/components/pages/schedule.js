@@ -328,6 +328,10 @@ const MeetingList = styled('ul')`
   font-size: 80%;
 `
 
+const MeetingItemDate = styled('h4')`
+  margin: 0;
+`
+
 const MeetingItem = props => {
   let meetingDays = []
   weekDays.forEach(day => {
@@ -338,12 +342,26 @@ const MeetingItem = props => {
 
   const start = moment(props.MEETING_TIME_START)
   const end = moment(props.MEETING_TIME_END)
+  let startDate = false
+  let endDate = false
+  if (props._separateDates) {
+    startDate = moment(props.MEETING_DATE_START)
+    endDate = moment(props.MEETING_DATE_END)
+  }
   return (
     <li>
       {parseInt(props.MEETING_BLDG) > 990 ? (
         <em>Arranged</em>
       ) : (
         <>
+          {props.showSeparateDates && props._separateDates && (
+            <MeetingItemDate>
+              {startDate.format('MMMM D YYYY')}
+              {props.MEETING_DATE_END !== props.MEETING_DATE_START && (
+                <>to {endDate.format('MMMM D YYYY')}</>
+              )}
+            </MeetingItemDate>
+          )}
           {meetingDays.length && meetingDays.join(', ')} {start.format('h:mma')}{' '}
           to {end.format('h:mma')}
           {props.showLocation && props._building && (
@@ -548,7 +566,12 @@ const CoursePage = ({ course, term, requirements }) => {
           <CourseSection legend="Days, times, and locations">
             <CourseMeetingList>
               {course._meetingPattern.map((meeting, key) => (
-                <MeetingItem key={key} {...meeting} showLocation />
+                <MeetingItem
+                  key={key}
+                  {...meeting}
+                  showLocation
+                  showSeparateDates
+                />
               ))}
             </CourseMeetingList>
           </CourseSection>
