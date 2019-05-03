@@ -50,7 +50,7 @@ class StatusPage extends React.Component {
               website information after this time is not published yet.
             </p>
             <p>
-              The website is built <strong>every 15 minutes</strong>.
+              The website is built <strong>every hour</strong>.
             </p>
             <p>
               Look like we're behind? Check{' '}
