@@ -30,6 +30,7 @@ class BlockImage extends React.Component {
       pullRight,
       credit,
       inColumn,
+      url,
     } = this.props
     if (!image) {
       return null
@@ -41,14 +42,28 @@ class BlockImage extends React.Component {
           .replace('/csumb.edu/', '/edit.csumb.edu/')
     return (
       <ImageContainer pullRight={pullRight && !inColumn}>
-        <img
-          src={imageSource}
-          alt={description}
-          style={{
-            height: height && parseInt(height) > 10 ? `${height}px` : 'auto',
-            width: 'auto',
-          }}
-        />
+        {url ? (
+          <a href={url}>
+            <img
+              src={imageSource}
+              alt={description}
+              style={{
+                height:
+                  height && parseInt(height) > 10 ? `${height}px` : 'auto',
+                width: 'auto',
+              }}
+            />
+          </a>
+        ) : (
+          <img
+            src={imageSource}
+            alt={description}
+            style={{
+              height: height && parseInt(height) > 10 ? `${height}px` : 'auto',
+              width: 'auto',
+            }}
+          />
+        )}
         {credit && (
           <Caption>
             <strong>Photo by:</strong> {credit}
