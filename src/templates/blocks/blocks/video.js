@@ -29,11 +29,18 @@ class BlockVideo extends React.Component {
     const { provider } = this.props
     return (
       <VideoWrapper>
-        <VideoIframe
-          src={`https://www.youtube.com/embed/${provider.id}`}
-          title="Video"
-          allowFullScreen
-        />
+        {provider.provider === 'vimeo' ? (
+          <VideoIframe
+            src={`//player.vimeo.com/video/${provider.id}?title=0&byline=0`}
+            title="Video"
+          />
+        ) : (
+          <VideoIframe
+            src={`https://www.youtube.com/embed/${provider.id}`}
+            title="Video"
+            allowFullScreen
+          />
+        )}
       </VideoWrapper>
     )
   }
