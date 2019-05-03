@@ -80,7 +80,6 @@ const UserDashboardLink = styled(Link)`
 
 class UserDropdown extends React.Component {
   handleLogout(event) {
-    event.preventDefault()
     cookies.remove('csumb-sites')
     fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
