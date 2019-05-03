@@ -88,7 +88,7 @@ const SiteFooter = ({ site }) => {
                 <div>
                   <dt>Staff</dt>
                   <dd>
-                    <a href={site.staffPage}>View all staff</a>
+                    <a href={site.staffPage}>View staff</a>
                   </dd>
                 </div>
               )}

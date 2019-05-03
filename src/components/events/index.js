@@ -61,7 +61,7 @@ const Event = ({ event, linkToEvent }) => (
           {event.image && (
             <Box width={[1, 4 / 12]} pr={[0, 4]}>
               <img
-                src={event.image.replace('csumb.edu', 'edit.csumb.edu')}
+                src={event.image.replace('/csumb.edu/', '/edit.csumb.edu/')}
                 alt=""
               />
             </Box>
@@ -219,7 +219,7 @@ const PublicEvent = ({ event, showDate, showTime, showFeatured }) => (
         <Box width={[0, 3 / 12, 3 / 12]} pr={[0, 4, 4]}>
           {event.event.image && (
             <img
-              src={event.event.image.replace('csumb.edu', 'edit.csumb.edu')}
+              src={event.event.image.replace('/csumb.edu/', '/edit.csumb.edu/')}
               alt=""
             />
           )}

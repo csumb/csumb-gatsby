@@ -98,11 +98,16 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       navigation: content.navigation ? content.navigation : [],
       feedbackEmail: content.feedback_email ? content.feedback_email : '',
       pageContent: JSON.stringify(content.pageContent),
+      embedTargetSite:
+        typeof content.embed_target_site !== 'undefined'
+          ? content.embed_target_site
+          : '',
       internal: {
         type: `CsumbPage`,
         contentDigest: digest,
       },
     }
+
     if (content.event) {
       content.event._passedEvent = true
       content.event._sortDate = 0

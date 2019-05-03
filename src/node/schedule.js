@@ -1,6 +1,8 @@
 const path = require(`path`)
 const report = require(`gatsby-cli/lib/reporter`)
 
+const cleanDate = date => date.replace('00:00:00.0', '').trim()
+
 module.exports = (graphql, actions) => {
   const { createPage } = actions
   const scheduleFrontpageTemplate = path.resolve(
@@ -92,7 +94,9 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-            allMeetingPatCsv {
+            allMeetingPatCsv(
+              sort: { fields: [MEETING_DATE_START, MEETING_TIME_START] }
+            ) {
               edges {
                 node {
                   CRN
@@ -132,6 +136,8 @@ module.exports = (graphql, actions) => {
                   TERM
                   DESCR
                   SESSION_CODE
+                  TERM_BEGIN_DT
+                  TERM_END_DT
                 }
               }
             }
@@ -153,6 +159,16 @@ module.exports = (graphql, actions) => {
         let allMeetingPatterns = {}
         let allBuildings = {}
         let allDirectory = {}
+        let termDates = {}
+
+        result.data.allTermCsv.edges.forEach(({ node }) => {
+          if (typeof termDates[node.TERM] === 'undefined') {
+            termDates[node.TERM] = {
+              start: cleanDate(node.TERM_BEGIN_DT),
+              end: cleanDate(node.TERM_END_DT),
+            }
+          }
+        })
 
         result.data.allCsumbDirectory.edges.forEach(person => {
           const login = person.node.user.login.split('@').shift()
@@ -179,6 +195,17 @@ module.exports = (graphql, actions) => {
             edge.node._building = allBuildings[buildingNumber]
           }
           if (edge.node.MEETING_TIME_START) {
+            if (
+              cleanDate(edge.node.MEETING_DATE_START) !==
+                termDates[edge.node.STRM].start ||
+              cleanDate(edge.node.MEETING_DATE_END) !==
+                termDates[edge.node.STRM].end
+            ) {
+              edge.node._separateDates = {
+                start: cleanDate(edge.node.MEETING_DATE_START),
+                end: cleanDate(edge.node.MEETING_DATE_END),
+              }
+            }
             allMeetingPatterns[edge.node.STRM][edge.node.CRN].push(edge.node)
           }
         })
