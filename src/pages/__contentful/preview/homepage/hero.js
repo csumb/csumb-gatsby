@@ -2,7 +2,6 @@ import React from 'react'
 import url from 'url'
 import Loading from 'components/common/loading'
 import Layout from 'components/layouts/default'
-import Container from 'components/common/container'
 
 import { HomepageHero } from 'components/pages/homepage'
 
