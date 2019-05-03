@@ -103,8 +103,8 @@ const PersonTemplate = ({ pageContext }) => {
             {_publicProfile && _publicProfile.photo && (
               <img
                 src={_publicProfile.photo.replace(
-                  'csumb.edu',
-                  'edit.csumb.edu'
+                  '/csumb.edu/',
+                  '/edit.csumb.edu/'
                 )}
                 alt=""
               />
