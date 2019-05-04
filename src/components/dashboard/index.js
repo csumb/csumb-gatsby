@@ -5,6 +5,7 @@ import Loading from 'components/common/loading'
 import { Flex, Box } from '@rebass/grid/emotion'
 import NProgress from 'nprogress'
 
+import { PlaceholderCard } from './placeholders'
 import '@reach/dialog/styles.css'
 
 import DashboardIntro from './intro'
@@ -162,38 +163,49 @@ class DashboardContent extends React.Component {
       )
     }
     return (
-      <>
-        {ready ? (
-          <>
-            <Flex flexWrap="wrap">
-              <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
-                <DashboardEventWrapper>
-                  <h2>Events</h2>
-                  <DashboardEvents
-                    events={events}
-                    archive={id => {
-                      this.archive(id, session)
-                    }}
-                  />
-                </DashboardEventWrapper>
-              </Box>
-              <Box width={[1, 1, 1 / 2, 1 / 2]}>
-                <DashboardMessageWrapper>
-                  <h2>Messages</h2>
-                  <DashboardMessages
-                    messages={messages}
-                    archive={id => {
-                      this.archive(id, session)
-                    }}
-                  />
-                </DashboardMessageWrapper>
-              </Box>
-            </Flex>
-          </>
-        ) : (
-          <Loading>Loading messages &amp; events</Loading>
-        )}
-      </>
+      <Flex flexWrap="wrap">
+        <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
+          <DashboardEventWrapper>
+            <h2>Events</h2>
+
+            {ready ? (
+              <DashboardEvents
+                events={events}
+                archive={id => {
+                  this.archive(id, session)
+                }}
+              />
+            ) : (
+              <>
+                <PlaceholderCard />
+                <PlaceholderCard />
+                <PlaceholderCard />
+                <PlaceholderCard />
+              </>
+            )}
+          </DashboardEventWrapper>
+        </Box>
+        <Box width={[1, 1, 1 / 2, 1 / 2]}>
+          <DashboardMessageWrapper>
+            <h2>Messages</h2>
+            {ready ? (
+              <DashboardMessages
+                messages={messages}
+                archive={id => {
+                  this.archive(id, session)
+                }}
+              />
+            ) : (
+              <>
+                <PlaceholderCard />
+                <PlaceholderCard />
+                <PlaceholderCard />
+                <PlaceholderCard />
+              </>
+            )}
+          </DashboardMessageWrapper>
+        </Box>
+      </Flex>
     )
   }
 }
