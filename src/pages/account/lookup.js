@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
+import { Flex, Box } from '@rebass/grid'
 import { InputText, InputDate, Submit } from 'components/common/forms'
 import { LeadParagraph } from 'components/common/type'
 import Well from 'components/common/well'
@@ -10,11 +11,18 @@ import Link from 'gatsby-link'
 import Loading from 'components/common/loading'
 import { AlertDanger } from 'components/common/alert'
 
-const Username = styled('code')`
+const Username = styled('span')`
   font-weight: bold;
   font-size: 1.4rem;
   display: inline-block;
-  margin-left: 1rem;
+`
+
+const UsernameAlert = styled(AlertDanger)`
+  margin-top: 0;
+`
+
+const SubmitFlex = styled(Flex)`
+  margin-top: 1.5rem;
 `
 
 class LookupForm extends React.Component {
@@ -83,16 +91,28 @@ class LookupForm extends React.Component {
           label="Date of birth"
           onChange={this.handleChangeDob.bind(this)}
         />
-        <Submit value="Lookup username" />
-        {isLoading && <Loading>Looking up username</Loading>}
-        {user && user.id && (
-          <LeadParagraph>
-            Your username is: <Username>{user.id}</Username>
-          </LeadParagraph>
-        )}
-        {user && user.error && (
-          <AlertDanger>We could not find your username.</AlertDanger>
-        )}
+        <SubmitFlex flexWrap="wrap">
+          <Box width={[1, 1 / 3]} pr={[0, 2]}>
+            <Submit value="Lookup username" nomargin />
+          </Box>
+          <Box width={[1, 2 / 3]}>
+            {isLoading && <Loading>Looking up username</Loading>}
+            {user && user.id && (
+              <LeadParagraph>
+                Your username is: <Username>{user.id}</Username>
+              </LeadParagraph>
+            )}
+            {user && !user.id && (
+              <>
+                <UsernameAlert>We could not find your username.</UsernameAlert>
+                <p>
+                  <strong>Need help?</strong> Give us a call at 831-582-4357
+                  (HELP)
+                </p>
+              </>
+            )}
+          </Box>
+        </SubmitFlex>
       </form>
     )
   }
