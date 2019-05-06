@@ -128,7 +128,7 @@ class DirectoryDepartmentPage extends Component {
     }
 
     return (
-      <Layout>
+      <Layout pageTitle="Directory">
         <SiteHeader path="/directory">Directory</SiteHeader>
         <DirectoryNavigation />
         <Container>

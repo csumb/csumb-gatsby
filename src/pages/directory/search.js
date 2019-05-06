@@ -262,7 +262,7 @@ class DirectorySearchPage extends Component {
       return (buildings[building.node.code] = building.node.buildingName)
     })
     return (
-      <Layout>
+      <Layout pageTitle="Directory">
         <SiteHeader path="/directory">Directory</SiteHeader>
         <DirectoryNavigation />
         <Container topPadding>

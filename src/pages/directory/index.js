@@ -11,7 +11,7 @@ import phoneFormatter from 'phone-formatter'
 import { DirectoryNavigation } from 'components/pages/directory'
 
 const DirectoryPage = ({ data }) => (
-  <Layout>
+  <Layout pageTitle="Directory">
     <SiteHeader path="/directory">Directory</SiteHeader>
     <DirectoryNavigation />
     <Container topPadding>
