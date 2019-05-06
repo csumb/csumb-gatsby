@@ -211,7 +211,6 @@ const DashboardPlaceholderApp = styled('span')`
   display: inline-block;
   width: 80px;
   margin-right: 1rem;
-  background: ${colors.primary.light};
 `
 
 const DashboardAppsPlaceholder = ({ mobile }) => {
@@ -221,11 +220,6 @@ const DashboardAppsPlaceholder = ({ mobile }) => {
   return (
     <DashboardAppsWrapper>
       <Container>
-        <DashboardPlaceholderApp>&nbsp;</DashboardPlaceholderApp>
-        <DashboardPlaceholderApp>&nbsp;</DashboardPlaceholderApp>
-        <DashboardPlaceholderApp>&nbsp;</DashboardPlaceholderApp>
-        <DashboardPlaceholderApp>&nbsp;</DashboardPlaceholderApp>
-        <DashboardPlaceholderApp>&nbsp;</DashboardPlaceholderApp>
         <DashboardPlaceholderApp>&nbsp;</DashboardPlaceholderApp>
       </Container>
     </DashboardAppsWrapper>
