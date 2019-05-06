@@ -47,7 +47,7 @@ class DirectoryPage extends Component {
   render() {
     const { buildings } = this.state
     return (
-      <Layout>
+      <Layout pageTitle="Buildings">
         <SiteHeader path="/directory">Directory</SiteHeader>
         <DirectoryNavigation />
         <Container>
