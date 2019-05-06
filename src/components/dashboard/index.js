@@ -1,7 +1,6 @@
 import React from 'react'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
-import Loading from 'components/common/loading'
 import { Flex, Box } from '@rebass/grid/emotion'
 import NProgress from 'nprogress'
 
