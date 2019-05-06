@@ -6,7 +6,6 @@ import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import { graphql } from 'gatsby'
 import { colors } from 'style/theme'
-import Link from 'gatsby-link'
 
 const MapMap = styled(Map)`
   width: 100%;
@@ -14,11 +13,6 @@ const MapMap = styled(Map)`
   height: 80vh !important;
   min-height: 300px;
   margin-bottom: 1.5rem;
-`
-
-const BuildingLink = styled(Link)`
-  font-size: 1rem;
-  font-weight: bold;
 `
 
 class MapPage extends React.Component {
