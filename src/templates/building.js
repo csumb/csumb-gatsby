@@ -8,6 +8,7 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import { ButtonLink } from 'components/common/button'
 import Link from 'gatsby-link'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
+import ReturnLink from 'components/common/return-link'
 import { DirectoryNavigation } from 'components/pages/directory'
 
 const BuildingMap = styled(Map)`
@@ -26,9 +27,9 @@ class BuildingTemplate extends React.Component {
         <DirectoryNavigation />
         <Container>
           <PageTitle>{buildingName}</PageTitle>
-          <p>
-            <Link to="/directory/buildings">← List of all buildings</Link>
-          </p>
+          <ReturnLink to="/directory/buildings">
+            List of all buildings
+          </ReturnLink>
           <Flex flexWrap="wrap">
             <Box width={[1, 2 / 3]} pr={[0, 4]} style={{ height: '500px' }}>
               <BuildingMap
