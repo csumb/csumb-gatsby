@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import color from 'color'
@@ -58,7 +58,7 @@ const HeroText = ({ headline, text, buttonUrl, buttonText }) => (
   </>
 )
 
-class BlockHeroImage extends React.Component {
+class BlockHeroImage extends Component {
   state = {
     isMobile: false,
     isReady: false,

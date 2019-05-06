@@ -1,7 +1,3 @@
-/**
- * Use this template if you just need to start with a "regular" page
- * that imports the site navigation from a specific site with GraphQL.
- */
 import React from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'

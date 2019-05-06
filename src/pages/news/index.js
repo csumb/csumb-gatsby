@@ -3,7 +3,6 @@ import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
 import { graphql } from 'gatsby'
-//import { NewsList, NewsListItem } from 'components/pages/news/list'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import Blocks from 'templates/blocks'
 

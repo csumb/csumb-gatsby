@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import styled from '@emotion/styled'
@@ -98,7 +98,7 @@ const ShortPersonListing = ({ firstName, lastName, email, _publicProfile }) => {
   )
 }
 
-class DirectoryForm extends React.Component {
+class DirectoryForm extends Component {
   state = {
     search: false,
     query: false,

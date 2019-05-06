@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
 import PageTitle from 'components/layouts/sections/header/page-title'
@@ -9,7 +9,7 @@ import { AlertFyi } from 'components/common/alert'
 import { UserContext } from 'components/contexts/user'
 import { AccountSidebar, AccountTitle } from 'components/pages/account'
 
-class LabsPage extends React.Component {
+class LabsPage extends Component {
   render() {
     const { labs, customerId } = this.props.data.site.siteMetadata.labs
     return (

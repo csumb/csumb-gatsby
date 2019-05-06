@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { css } from 'emotion'
 import Brand from './brand'
 import Container from 'components/common/container'
@@ -21,7 +21,7 @@ const HeaderWrapper = styled('header')`
   })}
 `
 
-class Header extends React.Component {
+class Header extends Component {
   state = {
     isMobile: false,
   }

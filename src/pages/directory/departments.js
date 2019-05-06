@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import PageTitle from 'components/layouts/sections/header/page-title'
@@ -49,7 +49,7 @@ const DepartmentListing = ({ department }) => (
   </DepartmentListingItem>
 )
 
-class DirectoryDepartmentSearchForm extends React.Component {
+class DirectoryDepartmentSearchForm extends Component {
   state = {
     query: false,
     results: [],
@@ -112,7 +112,7 @@ class DirectoryDepartmentSearchForm extends React.Component {
   }
 }
 
-class DirectoryDepartmentPage extends React.Component {
+class DirectoryDepartmentPage extends Component {
   state = {
     filter: false,
   }

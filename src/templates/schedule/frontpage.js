@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
@@ -11,7 +11,7 @@ import {
   GEList,
 } from 'components/pages/schedule'
 
-class ScheduleFront extends React.Component {
+class ScheduleFront extends Component {
   render() {
     const { term, termSubjects, allGe, allTerms } = this.props.pageContext
     return (

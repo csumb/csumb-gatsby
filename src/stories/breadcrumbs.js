@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import Breadcrumbs from 'components/layouts/sections/header/breadcrumbs'
 import typography from 'style/typography'

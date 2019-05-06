@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import Brand from 'components/layouts/sections/header/brand'
 import Applicant from 'components/layouts/sections/header/applicant'

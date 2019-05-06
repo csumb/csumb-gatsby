@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/utilities/link-inspect'
 import parseHtml from '../parse-html'
@@ -21,7 +21,7 @@ const QuoteIcon = styled('img')`
   max-width: 50px;
 `
 
-class BlockQuote extends React.Component {
+class BlockQuote extends Component {
   render() {
     const { quote, source, url } = this.props
     return (

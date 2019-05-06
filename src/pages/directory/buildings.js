@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import PageTitle from 'components/layouts/sections/header/page-title'
@@ -14,7 +14,7 @@ const BuildingList = styled('ul')`
   list-style-type: none;
 `
 
-class DirectoryPage extends React.Component {
+class DirectoryPage extends Component {
   state = {
     search: false,
     buildings: false,

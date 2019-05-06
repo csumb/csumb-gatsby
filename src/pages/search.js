@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import Link from 'gatsby-link'
 import { css } from 'emotion'
@@ -50,7 +50,7 @@ const ListResults = ({ results }) => {
     </>
   )
 }
-class SearchPage extends React.Component {
+class SearchPage extends Component {
   state = {
     search: false,
     query: '',

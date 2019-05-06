@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import bp from 'style/breakpoints'
@@ -73,7 +73,7 @@ const UniversityPersonnelPagesButton = styled(LinkyButton)`
   width: 100%;
 `
 
-class UniversityPersonnelPages extends React.Component {
+class UniversityPersonnelPages extends Component {
   state = {
     expanded: [],
   }

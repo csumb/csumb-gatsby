@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
@@ -10,7 +10,7 @@ import Lightbox from 'react-images'
 import Link from 'gatsby-link'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 
-class GraduateTemplate extends React.Component {
+class GraduateTemplate extends Component {
   state = {
     currentImage: 0,
     lightboxIsOpen: false,

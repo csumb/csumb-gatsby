@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import VisuallyHidden from 'components/utilities/visually-hidden'
 import { Button } from 'components/common/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,7 +6,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
 import { CloseDialog, DashboardCard } from './shared-styles'
 
-class DashboardAlumni extends React.Component {
+class DashboardAlumni extends Component {
   state = {
     isReady: false,
     session: false,

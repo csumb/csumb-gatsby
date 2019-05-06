@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { AlertEmpty } from 'components/common/alert'
 import VisuallyHidden from 'components/utilities/visually-hidden'
 import Link from 'gatsby-link'
@@ -11,7 +11,7 @@ import {
   DashboardCardHeader,
 } from './shared-styles'
 
-class DashboardMessages extends React.Component {
+class DashboardMessages extends Component {
   render() {
     const { messages, archive } = this.props
     return (
@@ -36,7 +36,7 @@ class DashboardMessages extends React.Component {
   }
 }
 
-class DashboardMessage extends React.Component {
+class DashboardMessage extends Component {
   state = {
     archived: false,
   }

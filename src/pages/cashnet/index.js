@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PlainLayout from 'components/layouts/plain'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import { LeadParagraph } from 'components/common/type'
@@ -15,7 +15,7 @@ const CashnetContainer = styled('div')`
   margin: 3rem auto;
 `
 
-class CashnetPage extends React.Component {
+class CashnetPage extends Component {
   state = {
     user: false,
   }

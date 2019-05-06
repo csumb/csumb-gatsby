@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import LazyHero from 'react-lazy-hero'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
@@ -20,7 +20,7 @@ const HeroItem = styled('div')`
   }
 `
 
-class HomepageHero extends React.Component {
+class HomepageHero extends Component {
   render() {
     return (
       <LazyHero

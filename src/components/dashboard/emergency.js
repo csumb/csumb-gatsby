@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import VisuallyHidden from 'components/utilities/visually-hidden'
 import { ButtonLink, LinkyButton } from 'components/common/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,7 +6,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
 import { CloseDialog } from './shared-styles'
 
-class DashboardEmergency extends React.Component {
+class DashboardEmergency extends Component {
   state = {
     showDialog: false,
   }

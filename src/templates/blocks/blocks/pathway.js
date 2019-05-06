@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import { Flex, Box } from '@rebass/grid/emotion'
@@ -34,7 +34,7 @@ const MobileHeader = styled('div')`
   font-weight: bold;
 `
 
-class BlockPathway extends React.Component {
+class BlockPathway extends Component {
   render() {
     const { pathways } = this.props
     return (

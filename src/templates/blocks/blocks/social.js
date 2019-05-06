@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,7 +23,7 @@ const SocialIcon = styled(FontAwesomeIcon)`
   margin-right: 1.5rem;
 `
 
-class BlockSocial extends React.Component {
+class BlockSocial extends Component {
   render() {
     const { provider, url } = this.props
     return (

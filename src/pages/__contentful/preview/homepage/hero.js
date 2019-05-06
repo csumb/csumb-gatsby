@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import url from 'url'
 import Loading from 'components/common/loading'
 import Layout from 'components/layouts/default'
 
 import { HomepageHero } from 'components/pages/homepage'
 
-class ContentfulPreviewHomepageHeroImage extends React.Component {
+class ContentfulPreviewHomepageHeroImage extends Component {
   state = {
     hero: false,
   }

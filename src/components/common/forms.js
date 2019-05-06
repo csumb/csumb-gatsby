@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import VisuallyHidden from 'components/utilities/visually-hidden'
 import PropTypes from 'prop-types'
 import idGenerator from 'react-id-generator'
@@ -70,7 +70,7 @@ Label.propTypes = {
   smallText: PropTypes.bool,
 }
 
-class FormElement extends React.Component {
+class FormElement extends Component {
   constructor(props) {
     super(props)
     this.htmlId = idGenerator()

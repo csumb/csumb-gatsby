@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
@@ -11,7 +11,7 @@ import Well from 'components/common/well'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import { Flex, Box } from '@rebass/grid/emotion'
 
-class UniversityPersonnelAllformsSearch extends React.Component {
+class UniversityPersonnelAllformsSearch extends Component {
   state = {
     query: false,
     results: false,
@@ -78,7 +78,7 @@ class UniversityPersonnelAllformsSearch extends React.Component {
   }
 }
 
-class UniversityPersonnelFormsPage extends React.Component {
+class UniversityPersonnelFormsPage extends Component {
   render() {
     const { data } = this.props
     return (

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import VisuallyHidden from 'components/utilities/visually-hidden'
@@ -14,7 +14,7 @@ const CalloutHeader = styled('h3')`
   color: ${colors.white};
 `
 
-class BlockCallout extends React.Component {
+class BlockCallout extends Component {
   render() {
     const { title, text, url } = this.props
     return (

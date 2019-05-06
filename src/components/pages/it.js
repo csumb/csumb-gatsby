@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import color from 'color'
@@ -41,7 +41,7 @@ const ITSystemStatusItem = ({ down, alias, uptime }) => (
   </ITSystemStatusWrapper>
 )
 
-class ITSystemStatus extends React.Component {
+class ITSystemStatus extends Component {
   state = {
     status: false,
     didLoad: false,
@@ -76,7 +76,7 @@ class ITSystemStatus extends React.Component {
   }
 }
 
-class ITAlerts extends React.Component {
+class ITAlerts extends Component {
   alertRef = React.createRef()
 
   state = {

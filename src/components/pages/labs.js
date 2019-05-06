@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Well from 'components/common/well'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
@@ -67,7 +67,7 @@ const LabNumber = ({ label, children }) => (
   </LabelNumberElement>
 )
 
-class Lab extends React.Component {
+class Lab extends Component {
   state = {
     lab: false,
   }

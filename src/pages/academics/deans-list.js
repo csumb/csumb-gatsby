@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
 import { InputText, Submit } from 'components/common/forms'
@@ -14,7 +14,7 @@ import {
   TableCell,
 } from 'components/common/table'
 
-class AcademicsPage extends React.Component {
+class AcademicsPage extends Component {
   state = {
     query: false,
     search: false,
