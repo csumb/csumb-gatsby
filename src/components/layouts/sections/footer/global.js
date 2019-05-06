@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import LinkInspect from 'components/utilities/link-inspect'
 import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
@@ -97,7 +97,7 @@ const FooterSocialIcon = ({ href, name, icon }) => (
   </FooterSocialIconLink>
 )
 
-class Footer extends React.Component {
+class Footer extends Component {
   render() {
     return (
       <FooterElement noFooterMargin={this.props.noFooterMargin}>

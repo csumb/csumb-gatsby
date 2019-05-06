@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors, fonts } from 'style/theme'
 import {
@@ -78,7 +78,7 @@ const UserDashboardLink = styled(Link)`
   margin-right: 1rem;
 `
 
-class UserDropdown extends React.Component {
+class UserDropdown extends Component {
   state = {
     isEditor: false,
   }
@@ -178,7 +178,7 @@ class UserDropdown extends React.Component {
   }
 }
 
-class UserWidget extends React.Component {
+class UserWidget extends Component {
   render() {
     const { loginLink } = this.props
     return (

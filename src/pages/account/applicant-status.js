@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
@@ -19,7 +19,7 @@ import VisuallyHidden from 'components/utilities/visually-hidden'
 import moment from 'moment'
 import Loading from 'components/common/loading'
 
-class AccountApplicantStatusPage extends React.Component {
+class AccountApplicantStatusPage extends Component {
   render() {
     return (
       <Layout pageTitle="Application status">
@@ -160,7 +160,7 @@ const TranscriptNotDoneIcon = styled(FontAwesomeIcon)`
   color: ${colors.indicators.high};
 `
 
-class ApplicationTranscripts extends React.Component {
+class ApplicationTranscripts extends Component {
   state = {
     showTranscriptHistory: false,
   }
@@ -259,7 +259,7 @@ const ApplicationMultipleMessage = ({ applications }) => (
   </>
 )
 
-class ApplicantStatus extends React.Component {
+class ApplicantStatus extends Component {
   state = {
     applications: false,
     currentApplication: false,

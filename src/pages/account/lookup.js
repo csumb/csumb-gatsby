@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
@@ -25,7 +25,7 @@ const SubmitFlex = styled(Flex)`
   margin-top: 1.5rem;
 `
 
-class LookupForm extends React.Component {
+class LookupForm extends Component {
   state = {
     firstName: false,
     lastName: false,

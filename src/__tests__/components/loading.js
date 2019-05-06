@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import renderer from 'react-test-renderer'
 import Loading from '../../components/common/loading'
 

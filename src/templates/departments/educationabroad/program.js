@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
@@ -81,7 +81,7 @@ const ProgramMap = GoogleApiWrapper({
   </CampusMap>
 ))
 
-class ProgramDetails extends React.Component {
+class ProgramDetails extends Component {
   state = {
     isOpen: false,
   }
@@ -113,7 +113,7 @@ class ProgramDetails extends React.Component {
   }
 }
 
-class ProgramTemplate extends React.Component {
+class ProgramTemplate extends Component {
   render() {
     const { navigation, program } = this.props.pageContext
     const { data } = program

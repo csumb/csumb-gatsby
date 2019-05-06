@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
@@ -18,7 +18,7 @@ import {
 import { ButtonLink } from 'components/common/button'
 import NProgress from 'nprogress'
 
-class AccountCardPage extends React.Component {
+class AccountCardPage extends Component {
   render() {
     return (
       <Layout pageTitle="Otter card">
@@ -62,7 +62,7 @@ class AccountCardPage extends React.Component {
   }
 }
 
-class UserCardForm extends React.Component {
+class UserCardForm extends Component {
   state = {
     card: false,
     isReady: false,

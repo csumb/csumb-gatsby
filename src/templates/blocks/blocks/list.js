@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import parseHtml from '../parse-html'
 
-class BlockList extends React.Component {
+class BlockList extends Component {
   render() {
     const { type, uuid, list } = this.props
 

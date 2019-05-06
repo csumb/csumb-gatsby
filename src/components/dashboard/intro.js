@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Container from 'components/common/container'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
@@ -26,7 +26,7 @@ const DashboardIntroClose = styled('button')`
   color: ${colors.white};
   cursor: pointer;
 `
-class DashboardIntro extends React.Component {
+class DashboardIntro extends Component {
   state = {
     hidden: false,
   }

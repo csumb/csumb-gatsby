@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
@@ -24,7 +24,7 @@ const AdvancedSearchLink = styled('a')`
   })}
 `
 
-class LibrarySearch extends React.Component {
+class LibrarySearch extends Component {
   state = {
     query: false,
   }
@@ -86,7 +86,7 @@ class LibrarySearch extends React.Component {
   }
 }
 
-class LibraryPage extends React.Component {
+class LibraryPage extends Component {
   chatRef = React.createRef()
 
   componentDidMount() {

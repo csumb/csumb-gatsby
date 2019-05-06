@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import styled from '@emotion/styled'
 
@@ -7,7 +7,7 @@ const MapWrapper = styled('div')`
   position: relative !important;
   height: 500px;
 `
-class BlockMap extends React.Component {
+class BlockMap extends Component {
   onReady(mapProps, map) {
     map.data.addGeoJson(this.props.features)
     if (this.props.kml && this.props.kml.url) {

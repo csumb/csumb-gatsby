@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { UserContext } from 'components/contexts/user'
 import Cookies from 'universal-cookie'
 import { colors } from 'style/theme'
@@ -35,7 +35,7 @@ const PageEditorTools = props => (
   </UserContext.Consumer>
 )
 
-class PageEditorUserTools extends React.Component {
+class PageEditorUserTools extends Component {
   state = {
     sites: [],
     isReady: false,

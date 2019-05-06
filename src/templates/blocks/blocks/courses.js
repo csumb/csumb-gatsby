@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Well from 'components/common/well'
 import Link from 'gatsby-link'
 
-class BlockCourses extends React.Component {
+class BlockCourses extends Component {
   state = {
     courses: false,
   }

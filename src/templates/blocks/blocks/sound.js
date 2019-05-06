@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 
 const SoundIframe = styled('iframe')`
@@ -7,7 +7,7 @@ const SoundIframe = styled('iframe')`
   height: 166px;
 `
 
-class BlockSound extends React.Component {
+class BlockSound extends Component {
   render() {
     const { id } = this.props
     return (

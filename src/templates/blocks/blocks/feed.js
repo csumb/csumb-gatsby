@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/utilities/link-inspect'
 import { Flex, Box } from '@rebass/grid/emotion'
@@ -13,7 +13,7 @@ const FeedItemHeader = styled('h3')``
 
 const FeedItemTeaser = styled('p')``
 
-class BlockFeed extends React.Component {
+class BlockFeed extends Component {
   state = {
     showAll: false,
   }

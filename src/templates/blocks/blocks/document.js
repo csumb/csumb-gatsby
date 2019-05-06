@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import VisuallyHidden from 'components/utilities/visually-hidden'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -22,7 +22,7 @@ const DocumentIcon = styled(FontAwesomeIcon)`
   max-width: 50px;
 `
 
-class BlockDocument extends React.Component {
+class BlockDocument extends Component {
   render() {
     const { document, name } = this.props
     const url = document.key

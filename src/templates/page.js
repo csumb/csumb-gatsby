@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Blocks from './blocks'
 import PageFeedback from 'components/user-tools/page-feedback'
 import Layout from 'components/layouts/default'
@@ -19,7 +19,7 @@ import {
   UniversityPersonnelPages,
 } from 'components/pages/university-personnel'
 
-class PageTemplate extends React.Component {
+class PageTemplate extends Component {
   render() {
     const {
       title,

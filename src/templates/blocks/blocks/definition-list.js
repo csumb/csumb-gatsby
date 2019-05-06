@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import parseHtml from '../parse-html'
 
@@ -11,7 +11,7 @@ const DefinitionList = styled('dl')`
   }
 `
 
-class BlockDefinitionList extends React.Component {
+class BlockDefinitionList extends Component {
   render() {
     const { list } = this.props
     return (

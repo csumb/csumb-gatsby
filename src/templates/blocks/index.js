@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 import styled from '@emotion/styled'
 import Container from 'components/common/container'
@@ -42,7 +42,7 @@ const CollapseWrapper = ({ inCollapsedHeader, children, level }) => {
   return <CollapsePadding level={level}>{children}</CollapsePadding>
 }
 
-class Block extends React.Component {
+class Block extends Component {
   blockComponents = {
     feed: BlockFeed,
     form: BlockForm,
@@ -103,7 +103,7 @@ class Block extends React.Component {
   }
 }
 
-class Columns extends React.Component {
+class Columns extends Component {
   state = {
     expandedBlocks: [],
   }
@@ -191,7 +191,7 @@ class Columns extends React.Component {
   }
 }
 
-class Blocks extends React.Component {
+class Blocks extends Component {
   state = {
     expandedBlocks: [],
   }

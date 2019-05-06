@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import { graphql } from 'gatsby'
@@ -8,7 +8,7 @@ import { PublicEvent } from 'components/events'
 import EventsSidebar from 'components/events/sidebar'
 import PageTitle from 'components/layouts/sections/header/page-title'
 
-class EventsPage extends React.Component {
+class EventsPage extends Component {
   render() {
     const events = this.props.data.allCsumbPage.edges
     let featuredEvents = false

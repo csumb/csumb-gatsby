@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { StaticHero } from 'components/homepages/hero'
 import mapData from './serviceLearning.json'
 import styled from '@emotion/styled'
@@ -42,7 +42,7 @@ const FloatText = styled('div')`
   }
 `
 
-class HomepageHero extends React.Component {
+class HomepageHero extends Component {
   state = {
     isMobile: false,
     selectedPlace: false,

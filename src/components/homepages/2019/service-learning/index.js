@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import mapData from './data.json'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
@@ -73,7 +73,7 @@ const MapWrapper = styled('div')`
   position: relative;
 `
 
-class ServiceLearningMap extends React.Component {
+class ServiceLearningMap extends Component {
   state = {
     selectedPlace: false,
     activeMarker: false,
@@ -144,7 +144,7 @@ class ServiceLearningMap extends React.Component {
   }
 }
 
-class HomepageHero extends React.Component {
+class HomepageHero extends Component {
   state = {
     isMobile: false,
   }

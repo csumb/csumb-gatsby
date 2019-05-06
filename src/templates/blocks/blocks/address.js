@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 
 const Address = styled('address')`
   font-style: italic;
 `
-class BlockAddress extends React.Component {
+class BlockAddress extends Component {
   render() {
     const { address1, address2, address3, city, state, zip } = this.props
     return (

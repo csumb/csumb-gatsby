@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import { UserContext } from 'components/contexts/user'
@@ -14,7 +14,7 @@ const ApplicantLink = styled(Link)`
   }
 `
 
-class Applicant extends React.Component {
+class Applicant extends Component {
   render() {
     return (
       <>

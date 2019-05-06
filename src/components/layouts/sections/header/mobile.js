@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Brand from './brand'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
@@ -131,7 +131,7 @@ const YourAccountWrapper = styled('div')`
   margin-bottom: 1.5rem;
 `
 
-class MobileUserWidget extends React.Component {
+class MobileUserWidget extends Component {
   state = {
     isExpanded: false,
   }
@@ -220,7 +220,7 @@ const YourAccountList = ({ user }) => (
   </YourAccountWrapper>
 )
 
-class MobileSiteNavigationSubMenu extends React.Component {
+class MobileSiteNavigationSubMenu extends Component {
   state = {
     isOpen: false,
   }
@@ -295,7 +295,7 @@ const HeaderMobileNavigationButton = styled('button')`
   text-align: left;
 `
 
-class HeaderMobile extends React.Component {
+class HeaderMobile extends Component {
   state = {
     isOpen: false,
     isMainMenuExpanded: false,

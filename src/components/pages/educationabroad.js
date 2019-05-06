@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -32,7 +32,7 @@ const EducationExpandButton = styled('button')`
   text-align: left;
 `
 
-class EducationAbroadCountry extends React.Component {
+class EducationAbroadCountry extends Component {
   state = {
     isOpen: false,
   }
@@ -78,7 +78,7 @@ class EducationAbroadCountry extends React.Component {
   }
 }
 
-class EducationAbroadContinent extends React.Component {
+class EducationAbroadContinent extends Component {
   state = {
     isOpen: false,
   }

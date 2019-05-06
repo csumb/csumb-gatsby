@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Loading from 'components/common/loading'
 import { InputText, Submit } from 'components/common/forms'
 import Well from 'components/common/well'
@@ -17,7 +17,7 @@ const SecondaryEmailError = styled('p')`
   font-weight: bold;
 `
 
-class DashboardSecondaryEmail extends React.Component {
+class DashboardSecondaryEmail extends Component {
   state = {
     secondaryEmail: false,
     didUpdate: false,

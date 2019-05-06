@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   Table,
   TableHeader,
@@ -7,7 +7,7 @@ import {
 } from 'components/common/table'
 import parseHtml from '../parse-html'
 
-class BlockTable extends React.Component {
+class BlockTable extends Component {
   render() {
     const { layout, tableData } = this.props
     return (

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Container from 'components/common/container'
 import styled from '@emotion/styled'
 import { colors, fonts } from 'style/theme'
@@ -95,7 +95,7 @@ const SiteNavigationArrow = styled('span')`
   margin-left: 0.25rem;
 `
 
-class SiteNavigationSubMenu extends React.Component {
+class SiteNavigationSubMenu extends Component {
   state = {
     isExpanded: false,
   }
@@ -135,7 +135,7 @@ class SiteNavigationSubMenu extends React.Component {
   }
 }
 
-class SiteNavigation extends React.Component {
+class SiteNavigation extends Component {
   state = {
     isDesktop: true,
   }

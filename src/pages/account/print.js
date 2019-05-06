@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
@@ -15,7 +15,7 @@ import NProgress from 'nprogress'
 
 const pricePerPage = 0.08
 
-class AccountPrintPage extends React.Component {
+class AccountPrintPage extends Component {
   render() {
     return (
       <Layout pageTitle="Print balance">
@@ -59,7 +59,7 @@ class AccountPrintPage extends React.Component {
   }
 }
 
-class UserPrintForm extends React.Component {
+class UserPrintForm extends Component {
   state = {
     balance: false,
     isReady: false,
@@ -141,7 +141,7 @@ class UserPrintForm extends React.Component {
   }
 }
 
-class AccountPrintBuyPrintsForm extends React.Component {
+class AccountPrintBuyPrintsForm extends Component {
   state = {
     quantity: 0,
   }

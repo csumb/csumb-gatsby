@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
@@ -48,7 +48,7 @@ const updateProfileField = (field, value) => {
     })
 }
 
-class AccountProfilePage extends React.Component {
+class AccountProfilePage extends Component {
   state = {
     lastBuild: false,
   }
@@ -125,7 +125,7 @@ class AccountProfilePage extends React.Component {
   }
 }
 
-class UserAccountProfileForm extends React.Component {
+class UserAccountProfileForm extends Component {
   state = {
     profile: false,
   }
@@ -199,7 +199,7 @@ class UserAccountProfileForm extends React.Component {
   }
 }
 
-class UserAccountProfileOfficeHours extends React.Component {
+class UserAccountProfileOfficeHours extends Component {
   state = {
     showForm: false,
   }
@@ -237,7 +237,7 @@ class UserAccountProfileOfficeHours extends React.Component {
   }
 }
 
-class UserAccountProfileOfficeHoursForm extends React.Component {
+class UserAccountProfileOfficeHoursForm extends Component {
   state = {
     calendar: false,
     updated: false,
@@ -277,7 +277,7 @@ class UserAccountProfileOfficeHoursForm extends React.Component {
   }
 }
 
-class UserAccountProfileOfficeHoursDescription extends React.Component {
+class UserAccountProfileOfficeHoursDescription extends Component {
   state = {
     showForm: false,
   }
@@ -314,7 +314,7 @@ class UserAccountProfileOfficeHoursDescription extends React.Component {
   }
 }
 
-class UserAccountProfileOfficeHoursDescriptionForm extends React.Component {
+class UserAccountProfileOfficeHoursDescriptionForm extends Component {
   state = {
     officeHours: false,
     updated: false,
@@ -354,7 +354,7 @@ class UserAccountProfileOfficeHoursDescriptionForm extends React.Component {
   }
 }
 
-class UserAccountProfileOffice extends React.Component {
+class UserAccountProfileOffice extends Component {
   state = {
     showForm: false,
   }
@@ -409,7 +409,7 @@ class UserAccountProfileOffice extends React.Component {
   }
 }
 
-class UserAccountProfileOfficeForm extends React.Component {
+class UserAccountProfileOfficeForm extends Component {
   state = {
     building: false,
     room: false,
@@ -469,7 +469,7 @@ class UserAccountProfileOfficeForm extends React.Component {
   }
 }
 
-class UserAccountProfilePhone extends React.Component {
+class UserAccountProfilePhone extends Component {
   state = {
     showForm: false,
   }
@@ -501,7 +501,7 @@ class UserAccountProfilePhone extends React.Component {
   }
 }
 
-class UserAccountProfilePhoneForm extends React.Component {
+class UserAccountProfilePhoneForm extends Component {
   state = {
     phone: 0,
     updated: false,
@@ -541,7 +541,7 @@ class UserAccountProfilePhoneForm extends React.Component {
   }
 }
 
-class UserAccountProfileBio extends React.Component {
+class UserAccountProfileBio extends Component {
   state = {
     showForm: false,
   }
@@ -578,7 +578,7 @@ class UserAccountProfileBio extends React.Component {
   }
 }
 
-class UserAccountProfileBioForm extends React.Component {
+class UserAccountProfileBioForm extends Component {
   state = {
     biography: false,
     updated: false,
@@ -638,7 +638,7 @@ class UserAccountProfileBioForm extends React.Component {
   }
 }
 
-class UserAccountProfilePhoto extends React.Component {
+class UserAccountProfilePhoto extends Component {
   savePhoto(photo) {
     updateProfileField('photo', photo.filesUploaded[0].url)
   }

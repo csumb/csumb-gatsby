@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
@@ -18,7 +18,7 @@ const Letter = styled('a')`
   margin-right: 0.5rem;
 `
 
-class UniversityPersonnelServicesPage extends React.Component {
+class UniversityPersonnelServicesPage extends Component {
   render() {
     const { data } = this.props
     return (

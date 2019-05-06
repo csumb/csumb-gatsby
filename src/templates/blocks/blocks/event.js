@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Event } from 'components/events'
 
-class BlockEvent extends React.Component {
+class BlockEvent extends Component {
   render() {
     const { event } = this.props
     if (!event) {

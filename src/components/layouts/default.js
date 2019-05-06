@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import Header from 'components/layouts/sections/header'
 import Footer from 'components/layouts/sections/footer/global'
@@ -7,7 +7,7 @@ import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 import Emergency from './alerts/emergency'
 
-class Layout extends React.Component {
+class Layout extends Component {
   render() {
     const {
       siteNavigation,

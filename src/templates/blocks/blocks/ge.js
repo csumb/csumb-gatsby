@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Link from 'gatsby-link'
 
-class BlockGe extends React.Component {
+class BlockGe extends Component {
   state = {
     courses: false,
   }

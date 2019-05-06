@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Calendar from './calendar'
 import { navigate } from 'gatsby'
 import moment from 'moment'
@@ -11,7 +11,7 @@ const EventCategories = styled(Well)`
   margin-top: 2rem;
 `
 
-class EventsSidebar extends React.Component {
+class EventsSidebar extends Component {
   state = {
     highlightedDays: [],
   }

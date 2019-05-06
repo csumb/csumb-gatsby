@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 import { Flex, Box } from '@rebass/grid/emotion'
@@ -151,7 +151,7 @@ const DayOfWeekFilter = styled('div')`
   }
 `
 
-class CourseList extends React.Component {
+class CourseList extends Component {
   state = {
     filter: false,
     isExpanded: false,

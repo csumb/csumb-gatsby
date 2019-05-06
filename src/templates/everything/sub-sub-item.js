@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   TopLevelList,
   TopLevelItem,
@@ -19,7 +19,7 @@ import Container from 'components/common/container'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
 
-class EverythingSubLevelPage extends React.Component {
+class EverythingSubLevelPage extends Component {
   state = {
     isMobile: false,
   }

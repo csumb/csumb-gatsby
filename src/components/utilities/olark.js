@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { UserContext } from 'components/contexts/user'
 
-class Olark extends React.Component {
+class Olark extends Component {
   state = {
     olarkDidLoad: false,
   }

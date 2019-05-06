@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -29,7 +29,7 @@ const CollapsibleTextWrapper = styled('span')`
   padding-right: 1.5rem;
 `
 
-class BlockHeading extends React.Component {
+class BlockHeading extends Component {
   state = {
     isOpen: false,
   }

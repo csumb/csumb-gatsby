@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Container from 'components/common/container'
 import { LinkyButton } from 'components/common/button'
 import { InputText, Submit } from 'components/common/forms'
@@ -17,7 +17,7 @@ const FormPreamble = () => (
   </>
 )
 
-class PageFeedbackForm extends React.Component {
+class PageFeedbackForm extends Component {
   state = {
     feedbackSent: false,
     action: '',
@@ -104,7 +104,7 @@ class PageFeedbackForm extends React.Component {
   }
 }
 
-class PageFeedback extends React.Component {
+class PageFeedback extends Component {
   state = {
     isOpen: false,
   }

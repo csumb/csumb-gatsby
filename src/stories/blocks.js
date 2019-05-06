@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import BlockAddress from 'templates/blocks/blocks/address'
 import BlockButton from 'templates/blocks/blocks/button'

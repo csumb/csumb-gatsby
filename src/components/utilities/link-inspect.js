@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Link from 'gatsby-link'
 
-class LinkInspect extends React.Component {
+class LinkInspect extends Component {
   render() {
     let { to, children, buttonType, ...props } = this.props
     if (!to) {

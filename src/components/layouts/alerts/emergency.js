@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Dialog } from '@reach/dialog'
 import VisuallyHidden from 'components/utilities/visually-hidden'
 import styled from '@emotion/styled'
@@ -24,7 +24,7 @@ const EmergencyDialogClose = styled('button')`
   cursor: pointer;
 `
 
-class Emergency extends React.Component {
+class Emergency extends Component {
   state = {
     status: false,
     title: false,

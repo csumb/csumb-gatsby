@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
@@ -7,7 +7,7 @@ import SiteNavigation from 'components/layouts/sections/navigation/site'
 import Blocks from 'templates/blocks'
 import PageTitle from 'components/layouts/sections/header/page-title'
 
-class LibraryPage extends React.Component {
+class LibraryPage extends Component {
   chatRef = React.createRef()
 
   componentDidMount() {
