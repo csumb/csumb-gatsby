@@ -80,7 +80,7 @@ const PersonListing = props => {
             _publicProfile.buildingCode &&
             buildings[_publicProfile.buildingCode] && (
               <>
-                <Link to={`/buildings/${_publicProfile.buildingCode}`}>
+                <Link to={`/directory/building/${_publicProfile.buildingCode}`}>
                   {buildings[_publicProfile.buildingCode]}
                 </Link>
                 <>
