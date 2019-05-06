@@ -86,7 +86,7 @@ export const query = graphql`
     allCsumbPage(
       filter: { event: { _passedEvent: { eq: false }, public: { eq: true } } }
       sort: { fields: [event____sortDate], order: ASC }
-      limit: 25
+      limit: 50
     ) {
       edges {
         node {

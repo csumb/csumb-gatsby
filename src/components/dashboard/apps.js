@@ -207,6 +207,25 @@ class DashboardOtherApps extends React.Component {
   }
 }
 
+const DashboardPlaceholderApp = styled('span')`
+  display: inline-block;
+  width: 80px;
+  margin-right: 1rem;
+`
+
+const DashboardAppsPlaceholder = ({ mobile }) => {
+  if (mobile) {
+    return null
+  }
+  return (
+    <DashboardAppsWrapper>
+      <Container>
+        <DashboardPlaceholderApp>&nbsp;</DashboardPlaceholderApp>
+      </Container>
+    </DashboardAppsWrapper>
+  )
+}
+
 class DashboardApps extends React.Component {
   state = {
     oktaApps: false,
@@ -261,7 +280,7 @@ class DashboardApps extends React.Component {
     const { apps, isMobile } = this.props
     const { oktaApps, isExpanded } = this.state
     if (!oktaApps) {
-      return null
+      return <DashboardAppsPlaceholder mobile={isMobile} />
     }
     if (isMobile) {
       return (

@@ -8,7 +8,7 @@ const content = {
     .unix(),
   format: moment()
     .tz('America/Los_Angeles')
-    .format('MMMM, D, YYYY h:mm a'),
+    .format('MMMM D, YYYY h:mm a'),
 }
 
 fs.outputJson('./public/_last-build.json', content)
