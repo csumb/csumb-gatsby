@@ -5,16 +5,14 @@ import PageTitle from 'components/layouts/sections/header/page-title'
 import styled from '@emotion/styled'
 import Container from 'components/common/container'
 import LinkInspect from 'components/utilities/link-inspect'
+import { LinkyButton } from 'components/common/button'
 import Well from 'components/common/well'
 import { graphql } from 'gatsby'
 import { DirectoryNavigation } from 'components/pages/directory'
 import { InputText, Submit } from 'components/common/forms'
 import { Flex, Box } from '@rebass/grid/emotion'
 
-const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-const existingLetters = {}
-
-const Letter = styled('a')`
+const Letter = styled(LinkyButton)`
   display: inline-block;
   margin-right: 0.5rem;
 `
@@ -114,46 +112,82 @@ class DirectoryDepartmentSearchForm extends React.Component {
   }
 }
 
-const DirectoryDepartmentPage = ({ data }) => {
-  const addLetter = letter => {
-    existingLetters[letter.toLowerCase()] = letter
+class DirectoryDepartmentPage extends React.Component {
+  state = {
+    filter: false,
   }
-  return (
-    <Layout>
-      <SiteHeader path="/directory">Directory</SiteHeader>
-      <DirectoryNavigation />
-      <Container>
-        <PageTitle>All departments</PageTitle>
-        <DirectoryDepartmentSearchForm
-          departments={data.allCsumbDepartment.edges}
-        />
-        <Well>
-          {alphabet.map(letter => (
-            <Letter href={`#letter-${letter}`}>{letter.toUpperCase()}</Letter>
-          ))}
-        </Well>
-        {data.allCsumbDepartment.edges.map(department => (
-          <React.Fragment key={department.node.id}>
-            {!existingLetters[
-              department.node.name.substr(0, 1).toLowerCase()
-            ] && (
-              <>
-                {addLetter(department.node.name.substr(0, 1))}
-                <h2
-                  id={`letter-${department.node.name
-                    .substr(0, 1)
-                    .toLowerCase()}`}
-                >
-                  {department.node.name.substr(0, 1).toUpperCase()}
-                </h2>
-              </>
+
+  render() {
+    const { data } = this.props
+    const { filter } = this.state
+
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+    const existingLetters = {}
+    const addLetter = letter => {
+      existingLetters[letter.toLowerCase()] = letter
+    }
+
+    return (
+      <Layout>
+        <SiteHeader path="/directory">Directory</SiteHeader>
+        <DirectoryNavigation />
+        <Container>
+          <PageTitle>All departments</PageTitle>
+          <DirectoryDepartmentSearchForm
+            departments={data.allCsumbDepartment.edges}
+          />
+          <Well>
+            {alphabet.map(letter => (
+              <Letter
+                onClick={() => {
+                  this.setState({
+                    filter: letter,
+                  })
+                }}
+              >
+                {letter.toUpperCase()}
+              </Letter>
+            ))}
+            {filter && (
+              <Letter
+                onClick={() => {
+                  this.setState({
+                    filter: false,
+                  })
+                }}
+              >
+                View all
+              </Letter>
             )}
-            <DepartmentListing department={department.node} />
-          </React.Fragment>
-        ))}
-      </Container>
-    </Layout>
-  )
+          </Well>
+          {data.allCsumbDepartment.edges.map(department => (
+            <React.Fragment key={department.node.id}>
+              {(!filter ||
+                department.node.name.substr(0, 1).toLowerCase() === filter) && (
+                <>
+                  {!existingLetters[
+                    department.node.name.substr(0, 1).toLowerCase()
+                  ] && (
+                    <>
+                      {addLetter(department.node.name.substr(0, 1))}
+                      <h2
+                        id={`letter-${department.node.name
+                          .substr(0, 1)
+                          .toLowerCase()}`}
+                      >
+                        {department.node.name.substr(0, 1).toUpperCase()}
+                      </h2>
+                    </>
+                  )}
+                  <DepartmentListing department={department.node} />
+                </>
+              )}
+            </React.Fragment>
+          ))}
+        </Container>
+      </Layout>
+    )
+  }
 }
 
 export default DirectoryDepartmentPage
