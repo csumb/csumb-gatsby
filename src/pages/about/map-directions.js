@@ -3,9 +3,10 @@ import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Blocks from 'templates/blocks'
 import styled from '@emotion/styled'
-import { Map, GoogleApiWrapper } from 'google-maps-react'
+import { Map, GoogleApiWrapper, InfoWindow } from 'google-maps-react'
 import { graphql } from 'gatsby'
 import { colors } from 'style/theme'
+import Link from 'gatsby-link'
 
 const MapMap = styled(Map)`
   width: 100%;
@@ -16,6 +17,10 @@ const MapMap = styled(Map)`
 `
 
 class MapPage extends React.Component {
+  state = {
+    currentBuilding: false,
+  }
+
   onReady(mapProps, map) {
     map.data.setStyle({
       fillColor: colors.primary.dark,
@@ -28,17 +33,25 @@ class MapPage extends React.Component {
         features: [
           {
             type: 'Feature',
-            properties: {},
+            properties: {
+              name: edge.node.buildingName,
+              code: edge.node.code,
+            },
             geometry: edge.node.outline,
           },
         ],
+      })
+      map.data.addListener('click', event => {
+        this.setState({
+          currentBuilding: event.feature.getProperty('code'),
+        })
       })
     })
   }
 
   render() {
     const { google, data } = this.props
-
+    const { currentBuilding } = this.state
     return (
       <Layout>
         <SiteHeader path="/map">Map</SiteHeader>
@@ -50,7 +63,16 @@ class MapPage extends React.Component {
             lng: -121.7989176,
           }}
           onReady={this.onReady.bind(this)}
-        />
+        >
+          {this.props.data.allCsumbBuilding.edges.map(({ node }) => (
+            <InfoWindow
+              position={node.center}
+              visible={node.code === currentBuilding}
+            >
+              <a href={`/building/${node.code}`}>{node.buildingName}</a>
+            </InfoWindow>
+          ))}
+        </MapMap>
         {data.allCsumbPage && (
           <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
         )}
