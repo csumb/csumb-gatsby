@@ -79,6 +79,17 @@ const UserDashboardLink = styled(Link)`
 `
 
 class UserDropdown extends React.Component {
+  state = {
+    isEditor: false,
+  }
+
+  componentDidMount() {
+    const sites = cookies.get('csumb-sites')
+    this.setState({
+      isEditor: sites && !Array.isArray(sites) && Object.keys(sites).length,
+    })
+  }
+
   handleLogout(event) {
     cookies.remove('csumb-sites')
     fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
@@ -102,6 +113,7 @@ class UserDropdown extends React.Component {
 
   render() {
     const { user } = this.props
+    const { isEditor } = this.state
     if (!user) {
       return null
     }
@@ -120,6 +132,15 @@ class UserDropdown extends React.Component {
             isHidden={!user._isEmployee}
           >
             Public profile
+          </UserDropdownMenuLink>
+          <UserDropdownMenuLink
+            component="a"
+            href="https://edit.csumb.edu/saml_login?destination=/"
+            target="_blank"
+            rel="noopener noreferrer"
+            isHidden={!isEditor}
+          >
+            Edit website
           </UserDropdownMenuLink>
           <UserDropdownMenuLink component="a" href="/account/card">
             OtterCard
