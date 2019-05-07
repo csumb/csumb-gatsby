@@ -81,6 +81,7 @@ module.exports = (graphql, actions) => {
                   CATALOG_NBR
                   SECTION
                   TITLE
+                  CRSE_TOPIC_TITLE
                   CRN
                   INSTR_OTTERID
                   UNITS
