@@ -17,6 +17,9 @@ class ErrorPage extends Component {
   componentDidMount() {
     if (typeof window !== 'undefined') {
       window.gtag('event', 'pageNotFound', '404', window.location.href)
+      if (typeof window.Rollbar !== 'undefined') {
+        window.Rollbar.error(`404: ${window.location.href}`)
+      }
     }
   }
   render() {
