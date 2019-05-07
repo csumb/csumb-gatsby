@@ -10,6 +10,7 @@ class UserComponent extends React.Component {
     window
       .fetch('https://csumb.okta.com/api/v1/users/me', {
         credentials: 'include',
+        cache: 'no-store',
       })
       .then(response => {
         return response.json()
