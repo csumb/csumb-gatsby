@@ -18,7 +18,7 @@ class ErrorPage extends Component {
     if (typeof window !== 'undefined') {
       window.gtag('event', 'pageNotFound', '404', window.location.href)
       if (typeof window.Rollbar !== 'undefined') {
-        window.Rollbar.error(`404: ${window.location.href}`)
+        window.Rollbar.error(`csumb-404: ${window.location.href}`)
       }
     }
   }
