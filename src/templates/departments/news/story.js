@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import PageTitle from 'components/layouts/sections/header/page-title'
@@ -7,7 +7,7 @@ import SiteNavigation from 'components/layouts/sections/navigation/site'
 import NewsContainer from 'components/pages/news/news-container'
 import { NewsByline, NewsTags } from 'components/pages/news'
 import RichText from 'components/rich-text'
-class NewsStoryPage extends React.Component {
+class NewsStoryPage extends Component {
   render() {
     const { story, navigation } = this.props.pageContext
 

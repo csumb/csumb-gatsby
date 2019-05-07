@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Plain from 'components/layouts/plain'
 import url from 'url'
 
-class PertsPage extends React.Component {
+class PertsPage extends Component {
   state = {
     loginNeeded: false,
   }

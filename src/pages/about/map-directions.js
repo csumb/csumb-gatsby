@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Blocks from 'templates/blocks'
@@ -15,7 +15,7 @@ const MapMap = styled(Map)`
   margin-bottom: 1.5rem;
 `
 
-class MapPage extends React.Component {
+class MapPage extends Component {
   onReady(mapProps, map) {
     const infoWindow = new this.props.google.maps.InfoWindow({ maxWidth: 320 })
     map.data.setStyle({

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import LinkInspect from 'components/utilities/link-inspect'
@@ -29,7 +29,7 @@ const RelatedContentTitle = styled('h5')`
 
 const RelatedContentDescription = styled('p')``
 
-class BlockRelated extends React.Component {
+class BlockRelated extends Component {
   render() {
     const { source, title, description, url } = this.props
     return (

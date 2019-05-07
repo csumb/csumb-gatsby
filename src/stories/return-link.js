@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import ReturnLink from 'components/common/return-link'
 import typography from 'style/typography'

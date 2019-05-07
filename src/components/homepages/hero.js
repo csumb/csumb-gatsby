@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'react-emotion'
 
 const HeroWrapperElement = styled('div')`
@@ -18,7 +18,7 @@ const HeroPadding = styled('div')`
 
 const headerHeight = 200
 
-class FullHeroWrapper extends React.Component {
+class FullHeroWrapper extends Component {
   state = {
     height: this.props.minHeight ? this.props.minHeight : 500,
   }

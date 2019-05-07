@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
@@ -16,7 +16,7 @@ const BuildingMap = styled(Map)`
   height: 300px !important;
 `
 
-class BuildingTemplate extends React.Component {
+class BuildingTemplate extends Component {
   render() {
     const { title, building } = this.props.pageContext
     const { center, code, buildingName, address, mailingAddress } = building

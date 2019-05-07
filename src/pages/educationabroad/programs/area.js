@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
@@ -65,7 +65,7 @@ const SubjectArea = ({ area }) => (
   </>
 )
 
-class SubjectAreas extends React.Component {
+class SubjectAreas extends Component {
   state = {
     search: '',
     major: 'all',

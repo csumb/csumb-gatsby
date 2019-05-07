@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Flex, Box } from '@rebass/grid/emotion'
 import { InputText, Submit } from 'components/common/forms'
 import styled from '@emotion/styled'
@@ -155,7 +155,7 @@ const DepartmentListing = props => {
   )
 }
 
-class DirectorySearchResults extends React.Component {
+class DirectorySearchResults extends Component {
   state = {
     search: false,
   }
@@ -225,7 +225,7 @@ class DirectorySearchResults extends React.Component {
   }
 }
 
-class DirectorySearchPage extends React.Component {
+class DirectorySearchPage extends Component {
   state = {
     query: false,
   }
@@ -262,7 +262,7 @@ class DirectorySearchPage extends React.Component {
       return (buildings[building.node.code] = building.node.buildingName)
     })
     return (
-      <Layout>
+      <Layout pageTitle="Directory">
         <SiteHeader path="/directory">Directory</SiteHeader>
         <DirectoryNavigation />
         <Container topPadding>

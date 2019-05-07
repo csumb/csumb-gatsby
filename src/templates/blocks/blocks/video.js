@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import bp from 'style/breakpoints'
 
@@ -24,7 +24,7 @@ const VideoIframe = styled('iframe')`
   height: 100%;
 `
 
-class BlockVideo extends React.Component {
+class BlockVideo extends Component {
   render() {
     const { provider } = this.props
     return (

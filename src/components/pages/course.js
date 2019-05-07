@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import Layout from 'components/layouts/default'
 import Container from 'components/common/container'

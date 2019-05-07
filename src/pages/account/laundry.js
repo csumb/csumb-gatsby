@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
@@ -64,7 +64,7 @@ const AccountLaundryPage = () => (
   </Layout>
 )
 
-class LaundryInformation extends React.Component {
+class LaundryInformation extends Component {
   state = {
     selectedHall: false,
     halls: false,
@@ -149,7 +149,7 @@ class LaundryInformation extends React.Component {
   }
 }
 
-class HallMachines extends React.Component {
+class HallMachines extends Component {
   state = {
     machines: false,
   }

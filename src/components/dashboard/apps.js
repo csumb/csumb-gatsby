@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Container from 'components/common/container'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
@@ -117,7 +117,7 @@ const DashboardOktaAppList = ({ apps, isMobile }) => (
   </>
 )
 
-class DashboardEditOrderApps extends React.Component {
+class DashboardEditOrderApps extends Component {
   state = {
     showDialog: false,
   }
@@ -158,7 +158,7 @@ class DashboardEditOrderApps extends React.Component {
   }
 }
 
-class DashboardOtherApps extends React.Component {
+class DashboardOtherApps extends Component {
   state = {
     showDialog: false,
   }
@@ -226,7 +226,7 @@ const DashboardAppsPlaceholder = ({ mobile }) => {
   )
 }
 
-class DashboardApps extends React.Component {
+class DashboardApps extends Component {
   state = {
     oktaApps: false,
     isExpanded: false,

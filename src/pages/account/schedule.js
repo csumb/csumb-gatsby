@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
@@ -67,7 +67,7 @@ const CourseHeader = styled('h3')`
   margin-bottom: 0.5rem;
 `
 
-class AccountSchedulePage extends React.Component {
+class AccountSchedulePage extends Component {
   render() {
     return (
       <Layout pageTitle="Class schedule">
@@ -111,7 +111,7 @@ class AccountSchedulePage extends React.Component {
   }
 }
 
-class ClassScheduleForm extends React.Component {
+class ClassScheduleForm extends Component {
   componentDidMount() {
     NProgress.start()
     setTimeout(() => {
@@ -146,7 +146,7 @@ class ClassScheduleForm extends React.Component {
   }
 }
 
-class ClassScheduleCourse extends React.Component {
+class ClassScheduleCourse extends Component {
   state = {
     isReady: false,
     course: false,

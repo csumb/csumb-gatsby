@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Container from 'components/common/container'
 import Layout from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
@@ -13,7 +13,7 @@ import {
 } from 'components/dashboard'
 import { navigate } from '@reach/router'
 
-class DashboardPage extends React.Component {
+class DashboardPage extends Component {
   state = {
     isMobile: false,
     activeTab: 'messages',

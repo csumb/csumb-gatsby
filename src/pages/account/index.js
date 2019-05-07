@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
@@ -15,7 +15,7 @@ import {
 } from 'components/pages/account'
 import { ButtonLink } from 'components/common/button'
 
-class AccountPage extends React.Component {
+class AccountPage extends Component {
   render() {
     return (
       <Layout pageTitle="Your profile">
@@ -59,7 +59,7 @@ class AccountPage extends React.Component {
   }
 }
 
-class UserAccountForm extends React.Component {
+class UserAccountForm extends Component {
   render() {
     const { user } = this.props
     return (
@@ -178,7 +178,7 @@ class UserAccountForm extends React.Component {
   }
 }
 
-class AccountFormAlumni extends React.Component {
+class AccountFormAlumni extends Component {
   render() {
     const { user } = this.props
 
@@ -218,7 +218,7 @@ class AccountFormAlumni extends React.Component {
   }
 }
 
-class UserAccountFormRole extends React.Component {
+class UserAccountFormRole extends Component {
   roles = {
     employee_staff: {
       name: 'Staff',

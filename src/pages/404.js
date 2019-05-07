@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PlainLayout from 'components/layouts/plain'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import { LeadParagraph } from 'components/common/type'
@@ -13,7 +13,7 @@ const PageNotFoundContainer = styled('div')`
   margin: 3rem auto;
 `
 
-class ErrorPage extends React.Component {
+class ErrorPage extends Component {
   componentDidMount() {
     if (typeof window !== 'undefined') {
       window.gtag('event', 'pageNotFound', '404', window.location.href)

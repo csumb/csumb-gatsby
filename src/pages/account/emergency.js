@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
@@ -18,7 +18,7 @@ import { AlertDanger, AlertSuccess } from 'components/common/alert'
 import phoneFormatter from 'phone-formatter'
 import NProgress from 'nprogress'
 
-class UserEmergencyForm extends React.Component {
+class UserEmergencyForm extends Component {
   state = {
     everbridgeUser: false,
     error: false,
@@ -129,7 +129,7 @@ class UserEmergencyForm extends React.Component {
   }
 }
 
-class UserEmergencyPhoneForm extends React.Component {
+class UserEmergencyPhoneForm extends Component {
   state = {
     success: false,
     number: false,
@@ -180,7 +180,7 @@ class UserEmergencyPhoneForm extends React.Component {
   }
 }
 
-class AccountEmergencyPage extends React.Component {
+class AccountEmergencyPage extends Component {
   render() {
     return (
       <Layout pageTitle="Your profile">

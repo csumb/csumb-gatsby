@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
 
@@ -26,7 +26,7 @@ const ImageGridItem = ({ item }) => (
   </>
 )
 
-class BlockImageGrid extends React.Component {
+class BlockImageGrid extends Component {
   render() {
     const { images, columnWidth } = this.props
     return (

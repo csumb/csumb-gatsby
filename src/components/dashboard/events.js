@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { fonts } from 'style/theme'
 import styled from '@emotion/styled'
 import { AlertEmpty } from 'components/common/alert'
@@ -11,7 +11,7 @@ import {
   DashboardCardHeader,
 } from './shared-styles'
 
-class DashboardEvents extends React.Component {
+class DashboardEvents extends Component {
   render() {
     const { events, archive } = this.props
     return (
@@ -46,7 +46,7 @@ const DashboardEventCalendarLink = styled('div')`
   margin-top: 0.5rem;
 `
 
-class DashboardEvent extends React.Component {
+class DashboardEvent extends Component {
   state = {
     archived: false,
   }

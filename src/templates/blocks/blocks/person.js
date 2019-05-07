@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
@@ -20,7 +20,7 @@ const PersonPhoto = styled('img')`
   width: 100%;
 `
 
-class BlockPerson extends React.Component {
+class BlockPerson extends Component {
   state = {
     person: false,
     didLoad: false,

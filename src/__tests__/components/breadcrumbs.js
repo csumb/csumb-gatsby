@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import renderer from 'react-test-renderer'
 import Breadcrumbs from 'components/layouts/sections/header/breadcrumbs'
 

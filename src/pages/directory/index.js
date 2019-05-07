@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import styled from '@emotion/styled'
@@ -11,7 +11,7 @@ import phoneFormatter from 'phone-formatter'
 import { DirectoryNavigation } from 'components/pages/directory'
 
 const DirectoryPage = ({ data }) => (
-  <Layout>
+  <Layout pageTitle="Directory">
     <SiteHeader path="/directory">Directory</SiteHeader>
     <DirectoryNavigation />
     <Container topPadding>
@@ -98,7 +98,7 @@ const ShortPersonListing = ({ firstName, lastName, email, _publicProfile }) => {
   )
 }
 
-class DirectoryForm extends React.Component {
+class DirectoryForm extends Component {
   state = {
     search: false,
     query: false,

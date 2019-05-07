@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Byline from 'components/pages/news/byline'
 
-class BlockByline extends React.Component {
+class BlockByline extends Component {
   state = {
     person: false,
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
@@ -41,7 +41,7 @@ const DashboardMobileToolbar = styled('div')`
   }
 `
 
-class DashboardContent extends React.Component {
+class DashboardContent extends Component {
   state = {
     ready: false,
     events: false,

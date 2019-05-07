@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import PageNavigation from 'components/layouts/sections/navigation/page'
 import typography from 'style/typography'

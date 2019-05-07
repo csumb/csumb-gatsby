@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import Container from 'components/common/container'
 import { CourseList, ScheduleBackLink } from 'components/pages/schedule'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 
-class SubjectCourseList extends React.Component {
+class SubjectCourseList extends Component {
   render() {
     const { subject, term } = this.props.pageContext
     return (

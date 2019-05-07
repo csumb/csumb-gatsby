@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import '@reach/skip-nav/styles.css'
 
-class Layout extends React.Component {
+class Layout extends Component {
   render() {
     let pageTitle = []
     pageTitle.push(

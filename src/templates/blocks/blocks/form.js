@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 
 const FormIframe = styled('iframe')`
@@ -7,7 +7,7 @@ const FormIframe = styled('iframe')`
   border: 0;
 `
 
-class BlockForm extends React.Component {
+class BlockForm extends Component {
   render() {
     const { height, provider } = this.props
     let formUrl = ''

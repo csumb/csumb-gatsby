@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import NewsContainer from 'components/pages/news/news-container'
 
 const NodeTypes = {}
@@ -40,7 +40,7 @@ const Marks = ({ marks, children }) => {
   return <> {children}</>
 }
 
-class ContentItem extends React.Component {}
+class ContentItem extends Component {}
 
 class ContentTypeParagraph extends ContentItem {
   render() {

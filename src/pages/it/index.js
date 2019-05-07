@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
@@ -20,7 +20,7 @@ const HelpFlex = styled(Flex)`
   margin: 2rem 0 1.5rem;
 `
 
-class ITSearch extends React.Component {
+class ITSearch extends Component {
   render() {
     return (
       <Well>
@@ -48,7 +48,7 @@ class ITSearch extends React.Component {
   }
 }
 
-class ITPage extends React.Component {
+class ITPage extends Component {
   render() {
     const { data } = this.props
     return (

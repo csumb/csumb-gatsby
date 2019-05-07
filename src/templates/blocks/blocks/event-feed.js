@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { EventFeedItem } from 'components/events'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
@@ -21,7 +21,7 @@ const displayEvent = item => {
   return display
 }
 
-class BlockEventFeed extends React.Component {
+class BlockEventFeed extends Component {
   render() {
     const { events, title, limit } = this.props
     const displayEvents = []

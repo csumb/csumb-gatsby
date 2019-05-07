@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import { Button, ButtonLink } from 'components/common/button'
 import typography from 'style/typography'

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 
@@ -7,7 +7,7 @@ const Iframe = styled('iframe')`
   border: 0;
   height: 70vh;
 `
-class BlockCalendar extends React.Component {
+class BlockCalendar extends Component {
   render() {
     const { format, calendar } = this.props
     return (

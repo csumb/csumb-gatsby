@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import { navigate } from '@reach/router'
@@ -48,7 +48,7 @@ const SearchInput = styled('input')`
   width: 100%;
   border-radius: 0;
 `
-class Search extends React.Component {
+class Search extends Component {
   state = {
     value: '',
     results: [],

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from '@emotion/styled'
 
 const ImageContainer = styled('div')`
@@ -20,7 +20,7 @@ const Caption = styled('div')`
   font-size: 0.8rem;
 `
 
-class BlockImage extends React.Component {
+class BlockImage extends Component {
   render() {
     const {
       image,
