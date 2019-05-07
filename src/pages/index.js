@@ -64,8 +64,8 @@ const IndexPage = ({ data }) => {
         <h2>News &amp; events</h2>
         <Flex flexWrap="wrap">
           <Box width={[1, 1, 1 / 2, 3 / 12]} order={[2, 1, 1]} pr={colPadding}>
-            {notFeatured.map(item => (
-              <NonFeaturedStory key={item.contentful_id} {...item} />
+            {notFeatured.map((item, key) => (
+              <NonFeaturedStory key={`non-featured-${key}`} {...item} />
             ))}
           </Box>
           <Box
@@ -74,8 +74,8 @@ const IndexPage = ({ data }) => {
             pl={colPadding}
             pr={colPadding}
           >
-            {featured.map(item => (
-              <FeaturedStory key={item.contentful_id} {...item} />
+            {featured.map((item, key) => (
+              <FeaturedStory key={`featured-${key}`} {...item} />
             ))}
           </Box>
           <Box width={[1, 1, 1, 3 / 12]} order={3} pl={colPadding}>
