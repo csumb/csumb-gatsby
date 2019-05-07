@@ -19,6 +19,11 @@ const DashboardNotLoggedIn = () => (
         Log in
       </ButtonLink>
     </NotLoggedIn>
+    <p>
+      <a href="/web/login-issues-safari-internet-explorer">
+        Having issues with Safari or Internet Explorer?
+      </a>
+    </p>
   </>
 )
 
