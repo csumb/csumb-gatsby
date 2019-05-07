@@ -187,7 +187,7 @@ const HomepageImageNavigation = ({ navigation }) => {
       <Container>
         <Flex flexWrap="wrap">
           {images.map((image, key) => (
-            <Box width={[1, 1 / 4]} px={[0, 2]}>
+            <Box width={[1, 1 / 4]} px={[0, 2]} key={key}>
               <LinkInspect to={links[key]}>
                 <NavigationImage src={image.file.url} alt={alt[key]} />
                 <h3>{titles[key]}</h3>

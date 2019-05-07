@@ -8,8 +8,9 @@ class UserComponent extends React.Component {
 
   async componentDidMount() {
     window
-      .fetch('https://csumb.okta.com/api/v1/users/me', {
+      .fetch('https://csumb.okta.com/api/v1/users/me?_v=1', {
         credentials: 'include',
+        cache: 'no-store',
       })
       .then(response => {
         return response.json()

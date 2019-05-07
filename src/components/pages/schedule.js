@@ -402,7 +402,15 @@ const CourseListItem = ({ course, term }) => {
           </Link>
         </Box>
         <Box width={[1, 3 / 12]} pr={[0, 2]}>
-          <Link to={link}>{course.TITLE}</Link>
+          <Link to={link}>
+            {course.TITLE}
+            {course.CRSE_TOPIC_TITLE && (
+              <>
+                {': '}
+                {course.CRSE_TOPIC_TITLE}
+              </>
+            )}
+          </Link>
         </Box>
         <Box width={[1, 1 / 12]} pr={[0, 2]}>
           <CourseListMobileLabel>Section</CourseListMobileLabel>
@@ -560,7 +568,15 @@ const CoursePage = ({ course, term, requirements }) => {
       >
         {term.DESCR}
       </PageTitle>
-      <CourseTitle>{course.TITLE}</CourseTitle>
+      <CourseTitle>
+        {course.TITLE}
+        {course.CRSE_TOPIC_TITLE && (
+          <>
+            {': '}
+            {course.CRSE_TOPIC_TITLE}
+          </>
+        )}
+      </CourseTitle>
       <Flex flexWrap="wrap">
         <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 2]}>
           <CourseSection legend="Days, times, and locations">
