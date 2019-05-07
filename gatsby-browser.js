@@ -8,7 +8,7 @@ class UserComponent extends React.Component {
 
   async componentDidMount() {
     window
-      .fetch('https://csumb.okta.com/api/v1/users/me', {
+      .fetch('https://login.csumb.edu/api/v1/users/me', {
         credentials: 'include',
         cache: 'no-store',
       })
