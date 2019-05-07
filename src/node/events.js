@@ -85,10 +85,16 @@ module.exports = (graphql, actions) => {
         result.data.allCsumbPage.edges.forEach(edge => {
           const event = edge.node
           if (event.event.category) {
-            if (typeof eventsByCategory[event.event.category] === 'undefined') {
-              eventsByCategory[event.event.category] = []
-            }
-            eventsByCategory[event.event.category].push(event)
+            event.event.date_stamps.forEach(stamp => {
+              if (stamp.start_stamp >= timeCutoff) {
+                if (
+                  typeof eventsByCategory[event.event.category] === 'undefined'
+                ) {
+                  eventsByCategory[event.event.category] = []
+                }
+                eventsByCategory[event.event.category].push(event)
+              }
+            })
           }
           event.event.date_stamps.forEach(stamp => {
             if (stamp.start_stamp >= timeCutoff) {
