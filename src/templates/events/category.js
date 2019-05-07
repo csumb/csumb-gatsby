@@ -18,7 +18,7 @@ class EventsPage extends Component {
           <Flex flexWrap="wrap">
             <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
               {events.map(event => (
-                <PublicEvent event={event} showDate={false} showTime={true} />
+                <PublicEvent event={event} showDate={true} showTime={true} />
               ))}
             </Box>
             <Box width={[1, 1 / 4, 1 / 4]}>
