@@ -9,8 +9,8 @@ const cleanHref = href => {
     return href
   }
   return href.replace(
-    'https://csumb.edu/sites/default/files/',
-    'https://edit.csumb.edu/sites/default/files/'
+    '/csumb.edu/sites/default/files/',
+    '/edit.csumb.edu/sites/default/files/'
   )
 }
 
