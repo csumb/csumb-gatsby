@@ -17,6 +17,15 @@ class ErrorPage extends Component {
   componentDidMount() {
     if (typeof window !== 'undefined') {
       window.gtag('event', 'pageNotFound', '404', window.location.href)
+      if (typeof window.Rollbar !== 'undefined') {
+        const referrer =
+          typeof document !== 'undefined' && document.referrer
+            ? document.referrer
+            : 'none'
+        window.Rollbar.error(
+          `csumb-404: ${window.location.href} referrer: ${referrer}`
+        )
+      }
     }
   }
   render() {

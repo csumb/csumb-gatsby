@@ -85,10 +85,16 @@ module.exports = (graphql, actions) => {
         result.data.allCsumbPage.edges.forEach(edge => {
           const event = edge.node
           if (event.event.category) {
-            if (typeof eventsByCategory[event.event.category] === 'undefined') {
-              eventsByCategory[event.event.category] = []
-            }
-            eventsByCategory[event.event.category].push(event)
+            event.event.date_stamps.forEach(stamp => {
+              if (stamp.start_stamp >= timeCutoff) {
+                if (
+                  typeof eventsByCategory[event.event.category] === 'undefined'
+                ) {
+                  eventsByCategory[event.event.category] = []
+                }
+                eventsByCategory[event.event.category].push(event)
+              }
+            })
           }
           event.event.date_stamps.forEach(stamp => {
             if (stamp.start_stamp >= timeCutoff) {
@@ -122,13 +128,16 @@ module.exports = (graphql, actions) => {
           })
         })
 
-        Object.keys(eventsByCategory).forEach(category => {
+        categories.forEach(category => {
           createPage({
-            path: `events/category/${category}`,
+            path: `events/category/${category.slug}`,
             component: categoryTemplate,
             context: {
-              events: eventsByCategory[category],
-              category: eventCategoryLabels[category],
+              events:
+                typeof eventsByCategory[category.slug] !== 'undefined'
+                  ? eventsByCategory[category.slug]
+                  : [],
+              category: category.name,
               categories: categories,
             },
           })

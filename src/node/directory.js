@@ -70,7 +70,6 @@ module.exports = (graphql, actions) => {
           buildings[building.node.code] = building.node.buildingName
         })
 
-        let files = {}
         result.data.allCsumbDirectory.edges.forEach(async edge => {
           const emailPrefix = edge.node.user.email.split('@').shift()
           const building =
@@ -79,8 +78,8 @@ module.exports = (graphql, actions) => {
             typeof buildings[edge.node.user._publicProfile.buildingCode] !==
               'undefined'
               ? buildings[edge.node.user._publicProfile.buildingCode]
-                  .buildingName
               : ''
+
           createPage({
             path: `directory/person/${emailPrefix}`,
             component: directoryTemplate,
