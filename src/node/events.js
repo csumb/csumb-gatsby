@@ -128,13 +128,16 @@ module.exports = (graphql, actions) => {
           })
         })
 
-        Object.keys(eventsByCategory).forEach(category => {
+        categories.forEach(category => {
           createPage({
-            path: `events/category/${category}`,
+            path: `events/category/${category.slug}`,
             component: categoryTemplate,
             context: {
-              events: eventsByCategory[category],
-              category: eventCategoryLabels[category],
+              events:
+                typeof eventsByCategory[category.slug] !== 'undefined'
+                  ? eventsByCategory[category.slug]
+                  : [],
+              category: category.name,
               categories: categories,
             },
           })
