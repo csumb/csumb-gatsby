@@ -15,7 +15,7 @@ const MapMap = styled(Map)`
   margin-bottom: 1.5rem;
 `
 
-class MapPage extends Component {
+class CsumbMap extends Component {
   onReady(mapProps, map) {
     const infoWindow = new this.props.google.maps.InfoWindow({ maxWidth: 320 })
     map.data.setStyle({
@@ -23,7 +23,7 @@ class MapPage extends Component {
       fillOpacity: 0.9,
       strokeWeight: 0,
     })
-    this.props.data.allCsumbBuilding.edges.forEach(({ node }) => {
+    this.props.buildings.edges.forEach(({ node }) => {
       map.data.addGeoJson({
         type: 'FeatureCollection',
         features: [
@@ -51,21 +51,33 @@ class MapPage extends Component {
       infoWindow.open(map)
     })
   }
-
   render() {
-    const { google, data } = this.props
+    const { google } = this.props
+    return (
+      <MapMap
+        google={google}
+        zoom={16}
+        initialCenter={{
+          lat: 36.6536502,
+          lng: -121.7989176,
+        }}
+        onReady={this.onReady.bind(this)}
+      />
+    )
+  }
+}
+
+const CsumbMapWrapped = GoogleApiWrapper({
+  apiKey: 'AIzaSyBFx5aEy_xuJguWMfFEEkqTZAy1q5HF_H0',
+})(CsumbMap)
+
+class MapPage extends Component {
+  render() {
+    const { data } = this.props
     return (
       <Layout>
         <SiteHeader path="/map">Map</SiteHeader>
-        <MapMap
-          google={google}
-          zoom={16}
-          initialCenter={{
-            lat: 36.6536502,
-            lng: -121.7989176,
-          }}
-          onReady={this.onReady.bind(this)}
-        />
+        <CsumbMapWrapped buildings={data.allCsumbBuilding} />
         {data.allCsumbPage && (
           <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
         )}
@@ -74,9 +86,7 @@ class MapPage extends Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBFx5aEy_xuJguWMfFEEkqTZAy1q5HF_H0',
-})(MapPage)
+export default MapPage
 
 export const query = graphql`
   {
