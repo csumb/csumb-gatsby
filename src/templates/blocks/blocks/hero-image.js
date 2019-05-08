@@ -19,6 +19,9 @@ const HeroButton = styled(LinkInspect)`
   padding: 0.5rem;
   font-weight: bold;
   text-decoration: none;
+  &:visited {
+    color: ${colors.white};
+  }
 `
 
 const HeroImageTextWrapper = styled('div')`
