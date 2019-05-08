@@ -264,6 +264,7 @@ const gatsbyConfig = {
         sv: 6,
       },
     },
+    `gatsby-plugin-meta-redirect`,
   ],
 }
 
