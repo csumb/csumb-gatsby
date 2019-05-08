@@ -26,7 +26,7 @@ class Layout extends Component {
           <meta charset="utf-8" />
           <link rel="preconnect" href="https://csumb.okta.com" />
           <title>{`${
-            pageTitle ? `${pageTitle} |` : ''
+            pageTitle ? `${pageTitle} | ` : ''
           }Cal State Monterey Bay`}</title>
 
           <meta
