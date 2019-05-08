@@ -45,6 +45,9 @@ exports.createPages = ({ stage, graphql, actions }) => {
         return schedulePages(graphql, actions)
       })
       .then(() => {
+        return redirects(graphql, actions)
+      })
+      .then(() => {
         resolve()
       })
   })
