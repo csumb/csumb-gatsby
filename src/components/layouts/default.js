@@ -59,7 +59,7 @@ class Layout extends Component {
             data-type="string"
             content={isSiteHomepage ? '1' : '0'}
           />
-          {isSiteHomepage && (
+          {isSiteHomepage && !siteTitle && (
             <meta
               className="swiftype"
               name="site_name"
