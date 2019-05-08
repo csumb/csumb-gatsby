@@ -72,7 +72,11 @@ class Search extends Component {
             >
               {item.title}
               <SearchAutocompleteItemSite isHighlighted={isHighlighted}>
-                {item.site_name}
+                {Array.isArray(item.site_name) ? (
+                  <>{item.site_name[0]}</>
+                ) : (
+                  <>{item.site_name}</>
+                )}
               </SearchAutocompleteItemSite>
             </SearchAutocompleteItem>
           )}
