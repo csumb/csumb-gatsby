@@ -75,7 +75,20 @@ class BlockPerson extends Component {
                   {person.directoryTitle.map((title, key) => (
                     <PersonPosition>
                       <PersonPositionTitle>{title}</PersonPositionTitle>
-                      {person.directoryDepartment[key]}
+                      {person._fullDepartments &&
+                      person._fullDepartments[key] ? (
+                        <>
+                          {person._fullDepartments[key].website ? (
+                            <Link to={person._fullDepartments[key].website}>
+                              {person._fullDepartments[key].name}
+                            </Link>
+                          ) : (
+                            <>{person._fullDepartments[key].name}</>
+                          )}
+                        </>
+                      ) : (
+                        <>{person.directoryDepartment[key]}</>
+                      )}
                     </PersonPosition>
                   ))}
                 </Box>
