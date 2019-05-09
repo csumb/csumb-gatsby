@@ -12,7 +12,7 @@ import {
   faChevronDown,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons'
-import { DialogOverlay, DialogContent } from '@reach/dialog'
+import { DialogOverlay, DialogContent } from 'components/common/dialog'
 import { CloseDialog } from './shared-styles'
 
 const DashboardAppsWrapper = styled('div')`
