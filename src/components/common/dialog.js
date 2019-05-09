@@ -67,8 +67,6 @@ let contentWillUnmount = ({ refs }) => {
   refs.disposeAriaHider()
 }
 
-let FocusContext = React.createContext()
-
 let DialogOverlay = React.forwardRef(
   (
     {
