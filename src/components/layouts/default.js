@@ -3,6 +3,7 @@ import { graphql, StaticQuery } from 'gatsby'
 import Header from 'components/layouts/sections/header'
 import Footer from 'components/layouts/sections/footer/global'
 import Helmet from 'react-helmet'
+import styled from '@emotion/styled'
 
 import Emergency from './alerts/emergency'
 

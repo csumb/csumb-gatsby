@@ -5,7 +5,6 @@ import { Flex, Box } from '@rebass/grid/emotion'
 import NProgress from 'nprogress'
 
 import { PlaceholderCard } from './placeholders'
-import '@reach/dialog/styles.css'
 
 import DashboardIntro from './intro'
 import DashboardApps from './apps'
