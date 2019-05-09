@@ -108,7 +108,7 @@ class Footer extends Component {
                 <Box width={[1, 1 / 3]}>
                   <FooterList>
                     <li>
-                      <a href="/up/prospective-employees">Jobs</a>
+                      <a href="/jobs">Jobs</a>
                     </li>
                     <li>
                       <a href="/admissions/visit">Tours</a>
