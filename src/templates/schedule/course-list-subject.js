@@ -9,7 +9,10 @@ class SubjectCourseList extends Component {
   render() {
     const { subject, term } = this.props.pageContext
     return (
-      <Layout>
+      <Layout
+        pageTitle={`${term.DESCR} ${subject.name} courses`}
+        siteTitle="Class Schedule"
+      >
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
         <Container topPadding>
           <PageTitle sub={subject.name}>{term.DESCR}</PageTitle>

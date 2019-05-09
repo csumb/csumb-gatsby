@@ -9,7 +9,10 @@ class GECourseList extends Component {
   render() {
     const { ge, term } = this.props.pageContext
     return (
-      <Layout>
+      <Layout
+        pageTitle={`${term.DESCR} ${ge.name} courses`}
+        siteTitle="Class Schedule"
+      >
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
         <Container topPadding>
           <PageTitle sub={ge.name}>{term.DESCR}</PageTitle>
