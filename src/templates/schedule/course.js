@@ -8,7 +8,12 @@ class CoursePageTemplate extends Component {
   render() {
     const { term, course, requirements } = this.props.pageContext
     return (
-      <Layout>
+      <Layout
+        pageTitle={`${course.SUBJECT} ${course.CATALOG_NBR} Section ${
+          course.SECTION
+        } - ${term.DESCR}`}
+        siteTitle="Class Schedule"
+      >
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
         <Container topPadding>
           <CoursePage term={term} course={course} requirements={requirements} />
