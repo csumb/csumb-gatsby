@@ -95,7 +95,7 @@ const PersonTemplate = ({ pageContext }) => {
                   <Link
                     to={`/directory/building/${_publicProfile.buildingCode}`}
                   >
-                    {building}``
+                    {building}
                   </Link>
                   {room && (
                     <>
