@@ -31,9 +31,7 @@ class BlockCourses extends Component {
           <Well>
             <h3>
               <Link
-                to={`/course/${course.SUBJECT.toLowerCase()}/${
-                  course.CATALOG_NBR.trim().toLowerCase
-                }`}
+                to={`/course/${course.SUBJECT.toLowerCase()}/${course.CATALOG_NBR.trim().toLowerCase()}`}
               >
                 {course.SUBJECT} {course.CATALOG_NBR}:{' '}
                 {course.COURSE_TITLE_LONG}
