@@ -8,10 +8,10 @@ const EventFeedWrapper = styled('section')`
   padding: 1.5rem;
   margin: 2rem 0;
 `
+const time = new Date()
+const currentTime = time.getTime() / 1000 - 24 * 60 * 60
 
 const displayEvent = item => {
-  const time = new Date()
-  const currentTime = time.getTime() / 1000
   let display = false
   item.date_stamps.forEach(stamp => {
     if (stamp.end_stamp >= currentTime) {

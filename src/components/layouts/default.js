@@ -3,9 +3,31 @@ import { graphql, StaticQuery } from 'gatsby'
 import Header from 'components/layouts/sections/header'
 import Footer from 'components/layouts/sections/footer/global'
 import Helmet from 'react-helmet'
-import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
-import '@reach/skip-nav/styles.css'
+import styled from '@emotion/styled'
+
 import Emergency from './alerts/emergency'
+
+const SkipNavLink = styled('a')`
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  &:focus {
+    padding: 1rem;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: white;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    clip: auto;
+  }
+`
 
 class Layout extends Component {
   render() {
@@ -20,7 +42,7 @@ class Layout extends Component {
     return (
       <>
         <Emergency />
-        <SkipNavLink />
+        <SkipNavLink href="#csumb-skip-nav">Skip to content</SkipNavLink>
         <Helmet>
           <html lang="en" />
           <meta charset="utf-8" />
@@ -92,7 +114,7 @@ class Layout extends Component {
             </>
           )}
         />
-        <SkipNavContent />
+        <div id="csumb-skip-nav" />
         {this.props.children}
         <Footer noFooterMargin={noFooterMargin ? true : false} />
       </>

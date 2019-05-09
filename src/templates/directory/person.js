@@ -89,17 +89,22 @@ const PersonTemplate = ({ pageContext }) => {
               </DirectoryItem>
             )}
             {building && (
-              <DirectoryItem>
-                <Link to={`/directory/building/${_publicProfile.buildingCode}`}>
-                  {building}
-                </Link>
-                {room && (
-                  <>
-                    <br />
-                    {room}
-                  </>
-                )}
-              </DirectoryItem>
+              <>
+                <h2>Building &amp; room</h2>
+                <DirectoryItem>
+                  <Link
+                    to={`/directory/building/${_publicProfile.buildingCode}`}
+                  >
+                    {building}
+                  </Link>
+                  {room && (
+                    <>
+                      <br />
+                      {room}
+                    </>
+                  )}
+                </DirectoryItem>
+              </>
             )}
             {_publicProfile && _publicProfile.officeHours && (
               <DirectoryItem>
@@ -126,7 +131,7 @@ const PersonTemplate = ({ pageContext }) => {
         </Flex>
         {biography && (
           <>
-            <h4>Biography</h4>
+            <h2>Biography</h2>
             <div
               dangerouslySetInnerHTML={{
                 __html: converter.makeHtml(biography),
