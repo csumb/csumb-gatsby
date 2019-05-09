@@ -95,7 +95,7 @@ const PersonTemplate = ({ pageContext }) => {
                   <Link
                     to={`/directory/building/${_publicProfile.buildingCode}`}
                   >
-                    {building}
+                    {building}``
                   </Link>
                   {room && (
                     <>
@@ -131,7 +131,7 @@ const PersonTemplate = ({ pageContext }) => {
         </Flex>
         {biography && (
           <>
-            <h4>Biography</h4>
+            <h2>Biography</h2>
             <div
               dangerouslySetInnerHTML={{
                 __html: converter.makeHtml(biography),
