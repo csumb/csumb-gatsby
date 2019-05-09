@@ -8,6 +8,7 @@ import styled from '@emotion/styled'
 import phoneFormatter from 'phone-formatter'
 import showdown from 'showdown'
 import Link from 'gatsby-link'
+import LinkInspect from 'components/utilities/link-inspect'
 import sanitizeHtml from 'sanitize-html'
 import { DirectoryNavigation } from 'components/pages/directory'
 
@@ -63,7 +64,19 @@ const PersonTemplate = ({ pageContext }) => {
             {user.directoryDepartment.map((department, key) => (
               <DirectoryPosition key={key}>
                 <DirectoryTitle>{user.directoryTitle[key]}</DirectoryTitle>
-                {department}
+                {user.fullDepartments && user.fullDepartments[key] ? (
+                  <>
+                    {user.fullDepartments[key].website ? (
+                      <LinkInspect to={user.fullDepartments[key].website}>
+                        {user.fullDepartments[key].name}
+                      </LinkInspect>
+                    ) : (
+                      <>{user.fullDepartments[key].name}</>
+                    )}
+                  </>
+                ) : (
+                  <>{department}</>
+                )}
               </DirectoryPosition>
             ))}
             <h2>Contact information</h2>
