@@ -89,17 +89,22 @@ const PersonTemplate = ({ pageContext }) => {
               </DirectoryItem>
             )}
             {building && (
-              <DirectoryItem>
-                <Link to={`/directory/building/${_publicProfile.buildingCode}`}>
-                  {building}
-                </Link>
-                {room && (
-                  <>
-                    <br />
-                    {room}
-                  </>
-                )}
-              </DirectoryItem>
+              <>
+                <h2>Building &amp; room</h2>
+                <DirectoryItem>
+                  <Link
+                    to={`/directory/building/${_publicProfile.buildingCode}`}
+                  >
+                    {building}
+                  </Link>
+                  {room && (
+                    <>
+                      <br />
+                      {room}
+                    </>
+                  )}
+                </DirectoryItem>
+              </>
             )}
             {_publicProfile && _publicProfile.officeHours && (
               <DirectoryItem>
