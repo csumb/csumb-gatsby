@@ -26,10 +26,13 @@ class BlockEventFeed extends Component {
     const { events, title, limit } = this.props
     const displayEvents = []
     events.forEach(event => {
-      if (displayEvent(event) && displayEvents.length < limit) {
+      if (displayEvent(event) && displayEvents.length <= limit) {
         displayEvents.push(event)
       }
     })
+    if (!displayEvents.length) {
+      return null
+    }
     return (
       <EventFeedWrapper>
         {title && <h3>{title}</h3>}
