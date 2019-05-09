@@ -15,7 +15,10 @@ class ScheduleFront extends Component {
   render() {
     const { term, termSubjects, allGe, allTerms } = this.props.pageContext
     return (
-      <Layout>
+      <Layout
+        pageTitle={`${term.DESCR} Class Schedule`}
+        siteTitle="Class Schedule"
+      >
         <SiteHeader path="/schedule">Class Schedule</SiteHeader>
         <Container topPadding>
           <PageTitle>{term.DESCR} Schedule</PageTitle>

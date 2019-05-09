@@ -9,7 +9,7 @@ class CourseTemplate extends Component {
     const { course } = this.props.pageContext
     const pageTitle = `${course.SUBJECT} ${course.CATALOG_NBR}`
     return (
-      <Layout pageTitle={pageTitle}>
+      <Layout pageTitle={pageTitle} siteTitle="Courses">
         <SiteHeader path="/catalog">Catalog</SiteHeader>
         <Container>
           <PageTitle>

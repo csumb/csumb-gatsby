@@ -29,9 +29,7 @@ class BlockGe extends Component {
         {courses.map(course => (
           <li>
             <Link
-              to={`/course/${course.SUBJECT.toLowerCase()}/${
-                course.CATALOG_NBR.trim().toLowerCase
-              }`}
+              to={`/course/${course.SUBJECT.toLowerCase()}/${course.CATALOG_NBR.trim().toLowerCase()}`}
             >
               {course.SUBJECT} {course.CATALOG_NBR}: {course.COURSE_TITLE_LONG}
             </Link>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
 import Link from 'gatsby-link'
+import LinkInspect from 'components/utilities/link-inspect'
 import Loading from 'components/common/loading'
 
 const Person = styled('div')`
@@ -75,7 +76,22 @@ class BlockPerson extends Component {
                   {person.directoryTitle.map((title, key) => (
                     <PersonPosition>
                       <PersonPositionTitle>{title}</PersonPositionTitle>
-                      <Link>{person.directoryDepartment[key]}</Link>
+                      {person._fullDepartments &&
+                      person._fullDepartments[key] ? (
+                        <>
+                          {person._fullDepartments[key].website ? (
+                            <LinkInspect
+                              to={person._fullDepartments[key].website}
+                            >
+                              {person._fullDepartments[key].name}
+                            </LinkInspect>
+                          ) : (
+                            <>{person._fullDepartments[key].name}</>
+                          )}
+                        </>
+                      ) : (
+                        <>{person.directoryDepartment[key]}</>
+                      )}
                     </PersonPosition>
                   ))}
                 </Box>
@@ -102,7 +118,22 @@ class BlockPerson extends Component {
                   {person.directoryTitle.map((title, key) => (
                     <PersonPosition>
                       <PersonPositionTitle>{title}</PersonPositionTitle>
-                      <Link>{person.directoryDepartment[key]}</Link>
+                      {person._fullDepartments &&
+                      person._fullDepartments[key] ? (
+                        <>
+                          {person._fullDepartments[key].website ? (
+                            <LinkInspect
+                              to={person._fullDepartments[key].website}
+                            >
+                              {person._fullDepartments[key].name}
+                            </LinkInspect>
+                          ) : (
+                            <>{person._fullDepartments[key].name}</>
+                          )}
+                        </>
+                      ) : (
+                        <>{person.directoryDepartment[key]}</>
+                      )}
                     </PersonPosition>
                   ))}
                   <a href={`mailto:${person.email}`}>{person.email}</a>

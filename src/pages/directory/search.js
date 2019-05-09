@@ -46,6 +46,7 @@ const PersonListing = props => {
     email,
     buildings,
     _publicProfile,
+    fullDepartments,
   } = props
   const link = email.split('@').shift()
   return (
@@ -60,7 +61,19 @@ const PersonListing = props => {
           {directoryJobClass.map((jobClass, key) => (
             <DirectoryPosition key={key}>
               <h4>{directoryTitle[key] && <>{directoryTitle[key]}</>}</h4>
-              {directoryDepartment[key]}
+              {fullDepartments[key] ? (
+                <>
+                  {fullDepartments[key].website ? (
+                    <LinkInspect to={fullDepartments[key].website}>
+                      {fullDepartments[key].name}
+                    </LinkInspect>
+                  ) : (
+                    <>{fullDepartments[key].name}</>
+                  )}
+                </>
+              ) : (
+                <>{directoryDepartment[key]}</>
+              )}
             </DirectoryPosition>
           ))}
         </Box>
@@ -340,6 +353,10 @@ export const query = graphql`
               buildingCode
               location
               appointmentCalendar
+            }
+            fullDepartments {
+              name
+              website
             }
           }
         }
