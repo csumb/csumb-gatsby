@@ -1,7 +1,7 @@
 import React from 'react'
 
 const userRoles = {
-  student_applicant: 'Student',
+  student_applicant: 'Applicant',
   student_matriculated: 'Student',
   student_graduate: 'Student',
   student_continuing_education: 'Student',
