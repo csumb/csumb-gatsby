@@ -5,8 +5,30 @@ const crypto = require('crypto')
 exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
   const { createNode } = actions
   const allUsers = {}
+  const departments = {}
+
+  const allDepartments = fs.readJSONSync(
+    './_web-content/_data/departments.json'
+  )
+  allDepartments.forEach(department => {
+    department.unit_code.forEach(code => {
+      departments[code] = department
+    })
+  })
+
   const allDirectory = fs.readJSONSync('./_web-content/_data/directory.json')
   allDirectory.forEach(user => {
+    if (
+      typeof user.directoryDepartmentID !== 'undefined' &&
+      Array.isArray(user.directoryDepartmentID)
+    ) {
+      user.fullDepartments = []
+      user.directoryDepartmentID.forEach(code => {
+        if (typeof departments[code] !== 'undefined') {
+          user.fullDepartments.push(departments[code])
+        }
+      })
+    }
     allUsers[user.login.split('@').shift()] = user
   })
 
