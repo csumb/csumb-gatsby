@@ -64,9 +64,9 @@ const PersonListing = props => {
               {fullDepartments[key] ? (
                 <>
                   {fullDepartments[key].website ? (
-                    <Link to={fullDepartments[key].website}>
+                    <LinkInspect to={fullDepartments[key].website}>
                       {fullDepartments[key].name}
-                    </Link>
+                    </LinkInspect>
                   ) : (
                     <>{fullDepartments[key].name}</>
                   )}
