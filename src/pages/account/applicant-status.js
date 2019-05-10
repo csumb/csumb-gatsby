@@ -268,7 +268,12 @@ class ApplicantStatus extends Component {
 
   componentDidMount() {
     window
-      .fetch(`http://applicant-api.csumb.edu/?user=stur2977`)
+      .fetch(
+        `http://applicant-api.csumb.edu/?user=${this.props.user.profile.login.replace(
+          '@csumb.edu',
+          ''
+        )}`
+      )
       .then(response => {
         return response.json()
       })
