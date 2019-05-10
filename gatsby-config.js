@@ -67,6 +67,13 @@ const gatsbyConfig = {
         icon: 'src/assets/images/icon.png',
       },
     },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: 'csumb-edu',
+        generateRoutingRules: false,
+      },
+    },
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-csv',

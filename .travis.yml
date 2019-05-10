@@ -17,5 +17,6 @@ script:
   - npm run catalogJson
   - npm run buildJson
   - npm run canary
-  - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH -f
+  - npm run deploy
+#  - ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH -f
 #  - npm run ghPages
