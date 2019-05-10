@@ -269,7 +269,7 @@ class ApplicantStatus extends Component {
   componentDidMount() {
     window
       .fetch(
-        `https://applicant-api.csumb.edu/?user=${this.props.user.profile.login.replace(
+        `https://csumb-applicant-api.herokuapp.com/?user=${this.props.user.profile.login.replace(
           '@csumb.edu',
           ''
         )}`
