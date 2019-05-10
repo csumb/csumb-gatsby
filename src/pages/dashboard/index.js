@@ -38,8 +38,8 @@ class DashboardPage extends Component {
       user &&
       !user.anonymous &&
       user._isApplicant &&
-      !user.isEmployee &&
-      !user.isStudent
+      !user._isEmployee &&
+      !user._isStudent
     ) {
       navigate('/account/applicant-status')
     }
