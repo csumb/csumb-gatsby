@@ -6,7 +6,6 @@ import NProgress from 'nprogress'
 
 import { PlaceholderCard } from './placeholders'
 
-import DashboardIntro from './intro'
 import DashboardApps from './apps'
 import { DashboardEvents } from './events'
 import DashboardNotLoggedIn from './not-logged-in'
@@ -208,9 +207,4 @@ class DashboardContent extends Component {
   }
 }
 
-export {
-  DashboardApps,
-  DashboardContent,
-  DashboardMobileToolbar,
-  DashboardIntro,
-}
+export { DashboardApps, DashboardContent, DashboardMobileToolbar }
