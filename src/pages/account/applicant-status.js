@@ -268,20 +268,18 @@ class ApplicantStatus extends Component {
 
   componentDidMount() {
     window
-      .fetch(
-        `http://applicant-api.csumb.edu/?user=${this.props.user.profile.login.replace(
-          '@csumb.edu',
-          ''
-        )}`
-      )
+      .fetch(`http://applicant-api.csumb.edu/?user=stur2977`)
       .then(response => {
         return response.json()
       })
       .then(applications => {
-        if (applications._data.length === 0) {
+        if (
+          Array.isArray(applications._data) &&
+          applications._data.length === 0
+        ) {
           this.setState({
             noApplication: true,
-            applications: true,
+            applications: false,
           })
           return
         }
@@ -321,14 +319,26 @@ class ApplicantStatus extends Component {
         term: term,
         application: application.application,
         checklist:
+          typeof apps.checklist !== 'undefined' &&
           typeof apps.checklist[application.application.application_number] !==
-          'undefined'
+            'undefined'
             ? apps.checklist[application.application.application_number]
             : [],
         status:
-          apps.applicant_status[application.application.application_number],
+          typeof apps.applicant_status !== 'undefined' &&
+          typeof apps.applicant_status[
+            application.application.application_number
+          ] !== 'undefined'
+            ? apps.applicant_status[application.application.application_number]
+            : [],
         transcripts:
-          apps.transcript_checklist[application.application.application_number],
+          typeof apps.transcript_checklist[
+            application.application.application_number
+          ] !== 'undefined'
+            ? apps.transcript_checklist[
+                application.application.application_number
+              ]
+            : [],
         transcriptHistory: apps.transcripts,
       }
 
