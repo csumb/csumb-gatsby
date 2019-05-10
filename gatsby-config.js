@@ -72,6 +72,7 @@ const gatsbyConfig = {
       options: {
         bucketName: 'csumb-edu',
         generateRoutingRules: false,
+        generateMatchPathRewrites: false,
       },
     },
     'gatsby-plugin-emotion',

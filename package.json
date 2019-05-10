@@ -127,7 +127,7 @@
     "buildTrace": "gatsby build --open-tracing-config-file node_modules/gatsby/dist/utils/tracer/zipkin-local.js",
     "canary": "jest --testPathIgnorePatterns node_modules,.cache -- src/custom-build/__tests__/canary.js",
     "ghPages": "gh-pages -b $TRAVIS_BRANCH -d public -r https://$GITHUB_TOKEN@github.com/csumb-edu/csumb-edu.github.io.git",
-    "deploy": "gatsby-plugin-s3 deploy -y"
+    "deploy": "echo '[]' > ./.cache/s3.routingRules.json;echo '[]' > ./.cache/s3.sls.routingRules.json; gatsby-plugin-s3 deploy -y"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
