@@ -10,13 +10,16 @@ import PageTitle from 'components/layouts/sections/header/page-title'
 
 class EventsPage extends Component {
   render() {
-    const events = this.props.data.allCsumbPage.edges
+    let events = false
     let featuredEvents = false
-    events.forEach(({ node }) => {
-      if (node.event.featured) {
-        featuredEvents = true
-      }
-    })
+    if (this.props.data.allCsumbPage) {
+      events = this.props.data.allCsumbPage.edges
+      events.forEach(({ node }) => {
+        if (node.event.featured) {
+          featuredEvents = true
+        }
+      })
+    }
     return (
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
