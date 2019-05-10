@@ -10,6 +10,7 @@ import DashboardApps from './apps'
 import { DashboardEvents } from './events'
 import DashboardNotLoggedIn from './not-logged-in'
 import { DashboardMessages } from './messages'
+import DashboardSecondary from './secondary-email'
 
 const dashboardWrapperStyle = `
   padding: 1rem;
@@ -133,6 +134,7 @@ class DashboardContent extends Component {
         <>
           {mobileTab === 'messages' && (
             <DashboardMessageWrapper>
+              <DashboardSecondary session={this.state.session} />
               <h2>Messages</h2>
               <DashboardMessages
                 messages={messages}
@@ -160,49 +162,52 @@ class DashboardContent extends Component {
       )
     }
     return (
-      <Flex flexWrap="wrap">
-        <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
-          <DashboardEventWrapper>
-            <h2>Events</h2>
+      <>
+        <DashboardSecondary session={this.state.session} />
+        <Flex flexWrap="wrap">
+          <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
+            <DashboardEventWrapper>
+              <h2>Events</h2>
 
-            {ready ? (
-              <DashboardEvents
-                events={events}
-                archive={id => {
-                  this.archive(id, session)
-                }}
-              />
-            ) : (
-              <>
-                <PlaceholderCard />
-                <PlaceholderCard />
-                <PlaceholderCard />
-                <PlaceholderCard />
-              </>
-            )}
-          </DashboardEventWrapper>
-        </Box>
-        <Box width={[1, 1, 1 / 2, 1 / 2]}>
-          <DashboardMessageWrapper>
-            <h2>Messages</h2>
-            {ready ? (
-              <DashboardMessages
-                messages={messages}
-                archive={id => {
-                  this.archive(id, session)
-                }}
-              />
-            ) : (
-              <>
-                <PlaceholderCard />
-                <PlaceholderCard />
-                <PlaceholderCard />
-                <PlaceholderCard />
-              </>
-            )}
-          </DashboardMessageWrapper>
-        </Box>
-      </Flex>
+              {ready ? (
+                <DashboardEvents
+                  events={events}
+                  archive={id => {
+                    this.archive(id, session)
+                  }}
+                />
+              ) : (
+                <>
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                </>
+              )}
+            </DashboardEventWrapper>
+          </Box>
+          <Box width={[1, 1, 1 / 2, 1 / 2]}>
+            <DashboardMessageWrapper>
+              <h2>Messages</h2>
+              {ready ? (
+                <DashboardMessages
+                  messages={messages}
+                  archive={id => {
+                    this.archive(id, session)
+                  }}
+                />
+              ) : (
+                <>
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                </>
+              )}
+            </DashboardMessageWrapper>
+          </Box>
+        </Flex>
+      </>
     )
   }
 }
