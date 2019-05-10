@@ -9,7 +9,6 @@ import {
   DashboardApps,
   DashboardContent,
   DashboardMobileToolbar,
-  DashboardIntro,
 } from 'components/dashboard'
 import { navigate } from '@reach/router'
 
@@ -39,8 +38,8 @@ class DashboardPage extends Component {
       user &&
       !user.anonymous &&
       user._isApplicant &&
-      !user.isEmployee &&
-      !user.isStudent
+      !user._isEmployee &&
+      !user._isStudent
     ) {
       navigate('/account/applicant-status')
     }
@@ -86,7 +85,6 @@ class DashboardPage extends Component {
                           </button>
                         </Container>
                       </DashboardMobileToolbar>
-                      <DashboardIntro />
 
                       <DashboardContent
                         user={context.user}
@@ -99,8 +97,6 @@ class DashboardPage extends Component {
                     <>
                       <DashboardApps apps={data.allCsumbApp.edges} />
                       <section>
-                        <DashboardIntro />
-
                         <Container topPadding>
                           <DashboardContent user={context.user} />
                         </Container>
