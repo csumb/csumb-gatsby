@@ -85,7 +85,6 @@ class DashboardPage extends Component {
                           </button>
                         </Container>
                       </DashboardMobileToolbar>
-                      <DashboardIntro />
 
                       <DashboardContent
                         user={context.user}
