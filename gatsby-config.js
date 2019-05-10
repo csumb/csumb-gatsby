@@ -149,7 +149,7 @@ const gatsbyConfig = {
           },
           {
             baseId: 'appXrkUdaBbX4kxG5',
-            tableName: 'Application Dealines',
+            tableName: 'Application Deadlines',
             queryName: 'StudyAbroadDeadlines',
           },
           {
