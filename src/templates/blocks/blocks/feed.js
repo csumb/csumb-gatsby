@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from 'components/utilities/link-inspect'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import { Button } from 'components/common/button'
 
 const FeedList = styled('ul')`

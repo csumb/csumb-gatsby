@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import { colors } from 'style/theme'
 import { InputCheckbox, Submit } from 'components/common/forms'
 import { UnstyledList } from 'components/common/type'

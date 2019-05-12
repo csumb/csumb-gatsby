@@ -6,7 +6,7 @@ import { graphql } from 'gatsby'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import Blocks from 'templates/blocks'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import { ButtonLink, LinkyButton } from 'components/common/button'
 import Lightbox from 'react-images'
 

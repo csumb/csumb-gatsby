@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import Container from 'components/common/container'
 import { LeadParagraph, UnstyledList } from 'components/common/type'
 import { colors } from 'style/theme'

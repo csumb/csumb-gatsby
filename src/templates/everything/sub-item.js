@@ -15,7 +15,7 @@ import SiteHeader from 'components/layouts/sections/header/site-header'
 import Link from 'gatsby-link'
 import Layout from 'components/layouts/default'
 import Container from 'components/common/container'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 
 class EverythingSubLevelPage extends Component {
   state = {

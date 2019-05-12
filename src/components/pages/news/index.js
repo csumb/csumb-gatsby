@@ -4,7 +4,7 @@ import moment from 'moment'
 import NewsContainer from 'components/pages/news/news-container'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import { colors } from 'style/theme'
 
 const NewsTag = styled(Link)`

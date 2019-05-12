@@ -9,7 +9,7 @@ import { UniversityPersonnelForm } from 'components/pages/university-personnel'
 import { InputText, Submit } from 'components/common/forms'
 import Well from 'components/common/well'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 
 class UniversityPersonnelAllformsSearch extends Component {
   state = {
