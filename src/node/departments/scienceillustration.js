@@ -81,9 +81,12 @@ module.exports = (graphql, actions) => {
               context: {
                 graduate: edge.node,
                 images: graduateImages,
-                navigation: result.data.allCsumbNavigation
-                  ? result.data.allCsumbNavigation.edges[0].node.navigation
-                  : '',
+                navigation:
+                  result.data.allCsumbNavigation &&
+                  result.data.allCsumbNavigation.edges &&
+                  result.data.allCsumbNavigation.edges[0]
+                    ? result.data.allCsumbNavigation.edges[0].node.navigation
+                    : '',
               },
             })
           }
