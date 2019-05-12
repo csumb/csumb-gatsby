@@ -11,7 +11,7 @@ import {
   faExclamationCircle,
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import bp from 'style/breakpoints'
 
 const baseStyle = `

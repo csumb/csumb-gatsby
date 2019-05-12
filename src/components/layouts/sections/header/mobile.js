@@ -9,7 +9,7 @@ import Container from 'components/common/container'
 import { UserContext } from 'components/contexts/user'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import LinkInspect from 'components/utilities/link-inspect'
 import Link from 'gatsby-link'
 

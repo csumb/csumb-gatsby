@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import { UnstyledList } from 'components/common/type'
 
 const AllPrograms = () => (

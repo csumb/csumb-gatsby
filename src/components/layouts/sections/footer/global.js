@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import LinkInspect from 'components/utilities/link-inspect'
 import Container from 'components/common/container'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import bp from 'style/breakpoints'

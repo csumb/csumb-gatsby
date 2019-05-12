@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import NProgress from 'nprogress'
 
 import { PlaceholderCard } from './placeholders'

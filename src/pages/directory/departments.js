@@ -10,7 +10,7 @@ import Well from 'components/common/well'
 import { graphql } from 'gatsby'
 import { DirectoryNavigation } from 'components/pages/directory'
 import { InputText, Submit } from 'components/common/forms'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 
 const Letter = styled(LinkyButton)`
   display: inline-block;
