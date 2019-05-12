@@ -323,16 +323,20 @@ export const query = graphql`
       sort: { fields: [user___lastName, user___firstName] }
       filter: {
         user: {
-          directoryJobClass: { ne: "1800" }
-          directoryJobClass: { ne: "4660" }
-          directoryJobClass: { ne: "2403" }
-          directoryJobClass: { ne: "1870" }
-          directoryJobClass: { ne: "1871" }
-          directoryJobClass: { ne: "1868" }
-          directoryJobClass: { ne: "1872" }
-          directoryJobClass: { ne: "1874" }
-          directoryJobClass: { ne: "1875" }
-          directoryJobClass: { ne: "1876" }
+          directoryJobCode: {
+            nin: [
+              "1800"
+              "4660"
+              "2403"
+              "1870"
+              "1871"
+              "1868"
+              "1872"
+              "1874"
+              "1875"
+              "1876"
+            ]
+          }
         }
       }
     ) {
@@ -342,6 +346,7 @@ export const query = graphql`
             firstName
             lastName
             directoryJobClass
+            directoryJobCode
             directoryTitle
             directoryDepartment
             directoryPhone
