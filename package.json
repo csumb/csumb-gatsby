@@ -72,7 +72,6 @@
     "moment-timezone": "^0.5.23",
     "node-cryptex": "0.0.2",
     "normalize.css": "^8.0.1",
-    "patch-package": "^6.1.2",
     "phone-formatter": "0.0.2",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
