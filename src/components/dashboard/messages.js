@@ -3,8 +3,6 @@ import { AlertEmpty } from 'components/common/alert'
 import VisuallyHidden from 'components/utilities/visually-hidden'
 import Link from 'gatsby-link'
 
-import DashboardAlumni from './alumni'
-
 import {
   DashboardCard,
   DashboardMessageClose,
@@ -16,7 +14,6 @@ class DashboardMessages extends Component {
     const { messages, archive } = this.props
     return (
       <>
-        <DashboardAlumni />
         {messages && messages.length ? (
           <>
             {messages.map((message, key) => (
