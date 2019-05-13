@@ -377,11 +377,13 @@ class CostPage extends Component {
     return (
       <Layout>
         <SiteHeader path="/cost">Costs &amp; Aid</SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container>
           <PageTitle layout="page">Cost calculator</PageTitle>
           <LeadParagraph>Effective Spring 2019</LeadParagraph>
