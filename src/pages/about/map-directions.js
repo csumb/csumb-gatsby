@@ -78,9 +78,11 @@ class MapPage extends Component {
       <Layout>
         <SiteHeader path="/map">Map</SiteHeader>
         <CsumbMapWrapped buildings={data.allCsumbBuilding} />
-        {data.allCsumbPage && (
-          <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-        )}
+        {data.allCsumbPage &&
+          data.allCsumbPage.edges &&
+          data.allCsumbPage.edges[0] && (
+            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+          )}
       </Layout>
     )
   }
