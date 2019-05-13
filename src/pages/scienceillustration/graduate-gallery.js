@@ -6,7 +6,7 @@ import PageTitle from 'components/layouts/sections/header/page-title'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import { LeadParagraph } from 'components/common/type'
 import { graphql } from 'gatsby'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import Link from 'gatsby-link'
 import { InputText, Submit } from 'components/common/forms'
 import bp from 'style/breakpoints'
@@ -109,11 +109,13 @@ class ScienceIllustrationGalleryPage extends Component {
         <SiteHeader path="/scienceillustration">
           Science Illustration
         </SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container>
           <PageTitle layout="page">Graduate gallery</PageTitle>
           <LeadParagraph>

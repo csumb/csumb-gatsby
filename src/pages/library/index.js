@@ -4,7 +4,7 @@ import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import Blocks from 'templates/blocks'
 import { colors } from 'style/theme'
@@ -103,19 +103,23 @@ class LibraryPage extends Component {
     return (
       <Layout pageTitle="Library" siteTitle="Library" isSiteHomepage={true}>
         <SiteHeader path="/library">Library</SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container>
           <LibrarySearch />
           <div ref={this.chatRef} />
           <style>{`.libraryh3lp img { height: 44px !important;}`}</style>
 
-          {data.allCsumbPage && (
-            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-          )}
+          {data.allCsumbPage &&
+            data.allCsumbPage.edges &&
+            data.allCsumbPage.edges[0] && (
+              <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+            )}
         </Container>
       </Layout>
     )

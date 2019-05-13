@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import moment from 'moment'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import { colors, fonts } from 'style/theme'
 import LazyHero from 'components/lazy-hero-image'
 import { LeadParagraph } from 'components/common/type'

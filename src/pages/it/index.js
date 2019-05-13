@@ -4,7 +4,7 @@ import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import Well from 'components/common/well'
 import { ITSystemStatus, ITAlerts } from 'components/pages/it'
@@ -58,11 +58,13 @@ class ITPage extends Component {
         isSiteHomepage={true}
       >
         <SiteHeader path="/it">Information Technology</SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container topPadding>
           <ITSearch />
           <HelpFlex flexWrap="wrap">
@@ -157,9 +159,11 @@ class ITPage extends Component {
               <ITSystemStatus />
             </Box>
           </Flex>
-          {data.allCsumbPage && (
-            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-          )}
+          {data.allCsumbPage &&
+            data.allCsumbPage.edges &&
+            data.allCsumbPage.edges[0] && (
+              <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+            )}
         </Container>
       </Layout>
     )

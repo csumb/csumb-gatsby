@@ -5,7 +5,7 @@ import Container from 'components/common/container'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import Link from 'gatsby-link'
 import { UnstyledList } from 'components/common/type'
@@ -185,11 +185,13 @@ const EducationAbroadSearchAreaPage = ({ data }) => {
   return (
     <Layout pageTitle="Search by area">
       <SiteHeader path="/educationabroad">Education Abroad</SiteHeader>
-      {data.allCsumbNavigation && (
-        <SiteNavigation
-          navigation={data.allCsumbNavigation.edges[0].node.navigation}
-        />
-      )}
+      {data.allCsumbNavigation &&
+        data.allCsumbNavigation.edges &&
+        data.allCsumbNavigation[0] && (
+          <SiteNavigation
+            navigation={data.allCsumbNavigation.edges[0].node.navigation}
+          />
+        )}
       <Container>
         <PageTitle>Programs by subject area</PageTitle>
         <SubjectAreas areas={areas} majors={majors} />

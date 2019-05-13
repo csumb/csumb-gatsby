@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { colors, fonts } from 'style/theme'
-import { Box } from '@rebass/grid/emotion'
+import { Box } from 'components/common/grid'
 import LinkInspect from 'components/utilities/link-inspect'
 import Link from 'gatsby-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

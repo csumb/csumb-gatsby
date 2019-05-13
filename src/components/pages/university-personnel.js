@@ -8,7 +8,7 @@ import {
   faChevronRight,
   faFileDownload,
 } from '@fortawesome/free-solid-svg-icons'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 
 const DocumentIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;

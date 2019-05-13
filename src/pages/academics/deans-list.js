@@ -33,7 +33,7 @@ class AcademicsPage extends Component {
     return (
       <Layout pageTitle="Academics">
         <SiteHeader path="/academics">Academics</SiteHeader>
-        {data.allCsumbNavigation && (
+        {data.allCsumbNavigation &&  data.allCsumbNavigation.edges && data.allCsumbNavigation.edges[0] && (
           <SiteNavigation
             navigation={data.allCsumbNavigation.edges[0].node.navigation}
           />

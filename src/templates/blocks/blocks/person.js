@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import Link from 'gatsby-link'
 import LinkInspect from 'components/utilities/link-inspect'
 import Loading from 'components/common/loading'

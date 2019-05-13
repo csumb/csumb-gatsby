@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import styled from '@emotion/styled'
 import Container from 'components/common/container'
 import BlockList from './blocks/list'

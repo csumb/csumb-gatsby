@@ -9,7 +9,7 @@ import { UniversityPersonnelForm } from 'components/pages/university-personnel'
 import { InputText, Submit } from 'components/common/forms'
 import Well from 'components/common/well'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 
 class UniversityPersonnelAllformsSearch extends Component {
   state = {
@@ -84,14 +84,18 @@ class UniversityPersonnelFormsPage extends Component {
     return (
       <Layout pageTitle="University Personnel">
         <SiteHeader path="/up">University Personnel</SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container>
           <PageTitle>All forms</PageTitle>
-          {data.allCsumbPage && (
+          {data.allCsumbPage &&
+            data.allCsumbPage.edges &&
+            data.allCsumbPage.edges[0] && (
             <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
           )}
           {data.allAirtable && (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import { colors } from 'style/theme'
 import { InputCheckbox, Submit } from 'components/common/forms'
 import { UnstyledList } from 'components/common/type'
@@ -223,31 +223,6 @@ class CourseList extends Component {
         listCourses.push(course)
       })
     }
-
-    listCourses.sort((a, b) => {
-      if (a.SUBJECT !== b.SUBJECT) {
-        return a.SUBJECT.localeCompare(b.SUBJECT)
-      }
-      if (
-        parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
-        a.SECTION > b.SECTION
-      ) {
-        return 1
-      }
-      if (
-        parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
-        a.SECTION < b.SECTION
-      ) {
-        return -1
-      }
-      if (parseInt(a.CATALOG_NBR) > parseInt(b.CATALOG_NBR)) {
-        return 1
-      }
-      if (a.SECTION > b.SECTION) {
-        return 1
-      }
-      return -1
-    })
 
     return (
       <section>

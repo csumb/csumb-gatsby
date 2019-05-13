@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import bp from 'style/breakpoints'
 
 const PathwayRow = styled(Flex)`

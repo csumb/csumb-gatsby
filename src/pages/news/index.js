@@ -10,11 +10,13 @@ const NewsPage = ({ data }) => {
   return (
     <Layout pageTitle="News" siteTitle="News" isSiteHomepage={true}>
       <SiteHeader path="/news">News</SiteHeader>
-      {data.allCsumbNavigation && (
-        <SiteNavigation
-          navigation={data.allCsumbNavigation.edges[0].node.navigation}
-        />
-      )}
+      {data.allCsumbNavigation &&
+        data.allCsumbNavigation.edges &&
+        data.allCsumbNavigation.edges[0] && (
+          <SiteNavigation
+            navigation={data.allCsumbNavigation.edges[0].node.navigation}
+          />
+        )}
       <Container topPadding>
         {/*<h2>Latest news</h2>
         <NewsList>
@@ -26,9 +28,11 @@ const NewsPage = ({ data }) => {
             />
           ))}
           </NewsList>*/}
-        {data.allCsumbPage && (
-          <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-        )}
+        {data.allCsumbPage &&
+          data.allCsumbPage.edges &&
+          data.allCsumbPage.edges[0] && (
+            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+          )}
       </Container>
     </Layout>
   )

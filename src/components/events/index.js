@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import Container from 'components/common/container'
 import { LeadParagraph, UnstyledList } from 'components/common/type'
 import { colors } from 'style/theme'
@@ -43,10 +43,14 @@ const EventDateItem = styled('p')`
   font-size: 1.3rem;
 `
 
+const EventWrapper = styled('div')`
+  margin: 1rem 0;
+`
+
 const Event = ({ event, linkToEvent }) => (
   <>
     {event && event.times && (
-      <>
+      <EventWrapper>
         {event.title && (
           <h2>
             {linkToEvent ? (
@@ -133,7 +137,7 @@ const Event = ({ event, linkToEvent }) => (
             )}
           </Box>
         </Flex>
-      </>
+      </EventWrapper>
     )}
   </>
 )

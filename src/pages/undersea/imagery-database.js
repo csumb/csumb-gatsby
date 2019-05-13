@@ -6,7 +6,7 @@ import { graphql } from 'gatsby'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import Blocks from 'templates/blocks'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import { ButtonLink, LinkyButton } from 'components/common/button'
 import Lightbox from 'react-images'
 
@@ -157,16 +157,20 @@ class UnderseaImageryDatabasePage extends Component {
         <SiteHeader path="/undersea ">
           California Undersea Imagery Archive
         </SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container>
           <PageTitle>Imagery database</PageTitle>
-          {data.allCsumbPage && (
-            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-          )}
+          {data.allCsumbPage &&
+            data.allCsumbPage.edges &&
+            data.allCsumbPage.edges[0] && (
+              <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+            )}
           <UnderseaArchive data={data.allAirtable.edges} />
         </Container>
       </Layout>

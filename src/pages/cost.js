@@ -7,7 +7,7 @@ import SiteNavigation from 'components/layouts/sections/navigation/site'
 import { LeadParagraph, HeroParagraph } from 'components/common/type'
 import { graphql } from 'gatsby'
 import { Button, LinkyButton } from 'components/common/button'
-import { Flex, Box } from '@rebass/grid/emotion'
+import { Flex, Box } from 'components/common/grid'
 import Link from 'gatsby-link'
 import { InputText, Submit } from 'components/common/forms'
 import VisuallyHidden from 'components/utilities/visually-hidden'
@@ -377,11 +377,13 @@ class CostPage extends Component {
     return (
       <Layout>
         <SiteHeader path="/cost">Costs &amp; Aid</SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container>
           <PageTitle layout="page">Cost calculator</PageTitle>
           <LeadParagraph>Effective Spring 2019</LeadParagraph>
