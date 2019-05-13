@@ -224,31 +224,6 @@ class CourseList extends Component {
       })
     }
 
-    listCourses.sort((a, b) => {
-      if (a.SUBJECT !== b.SUBJECT) {
-        return a.SUBJECT.localeCompare(b.SUBJECT)
-      }
-      if (
-        parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
-        a.SECTION > b.SECTION
-      ) {
-        return 1
-      }
-      if (
-        parseInt(a.CATALOG_NBR) === parseInt(b.CATALOG_NBR) &&
-        a.SECTION < b.SECTION
-      ) {
-        return -1
-      }
-      if (parseInt(a.CATALOG_NBR) > parseInt(b.CATALOG_NBR)) {
-        return 1
-      }
-      if (a.SECTION > b.SECTION) {
-        return 1
-      }
-      return -1
-    })
-
     return (
       <section>
         <LinkyButton onClick={this.handleToggleFilter.bind(this)}>
