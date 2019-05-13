@@ -103,11 +103,13 @@ class LibraryPage extends Component {
     return (
       <Layout pageTitle="Library" siteTitle="Library" isSiteHomepage={true}>
         <SiteHeader path="/library">Library</SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container>
           <LibrarySearch />
           <div ref={this.chatRef} />
