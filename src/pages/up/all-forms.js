@@ -93,7 +93,9 @@ class UniversityPersonnelFormsPage extends Component {
           )}
         <Container>
           <PageTitle>All forms</PageTitle>
-          {data.allCsumbPage && (
+          {data.allCsumbPage &&
+            data.allCsumbPage.edges &&
+            data.allCsumbPage.edges[0] && (
             <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
           )}
           {data.allAirtable && (

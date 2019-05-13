@@ -159,9 +159,11 @@ class ITPage extends Component {
               <ITSystemStatus />
             </Box>
           </Flex>
-          {data.allCsumbPage && (
-            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-          )}
+          {data.allCsumbPage &&
+            data.allCsumbPage.edges &&
+            data.allCsumbPage.edges[0] && (
+              <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+            )}
         </Container>
       </Layout>
     )
