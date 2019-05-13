@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { DialogOverlay, DialogContent } from 'components/common/dialog'
 import { CloseDialog, DashboardCard } from './shared-styles'
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
 
 class DashboardAlumni extends Component {
   state = {
@@ -17,6 +20,14 @@ class DashboardAlumni extends Component {
   }
 
   componentDidMount() {
+    const existing = cookies.get('csumbDashboardAlumni')
+    if (existing) {
+      this.setState({
+        isReady: true,
+        alumniData: existing,
+      })
+      return null
+    }
     fetch('https://csumb.okta.com/api/v1/sessions/me', {
       credentials: 'include',
     })
@@ -41,6 +52,12 @@ class DashboardAlumni extends Component {
             this.setState({
               isReady: true,
               alumniData: content,
+            })
+            const expiration = new Date()
+            expiration.setDate(expiration.getDate() + 3)
+            cookies.set('csumbDashboardAlumni', content, {
+              expires: expiration,
+              path: '/',
             })
           })
           .catch(error => {
