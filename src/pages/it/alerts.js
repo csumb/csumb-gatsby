@@ -48,11 +48,13 @@ class ITAlertsPage extends Component {
     return (
       <Layout pageTitle="Alerts">
         <SiteHeader path="/it">Information Technology</SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container topPadding>
           <PageTitle>Alerts</PageTitle>
           <p>

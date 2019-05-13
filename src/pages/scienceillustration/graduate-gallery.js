@@ -109,11 +109,13 @@ class ScienceIllustrationGalleryPage extends Component {
         <SiteHeader path="/scienceillustration">
           Science Illustration
         </SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container>
           <PageTitle layout="page">Graduate gallery</PageTitle>
           <LeadParagraph>

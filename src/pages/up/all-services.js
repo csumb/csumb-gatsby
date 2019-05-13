@@ -24,11 +24,13 @@ class UniversityPersonnelServicesPage extends Component {
     return (
       <Layout pageTitle="University Personnel">
         <SiteHeader path="/up">University Personnel</SiteHeader>
-        {data.allCsumbNavigation && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container>
           <PageTitle>Index</PageTitle>
           <Well>
