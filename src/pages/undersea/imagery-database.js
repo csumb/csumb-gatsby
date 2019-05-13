@@ -166,9 +166,11 @@ class UnderseaImageryDatabasePage extends Component {
           )}
         <Container>
           <PageTitle>Imagery database</PageTitle>
-          {data.allCsumbPage && (
-            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-          )}
+          {data.allCsumbPage &&
+            data.allCsumbPage.edges &&
+            data.allCsumbPage.edges[0] && (
+              <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+            )}
           <UnderseaArchive data={data.allAirtable.edges} />
         </Container>
       </Layout>
