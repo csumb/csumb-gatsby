@@ -213,11 +213,13 @@ const height = 340
 const AboutOurStudentsPage = ({ data }) => (
   <Layout pageTitle="About our students">
     <SiteHeader path="/about">About</SiteHeader>
-    {data.allCsumbNavigation && (
-      <SiteNavigation
-        navigation={data.allCsumbNavigation.edges[0].node.navigation}
-      />
-    )}
+    {data.allCsumbNavigation &&
+      data.allCsumbNavigation.edges &&
+      data.allCsumbNavigation.edges[0] && (
+        <SiteNavigation
+          navigation={data.allCsumbNavigation.edges[0].node.navigation}
+        />
+      )}
     <Container>
       <PageTitle>About our students</PageTitle>
       <Flex flexWrap="wrap">
