@@ -31,7 +31,7 @@ const setUserRole = user => {
       user[`_is${userRoles[role]}`] = true
     }
   })
-  user._isEmployee = user._isStaff || user.isFaculty ? true : false
+  user._isEmployee = user._isStaff || user._isFaculty ? true : false
   return user
 }
 
