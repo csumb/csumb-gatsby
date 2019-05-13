@@ -8,12 +8,14 @@ import {
   DashboardMessageClose,
   DashboardCardHeader,
 } from './shared-styles'
+import DashboardAlumni from './alumni'
 
 class DashboardMessages extends Component {
   render() {
     const { messages, archive } = this.props
     return (
       <>
+        <DashboardAlumni />
         {messages && messages.length ? (
           <>
             {messages.map((message, key) => (
