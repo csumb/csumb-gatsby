@@ -10,11 +10,13 @@ import { EducationAbroadProgramList } from 'components/pages/educationabroad'
 const EducationAbroadProgramsSemester = ({ data }) => (
   <Layout pageTitle="Semester programs">
     <SiteHeader path="/educationabroad">Education Abroad</SiteHeader>
-    {data.allCsumbNavigation && (
-      <SiteNavigation
-        navigation={data.allCsumbNavigation.edges[0].node.navigation}
-      />
-    )}
+    {data.allCsumbNavigation &&
+      data.allCsumbNavigation.edges &&
+      data.allCsumbNavigation[0] && (
+        <SiteNavigation
+          navigation={data.allCsumbNavigation.edges[0].node.navigation}
+        />
+      )}
     <Container>
       <PageTitle>Semester programs</PageTitle>
       <EducationAbroadProgramList programs={data.allAirtable.edges} />
