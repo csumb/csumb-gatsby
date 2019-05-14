@@ -37,7 +37,7 @@
     "filestack-react": "^2.0.0",
     "firebase-admin": "^7.1.1",
     "firebase-functions": "^2.3.0",
-    "gatsby": "^2.4.3",
+    "gatsby": "^2.3.7",
     "gatsby-cli": "^2.4.10",
     "gatsby-link": "^2.0.11",
     "gatsby-node-helpers": "^0.3.0",
@@ -72,6 +72,7 @@
     "moment-timezone": "^0.5.23",
     "node-cryptex": "0.0.2",
     "normalize.css": "^8.0.1",
+    "patch-package": "^6.1.2",
     "phone-formatter": "0.0.2",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
@@ -125,7 +126,8 @@
     "cleanup": "jest -u; prettier --write 'src/**/**.js';",
     "buildTrace": "gatsby build --open-tracing-config-file node_modules/gatsby/dist/utils/tracer/zipkin-local.js",
     "canary": "jest --testPathIgnorePatterns node_modules,.cache -- src/custom-build/__tests__/canary.js",
-    "ghPages": "gh-pages -b $TRAVIS_BRANCH -d public -r https://$GITHUB_TOKEN@github.com/csumb-edu/csumb-edu.github.io.git"
+    "ghPages": "gh-pages -b $TRAVIS_BRANCH -d public -r https://$GITHUB_TOKEN@github.com/csumb-edu/csumb-edu.github.io.git",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
