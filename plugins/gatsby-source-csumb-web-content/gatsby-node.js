@@ -84,7 +84,7 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
         ? JSON.stringify(content.breadcrumb)
         : false
     const pagePath =
-      content.site === content.path
+      content.site === content.path && content.layout === 'site'
         ? content.site
         : `${content.site}/${content.path}`
     const contentNode = {
