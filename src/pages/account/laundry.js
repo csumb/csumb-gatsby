@@ -75,7 +75,7 @@ class LaundryInformation extends Component {
   }
 
   loadHallData() {
-    fetch('https://api.csumb.edu/laundry')
+    fetch('/cloud-functions/laundry')
       .then(response => {
         return response.json()
       })
