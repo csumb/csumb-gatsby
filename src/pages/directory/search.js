@@ -319,27 +319,7 @@ export default DirectorySearchPage
 
 export const query = graphql`
   {
-    allCsumbDirectory(
-      sort: { fields: [user___lastName, user___firstName] }
-      filter: {
-        user: {
-          directoryJobCode: {
-            nin: [
-              "1800"
-              "4660"
-              "2403"
-              "1870"
-              "1871"
-              "1868"
-              "1872"
-              "1874"
-              "1875"
-              "1876"
-            ]
-          }
-        }
-      }
-    ) {
+    allCsumbDirectory(sort: { fields: [user___lastName, user___firstName] }) {
       edges {
         node {
           user {
