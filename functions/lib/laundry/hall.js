@@ -5,7 +5,7 @@ const cleanText = text => {
   return text.replace('\n', '').trim()
 }
 
-module.export = (request, response) => {
+module.exports = (request, response) => {
   fetch(
     `https://www.laundryalert.com/cgi-bin/csumb721/LMRoom?XallingPage=LMPage&Halls=${
       request.params.hall
