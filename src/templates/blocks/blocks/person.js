@@ -33,6 +33,7 @@ class BlockPerson extends Component {
       .split('@')
       .shift()
       .toLowerCase()
+      .trim()
     fetch(`/directory/json/${link}.json`)
       .then(response => {
         return response.json()
