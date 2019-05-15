@@ -8,6 +8,7 @@ import {
   AccountTitle,
   AccountData,
   AccountSidebar,
+  AccountPlaceholder,
 } from 'components/pages/account'
 import { InputText, Submit } from 'components/common/forms'
 import { UserContext } from 'components/contexts/user'
@@ -22,7 +23,7 @@ class AccountPrintPage extends Component {
         <UserContext.Consumer>
           {context => (
             <Container>
-              {context.user && (
+              {context.user ? (
                 <>
                   <PageTitle>
                     {context.user.anonymous ? (
@@ -50,6 +51,8 @@ class AccountPrintPage extends Component {
                     </Box>
                   </Flex>
                 </>
+              ) : (
+                <AccountPlaceholder />
               )}
             </Container>
           )}
