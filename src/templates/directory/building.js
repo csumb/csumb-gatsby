@@ -16,9 +16,9 @@ const BuildingMap = styled(Map)`
   height: 300px !important;
 `
 
-const BuildingMapItem = ({ center, title }) => (
+const BuildingMapItem = ({ center, title, google }) => (
   <BuildingMap
-    google={this.props.google}
+    google={google}
     zoom={16}
     style={{ height: '500px' }}
     initialCenter={center}
