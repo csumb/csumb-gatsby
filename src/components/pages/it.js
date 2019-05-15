@@ -5,6 +5,8 @@ import color from 'color'
 import Link from 'gatsby-link'
 import Loading from 'components/common/loading'
 
+const displayUpdownTokens = ['dnhg', 'mus6', 'c9e7', 'paxe']
+
 const ITSystemStatusWrapper = styled('div')`
   padding: 0.5rem;
   margin-bottom: 0.5rem;
@@ -53,9 +55,15 @@ class ITSystemStatus extends Component {
         return response.json()
       })
       .then(status => {
+        const currentStatus = []
+        status.forEach(item => {
+          if (displayUpdownTokens.indexOf(item.token) > -1) {
+            currentStatus.push(item)
+          }
+        })
         this.setState({
           didLoad: true,
-          status: status,
+          status: currentStatus,
         })
       })
   }
