@@ -4,7 +4,7 @@ const report = require(`gatsby-cli/lib/reporter`)
 module.exports = (graphql, actions) => {
   const { createPage } = actions
   return new Promise((resolve, reject) => {
-    const courseTemplate = path.resolve(`src/templates/building.js`)
+    const courseTemplate = path.resolve(`src/templates/directory/building.js`)
     resolve(
       graphql(
         `
