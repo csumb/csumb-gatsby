@@ -16,6 +16,21 @@ const BuildingMap = styled(Map)`
   height: 300px !important;
 `
 
+const BuildingMapItem = ({ center, title }) => (
+  <BuildingMap
+    google={this.props.google}
+    zoom={16}
+    style={{ height: '500px' }}
+    initialCenter={center}
+  >
+    <Marker name={title} position={center} />
+  </BuildingMap>
+)
+
+const BuildingMapMap = GoogleApiWrapper({
+  apiKey: 'AIzaSyBFx5aEy_xuJguWMfFEEkqTZAy1q5HF_H0',
+})(BuildingMapItem)
+
 class BuildingTemplate extends Component {
   render() {
     const { title, building } = this.props.pageContext
@@ -31,14 +46,7 @@ class BuildingTemplate extends Component {
           </ReturnLink>
           <Flex flexWrap="wrap">
             <Box width={[1, 2 / 3]} pr={[0, 4]} style={{ height: '500px' }}>
-              <BuildingMap
-                google={this.props.google}
-                zoom={16}
-                style={{ height: '500px' }}
-                initialCenter={center}
-              >
-                <Marker name={title} position={center} />
-              </BuildingMap>
+              <BuildingMapMap center={center} title={title} />
             </Box>
             <Box width={[1, 1 / 3]}>
               <p>
@@ -91,6 +99,4 @@ class BuildingTemplate extends Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBFx5aEy_xuJguWMfFEEkqTZAy1q5HF_H0',
-})(BuildingTemplate)
+export default BuildingTemplate
