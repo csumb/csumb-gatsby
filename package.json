@@ -79,6 +79,7 @@
     "react-autocomplete": "^1.8.1",
     "react-calendar": "^2.18.1",
     "react-chartjs": "^1.2.0",
+    "react-content-loader": "^4.2.1",
     "react-dom": "^16.6.3",
     "react-emotion": "^9.2.12",
     "react-focus-lock": "^1.19.1",

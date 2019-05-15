@@ -20,6 +20,7 @@ import {
   AccountTitle,
   AccountData,
   AccountSidebar,
+  AccountPlaceholder,
 } from 'components/pages/account'
 import { Button } from 'components/common/button'
 import SimpleMDE from 'react-simplemde-editor'
@@ -75,7 +76,7 @@ class AccountProfilePage extends Component {
         <UserContext.Consumer>
           {context => (
             <>
-              {context.user && (
+              {context.user ? (
                 <Container>
                   <PageTitle>
                     {context.user.anonymous ? (
@@ -116,6 +117,8 @@ class AccountProfilePage extends Component {
                     </Box>
                   </Flex>
                 </Container>
+              ) : (
+                <AccountPlaceholder />
               )}
             </>
           )}

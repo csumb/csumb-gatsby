@@ -12,6 +12,7 @@ import {
   AccountTitle,
   AccountData,
   AccountSidebar,
+  AccountPlaceholder,
 } from 'components/pages/account'
 import Link from 'gatsby-link'
 import { AlertDanger, AlertSuccess } from 'components/common/alert'
@@ -187,7 +188,7 @@ class AccountEmergencyPage extends Component {
         <UserContext.Consumer>
           {context => (
             <>
-              {context.user && (
+              {context.user ? (
                 <Container>
                   <PageTitle>
                     {context.user.anonymous ? (
@@ -222,6 +223,8 @@ class AccountEmergencyPage extends Component {
                     </Box>
                   </Flex>
                 </Container>
+              ) : (
+                <AccountPlaceholder />
               )}
             </>
           )}
