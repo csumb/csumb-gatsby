@@ -41,7 +41,8 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
     }
     if (
       name.search('_data/redirects.json') > -1 ||
-      name.search('_data/building-redirects.json') > -1
+      name.search('_data/building-redirects.json') > -1 ||
+      name.search('_data/person-redirects.json') > -1
     ) {
       redirectNodes(content)
       return
