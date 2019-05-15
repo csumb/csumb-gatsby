@@ -4,17 +4,6 @@ node_js:
 cache:
   directories:
     - .firebase
-before_script:
-  - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-data.git _data
-  - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-content.git _web-content
 script:
-  - set -e
-  - node --max_old_space_size=12000 ./node_modules/.bin/gatsby build
-  - npm run directoryJson
-  - npm run scheduleJson
-  - npm run eventJson
-  - npm run catalogJson
-  - npm run buildJson
-  - npm run canary
-  - ./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH -f
-#  - npm run ghPages
+  - node ./src/custom-build/list-cache
+  #  - npm run ghPages
