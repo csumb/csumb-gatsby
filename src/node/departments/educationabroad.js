@@ -111,32 +111,39 @@ module.exports = (graphql, actions) => {
             }
           }
         }
-      `).then(result => {
-        if (result.errors) {
-          reject(result.errors)
-          return
-        }
-        result.data.allAirtable.edges.forEach(({ node }) => {
-          const slug = slugify(node.recordId.replace('rec', ''))
-          createPage({
-            path: `educationabroad/program/${slug}`,
-            component: template,
-            context: {
-              program: node,
-              navigation:
-                result.data.allCsumbNavigation &&
-                result.data.allCsumbNavigation.edges &&
-                result.data.allCsumbNavigation.edges[0]
-                  ? result.data.allCsumbNavigation.edges[0].node.navigation
-                  : '',
-            },
+      `)
+        .then(result => {
+          if (result.errors) {
+            result.errors.forEach(error => {
+              report.warn(`Education abroad error: ${error.message}`)
+            })
+            reject(result.errors)
+            return
+          }
+          result.data.allAirtable.edges.forEach(({ node }) => {
+            const slug = slugify(node.recordId.replace('rec', ''))
+            createPage({
+              path: `educationabroad/program/${slug}`,
+              component: template,
+              context: {
+                program: node,
+                navigation:
+                  result.data.allCsumbNavigation &&
+                  result.data.allCsumbNavigation.edges &&
+                  result.data.allCsumbNavigation.edges[0]
+                    ? result.data.allCsumbNavigation.edges[0].node.navigation
+                    : '',
+              },
+            })
           })
+
+          report.success(`built education abroad program pages.`)
+
+          return
         })
-
-        report.success(`built education abroad program pages.`)
-
-        return
-      })
+        .catch(error => {
+          report.warn(`Education abroad pages error ${error}`)
+        })
     )
   })
 }
