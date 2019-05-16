@@ -67,6 +67,10 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
 
   const pageNode = (name, content, digest) => {
     let topHero = {}
+    if (content.path.search('node/') > -1) {
+      console.log(`Ignoring page ${name}`)
+      return
+    }
     if (
       content.pageContent.layout.length > 0 &&
       content.pageContent.blocks &&
