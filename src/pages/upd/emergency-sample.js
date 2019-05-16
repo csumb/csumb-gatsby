@@ -41,7 +41,7 @@ class UPDEmergencyPage extends Component {
 
   componentDidMount() {
     fetch(
-      `https://cdn.contentful.com/spaces/${contentfulSpace}/environments/master/entries?access_token=${contentfulKey}&content_type=notice&fields.active=1`
+      `https://cdn.contentful.com/spaces/${contentfulSpace}/environments/master/entries?access_token=${contentfulKey}&content_type=notice&fields.active=1&order=-sys.updatedAt`
     )
       .then(response => {
         return response.json()
