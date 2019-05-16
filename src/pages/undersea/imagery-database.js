@@ -226,7 +226,10 @@ export const query = graphql`
       }
     }
     allCsumbPage(
-      filter: { pagePath: { eq: "imagery-database" }, site: { eq: "undersea" } }
+      filter: {
+        pagePath: { eq: "undersea/imagery-database" }
+        site: { eq: "undersea" }
+      }
     ) {
       edges {
         node {
