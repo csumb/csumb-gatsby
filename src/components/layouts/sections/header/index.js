@@ -55,7 +55,7 @@ class Header extends Component {
             siteTitle={siteTitle}
           />
         ) : (
-          <HeaderWrapper>
+          <HeaderWrapper data-swiftype-index="false">
             <Container>
               <Flex flexWrap="wrap">
                 <Box width={[1, 1, 1 / 3, 1 / 3]} pr={2}>

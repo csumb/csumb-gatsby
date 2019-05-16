@@ -91,6 +91,7 @@ class Block extends Component {
       <CollapseWrapper
         inCollapsedHeader={inCollapsedHeader}
         level={block._collapsedHeaderLevel}
+        data-swiftype-index="true"
       >
         <BlockType
           {...block.data}

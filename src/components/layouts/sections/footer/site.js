@@ -77,7 +77,7 @@ const SiteFooterSocial = ({ social }) => (
 
 const SiteFooter = ({ site }) => {
   return (
-    <SiteFooterWrapper>
+    <SiteFooterWrapper data-swiftype-index="false">
       <Container>
         <h3>{site.title}</h3>
         {site.social && <SiteFooterSocial social={site.social} />}
