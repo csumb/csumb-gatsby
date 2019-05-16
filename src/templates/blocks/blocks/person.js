@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { Flex, Box } from 'components/common/grid'
 import Link from 'gatsby-link'
 import LinkInspect from 'components/utilities/link-inspect'
-import Loading from 'components/common/loading'
+import ContentLoader from 'react-content-loader'
 
 const Person = styled('div')`
   margin: 0.5rem 0;
@@ -57,7 +57,21 @@ class BlockPerson extends Component {
     const { compact } = this.props
     return (
       <div>
-        {!didLoad && <Loading />}
+        {!didLoad && (
+          <ContentLoader
+            height={160}
+            width={400}
+            speed={2}
+            primaryColor="#f3f3f3"
+            secondaryColor="#ecebeb"
+          >
+            <rect x="10" y="5" rx="4" ry="4" width="266" height="20" />
+            <rect x="10" y="38" rx="3" ry="3" width="245" height="14" />
+            <rect x="10" y="61" rx="3" ry="3" width="245" height="14" />
+            <rect x="10" y="84" rx="3" ry="3" width="245" height="14" />
+            <rect x="288" y="5" rx="0" ry="0" width="105" height="106" />
+          </ContentLoader>
+        )}
         {person && (
           <Person id={`profile-${person.email.split('@').shift()}`}>
             {compact ? (

@@ -60,7 +60,10 @@ export const query = graphql`
       }
     }
     allCsumbPage(
-      filter: { pagePath: { eq: "ask-librarian" }, site: { eq: "library" } }
+      filter: {
+        pagePath: { eq: "library/ask-librarian" }
+        site: { eq: "library" }
+      }
     ) {
       edges {
         node {

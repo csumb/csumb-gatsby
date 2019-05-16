@@ -7,6 +7,7 @@ import {
   AccountGroup,
   AccountTitle,
   AccountSidebar,
+  AccountPlaceholder,
 } from 'components/pages/account'
 import { UserContext } from 'components/contexts/user'
 import {
@@ -25,7 +26,7 @@ class AccountCardPage extends Component {
         <UserContext.Consumer>
           {context => (
             <Container>
-              {context.user && (
+              {context.user ? (
                 <>
                   <PageTitle>
                     {context.user.anonymous ? (
@@ -53,6 +54,8 @@ class AccountCardPage extends Component {
                     </Box>
                   </Flex>
                 </>
+              ) : (
+                <AccountPlaceholder />
               )}
             </Container>
           )}

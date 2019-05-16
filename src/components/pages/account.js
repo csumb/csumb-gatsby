@@ -4,6 +4,8 @@ import Link from 'gatsby-link'
 import { colors } from 'style/theme'
 import Well from 'components/common/well'
 import PropTypes from 'prop-types'
+import ContentLoader from 'react-content-loader'
+import { Flex, Box } from 'components/common/grid'
 
 const AccountSidebarOptions = styled('ul')`
   list-style-type: none;
@@ -78,4 +80,42 @@ AccountGroup.propTypes = {
   legend: PropTypes.string.isRequired,
 }
 
-export { AccountSidebar, AccountTitle, AccountData, AccountGroup }
+const AccountPlaceholder = () => (
+  <Flex flexWrap="wrap">
+    <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+      <ContentLoader
+        height={160}
+        width={400}
+        speed={2}
+        primaryColor="#f3f3f3"
+        secondaryColor="#ecebeb"
+      >
+        <rect x="10" y="5" rx="4" ry="4" width="266" height="20" />
+        <rect x="10" y="40" rx="4" ry="4" width="266" height="20" />
+        <rect x="10" y="75" rx="4" ry="4" width="266" height="20" />
+        <rect x="10" y="110" rx="4" ry="4" width="266" height="20" />
+      </ContentLoader>
+    </Box>
+    <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
+      <ContentLoader
+        height={500}
+        width={500}
+        speed={2}
+        primaryColor="#f3f3f3"
+        secondaryColor="#ecebeb"
+      >
+        <rect x="10" y="4" rx="4" ry="4" width="444" height="100" />
+        <rect x="10" y="120" rx="4" ry="4" width="444" height="100" />
+        <rect x="10" y="240" rx="4" ry="4" width="444" height="100" />
+      </ContentLoader>
+    </Box>
+  </Flex>
+)
+
+export {
+  AccountSidebar,
+  AccountTitle,
+  AccountData,
+  AccountGroup,
+  AccountPlaceholder,
+}

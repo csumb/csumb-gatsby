@@ -12,6 +12,7 @@ import {
   AccountTitle,
   AccountData,
   AccountSidebar,
+  AccountPlaceholder,
 } from 'components/pages/account'
 import { ButtonLink } from 'components/common/button'
 
@@ -22,7 +23,7 @@ class AccountPage extends Component {
         <UserContext.Consumer>
           {context => (
             <>
-              {context.user && (
+              {context.user ? (
                 <Container>
                   <PageTitle>
                     {context.user.anonymous ? (
@@ -50,6 +51,8 @@ class AccountPage extends Component {
                     </Box>
                   </Flex>
                 </Container>
+              ) : (
+                <AccountPlaceholder />
               )}
             </>
           )}

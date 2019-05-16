@@ -5,7 +5,6 @@ cache:
   directories:
     - .firebase
 before_script:
-  - node ./src/custom-build/list-cache
   - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-data.git _data
   - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-content.git _web-content
 script:
@@ -18,4 +17,4 @@ script:
   - npm run buildJson
   - npm run canary
   - ./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH -f
-#  - npm run ghPages
+  - npm run ghPages
