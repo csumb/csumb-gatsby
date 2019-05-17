@@ -38,7 +38,7 @@ class CoursePage extends Component {
     const { course, error } = this.state
 
     return (
-      <Layout pageTitle={pageTitle} siteTitle="Courses">
+      <Layout pageTitle="Courses" siteTitle="Courses">
         <SiteHeader path="/catalog">Catalog</SiteHeader>
         <Container>
           {error && (
