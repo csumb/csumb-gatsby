@@ -3,20 +3,50 @@ import SiteHeader from 'components/layouts/sections/header/site-header'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Layout from 'components/layouts/default'
 import Container from 'components/common/container'
+import url from 'url'
 
 class CoursePage extends Component {
   state = {
     course: false,
+    error: false,
   }
-  componentDidMount() {}
+  componentDidMount() {
+    const location = url.parse(window.location.href)
+    const path = location.pathname.split('/')
+    const catalogNumber = path[3].trim().toLowerCase
+    fetch(`/catalog/json/subject/${path[2]}.json`)
+      .then(response => {
+        return response.json()
+      })
+      .then(courses => {
+        courses.forEach(course => {
+          if (course.CATALOG_NBR.trim().toLowerCase() === catalogNumber) {
+            this.setState({
+              course: course,
+            })
+          }
+        })
+      })
+      .catch(error => {
+        this.setState({
+          error: true,
+        })
+      })
+  }
 
   render() {
-    const { course } = this.state
+    const { course, error } = this.state
 
     return (
       <Layout pageTitle={pageTitle} siteTitle="Courses">
         <SiteHeader path="/catalog">Catalog</SiteHeader>
         <Container>
+          {error && (
+            <>
+              <PageTitle>Course not found</PageTitle>
+              <p>Sorry, we could not find that course.</p>
+            </>
+          )}
           {course && (
             <>
               <PageTitle>
