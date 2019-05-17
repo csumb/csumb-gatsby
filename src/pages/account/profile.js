@@ -578,7 +578,9 @@ class UserAccountProfileBio extends Component {
             Update biography
           </Button>
         </p>
-        {this.state.showForm && <UserAccountProfileBioForm user={user} />}
+        {this.state.showForm && (
+          <UserAccountProfileBioForm profile={profile} user={user} />
+        )}
       </AccountGroup>
     )
   }
@@ -592,7 +594,7 @@ class UserAccountProfileBioForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    updateProfileField('biography', this.state.biography)
+    updateProfileField('biography', encodeURIComponent(this.state.biography))
     this.setState({
       updated: true,
     })
@@ -605,7 +607,7 @@ class UserAccountProfileBioForm extends Component {
   }
 
   render() {
-    const { user } = this.props
+    const { user, profile } = this.props
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <p>
@@ -617,7 +619,7 @@ class UserAccountProfileBioForm extends Component {
         </p>
         <SimpleMDE
           onChange={this.handleChange.bind(this)}
-          value={user.profile.profileBio}
+          value={profile.biography}
           options={{
             status: false,
             spellChecker: false,
