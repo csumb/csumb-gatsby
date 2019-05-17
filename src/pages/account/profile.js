@@ -29,6 +29,8 @@ import { LeadParagraph } from 'components/common/type'
 import 'simplemde/dist/simplemde.min.css'
 import NProgress from 'nprogress'
 
+const filestackApiKey = 'A3ttdsdUR8aGvjvUnJBWUz'
+
 const AccountPhoto = styled('img')`
   max-width: 150px;
 `
@@ -191,6 +193,7 @@ class UserAccountProfileForm extends Component {
         />
         <UserAccountProfilePhone user={user} profile={profile} />
         <UserAccountProfileBio user={user} profile={profile} />
+        <UserAccountProfileResume user={user} profile={profile} />
         <UserAccountProfileOfficeHours user={user} profile={profile} />
         <UserAccountProfileOfficeHoursDescription
           user={user}
@@ -663,7 +666,7 @@ class UserAccountProfilePhoto extends Component {
           </AccountData>
         )}
         <ReactFilestack
-          apikey="A3ttdsdUR8aGvjvUnJBWUz"
+          apikey={filestackApiKey}
           onSuccess={this.savePhoto}
           options={{
             accept: 'image/*',
@@ -675,6 +678,45 @@ class UserAccountProfilePhoto extends Component {
           render={({ onPick }) => (
             <div>
               <Button onClick={onPick}>Change profile photo</Button>
+            </div>
+          )}
+        />
+      </AccountGroup>
+    )
+  }
+}
+
+class UserAccountProfileResume extends Component {
+  saveResume(file) {
+    updateProfileField('resume', file.filesUploaded[0].url)
+  }
+
+  render() {
+    const { profile } = this.props
+    return (
+      <AccountGroup legend="Curriculum vitae or resume">
+        <p>
+          Your resume is shown as part of your{' '}
+          <Link to="/directory">public profile.</Link>
+        </p>
+        {profile.resume && (
+          <AccountData>
+            <a href={profile.resume}>Your curriculum vitae or resume</a>
+          </AccountData>
+        )}
+        <ReactFilestack
+          apikey={filestackApiKey}
+          onSuccess={this.saveResume}
+          options={{
+            accept: 'application/*',
+            maxFiles: 1,
+            storeTo: {
+              location: 's3',
+            },
+          }}
+          render={({ onPick }) => (
+            <div>
+              <Button onClick={onPick}>Change CV or resume</Button>
             </div>
           )}
         />

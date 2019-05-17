@@ -11,6 +11,26 @@ import Link from 'gatsby-link'
 import LinkInspect from 'components/utilities/link-inspect'
 import sanitizeHtml from 'sanitize-html'
 import { DirectoryNavigation } from 'components/pages/directory'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
+
+const DocumentIconWrapper = styled('span')`
+  display: inline-block;
+  max-width: 1rem;
+  font-size: 1.2rem;
+  margin-right: 0.8rem;
+`
+
+const DocumentIcon = styled(FontAwesomeIcon)`
+  margin-right: 0.5rem;
+  max-width: 50px;
+`
+
+const Resume = styled('a')`
+  display: block;
+  font-weight: bold;
+  margin: 1rem 0;
+`
 
 const DirectoryTitle = styled('div')`
   font-size: 1.5rem;
@@ -129,6 +149,14 @@ const PersonTemplate = ({ pageContext }) => {
             )}
           </Box>
         </Flex>
+        {_publicProfile && _publicProfile.resume && (
+          <Resume href={_publicProfile.resume}>
+            <DocumentIconWrapper>
+              <DocumentIcon icon={faFileDownload} />
+            </DocumentIconWrapper>
+            Download CV or resume
+          </Resume>
+        )}
         {biography && (
           <>
             <h2>Biography</h2>
