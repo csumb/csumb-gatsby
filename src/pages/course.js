@@ -13,6 +13,12 @@ class CoursePage extends Component {
   componentDidMount() {
     const location = url.parse(window.location.href)
     const path = location.pathname.split('/')
+    if (typeof path[3] === 'undefined') {
+      this.setState({
+        error: true,
+      })
+      return
+    }
     const catalogNumber = path[3].trim().toLowerCase
     fetch(`/catalog/json/subject/${path[2]}.json`)
       .then(response => {
