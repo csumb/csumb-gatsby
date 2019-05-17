@@ -607,7 +607,7 @@ class UserAccountProfileBioForm extends Component {
   }
 
   render() {
-    const { user, profile } = this.props
+    const { profile } = this.props
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <p>
