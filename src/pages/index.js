@@ -146,6 +146,9 @@ export const query = graphql`
             goLiveDate
           }
           image {
+            file {
+              url
+            }
             fixed {
               src
               srcSet

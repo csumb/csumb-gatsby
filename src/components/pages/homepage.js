@@ -263,7 +263,7 @@ const FeaturedStory = ({
 }) => (
   <Story featured>
     <a href={getNewsLink(news_story, link)}>
-      <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
+      <StoryImage alt="" src={image.file.url} />
       <StoryType isEvent={eventDate && true} />
       <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
       {eventDate && (
