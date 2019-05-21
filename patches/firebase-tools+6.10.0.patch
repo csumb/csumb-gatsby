@@ -1,0 +1,13 @@
+diff --git a/node_modules/firebase-tools/lib/deploy/hosting/uploader.js b/node_modules/firebase-tools/lib/deploy/hosting/uploader.js
+index 34915c8..c988dfb 100644
+--- a/node_modules/firebase-tools/lib/deploy/hosting/uploader.js
++++ b/node_modules/firebase-tools/lib/deploy/hosting/uploader.js
+@@ -29,7 +29,7 @@ class Uploader {
+             concurrency: options.hashConcurrency || 50,
+             handler: this.hashHandler.bind(this),
+         });
+-        this.populateBatchSize = options.populateBatchSize || 1000;
++        this.populateBatchSize = options.populateBatchSize || 300;
+         this.populateBatch = {};
+         this.populateQueue = new Queue({
+             name: "populateQueue",
