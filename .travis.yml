@@ -14,4 +14,4 @@ script:
   - npm run catalogJson
   - npm run buildJson
   - npm run canary
-  - find public/ -type f | wc -l
+  - ./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN -P $TRAVIS_BRANCH -f
