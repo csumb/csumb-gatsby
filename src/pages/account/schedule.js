@@ -3,7 +3,6 @@ import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
 import { Flex, Box } from 'components/common/grid'
-import moment from 'moment'
 import {
   AccountGroup,
   AccountTitle,
@@ -27,41 +26,6 @@ const getTermName = (term, scheduleFormat) => {
   }
   return `${names[term[3]]} ${term[0]}0${term[1]}${term[2]}`
 }
-
-const weekDays = [
-  {
-    short: 'mon',
-    day: 'Monday',
-  },
-  {
-    short: 'tues',
-    day: 'Tuesday',
-  },
-  {
-    short: 'wed',
-    day: 'Wednesday',
-  },
-  {
-    short: 'thurs',
-    day: 'Thursday',
-  },
-  {
-    short: 'fri',
-    day: 'Friday',
-  },
-  {
-    short: 'sat',
-    day: 'Saturday',
-  },
-  {
-    short: 'sun',
-    day: 'Sunday',
-  },
-]
-
-const CourseMeeting = styled('p')`
-  margin-left: 1rem;
-`
 
 const CourseHeader = styled('h3')`
   margin-bottom: 0.5rem;
