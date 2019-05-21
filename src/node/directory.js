@@ -30,6 +30,7 @@ module.exports = (graphql, actions) => {
                       location
                       appointmentCalendar
                       officeHours
+                      resume
                     }
                     fullDepartments {
                       name

@@ -100,7 +100,10 @@ const FooterSocialIcon = ({ href, name, icon }) => (
 class Footer extends Component {
   render() {
     return (
-      <FooterElement noFooterMargin={this.props.noFooterMargin}>
+      <FooterElement
+        noFooterMargin={this.props.noFooterMargin}
+        data-swiftype-index="false"
+      >
         <Container>
           <Flex flexWrap="wrap">
             <Box width={[1, 7 / 12]} pr={2}>
