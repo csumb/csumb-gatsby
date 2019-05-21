@@ -3,6 +3,7 @@ import Layout from 'components/layouts/default'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
 import { Flex, Box } from 'components/common/grid'
+import moment from 'moment'
 import {
   AccountGroup,
   AccountTitle,
@@ -26,6 +27,41 @@ const getTermName = (term, scheduleFormat) => {
   }
   return `${names[term[3]]} ${term[0]}0${term[1]}${term[2]}`
 }
+
+const weekDays = [
+  {
+    short: 'mon',
+    day: 'Monday',
+  },
+  {
+    short: 'tues',
+    day: 'Tuesday',
+  },
+  {
+    short: 'wed',
+    day: 'Wednesday',
+  },
+  {
+    short: 'thurs',
+    day: 'Thursday',
+  },
+  {
+    short: 'fri',
+    day: 'Friday',
+  },
+  {
+    short: 'sat',
+    day: 'Saturday',
+  },
+  {
+    short: 'sun',
+    day: 'Sunday',
+  },
+]
+
+const CourseMeeting = styled('p')`
+  margin-left: 1rem;
+`
 
 const CourseHeader = styled('h3')`
   margin-bottom: 0.5rem;
@@ -111,7 +147,37 @@ class ClassScheduleForm extends Component {
 }
 
 class ClassScheduleCourse extends Component {
+  state = {
+    isReady: false,
+    course: false,
+  }
+
+  componentDidMount() {
+    const { term_code, crn } = this.props
+    fetch(`/schedule/json/${term_code}/${crn}.json`)
+      .then(response => {
+        return response.json()
+      })
+      .then(course => {
+        NProgress.inc()
+        course._meetings.map(meeting => {
+          meeting._days = []
+          weekDays.forEach(day => {
+            if (meeting[day.short] === 'Y') {
+              meeting._days.push(day.day)
+            }
+          })
+          return meeting
+        })
+        this.setState({
+          isReady: true,
+          course: course,
+        })
+      })
+  }
+
   render() {
+    const { isReady, course } = this.state
     const {
       course_subject,
       course_number,
@@ -123,12 +189,40 @@ class ClassScheduleCourse extends Component {
     if (status_code !== 'E') {
       return null
     }
+    if (!isReady) {
+      return (
+        <CourseHeader>
+          <Link to={`/schedule/${getTermName(term_code, true)}/${crn}`}>
+            {course_subject} {course_number}: {section_number}
+          </Link>
+        </CourseHeader>
+      )
+    }
     return (
-      <CourseHeader>
-        <Link to={`/schedule/${getTermName(term_code, true)}/course/${crn}`}>
-          {course_subject} {course_number}: {section_number}
-        </Link>
-      </CourseHeader>
+      <div>
+        <CourseHeader>
+          <Link to={`/schedule/${getTermName(term_code, true)}/${crn}`}>
+            {course.subject} {course.catalog_nbr} ({course.section}):{' '}
+            {course.title}
+          </Link>
+        </CourseHeader>
+        {course._meetings.map((meeting, key) => (
+          <React.Fragment key={key}>
+            {parseInt(meeting.meeting_bldg) < 990 && (
+              <CourseMeeting key={key}>
+                {meeting._days.map(day => (
+                  <span key={day}>{day}, </span>
+                ))}
+                {moment(meeting.meeting_time_start).format('h:mma')} to{' '}
+                {moment(meeting.meeting_time_end).format('h:mma')}
+                <br />
+                Building {meeting.meeting_bldg.replace(/^0+/, '')}, room{' '}
+                {meeting.meeting_rm}
+              </CourseMeeting>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
     )
   }
 }

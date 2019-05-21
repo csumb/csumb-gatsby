@@ -34,13 +34,13 @@ class BlockPerson extends Component {
       .shift()
       .toLowerCase()
       .trim()
-    fetch(`/page-data/directory/person/${link}/page-data.json`)
+    fetch(`/directory/json/${link}.json`)
       .then(response => {
         return response.json()
       })
       .then(person => {
         this.setState({
-          person: person.pageContext.user,
+          person: person,
           didLoad: true,
         })
       })
@@ -91,16 +91,17 @@ class BlockPerson extends Component {
                   {person.directoryTitle.map((title, key) => (
                     <PersonPosition>
                       <PersonPositionTitle>{title}</PersonPositionTitle>
-                      {person.fullDepartments && person.fullDepartments[key] ? (
+                      {person._fullDepartments &&
+                      person._fullDepartments[key] ? (
                         <>
-                          {person.fullDepartments[key].website ? (
+                          {person._fullDepartments[key].website ? (
                             <LinkInspect
-                              to={person.fullDepartments[key].website}
+                              to={person._fullDepartments[key].website}
                             >
-                              {person.fullDepartments[key].name}
+                              {person._fullDepartments[key].name}
                             </LinkInspect>
                           ) : (
-                            <>{person.fullDepartments[key].name}</>
+                            <>{person._fullDepartments[key].name}</>
                           )}
                         </>
                       ) : (
@@ -132,16 +133,17 @@ class BlockPerson extends Component {
                   {person.directoryTitle.map((title, key) => (
                     <PersonPosition>
                       <PersonPositionTitle>{title}</PersonPositionTitle>
-                      {person.fullDepartments && person.fullDepartments[key] ? (
+                      {person._fullDepartments &&
+                      person._fullDepartments[key] ? (
                         <>
-                          {person.fullDepartments[key].website ? (
+                          {person._fullDepartments[key].website ? (
                             <LinkInspect
-                              to={person.fullDepartments[key].website}
+                              to={person._fullDepartments[key].website}
                             >
-                              {person.fullDepartments[key].name}
+                              {person._fullDepartments[key].name}
                             </LinkInspect>
                           ) : (
-                            <>{person.fullDepartments[key].name}</>
+                            <>{person._fullDepartments[key].name}</>
                           )}
                         </>
                       ) : (
