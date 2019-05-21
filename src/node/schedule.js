@@ -195,20 +195,18 @@ module.exports = (graphql, actions) => {
           if (typeof allBuildings[buildingNumber] !== 'undefined') {
             edge.node._building = allBuildings[buildingNumber]
           }
-          if (edge.node.MEETING_TIME_START) {
-            if (
-              cleanDate(edge.node.MEETING_DATE_START) !==
-                termDates[edge.node.STRM].start ||
-              cleanDate(edge.node.MEETING_DATE_END) !==
-                termDates[edge.node.STRM].end
-            ) {
-              edge.node._separateDates = {
-                start: cleanDate(edge.node.MEETING_DATE_START),
-                end: cleanDate(edge.node.MEETING_DATE_END),
-              }
+          if (
+            cleanDate(edge.node.MEETING_DATE_START) !==
+              termDates[edge.node.STRM].start ||
+            cleanDate(edge.node.MEETING_DATE_END) !==
+              termDates[edge.node.STRM].end
+          ) {
+            edge.node._separateDates = {
+              start: cleanDate(edge.node.MEETING_DATE_START),
+              end: cleanDate(edge.node.MEETING_DATE_END),
             }
-            allMeetingPatterns[edge.node.STRM][edge.node.CRN].push(edge.node)
           }
+          allMeetingPatterns[edge.node.STRM][edge.node.CRN].push(edge.node)
         })
 
         let allCourses = result.data.allScheduleCsv.edges.map(edge => {
