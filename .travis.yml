@@ -10,7 +10,6 @@ before_script:
 script:
   - set -e
   - node --max_old_space_size=12000 ./node_modules/.bin/gatsby build
-  - npm run directoryJson
   - npm run eventJson
   - npm run catalogJson
   - npm run buildJson
