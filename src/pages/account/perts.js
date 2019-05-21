@@ -4,6 +4,7 @@ import url from 'url'
 import PlainLayout from 'components/layouts/plain'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import { graphql } from 'gatsby'
+import Container from 'components/common/container'
 
 class PertsPage extends Component {
   state = {
