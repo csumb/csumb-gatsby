@@ -34,6 +34,11 @@ const CollapsibleIcon = styled(FontAwesomeIcon)`
   font-size: 1rem;
 `
 
+const CollapseIconWrapper = styled('span')`
+  display: inline-block;
+  max-width: 50px;
+`
+
 const CampusMap = styled(Map)`
   width: 100% !important;
   height: 300px !important;
@@ -100,10 +105,12 @@ class ProgramDetails extends Component {
               })
             }}
           >
-            <CollapsibleIcon
-              size="1x"
-              icon={isOpen ? faChevronDown : faChevronRight}
-            />
+            <CollapseIconWrapper>
+              <CollapsibleIcon
+                size="1x"
+                icon={isOpen ? faChevronDown : faChevronRight}
+              />
+            </CollapseIconWrapper>
             {title}
           </ProgramDetailsHeader>
         </h3>
