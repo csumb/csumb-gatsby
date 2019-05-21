@@ -53,10 +53,6 @@
     ],
     "rewrites": [
       {
-        "source": "/course/**",
-        "destination": "/course/index.html"
-      },
-      {
         "source": "/cloud-functions/okta/secondary-email",
         "function": "oktaSecondaryEmail"
       },
