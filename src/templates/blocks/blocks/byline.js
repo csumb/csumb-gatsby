@@ -11,14 +11,16 @@ class BlockByline extends Component {
       return
     }
     fetch(
-      `/directory/json/${this.props.overrideauthor.split('@').shift()}.json`
+      `/page-data/directory/person/${this.props.overrideauthor
+        .split('@')
+        .shift()}/page-data.json`
     )
       .then(response => {
         return response.json()
       })
       .then(person => {
         this.setState({
-          person: person,
+          person: person.pageContext.user,
         })
       })
       .catch(() => {
