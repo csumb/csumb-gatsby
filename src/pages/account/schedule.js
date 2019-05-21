@@ -147,37 +147,7 @@ class ClassScheduleForm extends Component {
 }
 
 class ClassScheduleCourse extends Component {
-  state = {
-    isReady: false,
-    course: false,
-  }
-
-  componentDidMount() {
-    const { term_code, crn } = this.props
-    fetch(`/schedule/json/${term_code}/${crn}.json`)
-      .then(response => {
-        return response.json()
-      })
-      .then(course => {
-        NProgress.inc()
-        course._meetings.map(meeting => {
-          meeting._days = []
-          weekDays.forEach(day => {
-            if (meeting[day.short] === 'Y') {
-              meeting._days.push(day.day)
-            }
-          })
-          return meeting
-        })
-        this.setState({
-          isReady: true,
-          course: course,
-        })
-      })
-  }
-
   render() {
-    const { isReady, course } = this.state
     const {
       course_subject,
       course_number,
@@ -189,40 +159,12 @@ class ClassScheduleCourse extends Component {
     if (status_code !== 'E') {
       return null
     }
-    if (!isReady) {
-      return (
-        <CourseHeader>
-          <Link to={`/schedule/${getTermName(term_code, true)}/${crn}`}>
-            {course_subject} {course_number}: {section_number}
-          </Link>
-        </CourseHeader>
-      )
-    }
     return (
-      <div>
-        <CourseHeader>
-          <Link to={`/schedule/${getTermName(term_code, true)}/${crn}`}>
-            {course.subject} {course.catalog_nbr} ({course.section}):{' '}
-            {course.title}
-          </Link>
-        </CourseHeader>
-        {course._meetings.map((meeting, key) => (
-          <React.Fragment key={key}>
-            {parseInt(meeting.meeting_bldg) < 990 && (
-              <CourseMeeting key={key}>
-                {meeting._days.map(day => (
-                  <span key={day}>{day}, </span>
-                ))}
-                {moment(meeting.meeting_time_start).format('h:mma')} to{' '}
-                {moment(meeting.meeting_time_end).format('h:mma')}
-                <br />
-                Building {meeting.meeting_bldg.replace(/^0+/, '')}, room{' '}
-                {meeting.meeting_rm}
-              </CourseMeeting>
-            )}
-          </React.Fragment>
-        ))}
-      </div>
+      <CourseHeader>
+        <Link to={`/schedule/${getTermName(term_code, true)}/course/${crn}`}>
+          {course_subject} {course_number}: {section_number}
+        </Link>
+      </CourseHeader>
     )
   }
 }
