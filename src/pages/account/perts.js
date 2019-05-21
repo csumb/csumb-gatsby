@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import Plain from 'components/layouts/plain'
+import Brand from 'components/layouts/sections/header/brand'
 import url from 'url'
+import PlainLayout from 'components/layouts/plain'
+import PageTitle from 'components/layouts/sections/header/page-title'
+import { graphql } from 'gatsby'
 
 class PertsPage extends Component {
   state = {
@@ -28,12 +31,39 @@ class PertsPage extends Component {
   }
 
   render() {
+    const { data } = this.props
     return (
-      <Plain>
-        <h1>Redirecting you to Perts</h1>
-      </Plain>
+      <PlainLayout>
+        <Container>
+          <Brand style={{ maxWidth: '350px' }} />
+          <PageTitle>Perts</PageTitle>
+
+          {this.state.loginNeeded ? (
+            <>
+              <h2>You must be logged in first</h2>
+              <a href={data.site.siteMetadata.okta.login}>
+                Log in to your dashboard, and return to this page
+              </a>
+            </>
+          ) : (
+            <h2>Logging you into PERTS.</h2>
+          )}
+        </Container>
+      </PlainLayout>
     )
   }
 }
 
 export default PertsPage
+
+export const query = graphql`
+  {
+    site {
+      siteMetadata {
+        okta {
+          login
+        }
+      }
+    }
+  }
+`
