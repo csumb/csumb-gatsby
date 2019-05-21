@@ -4,7 +4,6 @@ import PageTitle from 'components/layouts/sections/header/page-title'
 import { LeadParagraph } from 'components/common/type'
 import styled from '@emotion/styled'
 import url from 'url'
-
 import Brand from 'components/layouts/sections/header/brand'
 
 const loginAddress =

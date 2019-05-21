@@ -326,7 +326,17 @@ const MeetingItem = props => {
   return (
     <li>
       {parseInt(props.MEETING_BLDG) > 990 ? (
-        <em>Arranged</em>
+        <>
+          <em>Arranged</em>
+          {props.showSeparateDates && props._separateDates && (
+            <MeetingItemDate>
+              {startDate.format('MMMM D YYYY')}
+              {props.MEETING_DATE_END !== props.MEETING_DATE_START && (
+                <> to {endDate.format('MMMM D YYYY')}</>
+              )}
+            </MeetingItemDate>
+          )}
+        </>
       ) : (
         <>
           {props.showSeparateDates && props._separateDates && (
