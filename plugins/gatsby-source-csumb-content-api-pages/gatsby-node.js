@@ -92,7 +92,6 @@ exports.sourceNodes = async (
 
   await asyncPool(3, links.links, link => {
     return new Promise((resolve, reject) => {
-      reporter.info(link)
       fetch(link)
         .then(response => {
           return response.json()
