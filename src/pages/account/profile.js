@@ -594,10 +594,26 @@ class UserAccountProfileBioForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    updateProfileField('biography', encodeURIComponent(this.state.biography))
-    this.setState({
-      updated: true,
+    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
+      credentials: 'include',
     })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        fetch(`http://localhost:5000/profile/data/bio?token=${response.id}`, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ biography: this.state.biography }),
+        })
+
+        this.setState({
+          updated: true,
+        })
+      })
   }
 
   handleChange(value) {

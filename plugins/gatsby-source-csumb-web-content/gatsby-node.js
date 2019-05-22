@@ -4,9 +4,15 @@ const crypto = require('crypto')
 
 const today = new Date()
 
-exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
+exports.sourceNodes = async (
+  { actions, createNodeId, reporter },
+  configOptions
+) => {
   const { createNode } = actions
-
+  const loadActivity = reporter.activityTimer(
+    'Loading content from Git Repository'
+  )
+  loadActivity.start()
   walk.walkSync('./_web-content', {
     listeners: {
       file: async (root, fileStats, next) => {
@@ -19,31 +25,16 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       },
     },
   })
+  loadActivity.end()
 
   const parseContents = (name, content) => {
-    const digest = crypto
-      .createHash(`md5`)
-      .update(JSON.stringify(content))
-      .digest(`hex`)
-    if (name.search('_site.json') > -1) {
-      siteNode(name, content, digest)
-      return
-    }
     if (name.search('_data/public-directory/') > -1) {
-      return
-    }
-    if (name.search('_navigation.json') > -1) {
-      navigationNode(name, content, digest)
       return
     }
     if (name.search('_data/directory.json') > -1) {
       return
     }
-    if (
-      name.search('_data/redirects.json') > -1 ||
-      name.search('_data/building-redirects.json') > -1 ||
-      name.search('_data/person-redirects.json') > -1
-    ) {
+    if (name.search('_data/building-redirects.json') > -1) {
       redirectNodes(content)
       return
     }
@@ -59,108 +50,6 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       appNodes(content)
       return
     }
-    if (typeof content.pageContent !== 'undefined') {
-      pageNode(name, content, digest)
-      return
-    }
-  }
-
-  const pageNode = (name, content, digest) => {
-    let topHero = {}
-    if (content.path.search('node/') > -1) {
-      console.log(`Ignoring page ${name}`)
-      return
-    }
-    if (
-      content.pageContent.layout.length > 0 &&
-      content.pageContent.blocks &&
-      typeof content.pageContent.blocks[content.pageContent.layout[0].id] !==
-        'undefined' &&
-      content.pageContent.blocks[content.pageContent.layout[0].id] &&
-      content.pageContent.blocks[content.pageContent.layout[0].id].type ===
-        'heroimage'
-    ) {
-      topHero =
-        content.pageContent.blocks[content.pageContent.layout[0].id].data
-      content.pageContent.layout.splice(0, 1)
-    }
-    const breadcrumbs =
-      typeof content.breadcrumb !== 'undefined'
-        ? JSON.stringify(content.breadcrumb)
-        : false
-    const pagePath =
-      content.site === content.path && content.layout === 'site'
-        ? content.site
-        : `${content.site}/${content.path}`
-    const contentNode = {
-      id: createNodeId(`${content.uuid} >>> CsumbPage`),
-      children: [],
-      parent: null,
-      title: content.title,
-      layout: content.layout,
-      site: content.site,
-      drupalNid: content.drupalNid,
-      pagePath: pagePath,
-      topHero: topHero,
-      breadcrumbs: breadcrumbs,
-      navigation: content.navigation ? content.navigation : [],
-      feedbackEmail: content.feedback_email ? content.feedback_email : '',
-      pageContent: JSON.stringify(content.pageContent),
-      embedTargetSite:
-        typeof content.embed_target_site !== 'undefined'
-          ? content.embed_target_site
-          : '',
-      internal: {
-        type: `CsumbPage`,
-        contentDigest: digest,
-      },
-    }
-
-    if (content.event) {
-      content.event._passedEvent = true
-      content.event._sortDate = 0
-      if (typeof content.event.date_stamps !== 'undefined') {
-        content.event.date_stamps.forEach(date => {
-          if (date.start_stamp >= today.getTime() / 1000) {
-            content.event._passedEvent = false
-            content.event._sortDate = date.start_stamp
-          }
-        })
-      }
-      contentNode.event = content.event
-    }
-    createNode(contentNode)
-  }
-
-  const siteNode = (name, content, digest) => {
-    createNode({
-      id: createNodeId(`${content.site} >>> CsumbSite`),
-      parent: null,
-      children: [],
-      site: content.site,
-      title: content.title,
-      contact: content.contact ? content.contact : null,
-      social: content.social ? content.social : null,
-      staffPage: content.view_staff ? content.view_staff : null,
-      internal: {
-        type: `CsumbSite`,
-        contentDigest: digest,
-      },
-    })
-  }
-
-  const navigationNode = (name, content, digest) => {
-    createNode({
-      id: createNodeId(`${content.site} >>> CsumbNavigation`),
-      parent: null,
-      children: [],
-      site: content.site,
-      navigation: JSON.stringify(content.navigation),
-      internal: {
-        type: `CsumbNavigation`,
-        contentDigest: digest,
-      },
-    })
   }
 
   const departmentNodes = content => {
