@@ -10,8 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "crypto": "^1.0.1",
-    "node-fetch": "^2.6.0",
-    "sync-request": "^6.1.0",
-    "tiny-async-pool": "^1.0.4"
+    "sync-request": "^6.1.0"
   }
 }
