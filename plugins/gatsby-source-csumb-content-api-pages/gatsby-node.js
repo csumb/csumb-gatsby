@@ -1,5 +1,7 @@
 const crypto = require('crypto')
 const request = require('sync-request')
+const fetch = require('node-fetch')
+const asyncPool = require('tiny-async-pool')
 
 const today = new Date()
 
@@ -85,25 +87,26 @@ exports.sourceNodes = async (
   )
   fetchActivity.start()
 
-  const pageCountResponse = request('GET', `${endpoint}&type=pages_count`)
-  const pagesCount = JSON.parse(pageCountResponse.getBody())
+  const pageLinks = request('GET', `${endpoint}&type=page_links`)
+  const links = JSON.parse(pageLinks.getBody())
 
-  let nextUrl = `${endpoint}&type=pages`
-  let currentPage = 0
-  while (nextUrl) {
-    const response = request('GET', nextUrl)
-    const pages = JSON.parse(response.getBody())
-    if (pages) {
-      pages.pages.forEach(item => {
-        pageNode(item)
-      })
-      currentPage++
-      reporter.info(`Content page ${currentPage}/${pagesCount.count}`)
-      nextUrl = pages.next
-    } else {
-      nextUrl = false
-    }
-  }
-
-  fetchActivity.end()
+  await asyncPool(3, links.links, link => {
+    return new Promise((resolve, reject) => {
+      reporter.info(link)
+      fetch(link)
+        .then(response => {
+          return response.json()
+        })
+        .then(pages => {
+          if (pages) {
+            pages.pages.forEach(item => {
+              pageNode(item)
+            })
+          }
+          resolve()
+        })
+    })
+  }).then(() => {
+    fetchActivity.end()
+  })
 }
