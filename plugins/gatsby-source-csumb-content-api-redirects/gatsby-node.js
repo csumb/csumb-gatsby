@@ -19,7 +19,7 @@ exports.sourceNodes = async (
 
   Object.keys(redirects.redirects).forEach(source => {
     let redirectNode = {
-      id: createNodeId(`${source} >>> CsumbRedirect`),
+      id: createNodeId(`${source} >>> CsumbContentRedirect`),
       children: [],
       redirect: {
         source: source,
@@ -27,7 +27,7 @@ exports.sourceNodes = async (
       },
       parent: null,
       internal: {
-        type: `CsumbRedirect`,
+        type: `CsumbContentRedirect`,
       },
     }
     redirectNode.internal.contentDigest = crypto
