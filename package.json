@@ -100,6 +100,8 @@
     "showdown": "^1.9.0",
     "slugify": "^1.3.4",
     "styled-components": "^4.1.2",
+    "sync-request": "^6.1.0",
+    "tiny-async-pool": "^1.0.4",
     "typography": "^0.16.17",
     "typography-theme-sutro": "^0.15.10",
     "typography-theme-us-web-design-standards": "^0.16.9",

@@ -1,0 +1,15 @@
+{
+  "name": "gatsby-source-csumb-content-api-sites",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "sync-request": "^6.1.0"
+  }
+}
