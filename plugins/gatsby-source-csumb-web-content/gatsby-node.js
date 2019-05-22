@@ -4,9 +4,15 @@ const crypto = require('crypto')
 
 const today = new Date()
 
-exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
+exports.sourceNodes = async (
+  { actions, createNodeId, reporter },
+  configOptions
+) => {
   const { createNode } = actions
-
+  const loadActivity = reporter.activityTimer(
+    'Loading content from Git Repository'
+  )
+  loadActivity.start()
   walk.walkSync('./_web-content', {
     listeners: {
       file: async (root, fileStats, next) => {
@@ -19,12 +25,9 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       },
     },
   })
+  loadActivity.end()
 
   const parseContents = (name, content) => {
-    const digest = crypto
-      .createHash(`md5`)
-      .update(JSON.stringify(content))
-      .digest(`hex`)
     if (name.search('_data/public-directory/') > -1) {
       return
     }
