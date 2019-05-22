@@ -1,5 +1,4 @@
 const crypto = require('crypto')
-const fetch = require('node-fetch')
 const request = require('sync-request')
 
 exports.sourceNodes = async (
