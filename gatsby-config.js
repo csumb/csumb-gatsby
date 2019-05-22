@@ -74,6 +74,12 @@ const gatsbyConfig = {
     'gatsby-source-csumb-directory',
     'gatsby-source-csumb-web-content',
     {
+      resolve: 'gatsby-source-csumb-content-api-redirects',
+      options: {
+        endpoint: process.env.CSUMB_CONTENT_API_ENDPOINT,
+      },
+    },
+    {
       resolve: 'gatsby-source-csumb-content-api-sites',
       options: {
         endpoint: process.env.CSUMB_CONTENT_API_ENDPOINT,
