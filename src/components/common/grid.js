@@ -28,7 +28,7 @@ const Box = styled('div')`
       paddingRight: spacingValues(props.px),
       paddingLeft: spacingValues(props.px),
     })}
-
+  ${props => props.order && bp({ order: props.order })}
   ${props => props.mr && bp({ marginRight: spacingValues(props.mr) })}
   ${props => props.ml && bp({ marginLeft: spacingValues(props.ml) })}
   ${props =>
