@@ -1,6 +1,5 @@
-const crypto = require("crypto")
-const fetch = require("node-fetch")
-const request = require("sync-request")
+const crypto = require('crypto')
+const request = require('sync-request')
 
 exports.sourceNodes = async (
   { actions, createNodeId, reporter },
@@ -30,10 +29,10 @@ exports.sourceNodes = async (
     })
   }
 
-  fetchActivity = reporter.activityTimer("Downloading sites from CSUMB editor")
+  fetchActivity = reporter.activityTimer('Downloading sites from CSUMB editor')
   fetchActivity.start()
 
-  const response = request("GET", `${endpoint}&type=sites`)
+  const response = request('GET', `${endpoint}&type=sites`)
   const sites = JSON.parse(response.getBody())
 
   sites.sites.forEach(site => {
