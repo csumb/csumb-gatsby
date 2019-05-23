@@ -1,5 +1,5 @@
-const crypto = require("crypto")
-const request = require("sync-request")
+const crypto = require('crypto')
+const request = require('sync-request')
 
 exports.sourceNodes = async (
   { actions, createNodeId, reporter },
@@ -26,13 +26,13 @@ exports.sourceNodes = async (
   }
 
   fetchActivity = reporter.activityTimer(
-    "Downloading navigation from CSUMB editor"
+    'Downloading navigation from CSUMB editor'
   )
   fetchActivity.start()
 
   let nextUrl = `${endpoint}&type=navigation`
   while (nextUrl) {
-    const response = request("GET", nextUrl)
+    const response = request('GET', nextUrl)
     const navigation = JSON.parse(response.getBody())
     if (navigation) {
       navigation.navigation.forEach(item => {
