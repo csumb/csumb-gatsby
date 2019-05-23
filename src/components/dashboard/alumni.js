@@ -79,6 +79,16 @@ class DashboardAlumni extends Component {
       success: true,
     })
     fetch(`https://api.csumb.edu/alumni?token=${this.state.session}&register=1`)
+    const expiration = new Date()
+    expiration.setDate(expiration.getDate() + 10)
+    cookies.set(
+      'csumbDashboardAlumni',
+      { showMessage: false },
+      {
+        expires: expiration,
+        path: '/',
+      }
+    )
   }
 
   render() {
