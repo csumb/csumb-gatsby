@@ -2,7 +2,7 @@ import { Component } from 'react'
 
 class Pardot extends Component {
   componentDidMount() {
-    if (typeof window === 'undefined' || typeof window.olark !== 'undefined') {
+    if (typeof window === 'undefined') {
       return
     }
     window.paAId = '737633'
