@@ -1,17 +1,32 @@
 import React from 'react'
 import { UserContext, setUserRole } from 'components/contexts/user'
+import BreakpointContext from 'components/contexts/breakpoint'
 
 class UserComponent extends React.Component {
   state = {
     user: false,
+    width: 900,
+    height: 900,
+    isMobile: false,
   }
 
   async componentDidMount() {
-    window
-      .fetch('https://login.csumb.edu/api/v1/users/me?_v=1', {
-        credentials: 'include',
-        cache: 'no-store',
+    const mobileBreakpoint = 830
+
+    const setWindowSize = () => {
+      this.setState({
+        isMobile: window.innerWidth <= mobileBreakpoint,
+        width: window.innerWidth,
+        height: window.innerHeight,
       })
+    }
+
+    window.addEventListener('resize', setWindowSize)
+
+    fetch('https://login.csumb.edu/api/v1/users/me', {
+      credentials: 'include',
+      cache: 'no-store',
+    })
       .then(response => {
         return response.json()
       })
@@ -43,10 +58,15 @@ class UserComponent extends React.Component {
   }
 
   render() {
+    const { user, width, height, isMobile } = this.state
     return (
-      <UserContext.Provider value={{ user: this.state.user }}>
-        {this.props.children}
-      </UserContext.Provider>
+      <BreakpointContext.Provider
+        value={{ width: width, height: height, isMobile: isMobile }}
+      >
+        <UserContext.Provider value={{ user: user }}>
+          {this.props.children}
+        </UserContext.Provider>
+      </BreakpointContext.Provider>
     )
   }
 }

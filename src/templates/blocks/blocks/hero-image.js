@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import color from 'color'
 import LazyHero from 'react-lazy-hero'
 import LinkInspect from 'components/utilities/link-inspect'
 import Container from 'components/common/container'
-
+import BreakpointContext from 'components/contexts/breakpoint'
 const heroHeight = '60vh'
 
 const background = color(colors.primary.dark)
@@ -61,41 +61,25 @@ const HeroText = ({ headline, text, buttonUrl, buttonText }) => (
   </>
 )
 
-class BlockHeroImage extends Component {
-  state = {
-    isMobile: false,
-    isReady: false,
-  }
-
-  componentDidMount() {
-    const mobileBreakpoint = 830
-    const that = this
-
-    const setWindowSize = () => {
-      that.setState({
-        isMobile: window.innerWidth <= mobileBreakpoint,
-      })
-    }
-
-    window.addEventListener('resize', setWindowSize)
-
-    setWindowSize()
-    this.setState({
-      isReady: true,
-    })
-  }
-
-  render() {
-    const { image, position } = this.props
-    const { isMobile, isReady } = this.state
-    if (!isReady) {
-      return null
-    }
-    return (
+const BlockHeroImage = ({
+  image,
+  position,
+  headline,
+  text,
+  buttonUrl,
+  buttonText,
+}) => (
+  <BreakpointContext.Consumer>
+    {({ isMobile }) => (
       <>
-        {isMobile && (this.props.headline || this.props.text) && (
+        {isMobile && (headline || text) && (
           <MobileHeroTextWrapper>
-            <HeroText {...this.props} />
+            <HeroText
+              text={text}
+              headline={headline}
+              buttonUrl={buttonUrl}
+              buttonText={buttonText}
+            />
           </MobileHeroTextWrapper>
         )}
         <LazyHero
@@ -109,13 +93,18 @@ class BlockHeroImage extends Component {
           {!isMobile && (
             <HeroContainer>
               <Container>
-                {(this.props.headline || this.props.text) && (
+                {(headline || text) && (
                   <HeroImageTextWrapper
                     position={
                       ['ne', 'se'].indexOf(position) > -1 ? 'right' : 'left'
                     }
                   >
-                    <HeroText {...this.props} />
+                    <HeroText
+                      text={text}
+                      headline={headline}
+                      buttonUrl={buttonUrl}
+                      buttonText={buttonText}
+                    />
                   </HeroImageTextWrapper>
                 )}
               </Container>
@@ -123,8 +112,8 @@ class BlockHeroImage extends Component {
           )}
         </LazyHero>
       </>
-    )
-  }
-}
+    )}
+  </BreakpointContext.Consumer>
+)
 
 export default BlockHeroImage

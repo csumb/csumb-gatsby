@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
   TopLevelList,
   TopLevelItem,
@@ -16,58 +16,41 @@ import Link from 'gatsby-link'
 import Layout from 'components/layouts/default'
 import Container from 'components/common/container'
 import { Flex, Box } from 'components/common/grid'
+import BreakpointContext from 'components/contexts/breakpoint'
 
-class EverythingSubLevelPage extends Component {
-  state = {
-    isMobile: false,
-  }
-
-  componentDidMount() {
-    const mobileBreakpoint = 830
-    const that = this
-
-    const setWindowSize = () => {
-      that.setState({
-        isMobile: window.innerWidth <= mobileBreakpoint,
-      })
-    }
-
-    window.addEventListener('resize', setWindowSize)
-
-    setWindowSize()
-  }
-
-  render() {
-    const { pageContext } = this.props
-    const { isMobile } = this.state
-    return (
+const EverythingSubLevelPage = ({ pageContext }) => (
+  <BreakpointContext.Consumer>
+    {({ isMobile }) => (
       <Layout pageTitle="Everything else">
         <SiteHeader path="/everything">Everything else</SiteHeader>
         <Container topPadding>
           <Flex flexWrap="wrap">
-            {isMobile ? (
-              <p>
-                <Link to="/everything">← Back to everything</Link>
-              </p>
-            ) : (
-              <Box width={[1, 1 / 5]} px={2}>
-                <TopLevelList>
-                  {pageContext.topLevelItems.map(item => (
-                    <TopLevelItem key={item.contentful_id}>
-                      <TopLevelItemLink
-                        to={`/everything/${item.slug}`}
-                        active={
-                          item.contentful_id ===
-                          pageContext.currentItem.contentful_id
-                        }
-                      >
-                        {item.title}
-                      </TopLevelItemLink>
-                    </TopLevelItem>
-                  ))}
-                </TopLevelList>
-              </Box>
-            )}
+            <>
+              {isMobile ? (
+                <p>
+                  <Link to="/everything">← Back to everything</Link>
+                </p>
+              ) : (
+                <Box width={[1, 1 / 5]} px={2}>
+                  <TopLevelList>
+                    {pageContext.topLevelItems.map(item => (
+                      <TopLevelItem key={item.contentful_id}>
+                        <TopLevelItemLink
+                          to={`/everything/${item.slug}`}
+                          active={
+                            item.contentful_id ===
+                            pageContext.currentItem.contentful_id
+                          }
+                        >
+                          {item.title}
+                        </TopLevelItemLink>
+                      </TopLevelItem>
+                    ))}
+                  </TopLevelList>
+                </Box>
+              )}
+            </>
+
             <Box width={[1, 2 / 5]} px={2}>
               <SecondLevelTitle>
                 {pageContext.currentItem.title}
@@ -95,8 +78,8 @@ class EverythingSubLevelPage extends Component {
           </Flex>
         </Container>
       </Layout>
-    )
-  }
-}
+    )}
+  </BreakpointContext.Consumer>
+)
 
 export default EverythingSubLevelPage

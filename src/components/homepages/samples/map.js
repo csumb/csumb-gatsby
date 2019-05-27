@@ -7,6 +7,7 @@ import { LeadParagraph } from 'components/common/type'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'
 import MapPlaceholder from 'components/utilities/map-placeholder'
+import BreakpointContext from 'components/contexts/breakpoint'
 
 const InfoWindowContent = styled('p')`
   font-weight: bold;
@@ -44,25 +45,9 @@ const FloatText = styled('div')`
 
 class HomepageHero extends Component {
   state = {
-    isMobile: false,
     selectedPlace: false,
     activeMarker: false,
     showInfoWindow: false,
-  }
-
-  componentDidMount() {
-    const mobileBreakpoint = 830
-    const that = this
-
-    const setWindowSize = () => {
-      that.setState({
-        isMobile: window.innerWidth <= mobileBreakpoint,
-      })
-    }
-
-    window.addEventListener('resize', setWindowSize)
-
-    setWindowSize()
   }
 
   onMarkerClick(props, marker, e) {
@@ -83,85 +68,88 @@ class HomepageHero extends Component {
   render() {
     const { google } = this.props
     const {
-      isMobile,
       activeMarker,
       showInfoWindow,
       selectedPlace,
       showPlaceholder,
     } = this.state
     return (
-      <>
-        {isMobile && (
-          <MobileFloatBox>
-            <FloatText>
-              <h1>
-                <Link to="/service/service-learning-quick-facts">
-                  Serving our community
-                </Link>
-              </h1>
-              <LeadParagraph>
-                Last year, 3,310 students provided 114,651 hours of service in
-                our community.
-              </LeadParagraph>
-            </FloatText>
-          </MobileFloatBox>
+      <BreakpointContext.Consumer>
+        {({ isMobile }) => (
+          <>
+            {isMobile && (
+              <MobileFloatBox>
+                <FloatText>
+                  <h1>
+                    <Link to="/service/service-learning-quick-facts">
+                      Serving our community
+                    </Link>
+                  </h1>
+                  <LeadParagraph>
+                    Last year, 3,310 students provided 114,651 hours of service
+                    in our community.
+                  </LeadParagraph>
+                </FloatText>
+              </MobileFloatBox>
+            )}
+            <StaticHero>
+              {!isMobile && (
+                <FloatBox>
+                  <FloatText>
+                    <h1>
+                      <Link to="/service/service-learning-quick-facts">
+                        Serving our community
+                      </Link>
+                    </h1>
+                    <LeadParagraph>
+                      Last year, 3,310 students provided 114,651 hours of
+                      service in our community.
+                    </LeadParagraph>
+                  </FloatText>
+                </FloatBox>
+              )}
+              <MapPlaceholder style={{ height: '500px' }}>
+                <Map
+                  google={google}
+                  zoom={10}
+                  zoomControl={true}
+                  scaleControl={false}
+                  mapTypeControl={false}
+                  streetViewControl={false}
+                  mapType="TERRAIN"
+                  style={{
+                    height: '500px',
+                    width: '100%',
+                    position: 'relative',
+                  }}
+                  initialCenter={{
+                    lat: 36.6536502,
+                    lng: -121.7989176,
+                  }}
+                >
+                  {mapData.map((item, key) => (
+                    <Marker
+                      key={key}
+                      name={item.text}
+                      position={{ lat: item.lat, lng: item.lon }}
+                      onClick={this.onMarkerClick.bind(this)}
+                    />
+                  ))}
+                  <InfoWindow
+                    marker={activeMarker}
+                    visible={showInfoWindow}
+                    onClose={this.onInfoWindowClose.bind(this)}
+                  >
+                    <InfoWindowContent
+                      dangerouslySetInnerHTML={{ __html: selectedPlace.name }}
+                    />
+                  </InfoWindow>
+                </Map>
+              </MapPlaceholder>
+            </StaticHero>
+          </>
         )}
-        <StaticHero>
-          {!isMobile && (
-            <FloatBox>
-              <FloatText>
-                <h1>
-                  <Link to="/service/service-learning-quick-facts">
-                    Serving our community
-                  </Link>
-                </h1>
-                <LeadParagraph>
-                  Last year, 3,310 students provided 114,651 hours of service in
-                  our community.
-                </LeadParagraph>
-              </FloatText>
-            </FloatBox>
-          )}
-          <MapPlaceholder style={{ height: '500px' }}>
-            <Map
-              google={google}
-              zoom={10}
-              zoomControl={true}
-              scaleControl={false}
-              mapTypeControl={false}
-              streetViewControl={false}
-              mapType="TERRAIN"
-              style={{
-                height: '500px',
-                width: '100%',
-                position: 'relative',
-              }}
-              initialCenter={{
-                lat: 36.6536502,
-                lng: -121.7989176,
-              }}
-            >
-              {mapData.map((item, key) => (
-                <Marker
-                  key={key}
-                  name={item.text}
-                  position={{ lat: item.lat, lng: item.lon }}
-                  onClick={this.onMarkerClick.bind(this)}
-                />
-              ))}
-              <InfoWindow
-                marker={activeMarker}
-                visible={showInfoWindow}
-                onClose={this.onInfoWindowClose.bind(this)}
-              >
-                <InfoWindowContent
-                  dangerouslySetInnerHTML={{ __html: selectedPlace.name }}
-                />
-              </InfoWindow>
-            </Map>
-          </MapPlaceholder>
-        </StaticHero>
-      </>
+      </BreakpointContext.Consumer>
     )
   }
 }
