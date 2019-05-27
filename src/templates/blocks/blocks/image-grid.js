@@ -30,7 +30,7 @@ class BlockImageGrid extends Component {
   render() {
     const { images, columnWidth } = this.props
     return (
-      <Flex flexWrap="wrap">
+      <Flex>
         {images.map(item => (
           <Box width={[1, 1, columnWidth / 12, columnWidth / 12]} px={2}>
             {item.link ? (

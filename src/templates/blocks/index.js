@@ -121,7 +121,7 @@ class Columns extends Component {
         inCollapsedHeader={inCollapsedHeader}
         level={block._collapsedHeaderLevel}
       >
-        <Flex flexWrap="wrap">
+        <Flex>
           {block.data.columns.map((width, key) => (
             <Box
               width={[1, 1, width / 12, width / 12]}

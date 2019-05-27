@@ -105,9 +105,9 @@ class Footer extends Component {
         data-swiftype-index="false"
       >
         <Container>
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[1, 7 / 12]} pr={2}>
-              <Flex flexWrap="wrap">
+              <Flex>
                 <Box width={[1, 1 / 3]}>
                   <FooterList>
                     <li>

@@ -25,7 +25,7 @@ class EventsPage extends Component {
         <SiteHeader path="/events">Events</SiteHeader>
         <Container topPadding>
           <PageTitle>Campus events</PageTitle>
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
               {featuredEvents && (
                 <>

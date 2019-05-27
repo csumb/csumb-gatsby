@@ -81,7 +81,7 @@ AccountGroup.propTypes = {
 }
 
 const AccountPlaceholder = () => (
-  <Flex flexWrap="wrap">
+  <Flex>
     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
       <ContentLoader
         height={160}

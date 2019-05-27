@@ -56,7 +56,7 @@ const PersonListing = props => {
           {firstName} {lastName}
         </Link>
       </DirectoryTitle>
-      <Flex flexWrap="wrap">
+      <Flex>
         <Box width={[1, 1, 1 / 2]} px={2}>
           {directoryJobClass.map((jobClass, key) => (
             <DirectoryPosition key={key}>
@@ -285,7 +285,7 @@ class DirectorySearchPage extends Component {
             onSubmit={this.handleSubmit.bind(this)}
           >
             <h2>Search people and departments</h2>
-            <Flex flexWrap="wrap">
+            <Flex>
               <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
                 <InputText
                   name="q"

@@ -34,7 +34,7 @@ class BlockFeed extends Component {
                   {displayShort ? (
                     <LinkInspect to={item.page_link}>{item.title}</LinkInspect>
                   ) : (
-                    <Flex flexWrap="wrap">
+                    <Flex>
                       <Box width={[1, 3 / 4]} pr={[0, 3]}>
                         <FeedItemHeader>
                           <LinkInspect

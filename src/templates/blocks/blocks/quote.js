@@ -26,7 +26,7 @@ class BlockQuote extends Component {
     const { quote, source, url } = this.props
     return (
       <Quote>
-        <Flex flexWrap="wrap">
+        <Flex>
           <Box width={2 / 12} pr={2}>
             <QuoteIcon src={quoteIcon} alt="" />
           </Box>

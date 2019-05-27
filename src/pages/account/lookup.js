@@ -91,7 +91,7 @@ class LookupForm extends Component {
           label="Date of birth"
           onChange={this.handleChangeDob.bind(this)}
         />
-        <SubmitFlex flexWrap="wrap">
+        <SubmitFlex>
           <Box width={[1, 1 / 3]} pr={[0, 2]}>
             <Submit value="Lookup username" nomargin />
           </Box>

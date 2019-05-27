@@ -71,7 +71,7 @@ class PageTemplate extends Component {
 
         {showNavigation ? (
           <Container>
-            <Flex flexWrap="wrap">
+            <Flex>
               <Box width={[1, 3 / 12, 3 / 12]} px={2}>
                 <PageNavigation navigation={pageNavigation} />
               </Box>

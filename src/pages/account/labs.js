@@ -29,7 +29,7 @@ class LabsPage extends Component {
                       </>
                     )}
                   </PageTitle>
-                  <Flex flexWrap="wrap">
+                  <Flex>
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
                       <AccountSidebar active="account" user={context.user} />
                     </Box>
@@ -40,7 +40,7 @@ class LabsPage extends Component {
                         Arts students, and may require special training.
                       </AlertFyi>
                       <LabKey />
-                      <Flex flexWrap="wrap">
+                      <Flex>
                         {labs.map(lab => (
                           <Box width={[1, 1 / 2, 1 / 2]} px={2}>
                             <Lab lab={lab} customerId={customerId} />

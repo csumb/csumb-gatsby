@@ -23,7 +23,7 @@ class ScheduleFront extends Component {
         <Container topPadding>
           <PageTitle>{term.DESCR} Schedule</PageTitle>
           <ScheduleTermList terms={allTerms} currentTerm={term} />
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h2>Subjects</h2>
               <ScheduleList>

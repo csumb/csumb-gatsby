@@ -152,7 +152,7 @@ class ProgramTemplate extends Component {
             </ReturnLink>
           )}
           <Well>
-            <Flex flexWrap="wrap">
+            <Flex>
               <Box width={[1, 1 / 2]} pr={[0, 2]}>
                 <h2>{data.Application_Deadline_Title}</h2>
                 {data.Fall_Spring_Application_Deadline &&
