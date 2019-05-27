@@ -6,26 +6,15 @@ import { graphql } from 'gatsby'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import showdown from 'showdown'
-import moment from 'moment'
-import styled from '@emotion/styled'
-
-const AlertDate = styled('span')`
-  display: inline-block;
-  font-weight: normal;
-  margin-left: 1rem;
-`
 
 const converter = new showdown.Converter()
 
 const contentfulKey = '0LX_NaWSR-H_e5HypwHySlb0yT4F1SMuM7_-LbucSJw'
 const contentfulSpace = '348vmopvao05'
 
-const EmergencyNotice = ({ title, content, date }) => (
+const EmergencyNotice = ({ title, content }) => (
   <>
-    <h2>
-      {title}{' '}
-      <AlertDate>{moment(date).format('MMMM D YYYY, h:mm a')}</AlertDate>
-    </h2>
+    <h2>{title}</h2>
     <div
       dangerouslySetInnerHTML={{
         __html: converter.makeHtml(content),
@@ -73,7 +62,6 @@ class UPDEmergencyPage extends Component {
               {alerts.map(alert => (
                 <EmergencyNotice
                   key={alert.sys.id}
-                  date={alert.sys.updatedAt}
                   content={alert.fields.content}
                   title={alert.fields.title}
                 />
