@@ -6,29 +6,57 @@ const Address = styled('address')`
 `
 class BlockAddress extends Component {
   render() {
-    const { address1, address2, address3, city, state, zip } = this.props
+    const {
+      address1,
+      address2,
+      address3,
+      city,
+      state,
+      zip,
+      phone,
+      tty,
+      fax,
+    } = this.props
     return (
       <Address>
-        {address1 ? (
+        {address1 && (
           <>
             {address1}
             <br />
           </>
-        ) : null}
-        {address2 ? (
+        )}
+        {address2 && (
           <>
             {address2}
             <br />
           </>
-        ) : null}
-        {address3 ? (
+        )}
+        {address3 && (
           <>
             {address3}
             <br />
           </>
-        ) : null}
+        )}
         {city}, {state} &nbsp;
         {zip}
+        {phone && (
+          <>
+            <br />
+            <strong>Phone: </strong> {phone}
+          </>
+        )}
+        {tty && (
+          <>
+            <br />
+            <strong>TTY: </strong> {tty}
+          </>
+        )}
+        {fax && (
+          <>
+            <br />
+            <strong>Fax: </strong> {fax}
+          </>
+        )}
       </Address>
     )
   }
