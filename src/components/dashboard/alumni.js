@@ -28,7 +28,7 @@ class DashboardAlumni extends Component {
       })
       return null
     }
-    fetch('https://csumb.okta.com/api/v1/sessions/me', {
+    fetch('https://login.csumb.edu/api/v1/sessions/me', {
       credentials: 'include',
     })
       .then(response => {

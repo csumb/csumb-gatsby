@@ -48,7 +48,7 @@ class Layout extends Component {
         <Helmet>
           <html lang="en" />
           <meta charset="utf-8" />
-          <link rel="preconnect" href="https://csumb.okta.com" />
+          <link rel="preconnect" href="https://login.csumb.edu" />
           <title>{`${
             pageTitle ? `${pageTitle} | ` : ''
           }Cal State Monterey Bay`}</title>

@@ -360,7 +360,7 @@ class ApplicantStatus extends Component {
         ) : (
           <>
             <p>
-              <ButtonLink to="https://csumb.okta.com/home/csumb_oasis_1/0oaj48n6m2kKZX94z0x7/alnj48vefz4sQE6cL0x7">
+              <ButtonLink to="https://login.csumb.edu/home/csumb_oasis_1/0oaj48n6m2kKZX94z0x7/alnj48vefz4sQE6cL0x7">
                 Log into OASIS
               </ButtonLink>
             </p>

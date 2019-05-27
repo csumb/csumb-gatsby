@@ -67,7 +67,7 @@ class DashboardContent extends Component {
 
     const userRoles = roles.join(',')
     NProgress.start()
-    fetch('https://csumb.okta.com/api/v1/sessions/me', {
+    fetch('https://login.csumb.edu/api/v1/sessions/me', {
       credentials: 'include',
     })
       .then(response => {
