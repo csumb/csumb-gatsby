@@ -3,7 +3,7 @@ import { Flex, Box } from 'components/common/grid'
 import { UnstyledList } from 'components/common/type'
 
 const AllPrograms = () => (
-  <Flex flexWrap="wrap">
+  <Flex>
     <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
       <h2>Majors</h2>
       <UnstyledList>

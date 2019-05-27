@@ -35,7 +35,7 @@ const NewsTags = ({ tags }) => {
   }
   return (
     <NewsTagWrapper>
-      <Flex flexWrap="wrap">
+      <Flex>
         <Box width={[1, 2 / 12, 2 / 12]} pr={[0, 2, 2]}>
           <h5>More about</h5>
         </Box>

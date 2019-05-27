@@ -68,7 +68,7 @@ class GraduateTemplate extends Component {
             </Link>
           </p>
           <LeadParagraph>Class of {graduate.data.class}</LeadParagraph>
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[1, 1, 1 / 2]} pr={[0, 0, 2]}>
               {graduate.data.website && (
                 <p>

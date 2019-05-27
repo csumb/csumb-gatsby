@@ -28,7 +28,7 @@ const AllAreasHeader = styled('h2')`
 const SubjectArea = ({ area }) => (
   <>
     <h3>{area.Subject_Area}</h3>
-    <Flex flexWrap="wrap">
+    <Flex>
       <Box width={[1, 1 / 4]} pr={[0, 2]} pl={[0, 4]}>
         {area.Major && (
           <>
@@ -119,7 +119,7 @@ class SubjectAreas extends Component {
         <Well>
           <h4>Search by area or program</h4>
           <form onSubmit={this.handleSearch.bind(this)}>
-            <Flex flexWrap="wrap">
+            <Flex>
               <Box width={[1, 1 / 4]}>
                 <InputText
                   name="educationAbroadSearch"

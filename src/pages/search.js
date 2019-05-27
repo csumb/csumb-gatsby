@@ -110,7 +110,7 @@ class SearchPage extends Component {
         <Container>
           <PageTitle>Search</PageTitle>
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <Flex flexWrap="wrap">
+            <Flex>
               <Box width={[1, 2 / 3]} px={2}>
                 <InputText
                   name="search"

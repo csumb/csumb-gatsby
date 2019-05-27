@@ -49,7 +49,7 @@ const NewsListItem = ({
     return null
   }
   return (
-    <Flex flexWrap="wrap">
+    <Flex>
       <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
         <h3>
           <Link to={path}>{teaserHeadline}</Link>

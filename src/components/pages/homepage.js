@@ -185,7 +185,7 @@ const HomepageImageNavigation = ({ navigation }) => {
   return (
     <HomepageImageNavigationWrapper>
       <Container>
-        <Flex flexWrap="wrap">
+        <Flex>
           {images.map((image, key) => (
             <Box width={[1, 1 / 4]} px={[0, 2]} key={key}>
               <LinkInspect to={links[key]}>

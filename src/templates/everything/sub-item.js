@@ -24,7 +24,7 @@ const EverythingSubLevelPage = ({ pageContext }) => (
       <Layout pageTitle="Everything else">
         <SiteHeader path="/everything">Everything else</SiteHeader>
         <Container topPadding>
-          <Flex flexWrap="wrap">
+          <Flex>
             <>
               {isMobile ? (
                 <p>

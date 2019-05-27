@@ -61,7 +61,7 @@ const Event = ({ event, linkToEvent }) => (
           </h2>
         )}
         <LeadParagraph>{event.description}</LeadParagraph>
-        <Flex flexWrap="wrap">
+        <Flex>
           {event.image && (
             <Box width={[1, 4 / 12]} pr={[0, 4]}>
               <img
@@ -152,7 +152,7 @@ const EventFeedItemTitle = styled('h3')`
 `
 
 const EventFeedItem = ({ title, link, times, dates, image, description }) => (
-  <Flex flexWrap="wrap">
+  <Flex>
     <Box width={[1, 3 / 4]} pr={[0, 2]}>
       <Link to={`/${link}`}>
         <EventFeedItemTitle>{title}</EventFeedItemTitle>
@@ -219,7 +219,7 @@ const PublicEventDate = styled('span')`
 const PublicEvent = ({ event, showDate, showTime, showFeatured }) => (
   <PublicEventWrapper featured={event.event.featured && showFeatured}>
     <Link to={event.pagePath}>
-      <Flex flexWrap="wrap">
+      <Flex>
         <Box width={[0, 3 / 12, 3 / 12]} pr={[0, 4, 4]}>
           {event.event.image && (
             <img

@@ -169,7 +169,7 @@ class MobileUserWidget extends Component {
                 <UserLoginLink href={loginLink}>Log in</UserLoginLink>
               ) : (
                 <>
-                  <Flex flexWrap="wrap">
+                  <Flex>
                     <Box width={1 / 2}>
                       <UserDashboardLink to="/dashboard">
                         Dashboard
@@ -317,7 +317,7 @@ class HeaderMobile extends Component {
     return (
       <header data-swiftype-index="false">
         <HeaderMobileWrapper>
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[9 / 12]}>
               <Brand mobile={true} />
             </Box>

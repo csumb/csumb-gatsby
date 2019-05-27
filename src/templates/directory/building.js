@@ -44,7 +44,7 @@ class BuildingTemplate extends Component {
           <ReturnLink to="/directory/buildings">
             List of all buildings
           </ReturnLink>
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[1, 2 / 3]} pr={[0, 4]} style={{ height: '500px' }}>
               <BuildingMapMap center={center} title={title} />
             </Box>

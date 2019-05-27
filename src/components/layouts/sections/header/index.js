@@ -36,7 +36,7 @@ const Header = ({ metadata, siteNavigation, siteTitle }) => (
         ) : (
           <HeaderWrapper data-swiftype-index="false">
             <Container>
-              <Flex flexWrap="wrap">
+              <Flex>
                 <Box width={[1, 1, 1 / 3, 1 / 3]} pr={2}>
                   <Brand />
                 </Box>

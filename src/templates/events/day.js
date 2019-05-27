@@ -15,7 +15,7 @@ class EventsPage extends Component {
         <SiteHeader path="/events">Events</SiteHeader>
         <Container topPadding>
           <PageTitle>Events for {dateFormat}</PageTitle>
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
               {events.map(event => (
                 <PublicEvent event={event} showDate={false} showTime={true} />

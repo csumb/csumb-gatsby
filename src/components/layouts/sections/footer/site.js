@@ -81,7 +81,7 @@ const SiteFooter = ({ site }) => {
       <Container>
         <h3>{site.title}</h3>
         {site.social && <SiteFooterSocial social={site.social} />}
-        <Flex flexWrap="wrap">
+        <Flex>
           <Box width={[1, 1 / 3, 1 / 3]} pr={[0, 2, 2]}>
             <SiteFooterItems>
               {site.staffPage && (

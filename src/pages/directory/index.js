@@ -16,7 +16,7 @@ const DirectoryPage = ({ data }) => (
     <DirectoryNavigation />
     <Container topPadding>
       <DirectoryForm directory={data.allCsumbDirectory.edges} />
-      <Flex flexWrap="wrap">
+      <Flex>
         <Box width={[1, 1 / 2]} px={2}>
           <h3>Important numbers</h3>
           <ul>
@@ -144,7 +144,7 @@ class DirectoryForm extends Component {
     return (
       <form method="get" action="/directory/search">
         <h2>Search people and departments</h2>
-        <Flex flexWrap="wrap">
+        <Flex>
           <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
             <InputText
               name="q"

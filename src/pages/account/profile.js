@@ -90,7 +90,7 @@ class AccountProfilePage extends Component {
                       </>
                     )}
                   </PageTitle>
-                  <Flex flexWrap="wrap">
+                  <Flex>
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
                       <AccountSidebar active="profile" user={context.user} />
                     </Box>
