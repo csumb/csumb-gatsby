@@ -99,7 +99,7 @@ class UniversityPersonnelPages extends Component {
     })
 
     return (
-      <Flex flexWrap="wrap">
+      <Flex>
         <UniversityPersonnelPagesList
           pages={pages}
           parentId={parentId}

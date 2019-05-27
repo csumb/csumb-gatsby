@@ -164,7 +164,7 @@ class DashboardContent extends Component {
     return (
       <>
         <DashboardSecondary session={this.state.session} />
-        <Flex flexWrap="wrap">
+        <Flex>
           <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
             <DashboardEventWrapper>
               <h2>Events</h2>

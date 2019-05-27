@@ -57,7 +57,7 @@ const UnderseaArchive = ({ data }) => {
           {regions[region]._archives.map(archive => (
             <>
               <h3>{archive.data.Name}</h3>
-              <Flex flexWrap="wrap">
+              <Flex>
                 <Box width={[1, 1 / 4]} pr={[0, 2]}>
                   <h5>Media</h5>
                   <ul>

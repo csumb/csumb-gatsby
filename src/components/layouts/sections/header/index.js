@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { css } from 'emotion'
 import Brand from './brand'
 import Container from 'components/common/container'
@@ -10,6 +10,7 @@ import { NavigationLink } from './navigation-link'
 import { Flex, Box } from 'components/common/grid'
 import styled from '@emotion/styled'
 import bp from 'style/breakpoints'
+import BreakpointContext from 'components/contexts/breakpoint'
 
 const HeaderWrapper = styled('header')`
   padding-top: 0.75rem;
@@ -21,31 +22,9 @@ const HeaderWrapper = styled('header')`
   })}
 `
 
-class Header extends Component {
-  state = {
-    isMobile: false,
-  }
-
-  componentDidMount() {
-    const mobileBreakpoint = 830
-    const that = this
-
-    const setWindowSize = () => {
-      that.setState({
-        isMobile: window.innerWidth <= mobileBreakpoint,
-      })
-    }
-
-    window.addEventListener('resize', setWindowSize)
-
-    setWindowSize()
-  }
-
-  render() {
-    const { metadata, siteNavigation, siteTitle } = this.props
-    const { isMobile } = this.state
-
-    return (
+const Header = ({ metadata, siteNavigation, siteTitle }) => (
+  <BreakpointContext.Consumer>
+    {({ isMobile }) => (
       <>
         {isMobile ? (
           <HeaderMobile
@@ -57,7 +36,7 @@ class Header extends Component {
         ) : (
           <HeaderWrapper data-swiftype-index="false">
             <Container>
-              <Flex flexWrap="wrap">
+              <Flex>
                 <Box width={[1, 1, 1 / 3, 1 / 3]} pr={2}>
                   <Brand />
                 </Box>
@@ -101,8 +80,8 @@ class Header extends Component {
           </HeaderWrapper>
         )}
       </>
-    )
-  }
-}
+    )}
+  </BreakpointContext.Consumer>
+)
 
 export default Header

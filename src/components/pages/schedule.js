@@ -380,7 +380,7 @@ const CourseListItem = ({ course, term }) => {
 
   return (
     <CourseListItemRow>
-      <Flex flexWrap="wrap">
+      <Flex>
         <Box width={[1, 1 / 12]} pr={[0, 2]}>
           <Link to={link}>
             {course.SUBJECT} {course.CATALOG_NBR}
@@ -474,7 +474,7 @@ const CourseListMobileLabel = styled('strong')`
 `
 
 const CourseListItemHeader = () => (
-  <CourseListItemHeaderFlex flexWrap="wrap">
+  <CourseListItemHeaderFlex>
     <CourseListItemHeaderBox width={[1, 1 / 12]} pr={[0, 2]}>
       Course
     </CourseListItemHeaderBox>
@@ -562,7 +562,7 @@ const CoursePage = ({ course, term, requirements }) => {
           </>
         )}
       </CourseTitle>
-      <Flex flexWrap="wrap">
+      <Flex>
         <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 2]}>
           <CourseSection legend="Days, times, and locations">
             <CourseMeetingList>

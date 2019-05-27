@@ -62,7 +62,7 @@ const IndexPage = ({ data }) => {
       />
       <Container topPadding>
         <h2>News &amp; events</h2>
-        <Flex flexWrap="wrap">
+        <Flex>
           <Box width={[1, 1, 1 / 2, 3 / 12]} order={[2, 1, 1]} pr={colPadding}>
             {notFeatured.map((item, key) => (
               <NonFeaturedStory key={`non-featured-${key}`} {...item} />

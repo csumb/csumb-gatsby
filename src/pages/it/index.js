@@ -29,7 +29,7 @@ class ITSearch extends Component {
           action="https://csumb.teamdynamix.com/TDClient/Shared/Search/?c=sc"
         >
           <h2>Search our services</h2>
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[1, 8 / 12]} pr={[0, 2]}>
               <InputText
                 name="s"
@@ -67,7 +67,7 @@ class ITPage extends Component {
           )}
         <Container topPadding>
           <ITSearch />
-          <HelpFlex flexWrap="wrap">
+          <HelpFlex>
             <Box width={[1, 1 / 4]} pr={[0, 3]}>
               <ITServiceHeader>Call us</ITServiceHeader>
               <p>
@@ -97,7 +97,7 @@ class ITPage extends Component {
               <ITAlerts />
             </Box>
           </HelpFlex>
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[1, 2 / 3]} pr={[0, 4]}>
               <h2>Popular Services</h2>
               <ITServiceHeader>

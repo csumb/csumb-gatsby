@@ -47,7 +47,7 @@ class UniversityPersonnelAllformsSearch extends Component {
     return (
       <Well>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[1, 6 / 12]} px={2}>
               <InputText
                 name="search"

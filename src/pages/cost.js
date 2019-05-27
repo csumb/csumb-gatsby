@@ -85,7 +85,7 @@ const nonResidentPerUnitFee = 396
 const ResidencyQuestion = ({ handler }) => (
   <>
     <HeroParagraph>Are you a California resident?</HeroParagraph>
-    <Flex flexWrap="wrap">
+    <Flex>
       <Box width={[1 / 2]} pr={[2, 4]}>
         <Button
           style={{ width: '80%', margin: '0 auto' }}
@@ -124,7 +124,7 @@ const ResidencyQuestion = ({ handler }) => (
 const UndergraduateQuestion = ({ handler }) => (
   <>
     <HeroParagraph>Are you an undergraduate?</HeroParagraph>
-    <Flex flexWrap="wrap">
+    <Flex>
       <Box width={[1 / 2]} px={2}>
         <Button huge block onClick={handler} data-value="yes">
           Yes
@@ -152,7 +152,7 @@ const UndergraduateQuestion = ({ handler }) => (
 const UnitsQuestion = ({ handler }) => (
   <>
     <HeroParagraph>Are you taking more than 6 units? </HeroParagraph>
-    <Flex flexWrap="wrap">
+    <Flex>
       <Box width={[1 / 2]} px={2}>
         <Button huge block onClick={handler} data-value="yes">
           Yes
@@ -175,7 +175,7 @@ const SpecificUnitsQuestion = ({ handler, handleChange }) => (
   <>
     <HeroParagraph>How many units are you planning on taking?</HeroParagraph>
     <form onSubmit={handler}>
-      <Flex flexWrap="wrap">
+      <Flex>
         <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
           <InputText
             name="units"

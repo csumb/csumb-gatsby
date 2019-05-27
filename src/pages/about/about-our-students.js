@@ -222,7 +222,7 @@ const AboutOurStudentsPage = ({ data }) => (
       )}
     <Container>
       <PageTitle>About our students</PageTitle>
-      <Flex flexWrap="wrap">
+      <Flex>
         <Box width={[1, 1 / 2, 1 / 2]} px={2}>
           <h3>Student age</h3>
           <Chart.Bar data={chartData.age} options={options} height={height} />

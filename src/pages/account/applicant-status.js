@@ -84,7 +84,7 @@ const Application = ({
         <div key={key} dangerouslySetInnerHTML={{ __html: status.message }} />
       ))}
     </AccountGroup>
-    <Flex flexWrap="wrap">
+    <Flex>
       <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
         <ApplicationChecklist checklist={checklist} />
       </Box>

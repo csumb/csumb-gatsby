@@ -11,26 +11,11 @@ import {
   DashboardMobileToolbar,
 } from 'components/dashboard'
 import { navigate } from '@reach/router'
+import BreakpointContext from 'components/contexts/breakpoint'
 
 class DashboardPage extends Component {
   state = {
-    isMobile: false,
     activeTab: 'messages',
-  }
-
-  componentDidMount() {
-    const mobileBreakpoint = 830
-    const that = this
-
-    const setWindowSize = () => {
-      that.setState({
-        isMobile: window.innerWidth <= mobileBreakpoint,
-      })
-    }
-
-    window.addEventListener('resize', setWindowSize)
-
-    setWindowSize()
   }
 
   redirectApplicant(user) {
@@ -47,7 +32,7 @@ class DashboardPage extends Component {
 
   render() {
     const { data } = this.props
-    const { isMobile, activeTab } = this.state
+    const { activeTab } = this.state
     return (
       <Layout pageTitle="Dashboard">
         <Olark />
@@ -58,51 +43,57 @@ class DashboardPage extends Component {
               {context.user && (
                 <>
                   {this.redirectApplicant(context.user)}
-                  {isMobile ? (
-                    <>
-                      <DashboardMobileToolbar>
-                        <Container>
-                          <button
-                            onClick={() => {
-                              this.setState({ activeTab: 'messages' })
-                            }}
-                          >
-                            Messages
-                          </button>
-                          <button
-                            onClick={() => {
-                              this.setState({ activeTab: 'events' })
-                            }}
-                          >
-                            Events
-                          </button>
-                          <button
-                            onClick={() => {
-                              this.setState({ activeTab: 'apps' })
-                            }}
-                          >
-                            Apps
-                          </button>
-                        </Container>
-                      </DashboardMobileToolbar>
+                  <BreakpointContext.Consumer>
+                    {({ isMobile }) => (
+                      <>
+                        {isMobile ? (
+                          <>
+                            <DashboardMobileToolbar>
+                              <Container>
+                                <button
+                                  onClick={() => {
+                                    this.setState({ activeTab: 'messages' })
+                                  }}
+                                >
+                                  Messages
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    this.setState({ activeTab: 'events' })
+                                  }}
+                                >
+                                  Events
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    this.setState({ activeTab: 'apps' })
+                                  }}
+                                >
+                                  Apps
+                                </button>
+                              </Container>
+                            </DashboardMobileToolbar>
 
-                      <DashboardContent
-                        user={context.user}
-                        mobileTab={activeTab}
-                        isMobile={true}
-                        moreApps={data.allCsumbApp.edges}
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <DashboardApps apps={data.allCsumbApp.edges} />
-                      <section>
-                        <Container topPadding>
-                          <DashboardContent user={context.user} />
-                        </Container>
-                      </section>
-                    </>
-                  )}
+                            <DashboardContent
+                              user={context.user}
+                              mobileTab={activeTab}
+                              isMobile={true}
+                              moreApps={data.allCsumbApp.edges}
+                            />
+                          </>
+                        ) : (
+                          <>
+                            <DashboardApps apps={data.allCsumbApp.edges} />
+                            <section>
+                              <Container topPadding>
+                                <DashboardContent user={context.user} />
+                              </Container>
+                            </section>
+                          </>
+                        )}
+                      </>
+                    )}
+                  </BreakpointContext.Consumer>
                 </>
               )}
             </>

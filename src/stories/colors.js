@@ -29,7 +29,7 @@ const ColorFlex = styled(Flex)`
 `
 
 const ColorLabel = () => (
-  <Flex flexWRap="wrap">
+  <Flex>
     <Box width={[1 / 3]} px={2}>
       <h3>Swatch</h3>
     </Box>
@@ -43,7 +43,7 @@ const ColorLabel = () => (
 )
 
 const Color = ({ name, color }) => (
-  <ColorFlex flexWrap="wrap">
+  <ColorFlex>
     <ColorBox width={[1 / 3]} px={2}>
       <Swatch
         style={{

@@ -301,7 +301,7 @@ class DashboardApps extends Component {
         </Container>
         {isExpanded && (
           <Container>
-            <Flex flexWrap="wrap">
+            <Flex>
               <Box width={[1, 10 / 12, 10 / 12]} pr={3}>
                 <DashboardOktaAppList apps={oktaApps.bottom} />
               </Box>

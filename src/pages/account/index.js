@@ -35,7 +35,7 @@ class AccountPage extends Component {
                       </>
                     )}
                   </PageTitle>
-                  <Flex flexWrap="wrap">
+                  <Flex>
                     <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
                       <AccountSidebar active="account" user={context.user} />
                     </Box>
@@ -72,7 +72,7 @@ class UserAccountForm extends Component {
             Your username and password are used in every online service on
             campus, including logging into computers.
           </p>
-          <Flex flexWrap="wrap">
+          <Flex>
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h3>Username</h3>
               <p>Your CSUMB username is:</p>

@@ -46,7 +46,7 @@ class LibrarySearch extends Component {
         <input type="hidden" name="offset" value="0" />
         <input type="hidden" name="query" value={this.state.query} />
         <img src={oneSearchLogo} alt="One Search - Search the library" />
-        <Flex flexWrap="wrap">
+        <Flex>
           <Box width={[1, 5 / 12]} pr={4}>
             <InputText
               name="_extra_query"

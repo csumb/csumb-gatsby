@@ -75,7 +75,7 @@ class BlockPerson extends Component {
         {person && (
           <Person id={`profile-${person.email.split('@').shift()}`}>
             {compact ? (
-              <Flex flexWrap="wrap">
+              <Flex>
                 <Box width={[1, 1 / 3]} pr={[0, 2]}>
                   <strong>
                     <Link
@@ -119,7 +119,7 @@ class BlockPerson extends Component {
                 </Box>
               </Flex>
             ) : (
-              <Flex flexWrap="wrap">
+              <Flex>
                 <Box width={[1, 3 / 4]} pr={2}>
                   <h3>
                     <Link

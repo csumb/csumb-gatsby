@@ -79,7 +79,7 @@ const PersonTemplate = ({ pageContext }) => {
         <PageTitle>
           {user.firstName} {user.lastName}
         </PageTitle>
-        <Flex flexWrap="wrap">
+        <Flex>
           <Box width={[1, 1, 3 / 4]}>
             {user.directoryDepartment.map((department, key) => (
               <DirectoryPosition key={key}>

@@ -29,7 +29,7 @@ const PhotoRules = () => (
 )
 
 const UploadPreamble = () => (
-  <Flex flexWrap="wrap">
+  <Flex>
     <Box width={[1, 2 / 3, 2 / 3]} px={2}>
       <p>
         You can take a photo with your device or upload a file of a headshot.
@@ -45,7 +45,7 @@ const UploadPreamble = () => (
 )
 
 const UploadCheck = ({ photo }) => (
-  <Flex flexWrap="wrap">
+  <Flex>
     <Box width={[1, 2 / 3, 2 / 3]} px={2}>
       <p>
         This is how your picture will look on your OtterCard. Click confirm to

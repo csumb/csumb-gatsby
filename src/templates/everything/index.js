@@ -10,7 +10,7 @@ const EverythingTopLevelPage = ({ pageContext }) => (
   <Layout pageTitle="Everything else">
     <SiteHeader path="/everything">Everything else</SiteHeader>
     <Container topPadding>
-      <Flex flexWrap="wrap">
+      <Flex>
         {pageContext.topLevelItems.map(item => (
           <TopLevelBox key={item.contentful_id} width={[1, 1, 1 / 3]} px={2}>
             <h3>
