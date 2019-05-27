@@ -4,7 +4,7 @@ const gatsbyConfig = {
     fileStack: 'A3ttdsdUR8aGvjvUnJBWUz',
     okta: {
       login:
-        'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7',
+        'https://login.csumb.edu/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7',
     },
     swiftypeId: 'Gu7FdGTPV49T6dsYVBSV',
     olarkSiteId: '1001-610-10-3640',
