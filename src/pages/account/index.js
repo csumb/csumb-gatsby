@@ -82,7 +82,7 @@ class UserAccountForm extends Component {
             <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
               <h3>Password</h3>
               <ButtonLink
-                to="https://csumb.okta.com/enduser/settings"
+                to="https://login.csumb.edu/enduser/settings"
                 buttonType="primary"
               >
                 Change your password
@@ -153,7 +153,7 @@ class UserAccountForm extends Component {
               <AccountData>{user.profile.secondEmail}</AccountData>
               <p>
                 <ButtonLink
-                  to="https://csumb.okta.com/enduser/settings"
+                  to="https://login.csumb.edu/enduser/settings"
                   buttonType="primary"
                   extraMargin
                 >
@@ -168,7 +168,7 @@ class UserAccountForm extends Component {
                 now to make sure you are never locked out of your account.
               </p>
               <ButtonLink
-                to="https://csumb.okta.com/settings"
+                to="https://login.csumb.edu/settings"
                 buttonType="primary"
               >
                 Setup your secondary email

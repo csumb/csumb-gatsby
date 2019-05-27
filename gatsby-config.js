@@ -4,7 +4,7 @@ const gatsbyConfig = {
     fileStack: 'A3ttdsdUR8aGvjvUnJBWUz',
     okta: {
       login:
-        'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7',
+        'https://login.csumb.edu/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7',
     },
     swiftypeId: 'Gu7FdGTPV49T6dsYVBSV',
     olarkSiteId: '1001-610-10-3640',
@@ -73,6 +73,30 @@ const gatsbyConfig = {
     'gatsby-transformer-remark',
     'gatsby-source-csumb-directory',
     'gatsby-source-csumb-web-content',
+    {
+      resolve: 'gatsby-source-csumb-content-api-redirects',
+      options: {
+        endpoint: process.env.CSUMB_CONTENT_API_ENDPOINT,
+      },
+    },
+    {
+      resolve: 'gatsby-source-csumb-content-api-sites',
+      options: {
+        endpoint: process.env.CSUMB_CONTENT_API_ENDPOINT,
+      },
+    },
+    {
+      resolve: 'gatsby-source-csumb-content-api-navigation',
+      options: {
+        endpoint: process.env.CSUMB_CONTENT_API_ENDPOINT,
+      },
+    },
+    {
+      resolve: 'gatsby-source-csumb-content-api-pages',
+      options: {
+        endpoint: process.env.CSUMB_CONTENT_API_ENDPOINT,
+      },
+    },
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {

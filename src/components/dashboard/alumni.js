@@ -28,7 +28,7 @@ class DashboardAlumni extends Component {
       })
       return null
     }
-    fetch('https://csumb.okta.com/api/v1/sessions/me', {
+    fetch('https://login.csumb.edu/api/v1/sessions/me', {
       credentials: 'include',
     })
       .then(response => {
@@ -79,6 +79,16 @@ class DashboardAlumni extends Component {
       success: true,
     })
     fetch(`https://api.csumb.edu/alumni?token=${this.state.session}&register=1`)
+    const expiration = new Date()
+    expiration.setDate(expiration.getDate() + 10)
+    cookies.set(
+      'csumbDashboardAlumni',
+      { showMessage: false },
+      {
+        expires: expiration,
+        path: '/',
+      }
+    )
   }
 
   render() {

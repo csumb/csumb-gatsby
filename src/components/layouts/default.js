@@ -4,6 +4,7 @@ import Header from 'components/layouts/sections/header'
 import Footer from 'components/layouts/sections/footer/global'
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
+import Pardot from 'components/utilities/pardot'
 
 import Emergency from './alerts/emergency'
 
@@ -42,11 +43,12 @@ class Layout extends Component {
     return (
       <>
         <Emergency />
+        <Pardot />
         <SkipNavLink href="#csumb-skip-nav">Skip to content</SkipNavLink>
         <Helmet>
           <html lang="en" />
           <meta charset="utf-8" />
-          <link rel="preconnect" href="https://csumb.okta.com" />
+          <link rel="preconnect" href="https://login.csumb.edu" />
           <title>{`${
             pageTitle ? `${pageTitle} | ` : ''
           }Cal State Monterey Bay`}</title>
