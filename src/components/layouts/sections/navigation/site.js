@@ -11,7 +11,7 @@ import {
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import slugify from 'slugify'
-import '@reach/menu-button/styles.css'
+import BreakpointContext from 'components/contexts/breakpoint'
 
 const SiteNavigationList = styled('ul')`
   list-style-type: none;
@@ -135,56 +135,41 @@ class SiteNavigationSubMenu extends Component {
   }
 }
 
-class SiteNavigation extends Component {
-  state = {
-    isDesktop: true,
+const SiteNavigation = ({ navigation, overrideNavigation }) => {
+  if (!navigation && !overrideNavigation) {
+    return null
   }
 
-  componentDidMount() {
-    const mobileBreakpoint = 830
-    const that = this
-    const setWindowSize = () => {
-      that.setState({
-        isDesktop: window.innerWidth > mobileBreakpoint,
-      })
-    }
-
-    window.addEventListener('resize', setWindowSize)
-
-    setWindowSize()
-  }
-
-  render() {
-    if (
-      (!this.props.navigation && !this.props.overrideNavigation) ||
-      !this.state.isDesktop
-    ) {
-      return null
-    }
-
-    const navigation = this.props.overrideNavigation
-      ? this.props.overrideNavigation
-      : JSON.parse(this.props.navigation)
-    return (
-      <SiteNavigationBar>
-        <Container>
-          <SiteNavigationList>
-            {navigation.map((item, key) => (
-              <li key={key}>
-                <SiteNavigationItem
-                  to={item.url}
-                  navigationChildren={item.children}
-                  first={key === 0}
-                >
-                  {item.name}
-                </SiteNavigationItem>
-              </li>
-            ))}
-          </SiteNavigationList>
-        </Container>
-      </SiteNavigationBar>
-    )
-  }
+  const siteNavigation = overrideNavigation
+    ? overrideNavigation
+    : JSON.parse(navigation)
+  return (
+    <BreakpointContext.Consumer>
+      {({ isMobile }) => (
+        <>
+          {!isMobile && (
+            <SiteNavigationBar>
+              <Container>
+                <SiteNavigationList>
+                  {siteNavigation.map((item, key) => (
+                    <li key={key}>
+                      <SiteNavigationItem
+                        to={item.url}
+                        navigationChildren={item.children}
+                        first={key === 0}
+                      >
+                        {item.name}
+                      </SiteNavigationItem>
+                    </li>
+                  ))}
+                </SiteNavigationList>
+              </Container>
+            </SiteNavigationBar>
+          )}
+        </>
+      )}
+    </BreakpointContext.Consumer>
+  )
 }
 
 export default SiteNavigation

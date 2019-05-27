@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
   TopLevelList,
   TopLevelItem,
@@ -18,31 +18,11 @@ import Layout from 'components/layouts/default'
 import Container from 'components/common/container'
 import { Flex, Box } from 'components/common/grid'
 import Link from 'gatsby-link'
+import BreakpointContext from 'components/contexts/breakpoint'
 
-class EverythingSubLevelPage extends Component {
-  state = {
-    isMobile: false,
-  }
-
-  componentDidMount() {
-    const mobileBreakpoint = 830
-    const that = this
-
-    const setWindowSize = () => {
-      that.setState({
-        isMobile: window.innerWidth <= mobileBreakpoint,
-      })
-    }
-
-    window.addEventListener('resize', setWindowSize)
-
-    setWindowSize()
-  }
-
-  render() {
-    const { isMobile } = this.state
-    const { pageContext } = this.props
-    return (
+const EverythingSubLevelPage = ({ pageContext }) => (
+  <BreakpointContext.Consumer>
+    {({ isMobile }) => (
       <Layout pageTitle="Everything else">
         <SiteHeader path="/everything">Everything else</SiteHeader>
         <Container topPadding>
@@ -108,8 +88,8 @@ class EverythingSubLevelPage extends Component {
           </Flex>
         </Container>
       </Layout>
-    )
-  }
-}
+    )}
+  </BreakpointContext.Consumer>
+)
 
 export default EverythingSubLevelPage
