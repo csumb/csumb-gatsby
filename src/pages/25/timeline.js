@@ -3,14 +3,103 @@ import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from 'react-vertical-timeline-component'
 import 'react-vertical-timeline-component/style.min.css'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
+import bp from 'style/breakpoints'
+import Container from 'components/common/container'
 import moment from 'moment'
+import { Flex, Box } from 'components/common/grid'
+import quoteIcon from 'assets/images/quote.svg'
+
+const Timeline = styled('div')`
+  position: relative;
+  min-height: 100px;
+`
+
+const TimelineLine = styled('div')`
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 18px;
+    height: 100%;
+    width: 4px;
+    background: ${colors.black};
+    ${bp({
+      left: ['15px', '50%'],
+      marginLeft: [0, '-2px'],
+    })}
+  }
+`
+
+const TimelineContent = styled('div')`
+  ${bp({
+    width: ['90%', '45%'],
+    marginBottom: ['1.5rem', 0],
+    marginLeft: ['1.5rem', 0],
+  })}
+`
+
+const TimelineDate = styled('h4')`
+  font-size: 1.3rem;
+  ${bp({
+    width: ['85%', '45%'],
+    position: ['normal', 'absolute'],
+    display: ['block', 'inline-block'],
+    marginLeft: ['0.7rem', 0],
+  })}
+`
+
+const TimelineContentWrapper = styled('section')`
+  clear: both;
+  padding-top: 5rem;
+  position: relative;
+  &:nth-child(even) ${TimelineContent} {
+    ${bp({
+      float: ['none', 'right'],
+    })}
+  }
+  &:nth-child(even) ${TimelineDate} {
+    ${bp({
+      textAlign: ['left', 'right'],
+    })}
+  }
+  &:nth-child(odd) ${TimelineDate} {
+    ${bp({
+      float: ['none', 'right'],
+      right: ['normal', '0px'],
+    })}
+  }
+`
+
+const TimelineDescription = styled('p')`
+  margin: 0;
+  font-size: 0.9rem;
+`
+
+const TimelineCloser = styled('div')`
+  clear: both;
+  height: 3rem;
+`
+
+const TimelineQuote = styled('blockquote')`
+  font-size: 1.1rem;
+`
+
+const TimelineCite = styled('cite')`
+  display: block;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+`
+
+const TimelineQuoteIcon = styled('img')`
+  max-width: 50px;
+`
+
+const TimelineTitle = styled('h3')``
 
 const formatDate = data => {
   const date = moment(data.Date)
@@ -20,47 +109,44 @@ const formatDate = data => {
   return date.format('Y')
 }
 
-const TimelineTitle = styled('h4')`
-  margin: 0;
-`
-
-const TimelineBackground = styled('div')`
-  .vertical-timeline {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  img {
-    margin-top: 1rem;
-    margin-bottom: 0;
-  }
-  .vertical-timeline-element-content {
-    box-shadow: none;
-    border: 1px solid #aaa;
-    border-radius: 0;
-  }
-  .vertical-timeline-element-content::before {
-    display: none;
-  }
-  .vertical-timeline::before {
-    background: ${colors.black};
-  }
-  .vertical-timeline-element-icon {
-    display: none;
-  }
-  .vertical-timeline-element-date {
-    color: ${colors.black};
-    font-weight: bold;
-    font-size: 1.3rem !important;
-  }
-  @media only screen and (min-width: 1170px) {
-    .vertical-timeline--two-columns .vertical-timeline-element-content {
-      width: 45%;
-    }
-  }
-`
+const TimelineItem = props => {
+  const { Title, Source_URL, Photos, Description, Quote, Quote_source } = props
+  return (
+    <TimelineContentWrapper>
+      <TimelineDate className="timeline-date">{formatDate(props)}</TimelineDate>
+      <TimelineContent className="timeline-content">
+        <TimelineTitle>
+          {Source_URL ? <a href={Source_URL}>{Title}</a> : <>{Title}</>}
+        </TimelineTitle>
+        {Photos && <img src={Photos[0].url} alt="" />}
+        {Quote && (
+          <TimelineQuote>
+            <Flex>
+              <Box width={2 / 12} pr={2}>
+                <TimelineQuoteIcon src={quoteIcon} alt="" />
+              </Box>
+              <Box width={10 / 12}>
+                <div>{Quote}</div>
+                {Quote_source && (
+                  <TimelineCite>
+                    {'— '}
+                    {Quote_source}
+                  </TimelineCite>
+                )}
+              </Box>
+            </Flex>
+          </TimelineQuote>
+        )}
+        {Description && (
+          <TimelineDescription>{Description}</TimelineDescription>
+        )}
+      </TimelineContent>
+    </TimelineContentWrapper>
+  )
+}
 
 const TimelinePage = ({ data }) => (
-  <Layout pageTitle="25th Anniversary timeline">
+  <Layout pageTitle="25th Anniversary timeline" noFooterMargin={true}>
     <SiteHeader path="/25">25th Anniversary</SiteHeader>
     {data.allCsumbNavigation &&
       data.allCsumbNavigation.edges &&
@@ -69,23 +155,17 @@ const TimelinePage = ({ data }) => (
           navigation={data.allCsumbNavigation.edges[0].node.navigation}
         />
       )}
-    <TimelineBackground>
-      <VerticalTimeline animate={false}>
-        {data.allAirtable && (
-          <>
-            {data.allAirtable.edges.map(({ node }) => (
-              <VerticalTimelineElement date={formatDate(node.data)}>
-                <TimelineTitle>{node.data.Title}</TimelineTitle>
-                {node.data.Photos && (
-                  <img src={node.data.Photos[0].url} alt="" />
-                )}
-                <p>{node.data.Description}</p>
-              </VerticalTimelineElement>
-            ))}
-          </>
-        )}
-      </VerticalTimeline>
-    </TimelineBackground>
+    {data.allAirtable && (
+      <Timeline>
+        <Container>
+          <TimelineLine />
+          {data.allAirtable.edges.map(({ node }) => (
+            <TimelineItem {...node.data} />
+          ))}
+        </Container>
+        <TimelineCloser />
+      </Timeline>
+    )}
   </Layout>
 )
 
