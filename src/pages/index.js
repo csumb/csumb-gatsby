@@ -53,7 +53,7 @@ const IndexPage = ({ data }) => {
 
   const { featured, notFeatured } = sortItems(data)
 
-  const colPadding = [0, 0, 3, 3]
+  const colPadding = [0, 0, 4, 6]
   return (
     <Layout noFooterMargin={true}>
       <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
