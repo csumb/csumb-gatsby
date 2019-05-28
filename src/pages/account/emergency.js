@@ -30,7 +30,7 @@ class UserEmergencyForm extends Component {
 
   componentDidMount() {
     NProgress.start()
-    fetch(`https://login.csumb.edu/api/v1/sessions/me`, {
+    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
     })
       .then(response => {

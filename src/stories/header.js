@@ -24,7 +24,7 @@ storiesOf('Header', module)
           metadata={{
             title: `Cal State Monterey Bay`,
             okta: {
-              login: `https://login.csumb.edu`,
+              login: `https://csumb.okta.com`,
             },
             swiftypeId: `Gu7FdGTPV49T6dsYVBSV`,
           }}
