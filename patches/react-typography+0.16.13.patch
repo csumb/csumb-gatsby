@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-typography/dist/GoogleFont.js b/node_modules/react-typography/dist/GoogleFont.js
+index 59b2a24..8202070 100644
+--- a/node_modules/react-typography/dist/GoogleFont.js
++++ b/node_modules/react-typography/dist/GoogleFont.js
+@@ -19,7 +19,7 @@ var GoogleFont = function GoogleFont(props) {
+       str += font.name.split(' ').join('+');
+       str += ':';
+       str += font.styles.join(',');
+-
++      str += '&display=swap';
+       return str;
+     });
+ 
