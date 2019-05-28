@@ -240,9 +240,26 @@ const gatsbyConfig = {
       },
     },
     {
+      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      options: {
+        fonts: [
+          {
+            family: 'Hind',
+            variants: ['300', '400', '700'],
+          },
+          {
+            family: 'Open Sans',
+            variants: ['300', '600', '700'],
+          },
+        ],
+        fontDisplay: 'swap',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-typography',
       options: {
         pathToConfigModule: 'src/style/typography',
+        omitGoogleFont: true,
       },
     },
     {
