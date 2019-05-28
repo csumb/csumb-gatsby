@@ -148,7 +148,7 @@ class DashboardEditOrderApps extends Component {
               Your dashboard apps are managed in <strong>Okta</strong>. Continue
               to your Okta Dashboard and drag to reorder your apps.
             </p>
-            <ButtonLink to="https://login.csumb.edu/" target="_blank">
+            <ButtonLink to="https://csumb.okta.com/" target="_blank">
               Open Okta Dashboard
             </ButtonLink>
           </MoreAppsDialog>
@@ -234,7 +234,7 @@ class DashboardApps extends Component {
 
   componentDidMount() {
     window
-      .fetch('https://login.csumb.edu/api/v1/users/me/appLinks', {
+      .fetch('https://csumb.okta.com/api/v1/users/me/appLinks', {
         credentials: 'include',
       })
       .then(response => {

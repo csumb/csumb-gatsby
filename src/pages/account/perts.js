@@ -12,7 +12,7 @@ class PertsPage extends Component {
   }
   async componentDidMount() {
     window
-      .fetch('https://login.csumb.edu/api/v1/users/me', {
+      .fetch('https://csumb.okta.com/api/v1/users/me', {
         credentials: 'include',
       })
       .then(response => {
