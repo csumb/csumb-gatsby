@@ -11,7 +11,6 @@ import {
 import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
 import Cookies from 'universal-cookie'
-import '@reach/menu-button/styles.css'
 const cookies = new Cookies()
 
 const userLinkStyles = `
