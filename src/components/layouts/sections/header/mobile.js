@@ -138,7 +138,7 @@ class MobileUserWidget extends Component {
 
   handleLogout(event) {
     event.preventDefault()
-    fetch(`https://login.csumb.edu/api/v1/sessions/me`, {
+    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
     })
       .then(response => {

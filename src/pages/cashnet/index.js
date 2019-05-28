@@ -7,7 +7,7 @@ import url from 'url'
 import Brand from 'components/layouts/sections/header/brand'
 
 const loginAddress =
-  'https://login.csumb.edu/app/csumb_csumbcashnet_1/exkm6j1xciOYxrGdu0x7/sso/saml'
+  'https://csumb.okta.com/app/csumb_csumbcashnet_1/exkm6j1xciOYxrGdu0x7/sso/saml'
 
 const CashnetContainer = styled('div')`
   max-width: 60ch;
@@ -29,7 +29,7 @@ class CashnetPage extends Component {
       typeof location.query.category !== 'undefined'
         ? `/${location.query.category}`
         : ''
-    fetch('https://login.csumb.edu/api/v1/users/me', {
+    fetch('https://csumb.okta.com/api/v1/users/me', {
       credentials: 'include',
     })
       .then(response => {

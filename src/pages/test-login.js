@@ -11,7 +11,7 @@ class TestLoginPage extends Component {
   }
 
   componentDidMount() {
-    fetch('https://login.csumb.edu/api/v1/users/me', {
+    fetch('https://csumb.okta.com/api/v1/users/me', {
       credentials: 'include',
       cache: 'no-store',
     })
@@ -48,7 +48,7 @@ class TestLoginPage extends Component {
                     <h1>Not logged in</h1>
                     <p>...or there is an issue</p>
                     <p>
-                      <a href="https://login.csumb.edu/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7">
+                      <a href="https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7">
                         Login here
                       </a>
                       (it will redirect you to the csumb dashboard, that's

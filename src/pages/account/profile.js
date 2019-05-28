@@ -36,7 +36,7 @@ const AccountPhoto = styled('img')`
 `
 
 const updateProfileField = (field, value) => {
-  fetch(`https://login.csumb.edu/api/v1/sessions/me`, {
+  fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
     credentials: 'include',
   })
     .then(response => {
@@ -138,7 +138,7 @@ class UserAccountProfileForm extends Component {
   componentDidMount() {
     const that = this
     const now = new Date()
-    fetch(`https://login.csumb.edu/api/v1/sessions/me`, {
+    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
     })
       .then(response => {
@@ -594,7 +594,7 @@ class UserAccountProfileBioForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    fetch(`https://login.csumb.edu/api/v1/sessions/me`, {
+    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
       credentials: 'include',
     })
       .then(response => {
