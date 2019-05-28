@@ -95,6 +95,7 @@
     "react-simplemde-editor": "^3.6.22",
     "react-transition-group": "^2.5.3",
     "react-typography": "^0.16.13",
+    "react-vertical-timeline-component": "^2.3.1",
     "react-vivus": "0.0.2",
     "sanitize-html": "^1.20.0",
     "showdown": "^1.9.0",

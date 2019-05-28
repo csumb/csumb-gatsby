@@ -30,6 +30,7 @@ const gatsbyConfig = {
       'up/all-forms',
       'up/index',
       'undersea/imagery-database',
+      '25/timeline',
     ],
     eventCategories: [
       {
@@ -205,6 +206,12 @@ const gatsbyConfig = {
             tableName: 'Countries',
             queryName: 'StudyAbroadCountries',
             tableLinks: ['Countries', 'Partners'],
+          },
+          // 25th anniversary
+          {
+            baseId: 'appvmDCO1k6cz27K6',
+            tableName: 'Timeline',
+            queryName: '25Timeline',
           },
         ],
       },
