@@ -5,9 +5,8 @@ import Container from 'components/common/container'
 import { graphql } from 'gatsby'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import showdown from 'showdown'
 
-const converter = new showdown.Converter()
+import RichText from 'components/rich-text'
 
 const contentfulKey = '0LX_NaWSR-H_e5HypwHySlb0yT4F1SMuM7_-LbucSJw'
 const contentfulSpace = '348vmopvao05'
@@ -15,11 +14,7 @@ const contentfulSpace = '348vmopvao05'
 const EmergencyNotice = ({ title, content }) => (
   <>
     <h2>{title}</h2>
-    <div
-      dangerouslySetInnerHTML={{
-        __html: converter.makeHtml(content),
-      }}
-    />
+    <RichText richText={content} />
   </>
 )
 
@@ -30,7 +25,7 @@ class UPDEmergencyPage extends Component {
 
   componentDidMount() {
     fetch(
-      `https://cdn.contentful.com/spaces/${contentfulSpace}/environments/master/entries?access_token=${contentfulKey}&content_type=notice&fields.active=1&order=-sys.updatedAt`
+      `https://cdn.contentful.com/spaces/${contentfulSpace}/environments/master/entries?access_token=${contentfulKey}&content_type=notice&order=-sys.updatedAt`
     )
       .then(response => {
         return response.json()
