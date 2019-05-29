@@ -63,6 +63,17 @@ class UPDEmergencyPage extends Component {
               ))}
             </>
           )}
+          <p style={{ marginTop: '3rem' }}>
+            <small>
+              <a
+                href="https://app.contentful.com/spaces/348vmopvao05/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Edit this page
+              </a>
+            </small>
+          </p>
         </Container>
       </Layout>
     )
