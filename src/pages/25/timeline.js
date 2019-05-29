@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import { graphql } from 'gatsby'
 import SiteHeader from 'components/layouts/sections/header/site-header'
@@ -12,6 +12,17 @@ import moment from 'moment'
 import { Flex, Box } from 'components/common/grid'
 import quoteIcon from 'assets/images/quote.svg'
 
+const red = '#f0151e'
+
+const startDate = moment([1993])
+const endDate = moment([2008])
+const duration = endDate.diff(startDate)
+
+const getDatePosition = date => {
+  const eventDateDiff = endDate.diff(moment(date.split('-')))
+  return (eventDateDiff / duration) * 100
+}
+
 const Timeline = styled('div')`
   position: relative;
   min-height: 100px;
@@ -22,7 +33,6 @@ const TimelineLine = styled('div')`
     content: '';
     position: absolute;
     top: 0;
-    left: 18px;
     height: 100%;
     width: 4px;
     background: ${colors.black};
@@ -53,19 +63,21 @@ const TimelineDate = styled('h4')`
 
 const TimelineContentWrapper = styled('section')`
   clear: both;
-  padding-top: 5rem;
   position: relative;
-  &:nth-child(even) ${TimelineContent} {
+  ${bp({
+    paddingTop: ['0', '5rem'],
+  })}
+  &:nth-of-type(even) ${TimelineContent} {
     ${bp({
       float: ['none', 'right'],
     })}
   }
-  &:nth-child(even) ${TimelineDate} {
+  &:nth-of-type(even) ${TimelineDate} {
     ${bp({
       textAlign: ['left', 'right'],
     })}
   }
-  &:nth-child(odd) ${TimelineDate} {
+  &:nth-of-type(odd) ${TimelineDate} {
     ${bp({
       float: ['none', 'right'],
       right: ['normal', '0px'],
@@ -101,6 +113,54 @@ const TimelineQuoteIcon = styled('img')`
 
 const TimelineTitle = styled('h3')``
 
+const TimelineDot = styled('div')`
+  position: absolute;
+  background: ${red};
+  margin-top: -10px;
+  ${bp({
+    left: ['0', '50%'],
+    width: ['25px', '50px'],
+    height: ['25px', '50px'],
+    borderRadius: ['12.5px', '25px'],
+    marginLeft: ['-15px', '-25px'],
+  })}
+`
+
+const TimelineNavigation = styled('div')`
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: ${colors.primary.dark};
+  height: 75px;
+  z-index: 500;
+  ${bp({
+    display: ['none', 'block'],
+  })}
+`
+
+const TimelineNavigationYearMarker = styled('div')`
+  width: ${(1 / 24) * 100}%;
+  display: inline-block;
+  height: 75px;
+  border-right: 1px solid ${colors.primary.darkest};
+`
+
+const TimelineNavigationItemElement = styled('a')`
+  width: 6px;
+  padding: 0;
+  height: 100%;
+  position: absolute;
+  cursor: pointer;
+  display: inline-block;
+  &:hover {
+    background: ${colors.white};
+  }
+  ${props =>
+    props.isActive
+      ? `background: ${red};`
+      : `background: ${colors.primary.light};`}
+`
+
 const formatDate = data => {
   const date = moment(data.Date)
   if (data.Show_full_date) {
@@ -110,10 +170,19 @@ const formatDate = data => {
 }
 
 const TimelineItem = props => {
-  const { Title, Source_URL, Photos, Description, Quote, Quote_source } = props
+  const {
+    Title,
+    Source_URL,
+    Photos,
+    Description,
+    Quote,
+    Quote_source,
+    recordId,
+  } = props
   return (
-    <TimelineContentWrapper>
+    <TimelineContentWrapper id={recordId}>
       <TimelineDate className="timeline-date">{formatDate(props)}</TimelineDate>
+      <TimelineDot />
       <TimelineContent className="timeline-content">
         <TimelineTitle>
           {Source_URL ? <a href={Source_URL}>{Title}</a> : <>{Title}</>}
@@ -145,29 +214,72 @@ const TimelineItem = props => {
   )
 }
 
-const TimelinePage = ({ data }) => (
-  <Layout pageTitle="25th Anniversary timeline" noFooterMargin={true}>
-    <SiteHeader path="/25">25th Anniversary</SiteHeader>
-    {data.allCsumbNavigation &&
-      data.allCsumbNavigation.edges &&
-      data.allCsumbNavigation.edges[0] && (
-        <SiteNavigation
-          navigation={data.allCsumbNavigation.edges[0].node.navigation}
-        />
-      )}
-    {data.allAirtable && (
-      <Timeline>
-        <Container>
-          <TimelineLine />
-          {data.allAirtable.edges.map(({ node }) => (
-            <TimelineItem {...node.data} />
-          ))}
-        </Container>
-        <TimelineCloser />
-      </Timeline>
-    )}
-  </Layout>
-)
+const TimelineNavigationMarkers = () => {
+  const items = Array.from(Array(24), (x, index) => index + 1)
+  return (
+    <>
+      {items.map(item => (
+        <TimelineNavigationYearMarker key={item} />
+      ))}
+    </>
+  )
+}
+
+class TimelinePage extends Component {
+  state = {
+    currentItem: false,
+  }
+
+  render() {
+    const { data } = this.props
+    const { currentItem } = this.state
+    return (
+      <Layout pageTitle="25th Anniversary timeline" noFooterMargin={true}>
+        <SiteHeader path="/25">25th Anniversary</SiteHeader>
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
+        {data.allAirtable && (
+          <>
+            <TimelineNavigation>
+              {data.allAirtable.edges.map(({ node }) => (
+                <TimelineNavigationItemElement
+                  style={{ left: `${getDatePosition(node.data.Date)}%` }}
+                  href={`#${node.recordId}`}
+                  key={node.recordId}
+                  isActive={node.recordId === currentItem}
+                  onClick={event => {
+                    this.setState({
+                      currentItem: node.recordId,
+                    })
+                  }}
+                />
+              ))}
+              <TimelineNavigationMarkers />
+            </TimelineNavigation>
+            <Timeline>
+              <Container>
+                <TimelineLine />
+                {data.allAirtable.edges.map(({ node }) => (
+                  <TimelineItem
+                    {...node.data}
+                    recordId={node.recordId}
+                    key={node.recordId}
+                  />
+                ))}
+              </Container>
+              <TimelineCloser />
+            </Timeline>
+          </>
+        )}
+      </Layout>
+    )
+  }
+}
 
 export default TimelinePage
 
