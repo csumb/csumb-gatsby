@@ -30,6 +30,7 @@ const gatsbyConfig = {
       'up/all-forms',
       'up/index',
       'undersea/imagery-database',
+      'police/current-emergency-update',
     ],
     eventCategories: [
       {
