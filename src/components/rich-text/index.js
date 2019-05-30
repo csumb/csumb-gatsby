@@ -1,30 +1,30 @@
 import React from 'react'
 import RichText from '@madebyconnor/rich-text-to-jsx'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
-import NewsContainer from 'components/pages/news/news-container'
+import Container from 'components/common/container'
 import { ContentImageInline } from './blocks/image'
 
 const Paragraph = ({ children }) => (
-  <NewsContainer>
+  <Container>
     <p>{children}</p>
-  </NewsContainer>
+  </Container>
 )
 
 const Heading = ({ children, level }) => {
   const HeadingTag = `h${level}`
   return (
-    <NewsContainer>
+    <Container>
       <HeadingTag>{children}</HeadingTag>
-    </NewsContainer>
+    </Container>
   )
 }
 
 const List = ({ children, tag }) => {
   const ListTag = tag
   return (
-    <NewsContainer>
+    <Container>
       <ListTag>{children}</ListTag>
-    </NewsContainer>
+    </Container>
   )
 }
 

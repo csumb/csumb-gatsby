@@ -35,5 +35,5 @@ class BlockMap extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBFx5aEy_xuJguWMfFEEkqTZAy1q5HF_H0',
+  apiKey: process.env.GATSBY_CSUMB_GOOGLE_MAPS_KEY,
 })(BlockMap)

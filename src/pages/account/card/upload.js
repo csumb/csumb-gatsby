@@ -11,7 +11,7 @@ import styled from '@emotion/styled'
 import { Button } from 'components/common/button'
 import ReactFilestack, { client } from 'filestack-react'
 
-const apiKey = 'A3ttdsdUR8aGvjvUnJBWUz'
+const apiKey = process.env.GATSBY_CSUMB_FILESTACK_KEY
 
 const SamplePhoto = styled('img')`
   float: right;

@@ -1,12 +1,12 @@
 const gatsbyConfig = {
   siteMetadata: {
     title: 'Cal State Monterey Bay',
-    fileStack: 'A3ttdsdUR8aGvjvUnJBWUz',
+    fileStack: process.env.GATSBY_CSUMB_FILESTACK_KEY,
     okta: {
       login:
         'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7',
     },
-    swiftypeId: 'Gu7FdGTPV49T6dsYVBSV',
+    swiftypeId: process.env.GATSBY_CSUMB_SWIFTYPE_ID,
     olarkSiteId: '1001-610-10-3640',
     schedule: {
       currentTerm: 2194,
@@ -30,6 +30,7 @@ const gatsbyConfig = {
       'up/all-forms',
       'up/index',
       'undersea/imagery-database',
+      'police/current-emergency-update',
     ],
     eventCategories: [
       {
@@ -252,6 +253,7 @@ const gatsbyConfig = {
             variants: ['300', '600', '700'],
           },
         ],
+        fontDisplay: 'swap',
       },
     },
     {

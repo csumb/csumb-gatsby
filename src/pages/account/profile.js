@@ -29,7 +29,7 @@ import { LeadParagraph } from 'components/common/type'
 import 'simplemde/dist/simplemde.min.css'
 import NProgress from 'nprogress'
 
-const filestackApiKey = 'A3ttdsdUR8aGvjvUnJBWUz'
+const filestackApiKey = process.env.GATSBY_CSUMB_FILESTACK_KEY
 
 const AccountPhoto = styled('img')`
   max-width: 150px;

@@ -48,7 +48,7 @@ class Layout extends Component {
         <Helmet>
           <html lang="en" />
           <meta charset="utf-8" />
-          <link rel="preconnect" href="https://csumb.okta.com" />
+          <link rel="preconnect" href="https://csumb.okta.com" crossorigin />
           <title>{`${
             pageTitle ? `${pageTitle} | ` : ''
           }Cal State Monterey Bay`}</title>
@@ -97,7 +97,6 @@ class Layout extends Component {
             {
               site {
                 siteMetadata {
-                  swiftypeId
                   title
                   okta {
                     login
