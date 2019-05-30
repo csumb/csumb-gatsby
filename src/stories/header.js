@@ -26,7 +26,7 @@ storiesOf('Header', module)
             okta: {
               login: `https://csumb.okta.com`,
             },
-            swiftypeId: `Gu7FdGTPV49T6dsYVBSV`,
+            swiftypeId: process.env.GATSBY_CSUMB_SWIFTYPE_ID,
           }}
         />
       </UserContext.Provider>

@@ -54,7 +54,6 @@ class Search extends Component {
     results: [],
   }
   render() {
-    const { swiftypeId } = this.props
     const { results, value } = this.state
     return (
       <>
@@ -108,9 +107,9 @@ class Search extends Component {
               value: value,
             })
             fetch(
-              `https://api.swiftype.com/api/v1/public/engines/suggest?engine_key=${swiftypeId}&q=${value
-                .trim()
-                .toLowerCase()}`
+              `https://api.swiftype.com/api/v1/public/engines/suggest?engine_key=${
+                process.env.GATSBY_CSUMB_SWIFTYPE_ID
+              }&q=${value.trim().toLowerCase()}`
             )
               .then(response => {
                 return response.json()
