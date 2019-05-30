@@ -28,7 +28,7 @@ const BuildingMapItem = ({ center, title, google }) => (
 )
 
 const BuildingMapMap = GoogleApiWrapper({
-  apiKey: 'AIzaSyBFx5aEy_xuJguWMfFEEkqTZAy1q5HF_H0',
+  apiKey: process.env.GATSBY_CSUMB_GOOGLE_MAPS_KEY,
 })(BuildingMapItem)
 
 class BuildingTemplate extends Component {

@@ -66,7 +66,7 @@ const ProgramDetailsHeader = styled('button')`
 `
 
 const ProgramMap = GoogleApiWrapper({
-  apiKey: 'AIzaSyBFx5aEy_xuJguWMfFEEkqTZAy1q5HF_H0',
+  apiKey: process.env.GATSBY_CSUMB_GOOGLE_MAPS_KEY,
 })(({ coordinates, google }) => (
   <CampusMap
     google={google}
