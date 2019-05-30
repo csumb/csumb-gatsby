@@ -97,7 +97,6 @@ class Layout extends Component {
             {
               site {
                 siteMetadata {
-                  swiftypeId
                   title
                   okta {
                     login

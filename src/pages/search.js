@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import Link from 'gatsby-link'
 import { css } from 'emotion'
-import { graphql } from 'gatsby'
 import { navigate } from '@reach/router'
 import url from 'url'
 import { Flex, Box } from 'components/common/grid'
@@ -79,7 +78,7 @@ class SearchPage extends Component {
     window
       .fetch(
         `https://api.swiftype.com/api/v1/public/engines/search?engine_key=${
-          this.props.data.site.siteMetadata.swiftypeId
+          process.env.GATSBY_CSUMB_SWIFTYPE_ID
         }&q=${query.trim().toLowerCase()}`
       )
       .then(response => {
@@ -135,13 +134,3 @@ class SearchPage extends Component {
 }
 
 export default SearchPage
-
-export const query = graphql`
-  {
-    site {
-      siteMetadata {
-        swiftypeId
-      }
-    }
-  }
-`

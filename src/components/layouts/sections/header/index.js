@@ -28,7 +28,6 @@ const Header = ({ metadata, siteNavigation, siteTitle }) => (
       <>
         {isMobile ? (
           <HeaderMobile
-            swiftypeId={metadata.swiftypeId}
             siteNavigation={siteNavigation}
             loginLink={metadata.okta.login}
             siteTitle={siteTitle}
@@ -50,7 +49,7 @@ const Header = ({ metadata, siteNavigation, siteTitle }) => (
                   <div>
                     <Applicant />
                     <UserWidget loginLink={metadata.okta.login} />
-                    <Search swiftypeId={metadata.swiftypeId} isMobile={false} />
+                    <Search isMobile={false} />
                   </div>
                   <div
                     className={css`

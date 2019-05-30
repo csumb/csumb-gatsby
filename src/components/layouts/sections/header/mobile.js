@@ -338,11 +338,7 @@ class HeaderMobile extends Component {
           <>
             <Container>
               <HeaderMobileSearch>
-                <Search
-                  swiftypeId={this.props.swiftypeId}
-                  fullWidth
-                  isMobile={true}
-                />
+                <Search fullWidth isMobile={true} />
               </HeaderMobileSearch>
               <MobileUserWidget loginLink={this.props.loginLink} />
             </Container>
