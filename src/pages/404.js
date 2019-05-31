@@ -15,7 +15,7 @@ const PageNotFoundContainer = styled('div')`
 
 class ErrorPage extends Component {
   componentDidMount() {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
       window.gtag('event', 'pageNotFound', '404', window.location.href)
       if (typeof window.Rollbar !== 'undefined') {
         const referrer =
