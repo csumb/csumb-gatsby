@@ -92,7 +92,7 @@ module.exports = reporter => {
               }
               return -1
             })
-            fs.outputJson(
+            fs.outputJSONSync(
               `${publicPath}/catalog/json/${key}/${codeKey.toLowerCase()}.json`,
               courses[key][codeKey]
             )
