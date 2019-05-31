@@ -33,7 +33,6 @@ module.exports = (reporter, graphql) => {
           reject(result.errors)
           return
         }
-
         const allEvents = {}
         result.data.allCsumbPage.edges.forEach(({ node }) => {
           if (node.event && node.event.dates) {
@@ -48,10 +47,9 @@ module.exports = (reporter, graphql) => {
             })
           }
         })
-
         delete allEvents['Invalid date']
         Object.keys(allEvents).forEach(date => {
-          fs.outputJSON(`${publicPath}/events/json/${date}.json`, [
+          fs.outputJSONSync(`${publicPath}/events/json/${date}.json`, [
             ...new Set(allEvents[date]),
           ])
         })
