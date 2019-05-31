@@ -44,7 +44,7 @@ module.exports = reporter => {
                   })
                 }
 
-                fs.outputJson(
+                fs.outputJSONSync(
                   `${publicPath}/directory/json/${email}.json`,
                   person
                 )
