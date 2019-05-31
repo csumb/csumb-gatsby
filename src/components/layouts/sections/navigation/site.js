@@ -45,10 +45,14 @@ const SiteNavigationSubList = styled(MenuList)`
   font-weight: 300;
   font-family: ${fonts.heading};
   a {
+    padding: 5px 20px;
     color: ${colors.white};
+    display: block;
     font-family: ${fonts.body};
-    font-size: 20px;
     text-decoration: none;
+    &:hover {
+      background: ${colors.primary.darkest};
+    }
   }
 `
 
