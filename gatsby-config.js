@@ -290,6 +290,7 @@ const gatsbyConfig = {
       },
     },
     `gatsby-plugin-meta-redirect`,
+    `gatsby-plugin-csumb-post-build`,
   ],
 }
 
