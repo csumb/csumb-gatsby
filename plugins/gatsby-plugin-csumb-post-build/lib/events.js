@@ -4,7 +4,7 @@ const path = require('path')
 const publicPath = path.resolve('./public')
 const dataPath = path.resolve('./_web-content')
 
-module.exports = reporter => {
+module.exports = (reporter, graphql) => {
   return new Promise((resolve, reject) => {
     resolve(
       graphql(`
