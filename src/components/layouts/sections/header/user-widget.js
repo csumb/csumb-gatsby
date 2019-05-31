@@ -11,7 +11,6 @@ import {
 import { UserContext } from 'components/contexts/user'
 import Link from 'gatsby-link'
 import Cookies from 'universal-cookie'
-import '@reach/menu-button/styles.css'
 
 const cookies = new Cookies()
 
@@ -42,10 +41,12 @@ const UserDropdownButton = styled(MenuButton)`
 
 const UserDropdownMenuList = styled(MenuList)`
   border: 1px solid ${colors.black};
+  background: ${colors.white};
   padding: 0;
-  font-family: ${fonts.body};
+  font-size: 0.85rem;
   a {
     color: ${colors.primary.darkest};
+    text-decoration: none;
   }
 `
 
@@ -59,7 +60,7 @@ const UserDropdownMenuLink = styled(MenuLink)`
   ${props =>
     props.isHidden &&
     `
-    display: none;UserDropdownMenuLink
+    display: none !important;
   `}
 `
 

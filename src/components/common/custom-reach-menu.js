@@ -5,7 +5,19 @@ import Rect from '@reach/rect'
 import WindowSize from '@reach/window-size'
 import Component from '@reach/component-component'
 import { node, func, object, string, number, oneOfType } from 'prop-types'
-import { wrapEvent, checkStyles } from '@reach/utils'
+import { wrapEvent } from '@reach/utils'
+import styled from '@emotion/styled'
+
+const ReachStyleMenu = styled('div')`
+  position: absolute;
+`
+
+const ReachStyleMenuList = styled('div')`
+  white-space: nowrap;
+  a {
+    display: block;
+  }
+`
 
 let { Provider, Consumer } = createContext()
 
@@ -60,8 +72,6 @@ let getMenuRefs = () => ({
   items: [],
 })
 
-let checkIfStylesIncluded = () => checkStyles('menu-button')
-
 let Menu = ({ children, buttonId }) => (
   <Component
     getRefs={getMenuRefs}
@@ -72,7 +82,6 @@ let Menu = ({ children, buttonId }) => (
       closingWithClick: false,
       buttonId: buttonId ? buttonId : genId('button'),
     })}
-    didMount={checkIfStylesIncluded}
     didUpdate={manageFocusOnUpdate}
     getSnapshotBeforeUpdate={checkIfAppManagedFocus}
   >
@@ -151,7 +160,7 @@ let MenuList = props => (
             {() => (
               <Rect>
                 {({ rect: menuRect, ref: menuRef }) => (
-                  <div
+                  <ReachStyleMenu
                     data-reach-menu
                     ref={menuRef}
                     style={getStyles(state.buttonRect, menuRect)}
@@ -162,7 +171,7 @@ let MenuList = props => (
                       state={state}
                       refs={refs}
                     />
-                  </div>
+                  </ReachStyleMenu>
                 )}
               </Rect>
             )}
@@ -179,7 +188,7 @@ MenuList.propTypes = {
 
 let MenuListImpl = React.forwardRef(
   ({ refs, state, setState, children, onKeyDown, onBlur, ...rest }, ref) => (
-    <div
+    <ReachStyleMenuList
       data-reach-menu-list
       {...rest}
       role="menu"
@@ -225,7 +234,7 @@ let MenuListImpl = React.forwardRef(
           _ref: node => (refs.items[index] = node),
         })
       })}
-    </div>
+    </ReachStyleMenuList>
   )
 )
 
