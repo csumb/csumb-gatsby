@@ -3,7 +3,7 @@ const catalog = require('./lib/catalog')
 const directory = require('./lib/directory')
 const events = require('./lib/events')
 
-exports.onPostBuild = ({ reporter }) => {
+exports.onPostBuild = ({ reporter, graphql }) => {
   return new Promise((resolve, reject) => {
     const postBuildTimer = reporter.activityTimer(
       'Building JSON data files for catalog & directory'
@@ -16,7 +16,7 @@ exports.onPostBuild = ({ reporter }) => {
         return directory(reporter)
       })
       .then(() => {
-        return events(reporter)
+        return events(reporter, graphql)
       })
       .then(() => {
         postBuildTimer.start()
