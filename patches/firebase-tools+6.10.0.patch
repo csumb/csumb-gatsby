@@ -7,7 +7,7 @@ index 34915c8..c988dfb 100644
              handler: this.hashHandler.bind(this),
          });
 -        this.populateBatchSize = options.populateBatchSize || 1000;
-+        this.populateBatchSize = options.populateBatchSize || 600;
++        this.populateBatchSize = options.populateBatchSize || 400;
          this.populateBatch = {};
          this.populateQueue = new Queue({
              name: "populateQueue",

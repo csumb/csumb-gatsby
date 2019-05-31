@@ -42,7 +42,7 @@ class UPDEmergencyPage extends Component {
     const { alerts } = this.state
     return (
       <Layout pageTitle="Emergency updates">
-        <SiteHeader path="/upd">University Police</SiteHeader>
+        <SiteHeader path="/police">University Police</SiteHeader>
         {data.allCsumbNavigation &&
           data.allCsumbNavigation.edges &&
           data.allCsumbNavigation.edges[0] && (
@@ -84,7 +84,7 @@ export default UPDEmergencyPage
 
 export const query = graphql`
   {
-    allCsumbNavigation(filter: { site: { eq: "upd" } }) {
+    allCsumbNavigation(filter: { site: { eq: "police" } }) {
       edges {
         node {
           navigation
