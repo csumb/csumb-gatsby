@@ -157,7 +157,7 @@ class BlockPerson extends Component {
                   {person._publicProfile && person._publicProfile.phone && (
                     <p>{person._publicProfile.phone}</p>
                   )}
-                  {person._publicProfile.buildingCode && (
+                  {person._publicProfile && person._publicProfile.buildingCode && (
                     <p>
                       <Link
                         to={`/directory/building/${
