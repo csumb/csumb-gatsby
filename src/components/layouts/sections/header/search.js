@@ -52,6 +52,7 @@ class Search extends Component {
   state = {
     value: '',
     results: [],
+    error: false,
   }
   render() {
     const { results, value } = this.state
@@ -121,7 +122,8 @@ class Search extends Component {
               })
               .catch(error => {
                 this.setState({
-                  results: false,
+                  results: [],
+                  error: true,
                 })
               })
           }}
