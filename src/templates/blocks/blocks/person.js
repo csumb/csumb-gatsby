@@ -25,6 +25,7 @@ class BlockPerson extends Component {
   state = {
     person: false,
     didLoad: false,
+    building: false,
   }
 
   componentDidMount() {
@@ -34,13 +35,16 @@ class BlockPerson extends Component {
       .shift()
       .toLowerCase()
       .trim()
-    fetch(`/directory/json/${link}.json`)
+    fetch(`/page-data/directory/person/${link}/page-data.json`)
       .then(response => {
         return response.json()
       })
-      .then(person => {
+      .then(result => {
         this.setState({
-          person: person,
+          person: result.result.pageContext.user,
+          building: result.result.pageContext.building
+            ? result.result.pageContext.building
+            : false,
           didLoad: true,
         })
       })
@@ -53,7 +57,7 @@ class BlockPerson extends Component {
   }
 
   render() {
-    const { person, didLoad } = this.state
+    const { person, building, didLoad } = this.state
     const { compact } = this.props
     return (
       <div>
@@ -91,17 +95,16 @@ class BlockPerson extends Component {
                   {person.directoryTitle.map((title, key) => (
                     <PersonPosition>
                       <PersonPositionTitle>{title}</PersonPositionTitle>
-                      {person._fullDepartments &&
-                      person._fullDepartments[key] ? (
+                      {person.fullDepartments && person.fullDepartments[key] ? (
                         <>
-                          {person._fullDepartments[key].website ? (
+                          {person.fullDepartments[key].website ? (
                             <LinkInspect
-                              to={person._fullDepartments[key].website}
+                              to={person.fullDepartments[key].website}
                             >
-                              {person._fullDepartments[key].name}
+                              {person.fullDepartments[key].name}
                             </LinkInspect>
                           ) : (
-                            <>{person._fullDepartments[key].name}</>
+                            <>{person.fullDepartments[key].name}</>
                           )}
                         </>
                       ) : (
@@ -113,8 +116,8 @@ class BlockPerson extends Component {
 
                 <Box width={[1, 1 / 3]}>
                   <a href={`mailto:${person.email}`}>{person.email}</a>
-                  {person._publicDirectory && person._publicDirectory.phone && (
-                    <p>{person._publicDirectory.phone}</p>
+                  {person._publicProfile && person._publicProfile.phone && (
+                    <p>{person._publicProfile.phone}</p>
                   )}
                 </Box>
               </Flex>
@@ -133,17 +136,16 @@ class BlockPerson extends Component {
                   {person.directoryTitle.map((title, key) => (
                     <PersonPosition>
                       <PersonPositionTitle>{title}</PersonPositionTitle>
-                      {person._fullDepartments &&
-                      person._fullDepartments[key] ? (
+                      {person.fullDepartments && person.fullDepartments[key] ? (
                         <>
-                          {person._fullDepartments[key].website ? (
+                          {person.fullDepartments[key].website ? (
                             <LinkInspect
-                              to={person._fullDepartments[key].website}
+                              to={person.fullDepartments[key].website}
                             >
-                              {person._fullDepartments[key].name}
+                              {person.fullDepartments[key].name}
                             </LinkInspect>
                           ) : (
-                            <>{person._fullDepartments[key].name}</>
+                            <>{person.fullDepartments[key].name}</>
                           )}
                         </>
                       ) : (
@@ -152,27 +154,27 @@ class BlockPerson extends Component {
                     </PersonPosition>
                   ))}
                   <a href={`mailto:${person.email}`}>{person.email}</a>
-                  {person._publicDirectory && person._publicDirectory.phone && (
-                    <p>{person._publicDirectory.phone}</p>
+                  {person._publicProfile && person._publicProfile.phone && (
+                    <p>{person._publicProfile.phone}</p>
                   )}
-                  {person._publicDirectory.building && (
+                  {person._publicProfile.buildingCode && (
                     <p>
                       <Link
                         to={`/directory/building/${
-                          person._publicDirectory.buildingCode
+                          person._publicProfile.buildingCode
                         }`}
                       >
-                        {person._publicDirectory.building}
+                        {building}
                       </Link>
                       <br />
-                      {person._publicDirectory.location.split('-').pop()}
+                      {person._publicProfile.location.split('-').pop()}
                     </p>
                   )}
                 </Box>
                 <Box width={[1, 1 / 4]}>
-                  {person._publicDirectory && person._publicDirectory.photo && (
+                  {person._publicProfile && person._publicProfile.photo && (
                     <PersonPhoto
-                      src={person._publicDirectory.photo.replace(
+                      src={person._publicProfile.photo.replace(
                         '/csumb.edu/',
                         '/edit.csumb.edu/'
                       )}
