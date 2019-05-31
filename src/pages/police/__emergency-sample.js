@@ -8,7 +8,7 @@ import PageTitle from 'components/layouts/sections/header/page-title'
 
 import RichText from 'components/rich-text'
 
-const contentfulKey = '0LX_NaWSR-H_e5HypwHySlb0yT4F1SMuM7_-LbucSJw'
+const contentfulKey = process.env.GATSBY_CSUMB_EMERGENCY_KEY
 const contentfulSpace = '348vmopvao05'
 
 const EmergencyNotice = ({ title, content }) => (
