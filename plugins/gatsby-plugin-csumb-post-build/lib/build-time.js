@@ -17,7 +17,7 @@ module.exports = reporter => {
 
     reporter.log(`Saving last build time as ${content.format}`)
 
-    fs.outputJsonSync(`${publicPath}/_last-build.json`, content)
+    fs.outputJSONSync(`${publicPath}/_last-build.json`, content)
     resolve()
   })
 }
