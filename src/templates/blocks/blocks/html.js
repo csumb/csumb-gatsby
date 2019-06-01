@@ -11,6 +11,7 @@ const approvedBlocks = [
   'a6dda617-0a0f-4c9e-9ce3-80ec3adb3037', //https://csumb.edu/educationabroad/semesteryear-programs-subject-area
   'bf244476-74fb-4c1c-a7c4-c7e255a7e445', //https://csumb.edu/undersea/archive-holdings
   'a67cde8b-f15d-4a22-9cd0-e458a7853a62', //https://csumb.edu/ottermedia
+  'fd95ae30-4f8e-4fb4-baa0-773119f27446', //https://csumb.edu/affairs/university-name
 ]
 
 const BlockHtml = ({ uuid, html }) => {
