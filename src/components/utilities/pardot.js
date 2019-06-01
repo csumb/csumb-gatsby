@@ -2,13 +2,18 @@ import { Component } from 'react'
 
 class Pardot extends Component {
   componentDidMount() {
-    if (typeof window === 'undefined') {
+    if (
+      typeof window === 'undefined' ||
+      typeof window.__pardotLoaded !== 'undefined'
+    ) {
       return
     }
     const script = document.createElement('script')
     script.setAttribute('type', 'text/javascript')
     script.setAttribute('async', true)
-    script.innerHTML = `piAId = '737633';
+    script.innerHTML = `
+    window.__pardotLoaded=true;
+    piAId = '737633';
     piCId = '1883';
     piHostname = 'pi.pardot.com';
     
