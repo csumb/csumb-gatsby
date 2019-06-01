@@ -119,11 +119,11 @@ class SiteNavigationSubMenu extends Component {
         >
           {children}{' '}
           {isExpanded ? (
-            <SiteNavigationArrow aria-hidden>
+            <SiteNavigationArrow>
               <FontAwesomeIcon icon={faChevronUp} />
             </SiteNavigationArrow>
           ) : (
-            <SiteNavigationArrow aria-hidden>
+            <SiteNavigationArrow>
               <FontAwesomeIcon icon={faChevronDown} />
             </SiteNavigationArrow>
           )}
