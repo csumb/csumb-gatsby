@@ -161,7 +161,6 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-            {
               allCsumbDirectory {
                 edges {
                   node {
