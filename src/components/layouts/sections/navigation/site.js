@@ -13,10 +13,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import slugify from 'slugify'
 import BreakpointContext from 'components/contexts/breakpoint'
 
+const navigationFontSize = '0.92rem'
+
 const SiteNavigationList = styled('ul')`
   list-style-type: none;
   margin: 0;
-  font-size: 17px;
+  font-size: ${navigationFontSize};
   li {
     display: inline-block;
     margin: 0;
@@ -40,15 +42,14 @@ const SiteNavigationLink = styled('a')`
 
 const SiteNavigationSubList = styled(MenuList)`
   background: ${colors.primary.dark};
-  padding: 0;
+  padding: 0.5rem 0;
   margin-top: 10px;
   font-weight: 300;
-  font-family: ${fonts.heading};
   a {
     padding: 5px 20px;
+    font-size: ${navigationFontSize};
     color: ${colors.white};
     display: block;
-    font-family: ${fonts.body};
     text-decoration: none;
     &:hover {
       background: ${colors.primary.darkest};
@@ -118,11 +119,11 @@ class SiteNavigationSubMenu extends Component {
         >
           {children}{' '}
           {isExpanded ? (
-            <SiteNavigationArrow aria-hidden>
+            <SiteNavigationArrow>
               <FontAwesomeIcon icon={faChevronUp} />
             </SiteNavigationArrow>
           ) : (
-            <SiteNavigationArrow aria-hidden>
+            <SiteNavigationArrow>
               <FontAwesomeIcon icon={faChevronDown} />
             </SiteNavigationArrow>
           )}
