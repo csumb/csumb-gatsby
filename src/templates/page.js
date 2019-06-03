@@ -14,7 +14,6 @@ import BlockHero from './blocks/blocks/hero-image'
 import SiteFooter from 'components/layouts/sections/footer/site'
 import PageEditorTools from 'components/user-tools/editors'
 import CatalogIndicator from 'components/pages/catalog-indicator'
-import PagePersonContext from './blocks/person-context'
 import {
   UniversityPersonnelFormList,
   UniversityPersonnelPages,
@@ -39,7 +38,6 @@ class PageTemplate extends Component {
       upPageID,
       drupalNid,
       embedTargetSite,
-      personBlocks,
     } = this.props.pageContext
 
     const showNavigation = pageNavigation && pageNavigation.length
@@ -70,22 +68,21 @@ class PageTemplate extends Component {
           {showCatalogIndicator && <CatalogIndicator />}
         </Container>
         {event && <EventPage event={event} />}
-        <PagePersonContext.Provider value={personBlocks}>
-          {showNavigation ? (
-            <Container>
-              <Flex>
-                <Box width={[1, 3 / 12, 3 / 12]} px={2}>
-                  <PageNavigation navigation={pageNavigation} />
-                </Box>
-                <Box width={[1, 9 / 12, 9 / 12]} px={2}>
-                  <Blocks blocks={pageContent} />
-                </Box>
-              </Flex>
-            </Container>
-          ) : (
-            <Blocks blocks={pageContent} />
-          )}
-        </PagePersonContext.Provider>
+
+        {showNavigation ? (
+          <Container>
+            <Flex>
+              <Box width={[1, 3 / 12, 3 / 12]} px={2}>
+                <PageNavigation navigation={pageNavigation} />
+              </Box>
+              <Box width={[1, 9 / 12, 9 / 12]} px={2}>
+                <Blocks blocks={pageContent} />
+              </Box>
+            </Flex>
+          </Container>
+        ) : (
+          <Blocks blocks={pageContent} />
+        )}
         {upPages && (
           <Container>
             <UniversityPersonnelPages pages={upPages} parentId={upPageID} />

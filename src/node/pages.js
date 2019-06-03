@@ -161,6 +161,7 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
+<<<<<<< HEAD
               allCsumbDirectory {
                 edges {
                   node {
@@ -201,6 +202,8 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
+=======
+>>>>>>> parent of c55cc6a... Person context for person blocks, fixes #323
           }
         `
       ).then(result => {
@@ -213,25 +216,6 @@ module.exports = (graphql, actions) => {
 
         const upForms = {}
         const upPages = {}
-        const buildings = {}
-        const allUsers = {}
-        result.data.allCsumbBuilding.edges.forEach(building => {
-          buildings[building.node.code] = building.node.buildingName
-        })
-
-        result.data.allCsumbDirectory.edges.forEach(({ node }) => {
-          const building =
-            node.user._publicProfile &&
-            node.user._publicProfile.buildingCode &&
-            typeof buildings[node.user._publicProfile.buildingCode] !==
-              'undefined'
-              ? buildings[node.user._publicProfile.buildingCode]
-              : ''
-          allUsers[node.user.emailuser] = {
-            user: node.user,
-            building: building,
-          }
-        })
 
         result.data.allAirtable.edges.forEach(edge => {
           const data = edge.node.data
@@ -268,19 +252,6 @@ module.exports = (graphql, actions) => {
             typeof sites[node.site] !== 'undefined' &&
             overridePages.indexOf(node.pagePath) === -1
           ) {
-            const pagePersonBlocks = {}
-            const pageContent = JSON.parse(node.pageContent)
-            if (pageContent.blocks) {
-              Object.keys(pageContent.blocks).forEach(id => {
-                if (pageContent.blocks[id].type === 'person') {
-                  pagePersonBlocks[pageContent.blocks[id].data.email] =
-                    typeof allUsers[pageContent.blocks[id].data.email] !==
-                    'undefined'
-                      ? allUsers[pageContent.blocks[id].data.email]
-                      : false
-                }
-              })
-            }
             count++
             let pageNode = {
               path: node.pagePath,
@@ -295,7 +266,6 @@ module.exports = (graphql, actions) => {
                 pageNavigation: node.navigation,
                 feedbackEmail: encryptFeedback(node.feedbackEmail),
                 layout: node.layout,
-                personBlocks: pagePersonBlocks,
                 navigation: sites[node.site].navigation,
                 pageContent: node.pageContent,
                 embedTargetSite: node.embedTargetSite,
