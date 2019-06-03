@@ -1,14 +1,6 @@
 const fs = require('fs-extra')
-const parse = require('csv-parse')
 const path = require('path')
 const publicPath = path.resolve('./public')
-const dataPath = path.resolve('./_data')
-
-const parseOptions = {
-  columns: true,
-  delimiter: ',',
-  ltrim: true,
-}
 
 const processAttributes = attributes => {
   let result = {}
@@ -26,25 +18,46 @@ const processAttributes = attributes => {
   return result
 }
 
-module.exports = reporter => {
+module.exports = (reporter, graphql) => {
   return new Promise((resolve, reject) => {
-    fs.readFile(`${dataPath}/catalog.csv`, (err, catalog) => {
-      const courses = {
-        ge: {},
-        ur: {},
-        subject: {},
-      }
-      const parser = parse(parseOptions)
-      parser.on('readable', () => {
-        let record
-        while ((record = parser.read())) {
-          const attributes = processAttributes(record.CRSE_ATTR_LIST)
-          if (
-            typeof courses.subject[record.SUBJECT.toLowerCase()] === 'undefined'
-          ) {
-            courses.subject[record.SUBJECT.toLowerCase()] = []
+    resolve(
+      graphql(`{
+        allCatalogCsv {
+          edges {
+            node {
+              CRSE_ID
+              SUBJECT
+              CATALOG_NBR
+              COURSE_TITLE_LONG
+              DESCRLONG
+              UNITS_MINIMUM
+              UNITS_MAXIMUM
+              CRSE_OFFER_NBR
+              TERM
+              CRSE_ATTR_LIST
+              GRADING_BASIS
+            }
           }
-          courses.subject[record.SUBJECT.toLowerCase()].push(record)
+        }
+      }
+      `).then(result => {
+        if (result.errors) {
+          reject(result.errors)
+          return
+        }
+        const courses = {
+          ge: {},
+          ur: {},
+          subject: {},
+        }
+        result.allCatalogCsv.edges.forEach(({node}) => {
+          const attributes = processAttributes(node.CRSE_ATTR_LIST)
+          if (
+            typeof courses.subject[node.SUBJECT.toLowerCase()] === 'undefined'
+          ) {
+            courses.subject[node.SUBJECT.toLowerCase()] = []
+          }
+          courses.subject[node.SUBJECT.toLowerCase()].push(record)
           if (typeof attributes.GE !== 'undefined') {
             attributes.GE.forEach(code => {
               if (typeof courses.ge[code] === 'undefined') {
@@ -62,9 +75,8 @@ module.exports = reporter => {
             })
           }
         }
-      })
+        })
 
-      parser.on('end', () => {
         reporter.log(`Writing ${Object.keys(courses).length} course data files`)
         Object.keys(courses).forEach(key => {
           Object.keys(courses[key]).forEach(codeKey => {
@@ -98,12 +110,7 @@ module.exports = reporter => {
             )
           })
         })
-
-        resolve()
+        
       })
-
-      parser.write(catalog)
-      parser.end()
-    })
+    )
   })
-}
