@@ -161,49 +161,6 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-<<<<<<< HEAD
-              allCsumbDirectory {
-                edges {
-                  node {
-                    user {
-                      firstName
-                      lastName
-                      directoryBuilding
-                      directoryBuildingCode
-                      directoryJobClass
-                      directoryTitle
-                      directoryDepartment
-                      directoryPhone
-                      email
-                      _publicProfile {
-                        phone
-                        biography
-                        photo
-                        buildingCode
-                        location
-                        appointmentCalendar
-                        officeHours
-                        resume
-                      }
-                      fullDepartments {
-                        name
-                        website
-                      }
-                    }
-                  }
-                }
-              }
-              allCsumbBuilding {
-                edges {
-                  node {
-                    buildingName
-                    code
-                  }
-                }
-              }
-            }
-=======
->>>>>>> parent of c55cc6a... Person context for person blocks, fixes #323
           }
         `
       ).then(result => {
