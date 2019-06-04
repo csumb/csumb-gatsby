@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import LinkInspect from 'components/utilities/link-inspect'
 import { colors } from 'style/theme'
 
-const PageNavigationList = styled('ul')`
+const PageNavigationList = styled.ul`
   list-style-type: none;
   margin: 0;
   ${props =>

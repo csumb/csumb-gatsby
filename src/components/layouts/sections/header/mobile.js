@@ -13,11 +13,11 @@ import { Flex, Box } from 'components/common/grid'
 import LinkInspect from 'components/utilities/link-inspect'
 import Link from 'gatsby-link'
 
-const HeaderMobileWrapper = styled('div')`
+const HeaderMobileWrapper = styled.div`
   padding: 0.5rem;
 `
 
-const HeaderMobileToggle = styled('button')`
+const HeaderMobileToggle = styled.button`
   border: 0;
   font-size: 1.8rem;
   display: inline-block;
@@ -28,14 +28,14 @@ const HeaderMobileToggle = styled('button')`
   cursor: pointer;
 `
 
-const HeaderMobileNavigation = styled('ul')`
+const HeaderMobileNavigation = styled.ul`
   margin: 0;
   list-style: none;
   padding: 0;
   background: ${colors.primary.darkest};
 `
 
-const HeaderMobileSearch = styled('div')`
+const HeaderMobileSearch = styled.div`
   background: white;
   padding: 0.5rem 0;
   input {
@@ -54,17 +54,17 @@ const MobileSiteNavigationLink = styled(LinkInspect)`
   }
 `
 
-const HeaderMobileSiteNavigation = styled('div')`
+const HeaderMobileSiteNavigation = styled.div`
   background: ${colors.primary.light};
   padding-bottom: 0.5rem;
 `
 
-const HeaderMobileSiteTitle = styled('h3')`
+const HeaderMobileSiteTitle = styled.h3`
   margin: 0;
   padding: 0.8rem 0;
 `
 
-const SiteNavigationList = styled('ul')`
+const SiteNavigationList = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -73,14 +73,14 @@ const SiteNavigationList = styled('ul')`
   }
 `
 
-const MobileSiteNavigationMenuToggle = styled('button')`
+const MobileSiteNavigationMenuToggle = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
 `
 
-const SiteNavigationSubItem = styled('div')`
+const SiteNavigationSubItem = styled.div`
   margin-left: -1rem;
   margin-right: -1rem;
   padding: 1rem 0;
@@ -101,7 +101,7 @@ color: ${colors.primary.darkest} !important;
 cursor: pointer;
 `
 
-const UserLoginLink = styled('a')`
+const UserLoginLink = styled.a`
   ${userLinkStyle};
 `
 
@@ -109,7 +109,7 @@ const UserDashboardLink = styled(Link)`
   ${userLinkStyle};
 `
 
-const UserToggle = styled('button')`
+const UserToggle = styled.button`
   background: transparent;
   border: 0;
   width: 100%;
@@ -124,7 +124,7 @@ const YourAccountLink = styled(Link)`
   margin-bottom: 0.8rem;
 `
 
-const YourAccountWrapper = styled('div')`
+const YourAccountWrapper = styled.div`
   a {
     color: ${colors.primary.darkest};
   }
@@ -280,11 +280,11 @@ const MobileSiteNavigationItem = ({ to, children, navigationChildren }) => {
   )
 }
 
-const HeaderMobileNavigationExpand = styled('div')`
+const HeaderMobileNavigationExpand = styled.div`
   background: ${colors.primary.darkest};
 `
 
-const HeaderMobileNavigationButton = styled('button')`
+const HeaderMobileNavigationButton = styled.button`
   color: ${colors.white};
   background: transparent;
   font-weight: bold;

@@ -8,7 +8,7 @@ import Link from 'gatsby-link'
 import { EverythingContent } from 'components/pages/everything'
 import { graphql } from 'gatsby'
 
-const PageNotFoundContainer = styled('div')`
+const PageNotFoundContainer = styled.div`
   max-width: 60ch;
   margin: 3rem auto;
 `

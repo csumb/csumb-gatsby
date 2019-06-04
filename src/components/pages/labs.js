@@ -4,14 +4,14 @@ import { colors } from 'style/theme'
 import styled from '@emotion/styled'
 import Loading from 'components/common/loading'
 
-const LabBarElement = styled('div')`
+const LabBarElement = styled.div`
   height: 2rem;
   border: 1px solid ${colors.muted.bright};
   background: ${colors.indicators.high};
   position: relative;
 `
 
-const LabBarMeasure = styled('div')`
+const LabBarMeasure = styled.div`
   height: 100%;
   display: inline-block;
   ${props => props.available && `background: ${colors.indicators.low}`}
@@ -29,7 +29,7 @@ const LabBar = ({ total, available, offline }) => {
   )
 }
 
-const LabelNumberElement = styled('span')`
+const LabelNumberElement = styled.span`
   display: inline;
   margin-right: 0.5rem;
   strong {
@@ -37,7 +37,7 @@ const LabelNumberElement = styled('span')`
   }
 `
 
-const LabBarKey = styled('span')`
+const LabBarKey = styled.span`
   color: ${colors.white};
   font-weight: bold;
   margin-left: 1rem;

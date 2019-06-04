@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 
-const BreadcrumbItem = styled('li')`
+const BreadcrumbItem = styled.li`
   display: inline-block;
   margin-right: 1rem;
   font-size: 80%;
@@ -13,7 +13,7 @@ const BreadcrumbItem = styled('li')`
   }
 `
 
-const BreadcrumbList = styled('ul')`
+const BreadcrumbList = styled.ul`
   margin: 0;
   padding: 0;
 `

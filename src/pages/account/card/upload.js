@@ -13,7 +13,7 @@ import ReactFilestack, { client } from 'filestack-react'
 
 const apiKey = process.env.GATSBY_CSUMB_FILESTACK_KEY
 
-const SamplePhoto = styled('img')`
+const SamplePhoto = styled.img`
   float: right;
 `
 

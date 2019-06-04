@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'
 
-const BylineElement = styled('div')`
+const BylineElement = styled.div`
   display: inline-block;
   margin-bottom: 1rem;
   padding: 0.5rem;

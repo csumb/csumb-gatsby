@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import bp from 'style/breakpoints'
 
-const Container = styled('div')`
+const Container = styled.div`
   ${props =>
     props.topPadding &&
     `

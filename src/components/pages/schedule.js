@@ -43,12 +43,12 @@ const weekDays = [
   },
 ]
 
-const ScheduleList = styled('ul')`
+const ScheduleList = styled.ul`
   list-style-type: none;
   margin: 0;
 `
 
-const ScheduleListItemElement = styled('li')`
+const ScheduleListItemElement = styled.li`
   margin-bottom: 0.5rem;
   a {
     font-weight: bold;
@@ -57,7 +57,7 @@ const ScheduleListItemElement = styled('li')`
   }
 `
 
-const ScheduleListAlert = styled('span')`
+const ScheduleListAlert = styled.span`
   display: inline-block;
   padding: 0.25rem;
   font-weight: bold;
@@ -118,12 +118,12 @@ const GEList = ({ term, type, ge }) => {
   )
 }
 
-const GEListElement = styled('ul')`
+const GEListElement = styled.ul`
   list-style-type: none;
   margin: 0 0 2rem 0;
 `
 
-const GEListItemElement = styled('li')`
+const GEListItemElement = styled.li`
   margin-bottom: 0.5rem;
 `
 
@@ -133,7 +133,7 @@ const GEListItem = ({ to, children }) => (
   </GEListItemElement>
 )
 
-const CourseListSearchCount = styled('div')`
+const CourseListSearchCount = styled.div`
   padding-bottom: 0.7rem;
   padding-left: 8px;
   margin-bottom: 0.7rem;
@@ -141,7 +141,7 @@ const CourseListSearchCount = styled('div')`
   border-bottom: 1px solid ${colors.muted.bright};
 `
 
-const DayOfWeekFilter = styled('div')`
+const DayOfWeekFilter = styled.div`
   label {
     margin-right: 1.5rem;
     margin-bottom: 0;
@@ -291,19 +291,19 @@ class CourseList extends Component {
   }
 }
 
-const CourseListItemRow = styled('div')`
+const CourseListItemRow = styled.div`
   margin-bottom: 0.7rem;
   padding-bottom: 0.7rem;
   border-bottom: 1px solid ${colors.muted.bright};
 `
 
-const MeetingList = styled('ul')`
+const MeetingList = styled.ul`
   list-style-type: none;
   margin: 0;
   font-size: 80%;
 `
 
-const MeetingItemDate = styled('h4')`
+const MeetingItemDate = styled.h4`
   margin: 0;
 `
 
@@ -364,7 +364,7 @@ const MeetingItem = props => {
   )
 }
 
-const CourseAttributeList = styled('ol')`
+const CourseAttributeList = styled.ol`
   list-style-type: none;
   font-size: 0.8rem;
   margin: 0;
@@ -467,7 +467,7 @@ const CourseListItemHeaderBox = styled(Box)`
   padding: 0.5rem;
 `
 
-const CourseListMobileLabel = styled('strong')`
+const CourseListMobileLabel = styled.strong`
   ${bp({
     display: ['block', 'none'],
   })}
@@ -504,9 +504,9 @@ const CourseListItemHeader = () => (
   </CourseListItemHeaderFlex>
 )
 
-const CourseSectionElement = styled('div')``
+const CourseSectionElement = styled.div``
 
-const CourseSectionLegend = styled('h3')`
+const CourseSectionLegend = styled.h3`
   font-size: 1.3rem;
 `
 
@@ -517,12 +517,12 @@ const CourseSection = ({ legend, children }) => (
   </CourseSectionElement>
 )
 
-const CourseMeetingList = styled('ul')`
+const CourseMeetingList = styled.ul`
   list-style-type: none;
   margin-left: 0;
 `
 
-const EnrollmentList = styled('dl')`
+const EnrollmentList = styled.dl`
   dt,
   dd {
     display: inline-block;
@@ -531,11 +531,11 @@ const EnrollmentList = styled('dl')`
   }
 `
 
-const CourseTitle = styled('h2')`
+const CourseTitle = styled.h2`
   margin-top: 0;
 `
 
-const CourseNumber = styled('pre')`
+const CourseNumber = styled.pre`
   font-size: 1.5rem;
 `
 
@@ -702,7 +702,7 @@ const ScheduleBackLink = ({ term }) => (
   </ReturnLink>
 )
 
-const ScheduleTerms = styled('ul')`
+const ScheduleTerms = styled.ul`
   list-style-type: none;
   margin: 0;
   li {

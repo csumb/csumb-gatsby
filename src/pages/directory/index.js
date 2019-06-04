@@ -65,16 +65,16 @@ const DirectoryPage = ({ data }) => (
   </Layout>
 )
 
-const ShortPersonName = styled('span')`
+const ShortPersonName = styled.span`
   font-weight: bold;
 `
 
-const ShortPersonPhone = styled('span')`
+const ShortPersonPhone = styled.span`
   margin-left: 1rem;
   display: inline-block;
 `
 
-const ShortPersonList = styled('ul')`
+const ShortPersonList = styled.ul`
   list-style-type: none;
   margin-left: 0;
   margin-top: 1rem;

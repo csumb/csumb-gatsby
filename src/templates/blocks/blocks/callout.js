@@ -4,13 +4,13 @@ import { colors } from 'style/theme'
 import VisuallyHidden from 'components/utilities/visually-hidden'
 import Link from 'gatsby-link'
 
-const Callout = styled('div')`
+const Callout = styled.div`
   background: ${colors.primary.darkest};
   color: ${colors.white};
   padding: 0.5rem;
 `
 
-const CalloutHeader = styled('h3')`
+const CalloutHeader = styled.h3`
   color: ${colors.white};
 `
 

@@ -14,7 +14,7 @@ import { DirectoryNavigation } from 'components/pages/directory'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
 
-const DocumentIconWrapper = styled('span')`
+const DocumentIconWrapper = styled.span`
   display: inline-block;
   max-width: 1rem;
   font-size: 1.2rem;
@@ -26,22 +26,22 @@ const DocumentIcon = styled(FontAwesomeIcon)`
   max-width: 50px;
 `
 
-const Resume = styled('a')`
+const Resume = styled.a`
   display: block;
   font-weight: bold;
   margin: 1rem 0;
 `
 
-const DirectoryTitle = styled('div')`
+const DirectoryTitle = styled.div`
   font-size: 1.5rem;
   font-weight: 700;
 `
 
-const DirectoryPosition = styled('div')`
+const DirectoryPosition = styled.div`
   margin-bottom: 1.5rem;
 `
 
-const DirectoryItem = styled('p')`
+const DirectoryItem = styled.p`
   margin-bottom: 0.5rem;
 `
 

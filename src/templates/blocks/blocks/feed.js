@@ -4,14 +4,14 @@ import LinkInspect from 'components/utilities/link-inspect'
 import { Flex, Box } from 'components/common/grid'
 import { Button } from 'components/common/button'
 
-const FeedList = styled('ul')`
+const FeedList = styled.ul`
   list-style-type: none;
   margin: 0;
 `
 
-const FeedItemHeader = styled('h3')``
+const FeedItemHeader = styled.h3``
 
-const FeedItemTeaser = styled('p')``
+const FeedItemTeaser = styled.p``
 
 class BlockFeed extends Component {
   state = {

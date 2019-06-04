@@ -5,15 +5,15 @@ import Container from 'components/common/container'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Link from 'gatsby-link'
 
-const CouseListWrapper = styled('div')`
+const CouseListWrapper = styled.div`
   margin-bottom: 1rem;
 `
 
-const CouseListTitle = styled('h3')`
+const CouseListTitle = styled.h3`
   margin-bottom: 0.5rem;
 `
 
-const CourseListDescription = styled('p')`
+const CourseListDescription = styled.p`
   margin-bottom: 0.2rem;
   margin-left: 1rem;
 `

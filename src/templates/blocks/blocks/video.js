@@ -6,7 +6,7 @@ const responsiveWidth = bp({
   width: ['100%', '100%', '75%', '75%'],
 })
 
-const VideoWrapper = styled('div')`
+const VideoWrapper = styled.div`
   position: relative;
   padding-bottom: 44.25%; /* 16:9 */
   padding-top: 1rem;
@@ -15,7 +15,7 @@ const VideoWrapper = styled('div')`
   clear: both;
   ${responsiveWidth};
 `
-const VideoIframe = styled('iframe')`
+const VideoIframe = styled.iframe`
   position: absolute;
   top: 0;
   left: 0;

@@ -14,7 +14,7 @@ import Well from 'components/common/well'
 import styled from '@emotion/styled'
 import slugify from 'slugify'
 
-const GraduateList = styled('ul')`
+const GraduateList = styled.ul`
   list-style-type: none;
   margin: 0;
   ${bp({

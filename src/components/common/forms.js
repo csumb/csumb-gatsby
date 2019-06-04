@@ -12,12 +12,12 @@ transition:all 100ms;
   outline: 0.25rem solid ${colors.primary.default}
 `
 
-const FormGroup = styled('div')`
+const FormGroup = styled.div`
   ${props => (props.noMargin ? `` : `margin-bottom: 0.5rem;`)}
   ${props => (props.inline ? `display: inline-block;` : ``)};
 `
 
-const LabelElement = styled('label')`
+const LabelElement = styled.label`
   margin-bottom: 0.5rem;
   display: block;
   ${props =>
@@ -36,7 +36,7 @@ const LabelWrapper = ({ isHidden, children }) => {
   return <>{children}</>
 }
 
-const Required = styled('strong')`
+const Required = styled.strong`
   font-size: 1rem;
   display: inline-block;
   margin-left: 1rem;
@@ -99,7 +99,7 @@ FormElement.propTypes = {
   forwardedRef: PropTypes.func,
 }
 
-const InputTextElement = styled('input')`
+const InputTextElement = styled.input`
   &:focus {
     ${focusStyle};
   }
@@ -208,7 +208,7 @@ class InputPassword extends FormElement {
   }
 }
 
-const InputTextareaElement = styled('textarea')`
+const InputTextareaElement = styled.textarea`
   &:focus {
     ${focusStyle};
   }
@@ -251,7 +251,7 @@ class InputTextarea extends FormElement {
   }
 }
 
-const InputCheckboxRadio = styled('input')`
+const InputCheckboxRadio = styled.input`
   margin-right: 1rem;
 `
 class InputCheckbox extends FormElement {
@@ -349,12 +349,12 @@ class InputSelect extends FormElement {
   }
 }
 
-const FieldsetElement = styled('fieldset')`
+const FieldsetElement = styled.fieldset`
   border: 1px solid ${colors.gray.light};
   padding: 1rem;
 `
 
-const LegendElement = styled('legend')`
+const LegendElement = styled.legend`
   float: left;
   font-size: 1.51572rem;
   font-weight: 700;
@@ -377,7 +377,7 @@ Fieldset.propTypes = {
   legend: PropTypes.string.isRequired,
 }
 
-const SubmitButton = styled('input')`
+const SubmitButton = styled.input`
   &:focus {
     ${focusStyle};
   }

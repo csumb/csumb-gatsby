@@ -8,7 +8,7 @@ class BlockList extends Component {
 
     const ListTag =
       type === 'list-unstyled'
-        ? styled('ul')`
+        ? styled.ul`
             list-style-type: none;
             margin-left: 0;
           `

@@ -5,7 +5,7 @@ import moment from 'moment'
 import { Flex, Box } from 'components/common/grid'
 import { colors } from 'style/theme'
 
-const NewsList = styled('section')``
+const NewsList = styled.section``
 
 const NewsListTag = styled(Link)`
   color: ${colors.white};

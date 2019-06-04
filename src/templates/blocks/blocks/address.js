@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
 
-const Address = styled('address')`
+const Address = styled.address`
   font-style: italic;
 `
 class BlockAddress extends Component {

@@ -31,7 +31,7 @@ import NProgress from 'nprogress'
 
 const filestackApiKey = process.env.GATSBY_CSUMB_FILESTACK_KEY
 
-const AccountPhoto = styled('img')`
+const AccountPhoto = styled.img`
   max-width: 150px;
 `
 

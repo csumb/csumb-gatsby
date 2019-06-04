@@ -7,14 +7,14 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
 
-const CollapsibleIcon = styled('span')`
+const CollapsibleIcon = styled.span`
   display: inline-block;
   max-width: 1rem;
   font-size: 1.2rem;
   margin-right: 0.8rem;
 `
 
-const CollapsibleHeading = styled('button')`
+const CollapsibleHeading = styled.button`
   background: transparent;
   border: none;
   display: block;
@@ -25,7 +25,7 @@ const CollapsibleHeading = styled('button')`
   border-bottom: 1px solid ${colors.muted.mid};
 `
 
-const CollapsibleTextWrapper = styled('span')`
+const CollapsibleTextWrapper = styled.span`
   padding-right: 1.5rem;
 `
 

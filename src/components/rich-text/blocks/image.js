@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const ImageElement = styled('img')`
+const ImageElement = styled.img`
   ${props => props.location === 'right' && `float: right;`}
   ${props => props.location === 'left' && `float: right;`}
   ${props =>
