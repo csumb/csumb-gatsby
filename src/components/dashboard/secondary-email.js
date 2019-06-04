@@ -30,7 +30,7 @@ class DashboardSecondaryEmail extends Component {
     })
     event.preventDefault()
     fetch(
-      `https://api.csumb.edu/okta/update-secondary?token=${
+      `/cloud-functions/okta/secondary-email?token=${
         this.props.session
       }&email=${this.state.secondaryEmail}`
     )
