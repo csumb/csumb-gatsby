@@ -68,6 +68,7 @@ const UserDropdownMenuLinkButton = styled(MenuItem)`
   padding: 0.5rem;
   background: transparent;
   border: none;
+  cursor: pointer;
   &:hover,
   &:focus {
     background: ${colors.primary.darkest};
