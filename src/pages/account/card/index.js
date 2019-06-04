@@ -39,10 +39,10 @@ class AccountCardPage extends Component {
                     )}
                   </PageTitle>
                   <Flex>
-                    <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+                    <Box width={[1, 1, 1 / 4, 1 / 4]} pr={[0, 4]}>
                       <AccountSidebar active="card" user={context.user} />
                     </Box>
-                    <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
+                    <Box width={[1, 1, 3 / 4, 3 / 4]}>
                       {context.user.anonymous ? (
                         <h3>You must be logged in first.</h3>
                       ) : (

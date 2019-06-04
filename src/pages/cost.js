@@ -176,7 +176,7 @@ const SpecificUnitsQuestion = ({ handler, handleChange }) => (
     <HeroParagraph>How many units are you planning on taking?</HeroParagraph>
     <form onSubmit={handler}>
       <Flex>
-        <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
+        <Box width={[1, 3 / 4]} px={2}>
           <InputText
             name="units"
             label="How many units are you planning on taking?"
@@ -185,7 +185,7 @@ const SpecificUnitsQuestion = ({ handler, handleChange }) => (
             onChange={handleChange}
           />
         </Box>
-        <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+        <Box width={[1, 1 / 4]} px={2}>
           <Submit value="Search" huge nomargin />
         </Box>
       </Flex>

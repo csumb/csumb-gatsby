@@ -82,7 +82,7 @@ AccountGroup.propTypes = {
 
 const AccountPlaceholder = () => (
   <Flex>
-    <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+    <Box width={[1, 1, 1 / 4, 1 / 4]} pr={[0, 4]}>
       <ContentLoader
         height={160}
         width={400}
@@ -96,7 +96,7 @@ const AccountPlaceholder = () => (
         <rect x="10" y="110" rx="4" ry="4" width="266" height="20" />
       </ContentLoader>
     </Box>
-    <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
+    <Box width={[1, 1, 3 / 4, 3 / 4]}>
       <ContentLoader
         height={500}
         width={500}
