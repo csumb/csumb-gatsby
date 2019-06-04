@@ -51,7 +51,7 @@ module.exports = (reporter, graphql) => {
           ur: {},
           subject: {},
         }
-        result.allCatalogCsv.edges.forEach(({ node }) => {
+        result.data.allCatalogCsv.edges.forEach(({ node }) => {
           const attributes = processAttributes(node.CRSE_ATTR_LIST)
           if (
             typeof courses.subject[node.SUBJECT.toLowerCase()] === 'undefined'
