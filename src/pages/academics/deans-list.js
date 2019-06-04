@@ -7,6 +7,8 @@ import Container from 'components/common/container'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
+import { LinkyButton } from 'components/common/button'
+import styled from '@emotion/styled'
 import {
   Table,
   TableRow,
@@ -14,10 +16,38 @@ import {
   TableCell,
 } from 'components/common/table'
 
+const TermSelectLink = styled(LinkyButton)`
+  display: inline-block;
+  margin-right: 1rem;
+  ${props => props.isSelected && `font-weight: bold;`}
+`
+
+const displayTerm = year => {
+  return (year.charAt(0).toUpperCase() + year.slice(1)).replace(
+    /([0-9])/,
+    ' $1'
+  )
+}
+
 class AcademicsPage extends Component {
   state = {
     query: false,
     search: false,
+    currentTerm: false,
+    termList: [],
+  }
+
+  componentDidMount() {
+    const { data } = this.props
+    const terms = []
+    data.allDeansListCsv.edges.forEach(({ node }) => {
+      if (terms.indexOf(node.year) === -1) {
+        terms.push(node.year)
+      }
+    })
+    this.setState({
+      termList: terms,
+    })
   }
 
   handleSubmit(event) {
@@ -29,15 +59,17 @@ class AcademicsPage extends Component {
 
   render() {
     const { data } = this.props
-    const { search } = this.state
+    const { search, termList, currentTerm } = this.state
     return (
       <Layout pageTitle="Academics">
         <SiteHeader path="/academics">Academics</SiteHeader>
-        {data.allCsumbNavigation &&  data.allCsumbNavigation.edges && data.allCsumbNavigation.edges[0] && (
-          <SiteNavigation
-            navigation={data.allCsumbNavigation.edges[0].node.navigation}
-          />
-        )}
+        {data.allCsumbNavigation &&
+          data.allCsumbNavigation.edges &&
+          data.allCsumbNavigation.edges[0] && (
+            <SiteNavigation
+              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+            />
+          )}
         <Container>
           <PageTitle layout="page">Dean's list</PageTitle>
           <p>
@@ -48,6 +80,31 @@ class AcademicsPage extends Component {
             grade lower than "C" and be in good standing.
           </p>
           <Well>
+            <p>
+              {termList.map(term => (
+                <TermSelectLink
+                  onClick={event => {
+                    event.preventDefault()
+                    this.setState({
+                      currentTerm: term,
+                    })
+                  }}
+                  isSelected={term === currentTerm}
+                >
+                  {displayTerm(term)}
+                </TermSelectLink>
+              ))}
+              <TermSelectLink
+                onClick={event => {
+                  event.preventDefault()
+                  this.setState({
+                    currentTerm: false,
+                  })
+                }}
+              >
+                View all terms
+              </TermSelectLink>
+            </p>
             <form onSubmit={this.handleSubmit.bind(this)}>
               <InputText
                 name="search"
@@ -67,6 +124,7 @@ class AcademicsPage extends Component {
           <Table>
             <thead>
               <tr>
+                <TableHeader>Term</TableHeader>
                 <TableHeader>College</TableHeader>
                 <TableHeader>Major</TableHeader>
                 <TableHeader>Last name</TableHeader>
@@ -74,18 +132,23 @@ class AcademicsPage extends Component {
               </tr>
             </thead>
             <tbody>
-              {data.allDeansListCsv.edges.map((node, index) => (
+              {data.allDeansListCsv.edges.map(({ node }, index) => (
                 <React.Fragment key={index}>
                   {(!search ||
-                    `${node.node.first_name} ${node.node.last_name}`
+                    `${node.first_name} ${node.last_name}`
                       .toLowerCase()
                       .search(search.toLowerCase()) > -1) && (
-                    <TableRow>
-                      <TableCell>{node.node.college}</TableCell>
-                      <TableCell>{node.node.major}</TableCell>
-                      <TableCell>{node.node.last_name}</TableCell>
-                      <TableCell>{node.node.first_name}</TableCell>
-                    </TableRow>
+                    <>
+                      {(!currentTerm || currentTerm === node.year) && (
+                        <TableRow>
+                          <TableCell>{displayTerm(node.year)}</TableCell>
+                          <TableCell>{node.college}</TableCell>
+                          <TableCell>{node.major}</TableCell>
+                          <TableCell>{node.last_name}</TableCell>
+                          <TableCell>{node.first_name}</TableCell>
+                        </TableRow>
+                      )}
+                    </>
                   )}
                 </React.Fragment>
               ))}
