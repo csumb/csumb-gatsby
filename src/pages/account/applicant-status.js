@@ -85,10 +85,10 @@ const Application = ({
       ))}
     </AccountGroup>
     <Flex>
-      <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+      <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
         <ApplicationChecklist checklist={checklist} />
       </Box>
-      <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+      <Box width={[1, 1, 1 / 2, 1 / 2]}>
         <ApplicationTranscripts
           transcripts={transcripts}
           transcriptHistory={transcriptHistory}

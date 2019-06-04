@@ -32,11 +32,7 @@ class BlockImageGrid extends Component {
     return (
       <Flex>
         {images.map((item, key) => (
-          <Box
-            width={[1, 1, columnWidth / 12, columnWidth / 12]}
-            px={2}
-            key={key}
-          >
+          <Box width={[1, columnWidth / 12]} px={2} key={key}>
             {item.link ? (
               <a href={item.link}>
                 <ImageGridItem item={item} />

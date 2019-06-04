@@ -30,10 +30,10 @@ class LabsPage extends Component {
                     )}
                   </PageTitle>
                   <Flex>
-                    <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+                    <Box width={[1, 1 / 4]} pr={[0, 4]}>
                       <AccountSidebar active="account" user={context.user} />
                     </Box>
-                    <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
+                    <Box width={[1, 3 / 4]}>
                       <AccountTitle>Computer labs</AccountTitle>
                       <AlertFyi>
                         Cinematic Arts labs are only avaialble for Cinematic
@@ -42,7 +42,7 @@ class LabsPage extends Component {
                       <LabKey />
                       <Flex>
                         {labs.map(lab => (
-                          <Box width={[1, 1 / 2, 1 / 2]} px={2}>
+                          <Box width={[1, 1 / 2]} pr={[0, 4]}>
                             <Lab lab={lab} customerId={customerId} />
                           </Box>
                         ))}

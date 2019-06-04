@@ -24,7 +24,7 @@ class ScheduleFront extends Component {
           <PageTitle>{term.DESCR} Schedule</PageTitle>
           <ScheduleTermList terms={allTerms} currentTerm={term} />
           <Flex>
-            <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+            <Box width={[1, 1 / 2]} pr={[0, 4]}>
               <h2>Subjects</h2>
               <ScheduleList>
                 {termSubjects.map(subject => (
@@ -41,7 +41,7 @@ class ScheduleFront extends Component {
                 ))}
               </ScheduleList>
             </Box>
-            <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+            <Box width={[1, 1 / 2]}>
               <h2>General Education</h2>
               <GEList term={term} type="ge" ge={allGe} />
               <h2>University Requirements</h2>

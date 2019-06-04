@@ -57,7 +57,7 @@ const PersonListing = props => {
         </Link>
       </DirectoryTitle>
       <Flex>
-        <Box width={[1, 1, 1 / 2]} px={2}>
+        <Box width={[1, 1 / 2]} px={2}>
           {directoryJobClass.map((jobClass, key) => (
             <DirectoryPosition key={key}>
               <h4>{directoryTitle[key] && <>{directoryTitle[key]}</>}</h4>
@@ -77,7 +77,7 @@ const PersonListing = props => {
             </DirectoryPosition>
           ))}
         </Box>
-        <Box width={[1, 1, 1 / 2]} px={2}>
+        <Box width={[1, 1 / 2]} px={2}>
           {email && (
             <DirectoryDetail>
               <a href={`mailto:${email}`}>{email}</a>

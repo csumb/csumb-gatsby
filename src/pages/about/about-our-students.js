@@ -223,11 +223,11 @@ const AboutOurStudentsPage = ({ data }) => (
     <Container>
       <PageTitle>About our students</PageTitle>
       <Flex>
-        <Box width={[1, 1 / 2, 1 / 2]} px={2}>
+        <Box width={[1, 1 / 2, 1 / 2]} px={[0, 2]}>
           <h3>Student age</h3>
           <Chart.Bar data={chartData.age} options={options} height={height} />
         </Box>
-        <Box width={[1, 1 / 2, 1 / 2]} px={2}>
+        <Box width={[1, 1 / 2, 1 / 2]} px={[0, 2]}>
           <h3>Student gender</h3>
           <Chart.Pie
             data={chartData.gender}
@@ -235,7 +235,7 @@ const AboutOurStudentsPage = ({ data }) => (
             height={height}
           />
         </Box>
-        <Box width={[1, 1 / 2, 1 / 2]} px={2}>
+        <Box width={[1, 1 / 2, 1 / 2]} px={[0, 2]}>
           <h3>Majors</h3>
           <Chart.Doughnut
             data={chartData.majors}
@@ -243,7 +243,7 @@ const AboutOurStudentsPage = ({ data }) => (
             height={height}
           />
         </Box>
-        <Box width={[1, 1 / 2, 1 / 2]} px={2}>
+        <Box width={[1, 1 / 2, 1 / 2]} px={[0, 2]}>
           <h3>Graduate degrees</h3>
           <Chart.Doughnut
             data={chartData.graduate}
