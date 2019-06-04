@@ -14,7 +14,7 @@ class DashboardEmergency extends Component {
   componentDidMount() {
     const time = new Date()
     fetch(
-      `https://api.csumb.edu/everbridge/get?token=${
+      `/cloud-functions/everbridge/get?token=${
         this.props.session
       }&_t=${time.getTime()}`
     )
@@ -55,9 +55,7 @@ class DashboardEmergency extends Component {
     this.setState({
       showDialog: false,
     })
-    fetch(
-      `https://api.csumb.edu/everbridge/opt-out?token=${this.props.session}`
-    )
+    fetch(`/cloud-functions/everbridge/opt-out?token=${this.props.session}`)
   }
 
   render() {
