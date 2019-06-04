@@ -9,7 +9,7 @@ exports.onPostBuild = ({ reporter, graphql }) => {
     )
     buildTime(reporter)
       .then(() => {
-        return catalog(reporter)
+        return catalog(reporter, graphql)
       })
       .then(() => {
         return events(reporter, graphql)
