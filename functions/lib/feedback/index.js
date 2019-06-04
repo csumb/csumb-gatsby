@@ -6,12 +6,7 @@ const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(functions.config().sendgrid.key)
 
 module.exports = (request, response) => {
-  const iv = new Buffer(16)
-  const feedbackEmail = cryptex.decrypt(
-    request.query.feedbackEmail,
-    functions.config().feedback.secret,
-    iv
-  )
+  const feedbackEmail = request.query.feedbackEmail
 
   const feedbackHTML = feedbackTemplate(request.query)
   const msg = {
@@ -21,6 +16,6 @@ module.exports = (request, response) => {
     html: feedbackHTML,
   }
   sgMail.send(msg)
-  response.send(JSON.stringify({ success: true }))
+  response.send(JSON.stringify({ success: true, email: feedbackEmail }))
   response.end()
 }

@@ -1,14 +1,5 @@
 const path = require(`path`)
 const report = require(`gatsby-cli/lib/reporter`)
-const cryptex = require('node-cryptex')
-
-const encryptFeedback = email => {
-  if (!email) {
-    return null
-  }
-  const iv = new Buffer.alloc(16)
-  return cryptex.encrypt(email, process.env.CSUMB_FEEDBACK_KEY, iv)
-}
 
 module.exports = (graphql, actions) => {
   const { createPage } = actions
@@ -221,7 +212,7 @@ module.exports = (graphql, actions) => {
                 site: sites[node.site].site,
                 breadcrumbs: node.breadcrumbs,
                 pageNavigation: node.navigation,
-                feedbackEmail: encryptFeedback(node.feedbackEmail),
+                feedbackEmail: node.feedbackEmail,
                 layout: node.layout,
                 navigation: sites[node.site].navigation,
                 pageContent: node.pageContent,
