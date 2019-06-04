@@ -9,7 +9,7 @@ import Brand from 'components/layouts/sections/header/brand'
 const loginAddress =
   'https://csumb.okta.com/app/csumb_csumbcashnet_1/exkm6j1xciOYxrGdu0x7/sso/saml'
 
-const CashnetContainer = styled('div')`
+const CashnetContainer = styled.div`
   max-width: 60ch;
   margin: 3rem auto;
 `

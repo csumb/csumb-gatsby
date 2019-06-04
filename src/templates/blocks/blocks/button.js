@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { ButtonLink } from 'components/common/button'
+import { ButtonLinkAnchor } from 'components/common/button'
 import styled from '@emotion/styled'
 
-const Button = styled(ButtonLink)`
+const Button = styled(ButtonLinkAnchor)`
   margin-bottom: 1rem;
   margin-right: 1rem;
 `
@@ -11,7 +11,7 @@ class BlockButton extends Component {
   render() {
     const { url, text } = this.props
     return (
-      <Button to={url} buttonType="default">
+      <Button href={url} buttonType="default">
         {text}
       </Button>
     )

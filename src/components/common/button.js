@@ -82,11 +82,15 @@ const ButtonLink = styled(LinkInspect)`
   ${props => ButtonStyle(props)};
 `
 
-const Button = styled('button')`
+const ButtonLinkAnchor = styled.a`
   ${props => ButtonStyle(props)};
 `
 
-const LinkyButton = styled('button')`
+const Button = styled.button`
+  ${props => ButtonStyle(props)};
+`
+
+const LinkyButton = styled.button`
   background: transparent;
   border: none;
   color: ${colors.primary.dark};
@@ -97,4 +101,4 @@ const LinkyButton = styled('button')`
   ${props => props.small && `font-size: 80%;`}
 `
 
-export { Button, ButtonLink, LinkyButton }
+export { Button, ButtonLink, LinkyButton, ButtonLinkAnchor }

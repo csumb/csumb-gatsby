@@ -11,7 +11,7 @@ import {
   HomepageImageNavigation,
   MoreItemsButton,
   HomepageHero,
-} from 'components/pages/homepage'
+} from 'components/homepage'
 
 const sortItems = ({
   allContentfulHomepageEvent,
@@ -224,10 +224,11 @@ export const query = graphql`
           fixedHeight
           imageHeight
           image {
-            file {
-              url
-              fileName
-              contentType
+            lowquality: resize(width: 1300, quality: 20) {
+              src
+            }
+            highquality: resize(width: 1300, quality: 90) {
+              src
             }
           }
         }

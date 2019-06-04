@@ -10,17 +10,17 @@ const ColorBox = styled(Box)`
   padding: 1px;
 `
 
-const Swatch = styled('div')`
+const Swatch = styled.div`
   height: 50px;
 `
 
-const ColorCode = styled('code')`
+const ColorCode = styled.code`
   font-weight: bold;
   font-family: Menlo, Monaco, 'Courier New', monospace;
   font-size: 1.5rem;
 `
 
-const ColorName = styled('span')`
+const ColorName = styled.span`
   font-weight: bold;
 `
 

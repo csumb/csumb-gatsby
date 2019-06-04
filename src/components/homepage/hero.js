@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import styled from 'react-emotion'
 
-const HeroWrapperElement = styled('div')`
+const HeroWrapperElement = styled.div`
   width: 100%;
   height: 80vh;
 `
 
-const StaticHero = styled('div')`
+const StaticHero = styled.div`
   height: 500px;
   margin-bottom: 1rem;
   position: relative;
 `
 
-const HeroPadding = styled('div')`
+const HeroPadding = styled.div`
   padding: 2rem 0;
 `
 

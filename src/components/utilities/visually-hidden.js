@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-const VisuallyHidden = styled('div')`
+const VisuallyHidden = styled.div`
   border: 0px;
   clip: rect(0px, 0px, 0px, 0px);
   height: 1px;

@@ -10,6 +10,7 @@ import { Button, LinkyButton } from 'components/common/button'
 import { Flex, Box } from 'components/common/grid'
 import Link from 'gatsby-link'
 import { InputText, Submit } from 'components/common/forms'
+import styled from '@emotion/styled'
 import VisuallyHidden from 'components/utilities/visually-hidden'
 import {
   Table,
@@ -17,6 +18,11 @@ import {
   TableCell,
   TableHeader,
 } from 'components/common/table'
+
+const CostButton = styled(Button)`
+  width: 80%;
+  margin: 0 auto;
+`
 
 const tuition = [
   {
@@ -87,28 +93,16 @@ const ResidencyQuestion = ({ handler }) => (
     <HeroParagraph>Are you a California resident?</HeroParagraph>
     <Flex>
       <Box width={[1 / 2]} pr={[2, 4]}>
-        <Button
-          style={{ width: '80%', margin: '0 auto' }}
-          huge
-          block
-          onClick={handler}
-          data-value="yes"
-        >
+        <CostButton huge block onClick={handler} data-value="yes">
           Yes
           <VisuallyHidden>, I am a california resident</VisuallyHidden>
-        </Button>
+        </CostButton>
       </Box>
       <Box width={[1 / 2]}>
-        <Button
-          style={{ width: '80%', margin: '0 auto' }}
-          huge
-          block
-          onClick={handler}
-          data-value="no"
-        >
+        <CostButton huge block onClick={handler} data-value="no">
           No
           <VisuallyHidden>, I am not a california resident</VisuallyHidden>
-        </Button>
+        </CostButton>
         <p>
           If you are unsure of your residency status, read the{' '}
           <Link to="/catalog/residency-immigration-requirements#determination-residency">
@@ -126,19 +120,19 @@ const UndergraduateQuestion = ({ handler }) => (
     <HeroParagraph>Are you an undergraduate?</HeroParagraph>
     <Flex>
       <Box width={[1 / 2]} px={2}>
-        <Button huge block onClick={handler} data-value="yes">
+        <CostButton huge block onClick={handler} data-value="yes">
           Yes
           <VisuallyHidden>I am an undergraduate</VisuallyHidden>
-        </Button>
+        </CostButton>
         <p>I am going to school for a bachelor's degree.</p>
       </Box>
       <Box width={[1 / 2]} px={2}>
-        <Button huge block onClick={handler} data-value="no">
+        <CostButton huge block onClick={handler} data-value="no">
           No
           <VisuallyHidden>
             , I am working on my masters, or postbac degree
           </VisuallyHidden>
-        </Button>
+        </CostButton>
         <p>
           No, I am working on my <strong>master's degree</strong>,{' '}
           <strong>post-baccalaureate degree</strong>, or{' '}
@@ -154,17 +148,17 @@ const UnitsQuestion = ({ handler }) => (
     <HeroParagraph>Are you taking more than 6 units? </HeroParagraph>
     <Flex>
       <Box width={[1 / 2]} px={2}>
-        <Button huge block onClick={handler} data-value="yes">
+        <CostButton huge block onClick={handler} data-value="yes">
           Yes
           <VisuallyHidden>, I am taking more than 6 units</VisuallyHidden>
-        </Button>
+        </CostButton>
         <p>I will be taking more than 6 units of coursework.</p>
       </Box>
       <Box width={[1 / 2]} px={2}>
-        <Button huge block onClick={handler} data-value="no">
+        <CostButton huge block onClick={handler} data-value="no">
           No
           <VisuallyHidden>, I taking less than 6 units</VisuallyHidden>
-        </Button>
+        </CostButton>
         <p>I will be taking 1 to 6 units of coursework.</p>
       </Box>
     </Flex>
@@ -176,7 +170,7 @@ const SpecificUnitsQuestion = ({ handler, handleChange }) => (
     <HeroParagraph>How many units are you planning on taking?</HeroParagraph>
     <form onSubmit={handler}>
       <Flex>
-        <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
+        <Box width={[1, 3 / 4]} px={2}>
           <InputText
             name="units"
             label="How many units are you planning on taking?"
@@ -185,7 +179,7 @@ const SpecificUnitsQuestion = ({ handler, handleChange }) => (
             onChange={handleChange}
           />
         </Box>
-        <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+        <Box width={[1, 1 / 4]} px={2}>
           <Submit value="Search" huge nomargin />
         </Box>
       </Flex>

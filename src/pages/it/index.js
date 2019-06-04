@@ -12,7 +12,7 @@ import { InputText, Submit } from 'components/common/forms'
 import styled from '@emotion/styled'
 import Blocks from 'templates/blocks'
 
-const ITServiceHeader = styled('h3')`
+const ITServiceHeader = styled.h3`
   margin-bottom: 0.4rem;
 `
 

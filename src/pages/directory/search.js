@@ -12,11 +12,11 @@ import { graphql } from 'gatsby'
 import phoneFormatter from 'phone-formatter'
 import { DirectoryNavigation } from 'components/pages/directory'
 
-const DirectoryItem = styled('div')`
+const DirectoryItem = styled.div`
   margin-bottom: 2rem;
 `
 
-const DirectoryDetail = styled('p')`
+const DirectoryDetail = styled.p`
   margin: 0;
   ${props =>
     props.small &&
@@ -25,11 +25,11 @@ const DirectoryDetail = styled('p')`
   `};
 `
 
-const DirectoryTitle = styled('h3')`
+const DirectoryTitle = styled.h3`
   margin-bottom: 0.2rem;
 `
 
-const DirectoryPosition = styled('div')`
+const DirectoryPosition = styled.div`
   margin-top: 1rem;
   h4 {
     margin: 0;
@@ -57,7 +57,7 @@ const PersonListing = props => {
         </Link>
       </DirectoryTitle>
       <Flex>
-        <Box width={[1, 1, 1 / 2]} px={2}>
+        <Box width={[1, 1 / 2]} px={2}>
           {directoryJobClass.map((jobClass, key) => (
             <DirectoryPosition key={key}>
               <h4>{directoryTitle[key] && <>{directoryTitle[key]}</>}</h4>
@@ -77,7 +77,7 @@ const PersonListing = props => {
             </DirectoryPosition>
           ))}
         </Box>
-        <Box width={[1, 1, 1 / 2]} px={2}>
+        <Box width={[1, 1 / 2]} px={2}>
           {email && (
             <DirectoryDetail>
               <a href={`mailto:${email}`}>{email}</a>

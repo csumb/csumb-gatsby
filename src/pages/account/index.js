@@ -36,10 +36,10 @@ class AccountPage extends Component {
                     )}
                   </PageTitle>
                   <Flex>
-                    <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+                    <Box width={[1, 1, 1 / 4, 1 / 4]} pr={[0, 4]}>
                       <AccountSidebar active="account" user={context.user} />
                     </Box>
-                    <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
+                    <Box width={[1, 1, 3 / 4, 3 / 4]}>
                       {context.user.anonymous ? (
                         <h3>You must be logged in first.</h3>
                       ) : (
@@ -73,13 +73,13 @@ class UserAccountForm extends Component {
             campus, including logging into computers.
           </p>
           <Flex>
-            <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+            <Box width={[1, 1 / 2]} pr={[0, 4]}>
               <h3>Username</h3>
               <p>Your CSUMB username is:</p>
               <AccountData>{user._username}</AccountData>
               <p>You cannot change your CSUMB username.</p>
             </Box>
-            <Box width={[1, 1, 1 / 2, 1 / 2]} px={2}>
+            <Box width={[1, 1 / 2]}>
               <h3>Password</h3>
               <ButtonLink
                 to="https://csumb.okta.com/enduser/settings"

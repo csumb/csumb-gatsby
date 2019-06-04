@@ -31,7 +31,7 @@ import NProgress from 'nprogress'
 
 const filestackApiKey = process.env.GATSBY_CSUMB_FILESTACK_KEY
 
-const AccountPhoto = styled('img')`
+const AccountPhoto = styled.img`
   max-width: 150px;
 `
 
@@ -91,10 +91,10 @@ class AccountProfilePage extends Component {
                     )}
                   </PageTitle>
                   <Flex>
-                    <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+                    <Box width={[1, 1 / 4]} pr={[0, 4]}>
                       <AccountSidebar active="profile" user={context.user} />
                     </Box>
-                    <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
+                    <Box width={[1, 3 / 4]}>
                       {context.user.anonymous ? (
                         <h3>You must be logged in first.</h3>
                       ) : (

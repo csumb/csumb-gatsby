@@ -34,7 +34,7 @@ const CollapsibleIcon = styled(FontAwesomeIcon)`
   font-size: 1rem;
 `
 
-const CollapseIconWrapper = styled('span')`
+const CollapseIconWrapper = styled.span`
   display: inline-block;
   max-width: 50px;
 `
@@ -46,16 +46,16 @@ const CampusMap = styled(Map)`
   position: relative !important;
 `
 
-const CampusImage = styled('img')`
+const CampusImage = styled.img`
   margin: 1rem 0;
   display: block;
 `
 
-const ProgramDetailsWrapper = styled('div')`
+const ProgramDetailsWrapper = styled.div`
   margin: 1rem 0;
 `
 
-const ProgramDetailsHeader = styled('button')`
+const ProgramDetailsHeader = styled.button`
   padding: 0 0 0.3rem 0;
   cursor: pointer;
   border: 0;

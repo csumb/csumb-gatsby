@@ -15,7 +15,7 @@ const DocumentIcon = styled(FontAwesomeIcon)`
   max-width: 100px;
 `
 
-const FormsList = styled('div')`
+const FormsList = styled.div`
   ${props =>
     !props.fullWidth &&
     bp({
@@ -54,7 +54,7 @@ const UniversityPersonnelFormList = ({ forms, fullWidth }) => (
   </FormsList>
 )
 
-const PageListItem = styled('div')`
+const PageListItem = styled.div`
   margin: 0.5rem 0;
 `
 

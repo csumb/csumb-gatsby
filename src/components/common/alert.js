@@ -36,12 +36,10 @@ const AlertIconBox = styled(Box)`
 
 const AlertContent = ({ icon, children }) => (
   <Flex>
-    <AlertIconBox width={[0, 1 / 6, 1 / 10]} px={2}>
+    <AlertIconBox width={[0, 1 / 6, 1 / 10]} pr={6}>
       <AlertIcon icon={icon} />
     </AlertIconBox>
-    <Box width={[1, 5 / 6, 9 / 10]} px={4}>
-      {children}
-    </Box>
+    <Box width={[1, 5 / 6, 9 / 10]}>{children}</Box>
   </Flex>
 )
 

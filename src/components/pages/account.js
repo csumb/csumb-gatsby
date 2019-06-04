@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import ContentLoader from 'react-content-loader'
 import { Flex, Box } from 'components/common/grid'
 
-const AccountSidebarOptions = styled('ul')`
+const AccountSidebarOptions = styled.ul`
   list-style-type: none;
   margin: 0;
 `
@@ -24,11 +24,11 @@ const AccountSidebarLink = styled(Link)`
   }
 `
 
-const AccountTitle = styled('h2')`
+const AccountTitle = styled.h2`
   margin-top: 0;
 `
 
-const AccountData = styled('p')`
+const AccountData = styled.p`
   font-size: 1.4rem;
   font-weight: bold;
   margin-left: 1rem;
@@ -65,7 +65,7 @@ const AccountSidebar = ({ user }) => (
   </AccountSidebarOptions>
 )
 
-const AccountGroupLegend = styled('h3')`
+const AccountGroupLegend = styled.h3`
   font-size: 1.5rem;
 `
 
@@ -82,7 +82,7 @@ AccountGroup.propTypes = {
 
 const AccountPlaceholder = () => (
   <Flex>
-    <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>
+    <Box width={[1, 1, 1 / 4, 1 / 4]} pr={[0, 4]}>
       <ContentLoader
         height={160}
         width={400}
@@ -96,7 +96,7 @@ const AccountPlaceholder = () => (
         <rect x="10" y="110" rx="4" ry="4" width="266" height="20" />
       </ContentLoader>
     </Box>
-    <Box width={[1, 1, 3 / 4, 3 / 4]} px={2}>
+    <Box width={[1, 1, 3 / 4, 3 / 4]}>
       <ContentLoader
         height={500}
         width={500}

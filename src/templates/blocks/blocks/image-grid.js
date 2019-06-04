@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { Flex, Box } from 'components/common/grid'
 
-const ImageGridHeader = styled('h3')`
+const ImageGridHeader = styled.h3`
   margin-top: 0;
 `
 
-const ImageGridImage = styled('img')`
+const ImageGridImage = styled.img`
   margin-bottom: 0.5rem;
 `
 
@@ -32,11 +32,7 @@ class BlockImageGrid extends Component {
     return (
       <Flex>
         {images.map((item, key) => (
-          <Box
-            width={[1, 1, columnWidth / 12, columnWidth / 12]}
-            px={2}
-            key={key}
-          >
+          <Box width={[1, columnWidth / 12]} px={2} key={key}>
             {item.link ? (
               <a href={item.link}>
                 <ImageGridItem item={item} />

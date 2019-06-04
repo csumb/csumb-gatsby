@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import moment from 'moment'
 import { Flex, Box } from 'components/common/grid'
 import { colors, fonts } from 'style/theme'
-import LazyHero from 'components/lazy-hero-image'
+import HeroImage from 'components/common/hero-image'
 import { LeadParagraph } from 'components/common/type'
 import showdown from 'showdown'
 import bp from 'style/breakpoints'
@@ -13,7 +13,7 @@ import { ButtonLink } from 'components/common/button'
 
 const dateFormat = 'MMMM D, YYYY'
 
-const Story = styled('div')`
+const Story = styled.div`
   ${props =>
     props.featured ? `margin-bottom: 2rem` : `margin-bottom: 1.5rem`};
   a {
@@ -22,14 +22,14 @@ const Story = styled('div')`
   }
 `
 
-const NonFeaturedStoryHeader = styled('h3')`
+const NonFeaturedStoryHeader = styled.h3`
   text-decoration: none;
   font-family: ${fonts.body};
   margin: 0;
   color: ${colors.black};
 `
 
-const FeaturedStoryHeader = styled('h2')`
+const FeaturedStoryHeader = styled.h2`
   text-decoration: none;
   font-size: 1.8rem;
   font-family: ${fonts.body};
@@ -37,30 +37,30 @@ const FeaturedStoryHeader = styled('h2')`
   margin: 0;
 `
 
-const StoryImage = styled('img')`
+const StoryImage = styled.img`
   width: 100%;
   margin-bottom: 0;
 `
 
-const FeaturedStoryDescription = styled('p')`
+const FeaturedStoryDescription = styled.p`
   margin-top: 0.5rem;
   margin-bottom: 0;
   font-size: 120%;
 `
-const EventDate = styled('div')`
+const EventDate = styled.div`
   color: ${colors.muted.dark};
 `
 
-const FeaturedEventDate = styled('div')`
+const FeaturedEventDate = styled.div`
   color: ${colors.muted.dark};
 `
 
-const InTheNewsWrapper = styled('div')`
+const InTheNewsWrapper = styled.div`
   background: ${colors.muted.light};
   padding: 0.7rem;
 `
 
-const InTheNewsList = styled('ul')`
+const InTheNewsList = styled.ul`
   margin: 0;
   list-style-type: none;
   li {
@@ -76,12 +76,12 @@ const InTheNewsList = styled('ul')`
   }
 `
 
-const InTheNewsSource = styled('div')`
+const InTheNewsSource = styled.div`
   font-variant: italic;
   font-size: 0.8rem;
 `
 
-const InTheNewsHeader = styled('h3')`
+const InTheNewsHeader = styled.h3`
   font-size: 1rem;
   font-weight: 700;
   padding-bottom: 0.5rem;
@@ -94,7 +94,7 @@ const NavigationWrap = styled(Flex)`
   margin-bottom: 1rem;
 `
 
-const NavigationHeader = styled('h3')`
+const NavigationHeader = styled.h3`
   font-family: ${fonts.body};
   margin-bottom: 0;
 `
@@ -118,7 +118,7 @@ const NavigationItem = styled(Box)`
     }
   }
 `
-const HeroItem = styled('div')`
+const HeroItem = styled.div`
   ${props => props.darkImage && `color: ${colors.white};`}
   h2 {
     margin: 0;
@@ -135,13 +135,13 @@ const HeroItem = styled('div')`
   }
 `
 
-const StoryLabel = styled('p')`
+const StoryLabel = styled.p`
   color: ${colors.primary.dark};
   font-weight: bold;
   margin-bottom: 0.2rem;
 `
 
-const HomepageImageNavigationWrapper = styled('div')`
+const HomepageImageNavigationWrapper = styled.div`
   background: ${colors.primary.dark};
   padding: 1.5rem 0;
   h3 {
@@ -158,7 +158,7 @@ const HomepageImageNavigationWrapper = styled('div')`
   }
 `
 
-const NavigationImage = styled('img')`
+const NavigationImage = styled.img`
   ${bp({
     display: ['none', 'block'],
   })}
@@ -169,7 +169,7 @@ const MoreItemsButton = styled(ButtonLink)`
   margin: 1rem 1.5rem;
 `
 
-const HomepageHeroWrapper = styled('div')``
+const HomepageHeroWrapper = styled.div``
 
 const HomepageImageNavigation = ({ navigation }) => {
   const titles = navigation.childContentfulHomepageImageNavigationDisplayNamesTextNode.childMarkdownRemark.rawMarkdownBody.split(
@@ -208,11 +208,12 @@ const HomepageHero = ({ item }) => (
   <HomepageHeroWrapper
     style={{ height: item.fixedHeight ? `${item.imageHeight}px` : '75vh' }}
   >
-    <LazyHero
+    <HeroImage
       opacity={item.lighten / 100}
       parallaxOffset={item.fixedHeight ? 0 : 100}
       transitionDuration={0}
-      imageSrc={item.image.file.url}
+      imageSrc={item.image.highquality.src}
+      lowResImage={item.image.lowquality.src}
       minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
     >
       <HeroItem darkImage={item.darkImage}>
@@ -221,7 +222,7 @@ const HomepageHero = ({ item }) => (
         </h2>
         <LeadParagraph>{item.description}</LeadParagraph>
       </HeroItem>
-    </LazyHero>
+    </HeroImage>
   </HomepageHeroWrapper>
 )
 
