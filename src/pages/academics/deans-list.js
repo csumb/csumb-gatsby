@@ -9,6 +9,7 @@ import PageTitle from 'components/layouts/sections/header/page-title'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
 import { LinkyButton } from 'components/common/button'
 import styled from '@emotion/styled'
+import url from 'url'
 import {
   Table,
   TableRow,
@@ -35,6 +36,8 @@ class AcademicsPage extends Component {
     search: false,
     currentTerm: false,
     termList: [],
+    college: false,
+    major: false,
   }
 
   componentDidMount() {
@@ -48,6 +51,22 @@ class AcademicsPage extends Component {
     this.setState({
       termList: terms,
     })
+
+    if (typeof window !== 'undefined') {
+      let location = url.parse(window.location.href, true)
+      if (location.query && typeof location.query.type !== 'undefined') {
+        if (location.query.type === 'college') {
+          this.setState({
+            college: location.query.name,
+          })
+        }
+        if (location.query.type === 'major') {
+          this.setState({
+            major: location.query.name,
+          })
+        }
+      }
+    }
   }
 
   handleSubmit(event) {
@@ -59,7 +78,7 @@ class AcademicsPage extends Component {
 
   render() {
     const { data } = this.props
-    const { search, termList, currentTerm } = this.state
+    const { search, termList, currentTerm, college, major } = this.state
     return (
       <Layout pageTitle="Academics">
         <SiteHeader path="/academics">Academics</SiteHeader>
@@ -140,13 +159,18 @@ class AcademicsPage extends Component {
                       .search(search.toLowerCase()) > -1) && (
                     <>
                       {(!currentTerm || currentTerm === node.year) && (
-                        <TableRow>
-                          <TableCell>{displayTerm(node.year)}</TableCell>
-                          <TableCell>{node.college}</TableCell>
-                          <TableCell>{node.major}</TableCell>
-                          <TableCell>{node.last_name}</TableCell>
-                          <TableCell>{node.first_name}</TableCell>
-                        </TableRow>
+                        <>
+                          {(!major || major === node.major) &&
+                            (!college || college === node.college) && (
+                              <TableRow>
+                                <TableCell>{displayTerm(node.year)}</TableCell>
+                                <TableCell>{node.college}</TableCell>
+                                <TableCell>{node.major}</TableCell>
+                                <TableCell>{node.last_name}</TableCell>
+                                <TableCell>{node.first_name}</TableCell>
+                              </TableRow>
+                            )}
+                        </>
                       )}
                     </>
                   )}
