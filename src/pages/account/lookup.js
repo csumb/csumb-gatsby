@@ -59,7 +59,7 @@ class LookupForm extends Component {
     const { firstName, lastName, dob } = this.state
     event.preventDefault()
     fetch(
-      `https://api.csumb.edu/okta/lookup?firstName=${firstName}&lastName=${lastName}&dob=${dob}`
+      `/cloud-functions/okta/lookup?firstName=${firstName}&lastName=${lastName}&dob=${dob}`
     )
       .then(response => {
         return response.json()
