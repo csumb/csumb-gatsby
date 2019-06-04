@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import moment from 'moment'
 import { Flex, Box } from 'components/common/grid'
 import { colors, fonts } from 'style/theme'
-import LazyHero from 'components/lazy-hero-image'
+import HeroImage from 'components/common/hero-image'
 import { LeadParagraph } from 'components/common/type'
 import showdown from 'showdown'
 import bp from 'style/breakpoints'
@@ -208,7 +208,7 @@ const HomepageHero = ({ item }) => (
   <HomepageHeroWrapper
     style={{ height: item.fixedHeight ? `${item.imageHeight}px` : '75vh' }}
   >
-    <LazyHero
+    <HeroImage
       opacity={item.lighten / 100}
       parallaxOffset={item.fixedHeight ? 0 : 100}
       transitionDuration={0}
@@ -221,7 +221,7 @@ const HomepageHero = ({ item }) => (
         </h2>
         <LeadParagraph>{item.description}</LeadParagraph>
       </HeroItem>
-    </LazyHero>
+    </HeroImage>
   </HomepageHeroWrapper>
 )
 

@@ -3,7 +3,7 @@ import url from 'url'
 import Loading from 'components/common/loading'
 import Layout from 'components/layouts/default'
 
-import { HomepageHero } from 'components/pages/homepage'
+import { HomepageHero } from 'components/homepage'
 
 class ContentfulPreviewHomepageHeroImage extends Component {
   state = {

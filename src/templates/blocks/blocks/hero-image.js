@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 import color from 'color'
-import LazyHero from 'react-lazy-hero'
+import HeroImage from 'components/common/hero-image'
 import LinkInspect from 'components/utilities/link-inspect'
 import Container from 'components/common/container'
 import BreakpointContext from 'components/contexts/breakpoint'
@@ -82,7 +82,7 @@ const BlockHeroImage = ({
             />
           </MobileHeroTextWrapper>
         )}
-        <LazyHero
+        <HeroImage
           opacity={0}
           parallaxOffset={0}
           transitionDuration={0}
@@ -110,7 +110,7 @@ const BlockHeroImage = ({
               </Container>
             </HeroContainer>
           )}
-        </LazyHero>
+        </HeroImage>
       </>
     )}
   </BreakpointContext.Consumer>
