@@ -72,10 +72,10 @@ class PageTemplate extends Component {
         {showNavigation ? (
           <Container>
             <Flex>
-              <Box width={[1, 3 / 12, 3 / 12]} pr={[0, 8]}>
+              <Box width={[1, 3 / 12]} pr={[0, 8]} order={[2, 1]}>
                 <PageNavigation navigation={pageNavigation} />
               </Box>
-              <Box width={[1, 9 / 12, 9 / 12]}>
+              <Box width={[1, 9 / 12]} order={[1, 2]}>
                 <Blocks blocks={pageContent} />
               </Box>
             </Flex>
