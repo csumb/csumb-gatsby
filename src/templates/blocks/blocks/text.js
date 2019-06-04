@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import parseHtml from '../parse-html'
 
-const Paragraph = styled('p')`
+const Paragraph = styled.p`
   ${props =>
     props.lead
       ? `

@@ -27,7 +27,7 @@ const getTermName = (term, scheduleFormat) => {
   return `${names[term[3]]} ${term[0]}0${term[1]}${term[2]}`
 }
 
-const CourseHeader = styled('h3')`
+const CourseHeader = styled.h3`
   margin-bottom: 0.5rem;
 `
 

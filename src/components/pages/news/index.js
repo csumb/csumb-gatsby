@@ -23,7 +23,7 @@ const NewsTag = styled(Link)`
   }
 `
 
-const NewsTagWrapper = styled('div')`
+const NewsTagWrapper = styled.div`
   border-top: 1px solid ${colors.primary.darkest};
   padding-top: 0.5rem;
   margin-top: 0.5rem;

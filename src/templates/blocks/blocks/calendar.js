@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 
-const Iframe = styled('iframe')`
+const Iframe = styled.iframe`
   width: 100%;
   border: 0;
   height: 70vh;

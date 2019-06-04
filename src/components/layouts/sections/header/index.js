@@ -12,7 +12,7 @@ import styled from '@emotion/styled'
 import bp from 'style/breakpoints'
 import BreakpointContext from 'components/contexts/breakpoint'
 
-const HeaderWrapper = styled('header')`
+const HeaderWrapper = styled.header`
   padding-top: 0.75rem;
   @media print {
     display: none;

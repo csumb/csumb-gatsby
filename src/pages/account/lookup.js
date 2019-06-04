@@ -11,7 +11,7 @@ import Link from 'gatsby-link'
 import Loading from 'components/common/loading'
 import { AlertDanger } from 'components/common/alert'
 
-const Username = styled('span')`
+const Username = styled.span`
   font-weight: bold;
   font-size: 1.4rem;
   display: inline-block;

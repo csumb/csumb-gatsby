@@ -13,7 +13,7 @@ const allServicesPageId = 21910
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
-const Letter = styled('a')`
+const Letter = styled.a`
   display: inline-block;
   margin-right: 0.5rem;
 `

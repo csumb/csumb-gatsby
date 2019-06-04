@@ -26,7 +26,7 @@ const userLinkStyles = `
   }
 `
 
-const UserLoginLink = styled('a')`
+const UserLoginLink = styled.a`
   ${userLinkStyles};
   margin-right: 1rem;
 `

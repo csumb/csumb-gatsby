@@ -15,14 +15,14 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import VisuallyHidden from 'components/utilities/visually-hidden'
 
-const SiteFooterWrapper = styled('footer')`
+const SiteFooterWrapper = styled.footer`
   padding: 2rem 0;
   background: ${colors.muted.highlight};
   border-top: 2px solid ${colors.muted.dark};
   margin-top: 1.5rem;
 `
 
-const SiteFooterItems = styled('dl')`
+const SiteFooterItems = styled.dl`
   dt,
   dd {
     display: inline;
@@ -35,7 +35,7 @@ const SiteFooterItems = styled('dl')`
   }
 `
 
-const SiteFooterSocialIconLink = styled('a')`
+const SiteFooterSocialIconLink = styled.a`
   color: ${colors.muted.dark};
   font-size: 1.5rem;
   display: inline-block;

@@ -17,12 +17,12 @@ const TopLevelBox = styled(Box)`
   margin-bottom: 1rem;
 `
 
-const TopLevelList = styled('ul')`
+const TopLevelList = styled.ul`
   border-right: 1px solid ${colors.muted.dark};
   margin: 0;
   list-style-type: none;
 `
-const TopLevelItem = styled('li')`
+const TopLevelItem = styled.li`
   margin: 0;
   padding: 0;
 `
@@ -39,17 +39,17 @@ const TopLevelItemLink = styled(Link)`
     color: ${colors.white} !important;`};
 `
 
-const SecondLevelList = styled('ul')`
+const SecondLevelList = styled.ul`
   list-style-type: none;
   margin: 0;
 `
 
-const SecondLevelTitle = styled('h2')`
+const SecondLevelTitle = styled.h2`
   font-family: ${fonts.body};
   margin-bottom: 0;
 `
 
-const SubItem = styled('li')`
+const SubItem = styled.li`
   padding: 0.5rem;
   &:hover {
     background: ${colors.primary.lightest};
@@ -68,7 +68,7 @@ const SubItemArrowElement = styled(FontAwesomeIcon)`
   float: right;
 `
 
-const SubItemArrowWrapper = styled('div')`
+const SubItemArrowWrapper = styled.div`
   float: right;
   width: 1rem;
 `
@@ -79,7 +79,7 @@ const SubItemArrow = () => (
   </SubItemArrowWrapper>
 )
 
-const HiddenButton = styled('button')`
+const HiddenButton = styled.button`
   cursor: pointer;
   padding: 0;
   border: 0;
@@ -96,12 +96,12 @@ const HiddenLink = styled(LinkInspect)`
   }
 `
 
-const ThirdLevelList = styled('ul')`
+const ThirdLevelList = styled.ul`
   margin: 0;
   list-style-type: none;
 `
 
-const ThirdLevelTitle = styled('h2')`
+const ThirdLevelTitle = styled.h2`
   font-family: ${fonts.body};
   margin: 0;
 `

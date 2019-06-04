@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import parseHtml from '../parse-html'
 
-const DefinitionList = styled('dl')`
+const DefinitionList = styled.dl`
   dt {
     font-weight: bold;
   }

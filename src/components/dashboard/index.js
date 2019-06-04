@@ -16,17 +16,17 @@ const dashboardWrapperStyle = `
   padding: 1rem;
 `
 
-const DashboardMessageWrapper = styled('div')`
+const DashboardMessageWrapper = styled.div`
   ${dashboardWrapperStyle};
   background: ${colors.primary.light};
 `
 
-const DashboardEventWrapper = styled('div')`
+const DashboardEventWrapper = styled.div`
   ${dashboardWrapperStyle};
   background: ${colors.muted.light};
 `
 
-const DashboardMobileToolbar = styled('div')`
+const DashboardMobileToolbar = styled.div`
   background: ${colors.primary.darkest};
   button {
     color: ${colors.white};

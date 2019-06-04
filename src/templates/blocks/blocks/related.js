@@ -11,23 +11,23 @@ const relatedBreakpoints = bp({
   float: ['none', 'right', 'right'],
 })
 
-const RelatedContent = styled('div')`
+const RelatedContent = styled.div`
   ${relatedBreakpoints};
   border-top: 1px solid ${colors.muted.bright};
   border-bottom: 1px solid ${colors.muted.bright};
   padding: 0.25rem;
 `
 
-const RelatedContentSource = styled('p')`
+const RelatedContentSource = styled.p`
   margin-bottom: 0;
   font-weight: 700;
 `
 
-const RelatedContentTitle = styled('h5')`
+const RelatedContentTitle = styled.h5`
   margin: 0.25rem 0;
 `
 
-const RelatedContentDescription = styled('p')``
+const RelatedContentDescription = styled.p``
 
 class BlockRelated extends Component {
   render() {

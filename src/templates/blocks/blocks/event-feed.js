@@ -3,7 +3,7 @@ import { EventFeedItem } from 'components/events'
 import styled from '@emotion/styled'
 import { colors } from 'style/theme'
 
-const EventFeedWrapper = styled('section')`
+const EventFeedWrapper = styled.section`
   background: ${colors.primary.lightest};
   padding: 1.5rem;
   margin: 2rem 0;

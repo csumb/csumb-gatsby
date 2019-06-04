@@ -9,7 +9,7 @@ const siteHeaderSize = bp({
   fontSize: ['1.5rem', '2rem', '2.5rem'],
 })
 
-const SiteHeaderWrapper = styled('div')`
+const SiteHeaderWrapper = styled.div`
   background: ${colors.primary.darkest};
   padding: 1rem 0;
   h2 {

@@ -8,11 +8,11 @@ import { node, func, object, string, number, oneOfType } from 'prop-types'
 import { wrapEvent } from '@reach/utils'
 import styled from '@emotion/styled'
 
-const ReachStyleMenu = styled('div')`
+const ReachStyleMenu = styled.div`
   position: absolute;
 `
 
-const ReachStyleMenuList = styled('div')`
+const ReachStyleMenuList = styled.div`
   white-space: nowrap;
   a {
     display: block;
