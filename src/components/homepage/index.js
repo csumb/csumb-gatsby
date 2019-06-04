@@ -243,7 +243,7 @@ const HomepageNavigation = ({ items }) => (
 const NonFeaturedStory = ({ news_story, link, image, title, eventDate }) => (
   <Story>
     <a href={getNewsLink(news_story, link)}>
-      <StoryImage alt="" src={image.fixed.src} srcSet={image.fixed.srcSet} />
+      <StoryImage alt="" src={image.resize.src} srcSet={image.fixed.srcSet} />
       <StoryType isEvent={eventDate && true} />
       <NonFeaturedStoryHeader>{title}</NonFeaturedStoryHeader>
       {eventDate && (
@@ -264,7 +264,7 @@ const FeaturedStory = ({
 }) => (
   <Story featured>
     <a href={getNewsLink(news_story, link)}>
-      <StoryImage alt="" src={image.file.url} />
+      <StoryImage alt="" src={image.resize.url} srcSet={image.fixed.srcSet} />
       <StoryType isEvent={eventDate && true} />
       <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
       {eventDate && (
