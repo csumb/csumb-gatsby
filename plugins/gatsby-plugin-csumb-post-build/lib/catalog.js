@@ -58,13 +58,13 @@ module.exports = (reporter, graphql) => {
           ) {
             courses.subject[node.SUBJECT.toLowerCase()] = []
           }
-          courses.subject[node.SUBJECT.toLowerCase()].push(record)
+          courses.subject[node.SUBJECT.toLowerCase()].push(node)
           if (typeof attributes.GE !== 'undefined') {
             attributes.GE.forEach(code => {
               if (typeof courses.ge[code] === 'undefined') {
                 courses.ge[code] = []
               }
-              courses.ge[code].push(record)
+              courses.ge[code].push(node)
             })
           }
           if (typeof attributes.UR !== 'undefined') {
@@ -72,7 +72,7 @@ module.exports = (reporter, graphql) => {
               if (typeof courses.ur[code] === 'undefined') {
                 courses.ur[code] = []
               }
-              courses.ur[code].push(record)
+              courses.ur[code].push(node)
             })
           }
         })
