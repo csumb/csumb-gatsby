@@ -40,7 +40,7 @@ class UserEmergencyForm extends Component {
       .then(session => {
         const time = new Date()
         fetch(
-          `https://api.csumb.edu/everbridge/get?token=${
+          `/cloud-functions/everbridge/get?token=${
             session.id
           }&_t=${time.getTime()}`
         )
@@ -146,7 +146,7 @@ class UserEmergencyPhoneForm extends Component {
     event.preventDefault()
     const phone = phoneFormatter.normalize(this.state.number)
     fetch(
-      `https://api.csumb.edu/everbridge/phone?token=${
+      `/cloud-functions/everbridge/phone?token=${
         this.props.token
       }&phone=${phone}`
     )
