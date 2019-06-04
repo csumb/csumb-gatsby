@@ -224,7 +224,7 @@ export const query = graphql`
           fixedHeight
           imageHeight
           image {
-            resize(width: 1100, quality: 50) {
+            resize(width: 800, quality: 50) {
               src
             }
             file {

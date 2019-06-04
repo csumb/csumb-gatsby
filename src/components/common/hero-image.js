@@ -212,10 +212,17 @@ class HeroImage extends Component {
         style={this.props.style}
       >
         <Img
-          isVisible={this.state.image && this.state.isInViewport}
+          isVisible={
+            this.props.lowResImage ||
+            (this.state.image && this.state.isInViewport)
+          }
           isFixed={this.props.isFixed || this.props.parallaxOffset > 0}
           imageHeight={backgroundDimensions && backgroundDimensions.height}
-          imageSrc={this.props.imageSrc}
+          imageSrc={
+            this.props.lowResImage && !this.state.image
+              ? this.props.lowResImage
+              : this.props.imageSrc
+          }
           imageWidth={backgroundDimensions && backgroundDimensions.width}
           style={{ backgroundPositionY }}
           transitionDuration={this.props.transitionDuration}

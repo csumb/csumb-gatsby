@@ -213,6 +213,7 @@ const HomepageHero = ({ item }) => (
       parallaxOffset={item.fixedHeight ? 0 : 100}
       transitionDuration={0}
       imageSrc={item.image.file.url}
+      lowResImage={item.image.resize.src}
       minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
     >
       <HeroItem darkImage={item.darkImage}>
