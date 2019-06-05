@@ -10,6 +10,7 @@ const everbridgeOptOut = require('./lib/everbridge/opt-out')
 const laundry = require('./lib/laundry')
 const laundryHall = require('./lib/laundry/hall')
 const profileGet = require('./lib/profile/get')
+const profileUpdate = require('./lib/profile/update')
 const feedback = require('./lib/feedback')
 
 const client = new oktaClient.Client({
@@ -47,6 +48,10 @@ exports.everbridgeOptOut = functions.https.onRequest((request, response) => {
 
 exports.profileGet = functions.https.onRequest((request, response) => {
   profileGet(client, request, response)
+})
+
+exports.profileUpdate = functions.https.onRequest((request, response) => {
+  profileUpdate(client, request, response)
 })
 
 exports.laundry = functions.https.onRequest(laundry)
