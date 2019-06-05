@@ -13,13 +13,18 @@ import {
 
 class DashboardEvents extends Component {
   render() {
-    const { events, archive } = this.props
+    const { events, archive, archivedContent } = this.props
     return (
       <>
         {events ? (
           <>
             {events.map((event, key) => (
-              <DashboardEvent key={key} event={event} archive={archive} />
+              <DashboardEvent
+                key={key}
+                event={event}
+                archive={archive}
+                archivedContent={archivedContent}
+              />
             ))}
           </>
         ) : (
@@ -60,16 +65,18 @@ class DashboardEvent extends Component {
   }
 
   render() {
-    const { event } = this.props
+    const { event, archivedContent } = this.props
     const { archived } = this.state
     return (
       <>
         {!archived && (
           <DashboardCard>
-            <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
-              &times;
-              <VisuallyHidden>Archive message</VisuallyHidden>
-            </DashboardMessageClose>
+            {!archivedContent && (
+              <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
+                &times;
+                <VisuallyHidden>Archive message</VisuallyHidden>
+              </DashboardMessageClose>
+            )}
             <Link to={event.link}>
               <DashboardCardHeader noMargin>
                 {event.headline}
