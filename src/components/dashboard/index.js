@@ -3,7 +3,6 @@ import { colors } from 'style/theme'
 import styled from '@emotion/styled'
 import { Flex, Box } from 'components/common/grid'
 import NProgress from 'nprogress'
-
 import { PlaceholderCard } from './placeholders'
 
 import DashboardApps from './apps'
@@ -82,13 +81,14 @@ class DashboardContent extends Component {
         })
       })
       .then(session => {
+        const url = this.props.archivedContent
+          ? `https://edit.csumb.edu/api/dashboard/archived-items`
+          : `https://edit.csumb.edu/api/dashboard`
         this.setState({
           session: session.id,
         })
         fetch(
-          `https://edit.csumb.edu/api/dashboard?_session=${
-            session.id
-          }&role=${userRoles}&_t=${Date.now()}`
+          `${url}?_session=${session.id}&role=${userRoles}&_t=${Date.now()}`
         )
           .then(response => {
             NProgress.inc()
@@ -125,7 +125,7 @@ class DashboardContent extends Component {
 
   render() {
     const { ready, events, messages, session, notLoggedIn } = this.state
-    const { isMobile, mobileTab, moreApps } = this.props
+    const { isMobile, mobileTab, moreApps, archivedContent } = this.props
     if (notLoggedIn) {
       return <DashboardNotLoggedIn />
     }
@@ -175,6 +175,7 @@ class DashboardContent extends Component {
                   archive={id => {
                     this.archive(id, session)
                   }}
+                  archivedContent={archivedContent}
                 />
               ) : (
                 <>
@@ -195,6 +196,7 @@ class DashboardContent extends Component {
                   archive={id => {
                     this.archive(id, session)
                   }}
+                  archivedContent={archivedContent}
                 />
               ) : (
                 <>

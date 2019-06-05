@@ -88,8 +88,8 @@ class ITPage extends Component {
             <Box width={[1, 1 / 4]} pr={[0, 3]}>
               <ITServiceHeader>Drop in Open Labs</ITServiceHeader>
               <p>
-                Come by our weekly{' '}
-                <Link to="it/technology-open-lab">Technology Open Labs</Link>.
+                Come by our monthly{' '}
+                <Link to="/web/technology-open-lab">Technology Open Labs</Link>.
               </p>
             </Box>
             <Box width={[1, 1 / 4]}>

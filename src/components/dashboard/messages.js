@@ -12,7 +12,7 @@ import DashboardAlumni from './alumni'
 
 class DashboardMessages extends Component {
   render() {
-    const { messages, archive } = this.props
+    const { messages, archive, archivedContent } = this.props
     return (
       <>
         <DashboardAlumni />
@@ -24,6 +24,7 @@ class DashboardMessages extends Component {
                 message={message}
                 user={this.props.user}
                 archive={archive}
+                archivedContent={archivedContent}
               />
             ))}
           </>
@@ -50,15 +51,18 @@ class DashboardMessage extends Component {
 
   render() {
     const { headline, message, link } = this.props.message
+    const { archivedContent } = this.props
     const { archived } = this.state
     return (
       <>
         {!archived && (
           <DashboardCard>
-            <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
-              &times;
-              <VisuallyHidden>Archive message</VisuallyHidden>
-            </DashboardMessageClose>
+            {!archivedContent && (
+              <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
+                &times;
+                <VisuallyHidden>Archive message</VisuallyHidden>
+              </DashboardMessageClose>
+            )}
             <Link to={link}>
               <DashboardCardHeader>{headline}</DashboardCardHeader>
             </Link>
