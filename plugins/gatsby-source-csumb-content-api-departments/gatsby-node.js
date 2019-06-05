@@ -1,19 +1,50 @@
+const crypto = require('crypto')
+const request = require('sync-request')
 const walk = require('walk')
 const fs = require('fs-extra')
-const crypto = require('crypto')
 
-exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
+exports.sourceNodes = async (
+  { actions, createNodeId, reporter },
+  configOptions
+) => {
   const { createNode } = actions
-  const allUsers = {}
-  const departments = {}
+  const { endpoint } = configOptions
 
-  const allDepartments = fs.readJSONSync('./website-data/departments.json')
-  allDepartments.forEach(department => {
+  const departmentNode = department => {
+    const digest = crypto
+      .createHash(`md5`)
+      .update(JSON.stringify(department))
+      .digest(`hex`)
+    let departmentNode = {
+      id: createNodeId(`${department.uuid} >>> CsumbDepartment`),
+      children: [],
+      parent: null,
+      internal: {
+        type: `CsumbDepartment`,
+        contentDigest: digest,
+      },
+    }
+    departmentNode = Object.assign(department, departmentNode)
+
+    createNode(departmentNode)
+  }
+
+  fetchActivity = reporter.activityTimer(
+    'Downloading departments from CSUMB editor & building directory'
+  )
+  fetchActivity.start()
+
+  const response = request('GET', `${endpoint}&type=departments`)
+  const departments = JSON.parse(response.getBody())
+  const allDepartments = {}
+  departments.departments.forEach(department => {
+    departmentNode(department)
     department.unit_code.forEach(code => {
-      departments[code] = department
+      allDepartments[code] = department
     })
   })
 
+  const allUsers = {}
   const allDirectory = fs.readJSONSync('./website-data/directory.json')
   allDirectory.forEach(user => {
     if (
@@ -22,8 +53,8 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
     ) {
       user.fullDepartments = []
       user.directoryDepartmentID.forEach(code => {
-        if (typeof departments[code] !== 'undefined') {
-          user.fullDepartments.push(departments[code])
+        if (typeof allDepartments[code] !== 'undefined') {
+          user.fullDepartments.push(allDepartments[code])
         }
       })
     }
@@ -59,4 +90,6 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
       .digest(`hex`)
     createNode(directoryNode)
   })
+
+  fetchActivity.end()
 }
