@@ -227,8 +227,8 @@ const gatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: './_data',
-        ignore: ['**/.*'],
+        path: './website-data',
+        ignore: ['*.json', '**/.json'],
       },
     },
 

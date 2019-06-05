@@ -13,7 +13,7 @@ exports.sourceNodes = async (
     'Loading content from Git Repository'
   )
   loadActivity.start()
-  walk.walkSync('./_web-content', {
+  walk.walkSync('./website-data', {
     listeners: {
       file: async (root, fileStats, next) => {
         const fileName = `${root}/${fileStats.name}`
@@ -28,25 +28,25 @@ exports.sourceNodes = async (
   loadActivity.end()
 
   const parseContents = (name, content) => {
-    if (name.search('_data/public-directory/') > -1) {
+    if (name.search('/directory/') > -1) {
       return
     }
-    if (name.search('_data/directory.json') > -1) {
+    if (name.search('directory.json') > -1) {
       return
     }
-    if (name.search('_data/building-redirects.json') > -1) {
+    if (name.search('building-redirects.json') > -1) {
       redirectNodes(content)
       return
     }
-    if (name.search('_data/departments.json') > -1) {
+    if (name.search('departments.json') > -1) {
       departmentNodes(content)
       return
     }
-    if (name.search('_data/buildings.json') > -1) {
+    if (name.search('buildings.json') > -1) {
       buildingNodes(content)
       return
     }
-    if (name.search('_data/apps.json') > -1) {
+    if (name.search('apps.json') > -1) {
       appNodes(content)
       return
     }

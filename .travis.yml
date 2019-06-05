@@ -5,8 +5,7 @@ cache:
   directories:
     - .firebase
 before_script:
-  - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-data.git _data
-  - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/web-content.git _web-content
+  - git clone --depth 1 https://$GITHUB_TOKEN@github.com/csumb/website-data.git
 script:
   - set -e
   - node --max_old_space_size=12000 ./node_modules/.bin/gatsby build

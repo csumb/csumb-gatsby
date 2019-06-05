@@ -146,14 +146,10 @@ export const query = graphql`
             goLiveDate
           }
           image {
-            file {
-              url
+            resize(width: 800) {
+              src
             }
             fixed {
-              src
-              srcSet
-            }
-            fluid {
               src
               srcSet
             }
@@ -201,9 +197,8 @@ export const query = graphql`
               src
               srcSet
             }
-            fluid {
+            resize(width: 800) {
               src
-              srcSet
             }
           }
         }

@@ -7,16 +7,14 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
   const allUsers = {}
   const departments = {}
 
-  const allDepartments = fs.readJSONSync(
-    './_web-content/_data/departments.json'
-  )
+  const allDepartments = fs.readJSONSync('./website-data/departments.json')
   allDepartments.forEach(department => {
     department.unit_code.forEach(code => {
       departments[code] = department
     })
   })
 
-  const allDirectory = fs.readJSONSync('./_web-content/_data/directory.json')
+  const allDirectory = fs.readJSONSync('./website-data/directory.json')
   allDirectory.forEach(user => {
     if (
       typeof user.directoryDepartmentID !== 'undefined' &&
@@ -32,7 +30,7 @@ exports.sourceNodes = async ({ actions, createNodeId }, configOptions) => {
     allUsers[user.login.split('@').shift()] = user
   })
 
-  walk.walkSync('./_web-content/_data/public-directory', {
+  walk.walkSync('./website-data/directory', {
     listeners: {
       file: async (root, fileStats, next) => {
         const fileName = `${root}/${fileStats.name}`

@@ -68,6 +68,7 @@ const UserDropdownMenuLinkButton = styled(MenuItem)`
   padding: 0.5rem;
   background: transparent;
   border: none;
+  cursor: pointer;
   &:hover,
   &:focus {
     background: ${colors.primary.darkest};
@@ -102,13 +103,13 @@ class UserDropdown extends Component {
       })
       .then(session => {
         if (session && session.id) {
-          fetch(
-            `https://api.csumb.edu/okta/session/end?token=${session.id}`
-          ).then(response => {
-            window.location.href = `${window.location.protocol}//${
-              window.location.host
-            }`
-          })
+          fetch(`/cloud-functions/okta/session-end?token=${session.id}`).then(
+            response => {
+              window.location.href = `${window.location.protocol}//${
+                window.location.host
+              }`
+            }
+          )
         }
       })
   }
