@@ -71,7 +71,6 @@ const gatsbyConfig = {
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-csv',
     'gatsby-transformer-remark',
-    'gatsby-source-csumb-directory',
     'gatsby-source-csumb-web-content',
     {
       resolve: 'gatsby-source-csumb-content-api-redirects',
@@ -81,6 +80,12 @@ const gatsbyConfig = {
     },
     {
       resolve: 'gatsby-source-csumb-content-api-sites',
+      options: {
+        endpoint: process.env.CSUMB_CONTENT_API_ENDPOINT,
+      },
+    },
+    {
+      resolve: 'gatsby-source-csumb-content-api-departments',
       options: {
         endpoint: process.env.CSUMB_CONTENT_API_ENDPOINT,
       },

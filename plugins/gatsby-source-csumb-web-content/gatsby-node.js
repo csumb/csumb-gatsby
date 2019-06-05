@@ -38,10 +38,6 @@ exports.sourceNodes = async (
       redirectNodes(content)
       return
     }
-    if (name.search('departments.json') > -1) {
-      departmentNodes(content)
-      return
-    }
     if (name.search('buildings.json') > -1) {
       buildingNodes(content)
       return
@@ -50,25 +46,6 @@ exports.sourceNodes = async (
       appNodes(content)
       return
     }
-  }
-
-  const departmentNodes = content => {
-    content.forEach(department => {
-      let departmentNode = {
-        id: createNodeId(`${department.uuid} >>> CsumbDepartment`),
-        children: [],
-        parent: null,
-        internal: {
-          type: `CsumbDepartment`,
-        },
-      }
-      departmentNode = Object.assign(department, departmentNode)
-      departmentNode.internal.contentDigest = crypto
-        .createHash(`md5`)
-        .update(JSON.stringify(departmentNode))
-        .digest(`hex`)
-      createNode(departmentNode)
-    })
   }
 
   const redirectNodes = content => {

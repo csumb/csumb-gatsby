@@ -1,15 +1,17 @@
 {
-  "name": "gatsby-source-csumb-web-content",
+  "name": "gatsby-source-csumb-content-api-departments",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "fs-extra": "^7.0.1",
+    "crypto": "^1.0.1",
+    "fs-extra": "^8.0.1",
+    "sync-request": "^6.1.0",
     "walk": "^2.3.14"
   }
 }
