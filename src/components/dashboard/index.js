@@ -3,7 +3,6 @@ import { colors } from 'style/theme'
 import styled from '@emotion/styled'
 import { Flex, Box } from 'components/common/grid'
 import NProgress from 'nprogress'
-import Link from 'gatsby-link'
 import { PlaceholderCard } from './placeholders'
 
 import DashboardApps from './apps'
@@ -206,13 +205,6 @@ class DashboardContent extends Component {
                   <PlaceholderCard />
                   <PlaceholderCard />
                 </>
-              )}
-              {!archivedContent && (
-                <p>
-                  <Link to="/dashboard/archive">
-                    View archived messages &amp; events
-                  </Link>
-                </p>
               )}
             </DashboardMessageWrapper>
           </Box>

@@ -5,13 +5,20 @@ import { UserContext } from 'components/contexts/user'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import { graphql } from 'gatsby'
 import Olark from 'components/utilities/olark'
+import styled from '@emotion/styled'
 import {
   DashboardApps,
   DashboardContent,
   DashboardMobileToolbar,
 } from 'components/dashboard'
 import { navigate } from '@reach/router'
+import Link from 'gatsby-link'
 import BreakpointContext from 'components/contexts/breakpoint'
+
+const ArchivedMessages = styled.p`
+  text-align: right;
+  margin: 1.5rem 0;
+`
 
 class DashboardPage extends Component {
   state = {
@@ -87,6 +94,11 @@ class DashboardPage extends Component {
                             <section>
                               <Container topPadding>
                                 <DashboardContent user={context.user} />
+                                <ArchivedMessages>
+                                  <Link to="/dashboard/archive">
+                                    View archived messages &amp; events
+                                  </Link>
+                                </ArchivedMessages>
                               </Container>
                             </section>
                           </>
