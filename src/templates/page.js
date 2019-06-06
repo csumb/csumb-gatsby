@@ -14,6 +14,7 @@ import BlockHero from './blocks/blocks/hero-image'
 import SiteFooter from 'components/layouts/sections/footer/site'
 import PageEditorTools from 'components/user-tools/editors'
 import CatalogIndicator from 'components/pages/catalog-indicator'
+import Olark from 'components/utilities/olark'
 import {
   UniversityPersonnelFormList,
   UniversityPersonnelPages,
@@ -38,6 +39,7 @@ class PageTemplate extends Component {
       upPageID,
       drupalNid,
       embedTargetSite,
+      olarkSite,
     } = this.props.pageContext
 
     const showNavigation = pageNavigation && pageNavigation.length
@@ -52,6 +54,7 @@ class PageTemplate extends Component {
         isSiteHomepage={layout === 'site'}
         noFooterMargin={site.contact || site.staffPage ? true : false}
       >
+        {olarkSite && <Olark siteId={olarkSite} />}
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
         {topHero && <BlockHero {...topHero} />}

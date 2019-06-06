@@ -14,6 +14,10 @@ module.exports = (graphql, actions) => {
             site {
               siteMetadata {
                 overridePages
+                perSiteOlarkIds {
+                  site
+                  code
+                }
               }
             }
 
@@ -161,9 +165,13 @@ module.exports = (graphql, actions) => {
         }
         const overridePages = result.data.site.siteMetadata.overridePages
         let count = 0
-
+        const olarkSites = {}
         const upForms = {}
         const upPages = {}
+
+        result.data.site.siteMetadata.perSiteOlarkIds.forEach(site => {
+          olarkSites[site.site] = site.code
+        })
 
         result.data.allAirtable.edges.forEach(edge => {
           const data = edge.node.data
@@ -217,6 +225,10 @@ module.exports = (graphql, actions) => {
                 navigation: sites[node.site].navigation,
                 pageContent: node.pageContent,
                 embedTargetSite: node.embedTargetSite,
+                olarkSite:
+                  typeof olarkSites[node.site] !== 'undefined'
+                    ? olarkSites[node.site]
+                    : '',
               },
             }
             if (
