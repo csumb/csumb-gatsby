@@ -212,7 +212,14 @@ export const query = graphql`
       }
     }
     allAirtable(
-      filter: { queryName: { in: ["StudyAbroadMajors", "StudyAbroadAreas"] } }
+      filter: {
+        data: {
+          Semester_Year_Programs: {
+            elemMatch: { data: { Publish: { eq: true } } }
+          }
+        }
+        queryName: { in: ["StudyAbroadMajors", "StudyAbroadAreas"] }
+      }
 
       sort: { fields: [data___Subject_Area, data___Name] }
     ) {
