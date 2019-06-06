@@ -22,6 +22,7 @@ class UserComponent extends React.Component {
     }
 
     window.addEventListener('resize', setWindowSize)
+    setWindowSize()
 
     fetch('https://csumb.okta.com/api/v1/users/me', {
       credentials: 'include',
