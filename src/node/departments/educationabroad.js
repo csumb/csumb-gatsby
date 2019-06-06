@@ -45,6 +45,16 @@ module.exports = (graphql, actions) => {
                   Apply_Now
                   Academics_Button_1_Title
                   Academics_Button_1_Link
+                  Areas{
+                    data {
+                      Subject_Area
+                    }
+                  }
+                  Summer_Academics {
+                    data {
+                      Name
+                    }
+                  }
                   Housing_Details_Paragraph_1
                   Housing_Details_Paragraph_2
                   Housing_link
