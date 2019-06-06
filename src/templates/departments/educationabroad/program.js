@@ -247,6 +247,23 @@ class ProgramTemplate extends Component {
               </ul>
             </ProgramDetails>
           )}
+          <ProgramDetails title="Academics">
+            <ul>
+              {data.Program_Type === 'Semester' ? (
+                <ul>
+                  {data.Areas.map(({ data }) => (
+                    <li key={data.Subject_Area}>{data.Subject_Area}</li>
+                  ))}
+                </ul>
+              ) : (
+                <ul>
+                  {data.Summer_Academics.map(({ data }) => (
+                    <li key={data.Name}>{data.Name}</li>
+                  ))}
+                </ul>
+              )}
+            </ul>
+          </ProgramDetails>
           <ProgramDetails title="Housing &amp; food">
             {data.Housing_Details_Paragraph_1 && (
               <p>{data.Housing_Details_Paragraph_1}</p>
@@ -300,7 +317,11 @@ class ProgramTemplate extends Component {
               </tbody>
             </Table>
             {data.Additional_Fees_May_Apply && <p>Additional fees may apply</p>}
-            {data.Financial_Aid_Available && <p><strong>Financial aid:</strong> State and Federal aid available</p>}
+            {data.Financial_Aid_Available && (
+              <p>
+                <strong>Financial aid:</strong> State and Federal aid available
+              </p>
+            )}
           </ProgramDetails>
           {data.Campus_services && data.Campus_services.length > 0 && (
             <ProgramDetails title="Campus services">
