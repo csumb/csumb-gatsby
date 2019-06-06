@@ -40,9 +40,17 @@ class DashboardPage extends Component {
   render() {
     const { data } = this.props
     const { activeTab } = this.state
+    let siteOlarkId = ''
+    if (data.site.siteMetadata.perSiteOlarkIds) {
+      data.site.siteMetadata.perSiteOlarkIds.forEach(({ site, code }) => {
+        if (site === 'dashboard') {
+          siteOlarkId = code
+        }
+      })
+    }
     return (
       <Layout pageTitle="Dashboard">
-        <Olark />
+        {siteOlarkId && <Olark siteId={siteOlarkId} />}
         <SiteHeader path="/dashboard">Dashboard</SiteHeader>
         <UserContext.Consumer>
           {context => (
@@ -120,6 +128,14 @@ export default DashboardPage
 
 export const query = graphql`
   {
+    site {
+      siteMetadata {
+        perSiteOlarkIds {
+          site
+          code
+        }
+      }
+    }
     allCsumbApp {
       edges {
         node {

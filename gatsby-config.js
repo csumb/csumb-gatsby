@@ -7,7 +7,11 @@ const gatsbyConfig = {
         'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7',
     },
     swiftypeId: process.env.GATSBY_CSUMB_SWIFTYPE_ID,
-    olarkSiteId: '1001-610-10-3640',
+    perSiteOlarkIds: [
+      { site: 'dashboard', code: '1001-610-10-3640' },
+      { site: 'mist', code: '3836-896-10-1757' },
+      { site: 'scd', code: '3836-896-10-1757' },
+    ],
     schedule: {
       currentTerm: 2194,
       currentTermName: '2019fall',
@@ -110,9 +114,9 @@ const gatsbyConfig = {
       },
     },
     {
-      resolve: `gatsby-plugin-polyfill-io`,
+      resolve: 'gatsby-plugin-polyfill-io',
       options: {
-        features: [`Array.prototype.map`, `fetch`],
+        features: ['Array.prototype.map', 'fetch'],
       },
     },
     {
@@ -288,14 +292,14 @@ const gatsbyConfig = {
       },
     },
     {
-      resolve: `gatsby-plugin-hotjar`,
+      resolve: 'gatsby-plugin-hotjar',
       options: {
         id: 1234615,
         sv: 6,
       },
     },
-    `gatsby-plugin-meta-redirect`,
-    `gatsby-plugin-csumb-post-build`,
+    'gatsby-plugin-meta-redirect',
+    'gatsby-plugin-csumb-post-build',
   ],
 }
 
