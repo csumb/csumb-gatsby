@@ -126,6 +126,10 @@
       {
         "source": "/cloud-functions/feedback",
         "function": "feedback"
+      },
+      {
+        "source": "/cloud-functions/name-badge",
+        "function": "nameBadge"
       }
     ]
   }
