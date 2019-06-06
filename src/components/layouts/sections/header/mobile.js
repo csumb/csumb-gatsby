@@ -315,7 +315,7 @@ class HeaderMobile extends Component {
       : false
     const { siteTitle } = this.props
     return (
-      <header data-swiftype-index="false">
+      <>
         <HeaderMobileWrapper>
           <Flex>
             <Box width={[9 / 12]}>
@@ -409,7 +409,7 @@ class HeaderMobile extends Component {
             )}
           </>
         )}
-      </header>
+      </>
     )
   }
 }

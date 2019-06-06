@@ -21,6 +21,24 @@
             "value": "max-age=86400"
           }
         ]
+      },
+      {
+        "source": "google-fonts/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=31556926"
+          }
+        ]
+      },
+      {
+        "source": "page-data/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=7200"
+          }
+        ]
       }
     ],
     "redirects": [
