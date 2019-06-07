@@ -157,25 +157,19 @@ class ProgramTemplate extends Component {
                 <h2>{data.Application_Deadline_Title}</h2>
                 {data.Fall_Spring_Application_Deadline &&
                   data.Fall_Spring_Application_Deadline[0] && (
-                    <p>
-                      <strong>Deadlines</strong>
-                      <ul>
-                        {data.Fall_Spring_Application_Deadline.map(deadline => (
-                          <li key={deadline.data.Name}>{deadline.data.Name}</li>
-                        ))}
-                      </ul>
-                    </p>
+                    <ul>
+                      {data.Fall_Spring_Application_Deadline.map(deadline => (
+                        <li key={deadline.data.Name}>{deadline.data.Name}</li>
+                      ))}
+                    </ul>
                   )}
                 {data.Summer_Application_Deadline &&
                   data.Summer_Application_Deadline[0] && (
-                    <p>
-                      <strong>Summer deadline:</strong>
-                      <ul>
-                        {data.Summer_Application_Deadline.map(deadline => (
-                          <li key={deadline.data.Name}>{deadline.data.Name}</li>
-                        ))}
-                      </ul>
-                    </p>
+                    <ul>
+                      {data.Summer_Application_Deadline.map(deadline => (
+                        <li key={deadline.data.Name}>{deadline.data.Name}</li>
+                      ))}
+                    </ul>
                   )}
               </Box>
               <Box width={[1, 1 / 2]}>
@@ -248,21 +242,19 @@ class ProgramTemplate extends Component {
             </ProgramDetails>
           )}
           <ProgramDetails title="Academics">
-            <ul>
-              {data.Program_Type === 'Semester' ? (
-                <ul>
-                  {data.Areas.map(({ data }) => (
-                    <li key={data.Subject_Area}>{data.Subject_Area}</li>
-                  ))}
-                </ul>
-              ) : (
-                <ul>
-                  {data.Summer_Academics.map(({ data }) => (
-                    <li key={data.Name}>{data.Name}</li>
-                  ))}
-                </ul>
-              )}
-            </ul>
+            {data.Program_Type === 'Semester' ? (
+              <ul>
+                {data.Areas.map(({ data }) => (
+                  <li key={data.Subject_Area}>{data.Subject_Area}</li>
+                ))}
+              </ul>
+            ) : (
+              <ul>
+                {data.Summer_Academics.map(({ data }) => (
+                  <li key={data.Name}>{data.Name}</li>
+                ))}
+              </ul>
+            )}
           </ProgramDetails>
           <ProgramDetails title="Housing &amp; food">
             {data.Housing_Details_Paragraph_1 && (
