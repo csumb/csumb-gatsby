@@ -218,6 +218,13 @@ class ProgramTemplate extends Component {
             </Flex>
           )}
           <h2>Program details</h2>
+          {data.Summer_Program_Dates && (
+            <ProgramDetails title="Program dates">
+              <p
+                dangerouslySetInnerHTML={{ __html: data.Summer_Program_Dates }}
+              />
+            </ProgramDetails>
+          )}
           <ProgramDetails title="Program dates">
             <ul>
               {data.Program_dates__Fall && (
@@ -255,6 +262,7 @@ class ProgramTemplate extends Component {
                 ))}
               </ul>
             )}
+            {data.Notes_Area && <p>{data.Notes_Area}</p>}
           </ProgramDetails>
           <ProgramDetails title="Housing &amp; food">
             {data.Housing_Details_Paragraph_1 && (
@@ -308,6 +316,10 @@ class ProgramTemplate extends Component {
                 </TableRow>
               </tbody>
             </Table>
+
+            {data.Summer_Fee_Waiver_Conditions && (
+              <p>{data.Summer_Fee_Waiver_Conditions}</p>
+            )}
             {data.Additional_Fees_May_Apply && <p>Additional fees may apply</p>}
             {data.Financial_Aid_Available && (
               <p>

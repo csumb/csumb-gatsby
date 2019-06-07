@@ -45,7 +45,7 @@ module.exports = (graphql, actions) => {
                   Apply_Now
                   Academics_Button_1_Title
                   Academics_Button_1_Link
-                  Areas{
+                  Areas {
                     data {
                       Subject_Area
                     }
@@ -79,6 +79,10 @@ module.exports = (graphql, actions) => {
                   Map_Coordinates
                   Summer_start_Date
                   Summer_End_Date
+                  Summer_Fee_Waiver_Conditions
+                  Summer_Program_Dates
+                  Summer_Program_Fee
+                  Notes_Area
                   Prerequisites {
                     recordId
                     data {
