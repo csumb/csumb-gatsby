@@ -197,7 +197,7 @@ const gatsbyConfig = {
           },
           {
             baseId: 'appXrkUdaBbX4kxG5',
-            tableName: 'Summer Academics',
+            tableName: 'Summer Academic Programs',
             queryName: 'StudyAbroadSummerAcademics',
           },
           {
