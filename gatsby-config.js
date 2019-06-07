@@ -173,7 +173,7 @@ const gatsbyConfig = {
             baseId: 'appXrkUdaBbX4kxG5',
             tableName: 'Areas',
             queryName: 'StudyAbroadAreas',
-            tableLinks: ['Semester/Year Programs'],
+            tableLinks: ['Semester/Year_Programs'],
           },
           {
             baseId: 'appXrkUdaBbX4kxG5',
@@ -207,12 +207,12 @@ const gatsbyConfig = {
             tableLinks: [
               'Countries',
               'Partner',
-              'Fall/Spring Application Deadline',
-              'Summer Application Deadline',
+              'Fall/Spring_Application_Deadline',
+              'Summer_Application_Deadline',
               'Areas',
-              'Summer Academics',
+              'Summer_Academics',
               'Prerequisites',
-              'Campus services',
+              'Campus_services',
             ],
           },
           {
