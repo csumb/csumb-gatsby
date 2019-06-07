@@ -13,6 +13,7 @@ const profileGet = require('./lib/profile/get')
 const profileUpdate = require('./lib/profile/update')
 const feedback = require('./lib/feedback')
 const nameBadge = require('./lib/name-badge')
+const login = require('./lib/login')
 
 const client = new oktaClient.Client({
   orgUrl: functions.config().okta.domain,
@@ -62,3 +63,7 @@ exports.laundryHall = functions.https.onRequest(laundryHall)
 exports.feedback = functions.https.onRequest(feedback)
 
 exports.nameBadge = functions.https.onRequest(nameBadge)
+
+exports.login = functions.https.onRequest((request, response) => {
+  login(client, request, response)
+})

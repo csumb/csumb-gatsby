@@ -130,6 +130,10 @@
       {
         "source": "/cloud-functions/name-badge",
         "function": "nameBadge"
+      },
+      {
+        "source": "/log-in",
+        "function": "login"
       }
     ]
   }
