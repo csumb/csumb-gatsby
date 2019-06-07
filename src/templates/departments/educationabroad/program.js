@@ -143,11 +143,11 @@ class ProgramTemplate extends Component {
         <Container>
           <PageTitle>{data.Name}</PageTitle>
           {data.Program_Type === 'Semester' ? (
-            <ReturnLink to="/educationabroad/go-abroad-semesteryear-long-program">
+            <ReturnLink to="/educationabroad/programs/semester">
               View all Semester programs
             </ReturnLink>
           ) : (
-            <ReturnLink to="/educationabroad/go-abroad-short-term-program">
+            <ReturnLink to="/educationabroad/programs/summer">
               View all Summer programs
             </ReturnLink>
           )}
@@ -158,7 +158,7 @@ class ProgramTemplate extends Component {
                 {data.Fall_Spring_Application_Deadline &&
                   data.Fall_Spring_Application_Deadline[0] && (
                     <p>
-                      <strong>Fall &amp; Spring deadline:</strong>
+                      <strong>Deadlines</strong>
                       <ul>
                         {data.Fall_Spring_Application_Deadline.map(deadline => (
                           <li key={deadline.data.Name}>{deadline.data.Name}</li>
@@ -225,16 +225,18 @@ class ProgramTemplate extends Component {
           )}
           <h2>Program details</h2>
           <ProgramDetails title="Program dates">
-            {data.Program_dates__Fall && (
-              <p>
-                <strong>Fall</strong> {data.Program_dates__Fall}
-              </p>
-            )}
-            {data.Program_dates__Spring && (
-              <p>
-                <strong>Spring</strong> {data.Program_dates__Spring}
-              </p>
-            )}
+            <ul>
+              {data.Program_dates__Fall && (
+                <li>
+                  <strong>Fall</strong> {data.Program_dates__Fall}
+                </li>
+              )}
+              {data.Program_dates__Spring && (
+                <li>
+                  <strong>Spring</strong> {data.Program_dates__Spring}
+                </li>
+              )}
+            </ul>
           </ProgramDetails>
           {data.Prerequisites && (
             <ProgramDetails title="Prerequisites">
@@ -245,6 +247,23 @@ class ProgramTemplate extends Component {
               </ul>
             </ProgramDetails>
           )}
+          <ProgramDetails title="Academics">
+            <ul>
+              {data.Program_Type === 'Semester' ? (
+                <ul>
+                  {data.Areas.map(({ data }) => (
+                    <li key={data.Subject_Area}>{data.Subject_Area}</li>
+                  ))}
+                </ul>
+              ) : (
+                <ul>
+                  {data.Summer_Academics.map(({ data }) => (
+                    <li key={data.Name}>{data.Name}</li>
+                  ))}
+                </ul>
+              )}
+            </ul>
+          </ProgramDetails>
           <ProgramDetails title="Housing &amp; food">
             {data.Housing_Details_Paragraph_1 && (
               <p>{data.Housing_Details_Paragraph_1}</p>
@@ -298,6 +317,11 @@ class ProgramTemplate extends Component {
               </tbody>
             </Table>
             {data.Additional_Fees_May_Apply && <p>Additional fees may apply</p>}
+            {data.Financial_Aid_Available && (
+              <p>
+                <strong>Financial aid:</strong> State and Federal aid available
+              </p>
+            )}
           </ProgramDetails>
           {data.Campus_services && data.Campus_services.length > 0 && (
             <ProgramDetails title="Campus services">
