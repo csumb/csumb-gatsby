@@ -1,28 +1,27 @@
 const saml = require('samlify')
 const metadata = require('./metadata')
 const functions = require('firebase-functions')
-const bcrypt = require('bcrypt')
+const md5 = require('md5')
 
 const hosts = {
   local: {
     domain: 'localhost:5000',
     redirect: 'http://localhost:8000/dashboard',
-    secure: '',
+    secure: false,
   },
   dev: {
     domain: 'csumb-gatsby-develop.firebaseapp.com',
     redirect: 'https://csumb-gatsby-develop.firebaseapp.com/dashboard',
-    secure: '; Secure',
+    secure: true,
   },
   live: {
     domain: 'csumb.edu',
     redirect: 'https://csumb.edu/dashboard',
-    secure: '; Secure',
+    secure: true,
   },
 }
 const { instance, salt } = functions.config().login
 const host = hosts[instance]
-
 const idp = saml.IdentityProvider({
   metadata: metadata.idp[instance],
 })
@@ -31,32 +30,29 @@ const sp = saml.ServiceProvider({
   metadata: metadata.sp[instance],
 })
 
-module.exports = (client, request, response) => {
+module.exports = (request, response) => {
   sp.parseLoginResponse(idp, 'post', request)
     .then(parseResult => {
-      response.set({
-        'Set-Cookie': `csumbUser=${JSON.stringify(
-          parseResult.extract.attributes
-        )}; Domain=${host.domain}; Path=/${host.secure}`,
-      })
-      bcrypt.hash(parseResult.extract.attributes.login + salt, 10, function(
-        err,
-        hash
-      ) {
-        response.set({
-          'Set-Cookie': `csumbSession=${hash}; Domain=${host.domain}; Path=/${
-            host.secure
-          }`,
-        })
-        if (instance === 'local') {
-          console.log(
-            `csumbUser=${JSON.stringify(parseResult.extract.attributes)}`
-          )
-          console.log(`csumbSession=${hash}`)
+      response.cookie(
+        'csumbUser',
+        JSON.stringify(parseResult.extract.attributes),
+        {
+          domain: host.domain,
+          path: '/',
+          secure: host.secure,
         }
-        response.redirect(host.redirect)
-        response.end()
-      })
+      )
+      response.cookie(
+        'csumbSession',
+        md5(parseResult.extract.attributes.login + salt),
+        {
+          domain: host.domain,
+          path: '/',
+          secure: host.secure,
+        }
+      )
+      response.redirect(host.redirect)
+      response.end()
     })
     .catch(error => {
       console.log(error)

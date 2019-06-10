@@ -64,6 +64,4 @@ exports.feedback = functions.https.onRequest(feedback)
 
 exports.nameBadge = functions.https.onRequest(nameBadge)
 
-exports.login = functions.https.onRequest((request, response) => {
-  login(client, request, response)
-})
+exports.login = functions.https.onRequest(login)
