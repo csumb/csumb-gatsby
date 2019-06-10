@@ -13,6 +13,7 @@
     "@okta/okta-sdk-nodejs": "^2.0.0",
     "@sendgrid/mail": "^6.3.1",
     "base-64": "^0.1.0",
+    "bcrypt": "^3.0.6",
     "cheerio": "^1.0.0-rc.3",
     "firebase-admin": "~7.0.0",
     "firebase-functions": "^2.2.0",
