@@ -23,12 +23,14 @@ class UserEmergencyForm extends Component {
   state = {
     everbridgeUser: false,
     error: false,
-    userToken: false,
     isReady: false,
     showForm: false,
   }
 
   componentDidMount() {
+    if (!this.props.user || typeof this.props.user.session) {
+      return
+    }
     NProgress.start()
 
     const time = new Date()
@@ -45,7 +47,6 @@ class UserEmergencyForm extends Component {
         NProgress.done()
         this.setState({
           everbridgeUser: everbridgeUser,
-          userToken: session.id,
           isReady: true,
         })
       })
@@ -66,7 +67,8 @@ class UserEmergencyForm extends Component {
   }
 
   render() {
-    const { isReady, everbridgeUser, error, showForm, userToken } = this.state
+    const { isReady, everbridgeUser, error, showForm } = this.state
+    const { user } = this.props
     let everbridgePhone = false
     if (!error && everbridgeUser) {
       everbridgeUser.user.paths.forEach(path => {
@@ -104,7 +106,7 @@ class UserEmergencyForm extends Component {
                     Edit phone number
                   </Button>
                 </p>
-                {showForm && <UserEmergencyPhoneForm token={userToken} />}
+                {showForm && <UserEmergencyPhoneForm user={user} />}
               </>
             )}
           </>
@@ -133,8 +135,8 @@ class UserEmergencyPhoneForm extends Component {
     const phone = phoneFormatter.normalize(this.state.number)
     fetch(
       `/cloud-functions/everbridge/phone?token=${
-        this.props.token
-      }&phone=${phone}`
+        this.props.user.session
+      }&user=${this.props.user._username}&phone=${phone}`
     )
       .then(response => {
         return response.json()
