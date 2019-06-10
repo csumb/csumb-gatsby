@@ -233,10 +233,11 @@ class DashboardApps extends Component {
   }
 
   componentDidMount() {
-    window
-      .fetch('https://csumb.okta.com/api/v1/users/me/appLinks', {
-        credentials: 'include',
-      })
+    fetch(
+      `/cloud-functions/okta/apps?token=${this.props.user.session}&user=${
+        this.props.user._username
+      }`
+    )
       .then(response => {
         return response.json()
       })

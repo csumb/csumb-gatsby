@@ -96,6 +96,10 @@
         "function": "oktaProfile"
       },
       {
+        "source": "/cloud-functions/okta/apps",
+        "function": "oktaApps"
+      },
+      {
         "source": "/cloud-functions/laundry",
         "function": "laundry"
       },

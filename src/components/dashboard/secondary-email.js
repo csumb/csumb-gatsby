@@ -31,8 +31,8 @@ class DashboardSecondaryEmail extends Component {
     event.preventDefault()
     fetch(
       `/cloud-functions/okta/secondary-email?token=${
-        this.props.session
-      }&email=${this.state.secondaryEmail}`
+        this.props.user.session
+      }&user=${this.props.user._username}&email=${this.state.secondaryEmail}`
     )
       .then(result => {
         return result.json()
