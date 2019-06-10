@@ -44,7 +44,7 @@ module.exports = (request, response) => {
       )
       response.cookie(
         'csumbSession',
-        md5(parseResult.extract.attributes.login + salt),
+        md5(parseResult.extract.attributes.login.split('@').shift() + salt),
         {
           domain: host.domain,
           path: '/',

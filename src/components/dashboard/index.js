@@ -44,7 +44,6 @@ class DashboardContent extends Component {
     ready: false,
     events: false,
     messages: false,
-    session: false,
     notLoggedIn: false,
   }
 
@@ -66,65 +65,45 @@ class DashboardContent extends Component {
 
     const userRoles = roles.join(',')
     NProgress.start()
-    fetch('https://csumb.okta.com/api/v1/sessions/me', {
-      credentials: 'include',
-    })
+    const url = this.props.archivedContent
+      ? `https://edit.csumb.edu/api/dashboard/archived-items`
+      : `https://edit.csumb.edu/api/dashboard`
+    fetch(
+      `${url}?token=${user.session}&user=${
+        user._username
+      }&role=${userRoles}&_t=${Date.now()}`
+    )
       .then(response => {
         NProgress.inc()
-        if (response.ok) {
-          return response.json()
-        }
-
-        this.setState({
-          ready: false,
-          notLoggedIn: true,
-        })
+        return response.json()
       })
-      .then(session => {
-        const url = this.props.archivedContent
-          ? `https://edit.csumb.edu/api/dashboard/archived-items`
-          : `https://edit.csumb.edu/api/dashboard`
+      .then(content => {
+        NProgress.done()
         this.setState({
-          session: session.id,
+          events: content.events,
+          messages: content.messages,
+          ready: true,
         })
-        fetch(
-          `${url}?_session=${session.id}&role=${userRoles}&_t=${Date.now()}`
-        )
-          .then(response => {
-            NProgress.inc()
-            return response.json()
-          })
-          .then(content => {
-            NProgress.done()
-            this.setState({
-              events: content.events,
-              messages: content.messages,
-              ready: true,
-            })
-          })
-          .catch(error => {
-            this.setState({
-              events: false,
-              didLoad: true,
-            })
-          })
       })
       .catch(error => {
         this.setState({
-          ready: false,
-          notLoggedIn: true,
+          events: false,
+          didLoad: true,
         })
       })
   }
 
   archive(id, session) {
+    const { user } = this.props
     fetch(
-      `https://edit.csumb.edu/api/dashboard/archive?_session=${session}&id=${id}`
+      `https://edit.csumb.edu/api/dashboard/archive?token=${
+        user.session
+      }&user=${user._username}`
     )
   }
 
   render() {
-    const { ready, events, messages, session, notLoggedIn } = this.state
+    const { ready, events, messages, notLoggedIn } = this.state
     const { isMobile, mobileTab, moreApps, archivedContent } = this.props
     if (notLoggedIn) {
       return <DashboardNotLoggedIn />
@@ -134,12 +113,12 @@ class DashboardContent extends Component {
         <>
           {mobileTab === 'messages' && (
             <DashboardMessageWrapper>
-              <DashboardSecondary session={this.state.session} />
+              <DashboardSecondary user={this.props.user} />
               <h2>Messages</h2>
               <DashboardMessages
                 messages={messages}
                 archive={id => {
-                  this.archive(id, session)
+                  this.archive(id)
                 }}
               />
             </DashboardMessageWrapper>
@@ -150,7 +129,7 @@ class DashboardContent extends Component {
               <DashboardEvents
                 events={events}
                 archive={id => {
-                  this.archive(id, session)
+                  this.archive(id)
                 }}
               />
             </DashboardEventWrapper>
@@ -163,7 +142,7 @@ class DashboardContent extends Component {
     }
     return (
       <>
-        <DashboardSecondary session={this.state.session} />
+        <DashboardSecondary user={this.props.user} />
         <Flex>
           <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
             <DashboardEventWrapper>
@@ -173,7 +152,7 @@ class DashboardContent extends Component {
                 <DashboardEvents
                   events={events}
                   archive={id => {
-                    this.archive(id, session)
+                    this.archive(id)
                   }}
                   archivedContent={archivedContent}
                 />
@@ -194,7 +173,7 @@ class DashboardContent extends Component {
                 <DashboardMessages
                   messages={messages}
                   archive={id => {
-                    this.archive(id, session)
+                    this.archive(id)
                   }}
                   archivedContent={archivedContent}
                 />
