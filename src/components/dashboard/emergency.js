@@ -52,6 +52,9 @@ class DashboardEmergency extends Component {
   }
 
   handleOptOut() {
+    if (!this.props.user || typeof this.props.user.session === 'undefined') {
+      return
+    }
     this.setState({
       showDialog: false,
     })
