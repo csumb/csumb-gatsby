@@ -95,23 +95,8 @@ class UserDropdown extends Component {
 
   handleLogout(event) {
     cookies.remove('csumb-sites')
-    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
-      credentials: 'include',
-    })
-      .then(response => {
-        return response.json()
-      })
-      .then(session => {
-        if (session && session.id) {
-          fetch(`/cloud-functions/okta/session-end?token=${session.id}`).then(
-            response => {
-              window.location.href = `${window.location.protocol}//${
-                window.location.host
-              }`
-            }
-          )
-        }
-      })
+    cookies.remove('csumbSession')
+    cookies.remove('csumbUser')
   }
 
   render() {
