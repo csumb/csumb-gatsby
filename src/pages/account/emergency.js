@@ -30,41 +30,27 @@ class UserEmergencyForm extends Component {
 
   componentDidMount() {
     NProgress.start()
-    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
-      credentials: 'include',
-    })
+
+    const time = new Date()
+    fetch(
+      `/cloud-functions/everbridge/get?token=${this.props.user.session}&user=${
+        this.props.user._username
+      }&_t=${time.getTime()}`
+    )
       .then(response => {
         NProgress.inc()
         return response.json()
       })
-      .then(session => {
-        const time = new Date()
-        fetch(
-          `/cloud-functions/everbridge/get?token=${
-            session.id
-          }&_t=${time.getTime()}`
-        )
-          .then(response => {
-            NProgress.inc()
-            return response.json()
-          })
-          .then(everbridgeUser => {
-            NProgress.done()
-            this.setState({
-              everbridgeUser: everbridgeUser,
-              userToken: session.id,
-              isReady: true,
-            })
-          })
-          .catch(error => {
-            NProgress.done()
-            this.setState({
-              error: true,
-              isReady: true,
-            })
-          })
+      .then(everbridgeUser => {
+        NProgress.done()
+        this.setState({
+          everbridgeUser: everbridgeUser,
+          userToken: session.id,
+          isReady: true,
+        })
       })
       .catch(error => {
+        NProgress.done()
         this.setState({
           error: true,
           isReady: true,
