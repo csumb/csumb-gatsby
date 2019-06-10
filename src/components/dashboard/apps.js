@@ -233,6 +233,9 @@ class DashboardApps extends Component {
   }
 
   componentDidMount() {
+    if (!this.props.user || typeof this.props.user.session === 'undefined') {
+      return
+    }
     fetch(
       `/cloud-functions/okta/apps?token=${this.props.user.session}&user=${
         this.props.user._username
