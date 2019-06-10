@@ -104,7 +104,7 @@ class DashboardContent extends Component {
 
   render() {
     const { ready, events, messages, notLoggedIn } = this.state
-    const { isMobile, mobileTab, moreApps, archivedContent } = this.props
+    const { user, isMobile, mobileTab, moreApps, archivedContent } = this.props
     if (notLoggedIn) {
       return <DashboardNotLoggedIn />
     }
@@ -135,7 +135,7 @@ class DashboardContent extends Component {
             </DashboardEventWrapper>
           )}
           {mobileTab === 'apps' && (
-            <DashboardApps isMobile={true} apps={moreApps} />
+            <DashboardApps isMobile={true} user={user} apps={moreApps} />
           )}
         </>
       )
