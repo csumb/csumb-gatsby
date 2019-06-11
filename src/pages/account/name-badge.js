@@ -127,10 +127,21 @@ class NameBadge extends Component {
               {profile ? (
                 <>
                   {selectedPosition ? (
-                    <NameBadgeForm
-                      profile={profile}
-                      position={selectedPosition}
-                    />
+                    <>
+                      <LinkyButton
+                        to="/account/name-badge"
+                        onClick={event => {
+                          event.preventDefault()
+                          this.setState({ selectedPosition: false })
+                        }}
+                      >
+                        Start over
+                      </LinkyButton>
+                      <NameBadgeForm
+                        profile={profile}
+                        position={selectedPosition}
+                      />
+                    </>
                   ) : (
                     <>
                       <h3>Select your position</h3>
@@ -257,8 +268,8 @@ class NameBadgeForm extends Component {
                         })
                       }}
                     >
-                      {style && style == 'title-department' ? (
-                        <>Selected</>
+                      {style && style === 'title-department' ? (
+                        <>Style Selected</>
                       ) : (
                         <>Select</>
                       )}
@@ -286,8 +297,8 @@ class NameBadgeForm extends Component {
                         })
                       }}
                     >
-                      {style && style == 'department' ? (
-                        <>Selected</>
+                      {style && style === 'department' ? (
+                        <>Style Selected</>
                       ) : (
                         <>Select</>
                       )}

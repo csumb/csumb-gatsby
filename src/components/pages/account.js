@@ -38,9 +38,14 @@ const AccountSidebar = ({ user }) => (
   <AccountSidebarOptions>
     <AccountSidebarLink to="/account">Your account</AccountSidebarLink>
     {user._isEmployee && (
-      <AccountSidebarLink to="/account/profile">
-        Your public profile
-      </AccountSidebarLink>
+      <>
+        <AccountSidebarLink to="/account/profile">
+          Your public profile
+        </AccountSidebarLink>
+        <AccountSidebarLink to="/account/name-badge">
+          Order name badge
+        </AccountSidebarLink>
+      </>
     )}
     {user._isApplicant && (
       <AccountSidebarLink to="/account/applicant-status">
