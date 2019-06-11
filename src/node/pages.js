@@ -119,43 +119,6 @@ module.exports = (graphql, actions) => {
                 }
               }
             }
-            allAirtable(
-              filter: { queryName: { in: ["UniversityPersonnelPages"] } }
-              sort: { fields: [data___Name] }
-            ) {
-              edges {
-                node {
-                  id
-                  table
-                  recordId
-                  data {
-                    Name
-                    Content
-                    Page_ID
-                    Link
-                    Parent {
-                      id
-                      data {
-                        Page_ID
-                        Name
-                        Notes
-                        Link
-                      }
-                    }
-                    Documents {
-                      id
-                      data {
-                        Name
-                        Notes
-                        Attachments {
-                          url
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
           }
         `
       ).then(result => {
@@ -166,26 +129,9 @@ module.exports = (graphql, actions) => {
         const overridePages = result.data.site.siteMetadata.overridePages
         let count = 0
         const olarkSites = {}
-        const upForms = {}
-        const upPages = {}
 
         result.data.site.siteMetadata.perSiteOlarkIds.forEach(site => {
           olarkSites[site.site] = site.code
-        })
-
-        result.data.allAirtable.edges.forEach(edge => {
-          const data = edge.node.data
-          if (data.Page_ID) {
-            upForms[data.Page_ID] = data
-            if (data.Parent) {
-              data.Parent.forEach(parent => {
-                if (typeof upPages[parent.data.Page_ID] === 'undefined') {
-                  upPages[parent.data.Page_ID] = []
-                }
-                upPages[parent.data.Page_ID].push(edge)
-              })
-            }
-          }
         })
 
         result.data.allCsumbSite.edges.forEach(({ node }) => {
@@ -236,13 +182,6 @@ module.exports = (graphql, actions) => {
               typeof upForms[parseInt(node.drupalNid)] !== 'undefined'
             ) {
               pageNode.context.upForms = upForms[parseInt(node.drupalNid)]
-            }
-            if (
-              typeof node.drupalNid !== 'undefined' &&
-              typeof upPages[parseInt(node.drupalNid)] !== 'undefined'
-            ) {
-              pageNode.context.upPages = upPages[parseInt(node.drupalNid)]
-              pageNode.context.upPageID = parseInt(node.drupalNid)
             }
             if (typeof node.drupalNid !== 'undefined') {
               pageNode.context.drupalNid = node.drupalNid

@@ -17,10 +17,6 @@ import SiteFooter from '../components/layouts/sections/footer/site'
 import PageEditorTools from '../components/user-tools/editors'
 import CatalogIndicator from '../components/pages/catalog-indicator'
 import Olark from '../components/utilities/olark'
-import {
-  UniversityPersonnelFormList,
-  UniversityPersonnelPages,
-} from '../components/pages/university-personnel'
 
 class PageTemplate extends Component {
   render() {
@@ -36,9 +32,6 @@ class PageTemplate extends Component {
       feedbackEmail,
       pageUrl,
       topHero,
-      upForms,
-      upPages,
-      upPageID,
       drupalNid,
       embedTargetSite,
       olarkSite,
@@ -64,12 +57,7 @@ class PageTemplate extends Component {
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           <PageEditorTools site={site} pageId={drupalNid} />
           {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
-          {upForms && upForms.Documents && (
-            <UniversityPersonnelFormList
-              forms={upForms}
-              fullWidth={pageContent.search('airtable-related-documents') > -1}
-            />
-          )}
+
           {showCatalogIndicator && <CatalogIndicator />}
         </Container>
         {event && <EventPage event={event} />}
@@ -87,11 +75,6 @@ class PageTemplate extends Component {
           </Container>
         ) : (
           <Blocks blocks={pageContent} />
-        )}
-        {upPages && (
-          <Container>
-            <UniversityPersonnelPages pages={upPages} parentId={upPageID} />
-          </Container>
         )}
         <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
         {((site.contact && (site.contact.phone || site.contact.email)) ||
