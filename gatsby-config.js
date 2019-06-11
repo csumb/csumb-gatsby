@@ -1,18 +1,8 @@
-const logins = {
+const loginUrls = {
   develop:
     'https://login.csumb.edu/app/csumb_csumbwebsitedevremote_1/exkmey914mz0RN9060x7/sso/saml',
   master:
     'https://login.csumb.edu/app/csumb_csumbwebsitedevremote_1/exkmey914mz0RN9060x7/sso/saml',
-}
-
-const getLogin = () => {
-  if (
-    typeof process.env.TRAVIS_BRANCH === 'undefined' ||
-    typeof logins[process.env.TRAVIS_BRANCH] === 'undefined'
-  ) {
-    return 'https://csumb.okta.com/'
-  }
-  return logins[process.env.TRAVIS_BRANCH]
 }
 
 const gatsbyConfig = {
@@ -20,7 +10,11 @@ const gatsbyConfig = {
     title: 'Cal State Monterey Bay',
     fileStack: process.env.GATSBY_CSUMB_FILESTACK_KEY,
     okta: {
-      login: getLogin(),
+      login:
+        typeof process.env.TRAVIS_BRANCH !== 'undefined' &&
+        typeof loginUrls[process.env.TRAVIS_BRANCH] !== 'undefined'
+          ? loginUrls[process.env.TRAVIS_BRANCH]
+          : 'https://csumb.okta.com/',
     },
     swiftypeId: process.env.GATSBY_CSUMB_SWIFTYPE_ID,
     perSiteOlarkIds: [
