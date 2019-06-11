@@ -233,7 +233,7 @@ class DashboardApps extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.user || typeof this.props.user.session === 'undefined') {
+    if (!this.props.user) {
       return
     }
     fetch(

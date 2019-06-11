@@ -6,14 +6,19 @@ module.exports = (client, request, response) => {
     response.end()
     return
   }
-  client
-    .listAppLinks(request.query.user)
-    .then(links => {
-      response.write(JSON.stringify(links))
-      return response.end()
+
+  const apps = []
+  const getApps = async () => {
+    await client.listAppLinks(request.query.user).each(app => {
+      apps.push({
+        id: app.id,
+        label: app.label,
+        linkUrl: app.linkUrl,
+        sortOrder: app.sortOrder,
+      })
     })
-    .catch(error => {
-      response.write(JSON.stringify({ error: true }))
-      response.end()
-    })
+    response.write(JSON.stringify(apps))
+    response.end()
+  }
+  getApps()
 }
