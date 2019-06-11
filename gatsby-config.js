@@ -1,10 +1,26 @@
+const logins = {
+  develop:
+    'https://login.csumb.edu/app/csumb_csumbwebsitedevremote_1/exkmey914mz0RN9060x7/sso/saml',
+  master:
+    'https://login.csumb.edu/app/csumb_csumbwebsitedevremote_1/exkmey914mz0RN9060x7/sso/saml',
+}
+
+const getLogin = () => {
+  if (
+    typeof process.env.TRAVIS_BRANCH === 'undefined' ||
+    typeof logins[process.env.TRAVIS_BRANCH] === 'undefined'
+  ) {
+    return 'https://csumb.okta.com/'
+  }
+  return logins[process.env.TRAVIS_BRANCH]
+}
+
 const gatsbyConfig = {
   siteMetadata: {
     title: 'Cal State Monterey Bay',
     fileStack: process.env.GATSBY_CSUMB_FILESTACK_KEY,
     okta: {
-      login:
-        'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7',
+      login: getLogin(),
     },
     swiftypeId: process.env.GATSBY_CSUMB_SWIFTYPE_ID,
     perSiteOlarkIds: [
