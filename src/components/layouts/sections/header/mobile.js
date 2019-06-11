@@ -12,9 +12,6 @@ import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Flex, Box } from 'components/common/grid'
 import LinkInspect from 'components/utilities/link-inspect'
 import Link from 'gatsby-link'
-import Cookies from 'universal-cookie'
-
-const cookies = new Cookies()
 
 const HeaderMobileWrapper = styled.div`
   padding: 0.5rem;

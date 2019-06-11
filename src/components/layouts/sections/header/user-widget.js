@@ -4,7 +4,6 @@ import { colors, fonts } from 'style/theme'
 import {
   Menu,
   MenuList,
-  MenuItem,
   MenuButton,
   MenuLink,
 } from 'components/common/custom-reach-menu'
@@ -62,18 +61,6 @@ const UserDropdownMenuLink = styled(MenuLink)`
     `
     display: none !important;
   `}
-`
-
-const UserDropdownMenuLinkButton = styled(MenuItem)`
-  padding: 0.5rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  &:hover,
-  &:focus {
-    background: ${colors.primary.darkest};
-    color: ${colors.white};
-  }
 `
 
 const UserDashboardLink = styled(Link)`

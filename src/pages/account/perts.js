@@ -5,7 +5,7 @@ import PlainLayout from 'components/layouts/plain'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import { graphql } from 'gatsby'
 import Container from 'components/common/container'
-import UserContext from 'components/contexts/user'
+import { UserContext } from 'components/contexts/user'
 
 class PertsRedirect extends Component {
   componentDidMount() {
