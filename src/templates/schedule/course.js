@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
+import { Layout } from 'components/layouts/default'
 import Container from 'components/common/container'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import { CoursePage } from 'components/pages/schedule'

@@ -5,6 +5,10 @@ import Footer from 'components/layouts/sections/footer/global'
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
 import Pardot from 'components/utilities/pardot'
+import PageTitle from './sections/header/page-title'
+import SiteNavigation from './sections/navigation/site'
+import PageNavigation from './sections/navigation/page'
+import SiteHeader from './sections/header/site-header'
 
 import Emergency from './alerts/emergency'
 
@@ -123,4 +127,4 @@ class Layout extends Component {
   }
 }
 
-export default Layout
+export { Layout, PageTitle, PageNavigation, SiteNavigation, SiteHeader }

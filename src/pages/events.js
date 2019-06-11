@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import SiteHeader from 'components/layouts/sections/header/site-header'
+import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
 import { graphql } from 'gatsby'
 import { Flex, Box } from 'components/common/grid'
 import Container from 'components/common/container'
 import { PublicEvent } from 'components/events'
 import EventsSidebar from 'components/events/sidebar'
-import PageTitle from 'components/layouts/sections/header/page-title'
 
 class EventsPage extends Component {
   render() {

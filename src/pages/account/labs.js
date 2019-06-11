@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
+import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
 import { graphql } from 'gatsby'
-import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
 import { Lab, LabKey } from 'components/pages/labs'
 import { Flex, Box } from 'components/common/grid'

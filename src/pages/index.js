@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from 'components/layouts/default'
+import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
 import Container from 'components/common/container'
 import { Flex, Box } from 'components/common/grid'
 import { graphql } from 'gatsby'

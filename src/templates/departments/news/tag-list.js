@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
+import { Layout } from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import { SiteNavigation } from 'components/layouts/sections/navigation'

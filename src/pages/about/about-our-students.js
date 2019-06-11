@@ -1,11 +1,13 @@
 import React from 'react'
-import Layout from 'components/layouts/default'
-import PageTitle from 'components/layouts/sections/header/page-title'
+import {
+  Layout,
+  PageTitle,
+  SiteNavigation,
+  SiteHeader,
+} from 'components/layouts/default'
 import Container from 'components/common/container'
 import Chart from 'react-chartjs'
 import { Flex, Box } from 'components/common/grid'
-import { SiteNavigation } from 'components/layouts/sections/navigation'
-import SiteHeader from 'components/layouts/sections/header/site-header'
 import { graphql } from 'gatsby'
 
 const chartData = {
