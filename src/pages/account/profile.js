@@ -158,13 +158,17 @@ class UserAccountProfileForm extends Component {
             Your job titles are shown on the{' '}
             <Link to="/directory">public campus directory.</Link>
           </p>
-          {user.profile.directoryTitle.map((title, index) => (
-            <AccountData key={index}>
-              {title}
-              <br />
-              <em>{user.profile.directoryDepartment[index]}</em>
-            </AccountData>
-          ))}
+          {user.profile.directoryTitle && (
+            <>
+              {user.profile.directoryTitle.map((title, index) => (
+                <AccountData key={index}>
+                  {title}
+                  <br />
+                  <em>{user.profile.directoryDepartment[index]}</em>
+                </AccountData>
+              ))}
+            </>
+          )}
           <p>
             <strong>Changing your job title:</strong> Your department and job
             title are controled by your human resources department.
