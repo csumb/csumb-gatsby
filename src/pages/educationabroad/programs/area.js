@@ -47,15 +47,19 @@ const SubjectArea = ({ area }) => (
             <h4>Programs</h4>
             <ProgramList>
               {area.Semester_Year_Programs.map(program => (
-                <li>
-                  <Link
-                    to={`/educationabroad/program/${slugify(
-                      program.recordId.replace('rec', '')
-                    )}`}
-                  >
-                    {program.data.Name}
-                  </Link>
-                </li>
+                <>
+                  {program.data.Publish && (
+                    <li key={program.recordId}>
+                      <Link
+                        to={`/educationabroad/program/${slugify(
+                          program.recordId.replace('rec', '')
+                        )}`}
+                      >
+                        {program.data.Name}
+                      </Link>
+                    </li>
+                  )}
+                </>
               ))}
             </ProgramList>
           </>
@@ -236,6 +240,7 @@ export const query = graphql`
               data {
                 Name
                 Program_Type
+                Publish
               }
             }
           }
