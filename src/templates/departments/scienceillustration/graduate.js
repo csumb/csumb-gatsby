@@ -8,7 +8,7 @@ import { LeadParagraph } from 'components/common/type'
 import Gallery from 'react-photo-gallery'
 import Lightbox from 'react-images'
 import Link from 'gatsby-link'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
+import { SiteNavigation } from 'components/layouts/sections/navigation'
 
 class GraduateTemplate extends Component {
   state = {

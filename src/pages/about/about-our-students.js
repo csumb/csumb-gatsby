@@ -4,7 +4,7 @@ import PageTitle from 'components/layouts/sections/header/page-title'
 import Container from 'components/common/container'
 import Chart from 'react-chartjs'
 import { Flex, Box } from 'components/common/grid'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
+import { SiteNavigation } from 'components/layouts/sections/navigation'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import { graphql } from 'gatsby'
 

@@ -3,7 +3,7 @@ import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
 import { graphql } from 'gatsby'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
+import { SiteNavigation } from 'components/layouts/sections/navigation'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import Loading from 'components/common/loading'
 

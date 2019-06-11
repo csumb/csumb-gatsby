@@ -4,7 +4,7 @@ import SiteHeader from 'components/layouts/sections/header/site-header'
 import Container from 'components/common/container'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import { graphql } from 'gatsby'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
+import { SiteNavigation } from 'components/layouts/sections/navigation'
 import Blocks from 'templates/blocks'
 import { EducationAbroadProgramList } from 'components/pages/educationabroad'
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Layout from 'components/layouts/default'
 import SiteHeader from 'components/layouts/sections/header/site-header'
 import PageTitle from 'components/layouts/sections/header/page-title'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
+import { SiteNavigation } from 'components/layouts/sections/navigation'
 import Container from 'components/common/container'
 import { NewsList, NewsListItem } from 'components/pages/news/list'
 

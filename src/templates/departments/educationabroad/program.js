@@ -12,7 +12,7 @@ import {
 import styled from '@emotion/styled'
 import Well from 'components/common/well'
 import { ButtonLink } from 'components/common/button'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
+import { SiteNavigation } from 'components/layouts/sections/navigation'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
 import { colors } from 'style/theme'
 import Link from 'gatsby-link'

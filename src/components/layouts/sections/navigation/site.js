@@ -2,12 +2,7 @@ import React, { Component } from 'react'
 import Container from 'components/common/container'
 import styled from '@emotion/styled'
 import { colors, fonts } from 'style/theme'
-import {
-  Menu,
-  MenuList,
-  MenuButton,
-  MenuLink,
-} from 'components/common/custom-reach-menu'
+import { Menu, MenuList, MenuButton, MenuLink } from 'components/common/menu'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import slugify from 'slugify'
