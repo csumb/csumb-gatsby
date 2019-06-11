@@ -5,9 +5,7 @@ import { LeadParagraph } from 'components/common/type'
 import styled from '@emotion/styled'
 import url from 'url'
 import Brand from 'components/layouts/sections/header/brand'
-
-const loginAddress =
-  'https://csumb.okta.com/app/csumb_csumbcashnet_1/exkm6j1xciOYxrGdu0x7/sso/saml'
+import { UserContext } from 'components/contexts/user'
 
 const CashnetContainer = styled.div`
   max-width: 60ch;
