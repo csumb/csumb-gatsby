@@ -59,7 +59,7 @@ class DashboardPage extends Component {
         <UserContext.Consumer>
           {context => (
             <>
-              {context.user && !context.user.anonymous ? (
+              {context.user && !context.user.anonymous && (
                 <>
                   {this.redirectApplicant(context.user)}
                   <BreakpointContext.Consumer>
@@ -122,7 +122,8 @@ class DashboardPage extends Component {
                     )}
                   </BreakpointContext.Consumer>
                 </>
-              ) : (
+              )}
+              {context.user && context.user.anonymous && (
                 <>{this.login(data)}</>
               )}
             </>

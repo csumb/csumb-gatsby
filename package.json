@@ -51,7 +51,6 @@
     "gatsby-plugin-manifest": "^2.0.11",
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-nprogress": "^2.0.8",
-    "gatsby-plugin-offline": "^2.1.1",
     "gatsby-plugin-polyfill-io": "^1.1.0",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.2",
     "gatsby-plugin-react-helmet": "^3.0.3",
