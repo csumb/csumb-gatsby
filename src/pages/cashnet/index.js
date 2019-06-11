@@ -14,12 +14,9 @@ const CashnetContainer = styled.div`
   margin: 3rem auto;
 `
 
-class CashnetPage extends Component {
-  state = {
-    user: false,
-  }
+class CashnetRedirect extends Component {
   componentDidMount() {
-    if (typeof window === 'undefined') {
+    if (typeof window === 'undefined' || !this.props.user) {
       return
     }
 
@@ -29,36 +26,35 @@ class CashnetPage extends Component {
       typeof location.query.category !== 'undefined'
         ? `/${location.query.category}`
         : ''
-    fetch('https://csumb.okta.com/api/v1/users/me', {
-      credentials: 'include',
-    })
-      .then(response => {
-        return response.json()
-      })
-      .then(user => {
-        window.location = `https://api.csumb.edu/cashnet/${
-          user.profile.employeeNumber
-        }${category}`
-      })
-      .catch(error => {
-        this.setState({
-          user: 'anonymous',
-        })
-        window.location.href = loginAddress
-      })
+
+    window.location = `https://api.csumb.edu/cashnet/${
+      this.props.user.profile.employeeNumber
+    }${category}`
   }
+
+  render() {
+    return (
+      <>
+        {!this.props.user === 'anonymous' ? (
+          <LeadParagraph>You must be logged in</LeadParagraph>
+        ) : (
+          <LeadParagraph>We are redirecting you to CashNet...</LeadParagraph>
+        )}
+      </>
+    )
+  }
+}
+
+class CashnetPage extends Component {
   render() {
     return (
       <PlainLayout>
         <CashnetContainer>
           <Brand style={{ maxWidth: '350px' }} />
           <PageTitle>CashNET</PageTitle>
-
-          {this.state.user === 'anonymous' ? (
-            <LeadParagraph>You must be logged in</LeadParagraph>
-          ) : (
-            <LeadParagraph>We are redirecting you to CashNet...</LeadParagraph>
-          )}
+          <UserContext.Consumer>
+            {context => <CashnetRedirect user={context.user} />}
+          </UserContext.Consumer>
         </CashnetContainer>
       </PlainLayout>
     )
