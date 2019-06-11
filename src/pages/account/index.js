@@ -5,7 +5,7 @@ import { Flex, Box } from 'components/common/grid'
 import { UserContext } from 'components/contexts/user'
 import { Button } from 'components/common/button'
 import Link from 'gatsby-link'
-import { css } from 'emotion'
+import UnstyledList from 'components/common/type'
 import {
   AccountGroup,
   AccountTitle,
@@ -285,12 +285,7 @@ class UserAccountFormRole extends Component {
           <AccountData>{this.roles[this.props.roles[0]].name}</AccountData>
         ) : (
           <AccountData>
-            <ul
-              className={css`
-                list-style-type: none;
-                margin-left: 0;
-              `}
-            >
+            <UnstyledList>
               {this.props.roles.map(role => (
                 <React.Fragment key={role}>
                   {typeof this.roles[role] !== 'undefined' && (
@@ -298,7 +293,7 @@ class UserAccountFormRole extends Component {
                   )}
                 </React.Fragment>
               ))}
-            </ul>
+            </UnstyledList>
           </AccountData>
         )}
         {email ? (
