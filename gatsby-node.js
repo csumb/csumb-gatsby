@@ -3,7 +3,6 @@ const fs = require(`fs-extra`)
 const coursePages = require(`./src/node/courses`)
 const redirects = require('./src/node/redirects')
 const contentPages = require(`./src/node/pages`)
-const schedulePages = require(`./src/node/schedule`)
 const buildingPages = require(`./src/node/buildings`)
 const directoryPages = require(`./src/node/directory`)
 const everythingPages = require(`./src/node/everything`)
@@ -40,9 +39,6 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return buildingPages(graphql, actions)
-      })
-      .then(() => {
-        return schedulePages(graphql, actions)
       })
       .then(() => {
         return redirects(graphql, actions)
