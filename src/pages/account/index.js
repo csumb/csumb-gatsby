@@ -102,7 +102,7 @@ class UserAccountForm extends Component {
             You may have one or many roles on campus. These determine what you
             have access to :
           </p>
-          <UserAccountFormRole roles={user.profile.cmsRole} />
+          <UserAccountFormRole roles={user.profile.roles} />
           <p>
             <strong>Changing your role:</strong> Your role is based on your
             employment, application, and enrollment records.
@@ -187,8 +187,8 @@ class AccountFormAlumni extends Component {
 
     if (
       !(
-        user.profile.cmsRole.indexOf('csumb_aa_life_member') === -1 &&
-        user.profile.cmsRole.indexOf('student_graduate')
+        user.profile.roles.indexOf('csumb_aa_life_member') === -1 &&
+        user.profile.roles.indexOf('student_graduate')
       )
     ) {
       return null
