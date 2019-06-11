@@ -37,6 +37,10 @@ class DashboardPage extends Component {
     }
   }
 
+  login(data) {
+    navigate(data.site.siteMetadata.okta.login)
+  }
+
   render() {
     const { data } = this.props
     const { activeTab } = this.state
@@ -55,7 +59,7 @@ class DashboardPage extends Component {
         <UserContext.Consumer>
           {context => (
             <>
-              {context.user && (
+              {context.user && !context.user.anonymous ? (
                 <>
                   {this.redirectApplicant(context.user)}
                   <BreakpointContext.Consumer>
@@ -118,6 +122,8 @@ class DashboardPage extends Component {
                     )}
                   </BreakpointContext.Consumer>
                 </>
+              ) : (
+                <>{this.login(data)}</>
               )}
             </>
           )}
@@ -133,6 +139,9 @@ export const query = graphql`
   {
     site {
       siteMetadata {
+        okta {
+          login
+        }
         perSiteOlarkIds {
           site
           code
