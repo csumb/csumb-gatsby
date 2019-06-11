@@ -24,7 +24,7 @@ const NameBadgePreview = styled.div`
   padding: 1rem;
   min-height: 220px;
   text-align: center;
-  margin: 1rem;
+  margin-bottom: 1.5rem;
   color: ${colors.white};
   p {
     margin: 0;
@@ -245,14 +245,11 @@ class NameBadgeForm extends Component {
               <AlertSuccess>Your name badge has been ordered.</AlertSuccess>
             ) : (
               <form onSubmit={this.handleSubmit.bind(this)}>
+                <h3>Select the style of name badge</h3>
                 <Flex>
-                  <Box width={1 / 2} pr={4}>
+                  <Box width={1 / 3} pr={4}>
                     <h4>Title and department</h4>
-                    <LinkyButton
-                      style={{
-                        fontWeight:
-                          style === 'title-department' ? 'bold' : 'normal',
-                      }}
+                    <Button
                       onClick={event => {
                         event.preventDefault()
                         this.setState({
@@ -260,25 +257,28 @@ class NameBadgeForm extends Component {
                         })
                       }}
                     >
-                      Select title &amp; department
-                    </LinkyButton>
+                      {style && style == 'title-department' ? (
+                        <>Selected</>
+                      ) : (
+                        <>Select</>
+                      )}
+                    </Button>
+                  </Box>
+                  <Box width={2 / 3} pr={4}>
                     <NameBadgePreview>
                       <img src={logo} alt="" />
                       <h3>
                         {profile.firstName} {profile.lastName}
                       </h3>
-                      <p>
-                        <strong>{position.title}</strong>
-                      </p>
+                      <p>{position.title}</p>
                       <p>{position.department}</p>
                     </NameBadgePreview>
                   </Box>
-                  <Box width={1 / 2}>
+                </Flex>
+                <Flex>
+                  <Box width={1 / 3} pr={4}>
                     <h4>Department only</h4>
-                    <LinkyButton
-                      style={{
-                        fontWeight: style === 'department' ? 'bold' : 'normal',
-                      }}
+                    <Button
                       onClick={event => {
                         event.preventDefault()
                         this.setState({
@@ -286,8 +286,14 @@ class NameBadgeForm extends Component {
                         })
                       }}
                     >
-                      Select department only
-                    </LinkyButton>
+                      {style && style == 'department' ? (
+                        <>Selected</>
+                      ) : (
+                        <>Select</>
+                      )}
+                    </Button>
+                  </Box>
+                  <Box width={2 / 3} pr={4}>
                     <NameBadgePreview>
                       <img src={logo} alt="" />
                       <h3>
