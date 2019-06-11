@@ -72,8 +72,8 @@ exports.nameBadge = functions.https.onRequest(nameBadge)
 exports.login = functions.https.onRequest(login)
 
 exports.logout = functions.https.onRequest((request, response) => {
-  response.cookie('csumbUser', false, { expires: Date.now() })
-  response.cookie('csumbSession', false, { expires: Date.now() })
-  response.cookie('csumb-sites', false, { expires: Date.now() })
-  response.redirect('/')
+  response.cookie('csumbUser', false, { expires: new Date() })
+  response.cookie('csumbSession', false, { expires: new Date() })
+  response.cookie('csumb-sites', false, { expires: new Date() })
+  response.redirect('https://csumb.edu')
 })

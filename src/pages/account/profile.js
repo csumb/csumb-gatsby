@@ -35,20 +35,12 @@ const AccountPhoto = styled.img`
   max-width: 150px;
 `
 
-const updateProfileField = (field, value) => {
-  fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
-    credentials: 'include',
-  })
-    .then(response => {
-      return response.json()
-    })
-    .then(response => {
-      fetch(
-        `/cloud-functions/profile/update?token=${
-          response.id
-        }&field=${field}&value=${value}`
-      )
-    })
+const updateProfileField = (user, field, value) => {
+  fetch(
+    `/cloud-functions/profile/update?token=${user.session}&user=${
+      user._username
+    }&field=${field}&value=${value}`
+  )
 }
 
 class AccountProfilePage extends Component {
@@ -138,27 +130,21 @@ class UserAccountProfileForm extends Component {
   componentDidMount() {
     const that = this
     const now = new Date()
-    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
-      credentials: 'include',
-    })
+    const { user } = this.props
+    fetch(
+      `/cloud-functions/profile/get?token=${user.session}&user=${
+        user._username
+      }&_=${now.getTime()}`
+    )
       .then(response => {
         NProgress.inc()
         return response.json()
       })
       .then(response => {
-        fetch(
-          `/cloud-functions/profile/get?token=${response.id}&_=${now.getTime()}`
-        )
-          .then(response => {
-            NProgress.inc()
-            return response.json()
-          })
-          .then(response => {
-            NProgress.done()
-            that.setState({
-              profile: response,
-            })
-          })
+        NProgress.done()
+        that.setState({
+          profile: response,
+        })
       })
   }
 
@@ -248,7 +234,11 @@ class UserAccountProfileOfficeHoursForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    updateProfileField('appointmentCalendar', this.state.calendar)
+    updateProfileField(
+      this.props.user,
+      'appointmentCalendar',
+      this.state.calendar
+    )
     this.setState({
       updated: true,
     })
@@ -325,7 +315,7 @@ class UserAccountProfileOfficeHoursDescriptionForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    updateProfileField('officeHours', this.state.officeHours)
+    updateProfileField(this.props.user, 'officeHours', this.state.officeHours)
     this.setState({
       updated: true,
     })
@@ -421,7 +411,11 @@ class UserAccountProfileOfficeForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    updateProfileField('location', `${this.state.building}-${this.state.room}`)
+    updateProfileField(
+      this.props.user,
+      'location',
+      `${this.state.building}-${this.state.room}`
+    )
     this.setState({
       updated: true,
     })
@@ -512,7 +506,7 @@ class UserAccountProfilePhoneForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    updateProfileField('phone', this.state.phone)
+    updateProfileField(this.props.user, 'phone', this.state.phone)
     this.setState({
       updated: true,
     })
@@ -662,7 +656,7 @@ class UserAccountProfileBioForm extends Component {
 
 class UserAccountProfilePhoto extends Component {
   savePhoto(photo) {
-    updateProfileField('photo', photo.filesUploaded[0].url)
+    updateProfileField(this.props.user, 'photo', photo.filesUploaded[0].url)
   }
 
   render() {
@@ -704,7 +698,7 @@ class UserAccountProfilePhoto extends Component {
 
 class UserAccountProfileResume extends Component {
   saveResume(file) {
-    updateProfileField('resume', file.filesUploaded[0].url)
+    updateProfileField(this.props.user, 'resume', file.filesUploaded[0].url)
   }
 
   render() {

@@ -28,7 +28,7 @@ class UserEmergencyForm extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.user || typeof this.props.user.session) {
+    if (!this.props.user || typeof this.props.user.session === 'undefined') {
       return
     }
     NProgress.start()
