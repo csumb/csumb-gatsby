@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import Link from 'gatsby-link'
+import LinkInspect from 'components/utilities/link-inspect'
 import { colors } from 'style/theme'
 import Well from 'components/common/well'
 import PropTypes from 'prop-types'
@@ -12,7 +12,7 @@ const AccountSidebarOptions = styled.ul`
   margin: 0;
 `
 
-const AccountSidebarLink = styled(Link)`
+const AccountSidebarLink = styled(LinkInspect)`
   display: block;
   padding: 0.5rem;
   border-bottom: 1px solid ${colors.black};
