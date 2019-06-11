@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { UserContext } from 'components/contexts/user'
-import Cookies from 'universal-cookie'
-import { colors } from 'style/theme'
 import styled from '@emotion/styled'
+import Cookies from 'universal-cookie'
+import { UserContext } from '../contexts/user'
+import { colors } from '../../style'
 
 const EditButtonLink = styled.a`
   margin: 0 0 0.5rem 0.5rem;

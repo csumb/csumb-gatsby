@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle } from 'components/layouts/default'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
+import { Layout, PageTitle } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
 import {
   AccountGroup,
   AccountTitle,
   AccountData,
   AccountSidebar,
   AccountPlaceholder,
-} from 'components/pages/account'
-import { InputText, Submit } from 'components/common/forms'
-import { UserContext } from 'components/contexts/user'
+} from '../../components/pages/account'
+import { InputText, Submit } from '../../components/common/forms'
+import { UserContext } from '../../components/contexts/user'
 import NProgress from 'nprogress'
 
 const pricePerPage = 0.08

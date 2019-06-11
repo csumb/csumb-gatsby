@@ -1,11 +1,11 @@
 import React from 'react'
-import Byline from 'components/pages/news/byline'
 import moment from 'moment'
-import NewsContainer from 'components/pages/news/news-container'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import { Flex, Box } from 'components/common/grid'
-import { colors } from 'style/theme'
+import Byline from './byline'
+import NewsContainer from './news-container'
+import { Flex, Box } from '../../common/grid'
+import { colors } from '../../../style'
 
 const NewsTag = styled(Link)`
   color: ${colors.white};

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import LinkInspect from 'components/utilities/link-inspect'
-import { colors } from 'style/theme'
+import LinkInspect from '../../../utilities/link-inspect'
+import { colors } from '../../../../style'
 
 const PageNavigationList = styled.ul`
   list-style-type: none;

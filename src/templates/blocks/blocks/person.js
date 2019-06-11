@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { Flex, Box } from 'components/common/grid'
+import { Flex, Box } from '../../../components/common/grid'
 import Link from 'gatsby-link'
-import LinkInspect from 'components/utilities/link-inspect'
+import LinkInspect from '../../../components/utilities/link-inspect'
 import ContentLoader from 'react-content-loader'
 
 const Person = styled.div`

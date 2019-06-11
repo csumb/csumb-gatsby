@@ -4,10 +4,10 @@ import {
   PageTitle,
   SiteNavigation,
   SiteHeader,
-} from 'components/layouts/default'
-import Container from 'components/common/container'
+} from '../../components/layouts/default'
+import Container from '../../common/container'
 import Chart from 'react-chartjs'
-import { Flex, Box } from 'components/common/grid'
+import { Flex, Box } from '../../common/grid'
 import { graphql } from 'gatsby'
 
 const chartData = {

@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
-import bp from 'style/breakpoints'
-import { LinkyButton } from 'components/common/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronRight,
   faFileDownload,
 } from '@fortawesome/free-solid-svg-icons'
-import { Flex, Box } from 'components/common/grid'
+import { colors, bp } from '../../style'
+import { LinkyButton } from '../common/button'
+import { Flex, Box } from '../common/grid'
 
 const DocumentIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;

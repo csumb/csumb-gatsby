@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
-import { PageNavigation } from 'components/layouts/sections/navigation'
+import { PageNavigation } from '../components/layouts/sections/navigation'
 import typography from 'style/typography'
 
 typography.injectStyles()

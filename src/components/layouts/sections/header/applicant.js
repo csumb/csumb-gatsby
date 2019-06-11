@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
-import { UserContext } from 'components/contexts/user'
+import { colors } from '../../../../style'
+import { UserContext } from '../../../contexts/user'
 import Link from 'gatsby-link'
 
 const ApplicantLink = styled(Link)`

@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-import { Layout } from 'components/layouts/default'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import PageTitle from 'components/layouts/sections/header/page-title'
+import { Layout, PageTitle, SiteHeader } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
 import {
   ScheduleList,
   ScheduleListItem,
   ScheduleTermList,
   GEList,
-} from 'components/pages/schedule'
+} from '../../components/pages/schedule'
 
 class ScheduleFront extends Component {
   render() {

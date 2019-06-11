@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle } from 'components/layouts/default'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
-import { UserContext } from 'components/contexts/user'
+import { Layout, PageTitle } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
+import { UserContext } from '../../components/contexts/user'
 import Link from 'gatsby-link'
 import styled from '@emotion/styled'
 import ReactFilestack from 'filestack-react'
@@ -11,20 +11,20 @@ import {
   InputSelect,
   InputTextarea,
   Submit,
-} from 'components/common/forms'
+} from '../../components/common/forms'
 import { graphql } from 'gatsby'
-import { AlertSuccess } from 'components/common/alert'
+import { AlertSuccess } from '../../components/common/alert'
 import {
   AccountGroup,
   AccountTitle,
   AccountData,
   AccountSidebar,
   AccountPlaceholder,
-} from 'components/pages/account'
-import { Button } from 'components/common/button'
+} from '../../components/pages/account'
+import { Button } from '../../components/common/button'
 import SimpleMDE from 'react-simplemde-editor'
 import showdown from 'showdown'
-import { LeadParagraph } from 'components/common/type'
+import { LeadParagraph } from '../../components/common/type'
 import 'simplemde/dist/simplemde.min.css'
 import NProgress from 'nprogress'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { EducationAbroadSearchAreaPage } from 'components/pages/educationabroad'
+import { EducationAbroadSearchAreaPage } from '../../../../components/pages/educationabroad'
 
 const EducationAbroadSearchAreaSemesterPage = ({ data }) => (
   <EducationAbroadSearchAreaPage

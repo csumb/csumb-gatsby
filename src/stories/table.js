@@ -5,7 +5,7 @@ import {
   TableRow,
   TableHeader,
   TableCell,
-} from 'components/common/table'
+} from '../components/common/table'
 import typography from 'style/typography'
 
 typography.injectStyles()

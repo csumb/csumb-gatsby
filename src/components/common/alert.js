@@ -1,18 +1,17 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Alert from '@reach/alert'
-import { colors } from 'style/theme'
+import { colors, bp } from '../../style'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import color from 'color'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import VisuallyHidden from '../utilities/visually-hidden'
 import {
   faCheckCircle,
   faExclamationTriangle,
   faExclamationCircle,
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons'
-import { Flex, Box } from 'components/common/grid'
-import bp from 'style/breakpoints'
+import { Flex, Box } from './grid'
 
 const baseStyle = `
   display: block;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { colors, fonts } from 'style/theme'
-import { Menu, MenuList, MenuButton, MenuLink } from 'components/common/menu'
-import { UserContext } from 'components/contexts/user'
+import { colors, fonts } from '../../../../style'
+import { Menu, MenuList, MenuButton, MenuLink } from '../../../common/menu'
+import { UserContext } from '../../../contexts/user'
 import Link from 'gatsby-link'
 import Cookies from 'universal-cookie'
 

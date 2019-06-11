@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
-import Container from 'components/common/container'
+import {
+  Layout,
+  PageTitle,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
+import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
-import Blocks from 'templates/blocks'
-import { UniversityPersonnelForm } from 'components/pages/university-personnel'
-import { InputText, Submit } from 'components/common/forms'
-import Well from 'components/common/well'
-import { Flex, Box } from 'components/common/grid'
+import Blocks from '../../templates/blocks'
+import { UniversityPersonnelForm } from '../../components/pages/university-personnel'
+import { InputText, Submit } from '../../components/common/forms'
+import Well from '../../components/common/well'
+import { Flex, Box } from '../../components/common/grid'
 
 class UniversityPersonnelAllformsSearch extends Component {
   state = {

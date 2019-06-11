@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
-import { Layout, SiteHeader, SiteNavigation } from 'components/layouts/default'
-import Container from 'components/common/container'
+import {
+  Layout,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
+import Container from '../../components/common/container'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
-import { Flex, Box } from 'components/common/grid'
-import Well from 'components/common/well'
-import { ITSystemStatus, ITAlerts } from 'components/pages/it'
-import { InputText, Submit } from 'components/common/forms'
+import { Flex, Box } from '../../components/common/grid'
+import Well from '../../components/common/well'
+import { ITSystemStatus, ITAlerts } from '../../components/pages/it'
+import { InputText, Submit } from '../../components/common/forms'
 import styled from '@emotion/styled'
-import Blocks from 'templates/blocks'
+import Blocks from '../../templates/blocks'
 
 const ITServiceHeader = styled.h3`
   margin-bottom: 0.4rem;

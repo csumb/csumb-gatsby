@@ -1,7 +1,7 @@
 import React from 'react'
-import { Layout, PageTitle } from 'components/layouts/default'
+import { Layout, PageTitle } from '../../../components/layouts/default'
 import { graphql } from 'gatsby'
-import Container from 'components/common/container'
+import Container from '../../../components/common/container'
 
 const ChangeNamePage = props => {
   const page = props.data.allMarkdownRemark.edges[0].node

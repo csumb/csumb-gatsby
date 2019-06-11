@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import Container from 'components/common/container'
-import { Layout, SiteHeader } from 'components/layouts/default'
-import { UserContext } from 'components/contexts/user'
+import Container from '../../components/common/container'
+import { Layout, SiteHeader } from '../../components/layouts/default'
+import { UserContext } from '../../components/contexts/user'
 import { graphql } from 'gatsby'
-import Olark from 'components/utilities/olark'
+import Olark from '../../components/utilities/olark'
 import styled from '@emotion/styled'
 import {
   DashboardApps,
   DashboardContent,
   DashboardMobileToolbar,
-} from 'components/dashboard'
+} from '../../components/dashboard'
 import { navigate } from '@reach/router'
 import Link from 'gatsby-link'
-import BreakpointContext from 'components/contexts/breakpoint'
+import BreakpointContext from '../../components/contexts/breakpoint'
 
 const ArchivedMessages = styled.p`
   text-align: right;

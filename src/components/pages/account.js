@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import LinkInspect from 'components/utilities/link-inspect'
-import { colors } from 'style/theme'
-import Well from 'components/common/well'
-import PropTypes from 'prop-types'
 import ContentLoader from 'react-content-loader'
-import { Flex, Box } from 'components/common/grid'
+import LinkInspect from '../utilities/link-inspect'
+import { colors } from '../../style'
+import Well from '../common/well'
+import PropTypes from 'prop-types'
+import { Flex, Box } from '../common/grid'
 
 const AccountSidebarOptions = styled.ul`
   list-style-type: none;

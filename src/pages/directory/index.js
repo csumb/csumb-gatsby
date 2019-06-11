@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { Layout, SiteHeader } from 'components/layouts/default'
+import { Layout, SiteHeader } from '../../components/layouts/default'
 import styled from '@emotion/styled'
-import { InputText, Submit } from 'components/common/forms'
-import Container from 'components/common/container'
+import { InputText, Submit } from '../../components/common/forms'
+import Container from '../../components/common/container'
 import Link from 'gatsby-link'
-import { Box, Flex } from 'components/common/grid'
+import { Box, Flex } from '../../components/common/grid'
 import { graphql } from 'gatsby'
 import phoneFormatter from 'phone-formatter'
-import { DirectoryNavigation } from 'components/pages/directory'
+import { DirectoryNavigation } from '../../components/pages/directory'
 
 const DirectoryPage = ({ data }) => (
   <Layout pageTitle="Directory">

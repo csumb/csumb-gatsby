@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import VisuallyHidden from '../../../components/utilities/visually-hidden'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
 

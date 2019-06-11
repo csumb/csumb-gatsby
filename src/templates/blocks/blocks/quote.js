@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import LinkInspect from 'components/utilities/link-inspect'
+import LinkInspect from '../../../components/utilities/link-inspect'
 import parseHtml from '../parse-html'
-import { Flex, Box } from 'components/common/grid'
+import { Flex, Box } from '../../../components/common/grid'
 import quoteIcon from 'assets/images/quote.svg'
 
 const Quote = styled.blockquote`

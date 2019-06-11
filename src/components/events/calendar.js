@@ -1,6 +1,6 @@
 import styled from 'react-emotion'
 import Calendar from 'react-calendar'
-import { colors } from 'style/theme'
+import { colors } from '../../style'
 
 const StyledCalendar = styled(Calendar)`
   font-size: 0.7rem;

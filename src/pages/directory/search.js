@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import { Flex, Box } from 'components/common/grid'
-import { InputText, Submit } from 'components/common/forms'
+import { Flex, Box } from '../../components/common/grid'
+import { InputText, Submit } from '../../components/common/forms'
 import styled from '@emotion/styled'
-import Container from 'components/common/container'
-import { Layout, SiteHeader } from 'components/layouts/default'
+import Container from '../../components/common/container'
+import { Layout, SiteHeader } from '../../components/layouts/default'
 import url from 'url'
 import Link from 'gatsby-link'
-import LinkInspect from 'components/utilities/link-inspect'
+import LinkInspect from '../../components/utilities/link-inspect'
 import { graphql } from 'gatsby'
 import phoneFormatter from 'phone-formatter'
-import { DirectoryNavigation } from 'components/pages/directory'
+import { DirectoryNavigation } from '../../components/pages/directory'
 
 const DirectoryItem = styled.div`
   margin-bottom: 2rem;

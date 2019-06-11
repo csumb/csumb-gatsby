@@ -1,9 +1,14 @@
 import React from 'react'
-import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
-import Container from 'components/common/container'
+import {
+  Layout,
+  PageTitle,
+  SiteHeader,
+  SiteNavigation,
+} from '../../../components/layouts/default'
+import Container from '../../../components/common/container'
 import { graphql } from 'gatsby'
-import Blocks from 'templates/blocks'
-import { EducationAbroadProgramList } from 'components/pages/educationabroad'
+import Blocks from '../../../templates/blocks'
+import { EducationAbroadProgramList } from '../../../components/pages/educationabroad'
 
 const EducationAbroadProgramsSummer = ({ data }) => (
   <Layout pageTitle="Summer programs">

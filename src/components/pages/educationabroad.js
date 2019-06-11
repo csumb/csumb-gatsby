@@ -6,20 +6,20 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
 import slugify from 'slugify'
-import { colors } from 'style/theme'
+import { colors } from '../../style'
 import {
   Layout,
   PageTitle,
   SiteHeader,
   SiteNavigation,
-} from 'components/layouts/default'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
+} from '../layouts/default'
+import Container from '../common/container'
+import { Flex, Box } from '../common/grid'
 import Link from 'gatsby-link'
-import { UnstyledList } from 'components/common/type'
-import Well from 'components/common/well'
-import Blocks from 'templates/blocks'
-import { InputText, InputSelect, Submit } from 'components/common/forms'
+import { UnstyledList } from '../common/type'
+import Well from '../common/well'
+import Blocks from '../../templates/blocks'
+import { InputText, InputSelect, Submit } from '../common/forms'
 
 const EducationAbroadWrapper = styled.div`
   margin-bottom: 1rem;

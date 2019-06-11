@@ -3,8 +3,8 @@ import VisuallyHidden from 'components/utilities/visually-hidden'
 import PropTypes from 'prop-types'
 import idGenerator from 'react-id-generator'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
-import { css } from 'emotion'
+import { colors } from '../../style'
+import ClearFix from '../utilities/clear-fix'
 import Select from 'react-select'
 
 const focusStyle = `
@@ -364,11 +364,7 @@ const LegendElement = styled.legend`
 const Fieldset = ({ legend, children }) => (
   <FieldsetElement>
     <LegendElement>{legend}</LegendElement>
-    <div
-      className={css`
-        clear: both;
-      `}
-    />
+    <ClearFix />
     {children}
   </FieldsetElement>
 )

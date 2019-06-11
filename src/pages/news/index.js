@@ -1,8 +1,12 @@
 import React from 'react'
-import { Layout, SiteHeader, SiteNavigation } from 'components/layouts/default'
-import Container from 'components/common/container'
+import {
+  Layout,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
+import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
-import Blocks from 'templates/blocks'
+import Blocks from '../../templates/blocks'
 
 const NewsPage = ({ data }) => {
   return (

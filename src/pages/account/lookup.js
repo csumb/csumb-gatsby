@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle } from 'components/layouts/default'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
-import { InputText, InputDate, Submit } from 'components/common/forms'
-import { LeadParagraph } from 'components/common/type'
-import Well from 'components/common/well'
+import { Layout, PageTitle } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
+import { InputText, InputDate, Submit } from '../../components/common/forms'
+import { LeadParagraph } from '../../components/common/type'
+import Well from '../../components/common/well'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import Loading from 'components/common/loading'
-import { AlertDanger } from 'components/common/alert'
+import Loading from '../../components/common/loading'
+import { AlertDanger } from '../../components/common/alert'
 
 const Username = styled.span`
   font-weight: bold;

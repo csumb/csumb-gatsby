@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Event } from 'components/events'
+import { Event } from '../../../components/events'
 
 class BlockEvent extends Component {
   render() {

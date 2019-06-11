@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import url from 'url'
-import Loading from 'components/common/loading'
-import { Layout } from 'components/layouts/default'
-
-import { HomepageHero } from 'components/homepage'
+import Loading from '../../../../components/common/loading'
+import { Layout } from '../../../../layouts/default'
+import { HomepageHero } from '../../../../homepage'
 
 class ContentfulPreviewHomepageHeroImage extends Component {
   state = {

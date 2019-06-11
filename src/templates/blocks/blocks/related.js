@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
-import LinkInspect from 'components/utilities/link-inspect'
-import VisuallyHidden from 'components/utilities/visually-hidden'
-import bp from 'style/breakpoints'
+import { colors, bp } from '../../../style'
+import LinkInspect from '../../../components/utilities/link-inspect'
+import VisuallyHidden from '../../../components/utilities/visually-hidden'
 
 const relatedBreakpoints = bp({
   margin: ['0.5rem 0', '0.5rem 0 0.5rem 0.5rem'],

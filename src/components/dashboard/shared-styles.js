@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors, fonts } from 'style/theme'
+import { colors, fonts } from '../../style'
 
 const CloseDialog = styled.button`
   cursor: pointer;

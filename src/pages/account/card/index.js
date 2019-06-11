@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle } from 'components/layouts/default'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
+import { Layout, PageTitle } from '../../../components/layouts/default'
+import Container from '../../../components/common/container'
+import { Flex, Box } from '../../../components/common/grid'
 import {
   AccountGroup,
   AccountTitle,
   AccountSidebar,
   AccountPlaceholder,
-} from 'components/pages/account'
-import { UserContext } from 'components/contexts/user'
+} from '../../../components/pages/account'
+import { UserContext } from '../../../components/contexts/user'
 import {
   Table,
   TableRow,
   TableHeader,
   TableCell,
-} from 'components/common/table'
-import { ButtonLink } from 'components/common/button'
+} from '../../../components/common/table'
+import { ButtonLink } from '../../../components/common/button'
 import NProgress from 'nprogress'
 
 class AccountCardPage extends Component {

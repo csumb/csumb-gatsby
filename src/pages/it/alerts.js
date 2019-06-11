@@ -4,10 +4,10 @@ import {
   PageTitle,
   SiteHeader,
   SiteNavigation,
-} from 'components/layouts/default'
-import Container from 'components/common/container'
+} from '../../components/layouts/default'
+import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
-import Loading from 'components/common/loading'
+import Loading from '../../components/common/loading'
 
 class ITAlertsPage extends Component {
   alertRef = React.createRef()

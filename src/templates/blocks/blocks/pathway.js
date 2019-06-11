@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
-import { Flex, Box } from 'components/common/grid'
-import bp from 'style/breakpoints'
+import { colors, bp } from '../../../style'
+import { Flex, Box } from '../../../components/common/grid'
 
 const PathwayRow = styled(Flex)`
   border-bottom: 1px solid ${colors.muted.highlight};

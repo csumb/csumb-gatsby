@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
+import { colors } from '../../style'
 
 const Table = styled.table`
   th,

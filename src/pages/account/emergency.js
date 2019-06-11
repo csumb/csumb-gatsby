@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle } from 'components/layouts/default'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
-import { UserContext } from 'components/contexts/user'
-import { Button } from 'components/common/button'
-import Loading from 'components/common/loading'
-import { InputText, Submit } from 'components/common/forms'
+import { Layout, PageTitle } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
+import { UserContext } from '../../components/contexts/user'
+import { Button } from '../../components/common/button'
+import Loading from '../../components/common/loading'
+import { InputText, Submit } from '../../components/common/forms'
 import {
   AccountGroup,
   AccountTitle,
   AccountData,
   AccountSidebar,
   AccountPlaceholder,
-} from 'components/pages/account'
+} from '../../components/pages/account'
 import Link from 'gatsby-link'
-import { AlertDanger, AlertSuccess } from 'components/common/alert'
+import { AlertDanger, AlertSuccess } from '../../components/common/alert'
 import phoneFormatter from 'phone-formatter'
 import NProgress from 'nprogress'
 

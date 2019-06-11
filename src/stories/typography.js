@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
-import { LeadParagraph, HelpParagraph } from 'components/common/type'
+import { LeadParagraph, HelpParagraph } from '../components/common/type'
 import typography from 'style/typography'
 import { sampleText, shortSampleText } from './sample-text'
 

@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
+import { colors } from '../../../style'
 import color from 'color'
-import HeroImage from 'components/common/hero-image'
-import LinkInspect from 'components/utilities/link-inspect'
-import Container from 'components/common/container'
-import BreakpointContext from 'components/contexts/breakpoint'
+import HeroImage from '../../../components/common/hero-image'
+import LinkInspect from '../../../components/utilities/link-inspect'
+import Container from '../../../components/common/container'
+import BreakpointContext from '../../../components/contexts/breakpoint'
 const heroHeight = '60vh'
 
 const background = color(colors.primary.dark)

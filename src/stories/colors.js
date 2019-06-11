@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import typography from 'style/typography'
 import { colors } from 'style/theme'
 import styled from '@emotion/styled'
-import { Flex, Box } from 'components/common/grid'
+import { Flex, Box } from '../components/common/grid'
 
 const ColorBox = styled(Box)`
   border: 1px solid #000;

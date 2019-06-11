@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import Header from 'components/layouts/sections/header'
-import Footer from 'components/layouts/sections/footer/global'
+import Header from './sections/header'
+import Footer from './sections/footer/global'
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
-import Pardot from 'components/utilities/pardot'
+import Pardot from '../utilities/pardot'
 import PageTitle from './sections/header/page-title'
 import SiteNavigation from './sections/navigation/site'
 import PageNavigation from './sections/navigation/page'
 import SiteHeader from './sections/header/site-header'
-
 import Emergency from './alerts/emergency'
 
 const SkipNavLink = styled.a`

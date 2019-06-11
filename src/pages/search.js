@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle } from 'components/layouts/default'
+import { Layout, PageTitle } from '../components/layouts/default'
 import Link from 'gatsby-link'
 import { navigate } from '@reach/router'
 import url from 'url'
-import { Flex, Box } from 'components/common/grid'
-import { InputText, Submit } from 'components/common/forms'
-import Container from 'components/common/container'
+import { Flex, Box } from '../components/common/grid'
+import { InputText, Submit } from '../components/common/forms'
+import Container from '../components/common/container'
 import styled from '@emotion/styled'
 
 const SearchDescription = styled.p`

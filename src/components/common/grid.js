@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import bp from 'style/breakpoints'
+import { bp } from '../../style'
 
 const spacingValues = value => {
   return Array.isArray(value)

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Container from 'components/common/container'
-import styled from '@emotion/styled'
-import { colors, fonts } from 'style/theme'
-import { Menu, MenuList, MenuButton, MenuLink } from 'components/common/menu'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styled from '@emotion/styled'
 import slugify from 'slugify'
-import BreakpointContext from 'components/contexts/breakpoint'
+import Container from '../../../common/container'
+import { colors, fonts } from '../../../../style'
+import { Menu, MenuList, MenuButton, MenuLink } from '../../../common/menu'
+import BreakpointContext from '../../../contexts/breakpoint'
 
 const navigationFontSize = '0.92rem'
 

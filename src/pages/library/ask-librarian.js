@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
-import Container from 'components/common/container'
+import {
+  Layout,
+  PageTitle,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
+import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
-import Blocks from 'templates/blocks'
+import Blocks from '../../templates/blocks'
 
 class LibraryPage extends Component {
   chatRef = React.createRef()

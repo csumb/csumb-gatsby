@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import Container from 'components/common/container'
-import { colors } from 'style/theme'
-import bp from 'style/breakpoints'
+import Container from '../../../common/container'
+import { colors, bp } from '../../../../style'
 
 const siteHeaderSize = bp({
   fontSize: ['1.5rem', '2rem', '2.5rem'],

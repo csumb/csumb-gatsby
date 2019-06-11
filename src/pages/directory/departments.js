@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle, SiteHeader } from 'components/layouts/default'
+import { Layout, PageTitle, SiteHeader } from '../../components/layouts/default'
 import styled from '@emotion/styled'
-import Container from 'components/common/container'
-import LinkInspect from 'components/utilities/link-inspect'
-import { LinkyButton } from 'components/common/button'
-import Well from 'components/common/well'
+import Container from '../../components/common/container'
+import LinkInspect from '../../components/utilities/link-inspect'
+import { LinkyButton } from '../../components/common/button'
+import Well from '../../components/common/well'
 import { graphql } from 'gatsby'
-import { DirectoryNavigation } from 'components/pages/directory'
-import { InputText, Submit } from 'components/common/forms'
-import { Flex, Box } from 'components/common/grid'
+import { DirectoryNavigation } from '../../components/pages/directory'
+import { InputText, Submit } from '../../components/common/forms'
+import { Flex, Box } from '../../components/common/grid'
 
 const Letter = styled(LinkyButton)`
   display: inline-block;

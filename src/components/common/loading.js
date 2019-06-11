@@ -1,8 +1,8 @@
 import React from 'react'
-import { colors } from 'style/theme'
+import { colors } from '../../style'
 import styled from '@emotion/styled'
 import ReactLoading from 'react-loading'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import VisuallyHidden from '../utilities/visually-hidden'
 
 const LoadingWrapper = styled.div`
   text-align: center;

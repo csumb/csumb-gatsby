@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
-import Container from 'components/common/container'
+import {
+  Layout,
+  PageTitle,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
+import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
-import Well from 'components/common/well'
+import Well from '../../components/common/well'
 import styled from '@emotion/styled'
-import { UniversityPersonnelPages } from 'components/pages/university-personnel'
+import { UniversityPersonnelPages } from '../../components/pages/university-personnel'
 
 const allServicesPageId = 21910
 

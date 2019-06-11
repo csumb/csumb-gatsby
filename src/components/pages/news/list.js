@@ -2,8 +2,8 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 import moment from 'moment'
-import { Flex, Box } from 'components/common/grid'
-import { colors } from 'style/theme'
+import { Flex, Box } from '../../common/grid'
+import { colors } from '../../../style'
 
 const NewsList = styled.section``
 

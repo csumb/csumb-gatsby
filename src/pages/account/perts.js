@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Brand from 'components/layouts/sections/header/brand'
+import Brand from '../../components/layouts/sections/header/brand'
 import url from 'url'
-import PlainLayout from 'components/layouts/plain'
-import { PageTitle } from 'components/layouts/default'
+import PlainLayout from '../../components/layouts/plain'
+import { PageTitle } from '../../components/layouts/default'
 import { graphql } from 'gatsby'
-import Container from 'components/common/container'
-import { UserContext } from 'components/contexts/user'
+import Container from '../../components/common/container'
+import { UserContext } from '../../components/contexts/user'
 
 class PertsRedirect extends Component {
   componentDidMount() {

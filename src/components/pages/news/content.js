@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NewsContainer from 'components/pages/news/news-container'
+import NewsContainer from './news-container'
 
 const NodeTypes = {}
 

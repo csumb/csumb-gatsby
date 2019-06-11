@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle } from 'components/layouts/default'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
-import { UserContext } from 'components/contexts/user'
+import { Layout, PageTitle } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
+import { UserContext } from '../../components/contexts/user'
 import { StaticQuery, graphql } from 'gatsby'
-import Loading from 'components/common/loading'
-import { InputText, Submit } from 'components/common/forms'
+import Loading from '../../components/common/loading'
+import { InputText, Submit } from '../../components/common/forms'
 import logo from 'assets/images/csumb-logo-white.svg'
 import styled from '@emotion/styled'
-import { AlertSuccess } from 'components/common/alert'
-import { colors } from 'style/theme'
+import { AlertSuccess } from '../../components/common/alert'
+import { colors } from '../../style'
 import {
   AccountGroup,
   AccountTitle,
   AccountSidebar,
   AccountPlaceholder,
-} from 'components/pages/account'
-import { Button, LinkyButton } from 'components/common/button'
+} from '../../components/pages/account'
+import { Button, LinkyButton } from '../../components/common/button'
 
 const NameBadgePreview = styled.div`
   background: ${colors.primary.darkest};

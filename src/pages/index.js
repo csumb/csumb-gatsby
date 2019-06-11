@@ -1,7 +1,7 @@
 import React from 'react'
-import { Layout } from 'components/layouts/default'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
+import { Layout } from '../components/layouts/default'
+import Container from '../components/common/container'
+import { Flex, Box } from '../components/common/grid'
 import { graphql } from 'gatsby'
 import moment from 'moment'
 import {
@@ -11,7 +11,7 @@ import {
   HomepageImageNavigation,
   MoreItemsButton,
   HomepageHero,
-} from 'components/homepage'
+} from '../components/homepage'
 
 const sortItems = ({
   allContentfulHomepageEvent,

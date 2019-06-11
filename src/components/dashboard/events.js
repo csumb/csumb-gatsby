@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { fonts } from 'style/theme'
+import { fonts } from '../../style'
 import styled from '@emotion/styled'
-import { AlertEmpty } from 'components/common/alert'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import { AlertEmpty } from '../common/alert'
+import VisuallyHidden from '../utilities/visually-hidden'
 import Link from 'gatsby-link'
 
 import {

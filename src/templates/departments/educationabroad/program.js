@@ -1,29 +1,28 @@
 import React, { Component } from 'react'
-import { Layout } from 'components/layouts/default'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/common/container'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import { Flex, Box } from 'components/common/grid'
+import { Layout } from '../../../components/layouts/default'
+import SiteHeader from '../../../components/layouts/sections/header/site-header'
+import Container from '../../../components/common/container'
+import PageTitle from '../../../components/layouts/sections/header/page-title'
+import { Flex, Box } from '../../../components/common/grid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronDown,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
 import styled from '@emotion/styled'
-import Well from 'components/common/well'
-import { ButtonLink } from 'components/common/button'
-import { SiteNavigation } from 'components/layouts/sections/navigation'
+import Well from '../../../components/common/well'
+import { ButtonLink } from '../../../components/common/button'
+import { SiteNavigation } from '../../../components/layouts/sections/navigation'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
-import { colors } from 'style/theme'
+import { colors } from '../../../style'
 import Link from 'gatsby-link'
-import ReturnLink from 'components/common/return-link'
-
+import ReturnLink from '../../../components/common/return-link'
 import {
   Table,
   TableRow,
   TableHeader,
   TableCell,
-} from 'components/common/table'
+} from '../../../components/common/table'
 
 const ApplyNowButton = styled(ButtonLink)`
   margin-left: 1rem;

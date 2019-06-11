@@ -1,9 +1,9 @@
 import React from 'react'
-import PlainLayout from 'components/layouts/plain'
-import { PageTitle } from 'components/layouts/default'
-import { LeadParagraph } from 'components/common/type'
-import Brand from 'components/layouts/sections/header/brand'
 import styled from '@emotion/styled'
+import PlainLayout from '../../components/layouts/plain'
+import { PageTitle } from '../../components/layouts/default'
+import { LeadParagraph } from '../../components/common/type'
+import Brand from '../../components/layouts/sections/header/brand'
 
 const OktaDeniedContainer = styled.div`
   max-width: 60ch;

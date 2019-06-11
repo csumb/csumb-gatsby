@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
-import Container from 'components/common/container'
-import { LeadParagraph, HeroParagraph } from 'components/common/type'
+import {
+  Layout,
+  PageTitle,
+  SiteHeader,
+  SiteNavigation,
+} from '../components/layouts/default'
+import Container from '../components/common/container'
+import { LeadParagraph, HeroParagraph } from '../components/common/type'
 import { graphql } from 'gatsby'
-import { Button, LinkyButton } from 'components/common/button'
-import { Flex, Box } from 'components/common/grid'
+import { Button, LinkyButton } from '../components/common/button'
+import { Flex, Box } from '../components/common/grid'
 import Link from 'gatsby-link'
-import { InputText, Submit } from 'components/common/forms'
+import { InputText, Submit } from '../components/common/forms'
 import styled from '@emotion/styled'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import VisuallyHidden from '../components/utilities/visually-hidden'
 import {
   Table,
   TableRow,
   TableCell,
   TableHeader,
-} from 'components/common/table'
+} from '../components/common/table'
 
 const CostButton = styled(Button)`
   width: 80%;

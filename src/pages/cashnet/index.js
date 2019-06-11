@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import PlainLayout from 'components/layouts/plain'
-import { PageTitle } from 'components/layouts/default'
-import { LeadParagraph } from 'components/common/type'
 import styled from '@emotion/styled'
 import url from 'url'
-import Brand from 'components/layouts/sections/header/brand'
-import { UserContext } from 'components/contexts/user'
+import PlainLayout from '../../components/layouts/plain'
+import { PageTitle } from '../../components/layouts/default'
+import { LeadParagraph } from '../../components/common/type'
+import Brand from '../../components/layouts/sections/header/brand'
+import { UserContext } from '../../components/contexts/user'
 
 const CashnetContainer = styled.div`
   max-width: 60ch;

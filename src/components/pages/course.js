@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
-import { Layout } from 'components/layouts/default'
-import Container from 'components/common/container'
-import PageTitle from 'components/layouts/sections/header/page-title'
+import { Layout } from '../layouts/default'
+import Container from '../common/container'
+import PageTitle from '../layouts/sections/header/page-title'
 import Link from 'gatsby-link'
 
 const CouseListWrapper = styled.div`

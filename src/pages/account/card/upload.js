@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle, SiteHeader } from 'components/layouts/default'
-import Container from 'components/common/container'
-import { AlertWarning, AlertSuccess } from 'components/common/alert'
-import { UserContext } from 'components/contexts/user'
-import { Flex, Box } from 'components/common/grid'
-import samplePhoto from 'assets/images/card-sample-photo.png'
+import {
+  Layout,
+  PageTitle,
+  SiteHeader,
+} from '../../../components/layouts/default'
+import Container from '../../../components/common/container'
+import { AlertWarning, AlertSuccess } from '../../../components/common/alert'
+import { UserContext } from '../../../components/contexts/user'
+import { Flex, Box } from '../../../components/common/grid'
+import samplePhoto from '../../../assets/images/card-sample-photo.png'
 import styled from '@emotion/styled'
-import { Button } from 'components/common/button'
+import { Button } from '../../../components/common/button'
 import ReactFilestack, { client } from 'filestack-react'
 
 const apiKey = process.env.GATSBY_CSUMB_FILESTACK_KEY

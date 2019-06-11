@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
+import { colors } from '../../style'
 
 const Well = styled.div`
   border: 1px solid ${colors.gray.light};
