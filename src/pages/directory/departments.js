@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
+import { Layout, PageTitle, SiteHeader } from 'components/layouts/default'
 import styled from '@emotion/styled'
 import Container from 'components/common/container'
 import LinkInspect from 'components/utilities/link-inspect'

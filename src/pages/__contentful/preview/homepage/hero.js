@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import url from 'url'
 import Loading from 'components/common/loading'
-import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
+import { Layout } from 'components/layouts/default'
 
 import { HomepageHero } from 'components/homepage'
 

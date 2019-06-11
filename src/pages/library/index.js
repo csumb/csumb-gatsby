@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
+import { Layout, SiteHeader, SiteNavigation } from 'components/layouts/default'
 import Container from 'components/common/container'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'

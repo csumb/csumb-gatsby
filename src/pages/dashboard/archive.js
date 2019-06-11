@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Container from 'components/common/container'
-import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
+import { Layout, SiteHeader } from 'components/layouts/default'
 import { UserContext } from 'components/contexts/user'
 import { DashboardContent, DashboardMobileToolbar } from 'components/dashboard'
 import BreakpointContext from 'components/contexts/breakpoint'

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Layout, PageTitle, SiteHeader, SiteNavigation } from 'components/layouts/default'
+import { Layout, SiteHeader } from 'components/layouts/default'
 import styled from '@emotion/styled'
 import { InputText, Submit } from 'components/common/forms'
 import Container from 'components/common/container'
