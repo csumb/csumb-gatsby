@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import { UserContext } from 'components/contexts/user'
 
 class Olark extends Component {
-  state = {
-    olarkDidLoad: false,
-  }
-
   componentDidMount() {
     if (typeof window === 'undefined' || typeof window.olark !== 'undefined') {
       return
@@ -21,36 +17,10 @@ class Olark extends Component {
     olark.identify(${siteId});
       `
     document.body.appendChild(script)
-    this.setState({
-      olarkDidLoad: true,
-    })
-  }
-
-  setUser(user) {
-    if (
-      user.anonymous ||
-      typeof window === 'undefined' ||
-      typeof window.olark === 'undefined'
-    ) {
-      return
-    }
-    window.olark('api.visitor.updateEmailAddress', {
-      emailAddress: user.profile.email,
-    })
-    window.olark('api.visitor.updateFullName', {
-      fullName: `${user.profile.firstName} ${user.profile.lastName}`,
-    })
   }
 
   render() {
-    if (!this.state.olarkDidLoad) {
-      return null
-    }
-    return (
-      <UserContext.Consumer>
-        {context => <>{context.user && this.setUser(context.user)}</>}
-      </UserContext.Consumer>
-    )
+    return null
   }
 }
 
