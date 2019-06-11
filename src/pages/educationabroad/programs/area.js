@@ -11,6 +11,7 @@ import Link from 'gatsby-link'
 import { UnstyledList } from 'components/common/type'
 import slugify from 'slugify'
 import Well from 'components/common/well'
+import Blocks from 'templates/blocks'
 import { InputText, InputSelect, Submit } from 'components/common/forms'
 
 const ProgramList = styled(UnstyledList)`
@@ -198,6 +199,11 @@ const EducationAbroadSearchAreaPage = ({ data }) => {
         )}
       <Container>
         <PageTitle>Programs by subject area</PageTitle>
+        {data.allCsumbPage &&
+          data.allCsumbPage.edges &&
+          data.allCsumbPage.edges[0] && (
+            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+          )}
         <SubjectAreas areas={areas} majors={majors} />
       </Container>
     </Layout>
@@ -212,6 +218,21 @@ export const query = graphql`
       edges {
         node {
           navigation
+        }
+      }
+    }
+    allCsumbPage(
+      filter: {
+        pagePath: {
+          eq: "educationabroad/semesteryear-programs-subject-area-editing"
+        }
+        site: { eq: "educationabroad" }
+      }
+    ) {
+      edges {
+        node {
+          pageContent
+          layout
         }
       }
     }

@@ -5,6 +5,7 @@ import Container from 'components/common/container'
 import PageTitle from 'components/layouts/sections/header/page-title'
 import { graphql } from 'gatsby'
 import SiteNavigation from 'components/layouts/sections/navigation/site'
+import Blocks from 'templates/blocks'
 import { EducationAbroadProgramList } from 'components/pages/educationabroad'
 
 const EducationAbroadProgramsSemester = ({ data }) => (
@@ -19,6 +20,11 @@ const EducationAbroadProgramsSemester = ({ data }) => (
       )}
     <Container>
       <PageTitle>Semester programs</PageTitle>
+      {data.allCsumbPage &&
+        data.allCsumbPage.edges &&
+        data.allCsumbPage.edges[0] && (
+          <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+        )}
       <EducationAbroadProgramList programs={data.allAirtable.edges} />
     </Container>
   </Layout>
@@ -32,6 +38,19 @@ export const query = graphql`
       edges {
         node {
           navigation
+        }
+      }
+    }
+    allCsumbPage(
+      filter: {
+        pagePath: { eq: "educationabroad/semesteryear-long-programs-editing" }
+        site: { eq: "educationabroad" }
+      }
+    ) {
+      edges {
+        node {
+          pageContent
+          layout
         }
       }
     }
