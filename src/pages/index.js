@@ -218,6 +218,7 @@ export const query = graphql`
           lighten
           fixedHeight
           imageHeight
+          showAnniversaryBanner
           image {
             lowquality: resize(width: 1300, quality: 20) {
               src
