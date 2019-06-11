@@ -98,7 +98,10 @@ class DashboardPage extends Component {
                           </>
                         ) : (
                           <>
-                            <DashboardApps apps={data.allCsumbApp.edges} />
+                            <DashboardApps
+                              apps={data.allCsumbApp.edges}
+                              user={context.user}
+                            />
                             <section>
                               <Container topPadding>
                                 <DashboardContent user={context.user} />

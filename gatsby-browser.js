@@ -31,6 +31,7 @@ class UserComponent extends React.Component {
       this.setState({
         user: { anonymous: true },
       })
+      return
     }
     const session = cookies.get('csumbSession')
     let user = {
