@@ -151,6 +151,12 @@ class UserAccountProfileForm extends Component {
   render() {
     const { user, buildings } = this.props
     const { profile } = this.state
+    const directoryTitle = user.profile.directoryTitle
+      ? user.profile.directoryTitle.split(',')
+      : false
+    const directoryDepartment = user.profile.directoryDepartment
+      ? user.profile.directoryDepartment.split(',')
+      : false
     return (
       <>
         <AccountGroup legend="Job title">
@@ -158,13 +164,13 @@ class UserAccountProfileForm extends Component {
             Your job titles are shown on the{' '}
             <Link to="/directory">public campus directory.</Link>
           </p>
-          {user.profile.directoryTitle && (
+          {directoryTitle && (
             <>
-              {user.profile.directoryTitle.map((title, index) => (
+              {directoryTitle.map((title, index) => (
                 <AccountData key={index}>
                   {title}
                   <br />
-                  <em>{user.profile.directoryDepartment[index]}</em>
+                  <em>{directoryDepartment[index]}</em>
                 </AccountData>
               ))}
             </>
