@@ -12,6 +12,9 @@ import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Flex, Box } from 'components/common/grid'
 import LinkInspect from 'components/utilities/link-inspect'
 import Link from 'gatsby-link'
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
 
 const HeaderMobileWrapper = styled.div`
   padding: 0.5rem;
@@ -134,27 +137,6 @@ const YourAccountWrapper = styled.div`
 class MobileUserWidget extends Component {
   state = {
     isExpanded: false,
-  }
-
-  handleLogout(event) {
-    event.preventDefault()
-    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
-      credentials: 'include',
-    })
-      .then(response => {
-        return response.json()
-      })
-      .then(session => {
-        if (session && session.id) {
-          fetch(`/cloud-functions/okta/session-end?token=${session.id}`).then(
-            response => {
-              window.location.href = `${window.location.protocol}//${
-                window.location.host
-              }`
-            }
-          )
-        }
-      })
   }
 
   render() {

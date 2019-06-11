@@ -138,6 +138,10 @@
       {
         "source": "/log-in",
         "function": "login"
+      },
+      {
+        "source": "/log-out",
+        "function": "logout"
       }
     ]
   }
