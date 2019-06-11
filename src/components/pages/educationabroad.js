@@ -269,8 +269,8 @@ class SubjectAreas extends Component {
     const majorsList = [{ value: 'all', label: 'Any major', selected: true }]
     majors.forEach(major => {
       majorsList.push({
-        value: major.data.Name,
-        label: major.data.Name,
+        value: major,
+        label: major,
       })
     })
     return (
@@ -334,13 +334,16 @@ const EducationAbroadSearchAreaPage = ({ data, title }) => {
   const areas = []
   const majors = []
   data.allAirtable.edges.forEach(({ node }) => {
-    if (node.queryName === 'StudyAbroadMajors') {
-      majors.push(node)
-    }
-    if (node.queryName === 'StudyAbroadAreas') {
-      areas.push(node)
+    areas.push(node)
+    if (node.data.Major) {
+      node.data.Major.forEach(major => {
+        if (majors.indexOf(major) === -1) {
+          majors.push(major)
+        }
+      })
     }
   })
+  majors.sort()
   return (
     <Layout pageTitle={title}>
       <SiteHeader path="/educationabroad">Education Abroad</SiteHeader>

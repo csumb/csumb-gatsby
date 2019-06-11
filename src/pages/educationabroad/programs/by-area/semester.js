@@ -41,7 +41,7 @@ export const query = graphql`
             elemMatch: { data: { Program_Type: { eq: "Semester" } } }
           }
         }
-        queryName: { in: ["StudyAbroadMajors", "StudyAbroadAreas"] }
+        queryName: { in: ["StudyAbroadAreas"] }
       }
 
       sort: { fields: [data___Subject_Area, data___Name] }
