@@ -42,6 +42,16 @@
       }
     ],
     "redirects": [
+      {
+        "source": "/schedule",
+        "destination": "[URL of new schedule]",
+        "type": 301
+      },
+      {
+        "source": "/schedule/**",
+        "destination": "[URL of new schedule]",
+        "type": 301
+      },
       { "source": "/cms-help", "destination": "/oasis", "type": 301 },
       { "source": "/itcd", "destination": "/scd", "type": 301 },
       { "source": "/innovation", "destination": "/iied", "type": 301 },
