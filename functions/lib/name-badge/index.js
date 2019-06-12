@@ -28,6 +28,7 @@ module.exports = (request, response) => {
   const msg = {
     to: request.query.email,
     from: 'donotreply@csumb.edu',
+    cc: functions.config().namebadge.emails,
     subject: 'CSUMB Name Badge Order',
     html: body,
   }
