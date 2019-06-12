@@ -44,6 +44,7 @@ const FooterElement = styled.footer`
   padding: 1rem 0;
   color: ${colors.white};
   font-size: 0.9rem;
+  clear: both;
   ul {
     list-style-type: none;
     padding: 0;

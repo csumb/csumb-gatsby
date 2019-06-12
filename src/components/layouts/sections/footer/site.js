@@ -20,6 +20,7 @@ const SiteFooterWrapper = styled.footer`
   background: ${colors.muted.highlight};
   border-top: 2px solid ${colors.muted.dark};
   margin-top: 1.5rem;
+  clear: both;
 `
 
 const SiteFooterItems = styled.dl`
