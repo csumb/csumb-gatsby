@@ -226,7 +226,6 @@ const HeroImageAnniversaryBanner = () => (
   </AnniversaryBanner>
 )
 
-//showAnniversaryBanner
 const HomepageHero = ({ item }) => (
   <HomepageHeroWrapper
     style={{ height: item.fixedHeight ? `${item.imageHeight}px` : '75vh' }}
