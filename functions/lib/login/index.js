@@ -5,19 +5,14 @@ const md5 = require('md5')
 
 const hosts = {
   local: {
-    domain: 'localhost:5000',
     redirect: 'http://localhost:8000/dashboard',
     secure: false,
   },
   dev: {
-    domain: 'csumb-gatsby-develop.firebaseapp.com',
     redirect: 'https://csumb-gatsby-develop.firebaseapp.com/dashboard',
-    secure: true,
   },
   live: {
-    domain: 'csumb.edu',
     redirect: 'https://csumb.edu/dashboard',
-    secure: true,
   },
 }
 const { instance, salt } = functions.config().login
@@ -37,18 +32,14 @@ module.exports = (request, response) => {
         'csumbUser',
         JSON.stringify(parseResult.extract.attributes),
         {
-          domain: host.domain,
           path: '/',
-          secure: host.secure,
         }
       )
       response.cookie(
         'csumbSession',
         md5(parseResult.extract.attributes.login.split('@').shift() + salt),
         {
-          domain: host.domain,
           path: '/',
-          secure: host.secure,
         }
       )
       response.redirect(host.redirect)

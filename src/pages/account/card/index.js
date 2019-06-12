@@ -150,14 +150,6 @@ class UserCardForm extends Component {
             </ButtonLink>
           </p>
         </AccountGroup>
-        <AccountGroup legend="Upload OtterCard photo">
-          <p>Upload a photo for your new OtterCard.</p>
-          <p>
-            <ButtonLink to="/account/card/upload" buttonType="default">
-              Upload photo
-            </ButtonLink>
-          </p>
-        </AccountGroup>
       </>
     )
   }
