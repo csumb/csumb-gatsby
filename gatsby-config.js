@@ -31,19 +31,20 @@ const gatsbyConfig = {
       labs: [1001, 1002, 1003, 1005, 1006, 1010, 1009, 1008],
     },
     overridePages: [
+      '25/timeline',
+      'about/about-our-students',
+      'about/map-directions',
       'cost',
       'it',
       'it/alerts',
       'library',
       'library/ask-librarian',
-      'about/about-our-students',
+      'news',
       'search',
       'scienceillustration/graduate-gallery',
-      'news',
-      'about/map-directions',
+      'undersea/imagery-database',
       'up/all-forms',
       'up/index',
-      'undersea/imagery-database',
     ],
     eventCategories: [
       {
@@ -230,6 +231,12 @@ const gatsbyConfig = {
             tableName: 'Countries',
             queryName: 'StudyAbroadCountries',
             tableLinks: ['Countries', 'Partners'],
+          },
+          // 25th anniversary
+          {
+            baseId: 'appvmDCO1k6cz27K6',
+            tableName: 'Timeline',
+            queryName: '25Timeline',
           },
         ],
       },
