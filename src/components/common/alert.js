@@ -33,15 +33,6 @@ const AlertIconBox = styled(Box)`
   })};
 `
 
-const AlertContent = ({ icon, children }) => (
-  <Flex>
-    <AlertIconBox width={[0, 1 / 6, 1 / 10]} pr={6}>
-      <AlertIcon icon={icon} />
-    </AlertIconBox>
-    <Box width={[1, 5 / 6, 9 / 10]}>{children}</Box>
-  </Flex>
-)
-
 const AlertDangerElement = styled(Alert)`
   ${baseStyle};
   background: ${color(colors.indicators.high)
@@ -50,13 +41,6 @@ const AlertDangerElement = styled(Alert)`
   border-left: 8px solid ${colors.indicators.high};
 `
 
-const AlertDanger = props => (
-  <AlertDangerElement {...props}>
-    <VisuallyHidden>Danger</VisuallyHidden>
-    <AlertContent icon={faExclamationCircle}>{props.children}</AlertContent>
-  </AlertDangerElement>
-)
-
 const AlertWarningElement = styled(Alert)`
   ${baseStyle};
   background: ${color(colors.indicators.medium)
@@ -64,12 +48,6 @@ const AlertWarningElement = styled(Alert)`
     .hex()};
   border-left: 8px solid ${colors.indicators.medium};
 `
-const AlertWarning = props => (
-  <AlertWarningElement {...props}>
-    <VisuallyHidden>Warning</VisuallyHidden>
-    <AlertContent icon={faExclamationTriangle}>{props.children}</AlertContent>
-  </AlertWarningElement>
-)
 
 const AlertSuccessElement = styled(Alert)`
   ${baseStyle};
@@ -80,6 +58,40 @@ const AlertSuccessElement = styled(Alert)`
   border-left: 8px solid ${colors.indicators.low};
 `
 
+const AlertEmptyElement = styled(Alert)`
+  ${baseStyle};
+  border: 1px solid ${colors.muted.bright};
+`
+
+const AlertFyiElement = styled(Alert)`
+  ${baseStyle};
+  border: 1px solid ${colors.muted.bright};
+  font-weight: bold;
+`
+
+const AlertContent = ({ icon, children }) => (
+  <Flex>
+    <AlertIconBox width={[0, 1 / 6, 1 / 10]} pr={6}>
+      <AlertIcon icon={icon} />
+    </AlertIconBox>
+    <Box width={[1, 5 / 6, 9 / 10]}>{children}</Box>
+  </Flex>
+)
+
+const AlertDanger = props => (
+  <AlertDangerElement {...props}>
+    <VisuallyHidden>Danger</VisuallyHidden>
+    <AlertContent icon={faExclamationCircle}>{props.children}</AlertContent>
+  </AlertDangerElement>
+)
+
+const AlertWarning = props => (
+  <AlertWarningElement {...props}>
+    <VisuallyHidden>Warning</VisuallyHidden>
+    <AlertContent icon={faExclamationTriangle}>{props.children}</AlertContent>
+  </AlertWarningElement>
+)
+
 const AlertSuccess = props => (
   <AlertSuccessElement {...props}>
     <VisuallyHidden>For your information</VisuallyHidden>
@@ -87,23 +99,12 @@ const AlertSuccess = props => (
   </AlertSuccessElement>
 )
 
-const AlertEmptyElement = styled(Alert)`
-  ${baseStyle};
-  border: 1px solid ${colors.muted.bright};
-`
-
 const AlertEmpty = props => (
   <AlertEmptyElement {...props}>
     <VisuallyHidden>For your information</VisuallyHidden>
     <AlertContent icon={faTimesCircle}>{props.children}</AlertContent>
   </AlertEmptyElement>
 )
-
-const AlertFyiElement = styled(Alert)`
-  ${baseStyle};
-  border: 1px solid ${colors.muted.bright};
-  font-weight: bold;
-`
 
 const AlertFyi = props => (
   <AlertFyiElement {...props}>{props.children}</AlertFyiElement>
