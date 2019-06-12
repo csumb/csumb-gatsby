@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from '@emotion/styled'
 import slugify from 'slugify'
 import Container from '../../../common/container'
-import { colors, fonts } from '../../../../style'
+import { colors, fonts, bp } from '../../../../style'
 import { Menu, MenuList, MenuButton, MenuLink } from '../../../common/menu'
 import BreakpointContext from '../../../contexts/breakpoint'
 
@@ -64,6 +64,15 @@ const SiteNavigationBar = styled.nav`
   background: ${colors.primary.darkest};
   padding-bottom: 0.5rem;
   overflow: hidden;
+  ${bp({
+    display: ['none', 'none', 'block'],
+  })}
+`
+
+const SiteNavigationArrow = styled.span`
+  font-size: 0.6rem;
+  display: inline-block;
+  margin-left: 0.25rem;
 `
 
 const SiteNavigationItem = ({ to, children, navigationChildren, first }) => {
@@ -88,12 +97,6 @@ const SiteNavigationItem = ({ to, children, navigationChildren, first }) => {
     </>
   )
 }
-
-const SiteNavigationArrow = styled.span`
-  font-size: 0.6rem;
-  display: inline-block;
-  margin-left: 0.25rem;
-`
 
 class SiteNavigationSubMenu extends Component {
   state = {
