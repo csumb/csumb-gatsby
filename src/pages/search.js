@@ -4,6 +4,7 @@ import Link from 'gatsby-link'
 import { navigate } from '@reach/router'
 import url from 'url'
 import { Flex, Box } from '../components/common/grid'
+import { LeadParagraph } from '../components/common/type'
 import { InputText, Submit } from '../components/common/forms'
 import Container from '../components/common/container'
 import styled from '@emotion/styled'
@@ -19,12 +20,19 @@ const SearchResult = styled.div`
   margin-top: 1rem;
 `
 
+const SearchNoResults = () => (
+  <LeadParagraph>Sorry, no pages were found</LeadParagraph>
+)
+
 const ListResults = ({ results }) => {
   if (
     typeof results.records === 'undefined' ||
     typeof results.records.page === 'undefined'
   ) {
     return null
+  }
+  if (results.records.page && results.records.page.length === 0) {
+    return <SearchNoResults />
   }
   return (
     <>
