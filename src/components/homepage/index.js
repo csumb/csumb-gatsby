@@ -9,7 +9,7 @@ import showdown from 'showdown'
 import LinkInspect from '../utilities/link-inspect'
 import Container from '../common/container'
 import { ButtonLink } from '../common/button'
-import anniversaryBanner from 'assets/images/25-banner.png'
+import anniversaryBanner from '../../assets/images/25-banner.png'
 import Link from 'gatsby-link'
 
 const dateFormat = 'MMMM D, YYYY'

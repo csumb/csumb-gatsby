@@ -9,7 +9,7 @@ import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { Flex, Box } from '../../components/common/grid'
 import Blocks from '../../templates/blocks'
-import { colors, bp } from '../../static'
+import { colors, bp } from '../../style'
 import { InputText, InputSelect, Submit } from '../../components/common/forms'
 import oneSearchLogo from '../../assets/images/library-one-search.png'
 

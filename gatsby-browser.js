@@ -1,6 +1,6 @@
 import React from 'react'
-import { UserContext, setUserRole } from 'components/contexts/user'
-import BreakpointContext from 'components/contexts/breakpoint'
+import { UserContext, setUserRole } from './src/components/contexts/user'
+import BreakpointContext from './src/components/contexts/breakpoint'
 import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()

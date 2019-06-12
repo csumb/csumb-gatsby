@@ -1,4 +1,3 @@
-//Use https://github.com/emotion-js/facepaint
 import facepaint from 'facepaint'
 
 const breakpoints = [32, 48, 64]

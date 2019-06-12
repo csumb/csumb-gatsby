@@ -5,9 +5,9 @@ import {
   SiteNavigation,
   SiteHeader,
 } from '../../components/layouts/default'
-import Container from '../../common/container'
+import Container from '../../components/common/container'
 import Chart from 'react-chartjs'
-import { Flex, Box } from '../../common/grid'
+import { Flex, Box } from '../../components/common/grid'
 import { graphql } from 'gatsby'
 
 const chartData = {

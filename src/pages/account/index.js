@@ -5,7 +5,7 @@ import { Flex, Box } from '../../components/common/grid'
 import { UserContext } from '../../components/contexts/user'
 import { Button } from '../../components/common/button'
 import Link from 'gatsby-link'
-import UnstyledList from '../../components/common/type'
+import { UnstyledList } from '../../components/common/type'
 import {
   AccountGroup,
   AccountTitle,

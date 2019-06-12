@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Layout, SiteHeader } from '../../layouts/default'
+import { Layout, SiteHeader } from '../../components/layouts/default'
 import Blocks from '../../templates/blocks'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper } from 'google-maps-react'

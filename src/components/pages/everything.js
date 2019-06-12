@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors, fonts } from 'style/theme'
+import { colors, fonts } from '../../style'
 import { Box } from '../common/grid'
 import LinkInspect from '../utilities/link-inspect'
 import Link from 'gatsby-link'
