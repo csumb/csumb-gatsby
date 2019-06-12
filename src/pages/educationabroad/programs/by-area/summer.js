@@ -5,6 +5,7 @@ import { EducationAbroadSearchAreaPage } from '../../../../components/pages/educ
 const EducationAbroadSearchAreaSummerPage = ({ data }) => (
   <EducationAbroadSearchAreaPage
     data={data}
+    programType="Summer"
     title="Summer programs by subject area"
   />
 )
@@ -37,14 +38,13 @@ export const query = graphql`
     }
     allAirtable(
       filter: {
+        queryName: { in: ["StudyAbroadAreas"] }
         data: {
           Semester_Year_Programs: {
             elemMatch: { data: { Program_Type: { eq: "Summer" } } }
           }
         }
-        queryName: { in: ["StudyAbroadAreas"] }
       }
-
       sort: { fields: [data___Subject_Area, data___Name] }
     ) {
       edges {

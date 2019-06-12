@@ -182,7 +182,7 @@ const AllAreasHeader = styled('h2')`
   margin-top: 1.5rem;
 `
 
-const SubjectArea = ({ area }) => (
+const SubjectArea = ({ area, programType }) => (
   <>
     <h3>{area.Subject_Area}</h3>
     <Flex>
@@ -205,17 +205,18 @@ const SubjectArea = ({ area }) => (
             <ProgramList>
               {area.Semester_Year_Programs.map(program => (
                 <>
-                  {program.data.Publish && (
-                    <li key={program.recordId}>
-                      <Link
-                        to={`/educationabroad/program/${slugify(
-                          program.recordId.replace('rec', '')
-                        )}`}
-                      >
-                        {program.data.Name}
-                      </Link>
-                    </li>
-                  )}
+                  {program.data.Publish &&
+                    program.data.Program_Type === programType && (
+                      <li key={program.recordId}>
+                        <Link
+                          to={`/educationabroad/program/${slugify(
+                            program.recordId.replace('rec', '')
+                          )}`}
+                        >
+                          {program.data.Name}
+                        </Link>
+                      </li>
+                    )}
                 </>
               ))}
             </ProgramList>
@@ -267,7 +268,7 @@ class SubjectAreas extends Component {
 
   render() {
     const { results } = this.state
-    const { areas, majors } = this.props
+    const { areas, majors, programType } = this.props
     const majorsList = [{ value: 'all', label: 'Any major', selected: true }]
     majors.forEach(major => {
       majorsList.push({
@@ -325,14 +326,18 @@ class SubjectAreas extends Component {
         </Well>
         <AllAreasHeader>All areas &amp; programs</AllAreasHeader>
         {areas.map(area => (
-          <SubjectArea key={area.recordId} area={area.data} />
+          <SubjectArea
+            key={area.recordId}
+            area={area.data}
+            programType={programType}
+          />
         ))}
       </>
     )
   }
 }
 
-const EducationAbroadSearchAreaPage = ({ data, title }) => {
+const EducationAbroadSearchAreaPage = ({ data, title, programType }) => {
   const areas = []
   const majors = []
   data.allAirtable.edges.forEach(({ node }) => {
@@ -363,7 +368,7 @@ const EducationAbroadSearchAreaPage = ({ data, title }) => {
           data.allCsumbPage.edges[0] && (
             <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
           )}
-        <SubjectAreas areas={areas} majors={majors} />
+        <SubjectAreas areas={areas} majors={majors} programType={programType} />
       </Container>
     </Layout>
   )

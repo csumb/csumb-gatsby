@@ -77,7 +77,7 @@ exports.logout = functions.https.onRequest((request, response) => {
     if (!cookie.hasOwnProperty(prop)) {
       continue
     }
-    res.cookie(prop, '', { expires: new Date(0) })
+    response.cookie(prop, '', { expires: new Date(0) })
   }
   response.redirect('https://csumb.edu')
 })
