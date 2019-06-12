@@ -75,6 +75,14 @@ class UserDropdown extends Component {
     })
   }
 
+  handleLogout(event) {
+    event.preventDefault()
+    cookies.remove('csumb-sites')
+    cookies.remove('csumbUser')
+    cookies.remove('csumbSession')
+    window.location.href = 'https://csumb.edu'
+  }
+
   render() {
     const { user } = this.props
     const { isEditor } = this.state
@@ -133,7 +141,11 @@ class UserDropdown extends Component {
           <UserDropdownMenuLink component="a" href="/account/emergency">
             Emergency alerts
           </UserDropdownMenuLink>
-          <UserDropdownMenuLink component="a" href="/log-out">
+          <UserDropdownMenuLink
+            onClick={this.handleLogout.bind(this)}
+            component="a"
+            href="/log-out"
+          >
             Log out
           </UserDropdownMenuLink>
         </UserDropdownMenuList>
