@@ -319,7 +319,11 @@ class SubjectAreas extends Component {
             <>
               <h2>Search results</h2>
               {results.map(area => (
-                <SubjectArea key={area.recordId} area={area.data} />
+                <SubjectArea
+                  key={area.recordId}
+                  area={area.data}
+                  programType={programType}
+                />
               ))}
             </>
           )}
