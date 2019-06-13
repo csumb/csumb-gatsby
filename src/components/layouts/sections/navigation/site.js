@@ -73,6 +73,7 @@ const SiteNavigationArrow = styled.span`
   font-size: 0.6rem;
   display: inline-block;
   margin-left: 0.25rem;
+  max-width: 20px;
 `
 
 const SiteNavigationItem = ({ to, children, navigationChildren, first }) => {
