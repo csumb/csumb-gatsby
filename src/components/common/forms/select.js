@@ -10,11 +10,13 @@ const SelectElement = styled(Select)`
   .react-select__control--is-focused {
     ${focusStyle} !important;
   }
-  import InputRadio from './radio' .react-select__control {
+  .react-select__menu {
+    border-radius: 0;
+    border: 1px solid ${colors.gray.deafult};
+  }
+  .react-select__control {
     border: 1px solid ${colors.gray.deafult};
     border-radius: 0;
-
-    padding: 0.1rem;
     width: ${props => (props.small ? '30%' : '100%')};
     ${props =>
       props.huge
