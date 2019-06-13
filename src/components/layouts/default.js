@@ -45,8 +45,6 @@ class Layout extends Component {
 
     return (
       <>
-        <Emergency />
-        <Pardot />
         <SkipNavLink href="#csumb-skip-nav">Skip to content</SkipNavLink>
         <Helmet>
           <html lang="en" />
