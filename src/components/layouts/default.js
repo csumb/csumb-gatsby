@@ -119,6 +119,8 @@ class Layout extends Component {
         <div id="csumb-skip-nav" />
         {this.props.children}
         <Footer noFooterMargin={noFooterMargin ? true : false} />
+        <Emergency />
+        <Pardot />
       </>
     )
   }

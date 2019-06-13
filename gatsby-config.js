@@ -127,7 +127,7 @@ const gatsbyConfig = {
     {
       resolve: 'gatsby-plugin-polyfill-io',
       options: {
-        features: ['Array.prototype.map', 'fetch'],
+        features: ['Array.prototype.map', 'fetch', 'Symbol'],
       },
     },
     {
