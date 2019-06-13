@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { focusStyle } from './styles'
+import { focusStyle } from './common'
 import { colors } from '../../../style'
 
 const SubmitButton = styled.input`

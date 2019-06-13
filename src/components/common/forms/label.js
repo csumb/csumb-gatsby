@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 import VisuallyHidden from '../../utilities/visually-hidden'
+import { colors } from '../../../style'
 
 const LabelElement = styled.label`
   margin-bottom: 0.5rem;

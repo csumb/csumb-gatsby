@@ -1,8 +1,9 @@
 import React from 'react'
-import { FormGroup, focusStyle } from './styles'
+import { FormGroup, focusStyle } from './common'
 import FormElement from './form-element'
 import Label from './label'
-import FormElement from './form-element'
+import styled from '@emotion/styled'
+import { colors } from '../../../style'
 
 const InputTextareaElement = styled.textarea`
   &:focus {

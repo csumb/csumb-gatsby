@@ -1,8 +1,8 @@
 import React from 'react'
-import { FormGroup } from './styles'
+import { FormGroup } from './common'
 import FormElement from './form-element'
 import Label from './label'
-import FormElement from './form-element'
+import styled from '@emotion/styled'
 
 const Radio = styled.input`
   margin-right: 1rem;

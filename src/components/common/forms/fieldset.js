@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { LegendElement } from './label'
 import ClearFix from '../../utilities/clearfix'
 import PropTypes from 'prop-types'
+import { colors } from '../../../style'
 
 const FieldsetElement = styled.fieldset`
   border: 1px solid ${colors.gray.light};

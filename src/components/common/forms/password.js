@@ -1,8 +1,7 @@
 import React from 'react'
-import { InputTextElement, FormGroup } from './styles'
+import { InputTextElement, FormGroup } from './common'
 import FormElement from './form-element'
 import Label from './label'
-import FormElement from './form-element'
 
 class InputPassword extends FormElement {
   render() {

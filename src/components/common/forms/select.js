@@ -1,10 +1,10 @@
 import React from 'react'
-import { FormGroup, focusStyle } from './styles'
+import { FormGroup, focusStyle } from './common'
 import FormElement from './form-element'
 import Label from './label'
 import { colors } from '../../../style'
-import FormElement from './form-element'
 import Select from 'react-select'
+import styled from '@emotion/styled'
 
 const SelectElement = styled(Select)`
   .react-select__control--is-focused {

@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import Layout from '../../components/layouts/default'
+import React from 'react'
+import {
+  Layout,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
 import { graphql } from 'gatsby'
-import SiteHeader from '../../components/layouts/sections/header/site-header'
-import SiteNavigation from '../../components/layouts/sections/navigation/site'
-import 'react-vertical-timeline-component/style.min.css'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
-import bp from 'style/breakpoints'
+import { colors, bp } from '../../style'
 import Container from '../../components/common/container'
 import moment from 'moment'
 import { Flex, Box } from '../../components/common/grid'
@@ -170,43 +170,33 @@ const TimelineItem = props => {
   )
 }
 
-class TimelinePage extends Component {
-  state = {
-    currentItem: false,
-  }
-
-  render() {
-    const { data } = this.props
-    const { currentItem } = this.state
-    return (
-      <Layout pageTitle="25th Anniversary timeline" noFooterMargin={true}>
-        <SiteHeader path="/25">25th Anniversary</SiteHeader>
-        {data.allCsumbNavigation &&
-          data.allCsumbNavigation.edges &&
-          data.allCsumbNavigation.edges[0] && (
-            <SiteNavigation
-              navigation={data.allCsumbNavigation.edges[0].node.navigation}
+const TimelinePage = ({ data }) => (
+  <Layout pageTitle="25th Anniversary timeline" noFooterMargin={true}>
+    <SiteHeader path="/25">25th Anniversary</SiteHeader>
+    {data.allCsumbNavigation &&
+      data.allCsumbNavigation.edges &&
+      data.allCsumbNavigation.edges[0] && (
+        <SiteNavigation
+          navigation={data.allCsumbNavigation.edges[0].node.navigation}
+        />
+      )}
+    {data.allAirtable && (
+      <Timeline>
+        <Container>
+          <TimelineLine />
+          {data.allAirtable.edges.map(({ node }) => (
+            <TimelineItem
+              {...node.data}
+              recordId={node.recordId}
+              key={node.recordId}
             />
-          )}
-        {data.allAirtable && (
-          <Timeline>
-            <Container>
-              <TimelineLine />
-              {data.allAirtable.edges.map(({ node }) => (
-                <TimelineItem
-                  {...node.data}
-                  recordId={node.recordId}
-                  key={node.recordId}
-                />
-              ))}
-            </Container>
-            <TimelineCloser />
-          </Timeline>
-        )}
-      </Layout>
-    )
-  }
-}
+          ))}
+        </Container>
+        <TimelineCloser />
+      </Timeline>
+    )}
+  </Layout>
+)
 
 export default TimelinePage
 

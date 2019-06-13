@@ -28,4 +28,4 @@ const InputTextElement = styled.input`
       : ``};
 `
 
-export default { focusStyle, FormGroup, InputTextElement }
+export { focusStyle, FormGroup, InputTextElement }
