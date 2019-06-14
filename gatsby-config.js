@@ -2,7 +2,7 @@ const loginUrls = {
   develop:
     'https://csumb.okta.com/app/csumb_csumbwebsitedevremote_1/exkmey914mz0RN9060x7/sso/saml',
   master:
-    'https://login.csumb.edu/app/csumb_csumbwebsitestaging_1/exkmflkimsu80ciSD0x7/sso/saml',
+    'https://csumb.okta.com/app/csumb_csumbwebsitestaging_1/exkmflkimsu80ciSD0x7/sso/saml',
 }
 
 const gatsbyConfig = {
