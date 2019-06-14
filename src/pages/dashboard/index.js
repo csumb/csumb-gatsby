@@ -5,6 +5,7 @@ import { UserContext } from '../../components/contexts/user'
 import { graphql } from 'gatsby'
 import Olark from '../../components/utilities/olark'
 import styled from '@emotion/styled'
+import { ButtonLink } from '../../components/common/button'
 import {
   DashboardApps,
   DashboardContent,
@@ -37,7 +38,9 @@ class DashboardPage extends Component {
   }
 
   login(data) {
-    navigate(data.site.siteMetadata.okta.login)
+    if (typeof window !== 'undefined') {
+      window.location.href = data.site.siteMetadata.okta.login
+    }
   }
 
   render() {
@@ -123,7 +126,13 @@ class DashboardPage extends Component {
                 </>
               )}
               {context.user && context.user.anonymous && (
-                <>{this.login(data)}</>
+                <Container>
+                  {this.login(data)}
+                  <p>You are not logged in</p>
+                  <ButtonLink to={data.site.siteMetadata.okta.login}>
+                    Log in
+                  </ButtonLink>
+                </Container>
               )}
             </>
           )}

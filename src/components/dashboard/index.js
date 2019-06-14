@@ -4,10 +4,8 @@ import styled from '@emotion/styled'
 import { Flex, Box } from '../common/grid'
 import NProgress from 'nprogress'
 import { PlaceholderCard } from './placeholders'
-
 import DashboardApps from './apps'
 import { DashboardEvents } from './events'
-import DashboardNotLoggedIn from './not-logged-in'
 import { DashboardMessages } from './messages'
 import DashboardSecondary from './secondary-email'
 
@@ -44,7 +42,6 @@ class DashboardContent extends Component {
     ready: false,
     events: false,
     messages: false,
-    notLoggedIn: false,
   }
 
   componentDidMount() {
@@ -103,11 +100,8 @@ class DashboardContent extends Component {
   }
 
   render() {
-    const { ready, events, messages, notLoggedIn } = this.state
+    const { ready, events, messages } = this.state
     const { user, isMobile, mobileTab, moreApps, archivedContent } = this.props
-    if (notLoggedIn) {
-      return <DashboardNotLoggedIn />
-    }
     if (isMobile && ready) {
       return (
         <>
