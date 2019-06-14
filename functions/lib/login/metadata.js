@@ -220,7 +220,6 @@ c7olpGogULQ+NjAS5xxik975CHGM9b0vgIBcz+ZAqc1YyvLbjhb0vRRiYqPXUwu+9QnhRQYioY/W
   PGwG+QRi3DYgnjXVAAZ1UmyY1wLQJWhGkhKZdvQI3cE41a56AhETD1Fc7SzFmnCHnJ1Y9KMTSEaH
   c7olpGogULQ+NjAS5xxik975CHGM9b0vgIBcz+ZAqc1YyvLbjhb0vRRiYqPXUwu+9QnhRQYioY/W
   /q3zEqy4at4mq5+HM8w=</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</md:NameIDFormat><md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</md:NameIDFormat><md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://login.csumb.edu/app/csumb_csumbwebsitedevlocal_1/exkmehmp7rzx2KlfR0x7/sso/saml"/><md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://login.csumb.edu/app/csumb_csumbwebsitedevlocal_1/exkmehmp7rzx2KlfR0x7/sso/saml"/></md:IDPSSODescriptor></md:EntityDescriptor>`,
-
     live: `
   <?xml version="1.0" encoding="UTF-8"?><md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="http://www.okta.com/exkmflkimsu80ciSD0x7"><md:IDPSSODescriptor WantAuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"><md:KeyDescriptor use="signing"><ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:X509Data><ds:X509Certificate>MIIDmjCCAoKgAwIBAgIGAV2mkQFeMA0GCSqGSIb3DQEBCwUAMIGNMQswCQYDVQQGEwJVUzETMBEG
   A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU
