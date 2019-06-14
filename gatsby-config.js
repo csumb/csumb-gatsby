@@ -35,6 +35,7 @@ const gatsbyConfig = {
       'about/about-our-students',
       'about/map-directions',
       'cost',
+      'housing/compare-housing-options',
       'it',
       'it/alerts',
       'library',

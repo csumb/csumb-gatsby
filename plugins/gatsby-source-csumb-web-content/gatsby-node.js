@@ -73,6 +73,42 @@ exports.sourceNodes = async ({ actions, createNodeId, reporter }) => {
     })
   }
 
+  const housingOptionNodes = content => {
+    content.categories.forEach(category => {
+      const categoryNode = {
+        id: createNodeId(`${category.name} >>> CsumbHousingCategory`),
+        children: [],
+        parent: null,
+        name: category.name,
+        category: category.category,
+        internal: {
+          type: `CsumbHousingCategory`,
+        },
+      }
+      categoryNode.internal.contentDigest = crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(categoryNode))
+        .digest(`hex`)
+      createNode(categoryNode)
+    })
+    content.options.forEach(option => {
+      const optionNode = {
+        id: createNodeId(`${option.name} >>> CsumbHousingOption`),
+        children: [],
+        parent: null,
+        option: option,
+        internal: {
+          type: `CsumbHousingOption`,
+        },
+      }
+      optionNode.internal.contentDigest = crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(optionNode))
+        .digest(`hex`)
+      createNode(optionNode)
+    })
+  }
+
   loadActivity.start()
 
   const redirects = fs.readJSONSync('./website-data/building-redirects.json')
@@ -83,6 +119,9 @@ exports.sourceNodes = async ({ actions, createNodeId, reporter }) => {
 
   const apps = fs.readJSONSync('./website-data/apps.json')
   appNodes(apps)
+
+  const housingOptions = fs.readJSONSync('./website-data/housing-options.json')
+  housingOptionNodes(housingOptions)
 
   loadActivity.end()
 }
