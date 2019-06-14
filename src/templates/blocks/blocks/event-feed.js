@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { EventFeedItem } from 'components/events'
+import { EventFeedItem } from '../../../components/events'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
+import { colors } from '../../../style'
 
 const EventFeedWrapper = styled.section`
   background: ${colors.primary.lightest};

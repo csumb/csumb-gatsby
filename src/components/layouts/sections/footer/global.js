@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import LinkInspect from 'components/utilities/link-inspect'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
+import LinkInspect from '../../../utilities/link-inspect'
+import Container from '../../../common/container'
+import { Flex, Box } from '../../../common/grid'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
-import bp from 'style/breakpoints'
+import { colors, bp } from '../../../../style'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -13,7 +12,7 @@ import {
   faLinkedin,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import VisuallyHidden from '../../../utilities/visually-hidden'
 
 const FooterGiftButton = styled.a`
   color: ${colors.white};
@@ -45,6 +44,7 @@ const FooterElement = styled.footer`
   padding: 1rem 0;
   color: ${colors.white};
   font-size: 0.9rem;
+  clear: both;
   ul {
     list-style-type: none;
     padding: 0;

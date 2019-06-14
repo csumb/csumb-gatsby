@@ -1,6 +1,9 @@
 import React from 'react'
-import { UserContext, setUserRole } from 'components/contexts/user'
-import BreakpointContext from 'components/contexts/breakpoint'
+import { UserContext, setUserRole } from './src/components/contexts/user'
+import BreakpointContext from './src/components/contexts/breakpoint'
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
 
 class UserComponent extends React.Component {
   state = {
@@ -23,39 +26,26 @@ class UserComponent extends React.Component {
 
     window.addEventListener('resize', setWindowSize)
     setWindowSize()
-
-    fetch('https://csumb.okta.com/api/v1/users/me', {
-      credentials: 'include',
-      cache: 'no-store',
+    const profile = cookies.get('csumbUser')
+    if (!profile) {
+      this.setState({
+        user: { anonymous: true },
+      })
+      return
+    }
+    const session = cookies.get('csumbSession')
+    let user = {
+      profile: profile,
+      session: session,
+    }
+    if (typeof user.profile.roles !== 'undefined') {
+      user.profile.roles = user.profile.roles.split(',')
+    }
+    user._username = user.profile.login.split('@').shift()
+    user = setUserRole(user)
+    this.setState({
+      user: user,
     })
-      .then(response => {
-        return response.json()
-      })
-      .then(user => {
-        user = setUserRole(user)
-        user._username = user.profile.login.split('@').shift()
-        this.setState({
-          user: user,
-        })
-        if (
-          typeof window !== 'undefined' &&
-          typeof window.Rollbar !== 'undefined'
-        ) {
-          window.Rollbar.configure({
-            payload: {
-              person: {
-                id: user._username,
-                email: user.profile.email,
-              },
-            },
-          })
-        }
-      })
-      .catch(error => {
-        this.setState({
-          user: { anonymous: true },
-        })
-      })
   }
 
   render() {

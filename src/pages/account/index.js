@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
-import { UserContext } from 'components/contexts/user'
-import { Button } from 'components/common/button'
+import { Layout, PageTitle } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
+import { UserContext } from '../../components/contexts/user'
+import { Button } from '../../components/common/button'
 import Link from 'gatsby-link'
-import { css } from 'emotion'
+import { UnstyledList } from '../../components/common/type'
 import {
   AccountGroup,
   AccountTitle,
   AccountData,
   AccountSidebar,
   AccountPlaceholder,
-} from 'components/pages/account'
-import { ButtonLink } from 'components/common/button'
+} from '../../components/pages/account'
+import { ButtonLink } from '../../components/common/button'
 
 class AccountPage extends Component {
   render() {
@@ -102,7 +101,7 @@ class UserAccountForm extends Component {
             You may have one or many roles on campus. These determine what you
             have access to :
           </p>
-          <UserAccountFormRole roles={user.profile.cmsRole} />
+          <UserAccountFormRole roles={user.profile.roles} />
           <p>
             <strong>Changing your role:</strong> Your role is based on your
             employment, application, and enrollment records.
@@ -187,8 +186,8 @@ class AccountFormAlumni extends Component {
 
     if (
       !(
-        user.profile.cmsRole.indexOf('csumb_aa_life_member') === -1 &&
-        user.profile.cmsRole.indexOf('student_graduate')
+        user.profile.roles.indexOf('csumb_aa_life_member') === -1 &&
+        user.profile.roles.indexOf('student_graduate')
       )
     ) {
       return null
@@ -286,12 +285,7 @@ class UserAccountFormRole extends Component {
           <AccountData>{this.roles[this.props.roles[0]].name}</AccountData>
         ) : (
           <AccountData>
-            <ul
-              className={css`
-                list-style-type: none;
-                margin-left: 0;
-              `}
-            >
+            <UnstyledList>
               {this.props.roles.map(role => (
                 <React.Fragment key={role}>
                   {typeof this.roles[role] !== 'undefined' && (
@@ -299,7 +293,7 @@ class UserAccountFormRole extends Component {
                   )}
                 </React.Fragment>
               ))}
-            </ul>
+            </UnstyledList>
           </AccountData>
         )}
         {email ? (

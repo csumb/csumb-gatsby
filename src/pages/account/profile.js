@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
-import { UserContext } from 'components/contexts/user'
+import { Layout, PageTitle } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
+import { UserContext } from '../../components/contexts/user'
 import Link from 'gatsby-link'
 import styled from '@emotion/styled'
 import ReactFilestack from 'filestack-react'
@@ -12,20 +11,20 @@ import {
   InputSelect,
   InputTextarea,
   Submit,
-} from 'components/common/forms'
+} from '../../components/common/forms'
 import { graphql } from 'gatsby'
-import { AlertSuccess } from 'components/common/alert'
+import { AlertSuccess } from '../../components/common/alert'
 import {
   AccountGroup,
   AccountTitle,
   AccountData,
   AccountSidebar,
   AccountPlaceholder,
-} from 'components/pages/account'
-import { Button } from 'components/common/button'
+} from '../../components/pages/account'
+import { Button } from '../../components/common/button'
 import SimpleMDE from 'react-simplemde-editor'
 import showdown from 'showdown'
-import { LeadParagraph } from 'components/common/type'
+import { LeadParagraph } from '../../components/common/type'
 import 'simplemde/dist/simplemde.min.css'
 import NProgress from 'nprogress'
 
@@ -35,20 +34,12 @@ const AccountPhoto = styled.img`
   max-width: 150px;
 `
 
-const updateProfileField = (field, value) => {
-  fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
-    credentials: 'include',
-  })
-    .then(response => {
-      return response.json()
-    })
-    .then(response => {
-      fetch(
-        `/cloud-functions/profile/update?token=${
-          response.id
-        }&field=${field}&value=${value}`
-      )
-    })
+const updateProfileField = (user, field, value) => {
+  fetch(
+    `/cloud-functions/profile/update?token=${user.session}&user=${
+      user._username
+    }&field=${field}&value=${value}`
+  )
 }
 
 class AccountProfilePage extends Component {
@@ -138,33 +129,33 @@ class UserAccountProfileForm extends Component {
   componentDidMount() {
     const that = this
     const now = new Date()
-    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
-      credentials: 'include',
-    })
+    const { user } = this.props
+    fetch(
+      `/cloud-functions/profile/get?token=${user.session}&user=${
+        user._username
+      }&_=${now.getTime()}`
+    )
       .then(response => {
         NProgress.inc()
         return response.json()
       })
       .then(response => {
-        fetch(
-          `/cloud-functions/profile/get?token=${response.id}&_=${now.getTime()}`
-        )
-          .then(response => {
-            NProgress.inc()
-            return response.json()
-          })
-          .then(response => {
-            NProgress.done()
-            that.setState({
-              profile: response,
-            })
-          })
+        NProgress.done()
+        that.setState({
+          profile: response,
+        })
       })
   }
 
   render() {
     const { user, buildings } = this.props
     const { profile } = this.state
+    const directoryTitle = user.profile.directoryTitle
+      ? user.profile.directoryTitle.split(',')
+      : false
+    const directoryDepartment = user.profile.directoryDepartment
+      ? user.profile.directoryDepartment.split(',')
+      : false
     return (
       <>
         <AccountGroup legend="Job title">
@@ -172,13 +163,17 @@ class UserAccountProfileForm extends Component {
             Your job titles are shown on the{' '}
             <Link to="/directory">public campus directory.</Link>
           </p>
-          {user.profile.directoryTitle.map((title, index) => (
-            <AccountData key={index}>
-              {title}
-              <br />
-              <em>{user.profile.directoryDepartment[index]}</em>
-            </AccountData>
-          ))}
+          {directoryTitle && (
+            <>
+              {directoryTitle.map((title, index) => (
+                <AccountData key={index}>
+                  {title}
+                  <br />
+                  <em>{directoryDepartment[index]}</em>
+                </AccountData>
+              ))}
+            </>
+          )}
           <p>
             <strong>Changing your job title:</strong> Your department and job
             title are controled by your human resources department.
@@ -248,7 +243,11 @@ class UserAccountProfileOfficeHoursForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    updateProfileField('appointmentCalendar', this.state.calendar)
+    updateProfileField(
+      this.props.user,
+      'appointmentCalendar',
+      this.state.calendar
+    )
     this.setState({
       updated: true,
     })
@@ -325,7 +324,7 @@ class UserAccountProfileOfficeHoursDescriptionForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    updateProfileField('officeHours', this.state.officeHours)
+    updateProfileField(this.props.user, 'officeHours', this.state.officeHours)
     this.setState({
       updated: true,
     })
@@ -421,7 +420,11 @@ class UserAccountProfileOfficeForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    updateProfileField('location', `${this.state.building}-${this.state.room}`)
+    updateProfileField(
+      this.props.user,
+      'location',
+      `${this.state.building}-${this.state.room}`
+    )
     this.setState({
       updated: true,
     })
@@ -512,7 +515,7 @@ class UserAccountProfilePhoneForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    updateProfileField('phone', this.state.phone)
+    updateProfileField(this.props.user, 'phone', this.state.phone)
     this.setState({
       updated: true,
     })
@@ -662,7 +665,7 @@ class UserAccountProfileBioForm extends Component {
 
 class UserAccountProfilePhoto extends Component {
   savePhoto(photo) {
-    updateProfileField('photo', photo.filesUploaded[0].url)
+    updateProfileField(this.props.user, 'photo', photo.filesUploaded[0].url)
   }
 
   render() {
@@ -704,7 +707,7 @@ class UserAccountProfilePhoto extends Component {
 
 class UserAccountProfileResume extends Component {
   saveResume(file) {
-    updateProfileField('resume', file.filesUploaded[0].url)
+    updateProfileField(this.props.user, 'resume', file.filesUploaded[0].url)
   }
 
   render() {

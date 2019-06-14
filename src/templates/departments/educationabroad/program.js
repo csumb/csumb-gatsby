@@ -1,29 +1,28 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/common/container'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import { Flex, Box } from 'components/common/grid'
+import { Layout } from '../../../components/layouts/default'
+import SiteHeader from '../../../components/layouts/sections/header/site-header'
+import Container from '../../../components/common/container'
+import PageTitle from '../../../components/layouts/sections/header/page-title'
+import { Flex, Box } from '../../../components/common/grid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronDown,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
 import styled from '@emotion/styled'
-import Well from 'components/common/well'
-import { ButtonLink } from 'components/common/button'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
+import Well from '../../../components/common/well'
+import { ButtonLink } from '../../../components/common/button'
+import { SiteNavigation } from '../../../components/layouts/sections/navigation'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
-import { colors } from 'style/theme'
+import { colors } from '../../../style'
 import Link from 'gatsby-link'
-import ReturnLink from 'components/common/return-link'
-
+import ReturnLink from '../../../components/common/return-link'
 import {
   Table,
   TableRow,
   TableHeader,
   TableCell,
-} from 'components/common/table'
+} from '../../../components/common/table'
 
 const ApplyNowButton = styled(ButtonLink)`
   margin-left: 1rem;
@@ -143,11 +142,11 @@ class ProgramTemplate extends Component {
         <Container>
           <PageTitle>{data.Name}</PageTitle>
           {data.Program_Type === 'Semester' ? (
-            <ReturnLink to="/educationabroad/go-abroad-semesteryear-long-program">
+            <ReturnLink to="/educationabroad/programs/semester">
               View all Semester programs
             </ReturnLink>
           ) : (
-            <ReturnLink to="/educationabroad/go-abroad-short-term-program">
+            <ReturnLink to="/educationabroad/programs/summer">
               View all Summer programs
             </ReturnLink>
           )}
@@ -157,25 +156,19 @@ class ProgramTemplate extends Component {
                 <h2>{data.Application_Deadline_Title}</h2>
                 {data.Fall_Spring_Application_Deadline &&
                   data.Fall_Spring_Application_Deadline[0] && (
-                    <p>
-                      <strong>Fall &amp; Spring deadline:</strong>
-                      <ul>
-                        {data.Fall_Spring_Application_Deadline.map(deadline => (
-                          <li key={deadline.data.Name}>{deadline.data.Name}</li>
-                        ))}
-                      </ul>
-                    </p>
+                    <ul>
+                      {data.Fall_Spring_Application_Deadline.map(deadline => (
+                        <li key={deadline.data.Name}>{deadline.data.Name}</li>
+                      ))}
+                    </ul>
                   )}
                 {data.Summer_Application_Deadline &&
                   data.Summer_Application_Deadline[0] && (
-                    <p>
-                      <strong>Summer deadline:</strong>
-                      <ul>
-                        {data.Summer_Application_Deadline.map(deadline => (
-                          <li key={deadline.data.Name}>{deadline.data.Name}</li>
-                        ))}
-                      </ul>
-                    </p>
+                    <ul>
+                      {data.Summer_Application_Deadline.map(deadline => (
+                        <li key={deadline.data.Name}>{deadline.data.Name}</li>
+                      ))}
+                    </ul>
                   )}
               </Box>
               <Box width={[1, 1 / 2]}>
@@ -224,17 +217,26 @@ class ProgramTemplate extends Component {
             </Flex>
           )}
           <h2>Program details</h2>
+          {data.Summer_Program_Dates && (
+            <ProgramDetails title="Program dates">
+              <p
+                dangerouslySetInnerHTML={{ __html: data.Summer_Program_Dates }}
+              />
+            </ProgramDetails>
+          )}
           <ProgramDetails title="Program dates">
-            {data.Program_dates__Fall && (
-              <p>
-                <strong>Fall</strong> {data.Program_dates__Fall}
-              </p>
-            )}
-            {data.Program_dates__Spring && (
-              <p>
-                <strong>Spring</strong> {data.Program_dates__Spring}
-              </p>
-            )}
+            <ul>
+              {data.Program_dates__Fall && (
+                <li>
+                  <strong>Fall</strong> {data.Program_dates__Fall}
+                </li>
+              )}
+              {data.Program_dates__Spring && (
+                <li>
+                  <strong>Spring</strong> {data.Program_dates__Spring}
+                </li>
+              )}
+            </ul>
           </ProgramDetails>
           {data.Prerequisites && (
             <ProgramDetails title="Prerequisites">
@@ -245,6 +247,22 @@ class ProgramTemplate extends Component {
               </ul>
             </ProgramDetails>
           )}
+          <ProgramDetails title="Academics">
+            {data.Program_Type === 'Semester' ? (
+              <ul>
+                {data.Areas.map(({ data }) => (
+                  <li key={data.Subject_Area}>{data.Subject_Area}</li>
+                ))}
+              </ul>
+            ) : (
+              <ul>
+                {data.Summer_Academics.map(({ data }) => (
+                  <li key={data.Name}>{data.Name}</li>
+                ))}
+              </ul>
+            )}
+            {data.Notes_Area && <p>{data.Notes_Area}</p>}
+          </ProgramDetails>
           <ProgramDetails title="Housing &amp; food">
             {data.Housing_Details_Paragraph_1 && (
               <p>{data.Housing_Details_Paragraph_1}</p>
@@ -297,7 +315,16 @@ class ProgramTemplate extends Component {
                 </TableRow>
               </tbody>
             </Table>
+
+            {data.Summer_Fee_Waiver_Conditions && (
+              <p>{data.Summer_Fee_Waiver_Conditions}</p>
+            )}
             {data.Additional_Fees_May_Apply && <p>Additional fees may apply</p>}
+            {data.Financial_Aid_Available && (
+              <p>
+                <strong>Financial aid:</strong> State and Federal aid available
+              </p>
+            )}
           </ProgramDetails>
           {data.Campus_services && data.Campus_services.length > 0 && (
             <ProgramDetails title="Campus services">

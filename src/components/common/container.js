@@ -1,5 +1,9 @@
 import styled from '@emotion/styled'
-import bp from 'style/breakpoints'
+import facepaint from 'facepaint'
+
+const baseWidth = 1100
+
+const mq = facepaint([`@media (min-width: ${baseWidth}px)`])
 
 const Container = styled.div`
   ${props =>
@@ -7,10 +11,10 @@ const Container = styled.div`
     `
     padding-top: 1.5rem;
   `}
-  ${bp({
-    marginLeft: ['1rem', '1rem', 'auto'],
-    marginRight: ['1rem', '1rem', 'auto'],
-    maxWidth: '1100px',
+  max-width: ${baseWidth}px;
+  ${mq({
+    marginLeft: ['1rem', 'auto'],
+    marginRight: ['1rem', 'auto'],
   })}
 `
 

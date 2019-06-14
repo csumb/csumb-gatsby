@@ -1,5 +1,5 @@
-import bp from 'style/breakpoints'
 import styled from '@emotion/styled'
+import { bp } from '../../../style'
 
 const NewsContainer = styled.div`
   ${bp({

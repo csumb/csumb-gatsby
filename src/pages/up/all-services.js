@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/common/container'
+import {
+  Layout,
+  PageTitle,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
+import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
-import Well from 'components/common/well'
+import Well from '../../components/common/well'
 import styled from '@emotion/styled'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import { UniversityPersonnelPages } from 'components/pages/university-personnel'
+import { UniversityPersonnelPages } from '../../components/pages/university-personnel'
 
 const allServicesPageId = 21910
 

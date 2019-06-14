@@ -1,7 +1,7 @@
 import React from 'react'
 import RichText from '@madebyconnor/rich-text-to-jsx'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
-import Container from 'components/common/container'
+import Container from '../common/container'
 import { ContentImageInline } from './blocks/image'
 
 const Paragraph = ({ children }) => (

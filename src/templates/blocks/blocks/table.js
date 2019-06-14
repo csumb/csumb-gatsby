@@ -4,7 +4,7 @@ import {
   TableHeader,
   TableRow,
   TableCell,
-} from 'components/common/table'
+} from '../../../components/common/table'
 import parseHtml from '../parse-html'
 
 class BlockTable extends Component {

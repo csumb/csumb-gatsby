@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Well from 'components/common/well'
+import Well from '../../../components/common/well'
 import Link from 'gatsby-link'
 
 class BlockCourses extends Component {

@@ -1,6 +1,6 @@
 import React from 'react'
-import { UserContext } from 'components/contexts/user'
-import BreakpointContext from 'components/contexts/breakpoint'
+import { UserContext } from './src/components/contexts/user'
+import BreakpointContext from './src/components/contexts/breakpoint'
 
 class UserComponent extends React.Component {
   render() {

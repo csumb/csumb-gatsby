@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
-import { UserContext } from 'components/contexts/user'
-import { LinkyButton, ButtonLink } from 'components/common/button'
-
-import Loading from 'components/common/loading'
-import { LeadParagraph } from 'components/common/type'
+import { Layout, PageTitle } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
+import { UserContext } from '../../components/contexts/user'
+import { LinkyButton, ButtonLink } from '../../components/common/button'
+import Loading from '../../components/common/loading'
+import { LeadParagraph } from '../../components/common/type'
 import {
   AccountGroup,
   AccountTitle,
   AccountSidebar,
-} from 'components/pages/account'
+} from '../../components/pages/account'
 
 const AccountLaundryPage = () => (
   <Layout pageTitle="Your profile">

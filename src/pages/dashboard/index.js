@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
-import Container from 'components/common/container'
-import Layout from 'components/layouts/default'
-import { UserContext } from 'components/contexts/user'
-import SiteHeader from 'components/layouts/sections/header/site-header'
+import Container from '../../components/common/container'
+import { Layout, SiteHeader } from '../../components/layouts/default'
+import { UserContext } from '../../components/contexts/user'
 import { graphql } from 'gatsby'
-import Olark from 'components/utilities/olark'
+import Olark from '../../components/utilities/olark'
 import styled from '@emotion/styled'
 import {
   DashboardApps,
   DashboardContent,
   DashboardMobileToolbar,
-} from 'components/dashboard'
+} from '../../components/dashboard'
 import { navigate } from '@reach/router'
 import Link from 'gatsby-link'
-import BreakpointContext from 'components/contexts/breakpoint'
+import BreakpointContext from '../../components/contexts/breakpoint'
 
 const ArchivedMessages = styled.p`
   text-align: right;
@@ -37,6 +36,10 @@ class DashboardPage extends Component {
     }
   }
 
+  login(data) {
+    navigate(data.site.siteMetadata.okta.login)
+  }
+
   render() {
     const { data } = this.props
     const { activeTab } = this.state
@@ -55,7 +58,7 @@ class DashboardPage extends Component {
         <UserContext.Consumer>
           {context => (
             <>
-              {context.user && (
+              {context.user && !context.user.anonymous && (
                 <>
                   {this.redirectApplicant(context.user)}
                   <BreakpointContext.Consumer>
@@ -98,7 +101,10 @@ class DashboardPage extends Component {
                           </>
                         ) : (
                           <>
-                            <DashboardApps apps={data.allCsumbApp.edges} />
+                            <DashboardApps
+                              apps={data.allCsumbApp.edges}
+                              user={context.user}
+                            />
                             <section>
                               <Container topPadding>
                                 <DashboardContent user={context.user} />
@@ -116,6 +122,9 @@ class DashboardPage extends Component {
                   </BreakpointContext.Consumer>
                 </>
               )}
+              {context.user && context.user.anonymous && (
+                <>{this.login(data)}</>
+              )}
             </>
           )}
         </UserContext.Consumer>
@@ -130,6 +139,9 @@ export const query = graphql`
   {
     site {
       siteMetadata {
+        okta {
+          login
+        }
         perSiteOlarkIds {
           site
           code

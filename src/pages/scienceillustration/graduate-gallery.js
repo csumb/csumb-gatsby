@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/common/container'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
-import { LeadParagraph } from 'components/common/type'
+import {
+  Layout,
+  PageTitle,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { LeadParagraph } from '../../components/common/type'
 import { graphql } from 'gatsby'
-import { Flex, Box } from 'components/common/grid'
+import { Flex, Box } from '../../components/common/grid'
 import Link from 'gatsby-link'
-import { InputText, Submit } from 'components/common/forms'
-import bp from 'style/breakpoints'
-import Well from 'components/common/well'
+import { InputText, Submit } from '../../components/common/forms'
+import { bp } from '../../style'
+import Well from '../../components/common/well'
 import styled from '@emotion/styled'
 import slugify from 'slugify'
 

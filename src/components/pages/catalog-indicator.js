@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
+import { colors } from '../../style'
 
 const CatalogIndicatorElement = styled.div`
   background: ${colors.primary.dark};

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styled from '@emotion/styled'
-import logo from 'assets/images/csumb-logo-blue.svg'
+import logo from '../../../../assets/images/csumb-logo-blue.svg'
 
 const BrandImage = styled.img`
   margin: 0;

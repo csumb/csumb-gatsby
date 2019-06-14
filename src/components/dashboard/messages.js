@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { AlertEmpty } from 'components/common/alert'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import { AlertEmpty } from '../common/alert'
+import VisuallyHidden from '../utilities/visually-hidden'
 import Link from 'gatsby-link'
-
 import {
   DashboardCard,
   DashboardMessageClose,

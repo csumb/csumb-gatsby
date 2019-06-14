@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import VisuallyHidden from 'components/utilities/visually-hidden'
-import { Button } from 'components/common/button'
+import VisuallyHidden from '../utilities/visually-hidden'
+import { Button } from '../common/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import { DialogOverlay, DialogContent } from 'components/common/dialog'
+import { DialogOverlay, DialogContent } from '../common/dialog'
 import { CloseDialog, DashboardCard } from './shared-styles'
 import Cookies from 'universal-cookie'
 

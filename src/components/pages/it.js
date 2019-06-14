@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
+import { colors } from '../../style'
 import color from 'color'
 import Link from 'gatsby-link'
-import Loading from 'components/common/loading'
+import Loading from '../common/loading'
 
 const displayUpdownTokens = ['dnhg', 'mus6', 'c9e7', 'paxe']
 

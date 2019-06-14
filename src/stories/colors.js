@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
-import typography from 'style/typography'
-import { colors } from 'style/theme'
+import typography from '../style/typography'
+import { colors } from '../style'
 import styled from '@emotion/styled'
-import { Flex, Box } from 'components/common/grid'
+import { Flex, Box } from '../components/common/grid'
 
 const ColorBox = styled(Box)`
   border: 1px solid #000;

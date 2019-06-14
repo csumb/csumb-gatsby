@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/common/container'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import { Flex, Box } from 'components/common/grid'
-import { LeadParagraph } from 'components/common/type'
+import { Layout } from '../../../components/layouts/default'
+import SiteHeader from '../../../components/layouts/sections/header/site-header'
+import Container from '../../../components/common/container'
+import PageTitle from '../../../components/layouts/sections/header/page-title'
+import { Flex, Box } from '../../../components/common/grid'
+import { LeadParagraph } from '../../../components/common/type'
 import Gallery from 'react-photo-gallery'
 import Lightbox from 'react-images'
 import Link from 'gatsby-link'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
+import { SiteNavigation } from '../../../components/layouts/sections/navigation'
 
 class GraduateTemplate extends Component {
   state = {

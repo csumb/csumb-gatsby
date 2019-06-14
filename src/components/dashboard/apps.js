@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
-import Container from 'components/common/container'
-import { colors } from 'style/theme'
+import Container from '../common/container'
+import { colors } from '../../style'
 import styled from '@emotion/styled'
-import { Flex, Box } from 'components/common/grid'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import { Flex, Box } from '../common/grid'
+import VisuallyHidden from '../utilities/visually-hidden'
 import Link from 'gatsby-link'
-import { ButtonLink, Button } from 'components/common/button'
+import { ButtonLink, Button } from '../common/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronUp,
   faChevronDown,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons'
-import { DialogOverlay, DialogContent } from 'components/common/dialog'
+import { DialogOverlay, DialogContent } from '../common/dialog'
 import { CloseDialog } from './shared-styles'
 
 const DashboardAppsWrapper = styled.div`
@@ -233,10 +233,14 @@ class DashboardApps extends Component {
   }
 
   componentDidMount() {
-    window
-      .fetch('https://csumb.okta.com/api/v1/users/me/appLinks', {
-        credentials: 'include',
-      })
+    if (!this.props.user) {
+      return
+    }
+    fetch(
+      `/cloud-functions/okta/apps?token=${this.props.user.session}&user=${
+        this.props.user._username
+      }`
+    )
       .then(response => {
         return response.json()
       })

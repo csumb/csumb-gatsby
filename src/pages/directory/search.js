@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import { Flex, Box } from 'components/common/grid'
-import { InputText, Submit } from 'components/common/forms'
+import { Flex, Box } from '../../components/common/grid'
+import { InputText, Submit } from '../../components/common/forms'
 import styled from '@emotion/styled'
-import Container from 'components/common/container'
-import Layout from 'components/layouts/default'
+import Container from '../../components/common/container'
+import { Layout, SiteHeader } from '../../components/layouts/default'
 import url from 'url'
 import Link from 'gatsby-link'
-import LinkInspect from 'components/utilities/link-inspect'
-import SiteHeader from 'components/layouts/sections/header/site-header'
+import { LeadParagraph } from '../../components/common/type'
+import LinkInspect from '../../components/utilities/link-inspect'
 import { graphql } from 'gatsby'
 import phoneFormatter from 'phone-formatter'
-import { DirectoryNavigation } from 'components/pages/directory'
+import { DirectoryNavigation } from '../../components/pages/directory'
 
 const DirectoryItem = styled.div`
   margin-bottom: 2rem;
@@ -168,6 +168,12 @@ const DepartmentListing = props => {
   )
 }
 
+const DirectorySearchNoResults = () => (
+  <LeadParagraph>
+    We could not find any department or person with that name.
+  </LeadParagraph>
+)
+
 class DirectorySearchResults extends Component {
   state = {
     search: false,
@@ -221,16 +227,22 @@ class DirectorySearchResults extends Component {
       <>
         {search && (
           <>
-            {search.departments.map(result => (
-              <DepartmentListing key={result.name} {...result} />
-            ))}
-            {search.people.map(result => (
-              <PersonListing
-                buildings={buildings}
-                key={result.email}
-                {...result}
-              />
-            ))}
+            {!search.people.length && !search.departments.length ? (
+              <DirectorySearchNoResults />
+            ) : (
+              <>
+                {search.departments.map(result => (
+                  <DepartmentListing key={result.name} {...result} />
+                ))}
+                {search.people.map(result => (
+                  <PersonListing
+                    buildings={buildings}
+                    key={result.email}
+                    {...result}
+                  />
+                ))}
+              </>
+            )}
           </>
         )}
       </>

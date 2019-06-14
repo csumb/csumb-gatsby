@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Dialog } from 'components/common/dialog'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import { Dialog } from '../../common/dialog'
+import VisuallyHidden from '../../utilities/visually-hidden'
 import styled from '@emotion/styled'
-
-import { colors } from 'style/theme'
+import { colors } from '../../../style'
 import color from 'color'
 
 const EmergencyDialog = styled(Dialog)`

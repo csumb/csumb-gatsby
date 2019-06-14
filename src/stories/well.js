@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 
 import typography from 'style/typography'
-import Well from 'components/common/well'
+import Well from '../components/common/well'
 
 typography.injectStyles()
 

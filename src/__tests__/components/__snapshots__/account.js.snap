@@ -98,6 +98,14 @@ exports[`AccountSidebar renders the sidebar for Staff 1`] = `
   </a>
   <a
     className="css-rvxwuc"
+    href="/account/name-badge"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Order name badge
+  </a>
+  <a
+    className="css-rvxwuc"
     href="/account/labs"
     onClick={[Function]}
     onMouseEnter={[Function]}

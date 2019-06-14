@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
+import {
+  Layout,
+  PageTitle,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
 import { graphql } from 'gatsby'
-import { InputText, Submit } from 'components/common/forms'
-import Well from 'components/common/well'
-import Container from 'components/common/container'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
-import { LinkyButton } from 'components/common/button'
+import { InputText, Submit } from '../../components/common/forms'
+import Well from '../../components/common/well'
+import Container from '../../components/common/container'
+import { LinkyButton } from '../../components/common/button'
 import styled from '@emotion/styled'
 import url from 'url'
 import {
@@ -15,7 +17,7 @@ import {
   TableRow,
   TableHeader,
   TableCell,
-} from 'components/common/table'
+} from '../../components/common/table'
 
 const TermSelectLink = styled(LinkyButton)`
   display: inline-block;

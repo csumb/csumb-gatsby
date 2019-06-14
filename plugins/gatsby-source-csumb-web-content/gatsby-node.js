@@ -1,52 +1,11 @@
-const walk = require('walk')
 const fs = require('fs-extra')
 const crypto = require('crypto')
 
-const today = new Date()
-
-exports.sourceNodes = async (
-  { actions, createNodeId, reporter },
-  configOptions
-) => {
+exports.sourceNodes = async ({ actions, createNodeId, reporter }) => {
   const { createNode } = actions
   const loadActivity = reporter.activityTimer(
     'Loading content from Git Repository'
   )
-  loadActivity.start()
-  walk.walkSync('./website-data', {
-    listeners: {
-      file: async (root, fileStats, next) => {
-        const fileName = `${root}/${fileStats.name}`
-        if (fileName.search('.json') > -1) {
-          const contents = await fs.readJson(fileName)
-          parseContents(fileName, contents)
-        }
-        next()
-      },
-    },
-  })
-  loadActivity.end()
-
-  const parseContents = (name, content) => {
-    if (name.search('/directory/') > -1) {
-      return
-    }
-    if (name.search('directory.json') > -1) {
-      return
-    }
-    if (name.search('building-redirects.json') > -1) {
-      redirectNodes(content)
-      return
-    }
-    if (name.search('buildings.json') > -1) {
-      buildingNodes(content)
-      return
-    }
-    if (name.search('apps.json') > -1) {
-      appNodes(content)
-      return
-    }
-  }
 
   const redirectNodes = content => {
     Object.keys(content).forEach(source => {
@@ -113,4 +72,17 @@ exports.sourceNodes = async (
       createNode(appNode)
     })
   }
+
+  loadActivity.start()
+
+  const redirects = fs.readJSONSync('./website-data/building-redirects.json')
+  redirectNodes(redirects)
+
+  const buildings = fs.readJSONSync('./website-data/buildings.json')
+  buildingNodes(buildings)
+
+  const apps = fs.readJSONSync('./website-data/apps.json')
+  appNodes(apps)
+
+  loadActivity.end()
 }

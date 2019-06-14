@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { colors, fonts } from 'style/theme'
-import {
-  Menu,
-  MenuList,
-  MenuItem,
-  MenuButton,
-  MenuLink,
-} from 'components/common/custom-reach-menu'
-import { UserContext } from 'components/contexts/user'
+import { colors, fonts } from '../../../../style'
+import { Menu, MenuList, MenuButton, MenuLink } from '../../../common/menu'
+import { UserContext } from '../../../contexts/user'
 import Link from 'gatsby-link'
 import Cookies from 'universal-cookie'
 
@@ -64,18 +58,6 @@ const UserDropdownMenuLink = styled(MenuLink)`
   `}
 `
 
-const UserDropdownMenuLinkButton = styled(MenuItem)`
-  padding: 0.5rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  &:hover,
-  &:focus {
-    background: ${colors.primary.darkest};
-    color: ${colors.white};
-  }
-`
-
 const UserDashboardLink = styled(Link)`
   ${userLinkStyles};
   margin-right: 1rem;
@@ -93,25 +75,10 @@ class UserDropdown extends Component {
     })
   }
 
-  handleLogout(event) {
+  handleLogout() {
     cookies.remove('csumb-sites')
-    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
-      credentials: 'include',
-    })
-      .then(response => {
-        return response.json()
-      })
-      .then(session => {
-        if (session && session.id) {
-          fetch(`/cloud-functions/okta/session-end?token=${session.id}`).then(
-            response => {
-              window.location.href = `${window.location.protocol}//${
-                window.location.host
-              }`
-            }
-          )
-        }
-      })
+    cookies.remove('csumbUser')
+    cookies.remove('csumbSession')
   }
 
   render() {
@@ -172,9 +139,13 @@ class UserDropdown extends Component {
           <UserDropdownMenuLink component="a" href="/account/emergency">
             Emergency alerts
           </UserDropdownMenuLink>
-          <UserDropdownMenuLinkButton onSelect={this.handleLogout.bind(this)}>
+          <UserDropdownMenuLink
+            onClick={this.handleLogout.bind(this)}
+            component="a"
+            href="/log-out"
+          >
             Log out
-          </UserDropdownMenuLinkButton>
+          </UserDropdownMenuLink>
         </UserDropdownMenuList>
       </Menu>
     )

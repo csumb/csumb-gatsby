@@ -1,10 +1,20 @@
+const loginUrls = {
+  develop:
+    'https://csumb.okta.com/app/csumb_csumbwebsitedevremote_1/exkmey914mz0RN9060x7/sso/saml',
+  master:
+    'https://csumb.okta.com/app/csumb_csumbwebsitedevremote_1/exkmey914mz0RN9060x7/sso/saml',
+}
+
 const gatsbyConfig = {
   siteMetadata: {
     title: 'Cal State Monterey Bay',
     fileStack: process.env.GATSBY_CSUMB_FILESTACK_KEY,
     okta: {
       login:
-        'https://csumb.okta.com/home/csumb_csumbbetawebsite_1/0oalhdw605Fe37hnQ0x7/alnlhdyx6zseWNBdS0x7',
+        typeof process.env.TRAVIS_BRANCH !== 'undefined' &&
+        typeof loginUrls[process.env.TRAVIS_BRANCH] !== 'undefined'
+          ? loginUrls[process.env.TRAVIS_BRANCH]
+          : 'https://csumb.okta.com/',
     },
     swiftypeId: process.env.GATSBY_CSUMB_SWIFTYPE_ID,
     perSiteOlarkIds: [
@@ -21,19 +31,20 @@ const gatsbyConfig = {
       labs: [1001, 1002, 1003, 1005, 1006, 1010, 1009, 1008],
     },
     overridePages: [
+      '25/timeline',
+      'about/about-our-students',
+      'about/map-directions',
       'cost',
       'it',
       'it/alerts',
       'library',
       'library/ask-librarian',
-      'about/about-our-students',
+      'news',
       'search',
       'scienceillustration/graduate-gallery',
-      'news',
-      'about/map-directions',
+      'undersea/imagery-database',
       'up/all-forms',
       'up/index',
-      'undersea/imagery-database',
     ],
     eventCategories: [
       {
@@ -116,7 +127,7 @@ const gatsbyConfig = {
     {
       resolve: 'gatsby-plugin-polyfill-io',
       options: {
-        features: ['Array.prototype.map', 'fetch'],
+        features: ['Array.prototype.map', 'fetch', 'Symbol'],
       },
     },
     {
@@ -173,7 +184,7 @@ const gatsbyConfig = {
             baseId: 'appXrkUdaBbX4kxG5',
             tableName: 'Areas',
             queryName: 'StudyAbroadAreas',
-            tableLinks: ['Semester/Year Programs'],
+            tableLinks: ['Semester/Year_Programs'],
           },
           {
             baseId: 'appXrkUdaBbX4kxG5',
@@ -197,16 +208,22 @@ const gatsbyConfig = {
           },
           {
             baseId: 'appXrkUdaBbX4kxG5',
+            tableName: 'Summer Academic Programs',
+            queryName: 'StudyAbroadSummerAcademics',
+          },
+          {
+            baseId: 'appXrkUdaBbX4kxG5',
             tableName: 'Program Website feed',
             queryName: 'StudyAbroadProgram',
             tableLinks: [
               'Countries',
               'Partner',
-              'Fall/Spring Application Deadline',
-              'Summer Application Deadline',
+              'Fall/Spring_Application_Deadline',
+              'Summer_Application_Deadline',
               'Areas',
+              'Summer_Academics',
               'Prerequisites',
-              'Campus services',
+              'Campus_services',
             ],
           },
           {
@@ -214,6 +231,12 @@ const gatsbyConfig = {
             tableName: 'Countries',
             queryName: 'StudyAbroadCountries',
             tableLinks: ['Countries', 'Partners'],
+          },
+          // 25th anniversary
+          {
+            baseId: 'appvmDCO1k6cz27K6',
+            tableName: 'Timeline',
+            queryName: '25Timeline',
           },
         ],
       },

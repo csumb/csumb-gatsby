@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/common/container'
+import {
+  Layout,
+  PageTitle,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
+import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
-import Blocks from 'templates/blocks'
-import { UniversityPersonnelForm } from 'components/pages/university-personnel'
-import { InputText, Submit } from 'components/common/forms'
-import Well from 'components/common/well'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import { Flex, Box } from 'components/common/grid'
+import Blocks from '../../templates/blocks'
+import { UniversityPersonnelForm } from '../../components/pages/university-personnel'
+import { InputText, Submit } from '../../components/common/forms'
+import Well from '../../components/common/well'
+import { Flex, Box } from '../../components/common/grid'
 
 class UniversityPersonnelAllformsSearch extends Component {
   state = {
@@ -96,8 +98,8 @@ class UniversityPersonnelFormsPage extends Component {
           {data.allCsumbPage &&
             data.allCsumbPage.edges &&
             data.allCsumbPage.edges[0] && (
-            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-          )}
+              <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+            )}
           {data.allAirtable && (
             <>
               <UniversityPersonnelAllformsSearch

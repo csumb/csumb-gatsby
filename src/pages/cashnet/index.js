@@ -1,25 +1,20 @@
 import React, { Component } from 'react'
-import PlainLayout from 'components/layouts/plain'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import { LeadParagraph } from 'components/common/type'
 import styled from '@emotion/styled'
 import url from 'url'
-import Brand from 'components/layouts/sections/header/brand'
-
-const loginAddress =
-  'https://csumb.okta.com/app/csumb_csumbcashnet_1/exkm6j1xciOYxrGdu0x7/sso/saml'
+import PlainLayout from '../../components/layouts/plain'
+import { PageTitle } from '../../components/layouts/default'
+import { LeadParagraph } from '../../components/common/type'
+import Brand from '../../components/layouts/sections/header/brand'
+import { UserContext } from '../../components/contexts/user'
 
 const CashnetContainer = styled.div`
   max-width: 60ch;
   margin: 3rem auto;
 `
 
-class CashnetPage extends Component {
-  state = {
-    user: false,
-  }
+class CashnetRedirect extends Component {
   componentDidMount() {
-    if (typeof window === 'undefined') {
+    if (typeof window === 'undefined' || !this.props.user) {
       return
     }
 
@@ -29,36 +24,35 @@ class CashnetPage extends Component {
       typeof location.query.category !== 'undefined'
         ? `/${location.query.category}`
         : ''
-    fetch('https://csumb.okta.com/api/v1/users/me', {
-      credentials: 'include',
-    })
-      .then(response => {
-        return response.json()
-      })
-      .then(user => {
-        window.location = `https://api.csumb.edu/cashnet/${
-          user.profile.employeeNumber
-        }${category}`
-      })
-      .catch(error => {
-        this.setState({
-          user: 'anonymous',
-        })
-        window.location.href = loginAddress
-      })
+
+    window.location = `https://api.csumb.edu/cashnet/${
+      this.props.user.profile.employeeNumber
+    }${category}`
   }
+
+  render() {
+    return (
+      <>
+        {!this.props.user === 'anonymous' ? (
+          <LeadParagraph>You must be logged in</LeadParagraph>
+        ) : (
+          <LeadParagraph>We are redirecting you to CashNet...</LeadParagraph>
+        )}
+      </>
+    )
+  }
+}
+
+class CashnetPage extends Component {
   render() {
     return (
       <PlainLayout>
         <CashnetContainer>
           <Brand style={{ maxWidth: '350px' }} />
           <PageTitle>CashNET</PageTitle>
-
-          {this.state.user === 'anonymous' ? (
-            <LeadParagraph>You must be logged in</LeadParagraph>
-          ) : (
-            <LeadParagraph>We are redirecting you to CashNet...</LeadParagraph>
-          )}
+          <UserContext.Consumer>
+            {context => <CashnetRedirect user={context.user} />}
+          </UserContext.Consumer>
         </CashnetContainer>
       </PlainLayout>
     )

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
-import { Flex, Box } from 'components/common/grid'
-import Container from 'components/common/container'
+import { colors } from '../../../../style'
+import { Flex, Box } from '../../../common/grid'
+import Container from '../../../common/container'
 import Link from 'gatsby-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -13,13 +13,14 @@ import {
   faYoutube,
   faFlickr,
 } from '@fortawesome/free-brands-svg-icons'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import VisuallyHidden from '../../../utilities/visually-hidden'
 
 const SiteFooterWrapper = styled.footer`
   padding: 2rem 0;
   background: ${colors.muted.highlight};
   border-top: 2px solid ${colors.muted.dark};
   margin-top: 1.5rem;
+  clear: both;
 `
 
 const SiteFooterItems = styled.dl`

@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
+import { Layout, PageTitle } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
 import {
   AccountGroup,
   AccountTitle,
   AccountSidebar,
-} from 'components/pages/account'
-import { UserContext } from 'components/contexts/user'
+} from '../../components/pages/account'
+import { UserContext } from '../../components/contexts/user'
 import Link from 'gatsby-link'
 import styled from '@emotion/styled'
 import NProgress from 'nprogress'

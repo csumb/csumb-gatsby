@@ -96,6 +96,10 @@
         "function": "oktaProfile"
       },
       {
+        "source": "/cloud-functions/okta/apps",
+        "function": "oktaApps"
+      },
+      {
         "source": "/cloud-functions/laundry",
         "function": "laundry"
       },
@@ -126,6 +130,18 @@
       {
         "source": "/cloud-functions/feedback",
         "function": "feedback"
+      },
+      {
+        "source": "/cloud-functions/name-badge",
+        "function": "nameBadge"
+      },
+      {
+        "source": "/log-in",
+        "function": "login"
+      },
+      {
+        "source": "/log-out",
+        "function": "logout"
       }
     ]
   }

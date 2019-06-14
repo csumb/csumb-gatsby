@@ -8,7 +8,7 @@ import {
   AlertWarning,
   AlertEmpty,
   AlertFyi,
-} from 'components/common/alert'
+} from '../components/common/alert'
 
 typography.injectStyles()
 

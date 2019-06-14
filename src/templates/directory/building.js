@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/common/container'
-import PageTitle from 'components/layouts/sections/header/page-title'
+import { Layout } from '../../components/layouts/default'
+import SiteHeader from '../../components/layouts/sections/header/site-header'
+import Container from '../../components/common/container'
+import PageTitle from '../../components/layouts/sections/header/page-title'
 import styled from '@emotion/styled'
-import { Flex, Box } from 'components/common/grid'
-import { ButtonLink } from 'components/common/button'
+import { Flex, Box } from '../../components/common/grid'
+import { ButtonLink } from '../../components/common/button'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
-import ReturnLink from 'components/common/return-link'
-import { DirectoryNavigation } from 'components/pages/directory'
+import ReturnLink from '../../components/common/return-link'
+import { DirectoryNavigation } from '../../components/pages/directory'
 
 const BuildingMap = styled(Map)`
   width: 100%;

@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Brand from './brand'
-import Container from 'components/common/container'
+import Container from '../../../common/container'
 import Search from './search'
 import UserWidget from './user-widget'
 import Applicant from './applicant'
 import { NavigationLink } from './navigation-link'
-import { Flex, Box } from 'components/common/grid'
+import { Flex, Box } from '../../../common/grid'
 
 const DesktopHeaderWrapper = styled.div`
   padding-top: 0.75rem;

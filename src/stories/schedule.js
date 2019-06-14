@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
-import { Button, ButtonLink } from 'components/common/button'
+import { Button, ButtonLink } from '../components/common/button'
 import typography from 'style/typography'
 import {
   ScheduleList,
@@ -9,7 +9,7 @@ import {
   GEListItem,
   CourseList,
   CoursePage,
-} from 'components/pages/schedule'
+} from '../components/pages/schedule'
 
 typography.injectStyles()
 

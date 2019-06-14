@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { Flex, Box } from 'components/common/grid'
+import { Flex, Box } from '../../../components/common/grid'
 
 const ImageGridHeader = styled.h3`
   margin-top: 0;

@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
+import { Layout, PageTitle } from '../../components/layouts/default'
 import { graphql } from 'gatsby'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import Container from 'components/common/container'
-import { Lab, LabKey } from 'components/pages/labs'
-import { Flex, Box } from 'components/common/grid'
-import { AlertFyi } from 'components/common/alert'
-import { UserContext } from 'components/contexts/user'
-import { AccountSidebar, AccountTitle } from 'components/pages/account'
+import Container from '../../components/common/container'
+import { Lab, LabKey } from '../../components/pages/labs'
+import { Flex, Box } from '../../components/common/grid'
+import { AlertFyi } from '../../components/common/alert'
+import { UserContext } from '../../components/contexts/user'
+import { AccountSidebar, AccountTitle } from '../../components/pages/account'
 
 class LabsPage extends Component {
   render() {

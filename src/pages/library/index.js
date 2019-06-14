@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import Container from 'components/common/container'
+import {
+  Layout,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
+import Container from '../../components/common/container'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
-import { Flex, Box } from 'components/common/grid'
-import SiteNavigation from 'components/layouts/sections/navigation/site'
-import Blocks from 'templates/blocks'
-import { colors } from 'style/theme'
-import { InputText, InputSelect, Submit } from 'components/common/forms'
-import oneSearchLogo from 'assets/images/library-one-search.png'
-import bp from 'style/breakpoints'
+import { Flex, Box } from '../../components/common/grid'
+import Blocks from '../../templates/blocks'
+import { colors, bp } from '../../style'
+import { InputText, InputSelect, Submit } from '../../components/common/forms'
+import oneSearchLogo from '../../assets/images/library-one-search.png'
 
 const LibrarySearchWrapper = styled.form`
   background: ${colors.muted.highlight};

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'style/theme'
+import { colors } from '../../../style'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
@@ -8,7 +8,7 @@ import {
   faInstagram,
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons'
-import VisuallyHidden from 'components/utilities/visually-hidden'
+import VisuallyHidden from '../../../components/utilities/visually-hidden'
 
 const providers = {
   facebook: faFacebook,

@@ -1,18 +1,18 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import Link from 'gatsby-link'
-import { colors } from 'style/theme'
-import Well from 'components/common/well'
-import PropTypes from 'prop-types'
 import ContentLoader from 'react-content-loader'
-import { Flex, Box } from 'components/common/grid'
+import LinkInspect from '../utilities/link-inspect'
+import { colors } from '../../style'
+import Well from '../common/well'
+import PropTypes from 'prop-types'
+import { Flex, Box } from '../common/grid'
 
 const AccountSidebarOptions = styled.ul`
   list-style-type: none;
   margin: 0;
 `
 
-const AccountSidebarLink = styled(Link)`
+const AccountSidebarLink = styled(LinkInspect)`
   display: block;
   padding: 0.5rem;
   border-bottom: 1px solid ${colors.black};
@@ -38,9 +38,14 @@ const AccountSidebar = ({ user }) => (
   <AccountSidebarOptions>
     <AccountSidebarLink to="/account">Your account</AccountSidebarLink>
     {user._isEmployee && (
-      <AccountSidebarLink to="/account/profile">
-        Your public profile
-      </AccountSidebarLink>
+      <>
+        <AccountSidebarLink to="/account/profile">
+          Your public profile
+        </AccountSidebarLink>
+        <AccountSidebarLink to="/account/name-badge">
+          Order name badge
+        </AccountSidebarLink>
+      </>
     )}
     {user._isApplicant && (
       <AccountSidebarLink to="/account/applicant-status">

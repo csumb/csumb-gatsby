@@ -1,5 +1,5 @@
 import Typography from 'typography'
-import { colors } from 'style/theme'
+import { colors } from './theme'
 
 const type = {
   baseFontSize: '20px',

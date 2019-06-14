@@ -4,6 +4,7 @@ const oktaSecondaryEmail = require('./lib/okta/secondary-email')
 const oktaSessionEnd = require('./lib/okta/session-end')
 const oktaProfile = require('./lib/okta/profile')
 const oktaLookup = require('./lib/okta/lookup')
+const oktaApps = require('./lib/okta/apps')
 const everbridgeGet = require('./lib/everbridge/get')
 const everbridgePhone = require('./lib/everbridge/phone')
 const everbridgeOptOut = require('./lib/everbridge/opt-out')
@@ -12,6 +13,8 @@ const laundryHall = require('./lib/laundry/hall')
 const profileGet = require('./lib/profile/get')
 const profileUpdate = require('./lib/profile/update')
 const feedback = require('./lib/feedback')
+const nameBadge = require('./lib/name-badge')
+const login = require('./lib/login')
 
 const client = new oktaClient.Client({
   orgUrl: functions.config().okta.domain,
@@ -32,6 +35,10 @@ exports.oktaLookup = functions.https.onRequest((request, response) => {
 
 exports.oktaProfile = functions.https.onRequest((request, response) => {
   oktaProfile(client, request, response)
+})
+
+exports.oktaApps = functions.https.onRequest((request, response) => {
+  oktaApps(client, request, response)
 })
 
 exports.everbridgeGet = functions.https.onRequest((request, response) => {
@@ -59,3 +66,19 @@ exports.laundry = functions.https.onRequest(laundry)
 exports.laundryHall = functions.https.onRequest(laundryHall)
 
 exports.feedback = functions.https.onRequest(feedback)
+
+exports.nameBadge = functions.https.onRequest(nameBadge)
+
+exports.login = functions.https.onRequest(login)
+
+exports.logout = functions.https.onRequest((request, response) => {
+  response.cookie('csumbUser', '', {
+    path: '/',
+    expires: new Date(0),
+  })
+  response.cookie('csumbSession', '', {
+    path: '/',
+    expires: new Date(0),
+  })
+  response.redirect('https://csumb.edu')
+})

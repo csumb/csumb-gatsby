@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import url from 'url'
-import Loading from 'components/common/loading'
-import Layout from 'components/layouts/default'
-
-import { HomepageHero } from 'components/homepage'
+import Loading from '../../../../components/common/loading'
+import { Layout } from '../../../../components/layouts/default'
+import { HomepageHero } from '../../../../components/homepage'
 
 class ContentfulPreviewHomepageHeroImage extends Component {
   state = {
@@ -28,7 +27,12 @@ class ContentfulPreviewHomepageHeroImage extends Component {
           hero.lighten = parseInt(hero.lighten)
           hero.imageHeight = hero.imageHeight ? parseInt(hero.imageHeight) : 0
           hero.image = {
-            file: image.fields.file,
+            highquality: {
+              src: image.fields.file.url,
+            },
+            lowquality: {
+              src: image.fields.file.url,
+            },
           }
           console.log(hero)
           this.setState({

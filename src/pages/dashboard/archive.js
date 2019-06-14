@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import Container from 'components/common/container'
-import Layout from 'components/layouts/default'
-import { UserContext } from 'components/contexts/user'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import { DashboardContent, DashboardMobileToolbar } from 'components/dashboard'
-import BreakpointContext from 'components/contexts/breakpoint'
-import ReturnLink from 'components/common/return-link'
+import Container from '../../components/common/container'
+import { Layout, SiteHeader } from '../../components/layouts/default'
+import { UserContext } from '../../components/contexts/user'
+import {
+  DashboardContent,
+  DashboardMobileToolbar,
+} from '../../components/dashboard'
+import BreakpointContext from '../../components/contexts/breakpoint'
+import ReturnLink from '../../components/common/return-link'
 
 class DashboardArchivePage extends Component {
   state = {

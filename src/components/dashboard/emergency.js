@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import VisuallyHidden from 'components/utilities/visually-hidden'
-import { ButtonLink, LinkyButton } from 'components/common/button'
+import VisuallyHidden from '../utilities/visually-hidden'
+import { ButtonLink, LinkyButton } from '../common/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import { DialogOverlay, DialogContent } from 'components/common/dialog'
+import { DialogOverlay, DialogContent } from '../common/dialog'
 import { CloseDialog } from './shared-styles'
 
 class DashboardEmergency extends Component {
@@ -14,8 +14,8 @@ class DashboardEmergency extends Component {
   componentDidMount() {
     const time = new Date()
     fetch(
-      `/cloud-functions/everbridge/get?token=${
-        this.props.session
+      `/cloud-functions/everbridge/get?token=${this.props.user.session}&user=${
+        this.props.user._username
       }&_t=${time.getTime()}`
     )
       .then(response => {
@@ -52,10 +52,17 @@ class DashboardEmergency extends Component {
   }
 
   handleOptOut() {
+    if (!this.props.user || typeof this.props.user.session === 'undefined') {
+      return
+    }
     this.setState({
       showDialog: false,
     })
-    fetch(`/cloud-functions/everbridge/opt-out?token=${this.props.session}`)
+    fetch(
+      `/cloud-functions/everbridge/opt-out?token=${
+        this.props.user.session
+      }&user=${this.props.user._username}`
+    )
   }
 
   render() {

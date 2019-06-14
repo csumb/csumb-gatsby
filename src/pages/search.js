@@ -1,13 +1,28 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
+import { Layout, PageTitle } from '../components/layouts/default'
 import Link from 'gatsby-link'
-import { css } from 'emotion'
 import { navigate } from '@reach/router'
 import url from 'url'
-import { Flex, Box } from 'components/common/grid'
-import { InputText, Submit } from 'components/common/forms'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import Container from 'components/common/container'
+import { Flex, Box } from '../components/common/grid'
+import { LeadParagraph } from '../components/common/type'
+import { InputText, Submit } from '../components/common/forms'
+import Container from '../components/common/container'
+import styled from '@emotion/styled'
+
+const SearchDescription = styled.p`
+  em {
+    font-weight: bold;
+    font-style: normal;
+  }
+`
+
+const SearchResult = styled.div`
+  margin-top: 1rem;
+`
+
+const SearchNoResults = () => (
+  <LeadParagraph>Sorry, no pages were found</LeadParagraph>
+)
 
 const ListResults = ({ results }) => {
   if (
@@ -16,15 +31,13 @@ const ListResults = ({ results }) => {
   ) {
     return null
   }
+  if (results.records.page && results.records.page.length === 0) {
+    return <SearchNoResults />
+  }
   return (
     <>
       {results.records.page.map(result => (
-        <div
-          key={result.id}
-          className={css`
-            margin-top: 1rem;
-          `}
-        >
+        <SearchResult key={result.id}>
           <h3>
             <Link to={result.url.replace('https://csumb.edu/', '/')}>
               {result.title}
@@ -35,16 +48,10 @@ const ListResults = ({ results }) => {
               {result.url}
             </Link>
           </div>
-          <p
-            className={css`
-              em {
-                font-weight: bold;
-                font-style: normal;
-              }
-            `}
+          <SearchDescription
             dangerouslySetInnerHTML={{ __html: result.highlight.body }}
           />
-        </div>
+        </SearchResult>
       ))}
     </>
   )

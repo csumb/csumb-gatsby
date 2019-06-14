@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import SiteHeader from 'components/layouts/sections/header/site-header'
-import PageTitle from 'components/layouts/sections/header/page-title'
+import { Layout, PageTitle, SiteHeader } from '../../components/layouts/default'
 import styled from '@emotion/styled'
-import { InputText } from 'components/common/forms'
-import Container from 'components/common/container'
+import { InputText } from '../../components/common/forms'
+import Container from '../../components/common/container'
 import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
-import { DirectoryNavigation } from 'components/pages/directory'
+import { DirectoryNavigation } from '../../components/pages/directory'
 
 const BuildingList = styled.ul`
   margin: 0;

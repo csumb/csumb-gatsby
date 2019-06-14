@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
-import Layout from 'components/layouts/default'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import Container from 'components/common/container'
-import { Flex, Box } from 'components/common/grid'
-import { UserContext } from 'components/contexts/user'
-import { Button } from 'components/common/button'
-import Loading from 'components/common/loading'
-import { InputText, Submit } from 'components/common/forms'
+import { Layout, PageTitle } from '../../components/layouts/default'
+import Container from '../../components/common/container'
+import { Flex, Box } from '../../components/common/grid'
+import { UserContext } from '../../components/contexts/user'
+import { Button } from '../../components/common/button'
+import Loading from '../../components/common/loading'
+import { InputText, Submit } from '../../components/common/forms'
 import {
   AccountGroup,
   AccountTitle,
   AccountData,
   AccountSidebar,
   AccountPlaceholder,
-} from 'components/pages/account'
+} from '../../components/pages/account'
 import Link from 'gatsby-link'
-import { AlertDanger, AlertSuccess } from 'components/common/alert'
+import { AlertDanger, AlertSuccess } from '../../components/common/alert'
 import phoneFormatter from 'phone-formatter'
 import NProgress from 'nprogress'
 
@@ -23,48 +22,35 @@ class UserEmergencyForm extends Component {
   state = {
     everbridgeUser: false,
     error: false,
-    userToken: false,
     isReady: false,
     showForm: false,
   }
 
   componentDidMount() {
+    if (!this.props.user || typeof this.props.user.session === 'undefined') {
+      return
+    }
     NProgress.start()
-    fetch(`https://csumb.okta.com/api/v1/sessions/me`, {
-      credentials: 'include',
-    })
+
+    const time = new Date()
+    fetch(
+      `/cloud-functions/everbridge/get?token=${this.props.user.session}&user=${
+        this.props.user._username
+      }&_t=${time.getTime()}`
+    )
       .then(response => {
         NProgress.inc()
         return response.json()
       })
-      .then(session => {
-        const time = new Date()
-        fetch(
-          `/cloud-functions/everbridge/get?token=${
-            session.id
-          }&_t=${time.getTime()}`
-        )
-          .then(response => {
-            NProgress.inc()
-            return response.json()
-          })
-          .then(everbridgeUser => {
-            NProgress.done()
-            this.setState({
-              everbridgeUser: everbridgeUser,
-              userToken: session.id,
-              isReady: true,
-            })
-          })
-          .catch(error => {
-            NProgress.done()
-            this.setState({
-              error: true,
-              isReady: true,
-            })
-          })
+      .then(everbridgeUser => {
+        NProgress.done()
+        this.setState({
+          everbridgeUser: everbridgeUser,
+          isReady: true,
+        })
       })
       .catch(error => {
+        NProgress.done()
         this.setState({
           error: true,
           isReady: true,
@@ -80,7 +66,8 @@ class UserEmergencyForm extends Component {
   }
 
   render() {
-    const { isReady, everbridgeUser, error, showForm, userToken } = this.state
+    const { isReady, everbridgeUser, error, showForm } = this.state
+    const { user } = this.props
     let everbridgePhone = false
     if (!error && everbridgeUser) {
       everbridgeUser.user.paths.forEach(path => {
@@ -118,7 +105,7 @@ class UserEmergencyForm extends Component {
                     Edit phone number
                   </Button>
                 </p>
-                {showForm && <UserEmergencyPhoneForm token={userToken} />}
+                {showForm && <UserEmergencyPhoneForm user={user} />}
               </>
             )}
           </>
@@ -147,8 +134,8 @@ class UserEmergencyPhoneForm extends Component {
     const phone = phoneFormatter.normalize(this.state.number)
     fetch(
       `/cloud-functions/everbridge/phone?token=${
-        this.props.token
-      }&phone=${phone}`
+        this.props.user.session
+      }&user=${this.props.user._username}&phone=${phone}`
     )
       .then(response => {
         return response.json()

@@ -23,10 +23,10 @@ const setUserRole = user => {
   user._isEmployee = false
   user._isStudent = false
   user._isApplicant = false
-  if (typeof user.profile.cmsRole === 'undefined') {
+  if (typeof user.profile.roles === 'undefined') {
     return user
   }
-  user.profile.cmsRole.forEach(role => {
+  user.profile.roles.forEach(role => {
     if (typeof userRoles[role] !== 'undefined') {
       user[`_is${userRoles[role]}`] = true
     }

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import PlainLayout from 'components/layouts/plain'
-import PageTitle from 'components/layouts/sections/header/page-title'
-import { LeadParagraph } from 'components/common/type'
-import Brand from 'components/layouts/sections/header/brand'
+import PlainLayout from '../components/layouts/plain'
+import { PageTitle } from '../components/layouts/default'
+import { LeadParagraph } from '../components/common/type'
+import Brand from '../components/layouts/sections/header/brand'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import { EverythingContent } from 'components/pages/everything'
+import { EverythingContent } from '../components/pages/everything'
 import { graphql } from 'gatsby'
 
 const PageNotFoundContainer = styled.div`
