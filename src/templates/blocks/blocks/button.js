@@ -11,7 +11,10 @@ class BlockButton extends Component {
   render() {
     const { url, text } = this.props
     return (
-      <Button href={url} buttonType="default">
+      <Button
+        href={url.replace('/edit.csumb.edu/', '/csumb.edu/')}
+        buttonType="default"
+      >
         {text}
       </Button>
     )
