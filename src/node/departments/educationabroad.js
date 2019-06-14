@@ -77,6 +77,7 @@ module.exports = (graphql, actions) => {
                   Housing_Meals
                   Financial_Aid_Available
                   Additional_Fees_May_Apply
+                  Additional_Costs
                   About_Paragraph_1
                   About_Paragraph_2
                   About_Paragraph_3

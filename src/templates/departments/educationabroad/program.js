@@ -297,12 +297,6 @@ class ProgramTemplate extends Component {
               </ButtonLink>
             )}
           </ProgramDetails>
-          <ProgramDetails title="Program fees">
-            {data.Program_Type === 'Summer' && <p>{data.Summer_Program_Fee}</p>}
-            {data.Summer_Fee_Waiver_Conditions && (
-              <p>{data.Summer_Fee_Waiver_Conditions}</p>
-            )}
-          </ProgramDetails>
           <ProgramDetails title="Estimated fees &amp; conditions">
             <Table alternateRows={true}>
               <thead>
@@ -358,6 +352,25 @@ class ProgramTemplate extends Component {
               </p>
             )}
           </ProgramDetails>
+          {data.Program_Type === 'Summer' && (
+            <ProgramDetails title="Program fees">
+              {data.Program_Type === 'Summer' && (
+                <p>{data.Summer_Program_Fee}</p>
+              )}
+              {data.Summer_Fee_Waiver_Conditions && (
+                <p>{data.Summer_Fee_Waiver_Conditions}</p>
+              )}
+            </ProgramDetails>
+          )}
+          {data.Additional_Costs && (
+            <ProgramDetails title="Additional_Costs">
+              <ul>
+                {data.Additional_Costs.map(cost => (
+                  <li>{cost}</li>
+                ))}
+              </ul>
+            </ProgramDetails>
+          )}
           {data.Campus_services && data.Campus_services.length > 0 && (
             <ProgramDetails title="Campus services">
               <ul>
