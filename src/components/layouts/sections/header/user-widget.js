@@ -75,12 +75,10 @@ class UserDropdown extends Component {
     })
   }
 
-  handleLogout(event) {
-    event.preventDefault()
+  handleLogout() {
     cookies.remove('csumb-sites')
     cookies.remove('csumbUser')
     cookies.remove('csumbSession')
-    window.location.href = 'https://csumb.edu'
   }
 
   render() {
