@@ -363,7 +363,7 @@ class ProgramTemplate extends Component {
             </ProgramDetails>
           )}
           {data.Additional_Costs && (
-            <ProgramDetails title="Additional_Costs">
+            <ProgramDetails title="Additional Costs">
               <ul>
                 {data.Additional_Costs.map(cost => (
                   <li>{cost}</li>
