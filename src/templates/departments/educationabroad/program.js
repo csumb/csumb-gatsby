@@ -217,15 +217,15 @@ class ProgramTemplate extends Component {
             </Flex>
           )}
           <h2>Program details</h2>
-          {data.Summer_Program_Dates && (
-            <ProgramDetails title="Program dates">
-              <p
-                dangerouslySetInnerHTML={{ __html: data.Summer_Program_Dates }}
-              />
-            </ProgramDetails>
-          )}
           <ProgramDetails title="Program dates">
             <ul>
+              {data.Summer_Program_Dates && (
+                <>
+                  {data.Summer_Program_Dates.map(({ data }) => (
+                    <li>{data.Date_name}</li>
+                  ))}
+                </>
+              )}
               {data.Program_dates__Fall && (
                 <li>
                   <strong>Fall</strong> {data.Program_dates__Fall}
@@ -262,6 +262,27 @@ class ProgramTemplate extends Component {
               </ul>
             )}
             {data.Notes_Area && <p>{data.Notes_Area}</p>}
+            {data.Academics_Button_1_Title && (
+              <div>
+                <ButtonLink to={data.Academics_Button_1_Link}>
+                  {data.Academics_Button_1_Title}
+                </ButtonLink>
+              </div>
+            )}
+            {data.Academics_Button_2_Title && (
+              <div>
+                <ButtonLink to={data.Academics_Button_2_Link}>
+                  {data.Academics_Button_2_Title}
+                </ButtonLink>
+              </div>
+            )}
+            {data.Academics_Button_3_Title && (
+              <div>
+                <ButtonLink to={data.Academics_Button_3_Link}>
+                  {data.Academics_Button_3_Title}
+                </ButtonLink>
+              </div>
+            )}
           </ProgramDetails>
           <ProgramDetails title="Housing &amp; food">
             {data.Housing_Details_Paragraph_1 && (
@@ -276,6 +297,12 @@ class ProgramTemplate extends Component {
               </ButtonLink>
             )}
           </ProgramDetails>
+          <ProgramDetails title="Program fees">
+            {data.Program_Type === 'Summer' && <p>{data.Summer_Program_Fee}</p>}
+            {data.Summer_Fee_Waiver_Conditions && (
+              <p>{data.Summer_Fee_Waiver_Conditions}</p>
+            )}
+          </ProgramDetails>
           <ProgramDetails title="Estimated fees &amp; conditions">
             <Table alternateRows={true}>
               <thead>
@@ -285,12 +312,14 @@ class ProgramTemplate extends Component {
                 </TableRow>
               </thead>
               <tbody>
-                <TableRow>
-                  <TableCell>Tuition (you pay CSUMB tuition)</TableCell>
-                  <TableCell>
-                    <Link to="/cost">Cost calculator</Link>
-                  </TableCell>
-                </TableRow>
+                {program.Program_Type === 'Semester' && (
+                  <TableRow>
+                    <TableCell>Tuition (you pay CSUMB tuition)</TableCell>
+                    <TableCell>
+                      <Link to="/cost">Cost calculator</Link>
+                    </TableCell>
+                  </TableRow>
+                )}
                 <TableRow>
                   <TableCell>
                     Education Abroad Application Fee (non-refundable)
@@ -316,8 +345,11 @@ class ProgramTemplate extends Component {
               </tbody>
             </Table>
 
-            {data.Summer_Fee_Waiver_Conditions && (
-              <p>{data.Summer_Fee_Waiver_Conditions}</p>
+            {data.Program_Type === 'Summer' && (
+              <p>
+                Price is subject to change. Additional fees at host university
+                may apply
+              </p>
             )}
             {data.Additional_Fees_May_Apply && <p>Additional fees may apply</p>}
             {data.Financial_Aid_Available && (
@@ -343,6 +375,13 @@ class ProgramTemplate extends Component {
             <p>
               <ButtonLink to={partner.data.Campus_website}>
                 Visit campus website
+              </ButtonLink>
+            </p>
+          )}
+          {partner.data.International_website && (
+            <p>
+              <ButtonLink to={partner.data.International_website}>
+                Study Abroad Website
               </ButtonLink>
             </p>
           )}

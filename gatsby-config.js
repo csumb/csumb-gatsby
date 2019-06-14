@@ -219,6 +219,11 @@ const gatsbyConfig = {
           },
           {
             baseId: 'appXrkUdaBbX4kxG5',
+            tableName: 'Summer Program Dates',
+            queryName: 'StudyAbroadSummerProgramDates',
+          },
+          {
+            baseId: 'appXrkUdaBbX4kxG5',
             tableName: 'Program Website feed',
             queryName: 'StudyAbroadProgram',
             tableLinks: [
@@ -230,6 +235,7 @@ const gatsbyConfig = {
               'Summer_Academics',
               'Prerequisites',
               'Campus_services',
+              'Summer_Program_Dates',
             ],
           },
           {
