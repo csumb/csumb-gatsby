@@ -7,7 +7,6 @@ import moment from 'moment'
 import {
   NonFeaturedStory,
   FeaturedStory,
-  InTheNews,
   HomepageImageNavigation,
   MoreItemsButton,
   HomepageHero,
@@ -46,7 +45,6 @@ const sortItems = ({
 
 const IndexPage = ({ data }) => {
   const {
-    allContentfulHomepageInTheNews,
     allContentfulHomepageImageNavigation,
     allContentfulHomepageHeroImage,
   } = data
@@ -63,13 +61,13 @@ const IndexPage = ({ data }) => {
       <Container topPadding>
         <h2>News &amp; events</h2>
         <Flex>
-          <Box width={[1, 1, 1 / 2, 3 / 12]} order={[2, 1, 1]} pr={colPadding}>
+          <Box width={[1, 1, 1 / 2, 1 / 3]} order={[2, 1, 1]} pr={colPadding}>
             {notFeatured.map((item, key) => (
               <NonFeaturedStory key={`non-featured-${key}`} {...item} />
             ))}
           </Box>
           <Box
-            width={[1, 1, 1 / 2, 6 / 12]}
+            width={[1, 1, 1 / 2, 2 / 3]}
             order={[1, 2, 2]}
             pl={colPadding}
             pr={colPadding}
@@ -77,9 +75,6 @@ const IndexPage = ({ data }) => {
             {featured.map((item, key) => (
               <FeaturedStory key={`featured-${key}`} {...item} />
             ))}
-          </Box>
-          <Box width={[1, 1, 1, 3 / 12]} order={3} pl={colPadding}>
-            <InTheNews articles={allContentfulHomepageInTheNews.edges} />
           </Box>
         </Flex>
       </Container>
@@ -158,24 +153,6 @@ export const query = graphql`
       }
     }
 
-    allContentfulHomepageInTheNews(
-      limit: 10
-      sort: { fields: [goLiveDate], order: [DESC, ASC] }
-    ) {
-      edges {
-        node {
-          childContentfulHomepageInTheNewsHeadlineTextNode {
-            childMarkdownRemark {
-              rawMarkdownBody
-            }
-          }
-          link
-          source
-          goLiveDate
-          contentful_id
-        }
-      }
-    }
     allContentfulHomepageEvent(
       limit: 50
       sort: { fields: goLiveDate, order: DESC }

@@ -45,6 +45,10 @@ module.exports = (graphql, actions) => {
                   Apply_Now
                   Academics_Button_1_Title
                   Academics_Button_1_Link
+                  Academics_Button_2_Title
+                  Academics_Button_2_Link
+                  Academics_Button_3_Title
+                  Academics_Button_3_Link
                   Areas {
                     data {
                       Subject_Area
@@ -73,6 +77,7 @@ module.exports = (graphql, actions) => {
                   Housing_Meals
                   Financial_Aid_Available
                   Additional_Fees_May_Apply
+                  Additional_Costs
                   About_Paragraph_1
                   About_Paragraph_2
                   About_Paragraph_3
@@ -80,8 +85,12 @@ module.exports = (graphql, actions) => {
                   Summer_start_Date
                   Summer_End_Date
                   Summer_Fee_Waiver_Conditions
-                  Summer_Program_Dates
                   Summer_Program_Fee
+                  Summer_Program_Dates {
+                    data {
+                      Date_name
+                    }
+                  }
                   Notes_Area
                   Prerequisites {
                     recordId
@@ -109,6 +118,7 @@ module.exports = (graphql, actions) => {
                       City
                       Coordinates
                       Campus_website
+                      International_website
                       International_website
                       Video_URL
                     }

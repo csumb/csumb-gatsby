@@ -5,7 +5,6 @@ import { Flex, Box } from '../common/grid'
 import { colors, fonts, bp } from '../../style'
 import HeroImage from '../common/hero-image'
 import { LeadParagraph } from '../common/type'
-import showdown from 'showdown'
 import LinkInspect from '../utilities/link-inspect'
 import Container from '../common/container'
 import { ButtonLink } from '../common/button'
@@ -54,41 +53,6 @@ const EventDate = styled.div`
 
 const FeaturedEventDate = styled.div`
   color: ${colors.muted.dark};
-`
-
-const InTheNewsWrapper = styled.div`
-  background: ${colors.muted.light};
-  padding: 0.7rem;
-`
-
-const InTheNewsList = styled.ul`
-  margin: 0;
-  list-style-type: none;
-  li {
-    line-height: 120%;
-    a {
-      color: ${colors.black};
-      font-weight: 300;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-`
-
-const InTheNewsSource = styled.div`
-  font-variant: italic;
-  font-size: 0.8rem;
-`
-
-const InTheNewsHeader = styled.h3`
-  font-size: 1rem;
-  font-weight: 700;
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.7rem;
-  font-family: ${fonts.body};
-  border-bottom: 3px solid ${colors.black};
 `
 
 const NavigationWrap = styled(Flex)`
@@ -317,42 +281,11 @@ const getNewsLink = (newsStory, link) => {
     .toLowerCase()}/${newsStory[0].slug}`
 }
 
-const InTheNews = ({ articles }) => {
-  const converter = new showdown.Converter()
-  return (
-    <InTheNewsWrapper>
-      <InTheNewsHeader>In the news</InTheNewsHeader>
-      <InTheNewsList>
-        {articles.map(({ node }) => (
-          <li key={node.contentful_id}>
-            <a href={node.link}>
-              <>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: converter.makeHtml(
-                      node.childContentfulHomepageInTheNewsHeadlineTextNode
-                        .childMarkdownRemark.rawMarkdownBody
-                    ),
-                  }}
-                />
-                {node.source && (
-                  <InTheNewsSource>{node.source}</InTheNewsSource>
-                )}
-              </>
-            </a>
-          </li>
-        ))}
-      </InTheNewsList>
-    </InTheNewsWrapper>
-  )
-}
-
 export {
   HomepageHero,
   HomepageNavigation,
   NonFeaturedStory,
   FeaturedStory,
-  InTheNews,
   HomepageImageNavigation,
   MoreItemsButton,
 }
