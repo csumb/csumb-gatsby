@@ -36,7 +36,7 @@
     "filestack-js": "^1.8.1",
     "filestack-react": "^2.0.0",
     "firebase-admin": "^7.1.1",
-    "firebase-functions": "^2.3.0",
+    "firebase-functions": "^3.0.1",
     "gatsby": "^2.9.0",
     "gatsby-cli": "^2.4.10",
     "gatsby-link": "^2.0.11",
