@@ -37,9 +37,9 @@ class DashboardPage extends Component {
     }
   }
 
-  login(data) {
+  login(address) {
     if (typeof window !== 'undefined') {
-      window.location.href = data.site.siteMetadata.okta.login
+      window.location.href = address
     }
   }
 
@@ -127,7 +127,7 @@ class DashboardPage extends Component {
               )}
               {context.user && context.user.anonymous && (
                 <Container>
-                  {this.login(data)}
+                  {this.login(data.site.siteMetadata.okta.login)}
                   <p>You are not logged in</p>
                   <ButtonLink to={data.site.siteMetadata.okta.login}>
                     Log in

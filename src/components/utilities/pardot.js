@@ -13,8 +13,8 @@ class Pardot extends Component {
     script.setAttribute('async', true)
     script.innerHTML = `
     window.__pardotLoaded=true;
-    piAId = '737633';
-    piCId = '1883';
+    piAId = '775533';
+    piCId = '3031';
     piHostname = 'pi.pardot.com';
     
     (function() {

@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { Layout, PageTitle, SiteHeader } from '../../components/layouts/default'
 import Container from '../../components/common/container'
 import { Flex, Box } from '../../components/common/grid'
+import { UnstyledList } from '../../components/common/type'
 import {
-  ScheduleList,
   ScheduleListItem,
   ScheduleTermList,
   GEList,
-} from '../../components/pages/schedule'
+} from '../../components/schedule'
 
 class ScheduleFront extends Component {
   render() {
@@ -24,7 +24,7 @@ class ScheduleFront extends Component {
           <Flex>
             <Box width={[1, 1 / 2]} pr={[0, 4]}>
               <h2>Subjects</h2>
-              <ScheduleList>
+              <UnstyledList>
                 {termSubjects.map(subject => (
                   <ScheduleListItem
                     key={subject.code}
@@ -37,7 +37,7 @@ class ScheduleFront extends Component {
                     {subject.name}
                   </ScheduleListItem>
                 ))}
-              </ScheduleList>
+              </UnstyledList>
             </Box>
             <Box width={[1, 1 / 2]}>
               <h2>General Education</h2>

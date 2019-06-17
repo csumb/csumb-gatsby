@@ -31,7 +31,6 @@ const gatsbyConfig = {
       labs: [1001, 1002, 1003, 1005, 1006, 1010, 1009, 1008],
     },
     overridePages: [
-      '25/timeline',
       'about/about-our-students',
       'about/map-directions',
       'cost',
@@ -40,12 +39,9 @@ const gatsbyConfig = {
       'it/alerts',
       'library',
       'library/ask-librarian',
-      'news',
       'search',
       'scienceillustration/graduate-gallery',
       'undersea/imagery-database',
-      'up/all-forms',
-      'up/index',
     ],
     eventCategories: [
       {
@@ -152,18 +148,6 @@ const gatsbyConfig = {
             tableName: 'Images',
             queryName: 'ScienceIllustrationImages',
           },
-          // University personnel
-          {
-            baseId: 'appRBrbuxszZziJNY',
-            tableName: 'Pages',
-            queryName: 'UniversityPersonnelPages',
-            tableLinks: ['Documents', 'Parent'],
-          },
-          {
-            baseId: 'appRBrbuxszZziJNY',
-            tableName: 'Documents',
-            queryName: 'UniversityPersonnelDocuments',
-          },
           //Undersea archive
           {
             baseId: 'appzX0a9ppEdDZl1P',
@@ -244,12 +228,6 @@ const gatsbyConfig = {
             queryName: 'StudyAbroadCountries',
             tableLinks: ['Countries', 'Partners'],
           },
-          // 25th anniversary
-          {
-            baseId: 'appvmDCO1k6cz27K6',
-            tableName: 'Timeline',
-            queryName: '25Timeline',
-          },
         ],
       },
     },
@@ -313,7 +291,6 @@ const gatsbyConfig = {
         pluginConfig: {
           anonymize_ip: true,
           head: false,
-          exclude: ['/preview/**'],
         },
         gtagConfig: {
           respectDNT: true,
@@ -329,27 +306,13 @@ const gatsbyConfig = {
     {
       resolve: 'gatsby-plugin-hotjar',
       options: {
-        id: 1234615,
+        id: 1194959,
         sv: 6,
       },
     },
     'gatsby-plugin-meta-redirect',
     'gatsby-plugin-csumb-post-build',
   ],
-}
-
-if (process.env.CI) {
-  gatsbyConfig.plugins.push({
-    resolve: 'gatsby-plugin-rollbar',
-    options: {
-      accessToken: 'cede68eb11674ec28cd2da13d1d7a7f6',
-      captureUncaught: true,
-      captureUnhandledRejections: true,
-      payload: {
-        environment: process.env.TRAVIS_BRANCH,
-      },
-    },
-  })
 }
 
 module.exports = gatsbyConfig

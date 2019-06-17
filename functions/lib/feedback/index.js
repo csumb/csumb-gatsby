@@ -1,4 +1,3 @@
-const cryptex = require('node-cryptex')
 const feedbackTemplate = require('./feedback-template')
 const functions = require('firebase-functions')
 const sgMail = require('@sendgrid/mail')
@@ -12,6 +11,7 @@ module.exports = (request, response) => {
   const msg = {
     to: feedbackEmail,
     from: 'webservices@csumb.edu',
+    cc: 'webservices@csumb.edu',
     subject: `Page feedback on ${request.query.title}`,
     html: feedbackHTML,
   }

@@ -10,16 +10,12 @@ const everythingPages = require(`./src/node/everything`)
 const eventPages = require(`./src/node/events`)
 const scienceIllustrationPages = require(`./src/node/departments/scienceillustration`)
 const educationAbroadPages = require(`./src/node/departments/educationabroad`)
-const newsStoryPages = require(`./src/node/departments/news`)
 
 require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ stage, graphql, actions }) => {
   return new Promise((resolve, reject) => {
     coursePages(graphql, actions)
-      .then(() => {
-        return newsStoryPages(graphql, actions)
-      })
       .then(() => {
         return scienceIllustrationPages(graphql, actions)
       })

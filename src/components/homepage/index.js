@@ -10,6 +10,7 @@ import Container from '../common/container'
 import { ButtonLink } from '../common/button'
 import anniversaryBanner from '../../assets/images/25-banner.png'
 import Link from 'gatsby-link'
+import BreakpointContext from '../contexts/breakpoint'
 
 const dateFormat = 'MMMM D, YYYY'
 
@@ -22,16 +23,9 @@ const Story = styled.div`
   }
 `
 
-const NonFeaturedStoryHeader = styled.h3`
+const StoryHeader = styled.h2`
   text-decoration: none;
-  font-family: ${fonts.body};
-  margin: 0;
-  color: ${colors.black};
-`
-
-const FeaturedStoryHeader = styled.h2`
-  text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-family: ${fonts.body};
   color: ${colors.black};
   margin: 0;
@@ -42,16 +36,7 @@ const StoryImage = styled.img`
   margin-bottom: 0;
 `
 
-const FeaturedStoryDescription = styled.p`
-  margin-top: 0.5rem;
-  margin-bottom: 0;
-  font-size: 120%;
-`
 const EventDate = styled.div`
-  color: ${colors.muted.dark};
-`
-
-const FeaturedEventDate = styled.div`
   color: ${colors.muted.dark};
 `
 
@@ -194,22 +179,35 @@ const HomepageHero = ({ item }) => (
   <HomepageHeroWrapper
     style={{ height: item.fixedHeight ? `${item.imageHeight}px` : '75vh' }}
   >
-    <HeroImage
-      opacity={item.lighten / 100}
-      parallaxOffset={item.fixedHeight ? 0 : 100}
-      transitionDuration={0}
-      imageSrc={item.image.highquality.src}
-      lowResImage={item.image.lowquality.src}
-      minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
-    >
-      {item.showAnniversaryBanner && <HeroImageAnniversaryBanner />}
-      <HeroItem darkImage={item.darkImage}>
-        <h2>
-          <LinkInspect to={item.link}>{item.title}</LinkInspect>
-        </h2>
-        <LeadParagraph>{item.description}</LeadParagraph>
-      </HeroItem>
-    </HeroImage>
+    <BreakpointContext.Consumer>
+      {context => (
+        <HeroImage
+          opacity={item.lighten / 100}
+          parallaxOffset={item.fixedHeight ? 0 : 100}
+          transitionDuration={0}
+          imageSrc={
+            context.isMobile
+              ? item.mobileImage.highquality.src
+              : item.image.highquality.src
+          }
+          lowResImage={
+            context.isMobile
+              ? item.mobileImage.lowquality.src
+              : item.image.lowquality.src
+          }
+          textPosition={item.textPosition}
+          minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
+        >
+          {item.showAnniversaryBanner && <HeroImageAnniversaryBanner />}
+          <HeroItem darkImage={item.darkImage}>
+            <h2>
+              <LinkInspect to={item.link}>{item.title}</LinkInspect>
+            </h2>
+            <LeadParagraph>{item.description}</LeadParagraph>
+          </HeroItem>
+        </HeroImage>
+      )}
+    </BreakpointContext.Consumer>
   </HomepageHeroWrapper>
 )
 
@@ -227,12 +225,17 @@ const HomepageNavigation = ({ items }) => (
   </NavigationWrap>
 )
 
-const NonFeaturedStory = ({ news_story, link, image, title, eventDate }) => (
-  <Story>
-    <a href={getNewsLink(news_story, link)}>
-      <StoryImage alt="" src={image.resize.src} srcSet={image.fixed.srcSet} />
+const HomepageStory = ({ link, image, title, eventDate }) => (
+  <Story featured>
+    <a href={link}>
+      <StoryImage
+        aria-hidden
+        alt=""
+        src={image.resize.url}
+        srcSet={image.fixed.srcSet}
+      />
       <StoryType isEvent={eventDate && true} />
-      <NonFeaturedStoryHeader>{title}</NonFeaturedStoryHeader>
+      <StoryHeader>{title}</StoryHeader>
       {eventDate && (
         <EventDate>{moment(eventDate).format(dateFormat)}</EventDate>
       )}
@@ -240,52 +243,10 @@ const NonFeaturedStory = ({ news_story, link, image, title, eventDate }) => (
   </Story>
 )
 
-const FeaturedStory = ({
-  link,
-  image,
-  title,
-  eventDate,
-  news_story,
-  childContentfulHomepageStoryDescriptionTextNode,
-  childContentfulHomepageEventDescriptionTextNode,
-}) => (
-  <Story featured>
-    <a href={getNewsLink(news_story, link)}>
-      <StoryImage alt="" src={image.resize.url} srcSet={image.fixed.srcSet} />
-      <StoryType isEvent={eventDate && true} />
-      <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
-      {eventDate && (
-        <FeaturedEventDate>
-          {moment(eventDate).format(dateFormat)}
-        </FeaturedEventDate>
-      )}
-    </a>
-    <FeaturedStoryDescription>
-      {childContentfulHomepageStoryDescriptionTextNode && (
-        <>{childContentfulHomepageStoryDescriptionTextNode.description}</>
-      )}
-
-      {childContentfulHomepageEventDescriptionTextNode && (
-        <>{childContentfulHomepageEventDescriptionTextNode.description}</>
-      )}
-    </FeaturedStoryDescription>
-  </Story>
-)
-
-const getNewsLink = (newsStory, link) => {
-  if (!newsStory) {
-    return link
-  }
-  return `/news/${moment(newsStory[0].goLiveDate)
-    .format('YYYY/MMM/D')
-    .toLowerCase()}/${newsStory[0].slug}`
-}
-
 export {
   HomepageHero,
   HomepageNavigation,
-  NonFeaturedStory,
-  FeaturedStory,
+  HomepageStory,
   HomepageImageNavigation,
   MoreItemsButton,
 }

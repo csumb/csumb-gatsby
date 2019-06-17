@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Layout, PageTitle, SiteHeader } from '../../components/layouts/default'
-import { CourseList, ScheduleBackLink } from '../../components/pages/schedule'
+import { CourseList, ScheduleBackLink } from '../../components/schedule'
 import Container from '../../components/common/container'
 
 class GECourseList extends Component {
