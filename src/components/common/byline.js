@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
-import { colors } from '../../../style'
+import { colors } from '../../style'
 
 const BylineElement = styled.div`
   display: inline-block;

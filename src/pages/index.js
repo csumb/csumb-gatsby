@@ -135,11 +135,6 @@ export const query = graphql`
           childContentfulHomepageStoryDescriptionTextNode {
             description
           }
-          news_story {
-            id
-            slug
-            goLiveDate
-          }
           image {
             resize(width: 800) {
               src

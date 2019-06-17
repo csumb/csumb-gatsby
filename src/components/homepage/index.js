@@ -227,9 +227,9 @@ const HomepageNavigation = ({ items }) => (
   </NavigationWrap>
 )
 
-const NonFeaturedStory = ({ news_story, link, image, title, eventDate }) => (
+const NonFeaturedStory = ({ link, image, title, eventDate }) => (
   <Story>
-    <a href={getNewsLink(news_story, link)}>
+    <a href={link}>
       <StoryImage alt="" src={image.resize.src} srcSet={image.fixed.srcSet} />
       <StoryType isEvent={eventDate && true} />
       <NonFeaturedStoryHeader>{title}</NonFeaturedStoryHeader>
@@ -245,12 +245,11 @@ const FeaturedStory = ({
   image,
   title,
   eventDate,
-  news_story,
   childContentfulHomepageStoryDescriptionTextNode,
   childContentfulHomepageEventDescriptionTextNode,
 }) => (
   <Story featured>
-    <a href={getNewsLink(news_story, link)}>
+    <a href={link}>
       <StoryImage alt="" src={image.resize.url} srcSet={image.fixed.srcSet} />
       <StoryType isEvent={eventDate && true} />
       <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
@@ -271,15 +270,6 @@ const FeaturedStory = ({
     </FeaturedStoryDescription>
   </Story>
 )
-
-const getNewsLink = (newsStory, link) => {
-  if (!newsStory) {
-    return link
-  }
-  return `/news/${moment(newsStory[0].goLiveDate)
-    .format('YYYY/MMM/D')
-    .toLowerCase()}/${newsStory[0].slug}`
-}
 
 export {
   HomepageHero,
