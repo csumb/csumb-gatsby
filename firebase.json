@@ -45,6 +45,7 @@
       { "source": "/cms-help", "destination": "/oasis", "type": 301 },
       { "source": "/itcd", "destination": "/scd", "type": 301 },
       { "source": "/saml_login", "destination": "/", "type": 301 },
+      { "source": "/undefined", "destination": "/", "type": 301 },
       { "source": "/innovation", "destination": "/iied", "type": 301 },
       {
         "source": "/financial-aid",
