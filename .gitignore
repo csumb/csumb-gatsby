@@ -12,13 +12,7 @@ coverage
 .runtimeconfig.json
 
 #CSUMB files
-_web-content
-_data
-_functions
 website-data/
-drive-api.json
 .firebase
 firebase-debug.log
 style-guide
-
-src/pages/__contentful
