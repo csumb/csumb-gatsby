@@ -10,6 +10,7 @@ import Container from '../common/container'
 import { ButtonLink } from '../common/button'
 import anniversaryBanner from '../../assets/images/25-banner.png'
 import Link from 'gatsby-link'
+import BreakpointContext from '../contexts/breakpoint'
 
 const dateFormat = 'MMMM D, YYYY'
 
@@ -178,22 +179,34 @@ const HomepageHero = ({ item }) => (
   <HomepageHeroWrapper
     style={{ height: item.fixedHeight ? `${item.imageHeight}px` : '75vh' }}
   >
-    <HeroImage
-      opacity={item.lighten / 100}
-      parallaxOffset={item.fixedHeight ? 0 : 100}
-      transitionDuration={0}
-      imageSrc={item.image.highquality.src}
-      lowResImage={item.image.lowquality.src}
-      minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
-    >
-      {item.showAnniversaryBanner && <HeroImageAnniversaryBanner />}
-      <HeroItem darkImage={item.darkImage}>
-        <h2>
-          <LinkInspect to={item.link}>{item.title}</LinkInspect>
-        </h2>
-        <LeadParagraph>{item.description}</LeadParagraph>
-      </HeroItem>
-    </HeroImage>
+    <BreakpointContext.Consumer>
+      {context => (
+        <HeroImage
+          opacity={item.lighten / 100}
+          parallaxOffset={item.fixedHeight ? 0 : 100}
+          transitionDuration={0}
+          imageSrc={
+            context.isMobile
+              ? item.mobileImage.highquality.src
+              : item.image.highquality.src
+          }
+          lowResImage={
+            context.isMobile
+              ? item.mobileImage.lowquality.src
+              : item.image.lowquality.src
+          }
+          minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
+        >
+          {item.showAnniversaryBanner && <HeroImageAnniversaryBanner />}
+          <HeroItem darkImage={item.darkImage}>
+            <h2>
+              <LinkInspect to={item.link}>{item.title}</LinkInspect>
+            </h2>
+            <LeadParagraph>{item.description}</LeadParagraph>
+          </HeroItem>
+        </HeroImage>
+      )}
+    </BreakpointContext.Consumer>
   </HomepageHeroWrapper>
 )
 
