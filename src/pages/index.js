@@ -177,10 +177,10 @@ export const query = graphql`
             }
           }
           mobileImage {
-            lowquality: resize(width: 600, quality: 20) {
+            lowquality: resize(width: 600, height: 600, quality: 20) {
               src
             }
-            highquality: resize(width: 600, quality: 90) {
+            highquality: resize(width: 600, height: 600, quality: 90) {
               src
             }
           }
