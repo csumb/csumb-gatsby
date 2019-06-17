@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Layout, SiteHeader } from '../../components/layouts/default'
 import Container from '../../components/common/container'
-import { CoursePage } from '../../components/pages/schedule'
+import { CoursePage } from '../../components/schedule'
 
 class CoursePageTemplate extends Component {
   render() {

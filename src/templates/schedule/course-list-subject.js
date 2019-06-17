@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Layout, PageTitle, SiteHeader } from '../../components/layouts/default'
 import Container from '../../components/common/container'
-import { CourseList, ScheduleBackLink } from '../../components/pages/schedule'
+import { CourseList, ScheduleBackLink } from '../../components/schedule'
 
 class SubjectCourseList extends Component {
   render() {
