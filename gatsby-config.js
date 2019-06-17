@@ -43,8 +43,6 @@ const gatsbyConfig = {
       'search',
       'scienceillustration/graduate-gallery',
       'undersea/imagery-database',
-      'up/all-forms',
-      'up/index',
     ],
     eventCategories: [
       {
@@ -150,18 +148,6 @@ const gatsbyConfig = {
             baseId: 'appW5yp8SpOvxD3Al',
             tableName: 'Images',
             queryName: 'ScienceIllustrationImages',
-          },
-          // University personnel
-          {
-            baseId: 'appRBrbuxszZziJNY',
-            tableName: 'Pages',
-            queryName: 'UniversityPersonnelPages',
-            tableLinks: ['Documents', 'Parent'],
-          },
-          {
-            baseId: 'appRBrbuxszZziJNY',
-            tableName: 'Documents',
-            queryName: 'UniversityPersonnelDocuments',
           },
           //Undersea archive
           {
