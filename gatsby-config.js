@@ -308,7 +308,7 @@ const gatsbyConfig = {
     {
       resolve: 'gatsby-plugin-hotjar',
       options: {
-        id: 1234615,
+        id: 1194959,
         sv: 6,
       },
     },
