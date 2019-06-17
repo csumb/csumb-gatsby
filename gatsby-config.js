@@ -291,7 +291,6 @@ const gatsbyConfig = {
         pluginConfig: {
           anonymize_ip: true,
           head: false,
-          exclude: ['/preview/**'],
         },
         gtagConfig: {
           respectDNT: true,
