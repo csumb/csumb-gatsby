@@ -22,16 +22,9 @@ const Story = styled.div`
   }
 `
 
-const NonFeaturedStoryHeader = styled.h3`
+const StoryHeader = styled.h2`
   text-decoration: none;
-  font-family: ${fonts.body};
-  margin: 0;
-  color: ${colors.black};
-`
-
-const FeaturedStoryHeader = styled.h2`
-  text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-family: ${fonts.body};
   color: ${colors.black};
   margin: 0;
@@ -42,16 +35,7 @@ const StoryImage = styled.img`
   margin-bottom: 0;
 `
 
-const FeaturedStoryDescription = styled.p`
-  margin-top: 0.5rem;
-  margin-bottom: 0;
-  font-size: 120%;
-`
 const EventDate = styled.div`
-  color: ${colors.muted.dark};
-`
-
-const FeaturedEventDate = styled.div`
   color: ${colors.muted.dark};
 `
 
@@ -227,12 +211,17 @@ const HomepageNavigation = ({ items }) => (
   </NavigationWrap>
 )
 
-const NonFeaturedStory = ({ link, image, title, eventDate }) => (
-  <Story>
+const HomepageStory = ({ link, image, title, eventDate }) => (
+  <Story featured>
     <a href={link}>
-      <StoryImage alt="" src={image.resize.src} srcSet={image.fixed.srcSet} />
+      <StoryImage
+        aria-hidden
+        alt=""
+        src={image.resize.url}
+        srcSet={image.fixed.srcSet}
+      />
       <StoryType isEvent={eventDate && true} />
-      <NonFeaturedStoryHeader>{title}</NonFeaturedStoryHeader>
+      <StoryHeader>{title}</StoryHeader>
       {eventDate && (
         <EventDate>{moment(eventDate).format(dateFormat)}</EventDate>
       )}
@@ -240,42 +229,10 @@ const NonFeaturedStory = ({ link, image, title, eventDate }) => (
   </Story>
 )
 
-const FeaturedStory = ({
-  link,
-  image,
-  title,
-  eventDate,
-  childContentfulHomepageStoryDescriptionTextNode,
-  childContentfulHomepageEventDescriptionTextNode,
-}) => (
-  <Story featured>
-    <a href={link}>
-      <StoryImage alt="" src={image.resize.url} srcSet={image.fixed.srcSet} />
-      <StoryType isEvent={eventDate && true} />
-      <FeaturedStoryHeader>{title}</FeaturedStoryHeader>
-      {eventDate && (
-        <FeaturedEventDate>
-          {moment(eventDate).format(dateFormat)}
-        </FeaturedEventDate>
-      )}
-    </a>
-    <FeaturedStoryDescription>
-      {childContentfulHomepageStoryDescriptionTextNode && (
-        <>{childContentfulHomepageStoryDescriptionTextNode.description}</>
-      )}
-
-      {childContentfulHomepageEventDescriptionTextNode && (
-        <>{childContentfulHomepageEventDescriptionTextNode.description}</>
-      )}
-    </FeaturedStoryDescription>
-  </Story>
-)
-
 export {
   HomepageHero,
   HomepageNavigation,
-  NonFeaturedStory,
-  FeaturedStory,
+  HomepageStory,
   HomepageImageNavigation,
   MoreItemsButton,
 }

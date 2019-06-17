@@ -5,8 +5,7 @@ import { Flex, Box } from '../components/common/grid'
 import { graphql } from 'gatsby'
 import moment from 'moment'
 import {
-  NonFeaturedStory,
-  FeaturedStory,
+  HomepageStory,
   HomepageImageNavigation,
   MoreItemsButton,
   HomepageHero,
@@ -16,31 +15,25 @@ const sortItems = ({
   allContentfulHomepageEvent,
   allContentfulHomepageStory,
 }) => {
-  let result = {
-    featured: [],
-    notFeatured: [],
-  }
-
+  const results = []
   const stories = [allContentfulHomepageEvent, allContentfulHomepageStory]
 
   stories.forEach(type => {
-    let count = 0
     type.edges.forEach(item => {
-      const key = item.node.featured ? 'featured' : 'notFeatured'
       if (
         moment(item.node.unpublishDate).unix() > moment().unix() &&
         moment(item.node.goLiveDate).unix() <= moment().unix()
       ) {
-        if (count < 10) {
-          result[key].push(item.node)
-        }
-        count++
+        results.push(item.node)
       }
       return item
     })
     return type
   })
-  return result
+  return results.reduce(function(result, value, index, array) {
+    if (index % 2 === 0) result.push(array.slice(index, index + 2))
+    return result
+  }, [])
 }
 
 const IndexPage = ({ data }) => {
@@ -49,9 +42,8 @@ const IndexPage = ({ data }) => {
     allContentfulHomepageHeroImage,
   } = data
 
-  const { featured, notFeatured } = sortItems(data)
+  const stories = sortItems(data)
 
-  const colPadding = [0, 0, 4, 6]
   return (
     <Layout noFooterMargin={true}>
       <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
@@ -59,24 +51,15 @@ const IndexPage = ({ data }) => {
         navigation={allContentfulHomepageImageNavigation.edges[0].node}
       />
       <Container topPadding>
-        <h2>News &amp; events</h2>
-        <Flex>
-          <Box width={[1, 1, 1 / 2, 1 / 3]} order={[2, 1, 1]} pr={colPadding}>
-            {notFeatured.map((item, key) => (
-              <NonFeaturedStory key={`non-featured-${key}`} {...item} />
+        {stories.map(storyPair => (
+          <Flex>
+            {storyPair.map(story => (
+              <Box width={[1, 1, 1 / 2]} px={[0, 0, 4]}>
+                <HomepageStory {...story} />
+              </Box>
             ))}
-          </Box>
-          <Box
-            width={[1, 1, 1 / 2, 2 / 3]}
-            order={[1, 2, 2]}
-            pl={colPadding}
-            pr={colPadding}
-          >
-            {featured.map((item, key) => (
-              <FeaturedStory key={`featured-${key}`} {...item} />
-            ))}
-          </Box>
-        </Flex>
+          </Flex>
+        ))}
       </Container>
       <Container topPadding>
         <MoreItemsButton style={{ marginRight: '1rem' }} to="/events">
@@ -128,13 +111,9 @@ export const query = graphql`
       edges {
         node {
           title
-          featured
           link
           goLiveDate
           unpublishDate
-          childContentfulHomepageStoryDescriptionTextNode {
-            description
-          }
           image {
             resize(width: 800) {
               src
@@ -155,15 +134,11 @@ export const query = graphql`
       edges {
         node {
           title
-          featured
           link
           goLiveDate
           eventDate
           unpublishDate
           contentful_id
-          childContentfulHomepageEventDescriptionTextNode {
-            description
-          }
           image {
             fixed {
               src
@@ -176,6 +151,7 @@ export const query = graphql`
         }
       }
     }
+
     allContentfulHomepageHeroImage(
       sort: { fields: goLiveDate, order: DESC }
       limit: 1
@@ -196,6 +172,14 @@ export const query = graphql`
               src
             }
             highquality: resize(width: 1300, quality: 90) {
+              src
+            }
+          }
+          mobileImage {
+            lowquality: resize(width: 600, quality: 20) {
+              src
+            }
+            highquality: resize(width: 600, quality: 90) {
               src
             }
           }
