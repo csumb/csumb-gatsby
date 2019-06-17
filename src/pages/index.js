@@ -162,6 +162,7 @@ export const query = graphql`
           description
           goLiveDate
           darkImage
+          textPosition
           link
           lighten
           fixedHeight

@@ -84,6 +84,17 @@ const Overlay = styled(Cover)`
   justify-content: ${props => (props.isCentered ? 'center' : 'flex-start')};
   align-items: ${props => (props.isCentered ? 'center' : 'stretch')};
   text-align: ${props => (props.isCentered ? 'center' : 'left')};
+  ${props =>
+    props.textPosition &&
+    props.textPosition === 'Top' &&
+    `align-items: start;
+    padding-top: 1.5rem;
+    `}
+  ${props =>
+    props.textPosition &&
+    props.textPosition === 'Bottom' &&
+    `align-items: flex-end;
+    `}
   background-color: ${props =>
     Color(props.color)
       .alpha(props.opacity)
@@ -231,6 +242,7 @@ class HeroImage extends Component {
         <Overlay
           color={this.props.color}
           isCentered={this.props.isCentered}
+          textPosition={this.props.textPosition}
           opacity={this.props.opacity}
         >
           {this.props.children && <div>{this.props.children}</div>}

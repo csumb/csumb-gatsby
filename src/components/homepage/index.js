@@ -195,6 +195,7 @@ const HomepageHero = ({ item }) => (
               ? item.mobileImage.lowquality.src
               : item.image.lowquality.src
           }
+          textPosition={item.textPosition}
           minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
         >
           {item.showAnniversaryBanner && <HeroImageAnniversaryBanner />}
