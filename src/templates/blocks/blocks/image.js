@@ -46,7 +46,7 @@ class BlockImage extends Component {
           <a href={url}>
             <img
               src={imageSource}
-              alt={description}
+              alt={description.replace(/image/gi, '')}
               style={{
                 height:
                   height && parseInt(height) > 10 ? `${height}px` : 'auto',
