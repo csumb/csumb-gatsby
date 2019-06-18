@@ -12,18 +12,20 @@ import Container from '../../components/common/container'
 const EverythingTopLevelPage = ({ pageContext }) => (
   <Layout pageTitle="Everything else">
     <SiteHeader path="/everything">Everything else</SiteHeader>
-    <Container topPadding>
-      <Flex>
-        {pageContext.topLevelItems.map(item => (
-          <TopLevelBox key={item.contentful_id} width={[1, 1, 1 / 3]} px={2}>
-            <h3>
-              <Link to={`/everything/${item.slug}`}>{item.title}</Link>
-            </h3>
-            <EverythingContent item={item} />
-          </TopLevelBox>
-        ))}
-      </Flex>
-    </Container>
+    <main>
+      <Container topPadding>
+        <Flex>
+          {pageContext.topLevelItems.map(item => (
+            <TopLevelBox key={item.contentful_id} width={[1, 1, 1 / 3]} px={2}>
+              <h3>
+                <Link to={`/everything/${item.slug}`}>{item.title}</Link>
+              </h3>
+              <EverythingContent item={item} />
+            </TopLevelBox>
+          ))}
+        </Flex>
+      </Container>
+    </main>
   </Layout>
 )
 

@@ -29,22 +29,24 @@ const PageNavigationList = styled.ul`
 `
 
 const PageNavigation = ({ navigation }) => (
-  <PageNavigationList>
-    {navigation.map((item, key) => (
-      <li key={item.url}>
-        <LinkInspect to={item.url}>{item.name}</LinkInspect>
-        {item.children && item.children.length > 0 && (
-          <PageNavigationList isChild={true}>
-            {item.children.map(child => (
-              <li key={child.url}>
-                <LinkInspect to={child.url}>{child.name}</LinkInspect>
-              </li>
-            ))}
-          </PageNavigationList>
-        )}
-      </li>
-    ))}
-  </PageNavigationList>
+  <nav>
+    <PageNavigationList>
+      {navigation.map((item, key) => (
+        <li key={item.url}>
+          <LinkInspect to={item.url}>{item.name}</LinkInspect>
+          {item.children && item.children.length > 0 && (
+            <PageNavigationList isChild={true}>
+              {item.children.map(child => (
+                <li key={child.url}>
+                  <LinkInspect to={child.url}>{child.name}</LinkInspect>
+                </li>
+              ))}
+            </PageNavigationList>
+          )}
+        </li>
+      ))}
+    </PageNavigationList>
+  </nav>
 )
 
 export default PageNavigation
