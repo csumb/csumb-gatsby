@@ -13,7 +13,7 @@ const CashnetContainer = styled.div`
 `
 
 class CashnetRedirect extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     if (typeof window === 'undefined' || !this.props.user) {
       return
     }
