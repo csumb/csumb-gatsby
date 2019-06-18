@@ -200,6 +200,11 @@ class Footer extends Component {
               </LegalLink>{' '}
               | <LegalLink to="/clery">Security report</LegalLink> |{' '}
               <LegalLink to="/legal">Legal information</LegalLink>
+              <VisuallyHidden>
+                <LinkInspect to="/document-readers">
+                  Some links may require a Document Reader
+                </LinkInspect>
+              </VisuallyHidden>
             </RightFooter>
           </Flex>
         </Container>

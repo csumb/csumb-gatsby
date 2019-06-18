@@ -23,7 +23,7 @@ import {
 
 const CostButton = styled(Button)`
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem auto;
 `
 
 const tuition = [
@@ -189,13 +189,7 @@ const SpecificUnitsQuestion = ({ handler, handleChange }) => (
   </>
 )
 
-const CostResults = ({
-  resident,
-  undergraduate,
-  moreThanSixUnits,
-  units,
-  startOver,
-}) => {
+const CostResults = ({ resident, undergraduate, moreThanSixUnits, units }) => {
   let totalTuition = 0
   let total = 0
   fees.forEach(fee => {
@@ -261,9 +255,6 @@ const CostResults = ({
           A’viands)
         </li>
       </ul>
-      <p>
-        <LinkyButton onClick={startOver}>Start over</LinkyButton>
-      </p>
     </>
   )
 }
@@ -352,14 +343,16 @@ class CostPageForm extends Component {
                   </>
                 ) : (
                   <>
-                    <CostResults
-                      {...this.state}
-                      startOver={this.startOver.bind(this)}
-                    />
+                    <CostResults {...this.state} />
                   </>
                 )}
               </>
             )}
+            <p>
+              <LinkyButton onClick={this.startOver.bind(this)}>
+                ← Start over
+              </LinkyButton>
+            </p>
           </>
         )}
       </>

@@ -52,33 +52,37 @@ class PageTemplate extends Component {
         {olarkSite && <Olark siteId={olarkSite} />}
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
-        {topHero && <BlockHero {...topHero} />}
-        <Container>
-          <Breadcrumbs breadcrumbs={breadcrumbs} />
-          <PageEditorTools site={site} pageId={drupalNid} />
-          {layout !== 'site' && <PageTitle layout={layout}>{title}</PageTitle>}
-          {showCatalogIndicator && <CatalogIndicator />}
-        </Container>
-        {event && <EventPage event={event} />}
-
-        {showNavigation ? (
+        <main>
+          {topHero && <BlockHero {...topHero} />}
           <Container>
-            <Flex>
-              <Box width={[1, 3 / 12]} pr={[0, 8]} order={[2, 1]}>
-                <PageNavigation navigation={pageNavigation} />
-              </Box>
-              <Box width={[1, 9 / 12]} order={[1, 2]}>
-                <Blocks blocks={pageContent} />
-              </Box>
-            </Flex>
+            <Breadcrumbs breadcrumbs={breadcrumbs} />
+            <PageEditorTools site={site} pageId={drupalNid} />
+            {layout !== 'site' && (
+              <PageTitle layout={layout}>{title}</PageTitle>
+            )}
+            {showCatalogIndicator && <CatalogIndicator />}
           </Container>
-        ) : (
-          <Blocks blocks={pageContent} />
-        )}
-        <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
-        {((site.contact && (site.contact.phone || site.contact.email)) ||
-          (site.social && site.social.length) ||
-          site.staffPage) && <SiteFooter site={site} />}
+          {event && <EventPage event={event} />}
+
+          {showNavigation ? (
+            <Container>
+              <Flex>
+                <Box width={[1, 3 / 12]} pr={[0, 8]} order={[2, 1]}>
+                  <PageNavigation navigation={pageNavigation} />
+                </Box>
+                <Box width={[1, 9 / 12]} order={[1, 2]}>
+                  <Blocks blocks={pageContent} />
+                </Box>
+              </Flex>
+            </Container>
+          ) : (
+            <Blocks blocks={pageContent} />
+          )}
+          <PageFeedback email={feedbackEmail} title={title} url={pageUrl} />
+          {((site.contact && (site.contact.phone || site.contact.email)) ||
+            (site.social && site.social.length) ||
+            site.staffPage) && <SiteFooter site={site} />}
+        </main>
       </Layout>
     )
   }

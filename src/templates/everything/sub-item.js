@@ -23,60 +23,62 @@ const EverythingSubLevelPage = ({ pageContext }) => (
     {({ isMobile }) => (
       <Layout pageTitle="Everything else">
         <SiteHeader path="/everything">Everything else</SiteHeader>
-        <Container topPadding>
-          <Flex>
-            <>
-              {isMobile ? (
-                <p>
-                  <Link to="/everything">← Back to everything</Link>
-                </p>
-              ) : (
-                <Box width={[1, 1 / 5]} px={2}>
-                  <TopLevelList>
-                    {pageContext.topLevelItems.map(item => (
-                      <TopLevelItem key={item.contentful_id}>
-                        <TopLevelItemLink
-                          to={`/everything/${item.slug}`}
-                          active={
-                            item.contentful_id ===
-                            pageContext.currentItem.contentful_id
-                          }
-                        >
-                          {item.title}
-                        </TopLevelItemLink>
-                      </TopLevelItem>
-                    ))}
-                  </TopLevelList>
-                </Box>
-              )}
-            </>
+        <main>
+          <Container topPadding>
+            <Flex>
+              <>
+                {isMobile ? (
+                  <p>
+                    <Link to="/everything">← Back to everything</Link>
+                  </p>
+                ) : (
+                  <Box width={[1, 1 / 5]} px={2}>
+                    <TopLevelList>
+                      {pageContext.topLevelItems.map(item => (
+                        <TopLevelItem key={item.contentful_id}>
+                          <TopLevelItemLink
+                            to={`/everything/${item.slug}`}
+                            active={
+                              item.contentful_id ===
+                              pageContext.currentItem.contentful_id
+                            }
+                          >
+                            {item.title}
+                          </TopLevelItemLink>
+                        </TopLevelItem>
+                      ))}
+                    </TopLevelList>
+                  </Box>
+                )}
+              </>
 
-            <Box width={[1, 2 / 5]} px={2}>
-              <SecondLevelTitle>
-                {pageContext.currentItem.title}
-              </SecondLevelTitle>
-              <EverythingContent item={pageContext.currentItem} />
-              <SecondLevelList>
-                {pageContext.currentItems.map(item => (
-                  <SubItem key={item.contentful_id}>
-                    {!item.link && <SubItemArrow />}
-                    <HiddenLink
-                      to={
-                        item.link
-                          ? item.link
-                          : `/everything/${pageContext.currentItem.slug}/${
-                              item.slug
-                            }`
-                      }
-                    >
-                      <SubItemContent item={item} />
-                    </HiddenLink>
-                  </SubItem>
-                ))}
-              </SecondLevelList>
-            </Box>
-          </Flex>
-        </Container>
+              <Box width={[1, 2 / 5]} px={2}>
+                <SecondLevelTitle>
+                  {pageContext.currentItem.title}
+                </SecondLevelTitle>
+                <EverythingContent item={pageContext.currentItem} />
+                <SecondLevelList>
+                  {pageContext.currentItems.map(item => (
+                    <SubItem key={item.contentful_id}>
+                      {!item.link && <SubItemArrow />}
+                      <HiddenLink
+                        to={
+                          item.link
+                            ? item.link
+                            : `/everything/${pageContext.currentItem.slug}/${
+                                item.slug
+                              }`
+                        }
+                      >
+                        <SubItemContent item={item} />
+                      </HiddenLink>
+                    </SubItem>
+                  ))}
+                </SecondLevelList>
+              </Box>
+            </Flex>
+          </Container>
+        </main>
       </Layout>
     )}
   </BreakpointContext.Consumer>

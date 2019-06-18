@@ -35,17 +35,19 @@ const HeaderDesktop = ({ loginLink }) => (
             <UserWidget loginLink={loginLink} />
             <Search isMobile={false} />
           </div>
-          <NavigationList>
-            <NavigationLink to="/about">About</NavigationLink>
-            <NavigationLink to="/admissions">Apply</NavigationLink>
-            <NavigationLink to="/cost">Cost &amp; aid</NavigationLink>
-            <NavigationLink to="/academics">Academics</NavigationLink>
-            <NavigationLink to="/life">Campus life</NavigationLink>
-            <NavigationLink to="/alumni">Alumni</NavigationLink>
-            <NavigationLink to="/everything" last={true}>
-              Everything else
-            </NavigationLink>
-          </NavigationList>
+          <nav>
+            <NavigationList>
+              <NavigationLink to="/about">About</NavigationLink>
+              <NavigationLink to="/admissions">Apply</NavigationLink>
+              <NavigationLink to="/cost">Cost &amp; aid</NavigationLink>
+              <NavigationLink to="/academics">Academics</NavigationLink>
+              <NavigationLink to="/life">Campus life</NavigationLink>
+              <NavigationLink to="/alumni">Alumni</NavigationLink>
+              <NavigationLink to="/everything" last={true}>
+                Everything else
+              </NavigationLink>
+            </NavigationList>
+          </nav>
         </BoxHeaderTools>
       </Flex>
     </Container>
