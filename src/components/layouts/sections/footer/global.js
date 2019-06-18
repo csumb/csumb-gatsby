@@ -202,7 +202,7 @@ class Footer extends Component {
               <LegalLink to="/legal">Legal information</LegalLink>
               <VisuallyHidden>
                 <LinkInspect to="/document-readers">
-                  Some links for may require a Document Reader
+                  Some links may require a Document Reader
                 </LinkInspect>
               </VisuallyHidden>
             </RightFooter>
