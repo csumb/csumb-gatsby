@@ -33,7 +33,7 @@ class CashnetRedirect extends Component {
   render() {
     return (
       <>
-        {!this.props.user === 'anonymous' ? (
+        {!this.props.user || this.props.user.anonymous ? (
           <LeadParagraph>You must be logged in</LeadParagraph>
         ) : (
           <LeadParagraph>We are redirecting you to CashNet...</LeadParagraph>
