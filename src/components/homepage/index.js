@@ -228,12 +228,7 @@ const HomepageNavigation = ({ items }) => (
 const HomepageStory = ({ link, image, title, eventDate }) => (
   <Story featured>
     <a href={link}>
-      <StoryImage
-        aria-hidden
-        alt=""
-        src={image.resize.url}
-        srcSet={image.fixed.srcSet}
-      />
+      <StoryImage aria-hidden alt="" src={image.highquality.src} />
       <StoryType isEvent={eventDate && true} />
       <StoryHeader>{title}</StoryHeader>
       {eventDate && (
