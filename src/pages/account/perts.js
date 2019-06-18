@@ -31,7 +31,7 @@ const PertsPage = ({ data }) => (
       <UserContext.Consumer>
         {context => (
           <>
-            {context.user ? (
+            {context.user && !context.user.anonymous ? (
               <>
                 <h2>Logging you into PERTS.</h2>
                 <PertsRedirect user={context.user} />
