@@ -64,6 +64,10 @@ const ProgramDetailsHeader = styled.button`
   text-align: left;
 `
 
+const ProgramWebsiteButton = styled(ButtonLink)`
+  margin: 0 1.5rem 1.5rem 0;
+`
+
 const ProgramMap = GoogleApiWrapper({
   apiKey: process.env.GATSBY_CSUMB_GOOGLE_MAPS_KEY,
 })(({ coordinates, google }) => (
@@ -306,14 +310,30 @@ class ProgramTemplate extends Component {
                 </TableRow>
               </thead>
               <tbody>
-                {program.Program_Type === 'Semester' && (
+                {data.Program_Type === 'Semester' && (
                   <TableRow>
                     <TableCell>Tuition (you pay CSUMB tuition)</TableCell>
                     <TableCell>
-                      <Link to="/cost">Cost calculator</Link>
+                      {data.Tuition && <>{data.Tuition}</>}
+                      {data.Cost_Calculator && (
+                        <Link to="/cost">Cost calculator</Link>
+                      )}
                     </TableCell>
                   </TableRow>
                 )}
+                {data.Program_Type === 'Summer' && (
+                  <TableRow>
+                    <TableCell>Summer program fee</TableCell>
+                    <TableCell>{data.Summer_Program_Fee}</TableCell>
+                  </TableRow>
+                )}
+                {data.Program_Type === 'Summer' &&
+                  data.Summer_Fee_Waiver_Conditions && (
+                    <TableRow>
+                      <TableCell>Fee waiver conditions</TableCell>
+                      <TableCell>{data.Summer_Fee_Waiver_Conditions}</TableCell>
+                    </TableRow>
+                  )}
                 <TableRow>
                   <TableCell>
                     Education Abroad Application Fee (non-refundable)
@@ -352,14 +372,13 @@ class ProgramTemplate extends Component {
               </p>
             )}
           </ProgramDetails>
-          {data.Program_Type === 'Summer' && (
-            <ProgramDetails title="Program fees">
-              {data.Program_Type === 'Summer' && (
-                <p>{data.Summer_Program_Fee}</p>
-              )}
-              {data.Summer_Fee_Waiver_Conditions && (
-                <p>{data.Summer_Fee_Waiver_Conditions}</p>
-              )}
+          {data.Program_Type === 'Summer' && data.Program_Fee_Includes && (
+            <ProgramDetails title="Program fee includes">
+              <ul>
+                {data.Program_Fee_Includes.map(fee => (
+                  <li key={fee}>{fee}</li>
+                ))}
+              </ul>
             </ProgramDetails>
           )}
           {data.Additional_Costs && (
@@ -384,20 +403,18 @@ class ProgramTemplate extends Component {
           {data.About_Paragraph_1 && <p>{data.About_Paragraph_1}</p>}
           {data.About_Paragraph_2 && <p>{data.About_Paragraph_2}</p>}
           {data.About_Paragraph_3 && <p>{data.About_Paragraph_3}</p>}
-          {partner.data.Campus_website && (
-            <p>
-              <ButtonLink to={partner.data.Campus_website}>
+          <div>
+            {partner.data.Campus_website && (
+              <ProgramWebsiteButton to={partner.data.Campus_website}>
                 Visit campus website
-              </ButtonLink>
-            </p>
-          )}
-          {partner.data.International_website && (
-            <p>
-              <ButtonLink to={partner.data.International_website}>
+              </ProgramWebsiteButton>
+            )}
+            {partner.data.International_website && (
+              <ProgramWebsiteButton to={partner.data.International_website}>
                 Study Abroad Website
-              </ButtonLink>
-            </p>
-          )}
+              </ProgramWebsiteButton>
+            )}
+          </div>
           <h3>Location</h3>
           {partner.data.City && <>{partner.data.City},</>}{' '}
           {data.Countries[0].data.Name}
