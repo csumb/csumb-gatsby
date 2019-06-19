@@ -42,6 +42,9 @@ const AccountSidebar = ({ user }) => (
         <AccountSidebarLink to="/account/profile">
           Your public profile
         </AccountSidebarLink>
+        <AccountSidebarLink to="/account/name-badge">
+          Order name badge
+        </AccountSidebarLink>
       </>
     )}
     {user._isApplicant && (
