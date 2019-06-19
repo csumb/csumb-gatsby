@@ -42,6 +42,7 @@ class UserComponent extends React.Component {
       user.profile.roles = user.profile.roles.split(',')
     }
     user._username = user.profile.login.split('@').shift()
+    user.anonymous = false
     user = setUserRole(user)
     this.setState({
       user: user,
