@@ -36,6 +36,7 @@ class CashnetRedirect extends Component {
             : ''
         }`
       )}`
+      return
     }
     window.location = `https://api.csumb.edu/cashnet/${
       user.profile.employeeNumber
