@@ -78,6 +78,7 @@ module.exports = (graphql, actions) => {
                   Financial_Aid_Available
                   Additional_Fees_May_Apply
                   Additional_Costs
+                  Cost_Calculator
                   About_Paragraph_1
                   About_Paragraph_2
                   About_Paragraph_3
@@ -86,6 +87,7 @@ module.exports = (graphql, actions) => {
                   Summer_End_Date
                   Summer_Fee_Waiver_Conditions
                   Summer_Program_Fee
+                  Program_Fee_Includes
                   Summer_Program_Dates {
                     data {
                       Date_name

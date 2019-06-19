@@ -310,13 +310,32 @@ class ProgramTemplate extends Component {
                 </TableRow>
               </thead>
               <tbody>
-                {program.Program_Type === 'Semester' && (
+                {data.Program_Type === 'Semester' && (
                   <TableRow>
                     <TableCell>Tuition (you pay CSUMB tuition)</TableCell>
                     <TableCell>
-                      <Link to="/cost">Cost calculator</Link>
+                      {data.Tuition && <>{data.Tuition}</>}
+                      {data.Cost_Calculator && (
+                        <Link to="/cost">Cost calculator</Link>
+                      )}
                     </TableCell>
                   </TableRow>
+                )}
+                {data.Program_type === 'Summer' && (
+                  <>
+                    <TableRow>
+                      <TableCell>Summer program fee</TableCell>
+                      <TableCell>{data.Summer_Program_Fee}</TableCell>
+                    </TableRow>
+                    {data.Summer_Fee_Waiver_Conditions && (
+                      <TableRow>
+                        <TableCell>Fee waiver conditions</TableCell>
+                        <TableCell>
+                          {data.Summer_Fee_Waiver_Conditions}
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </>
                 )}
                 <TableRow>
                   <TableCell>
@@ -356,14 +375,13 @@ class ProgramTemplate extends Component {
               </p>
             )}
           </ProgramDetails>
-          {data.Program_Type === 'Summer' && (
-            <ProgramDetails title="Program fees">
-              {data.Program_Type === 'Summer' && (
-                <p>{data.Summer_Program_Fee}</p>
-              )}
-              {data.Summer_Fee_Waiver_Conditions && (
-                <p>{data.Summer_Fee_Waiver_Conditions}</p>
-              )}
+          {data.Program_Type === 'Summer' && data.Program_Fee_Includes && (
+            <ProgramDetails title="Program fee includes">
+              <ul>
+                {data.Program_Fee_Includes.map(fee => (
+                  <li key={fee}>{fee}</li>
+                ))}
+              </ul>
             </ProgramDetails>
           )}
           {data.Additional_Costs && (
