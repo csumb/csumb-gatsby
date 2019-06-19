@@ -321,22 +321,19 @@ class ProgramTemplate extends Component {
                     </TableCell>
                   </TableRow>
                 )}
-                {data.Program_type === 'Summer' && (
-                  <>
-                    <TableRow>
-                      <TableCell>Summer program fee</TableCell>
-                      <TableCell>{data.Summer_Program_Fee}</TableCell>
-                    </TableRow>
-                    {data.Summer_Fee_Waiver_Conditions && (
-                      <TableRow>
-                        <TableCell>Fee waiver conditions</TableCell>
-                        <TableCell>
-                          {data.Summer_Fee_Waiver_Conditions}
-                        </TableCell>
-                      </TableRow>
-                    )}
-                  </>
+                {data.Program_Type === 'Summer' && (
+                  <TableRow>
+                    <TableCell>Summer program fee</TableCell>
+                    <TableCell>{data.Summer_Program_Fee}</TableCell>
+                  </TableRow>
                 )}
+                {data.Program_Type === 'Summer' &&
+                  data.Summer_Fee_Waiver_Conditions && (
+                    <TableRow>
+                      <TableCell>Fee waiver conditions</TableCell>
+                      <TableCell>{data.Summer_Fee_Waiver_Conditions}</TableCell>
+                    </TableRow>
+                  )}
                 <TableRow>
                   <TableCell>
                     Education Abroad Application Fee (non-refundable)
