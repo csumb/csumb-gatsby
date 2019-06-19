@@ -21,7 +21,6 @@ const gatsbyConfig = {
       { site: 'dashboard', code: '1001-610-10-3640' },
       { site: 'mist', code: '3836-896-10-1757' },
       { site: 'scd', code: '3836-896-10-1757' },
-      { site: 'scd2', code: '3836-896-10-1757' },
     ],
     schedule: {
       currentTerm: 2194,
