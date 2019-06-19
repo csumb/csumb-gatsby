@@ -64,6 +64,10 @@ const ProgramDetailsHeader = styled.button`
   text-align: left;
 `
 
+const ProgramWebsiteButton = styled(ButtonLink)`
+  margin: 0 1.5rem 1.5rem 0;
+`
+
 const ProgramMap = GoogleApiWrapper({
   apiKey: process.env.GATSBY_CSUMB_GOOGLE_MAPS_KEY,
 })(({ coordinates, google }) => (
@@ -384,20 +388,18 @@ class ProgramTemplate extends Component {
           {data.About_Paragraph_1 && <p>{data.About_Paragraph_1}</p>}
           {data.About_Paragraph_2 && <p>{data.About_Paragraph_2}</p>}
           {data.About_Paragraph_3 && <p>{data.About_Paragraph_3}</p>}
-          {partner.data.Campus_website && (
-            <p>
-              <ButtonLink to={partner.data.Campus_website}>
+          <div>
+            {partner.data.Campus_website && (
+              <ProgramWebsiteButton to={partner.data.Campus_website}>
                 Visit campus website
-              </ButtonLink>
-            </p>
-          )}
-          {partner.data.International_website && (
-            <p>
-              <ButtonLink to={partner.data.International_website}>
+              </ProgramWebsiteButton>
+            )}
+            {partner.data.International_website && (
+              <ProgramWebsiteButton to={partner.data.International_website}>
                 Study Abroad Website
-              </ButtonLink>
-            </p>
-          )}
+              </ProgramWebsiteButton>
+            )}
+          </div>
           <h3>Location</h3>
           {partner.data.City && <>{partner.data.City},</>}{' '}
           {data.Countries[0].data.Name}
