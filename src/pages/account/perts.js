@@ -6,6 +6,7 @@ import { PageTitle } from '../../components/layouts/default'
 import { graphql } from 'gatsby'
 import Container from '../../components/common/container'
 import { UserContext } from '../../components/contexts/user'
+import Loading from '../../components/common/loading'
 
 class PertsRedirect extends Component {
   componentDidMount() {
@@ -40,7 +41,7 @@ class PertsRedirect extends Component {
   }
 
   render() {
-    return null
+    return <Loading>Logging you into PERTS</Loading>
   }
 }
 

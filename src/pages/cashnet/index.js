@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import url from 'url'
 import PlainLayout from '../../components/layouts/plain'
 import { PageTitle } from '../../components/layouts/default'
-import { LeadParagraph } from '../../components/common/type'
+import Loading from '../../components/common/loading'
 import Brand from '../../components/layouts/sections/header/brand'
 import { UserContext } from '../../components/contexts/user'
 import { graphql } from 'gatsby'
@@ -44,15 +44,7 @@ class CashnetRedirect extends Component {
   }
 
   render() {
-    return (
-      <>
-        {!this.props.user || this.props.user.anonymous ? (
-          <LeadParagraph>You must be logged in</LeadParagraph>
-        ) : (
-          <LeadParagraph>We are redirecting you to CashNet...</LeadParagraph>
-        )}
-      </>
-    )
+    return <Loading>Logging you into CashNET</Loading>
   }
 }
 
