@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { Layout, SiteHeader } from '../../components/layouts/default'
+import {
+  Layout,
+  SiteHeader,
+  SiteNavigation,
+} from '../../components/layouts/default'
 import Blocks from '../../templates/blocks'
 import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
@@ -70,22 +74,24 @@ const CsumbMapWrapped = GoogleApiWrapper({
   apiKey: process.env.GATSBY_CSUMB_GOOGLE_MAPS_KEY,
 })(CsumbMap)
 
-class MapPage extends Component {
-  render() {
-    const { data } = this.props
-    return (
-      <Layout>
-        <SiteHeader path="/map">Map</SiteHeader>
-        <CsumbMapWrapped buildings={data.allCsumbBuilding} />
-        {data.allCsumbPage &&
-          data.allCsumbPage.edges &&
-          data.allCsumbPage.edges[0] && (
-            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-          )}
-      </Layout>
-    )
-  }
-}
+const MapPage = ({ data }) => (
+  <Layout>
+    <SiteHeader path="/about">About</SiteHeader>
+    {data.allCsumbNavigation &&
+      data.allCsumbNavigation.edges &&
+      data.allCsumbNavigation.edges[0] && (
+        <SiteNavigation
+          navigation={data.allCsumbNavigation.edges[0].node.navigation}
+        />
+      )}
+    <CsumbMapWrapped buildings={data.allCsumbBuilding} />
+    {data.allCsumbPage &&
+      data.allCsumbPage.edges &&
+      data.allCsumbPage.edges[0] && (
+        <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+      )}
+  </Layout>
+)
 
 export default MapPage
 
@@ -112,6 +118,14 @@ export const query = graphql`
         node {
           pageContent
           layout
+        }
+      }
+    }
+    allCsumbNavigation(filter: { site: { eq: "about" } }) {
+      edges {
+        node {
+          site
+          navigation
         }
       }
     }

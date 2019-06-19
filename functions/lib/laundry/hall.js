@@ -8,7 +8,7 @@ const cleanText = text => {
 module.exports = (request, response) => {
   fetch(
     `https://www.laundryalert.com/cgi-bin/csumb721/LMRoom?XallingPage=LMPage&Halls=${
-      request.params.hall
+      request.query.hall
     }`
   )
     .then(response => {

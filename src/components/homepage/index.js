@@ -11,6 +11,7 @@ import { ButtonLink } from '../common/button'
 import anniversaryBanner from '../../assets/images/25-banner.png'
 import Link from 'gatsby-link'
 import BreakpointContext from '../contexts/breakpoint'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const dateFormat = 'MMMM D, YYYY'
 
@@ -31,7 +32,7 @@ const StoryHeader = styled.h2`
   margin: 0;
 `
 
-const StoryImage = styled.img`
+const StoryImage = styled(LazyLoadImage)`
   width: 100%;
   margin-bottom: 0;
 `
@@ -228,12 +229,15 @@ const HomepageNavigation = ({ items }) => (
 const HomepageStory = ({ link, image, title, eventDate }) => (
   <Story featured>
     <a href={link}>
-      <StoryImage
-        aria-hidden
-        alt=""
-        src={image.resize.url}
-        srcSet={image.fixed.srcSet}
-      />
+      <div>
+        <StoryImage
+          alt=""
+          aria-hidden
+          height={350}
+          src={image.highquality.src}
+          width="100%"
+        />
+      </div>
       <StoryType isEvent={eventDate && true} />
       <StoryHeader>{title}</StoryHeader>
       {eventDate && (

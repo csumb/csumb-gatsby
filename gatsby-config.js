@@ -39,6 +39,7 @@ const gatsbyConfig = {
       'it/alerts',
       'library',
       'library/ask-librarian',
+      'police/emergency',
       'search',
       'scienceillustration/graduate-gallery',
       'undersea/imagery-database',

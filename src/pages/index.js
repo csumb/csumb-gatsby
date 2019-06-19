@@ -115,12 +115,11 @@ export const query = graphql`
           goLiveDate
           unpublishDate
           image {
-            resize(width: 800) {
+            lowquality: resize(width: 600, quality: 20) {
               src
             }
-            fixed {
+            highquality: resize(width: 600, quality: 90) {
               src
-              srcSet
             }
           }
         }
@@ -140,11 +139,10 @@ export const query = graphql`
           unpublishDate
           contentful_id
           image {
-            fixed {
+            lowquality: resize(width: 600, quality: 20) {
               src
-              srcSet
             }
-            resize(width: 800) {
+            highquality: resize(width: 600, quality: 90) {
               src
             }
           }

@@ -6,13 +6,16 @@ const md5 = require('md5')
 const hosts = {
   local: {
     redirect: 'http://localhost:8000/dashboard',
+    domain: 'http://localhost:8000',
     secure: false,
   },
   dev: {
     redirect: 'https://csumb-gatsby-develop.firebaseapp.com/dashboard',
+    domain: 'https://csumb-gatsby-develop.firebaseapp.com',
   },
   live: {
     redirect: 'https://csumb.edu/dashboard',
+    domain: 'https://csumb.edu',
   },
 }
 const { instance, salt } = functions.config().login
@@ -42,7 +45,14 @@ module.exports = (request, response) => {
           path: '/',
         }
       )
-      response.redirect(host.redirect)
+      if (
+        typeof request.body.RelayState !== 'undefined' &&
+        request.body.RelayState
+      ) {
+        response.redirect(host.domain + request.body.RelayState)
+      } else {
+        response.redirect(host.redirect)
+      }
       response.end()
     })
     .catch(error => {

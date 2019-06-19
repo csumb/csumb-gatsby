@@ -6,6 +6,7 @@ import { PageTitle } from '../../components/layouts/default'
 import { graphql } from 'gatsby'
 import Container from '../../components/common/container'
 import { UserContext } from '../../components/contexts/user'
+import Loading from '../../components/common/loading'
 
 class PertsRedirect extends Component {
   componentDidMount() {
@@ -18,8 +19,29 @@ class PertsRedirect extends Component {
     }/${location.query.session}/${this.props.user._username}`
   }
 
+  componentDidUpdate() {
+    const { loginUrl, user } = this.props
+    if (typeof window === 'undefined' || !user) {
+      return
+    }
+
+    let location = url.parse(window.location.href, true)
+
+    if (this.props.user.anonymous) {
+      window.location = `${loginUrl}?RelayState=${encodeURIComponent(
+        `/account/perts?code=${location.query.code}&session=${
+          location.query.session
+        }`
+      )}`
+      return
+    }
+    window.location = `https://neptune.perts.net/participate/portal/${
+      location.query.code
+    }/${location.query.session}/${user._username}`
+  }
+
   render() {
-    return <></>
+    return <Loading>Logging you into PERTS</Loading>
   }
 }
 
@@ -30,21 +52,10 @@ const PertsPage = ({ data }) => (
       <PageTitle>Perts</PageTitle>
       <UserContext.Consumer>
         {context => (
-          <>
-            {context.user ? (
-              <>
-                <h2>Logging you into PERTS.</h2>
-                <PertsRedirect user={context.user} />
-              </>
-            ) : (
-              <>
-                <h2>You must be logged in first</h2>
-                <a href={data.site.siteMetadata.okta.login}>
-                  Log in to your dashboard, and return to this page
-                </a>
-              </>
-            )}
-          </>
+          <PertsRedirect
+            loginUrl={data.site.siteMetadata.okta.login}
+            user={context.user}
+          />
         )}
       </UserContext.Consumer>
     </Container>

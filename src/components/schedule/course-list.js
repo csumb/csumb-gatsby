@@ -56,6 +56,10 @@ const CourseAttributeList = styled.ol`
   }
 `
 
+const ExpandFilterButton = styled(LinkyButton)`
+  margin-bottom: 1rem;
+`
+
 const CourseListMobileLabel = styled.strong`
   ${bp({
     display: ['block', 'none'],
@@ -186,6 +190,9 @@ const CourseListItem = ({ course, term }) => {
             <CourseAttributeList>
               {course._attributes.GE && (
                 <>
+                  <CourseListMobileLabel>
+                    General education
+                  </CourseListMobileLabel>
                   {course._attributes.GE.map(ge => (
                     <li>{ge}</li>
                   ))}
@@ -193,6 +200,9 @@ const CourseListItem = ({ course, term }) => {
               )}
               {course._attributes.UR && (
                 <>
+                  <CourseListMobileLabel>
+                    University requirements
+                  </CourseListMobileLabel>
                   {course._attributes.UR.map(ur => (
                     <li>{ur}</li>
                   ))}
@@ -282,9 +292,9 @@ class CourseList extends Component {
 
     return (
       <section>
-        <LinkyButton onClick={this.handleToggleFilter.bind(this)}>
+        <ExpandFilterButton onClick={this.handleToggleFilter.bind(this)}>
           {isExpanded ? <>Hide filter</> : <>Filter courses</>}
-        </LinkyButton>
+        </ExpandFilterButton>
         {isExpanded && (
           <Well>
             <form
