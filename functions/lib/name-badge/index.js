@@ -10,7 +10,7 @@ module.exports = (request, response) => {
       : 'Do not include title - 2 line'
   const body = `<h2>CSUMB name badge order</h2>
     <strong>Name:</strong> ${request.query.firstName} ${
-    request.query.firstName
+    request.query.lastName
   }<br/>
     <strong>Title:</strong> ${request.query.title}<br/>
     <strong>Department:</strong> ${request.query.department}<br/>
