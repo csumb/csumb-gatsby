@@ -112,7 +112,7 @@ class UserDropdown extends Component {
           >
             Edit website
           </UserDropdownMenuLink>
-          <UserDropdownMenuLink component="a" href="/account/card">
+          <UserDropdownMenuLink component="a" href="https://csumb.edu/it/ottercard-balance">
             OtterCard
           </UserDropdownMenuLink>
 
