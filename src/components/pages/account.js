@@ -62,7 +62,7 @@ const AccountSidebar = ({ user }) => (
       </>
     )}
     <AccountSidebarLink to="/account/labs">Computer labs</AccountSidebarLink>
-    <AccountSidebarLink to="/account/card">Otter Card</AccountSidebarLink>
+    <AccountSidebarLink to="https://csumb.edu/it/ottercard-balance">Otter Card</AccountSidebarLink>
     <AccountSidebarLink to="/account/print">Printer paper</AccountSidebarLink>
     <AccountSidebarLink to="/account/emergency">
       Emergency alerts
