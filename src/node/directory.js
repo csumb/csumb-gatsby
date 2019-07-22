@@ -67,10 +67,10 @@ module.exports = (graphql, actions) => {
             edge.node.user._publicProfile &&
             edge.node.user._publicProfile.location &&
             typeof buildings[
-              edge.node.user_publicProfile.location.split('-').shift()
+              edge.node.user._publicProfile.location.split('-').shift()
             ] !== 'undefined'
               ? buildings[
-                  edge.node.user_publicProfile.location.split('-').shift()
+                  (edge.node.user._publicProfile.location, split('-').shift())
                 ]
               : ''
 
