@@ -54,12 +54,6 @@ class DashboardMessage extends Component {
       <>
         {!archived && (
           <DashboardCard>
-            {!archivedContent && (
-              <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
-                &times;
-                <VisuallyHidden>Archive message</VisuallyHidden>
-              </DashboardMessageClose>
-            )}
             <Link to={link}>
               <DashboardCardHeader>{headline}</DashboardCardHeader>
             </Link>
