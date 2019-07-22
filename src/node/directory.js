@@ -70,7 +70,7 @@ module.exports = (graphql, actions) => {
               edge.node.user._publicProfile.location.split('-').shift()
             ] !== 'undefined'
               ? buildings[
-                  (edge.node.user._publicProfile.location, split('-').shift())
+                  edge.node.user._publicProfile.location.split('-').shift()
                 ]
               : ''
 
