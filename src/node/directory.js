@@ -65,10 +65,10 @@ module.exports = (graphql, actions) => {
           const emailPrefix = edge.node.user.email.split('@').shift()
           const building =
             edge.node.user._publicProfile &&
-            edge.node.user._publicProfile.buildingCode &&
-            typeof buildings[edge.node.user._publicProfile.buildingCode] !==
+            edge.node.user._publicProfile.location &&
+            typeof buildings[edge.node.user.location.split('-').shift()] !==
               'undefined'
-              ? buildings[edge.node.user._publicProfile.buildingCode]
+              ? buildings[edge.node.user.location.split('-').shift()]
               : ''
 
           createPage({

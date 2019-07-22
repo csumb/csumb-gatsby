@@ -93,8 +93,8 @@ const PersonListing = props => {
             _publicProfile.buildingCode &&
             buildings[_publicProfile.buildingCode] && (
               <>
-                <Link to={`/directory/building/${_publicProfile.buildingCode}`}>
-                  {buildings[_publicProfile.buildingCode]}
+                <Link to={`/directory/building/${_publicProfile.location.split('-').shift()}`}>
+                  {buildings[_publicProfile.location.split('-').shift()]}
                 </Link>
                 <>
                   {_publicProfile.location && (
