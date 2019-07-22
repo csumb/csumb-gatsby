@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import { AlertEmpty } from '../common/alert'
-import VisuallyHidden from '../utilities/visually-hidden'
 import Link from 'gatsby-link'
-import {
-  DashboardCard,
-  DashboardMessageClose,
-  DashboardCardHeader,
-} from './shared-styles'
+import { DashboardCard, DashboardCardHeader } from './shared-styles'
 
 class DashboardMessages extends Component {
   render() {
