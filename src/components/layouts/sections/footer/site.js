@@ -17,10 +17,13 @@ import VisuallyHidden from '../../../utilities/visually-hidden'
 
 const SiteFooterWrapper = styled.footer`
   padding: 2rem 0;
-  background: ${colors.muted.highlight};
+  background: ${colors.muted.light};
   border-top: 2px solid ${colors.muted.dark};
   margin-top: 1.5rem;
   clear: both;
+  a {
+    color: ${colors.primary.dark};
+  }
 `
 
 const SiteFooterItems = styled.dl`
@@ -37,7 +40,6 @@ const SiteFooterItems = styled.dl`
 `
 
 const SiteFooterSocialIconLink = styled.a`
-  color: ${colors.muted.dark};
   font-size: 1.5rem;
   display: inline-block;
   margin-right: 1rem;
