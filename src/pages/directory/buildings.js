@@ -63,7 +63,11 @@ class DirectoryPage extends Component {
             <BuildingList>
               {buildings.map(building => (
                 <li>
-                  <Link to={`/directory/building/${building.code}`}>
+                  <Link
+                    to={`/directory/building/${building.code
+                      .toLowerCase()
+                      .trim()}`}
+                  >
                     {building.buildingName}
                   </Link>
                 </li>
