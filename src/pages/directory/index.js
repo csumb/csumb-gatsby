@@ -103,6 +103,8 @@ class DirectoryForm extends Component {
     query: false,
   }
 
+  searchBoxReference = React.createRef()
+
   handleChange(event) {
     const { directory } = this.props
     const query = event.target.value
@@ -138,6 +140,10 @@ class DirectoryForm extends Component {
     })
   }
 
+  componentDidMount() {
+    this.searchBoxReference.current.focus()
+  }
+
   render() {
     const { search } = this.state
     return (
@@ -151,6 +157,7 @@ class DirectoryForm extends Component {
               onChange={this.handleChange.bind(this)}
               huge
               hideLabel
+              forwardedRef={this.searchBoxReference}
             />
           </Box>
           <Box width={[1, 1, 1 / 4, 1 / 4]} px={2}>

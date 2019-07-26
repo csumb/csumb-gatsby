@@ -78,7 +78,9 @@ const Event = ({ event, linkToEvent }) => (
             {event.location.type === 'on-campus' && (
               <p>
                 <Link
-                  to={`/directory/building/${event.location.building.code}`}
+                  to={`/directory/building/${event.location.building.code
+                    .toLowerCase()
+                    .trim()}`}
                 >
                   {event.location.building.name}
                 </Link>

@@ -1,20 +1,13 @@
 import React, { Component } from 'react'
 import { AlertEmpty } from '../common/alert'
-import VisuallyHidden from '../utilities/visually-hidden'
 import Link from 'gatsby-link'
-import {
-  DashboardCard,
-  DashboardMessageClose,
-  DashboardCardHeader,
-} from './shared-styles'
-import DashboardAlumni from './alumni'
+import { DashboardCard, DashboardCardHeader } from './shared-styles'
 
 class DashboardMessages extends Component {
   render() {
     const { messages, archive, archivedContent } = this.props
     return (
       <>
-        <DashboardAlumni />
         {messages && messages.length ? (
           <>
             {messages.map((message, key) => (
@@ -56,12 +49,6 @@ class DashboardMessage extends Component {
       <>
         {!archived && (
           <DashboardCard>
-            {!archivedContent && (
-              <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
-                &times;
-                <VisuallyHidden>Archive message</VisuallyHidden>
-              </DashboardMessageClose>
-            )}
             <Link to={link}>
               <DashboardCardHeader>{headline}</DashboardCardHeader>
             </Link>

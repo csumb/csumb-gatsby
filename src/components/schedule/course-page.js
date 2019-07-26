@@ -183,7 +183,7 @@ const CoursePage = ({ course, term, requirements }) => {
             <form
               method="post"
               target="_blank"
-              action="http://www.bkstr.com/webapp/wcs/stores/servlet/booklookServlet"
+              action="https://www.bkstr.com/webApp/discoverView"
             >
               <input type="hidden" name="bookstore_id-1" value="2029" />
               <input type="hidden" name="term_id-1" value={course.STRM} />

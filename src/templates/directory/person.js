@@ -113,7 +113,9 @@ const PersonTemplate = ({ pageContext }) => {
                 <h2>Building &amp; room</h2>
                 <DirectoryItem>
                   <Link
-                    to={`/directory/building/${_publicProfile.buildingCode}`}
+                    to={`/directory/building/${_publicProfile.location
+                      .split('-')
+                      .shift()}`}
                   >
                     {building}
                   </Link>

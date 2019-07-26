@@ -71,12 +71,6 @@ class DashboardEvent extends Component {
       <>
         {!archived && (
           <DashboardCard>
-            {!archivedContent && (
-              <DashboardMessageClose onClick={this.archiveMessage.bind(this)}>
-                &times;
-                <VisuallyHidden>Archive message</VisuallyHidden>
-              </DashboardMessageClose>
-            )}
             <Link to={event.link}>
               <DashboardCardHeader noMargin>
                 {event.headline}
