@@ -669,7 +669,7 @@ class UserAccountProfilePhoto extends Component {
         )}
         <ReactFilestack
           apikey={filestackApiKey}
-          onSuccess={this.savePhoto}
+          onSuccess={this.savePhoto.bind(this)}
           options={{
             accept: 'image/*',
             maxFiles: 1,
