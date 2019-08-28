@@ -55,14 +55,14 @@ const AccountSidebar = ({ user }) => (
 
     {user._isStudent && (
       <>
-        <AccountSidebarLink to="/account/schedule">
+        <AccountSidebarLink to="https://csumb.edu/oasis/view-your-class-schedule">
           Class schedule
         </AccountSidebarLink>
         <AccountSidebarLink to="/account/laundry">Laundry</AccountSidebarLink>
       </>
     )}
     <AccountSidebarLink to="/account/labs">Computer labs</AccountSidebarLink>
-    <AccountSidebarLink to="https://csumb.edu/it/ottercard-balance">Otter Card</AccountSidebarLink>
+    <AccountSidebarLink to="https://get.cbord.com/csumb">Otter Card</AccountSidebarLink>
     <AccountSidebarLink to="/account/print">Printer paper</AccountSidebarLink>
     <AccountSidebarLink to="/account/emergency">
       Emergency alerts
