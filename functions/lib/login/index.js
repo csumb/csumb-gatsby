@@ -31,20 +31,11 @@ const sp = saml.ServiceProvider({
 module.exports = (request, response) => {
   sp.parseLoginResponse(idp, 'post', request)
     .then(parseResult => {
-      response.cookie(
-        'csumbUser',
-        JSON.stringify(parseResult.extract.attributes),
-        {
-          path: '/',
-        }
-      )
-      response.cookie(
-        'csumbSession',
-        md5(parseResult.extract.attributes.login.split('@').shift() + salt),
-        {
-          path: '/',
-        }
-      )
+      const user = parseResult.extract.attributes
+      user.token = md5(user.login.split('@').shift() + salt)
+      response.cookie('csumbUser', JSON.stringify(user), {
+        path: '/',
+      })
       if (
         typeof request.body.RelayState !== 'undefined' &&
         request.body.RelayState

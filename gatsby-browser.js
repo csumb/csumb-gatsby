@@ -33,10 +33,9 @@ class UserComponent extends React.Component {
       })
       return
     }
-    const session = cookies.get('csumbSession')
     let user = {
       profile: profile,
-      session: session,
+      session: profile.token,
     }
     if (typeof user.profile.roles !== 'undefined') {
       user.profile.roles = user.profile.roles.split(',')
