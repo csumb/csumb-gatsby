@@ -599,7 +599,7 @@ class UserAccountProfileBioForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
     fetch(
-      `/cloud-functions/profile/bio?token=${user.session}&user=${
+      `/cloud-functions/profile/bio?token=${this.props.user.session}&user=${
         user._username
       }`,
       {
@@ -675,7 +675,7 @@ class UserAccountProfilePhoto extends Component {
 
   render() {
     const { profile } = this.props
-    const { updatedPhoto } = this.props
+    const { updatedPhoto } = this.state
     return (
       <AccountGroup legend="Profile photo">
         <p>
