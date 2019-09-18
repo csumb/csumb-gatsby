@@ -12,6 +12,7 @@ const laundry = require('./lib/laundry')
 const laundryHall = require('./lib/laundry/hall')
 const profileGet = require('./lib/profile/get')
 const profileUpdate = require('./lib/profile/update')
+const profileUpdateBio = require('./lib/profile/bio')
 const feedback = require('./lib/feedback')
 const nameBadge = require('./lib/name-badge')
 const login = require('./lib/login')
@@ -59,6 +60,10 @@ exports.profileGet = functions.https.onRequest((request, response) => {
 
 exports.profileUpdate = functions.https.onRequest((request, response) => {
   profileUpdate(client, request, response)
+})
+
+exports.profileUpdateBio = functions.https.onRequest((request, response) => {
+  profileUpdateBio(client, request, response)
 })
 
 exports.laundry = functions.https.onRequest(laundry)

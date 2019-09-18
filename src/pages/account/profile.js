@@ -598,7 +598,18 @@ class UserAccountProfileBioForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    updateProfileField(this.props.user, 'biography', this.state.biography)
+    fetch(
+      `/cloud-functions/profile/bio?token=${user.session}&user=${
+        user._username
+      }`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ body: this.state.biography }),
+      }
+    )
     this.setState({
       updated: true,
     })
