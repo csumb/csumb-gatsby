@@ -161,6 +161,13 @@ class AccountPrintBuyPrintsForm extends Component {
       <form
         action="https://commerce.cashnet.com/csumb_ubempay?virtual="
         method="post"
+        onSubmit={event => {
+          window.fetch(
+            `https://winservices.csumb.edu/print/addbalance.php?UserName=${
+              user._username
+            }&add=${this.state.quantity}`
+          )
+        }}
       >
         <InputText
           label="Number of pages"
