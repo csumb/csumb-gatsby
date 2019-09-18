@@ -29,7 +29,7 @@ module.exports = (client, request, response) => {
       ]
       fetch(
         `https://api.everbridge.net/rest/contacts/${
-          process.env.EVERBRIDGE_ORG
+          functions.config().everbridge.org
         }/${user.id}`,
         {
           method: 'PUT',
