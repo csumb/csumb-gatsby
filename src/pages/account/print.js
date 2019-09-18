@@ -12,6 +12,7 @@ import {
 import { InputText, Submit } from '../../components/common/forms'
 import { UserContext } from '../../components/contexts/user'
 import NProgress from 'nprogress'
+import md5 from 'md5'
 
 const pricePerPage = 0.08
 
@@ -165,7 +166,9 @@ class AccountPrintBuyPrintsForm extends Component {
           window.fetch(
             `https://winservices.csumb.edu/print/addbalance.php?UserName=${
               user._username
-            }&add=${this.state.quantity}`
+            }&add=${this.state.quantity}&key=${md5(
+              `${user._username}237sdfKJ@sd903SF`
+            )}`
           )
         }}
       >
