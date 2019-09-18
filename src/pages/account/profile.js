@@ -598,7 +598,7 @@ class UserAccountProfileBioForm extends Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    const { user } = this.propsp
+    const { user } = this.props
     fetch(
       `/cloud-functions/profile/bio?token=${user.session}&user=${
         user._username
