@@ -170,6 +170,16 @@ class BlockPerson extends Component {
                       {person._publicProfile.location.split('-').pop()}
                     </p>
                   )}
+                  {person._publicProfile && person._publicProfile.officeHours && (
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: person._publicProfile.officeHours.replace(
+                          '\n',
+                          '<br/>'
+                        ),
+                      }}
+                    />
+                  )}
                 </Box>
                 <Box width={[1, 1 / 4]}>
                   {person._publicProfile && person._publicProfile.photo && (
