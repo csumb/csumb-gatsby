@@ -651,12 +651,20 @@ class UserAccountProfileBioForm extends Component {
 }
 
 class UserAccountProfilePhoto extends Component {
+  state = {
+    updatedPhoto: false,
+  }
+
   savePhoto(photo) {
     updateProfileField(this.props.user, 'photo', photo.filesUploaded[0].url)
+    this.setState({
+      updatedPhoto: photo.filesUploaded[0].url,
+    })
   }
 
   render() {
     const { profile } = this.props
+    const { updatedPhoto } = this.props
     return (
       <AccountGroup legend="Profile photo">
         <p>
@@ -666,7 +674,11 @@ class UserAccountProfilePhoto extends Component {
         {profile.photo && (
           <AccountData>
             <AccountPhoto
-              src={profile.photo.replace('/csumb.edu/', '/edit.csumb.edu/')}
+              src={
+                updatedPhoto
+                  ? updatedPhoto
+                  : profile.photo.replace('/csumb.edu/', '/edit.csumb.edu/')
+              }
               alt="Your profile"
             />
           </AccountData>
