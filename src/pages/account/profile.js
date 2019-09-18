@@ -230,7 +230,9 @@ class UserAccountProfileOfficeHours extends Component {
             Change appointment calendar
           </Button>
         </p>
-        {this.state.showForm && <UserAccountProfileOfficeHoursForm />}
+        {this.state.showForm && (
+          <UserAccountProfileOfficeHoursForm user={this.props.user} />
+        )}
       </AccountGroup>
     )
   }
@@ -310,7 +312,9 @@ class UserAccountProfileOfficeHoursDescription extends Component {
           </Button>
         </p>
         {this.state.showForm && (
-          <UserAccountProfileOfficeHoursDescriptionForm />
+          <UserAccountProfileOfficeHoursDescriptionForm
+            user={this.props.user}
+          />
         )}
       </AccountGroup>
     )
