@@ -166,7 +166,7 @@ class AccountPrintBuyPrintsForm extends Component {
           window.fetch(
             `https://winservices.csumb.edu/print/addbalance.php?UserName=${
               user._username
-            }&add=${this.state.quantity}&key=${md5(
+            }&add=${(quantity * pricePerPage).toFixed(2)}&key=${md5(
               `${user._username}237sdfKJ@sd903SF`
             )}`
           )
