@@ -25,6 +25,9 @@ const DocumentIcon = styled(FontAwesomeIcon)`
 class BlockDocument extends Component {
   render() {
     const { document, name } = this.props
+    if (!document.key && !document.url) {
+      return null
+    }
     const url = document.key
       ? `https://s3.amazonaws.com/csumb-uploads/${document.key}`
       : document.url.replace('/csumb.edu/', '/edit.csumb.edu/')

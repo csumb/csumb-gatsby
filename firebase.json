@@ -130,6 +130,10 @@
         "function": "profileUpdate"
       },
       {
+        "source": "/cloud-functions/profile/bio",
+        "function": "profileUpdateBio"
+      },
+      {
         "source": "/cloud-functions/feedback",
         "function": "feedback"
       },

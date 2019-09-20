@@ -75,7 +75,7 @@ class PageEditorUserTools extends Component {
           target="_blank"
           href={
             pageId
-              ? `https://edit.csumb.edu/node/${pageId}/edit`
+              ? `https://edit.csumb.edu/saml_login?destination=node/${pageId}/edit`
               : 'https://edit.csumb.edu'
           }
         >

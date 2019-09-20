@@ -138,6 +138,18 @@ const PersonTemplate = ({ pageContext }) => {
                 />
               </DirectoryItem>
             )}
+            {_publicProfile && _publicProfile.appointmentCalendar && (
+              <DirectoryItem>
+                <h2>Make appointment</h2>
+                <a
+                  href={_publicProfile.appointmentCalendar}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Make an appointment
+                </a>
+              </DirectoryItem>
+            )}
           </Box>
           <Box width={[1, 1, 1 / 4]}>
             {_publicProfile && _publicProfile.photo && (

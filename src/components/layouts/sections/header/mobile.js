@@ -19,6 +19,7 @@ const HeaderMobileWrapper = styled.div`
 
 const HeaderMobileToggle = styled.button`
   border: 0;
+  background: transparent;
   font-size: 1.8rem;
   display: inline-block;
   float: right;
