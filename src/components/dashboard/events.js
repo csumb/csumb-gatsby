@@ -60,7 +60,7 @@ class DashboardEvent extends Component {
   }
 
   render() {
-    const { event, archivedContent } = this.props
+    const { event } = this.props
     const { archived } = this.state
     return (
       <>
