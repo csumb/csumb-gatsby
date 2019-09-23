@@ -29,7 +29,7 @@ class AccountApplicantStatusPage extends Component {
                 <>
                   <PageTitle>
                     {context.user.anonymous ? (
-                      <h3>Your applicaion status</h3>
+                      <>Your applicaion status</>
                     ) : (
                       <>
                         {context.user.profile.firstName}{' '}
@@ -173,7 +173,7 @@ class ApplicationTranscripts extends Component {
         ) : (
           <>
             {Object.keys(transcripts).map(transcriptKey => (
-              <Well key={transcriptKey}>
+              <Well key={`transcript-list-${transcriptKey}`}>
                 <h3>
                   {transcripts[transcriptKey]._name === 'unknown' ? (
                     <>Transcript still being processesed.</>
@@ -183,7 +183,7 @@ class ApplicationTranscripts extends Component {
                 </h3>
                 {Object.keys(transcripts[transcriptKey]._messages).map(
                   messageKey => (
-                    <Flex key={messageKey}>
+                    <Flex key={`transcript-message-${messageKey}`}>
                       <Box width={1 / 4} pr={2}>
                         {transcripts[transcriptKey]._messages[messageKey]
                           .done ||
@@ -298,13 +298,12 @@ class ApplicantStatus extends Component {
   }
 
   componentDidMount() {
-    window
-      .fetch(
-        `https://csumb-applicant-api.herokuapp.com/?user=${this.props.user.profile.login.replace(
-          '@csumb.edu',
-          ''
-        )}`
-      )
+    fetch(
+      `https://csumb-applicant-api.herokuapp.com/?user=${this.props.user.profile.login.replace(
+        '@csumb.edu',
+        ''
+      )}`
+    )
       .then(response => {
         return response.json()
       })
