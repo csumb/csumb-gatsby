@@ -8,7 +8,7 @@ import { DashboardCard, DashboardCardHeader } from './shared-styles'
 
 class DashboardEvents extends Component {
   render() {
-    const { events, archive } = this.props
+    const { events, archive, archivedContent } = this.props
     return (
       <>
         {events ? (
@@ -60,7 +60,7 @@ class DashboardEvent extends Component {
   }
 
   render() {
-    const { event } = this.props
+    const { event, archivedContent } = this.props
     const { archived } = this.state
     return (
       <>
