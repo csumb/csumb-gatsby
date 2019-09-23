@@ -225,11 +225,43 @@ class ApplicationTranscripts extends Component {
             </p>
 
             {this.state.showTranscriptHistory && (
-              <ul>
+              <>
                 {Object.keys(transcriptHistory).map(id => (
-                  <li key={id}>{transcriptHistory[id]._name}</li>
+                  <>
+                    <h5 key={`transcript-history-${id}`}>
+                      {transcriptHistory[id]._name}
+                    </h5>
+                    {transcriptHistory[id].items && (
+                      <>
+                        <ul>
+                          {Object.keys(transcriptHistory[id].items).map(
+                            itemId => (
+                              <li key={`transcript-history-item-${itemId}`}>
+                                <span>
+                                  {transcriptHistory[id].items[itemId]
+                                    .transcript_type === 'OFF' ? (
+                                    <>Official</>
+                                  ) : (
+                                    <>Unofficial</>
+                                  )}{' '}
+                                  {transcriptHistory[id].items[itemId]
+                                    .transcript_status === 'F' && <>Final</>}
+                                </span>{' '}
+                                Received{' '}
+                                {moment(
+                                  transcriptHistory[id].items[itemId]
+                                    .received_date,
+                                  'MM/DD/YYYY'
+                                ).format('MMMM DD, YYYY')}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </>
+                    )}
+                  </>
                 ))}
-              </ul>
+              </>
             )}
           </>
         )}
