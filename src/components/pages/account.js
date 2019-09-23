@@ -55,9 +55,6 @@ const AccountSidebar = ({ user }) => (
 
     {user._isStudent && (
       <>
-        <AccountSidebarLink to="/account/schedule">
-          Class schedule
-        </AccountSidebarLink>
         <AccountSidebarLink to="/account/laundry">Laundry</AccountSidebarLink>
       </>
     )}

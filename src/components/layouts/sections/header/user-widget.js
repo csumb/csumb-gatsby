@@ -118,13 +118,6 @@ class UserDropdown extends Component {
 
           <UserDropdownMenuLink
             component="a"
-            href="/account/schedule"
-            isHidden={!user._isStudent}
-          >
-            Class schedule
-          </UserDropdownMenuLink>
-          <UserDropdownMenuLink
-            component="a"
             href="/account/laundry"
             isHidden={!user._isStudent}
           >
