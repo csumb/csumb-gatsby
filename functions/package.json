@@ -13,7 +13,7 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
-    "@okta/okta-sdk-nodejs": "^2.0.0",
+    "@okta/okta-sdk-nodejs": "^2.0.1",
     "@sendgrid/mail": "^6.3.1",
     "base-64": "^0.1.0",
     "cheerio": "^1.0.0-rc.3",

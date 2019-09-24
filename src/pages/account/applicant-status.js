@@ -298,11 +298,11 @@ class ApplicantStatus extends Component {
   }
 
   componentDidMount() {
+    const { user } = this.props
     fetch(
-      `https://csumb-applicant-api.herokuapp.com/?user=${this.props.user.profile.login.replace(
-        '@csumb.edu',
-        ''
-      )}`
+      `https://csumb-applicant-api.herokuapp.com/?user=${
+        user._username
+      }&token=${user.session}`
     )
       .then(response => {
         return response.json()
