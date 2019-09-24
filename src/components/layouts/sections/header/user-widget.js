@@ -112,14 +112,19 @@ class UserDropdown extends Component {
           >
             Edit website
           </UserDropdownMenuLink>
-          <UserDropdownMenuLink component="a" href="https://get.cbord.com/csumb">
+          <UserDropdownMenuLink
+            component="a"
+            href="https://get.cbord.com/csumb"
+          >
             OtterCard
           </UserDropdownMenuLink>
 
           <UserDropdownMenuLink
             component="a"
-            href="/account/laundry"
+            href="https://www.laundryalert.com/cgi-bin/csumb721/LMPage"
             isHidden={!user._isStudent}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Laundry
           </UserDropdownMenuLink>
