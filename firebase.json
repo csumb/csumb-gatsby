@@ -102,14 +102,6 @@
         "function": "oktaApps"
       },
       {
-        "source": "/cloud-functions/laundry",
-        "function": "laundry"
-      },
-      {
-        "source": "/cloud-functions/laundry/hall",
-        "function": "laundryHall"
-      },
-      {
         "source": "/cloud-functions/everbridge/get",
         "function": "everbridgeGet"
       },
