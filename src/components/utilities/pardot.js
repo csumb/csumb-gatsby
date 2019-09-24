@@ -14,7 +14,7 @@ class Pardot extends Component {
     script.innerHTML = `
     window.__pardotLoaded=true;
     piAId = '775533';
-    piCId = '3031';
+    piCId = '37301';
     piHostname = 'pi.pardot.com';
     
     (function() {

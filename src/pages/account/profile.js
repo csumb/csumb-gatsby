@@ -176,7 +176,7 @@ class UserAccountProfileForm extends Component {
           )}
           <p>
             <strong>Changing your job title:</strong> Your department and job
-            title are controled by your human resources department.
+            title are controlled by your human resources department.
           </p>
         </AccountGroup>
         <UserAccountProfileOffice

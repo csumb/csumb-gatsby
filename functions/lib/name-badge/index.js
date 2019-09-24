@@ -22,7 +22,7 @@ module.exports = (request, response) => {
     Your request is on its way to CSUMB\'s official vendor. 
     They will send you a proof to approve; if you have any issues with name, 
     title or department, please contact University Personnel at 
-    university_personnel@csumb.edu or 582-3389
+    university_personnel@csumb.edu or 582-3389.
 `
 
   const msg = {
