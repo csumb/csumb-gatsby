@@ -1,0 +1,2116 @@
+[
+  {
+    "org": "AB Ingham School",
+    "students": 11,
+    "hours": 352,
+    "lat": 36.5780247,
+    "lon": -121.7157872
+  },
+  {
+    "org": "After School Academy - MPUSD",
+    "students": 6,
+    "hours": 192,
+    "lat": 36.6262168,
+    "lon": -121.8343868
+  },
+  {
+    "org": "Ag Against Hunger",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6699455,
+    "lon": -121.6528635
+  },
+  {
+    "org": "Agriculture and Land Based Training Association-ALBA",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6120331,
+    "lon": -121.5192545
+  },
+  {
+    "org": "Al and Friends",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6216277,
+    "lon": -121.9152343
+  },
+  {
+    "org": "Alisal Center for the Fine Arts",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.6777372,
+    "lon": -121.6555013
+  },
+  {
+    "org": "Alisal Community School - Alisal Union School District",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6827609,
+    "lon": -121.6052442
+  },
+  {
+    "org": "Alisal High School - SUHSD",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.6846868,
+    "lon": -121.6020867
+  },
+  {
+    "org": "Alisal Union School District (AUSD)",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.6768008,
+    "lon": -121.6211504
+  },
+  {
+    "org": "American Red Cross - Monterey Bay",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.5525584,
+    "lon": -121.9226831
+  },
+  {
+    "org": "Amesti Elementary School - PVUSD",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9458051,
+    "lon": -121.7688204
+  },
+  {
+    "org": "Ann Soldo Elementary School - PVUSD",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.925743,
+    "lon": -121.7434825
+  },
+  {
+    "org": "Asian Cultural Experiance (ACE)",
+    "students": 21,
+    "hours": 672,
+    "lat": 36.678501,
+    "lon": -121.652036
+  },
+  {
+    "org": "Bardin Elementary School - Alisal Union School District",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.6732671,
+    "lon": -121.6008903
+  },
+  {
+    "org": "Bay View Academy Charter School",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.60116,
+    "lon": -121.8669793
+  },
+  {
+    "org": "BOTH Co.",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5951559,
+    "lon": -121.8449857
+  },
+  {
+    "org": "Boys & Girls Club of Santa Cruz County",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.9718625,
+    "lon": -122.0284722
+  },
+  {
+    "org": "Boys & Girls Clubs of Monterey County, Salinas",
+    "students": 13,
+    "hours": 416,
+    "lat": 36.6948633,
+    "lon": -121.6473099
+  },
+  {
+    "org": "Boys & Girls Clubs of Monterey County, Seaside Club",
+    "students": 22,
+    "hours": 704,
+    "lat": 36.6161537,
+    "lon": -121.8366008
+  },
+  {
+    "org": "Bradley Elementary School - PVUSD",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.9760289,
+    "lon": -121.807852
+  },
+  {
+    "org": "Building Healthy Communities/Action Council",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.6800809,
+    "lon": -121.6062594
+  },
+  {
+    "org": "Bureau of Land Management",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.6679582,
+    "lon": -121.8085872
+  },
+  {
+    "org": "California Institute of Rural Studies",
+    "students": 1,
+    "hours": 32,
+    "lat": 38.55,
+    "lon": -121.74
+  },
+  {
+    "org": "California Rural Legal Assistance (CRLA)",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.6727481,
+    "lon": -121.6202652
+  },
+  {
+    "org": "California State Parks- Monterey District",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.586642,
+    "lon": -121.858149
+  },
+  {
+    "org": "Camp SEA Lab",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.6538224,
+    "lon": -121.801697
+  },
+  {
+    "org": "Carmel Bach Festival",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5569,
+    "lon": -121.92269
+  },
+  {
+    "org": "Carmel Mission Basilica",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5426697,
+    "lon": -121.9196907
+  },
+  {
+    "org": "CASA of Santa Cruz County",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.9173322,
+    "lon": -121.760529
+  },
+  {
+    "org": "Center for Community Advocacy (CCA)",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6757802,
+    "lon": -121.6563166
+  },
+  {
+    "org": "Center for Photographic Art",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5513147,
+    "lon": -121.9218091
+  },
+  {
+    "org": "Central Coast Citizenship Project",
+    "students": 19,
+    "hours": 608,
+    "lat": 36.6766256,
+    "lon": -121.6275778
+  },
+  {
+    "org": "Central Coast High School - MPUSD",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6262168,
+    "lon": -121.8343868
+  },
+  {
+    "org": "Central Coast Visiting Nurse Association and Hospice - CCVNA",
+    "students": 8,
+    "hours": 256,
+    "lat": 36.5766336,
+    "lon": -121.8158098
+  },
+  {
+    "org": "Cerra Vista Elementary School",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.8234695,
+    "lon": -121.4014625
+  },
+  {
+    "org": "Cesar Chavez Elementary School - Alisal Union School District",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6873399,
+    "lon": -121.6044641
+  },
+  {
+    "org": "Cesar Chavez Futbol Academy - Cesar Chavez Library",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6749275,
+    "lon": -121.6578538
+  },
+  {
+    "org": "Cesar Chavez Library- City of Salinas",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.6804646,
+    "lon": -121.6068489
+  },
+  {
+    "org": "Cesar E. Chavez Elementary School - Greenfield Union School District",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.3308724,
+    "lon": -121.2342842
+  },
+  {
+    "org": "Chamberlain's Children Center, Inc.",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.8321266,
+    "lon": -121.4026905
+  },
+  {
+    "org": "Chartwell School",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6345161,
+    "lon": -121.8009366
+  },
+  {
+    "org": "Chinatown Community Garden",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.6790981,
+    "lon": -121.6525912
+  },
+  {
+    "org": "Chinatown Community Learning Center",
+    "students": 15,
+    "hours": 480,
+    "lat": 36.6790981,
+    "lon": -121.6525912
+  },
+  {
+    "org": "Chinatown Health Services Center - Franciscan Workers of Junipero Serra",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6799739,
+    "lon": -121.6525962
+  },
+  {
+    "org": "CHISPA - Community Housing Improvement Systems & Planning Association",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6740785,
+    "lon": -121.6545567
+  },
+  {
+    "org": "CHOMP Auxiliary",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.5785609,
+    "lon": -121.9134061
+  },
+  {
+    "org": "CHOMP Physical Therapy Rehab Services",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.5955267,
+    "lon": -121.8962073
+  },
+  {
+    "org": "CHOMP- Kids Eat Right",
+    "students": 21,
+    "hours": 672,
+    "lat": 36.5785609,
+    "lon": -121.9134061
+  },
+  {
+    "org": "Christine Marie's STAR Riders",
+    "students": 25,
+    "hours": 800,
+    "lat": 37.7755385,
+    "lon": -122.3971456
+  },
+  {
+    "org": "Christopher High School - Gilroy Unified School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 37.0377979,
+    "lon": -121.6007607
+  },
+  {
+    "org": "Chualar Union Elementary School",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.572211,
+    "lon": -121.51613
+  },
+  {
+    "org": "City of Marina - City Managers Office",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6819055,
+    "lon": -121.8036108
+  },
+  {
+    "org": "City of Marina Recreation Department (formally Marina Teen Center)",
+    "students": 69,
+    "hours": "2,208",
+    "lat": 36.6819055,
+    "lon": -121.8036108
+  },
+  {
+    "org": "City of Monterey - Museums & Cultural Arts Division",
+    "students": 10,
+    "hours": 320,
+    "lat": 36.5976948,
+    "lon": -121.8975691
+  },
+  {
+    "org": "City of Salinas",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6749275,
+    "lon": -121.6578538
+  },
+  {
+    "org": "City of Watsonville School Programs",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.9136608,
+    "lon": -121.770592
+  },
+  {
+    "org": "Clean Oceans International",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9656048,
+    "lon": -122.0010032
+  },
+  {
+    "org": "Clinica de Salud del Valle de Salinas",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6655032,
+    "lon": -121.6169447
+  },
+  {
+    "org": "Communities (Citizens) for a Sustainable Monterey County",
+    "students": 9,
+    "hours": 288,
+    "lat": 36.6258374,
+    "lon": -121.9312894
+  },
+  {
+    "org": "Community Day High School - MPUSD",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6262168,
+    "lon": -121.8343868
+  },
+  {
+    "org": "Community Homeless Solutions (Formally Shelter Outreach Plus) - Service Learning",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6726274,
+    "lon": -121.7747247
+  },
+  {
+    "org": "Community Human Services - Safe Place",
+    "students": 21,
+    "hours": 672,
+    "lat": 36.6002378,
+    "lon": -121.8946761
+  },
+  {
+    "org": "Community Partnership for Youth - CPY",
+    "students": 97,
+    "hours": "3,104",
+    "lat": 36.6000485,
+    "lon": -121.849278
+  },
+  {
+    "org": "Contigo Program",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.9092702,
+    "lon": -121.7544972
+  },
+  {
+    "org": "County of San Luis Obispo Behavioral Health",
+    "students": 1,
+    "hours": 32,
+    "lat": 35.2750952,
+    "lon": -120.6463692
+  },
+  {
+    "org": "County of San Luis Obispo Public Health",
+    "students": 11,
+    "hours": 352,
+    "lat": 35.274503,
+    "lon": -120.6468186
+  },
+  {
+    "org": "Crumpton Elementary School - MPUSD",
+    "students": 14,
+    "hours": 448,
+    "lat": 36.6748691,
+    "lon": -121.7852046
+  },
+  {
+    "org": "CSUMB Early Outreach - Service Learning",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6516548,
+    "lon": -121.7977985
+  },
+  {
+    "org": "CSUMB Emergency Management Health and Safety Team",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6538224,
+    "lon": -121.801697
+  },
+  {
+    "org": "Defense Language Institute (DLI) Foreign Language Center",
+    "students": 6,
+    "hours": 192,
+    "lat": 36.6053401,
+    "lon": -121.9116686
+  },
+  {
+    "org": "Del Rey Woods Elementary School - MPUSD",
+    "students": 28,
+    "hours": 896,
+    "lat": 36.5984461,
+    "lon": -121.8391156
+  },
+  {
+    "org": "Digital NEST, Inc",
+    "students": 9,
+    "hours": 288,
+    "lat": 36.910592,
+    "lon": -121.755302
+  },
+  {
+    "org": "Digital Otter Center for Community Services at CSUMB",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6516548,
+    "lon": -121.7977985
+  },
+  {
+    "org": "Doctors on Duty",
+    "students": 20,
+    "hours": 640,
+    "lat": 36.5731557,
+    "lon": -121.8097742
+  },
+  {
+    "org": "Dorothy's Place - Franciscan Workers of Junipero Serra",
+    "students": 50,
+    "hours": "1,600",
+    "lat": 36.6788084,
+    "lon": -121.6526853
+  },
+  {
+    "org": "Dorothy's Place/Franciscan Workers - Women Alive",
+    "students": 25,
+    "hours": 800,
+    "lat": 36.6788084,
+    "lon": -121.6526853
+  },
+  {
+    "org": "Dr. Oscar F. Loya Elementary School - Alisal Union School District",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6896256,
+    "lon": -121.5943894
+  },
+  {
+    "org": "Dual Language Academy of The Monterey Peninsula - MPUSD",
+    "students": 53,
+    "hours": "1,696",
+    "lat": 36.6384652,
+    "lon": -121.8109117
+  },
+  {
+    "org": "DUB Baseball",
+    "students": 1,
+    "hours": 32,
+    "lat": 37.1058344,
+    "lon": -121.6376128
+  },
+  {
+    "org": "Early Development Services",
+    "students": 6,
+    "hours": 192,
+    "lat": 36.6538224,
+    "lon": -121.801697
+  },
+  {
+    "org": "Eden Housing Resident Services Inc.",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6625664,
+    "lon": -121.8049557
+  },
+  {
+    "org": "Eden Valley Care Center",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.4338528,
+    "lon": -121.3235133
+  },
+  {
+    "org": "Educational Talent Search - University Corporation",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.6516122,
+    "lon": -121.7926416
+  },
+  {
+    "org": "El Gabilan Elementary School - Salinas City Elementary School District",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.7003886,
+    "lon": -121.6424812
+  },
+  {
+    "org": "El Sausal Middle School - SUHSD",
+    "students": 17,
+    "hours": 544,
+    "lat": 36.6730485,
+    "lon": -121.6240759
+  },
+  {
+    "org": "Elkhorn Slough Foundation",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.8209886,
+    "lon": -121.7278822
+  },
+  {
+    "org": "Employnet",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5977729,
+    "lon": -121.8938085
+  },
+  {
+    "org": "Encompass Coummunity Service",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9126299,
+    "lon": -121.7827619
+  },
+  {
+    "org": "Epicenter",
+    "students": 8,
+    "hours": 256,
+    "lat": 36.6680395,
+    "lon": -121.6546235
+  },
+  {
+    "org": "Everett Alvarez High School - SUHSD",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.7135368,
+    "lon": -121.6151401
+  },
+  {
+    "org": "Fairview Middle School - Gonzales Unified School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5092763,
+    "lon": -121.4420329
+  },
+  {
+    "org": "First 5 Monterey County",
+    "students": 6,
+    "hours": 192,
+    "lat": 36.6981901,
+    "lon": -121.6544564
+  },
+  {
+    "org": "First Mayor's House / MSV Railroad Historical Society/ Harvey House Museum",
+    "students": 15,
+    "hours": 480,
+    "lat": 36.6785909,
+    "lon": -121.6554258
+  },
+  {
+    "org": "First Night Monterey",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6107468,
+    "lon": -121.905063
+  },
+  {
+    "org": "First Tee of Monterey County- Future Citizens Foundation/Taylor Farms Center for Learning",
+    "students": 20,
+    "hours": 640,
+    "lat": 36.6968757,
+    "lon": -121.6188408
+  },
+  {
+    "org": "First United Methodist Church",
+    "students": 13,
+    "hours": 416,
+    "lat": 36.6711483,
+    "lon": -121.6567981
+  },
+  {
+    "org": "Food Bank for Monterey County",
+    "students": 18,
+    "hours": 576,
+    "lat": 36.683211,
+    "lon": -121.672489
+  },
+  {
+    "org": "Foothill Elementary School MPUSD",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.5791068,
+    "lon": -121.8516373
+  },
+  {
+    "org": "Fort Ord Collections and Archives (FOCA)",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6574409,
+    "lon": -121.7595833
+  },
+  {
+    "org": "Frank Paul Elementary School - Alisal Union School District",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6948798,
+    "lon": -121.6072946
+  },
+  {
+    "org": "Fremont Elementary School - Alisal Union School District",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.6765738,
+    "lon": -121.6193667
+  },
+  {
+    "org": "Friends of Rippling River",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.475971,
+    "lon": -121.7252484
+  },
+  {
+    "org": "Friends Outside",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9763719,
+    "lon": -121.982546
+  },
+  {
+    "org": "Gabilan Elementary School - Soledad School District",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.4281503,
+    "lon": -121.3205282
+  },
+  {
+    "org": "Gil Basketball Academy",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6991854,
+    "lon": -121.6200889
+  },
+  {
+    "org": "Gilroy Unified School District GUSD",
+    "students": 5,
+    "hours": 160,
+    "lat": 37.016209,
+    "lon": -121.5617075
+  },
+  {
+    "org": "Girl Scouts of California's Central Coast",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.7668316,
+    "lon": -121.7600118
+  },
+  {
+    "org": "Gonzales High School - Gonzales Unified School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5115661,
+    "lon": -121.4415216
+  },
+  {
+    "org": "Greenfield Community Science Workshop Network",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.319083,
+    "lon": -121.24225
+  },
+  {
+    "org": "Greenfield Elementary School - Greenfield Union School District",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.326718,
+    "lon": -121.2477479
+  },
+  {
+    "org": "Greenfield High School",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.312754,
+    "lon": -121.240568
+  },
+  {
+    "org": "Greenfield Union School District",
+    "students": 6,
+    "hours": 192,
+    "lat": 36.326718,
+    "lon": -121.2477479
+  },
+  {
+    "org": "H.A. Hyde Elementary School - PVUSD",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.926092,
+    "lon": -121.7687862
+  },
+  {
+    "org": "Hall District Elementary School",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.8648765,
+    "lon": -121.7230655
+  },
+  {
+    "org": "Heartland Hospice",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.5866359,
+    "lon": -121.8531477
+  },
+  {
+    "org": "Henry F. Kammann Elementary School- Salinas City Elementary School District",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6999371,
+    "lon": -121.6585652
+  },
+  {
+    "org": "Heritage Society of Pacific Grove",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.619948,
+    "lon": -121.9192772
+  },
+  {
+    "org": "Highland Elementary School - MPUSD",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.604808,
+    "lon": -121.8291234
+  },
+  {
+    "org": "Homeless Persons Health Project",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.9849373,
+    "lon": -122.0301596
+  },
+  {
+    "org": "HOPE Services: Salinas, Gilroy",
+    "students": 8,
+    "hours": 256,
+    "lat": 36.6226835,
+    "lon": -121.6852965
+  },
+  {
+    "org": "Hope, Horses and Kids",
+    "students": 8,
+    "hours": 256,
+    "lat": 36.5995085,
+    "lon": -121.6384363
+  },
+  {
+    "org": "Hopkins Marine Station",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.620265,
+    "lon": -121.9042164
+  },
+  {
+    "org": "Iglesia N Cristo Church of Christ",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6889242,
+    "lon": -121.7902848
+  },
+  {
+    "org": "Institute for Innovative & Economic Development",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6516548,
+    "lon": -121.7977985
+  },
+  {
+    "org": "Interim-Omni Resource Center",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6609902,
+    "lon": -121.6566954
+  },
+  {
+    "org": "International School of Monterey",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.6127929,
+    "lon": -121.8268526
+  },
+  {
+    "org": "Jacob's Heart",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.9056275,
+    "lon": -121.767896
+  },
+  {
+    "org": "Jesse G. Sanchez Elementary School - Alisal Union School District",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6849202,
+    "lon": -121.6188345
+  },
+  {
+    "org": "John E. Steinbeck Elementary School - Alisal Union School District",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.7085744,
+    "lon": -121.6166522
+  },
+  {
+    "org": "Josephine Kernes Memorial Pool",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.5996621,
+    "lon": -121.8673573
+  },
+  {
+    "org": "Junior Achievement of Northern California",
+    "students": 63,
+    "hours": "2,016",
+    "lat": 37.9292436,
+    "lon": -122.0584426
+  },
+  {
+    "org": "King City High School",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.2091106,
+    "lon": -121.134896
+  },
+  {
+    "org": "La Gloria Elementary School - Gonzales Unified School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.50827,
+    "lon": -121.4390043
+  },
+  {
+    "org": "La Joya Elementary School - Santa Rita School District",
+    "students": 6,
+    "hours": 192,
+    "lat": 36.7323075,
+    "lon": -121.6346531
+  },
+  {
+    "org": "La Mesa Elementary School MPUSD",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.579984,
+    "lon": -121.877268
+  },
+  {
+    "org": "La Paz Middle School - SUHSD",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6905134,
+    "lon": -121.605267
+  },
+  {
+    "org": "Ladies First",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.6021248,
+    "lon": -121.8460568
+  },
+  {
+    "org": "Lakeview Middle School",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9381555,
+    "lon": -121.7412734
+  },
+  {
+    "org": "Landmark Elementary School - PVUSD",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.912782,
+    "lon": -121.776179
+  },
+  {
+    "org": "Laurel Wood Elementary School - Salinas City Elementary School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6913663,
+    "lon": -121.663579
+  },
+  {
+    "org": "Legal Services for Seniors",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6027745,
+    "lon": -121.8477589
+  },
+  {
+    "org": "Life Is For Everyone, Inc.",
+    "students": 8,
+    "hours": 256,
+    "lat": 36.6833794,
+    "lon": -121.6217583
+  },
+  {
+    "org": "Life Lab's School Garden Corps",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.9834737,
+    "lon": -122.0542634
+  },
+  {
+    "org": "Lincoln Elementary School Salinas City Elementary School District",
+    "students": 6,
+    "hours": 192,
+    "lat": 36.666525,
+    "lon": -121.6508139
+  },
+  {
+    "org": "Linscott Charter School - PVUSD",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9104664,
+    "lon": -121.7500899
+  },
+  {
+    "org": "Live Oak Family Resource Center - Community Bridges",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.9763719,
+    "lon": -121.982546
+  },
+  {
+    "org": "Loaves, Fishes & Computers, INC.",
+    "students": 30,
+    "hours": 960,
+    "lat": 36.6630766,
+    "lon": -121.6580543
+  },
+  {
+    "org": "Loma Vista Elementary School - Salinas City Elementary School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.7085011,
+    "lon": -121.6232291
+  },
+  {
+    "org": "Lorena Falasco Elementary",
+    "students": 1,
+    "hours": 32,
+    "lat": 37.0740683,
+    "lon": -120.8496701
+  },
+  {
+    "org": "Los Arboles Middle School - MPUSD",
+    "students": 10,
+    "hours": 320,
+    "lat": 36.6787702,
+    "lon": -121.7963735
+  },
+  {
+    "org": "Los Padres Elementary School - Salinas City Elementary School District",
+    "students": 8,
+    "hours": 256,
+    "lat": 36.6707374,
+    "lon": -121.6237432
+  },
+  {
+    "org": "Lucia Mar Unified School District",
+    "students": 2,
+    "hours": 64,
+    "lat": 35.1158762,
+    "lon": -120.5767184
+  },
+  {
+    "org": "Maj. En. Gourley VA Clinic",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6627476,
+    "lon": -121.8137576
+  },
+  {
+    "org": "Marina Coast Water District",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6771203,
+    "lon": -121.7789205
+  },
+  {
+    "org": "Marina High School - MPUSD",
+    "students": 9,
+    "hours": 288,
+    "lat": 36.6741102,
+    "lon": -121.8016761
+  },
+  {
+    "org": "Marina Vista Elementary School - MPUSD",
+    "students": 26,
+    "hours": 832,
+    "lat": 36.6772489,
+    "lon": -121.7903514
+  },
+  {
+    "org": "Marine Advanced Technology Education (MATE) Center",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.5893339,
+    "lon": -121.8869455
+  },
+  {
+    "org": "Marine Life Studies",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.594308,
+    "lon": -121.835834
+  },
+  {
+    "org": "Marine Mammal Center",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.804417,
+    "lon": -121.7783702
+  },
+  {
+    "org": "Marshall Elementary School MPUSD",
+    "students": 9,
+    "hours": 288,
+    "lat": 36.6365714,
+    "lon": -121.8067503
+  },
+  {
+    "org": "Martin Luther King Jr. Academy - Alisal Union School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6856882,
+    "lon": -121.617292
+  },
+  {
+    "org": "Martin Luther King Jr. K-5 Elementary School - MPUSD",
+    "students": 22,
+    "hours": 704,
+    "lat": 36.609476,
+    "lon": -121.8271389
+  },
+  {
+    "org": "Martin Murphy Middle School",
+    "students": 3,
+    "hours": 96,
+    "lat": 37.2254492,
+    "lon": -121.768009
+  },
+  {
+    "org": "Max's Helping Paws Foundation",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5849724,
+    "lon": -121.8300665
+  },
+  {
+    "org": "Meals on Wheels of the Monterey Peninsula",
+    "students": 22,
+    "hours": 704,
+    "lat": 36.6249908,
+    "lon": -121.9190396
+  },
+  {
+    "org": "MEarth",
+    "students": 61,
+    "hours": "1,952",
+    "lat": 36.5424252,
+    "lon": -121.8964512
+  },
+  {
+    "org": "Mintie White Elementary",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9195568,
+    "lon": -121.7538932
+  },
+  {
+    "org": "Mission Park Elementary School - Salinas City Elementary School District",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.666131,
+    "lon": -121.668276
+  },
+  {
+    "org": "Mo. County Free Libraries - Castroville Library Homework Center",
+    "students": 40,
+    "hours": "1,280",
+    "lat": 36.7676774,
+    "lon": -121.7575688
+  },
+  {
+    "org": "Mo. County Free Libraries - Marina Branch Library",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6914165,
+    "lon": -121.7996548
+  },
+  {
+    "org": "Monarch Services, Santa Cruz",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9779421,
+    "lon": -122.0099974
+  },
+  {
+    "org": "Monte Bella Elementary School (Formally Tiburcio Vasquez) - Alisal Union School District",
+    "students": 39,
+    "hours": "1,248",
+    "lat": 36.6821096,
+    "lon": -121.5954579
+  },
+  {
+    "org": "Monte Vista Elementary School- MPUSD",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5899833,
+    "lon": -121.9076342
+  },
+  {
+    "org": "Monterey Adult School",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6262168,
+    "lon": -121.8343868
+  },
+  {
+    "org": "Monterey Bay Aquarium",
+    "students": 18,
+    "hours": 576,
+    "lat": 36.6176943,
+    "lon": -121.9017208
+  },
+  {
+    "org": "Monterey Bay Central Labor Council",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6766256,
+    "lon": -121.6275778
+  },
+  {
+    "org": "Monterey Bay Charter School- MCOE",
+    "students": 24,
+    "hours": 768,
+    "lat": 36.6048815,
+    "lon": -121.9308796
+  },
+  {
+    "org": "Monterey Bay Sports League (MBSL)",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6125478,
+    "lon": -121.8434956
+  },
+  {
+    "org": "Monterey Co. Free Libraries- Seaside Branch",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6031821,
+    "lon": -121.852549
+  },
+  {
+    "org": "Monterey County District Attorney Office",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6735218,
+    "lon": -121.6588963
+  },
+  {
+    "org": "Monterey County Free Libraries- Soledad",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.4357341,
+    "lon": -121.3260387
+  },
+  {
+    "org": "Monterey County Health Department - Public Health Bureau",
+    "students": 11,
+    "hours": 352,
+    "lat": 36.696664,
+    "lon": -121.6360642
+  },
+  {
+    "org": "Monterey County Rape Crisis Center",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.61,
+    "lon": -121.9
+  },
+  {
+    "org": "Monterey County Reads/Panetta Institute",
+    "students": 10,
+    "hours": 320,
+    "lat": 36.6538224,
+    "lon": -121.801697
+  },
+  {
+    "org": "Monterey County Workforce Investment Board & VITA Sites",
+    "students": 8,
+    "hours": 256,
+    "lat": 36.6572429,
+    "lon": -121.6096423
+  },
+  {
+    "org": "Monterey High School - MPUSD",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5951804,
+    "lon": -121.901055
+  },
+  {
+    "org": "Monterey History and Art Association",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.606698,
+    "lon": -121.897025
+  },
+  {
+    "org": "Monterey Jazz Festival",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.572455,
+    "lon": -121.805651
+  },
+  {
+    "org": "Monterey Museum of Art",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.5975044,
+    "lon": -121.8965937
+  },
+  {
+    "org": "Monterey Park Elementary School - Salinas City Elementary School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6564539,
+    "lon": -121.65019
+  },
+  {
+    "org": "Monterey Peace and Justice Center",
+    "students": 37,
+    "hours": "1,184",
+    "lat": 36.6057747,
+    "lon": -121.8469172
+  },
+  {
+    "org": "Monterey Peninsula College",
+    "students": 11,
+    "hours": 352,
+    "lat": 36.5893339,
+    "lon": -121.8869455
+  },
+  {
+    "org": "Monterey Peninsula Regional Park District",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.5849706,
+    "lon": -121.8542179
+  },
+  {
+    "org": "Monterey Regional Waste Management District",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.7138234,
+    "lon": -121.7677314
+  },
+  {
+    "org": "Monterey Symphony",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.5842715,
+    "lon": -121.85169
+  },
+  {
+    "org": "Moreland Notre Dame School",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.9152445,
+    "lon": -121.7598231
+  },
+  {
+    "org": "Motivating Individual Leadership for Public Advancement (MILPA)",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.672763,
+    "lon": -121.6552614
+  },
+  {
+    "org": "National Steinbeck Center",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6721152,
+    "lon": -121.6543657
+  },
+  {
+    "org": "Natividad Elementary School - Salinas City Elementary School District",
+    "students": 6,
+    "hours": 192,
+    "lat": 36.7041852,
+    "lon": -121.6374993
+  },
+  {
+    "org": "Natividad Medical Center - Volunteer Auxiliary",
+    "students": 46,
+    "hours": "1,472",
+    "lat": 36.6966688,
+    "lon": -121.6330887
+  },
+  {
+    "org": "Naval Postgraduate School - Dudley Knox Library",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.5975069,
+    "lon": -121.8773408
+  },
+  {
+    "org": "New Brighton Middle School - SUESD",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.9787546,
+    "lon": -121.9479647
+  },
+  {
+    "org": "New Museums of Los Gatos",
+    "students": 2,
+    "hours": 64,
+    "lat": 37.2218732,
+    "lon": -121.9791753
+  },
+  {
+    "org": "New Republic School - Santa Rita School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.7131824,
+    "lon": -121.6268591
+  },
+  {
+    "org": "North County Recreation & Park District",
+    "students": 13,
+    "hours": 416,
+    "lat": 36.7675024,
+    "lon": -121.7554765
+  },
+  {
+    "org": "North Monterey County Unified School District",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.7965721,
+    "lon": -121.7864327
+  },
+  {
+    "org": "North Salinas High School - SUHSD",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.7062131,
+    "lon": -121.6471377
+  },
+  {
+    "org": "Oasis Charter Public School (Alisal Union School District)",
+    "students": 8,
+    "hours": 256,
+    "lat": 36.7047248,
+    "lon": -121.6704622
+  },
+  {
+    "org": "Ohlone Elementary School",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.8687219,
+    "lon": -121.7617386
+  },
+  {
+    "org": "Olson Elementary School- MPUSD",
+    "students": 6,
+    "hours": 192,
+    "lat": 36.6923692,
+    "lon": -121.793286
+  },
+  {
+    "org": "Open Ground Studios",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6032262,
+    "lon": -121.8481267
+  },
+  {
+    "org": "Ord Terrace Elementary School - MPUSD",
+    "students": 29,
+    "hours": 928,
+    "lat": 36.6172468,
+    "lon": -121.8258635
+  },
+  {
+    "org": "PA Walsh STEAM Academy",
+    "students": 1,
+    "hours": 32,
+    "lat": 37.1274908,
+    "lon": -121.6618035
+  },
+  {
+    "org": "Pacific Grove Heritage Society",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.619809,
+    "lon": -121.919063
+  },
+  {
+    "org": "Pacific Grove Museum of Natural History",
+    "students": 16,
+    "hours": 512,
+    "lat": 36.621836,
+    "lon": -121.9172775
+  },
+  {
+    "org": "Pajaro Valley Loaves and Fishes",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9073375,
+    "lon": -121.7586618
+  },
+  {
+    "org": "Pajaro Valley Unified School District",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.9391228,
+    "lon": -121.7687573
+  },
+  {
+    "org": "Palenke Arts - Action Council",
+    "students": 17,
+    "hours": 544,
+    "lat": 36.609476,
+    "lon": -121.8271389
+  },
+  {
+    "org": "Partners for Peace/ Strengthening Families Program",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6944553,
+    "lon": -121.6297784
+  },
+  {
+    "org": "Peace of Mind Dog Rescue",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6164038,
+    "lon": -121.919555
+  },
+  {
+    "org": "Presidio Youth Sports",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.643262,
+    "lon": -121.808404
+  },
+  {
+    "org": "Public Water Now",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.61,
+    "lon": -121.9
+  },
+  {
+    "org": "R. O. Hardin Elementary School",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.8234695,
+    "lon": -121.4014625
+  },
+  {
+    "org": "Radcliff Elementary School- PVUSD",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.9112738,
+    "lon": -121.7609297
+  },
+  {
+    "org": "Rancho Cielo Youth Campus",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.7343482,
+    "lon": -121.5859189
+  },
+  {
+    "org": "Resource Development & Marketing- United Way of Santa Cruz County",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.973356,
+    "lon": -121.960158
+  },
+  {
+    "org": "Return of the Natives Restoration Education Project",
+    "students": 52,
+    "hours": "1,664",
+    "lat": 36.6516548,
+    "lon": -121.7977985
+  },
+  {
+    "org": "Rio Del Mar School",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9596231,
+    "lon": -121.8766308
+  },
+  {
+    "org": "RISE Recruitment in Science Education",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6516548,
+    "lon": -121.7977985
+  },
+  {
+    "org": "Robert Down Elementary School",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6178258,
+    "lon": -121.916629
+  },
+  {
+    "org": "Roosevelt Elementary School - Salinas City Elementary School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6754214,
+    "lon": -121.6611954
+  },
+  {
+    "org": "Rose Ferrero Elementary School- Soledad Unified School District",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.4375719,
+    "lon": -121.3245085
+  },
+  {
+    "org": "Rotacare of Monterey",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.6017549,
+    "lon": -121.8487662
+  },
+  {
+    "org": "Salinas Adult School - SUHSD",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.6863434,
+    "lon": -121.6450597
+  },
+  {
+    "org": "Salinas City Elementary School District",
+    "students": 22,
+    "hours": 704,
+    "lat": 36.6644259,
+    "lon": -121.6573414
+  },
+  {
+    "org": "Salinas Community YMCA",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.6697967,
+    "lon": -121.6570964
+  },
+  {
+    "org": "Salinas High School - SUHSD",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.6669833,
+    "lon": -121.6566991
+  },
+  {
+    "org": "Salinas Police Department",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6749275,
+    "lon": -121.6578538
+  },
+  {
+    "org": "Salinas Public John Steinbeck Library",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6720206,
+    "lon": -121.6572876
+  },
+  {
+    "org": "Salinas Valley Memorial Healthcare System",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6596862,
+    "lon": -121.6471476
+  },
+  {
+    "org": "Salinas Valley Memorial Hospital & Service League",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6596862,
+    "lon": -121.6471476
+  },
+  {
+    "org": "Salvation Army Gilroy",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9996606,
+    "lon": -121.5495775
+  },
+  {
+    "org": "Salvation Army of Monterey Peninsula - Child Development Center",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.6074468,
+    "lon": -121.8524805
+  },
+  {
+    "org": "Salvation Army of Monterey Peninsula- Good Samaritan Center",
+    "students": 12,
+    "hours": 384,
+    "lat": 36.6145456,
+    "lon": -121.8474989
+  },
+  {
+    "org": "Salvation Army of Salinas",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.7340207,
+    "lon": -121.6556532
+  },
+  {
+    "org": "San Benito County Historical Society",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.851817,
+    "lon": -121.405382
+  },
+  {
+    "org": "San Benito County Probation Dept.",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.8522961,
+    "lon": -121.4051066
+  },
+  {
+    "org": "San Benito Health Foundation",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.8532871,
+    "lon": -121.4164209
+  },
+  {
+    "org": "San Carlos School (Diocese of Monterey",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.596057,
+    "lon": -121.891337
+  },
+  {
+    "org": "San Luis Obispo Psychiatric Health Facility",
+    "students": 6,
+    "hours": 192,
+    "lat": 35.275834,
+    "lon": -120.6469818
+  },
+  {
+    "org": "Santa Cruz AIDS Project",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.9880439,
+    "lon": -122.0380192
+  },
+  {
+    "org": "Santa Cruz City School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.977034,
+    "lon": -122.029179
+  },
+  {
+    "org": "Santa Cruz Sheriff's Activity League",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9741171,
+    "lon": -122.0307963
+  },
+  {
+    "org": "Santa Rita Elementary School - Santa Rita School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.724334,
+    "lon": -121.651954
+  },
+  {
+    "org": "Save The Whales",
+    "students": 12,
+    "hours": 384,
+    "lat": 36.6018929,
+    "lon": -121.8346511
+  },
+  {
+    "org": "Seaside High School - MPUSD",
+    "students": 42,
+    "hours": "1,344",
+    "lat": 36.624721,
+    "lon": -121.8378797
+  },
+  {
+    "org": "Seaside Middle School - MPUSD",
+    "students": 56,
+    "hours": "1,792",
+    "lat": 36.6235643,
+    "lon": -121.8179118
+  },
+  {
+    "org": "Seaside Voter Education Center",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.6110316,
+    "lon": -121.8443185
+  },
+  {
+    "org": "Seaside-Senior Services",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6021248,
+    "lon": -121.8460568
+  },
+  {
+    "org": "Seaside-Youth and Sports",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6021248,
+    "lon": -121.8460568
+  },
+  {
+    "org": "Second Harvest Food Bank of Santa Cruz and San Benito Counties",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.9028267,
+    "lon": -121.773252
+  },
+  {
+    "org": "Service Learning Institute - CSUMB",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6538224,
+    "lon": -121.801697
+  },
+  {
+    "org": "Seymour Marine Discovery Center",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9498008,
+    "lon": -122.065649
+  },
+  {
+    "org": "Sherwood Elementary School - Salinas City Elementary School District",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6720406,
+    "lon": -121.635305
+  },
+  {
+    "org": "SLO Noor Foundation",
+    "students": 3,
+    "hours": 96,
+    "lat": 35.2881583,
+    "lon": -120.6575127
+  },
+  {
+    "org": "Soledad High School - Soledad Unified School District",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.436295,
+    "lon": -121.3254792
+  },
+  {
+    "org": "Soledad Unified School District",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.4276469,
+    "lon": -121.3184638
+  },
+  {
+    "org": "SPCA Of Monterey County",
+    "students": 22,
+    "hours": 704,
+    "lat": 36.5688998,
+    "lon": -121.7616698
+  },
+  {
+    "org": "Special Olympics Northern California",
+    "students": 2,
+    "hours": 64,
+    "lat": 37.3656546,
+    "lon": -121.9068635
+  },
+  {
+    "org": "St. Joseph's Family Center",
+    "students": 3,
+    "hours": 96,
+    "lat": 37.0150175,
+    "lon": -121.5748081
+  },
+  {
+    "org": "Substance Use Disorder Services - County of Santa Cruz Health Services",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.9778501,
+    "lon": -122.0226351
+  },
+  {
+    "org": "Sun Street Centers - Pueblo Del Mar Recovery Community",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.6802949,
+    "lon": -121.6477709
+  },
+  {
+    "org": "Surfrider Foundation - Monterey Chapter",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.6189351,
+    "lon": -121.9183284
+  },
+  {
+    "org": "The Museum of Art and History at the McPherson Center",
+    "students": 10,
+    "hours": 320,
+    "lat": 36.9744132,
+    "lon": -122.0254176
+  },
+  {
+    "org": "Thomas Carman Food Pantry",
+    "students": 11,
+    "hours": 352,
+    "lat": 36.6770475,
+    "lon": -121.7870121
+  },
+  {
+    "org": "Trinity Christian High School",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.5993574,
+    "lon": -121.8882038
+  },
+  {
+    "org": "U.S. Army Child, Youth & School Services/ Porter Youth Center",
+    "students": 15,
+    "hours": 480,
+    "lat": 36.643262,
+    "lon": -121.808404
+  },
+  {
+    "org": "UCSC Fort Ord Natural Reserve",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6774364,
+    "lon": -121.7641569
+  },
+  {
+    "org": "UFW Foundation",
+    "students": 12,
+    "hours": 384,
+    "lat": 36.6712988,
+    "lon": -121.6516276
+  },
+  {
+    "org": "Unchained Inc.",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9883306,
+    "lon": -121.9561986
+  },
+  {
+    "org": "United Farm Workers (UFW)",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.675807,
+    "lon": -121.652061
+  },
+  {
+    "org": "United Way of Monterey County, Volunteer Center",
+    "students": 12,
+    "hours": 384,
+    "lat": 36.6721008,
+    "lon": -121.654824
+  },
+  {
+    "org": "United Way of the Monterey County",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.5849706,
+    "lon": -121.8542179
+  },
+  {
+    "org": "University Park Elementary - Salinas City Elementary School District",
+    "students": 3,
+    "hours": 96,
+    "lat": 36.6713254,
+    "lon": -121.6785255
+  },
+  {
+    "org": "Upward Bound- MPC TRiO Programs",
+    "students": 2,
+    "hours": 64,
+    "lat": 36.5893339,
+    "lon": -121.8869455
+  },
+  {
+    "org": "VA Outpatient Clinic",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6515124,
+    "lon": -121.8018977
+  },
+  {
+    "org": "Veterans Transition Center-Monterey",
+    "students": 12,
+    "hours": 384,
+    "lat": 36.6680499,
+    "lon": -121.8062397
+  },
+  {
+    "org": "Village Project, Inc.",
+    "students": 44,
+    "hours": "1,408",
+    "lat": 36.609432,
+    "lon": -121.8437625
+  },
+  {
+    "org": "Vine Hill School",
+    "students": 2,
+    "hours": 64,
+    "lat": 37.0678175,
+    "lon": -121.9988045
+  },
+  {
+    "org": "Virginia Rocca Barton Elementary School - Alisal Union School District",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.6959167,
+    "lon": -121.6150568
+  },
+  {
+    "org": "Voices for Children- Monterey Court Appointed Special Advocates (CASA)",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.6628594,
+    "lon": -121.6573216
+  },
+  {
+    "org": "Wahine Project",
+    "students": 16,
+    "hours": 512,
+    "lat": 36.6202011,
+    "lon": -121.9121014
+  },
+  {
+    "org": "Walnut Avenue Family and Women's Center",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.972454,
+    "lon": -122.0308215
+  },
+  {
+    "org": "Washington Union Elementary School -Washington Union School District",
+    "students": 4,
+    "hours": 128,
+    "lat": 36.5378843,
+    "lon": -121.7250618
+  },
+  {
+    "org": "Watsonville Charter School of the Arts",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9597301,
+    "lon": -121.73355
+  },
+  {
+    "org": "Watsonville Environmental Science Workshop (Community Science Workshop Network)",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9077772,
+    "lon": -121.7578107
+  },
+  {
+    "org": "Watsonville High School - PVUSD",
+    "students": 5,
+    "hours": 160,
+    "lat": 36.9131957,
+    "lon": -121.7524559
+  },
+  {
+    "org": "Watsonville Law Center",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9092506,
+    "lon": -121.7562011
+  },
+  {
+    "org": "Youth Now",
+    "students": 9,
+    "hours": 288,
+    "lat": 36.9127,
+    "lon": -121.755732
+  },
+  {
+    "org": "Youth Orchestra Salinas (YOSAL)",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.7062919,
+    "lon": -121.6522913
+  },
+  {
+    "org": "YWCA of Monterey County",
+    "students": 7,
+    "hours": 224,
+    "lat": 36.6745902,
+    "lon": -121.654218
+  },
+  {
+    "org": "YWCA of Watsonville",
+    "students": 1,
+    "hours": 32,
+    "lat": 36.9144019,
+    "lon": -121.750442
+  }
+]
