@@ -115,6 +115,8 @@ class UserDropdown extends Component {
           <UserDropdownMenuLink
             component="a"
             href="https://get.cbord.com/csumb"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             OtterCard
           </UserDropdownMenuLink>

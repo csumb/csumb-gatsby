@@ -198,7 +198,13 @@ const YourAccountList = ({ user }) => (
     {user._isEmployee && (
       <YourAccountLink to="/account/profile">Public profile</YourAccountLink>
     )}
-    <YourAccountLink to="/account/card">OtterCard</YourAccountLink>
+    <YourAccountAnchor
+      href="https://get.cbord.com/csumb"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      OtterCard
+    </YourAccountAnchor>
     {(user._isStudent || true) && (
       <YourAccountAnchor
         href="https://www.laundryalert.com/cgi-bin/csumb721/LMPage"
