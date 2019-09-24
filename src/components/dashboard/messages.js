@@ -43,7 +43,6 @@ class DashboardMessage extends Component {
 
   render() {
     const { headline, message, link } = this.props.message
-    const { archivedContent } = this.props
     const { archived } = this.state
     return (
       <>

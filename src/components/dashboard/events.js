@@ -2,14 +2,9 @@ import React, { Component } from 'react'
 import { fonts } from '../../style'
 import styled from '@emotion/styled'
 import { AlertEmpty } from '../common/alert'
-import VisuallyHidden from '../utilities/visually-hidden'
 import Link from 'gatsby-link'
 
-import {
-  DashboardCard,
-  DashboardMessageClose,
-  DashboardCardHeader,
-} from './shared-styles'
+import { DashboardCard, DashboardCardHeader } from './shared-styles'
 
 class DashboardEvents extends Component {
   render() {
@@ -65,7 +60,7 @@ class DashboardEvent extends Component {
   }
 
   render() {
-    const { event, archivedContent } = this.props
+    const { event } = this.props
     const { archived } = this.state
     return (
       <>

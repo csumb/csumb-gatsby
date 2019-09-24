@@ -51,10 +51,10 @@ const IndexPage = ({ data }) => {
         navigation={allContentfulHomepageImageNavigation.edges[0].node}
       />
       <Container topPadding>
-        {stories.map(storyPair => (
-          <Flex>
-            {storyPair.map(story => (
-              <Box width={[1, 1, 1 / 2]} px={[0, 0, 4]}>
+        {stories.map((storyPair, index) => (
+          <Flex id={`storypair-${index}`}>
+            {storyPair.map((story, index) => (
+              <Box id={`story-${index}`} width={[1, 1, 1 / 2]} px={[0, 0, 4]}>
                 <HomepageStory {...story} />
               </Box>
             ))}

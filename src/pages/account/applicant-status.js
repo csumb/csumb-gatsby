@@ -29,7 +29,7 @@ class AccountApplicantStatusPage extends Component {
                 <>
                   <PageTitle>
                     {context.user.anonymous ? (
-                      <h3>Your applicaion status</h3>
+                      <>Your applicaion status</>
                     ) : (
                       <>
                         {context.user.profile.firstName}{' '}
@@ -173,7 +173,7 @@ class ApplicationTranscripts extends Component {
         ) : (
           <>
             {Object.keys(transcripts).map(transcriptKey => (
-              <Well key={transcriptKey}>
+              <Well key={`transcript-list-${transcriptKey}`}>
                 <h3>
                   {transcripts[transcriptKey]._name === 'unknown' ? (
                     <>Transcript still being processesed.</>
@@ -183,7 +183,7 @@ class ApplicationTranscripts extends Component {
                 </h3>
                 {Object.keys(transcripts[transcriptKey]._messages).map(
                   messageKey => (
-                    <Flex key={messageKey}>
+                    <Flex key={`transcript-message-${messageKey}`}>
                       <Box width={1 / 4} pr={2}>
                         {transcripts[transcriptKey]._messages[messageKey]
                           .done ||
@@ -225,11 +225,43 @@ class ApplicationTranscripts extends Component {
             </p>
 
             {this.state.showTranscriptHistory && (
-              <ul>
+              <>
                 {Object.keys(transcriptHistory).map(id => (
-                  <li key={id}>{transcriptHistory[id]._name}</li>
+                  <>
+                    <h5 key={`transcript-history-${id}`}>
+                      {transcriptHistory[id]._name}
+                    </h5>
+                    {transcriptHistory[id].items && (
+                      <>
+                        <ul>
+                          {Object.keys(transcriptHistory[id].items).map(
+                            itemId => (
+                              <li key={`transcript-history-item-${itemId}`}>
+                                <span>
+                                  {transcriptHistory[id].items[itemId]
+                                    .transcript_type === 'OFF' ? (
+                                    <>Official</>
+                                  ) : (
+                                    <>Unofficial</>
+                                  )}{' '}
+                                  {transcriptHistory[id].items[itemId]
+                                    .transcript_status === 'F' && <>Final</>}
+                                </span>{' '}
+                                Received{' '}
+                                {moment(
+                                  transcriptHistory[id].items[itemId]
+                                    .received_date,
+                                  'MM/DD/YYYY'
+                                ).format('MMMM DD, YYYY')}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </>
+                    )}
+                  </>
                 ))}
-              </ul>
+              </>
             )}
           </>
         )}
@@ -266,13 +298,12 @@ class ApplicantStatus extends Component {
   }
 
   componentDidMount() {
-    window
-      .fetch(
-        `https://csumb-applicant-api.herokuapp.com/?user=${this.props.user.profile.login.replace(
-          '@csumb.edu',
-          ''
-        )}`
-      )
+    fetch(
+      `https://csumb-applicant-api.herokuapp.com/?user=${this.props.user.profile.login.replace(
+        '@csumb.edu',
+        ''
+      )}`
+    )
       .then(response => {
         return response.json()
       })

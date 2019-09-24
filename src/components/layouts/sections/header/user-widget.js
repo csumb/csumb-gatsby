@@ -118,13 +118,6 @@ class UserDropdown extends Component {
 
           <UserDropdownMenuLink
             component="a"
-            href="https://csumb.edu/oasis/view-your-class-schedule"
-            isHidden={!user._isStudent}
-          >
-            Class schedule
-          </UserDropdownMenuLink>
-          <UserDropdownMenuLink
-            component="a"
             href="/account/laundry"
             isHidden={!user._isStudent}
           >
