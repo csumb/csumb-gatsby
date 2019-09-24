@@ -2,7 +2,7 @@ import React from 'react'
 import parse from 'html-react-parser'
 import domToReact from 'html-react-parser/lib/dom-to-react'
 
-const strippedTags = ['span', 'div', 'font']
+const strippedTags = ['span', 'div', 'font', 'img', 'style']
 
 const cleanHref = href => {
   if (!href) {
