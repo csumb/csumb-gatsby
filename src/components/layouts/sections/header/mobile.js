@@ -125,6 +125,14 @@ const YourAccountLink = styled(Link)`
   margin-bottom: 0.8rem;
 `
 
+const YourAccountAnchor = styled.a`
+  display: block;
+  font-weight: bold;
+  color: ${colors.primary.darkest};
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+`
+
 const YourAccountWrapper = styled.div`
   a {
     color: ${colors.primary.darkest};
@@ -192,7 +200,13 @@ const YourAccountList = ({ user }) => (
     )}
     <YourAccountLink to="/account/card">OtterCard</YourAccountLink>
     {(user._isStudent || true) && (
-      <YourAccountLink to="/account/laundry">Laundry</YourAccountLink>
+      <YourAccountAnchor
+        href="https://www.laundryalert.com/cgi-bin/csumb721/LMPage"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Laundry
+      </YourAccountAnchor>
     )}
     <YourAccountLink to="/account/print">Print balance</YourAccountLink>
     <YourAccountLink to="/account/emergency">Emergency alerts</YourAccountLink>
