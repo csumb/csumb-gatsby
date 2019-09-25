@@ -20,7 +20,7 @@ const gatsbyConfig = {
     perSiteOlarkIds: [
       { site: 'dashboard', code: '1001-610-10-3640' },
       { site: 'mist', code: '3836-896-10-1757' },
-      { site: 'scd', code: '3836-896-10-1757' },
+      { site: 'scd', code: '5896-465-10-2924' },
     ],
     schedule: {
       currentTerm: 2194,
