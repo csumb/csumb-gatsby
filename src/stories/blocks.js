@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { storiesOf } from '@storybook/react'
 import BlockAddress from '../templates/blocks/blocks/address'
 import BlockButton from '../templates/blocks/blocks/button'
-import BlockByline from '../templates/blocks/blocks/byline'
 import BlockCalendar from '../templates/blocks/blocks/calendar'
 import BlockCallout from '../templates/blocks/blocks/callout'
 import BlockDefinitionList from '../templates/blocks/blocks/definition-list'
@@ -62,21 +61,6 @@ storiesOf('Blocks/Button', module).add(
   ),
   {
     info: 'Renders a button using the `ButtonLink` component.',
-  }
-)
-storiesOf('Blocks/Byline', module).add(
-  'Byline',
-  () => (
-    <>
-      <BlockByline
-        {...{
-          dateFormat: 'November 1, 2018',
-        }}
-      />
-    </>
-  ),
-  {
-    info: 'Used for tagging news articles with a consistent byline.',
   }
 )
 

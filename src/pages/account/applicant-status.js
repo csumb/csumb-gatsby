@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Fragment, Component } from 'react'
 import { Layout, PageTitle } from '../../components/layouts/default'
 import Container from '../../components/common/container'
 import { Flex, Box } from '../../components/common/grid'
@@ -29,7 +29,7 @@ class AccountApplicantStatusPage extends Component {
                 <>
                   <PageTitle>
                     {context.user.anonymous ? (
-                      <>Your applicaion status</>
+                      <>Your application status</>
                     ) : (
                       <>
                         {context.user.profile.firstName}{' '}
@@ -236,24 +236,37 @@ class ApplicationTranscripts extends Component {
                         <ul>
                           {Object.keys(transcriptHistory[id].items).map(
                             itemId => (
-                              <li key={`transcript-history-item-${itemId}`}>
-                                <span>
-                                  {transcriptHistory[id].items[itemId]
-                                    .transcript_type === 'OFF' ? (
-                                    <>Official</>
-                                  ) : (
-                                    <>Unofficial</>
-                                  )}{' '}
-                                  {transcriptHistory[id].items[itemId]
-                                    .transcript_status === 'F' && <>Final</>}
-                                </span>{' '}
-                                Received{' '}
-                                {moment(
-                                  transcriptHistory[id].items[itemId]
-                                    .received_date,
-                                  'MM/DD/YYYY'
-                                ).format('MMMM DD, YYYY')}
-                              </li>
+                              <Fragment
+                                key={`transcript-history-item-${itemId}`}
+                              >
+                                {transcriptHistory[id].items[itemId]
+                                  .transcript_flag === 'R' &&
+                                  (transcriptHistory[id].items[itemId]
+                                    .transcript_type === 'OFF' ||
+                                    transcriptHistory[id].items[itemId]
+                                      .transcript_type === 'UNO') && (
+                                    <li>
+                                      <span>
+                                        {transcriptHistory[id].items[itemId]
+                                          .transcript_type === 'OFF' ? (
+                                          <>Official</>
+                                        ) : (
+                                          <>Unofficial</>
+                                        )}{' '}
+                                        {transcriptHistory[id].items[itemId]
+                                          .transcript_status === 'F' && (
+                                          <>Final</>
+                                        )}
+                                      </span>{' '}
+                                      Received{' '}
+                                      {moment(
+                                        transcriptHistory[id].items[itemId]
+                                          .received_date,
+                                        'MM/DD/YYYY'
+                                      ).format('MMMM DD, YYYY')}
+                                    </li>
+                                  )}
+                              </Fragment>
                             )
                           )}
                         </ul>
