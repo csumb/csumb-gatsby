@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 
 const SoundIframe = styled.iframe`
@@ -7,16 +7,11 @@ const SoundIframe = styled.iframe`
   height: 166px;
 `
 
-class BlockSound extends Component {
-  render() {
-    const { id } = this.props
-    return (
-      <SoundIframe
-        src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${id}&amp;color=1f346b&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false`}
-        title="Sound recording"
-      />
-    )
-  }
-}
+const BlockSound = ({ id }) => (
+  <SoundIframe
+    src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${id}&amp;color=1f346b&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false`}
+    title="Sound recording"
+  />
+)
 
 export default BlockSound

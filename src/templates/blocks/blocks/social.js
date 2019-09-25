@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from '../../../style'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,16 +23,11 @@ const SocialIcon = styled(FontAwesomeIcon)`
   margin-right: 1.5rem;
 `
 
-class BlockSocial extends Component {
-  render() {
-    const { provider, url } = this.props
-    return (
-      <a href={url}>
-        <SocialIcon icon={providers[provider]} />
-        <VisuallyHidden>{provider}</VisuallyHidden>
-      </a>
-    )
-  }
-}
+const BlockSocial = ({ provider, url }) => (
+  <a href={url}>
+    <SocialIcon icon={providers[provider]} />
+    <VisuallyHidden>{provider}</VisuallyHidden>
+  </a>
+)
 
 export default BlockSocial

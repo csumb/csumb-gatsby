@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import LinkInspect from '../../../components/utilities/link-inspect'
 import parseHtml from '../parse-html'
@@ -21,32 +21,23 @@ const QuoteIcon = styled.img`
   max-width: 50px;
 `
 
-class BlockQuote extends Component {
-  render() {
-    const { quote, source, url } = this.props
-    return (
-      <Quote>
-        <Flex>
-          <Box width={2 / 12} pr={2}>
-            <QuoteIcon src={quoteIcon} alt="" />
-          </Box>
-          <Box width={10 / 12}>
-            <div>{parseHtml(quote)}</div>
-            {source && (
-              <Cite>
-                {'— '}
-                {url ? (
-                  <LinkInspect to={url}>{source}</LinkInspect>
-                ) : (
-                  <>{source}</>
-                )}
-              </Cite>
-            )}
-          </Box>
-        </Flex>
-      </Quote>
-    )
-  }
-}
+const BlockQuote = ({ quote, source, url }) => (
+  <Quote>
+    <Flex>
+      <Box width={2 / 12} pr={2}>
+        <QuoteIcon src={quoteIcon} alt="" />
+      </Box>
+      <Box width={10 / 12}>
+        <div>{parseHtml(quote)}</div>
+        {source && (
+          <Cite>
+            {'— '}
+            {url ? <LinkInspect to={url}>{source}</LinkInspect> : <>{source}</>}
+          </Cite>
+        )}
+      </Box>
+    </Flex>
+  </Quote>
+)
 
 export default BlockQuote

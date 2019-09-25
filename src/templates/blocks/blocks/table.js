@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
   Table,
   TableHeader,
@@ -7,30 +7,25 @@ import {
 } from '../../../components/common/table'
 import parseHtml from '../parse-html'
 
-class BlockTable extends Component {
-  render() {
-    const { layout, tableData } = this.props
-    return (
-      <Table>
-        <thead>
-          <TableRow>
-            {layout.headers.map(header => (
-              <TableHeader>{header}</TableHeader>
-            ))}
-          </TableRow>
-        </thead>
-        <tbody>
-          {tableData.map(row => (
-            <TableRow>
-              {row.map(cell => (
-                <TableCell>{parseHtml(cell)}</TableCell>
-              ))}
-            </TableRow>
+const BlockTable = ({ layout, tableData }) => (
+  <Table>
+    <thead>
+      <TableRow>
+        {layout.headers.map(header => (
+          <TableHeader>{header}</TableHeader>
+        ))}
+      </TableRow>
+    </thead>
+    <tbody>
+      {tableData.map(row => (
+        <TableRow>
+          {row.map(cell => (
+            <TableCell>{parseHtml(cell)}</TableCell>
           ))}
-        </tbody>
-      </Table>
-    )
-  }
-}
+        </TableRow>
+      ))}
+    </tbody>
+  </Table>
+)
 
 export default BlockTable

@@ -13,7 +13,6 @@ import BlockQuote from './blocks/quote'
 import BlockAddress from './blocks/address'
 import BlockDefinitionList from './blocks/definition-list'
 import BlockVideo from './blocks/video'
-import BlockByline from './blocks/byline'
 import BlockHeroImage from './blocks/hero-image'
 import BlockSound from './blocks/sound'
 import BlockFeed from './blocks/feed'
@@ -55,7 +54,6 @@ class Block extends Component {
     heading: BlockHeading,
     calendar: BlockCalendar,
     heroimage: BlockHeroImage,
-    byline: BlockByline,
     button: BlockButton,
     definitionlist: BlockDefinitionList,
     document: BlockDocument,

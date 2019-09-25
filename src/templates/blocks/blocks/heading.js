@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import { colors } from '../../../style'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -29,45 +29,39 @@ const CollapsibleTextWrapper = styled.span`
   padding-right: 1.5rem;
 `
 
-class BlockHeading extends Component {
-  state = {
-    isOpen: false,
-  }
+const BlockHeading = ({
+  level,
+  url,
+  text,
+  uuid,
+  collapsible,
+  headerHandler,
+}) => {
+  const [isOpen, setIsOpen] = useState(false)
 
-  handleToggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    })
-  }
-
-  render() {
-    let HeadingTag = styled(`h${this.props.level}`)``
-
-    const { url, text, uuid, collapsible, headerHandler } = this.props
-    const { isOpen } = this.state
-    return (
-      <HeadingTag id={`heading-${uuid}`} collapsible={collapsible}>
-        {collapsible ? (
-          <CollapsibleHeading
-            onClick={() => {
-              headerHandler()
-              this.handleToggle()
-            }}
-          >
-            <CollapsibleIcon>
-              <FontAwesomeIcon
-                size="1x"
-                icon={isOpen ? faChevronDown : faChevronRight}
-              />
-            </CollapsibleIcon>
-            <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>
-          </CollapsibleHeading>
-        ) : (
-          <>{url ? <a href={url}>{text}</a> : <>{text}</>}</>
-        )}
-      </HeadingTag>
-    )
-  }
+  let HeadingTag = styled(`h${level}`)``
+  return (
+    <HeadingTag id={`heading-${uuid}`} collapsible={collapsible}>
+      {collapsible ? (
+        <CollapsibleHeading
+          onClick={() => {
+            headerHandler()
+            setIsOpen(!isOpen)
+          }}
+        >
+          <CollapsibleIcon>
+            <FontAwesomeIcon
+              size="1x"
+              icon={isOpen ? faChevronDown : faChevronRight}
+            />
+          </CollapsibleIcon>
+          <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>
+        </CollapsibleHeading>
+      ) : (
+        <>{url ? <a href={url}>{text}</a> : <>{text}</>}</>
+      )}
+    </HeadingTag>
+  )
 }
 
 export default BlockHeading

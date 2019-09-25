@@ -1,48 +1,41 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import Well from '../../../components/common/well'
 import Link from 'gatsby-link'
 
-class BlockCourses extends Component {
-  state = {
-    courses: false,
-  }
-
-  componentDidMount() {
-    const { subjectCode } = this.props
-    fetch(`/catalog/json/subject/${subjectCode.toLowerCase()}.json`)
-      .then(response => {
-        return response.json()
-      })
-      .then(courses => {
-        this.setState({
-          courses: courses,
+const BlockCourses = ({ subjectCode }) => {
+  const [courses, setCourses] = useState(false)
+  useEffect(
+    () => {
+      fetch(`/catalog/json/subject/${subjectCode.toLowerCase()}.json`)
+        .then(response => {
+          return response.json()
         })
-      })
-  }
+        .then(courses => {
+          setCourses(courses)
+        })
+    },
+    [subjectCode]
+  )
 
-  render() {
-    const { courses } = this.state
-    if (!courses) {
-      return null
-    }
-    return (
-      <>
-        {courses.map(course => (
-          <Well>
-            <h3>
-              <Link
-                to={`/course/${course.SUBJECT.toLowerCase()}/${course.CATALOG_NBR.trim().toLowerCase()}`}
-              >
-                {course.SUBJECT} {course.CATALOG_NBR}:{' '}
-                {course.COURSE_TITLE_LONG}
-              </Link>
-            </h3>
-            <p>{course.DESCRLONG}</p>
-          </Well>
-        ))}
-      </>
-    )
+  if (!courses) {
+    return null
   }
+  return (
+    <>
+      {courses.map(course => (
+        <Well key={`${course.SUBJECT}-${course.CATALOG_NBR}`}>
+          <h3>
+            <Link
+              to={`/course/${course.SUBJECT.toLowerCase()}/${course.CATALOG_NBR.trim().toLowerCase()}`}
+            >
+              {course.SUBJECT} {course.CATALOG_NBR}: {course.COURSE_TITLE_LONG}
+            </Link>
+          </h3>
+          <p>{course.DESCRLONG}</p>
+        </Well>
+      ))}
+    </>
+  )
 }
 
 export default BlockCourses

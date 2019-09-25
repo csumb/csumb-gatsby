@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import VisuallyHidden from '../../../components/utilities/visually-hidden'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -22,25 +22,22 @@ const DocumentIcon = styled(FontAwesomeIcon)`
   max-width: 50px;
 `
 
-class BlockDocument extends Component {
-  render() {
-    const { document, name } = this.props
-    if (!document.key && !document.url) {
-      return null
-    }
-    const url = document.key
-      ? `https://s3.amazonaws.com/csumb-uploads/${document.key}`
-      : document.url.replace('/csumb.edu/', '/edit.csumb.edu/')
-    return (
-      <Document href={url}>
-        <DocumentIconWrapper>
-          <DocumentIcon icon={faFileDownload} />
-        </DocumentIconWrapper>
-        {name}
-        <VisuallyHidden>Download document</VisuallyHidden>
-      </Document>
-    )
+const BlockDocument = ({ document, name }) => {
+  if (!document.key && !document.url) {
+    return null
   }
+  const url = document.key
+    ? `https://s3.amazonaws.com/csumb-uploads/${document.key}`
+    : document.url.replace('/csumb.edu/', '/edit.csumb.edu/')
+  return (
+    <Document href={url}>
+      <DocumentIconWrapper>
+        <DocumentIcon icon={faFileDownload} />
+      </DocumentIconWrapper>
+      {name}
+      <VisuallyHidden>Download document</VisuallyHidden>
+    </Document>
+  )
 }
 
 export default BlockDocument
