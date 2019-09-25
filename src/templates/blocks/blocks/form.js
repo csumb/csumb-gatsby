@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 
 const FormIframe = styled.iframe`
@@ -7,26 +7,19 @@ const FormIframe = styled.iframe`
   border: 0;
 `
 
-class BlockForm extends Component {
-  render() {
-    const { height, provider } = this.props
-    let formUrl = ''
-    if (provider.provider === 'google') {
-      formUrl = `https://docs.google.com/a/csumb.edu/forms/d/e/${
-        provider.form
-      }/viewform?embedded=true`
-    }
-    if (provider.provider === 'airtable') {
-      formUrl = `https://airtable.com/embed/${provider.form}`
-    }
-    return (
-      <FormIframe
-        style={{ height: height + 'px' }}
-        src={formUrl}
-        title="Form"
-      />
-    )
+const BlockForm = ({ height, provider }) => {
+  let formUrl = ''
+  if (provider.provider === 'google') {
+    formUrl = `https://docs.google.com/a/csumb.edu/forms/d/e/${
+      provider.form
+    }/viewform?embedded=true`
   }
+  if (provider.provider === 'airtable') {
+    formUrl = `https://airtable.com/embed/${provider.form}`
+  }
+  return (
+    <FormIframe style={{ height: height + 'px' }} src={formUrl} title="Form" />
+  )
 }
 
 export default BlockForm

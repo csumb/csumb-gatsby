@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 
 const ImageContainer = styled.div`
@@ -20,59 +20,55 @@ const Caption = styled.div`
   font-size: 0.8rem;
 `
 
-class BlockImage extends Component {
-  render() {
-    const {
-      image,
-      description,
-      height,
-      caption,
-      pullRight,
-      credit,
-      inColumn,
-      url,
-    } = this.props
-    if (!image) {
-      return null
-    }
-    const imageSource = image.key
-      ? `https://s3.amazonaws.com/csumb-uploads/${image.key}`
-      : image.url
-          .replace('http://', 'https://')
-          .replace('/csumb.edu/', '/edit.csumb.edu/')
-    return (
-      <ImageContainer pullRight={pullRight && !inColumn}>
-        {url ? (
-          <a href={url}>
-            <img
-              src={imageSource}
-              alt={description.replace(/image/gi, '')}
-              style={{
-                height:
-                  height && parseInt(height) > 10 ? `${height}px` : 'auto',
-                width: 'auto',
-              }}
-            />
-          </a>
-        ) : (
+const BlockImage = ({
+  image,
+  description,
+  height,
+  caption,
+  pullRight,
+  credit,
+  inColumn,
+  url,
+}) => {
+  if (!image) {
+    return null
+  }
+  const imageSource = image.key
+    ? `https://s3.amazonaws.com/csumb-uploads/${image.key}`
+    : image.url
+        .replace('http://', 'https://')
+        .replace('/csumb.edu/', '/edit.csumb.edu/')
+  return (
+    <ImageContainer pullRight={pullRight && !inColumn}>
+      {url ? (
+        <a href={url}>
           <img
             src={imageSource}
-            alt={description}
+            alt={description.replace(/image/gi, '')}
             style={{
               height: height && parseInt(height) > 10 ? `${height}px` : 'auto',
               width: 'auto',
             }}
           />
-        )}
-        {credit && (
-          <Caption>
-            <strong>Photo by:</strong> {credit}
-          </Caption>
-        )}
-        {caption && <Caption>{caption}</Caption>}
-      </ImageContainer>
-    )
-  }
+        </a>
+      ) : (
+        <img
+          src={imageSource}
+          alt={description}
+          style={{
+            height: height && parseInt(height) > 10 ? `${height}px` : 'auto',
+            width: 'auto',
+          }}
+        />
+      )}
+      {credit && (
+        <Caption>
+          <strong>Photo by:</strong> {credit}
+        </Caption>
+      )}
+      {caption && <Caption>{caption}</Caption>}
+    </ImageContainer>
+  )
 }
 
 export default BlockImage

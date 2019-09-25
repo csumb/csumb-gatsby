@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import styled from '@emotion/styled'
 
@@ -7,31 +7,25 @@ const MapWrapper = styled.div`
   position: relative !important;
   height: 500px;
 `
-class BlockMap extends Component {
-  onReady(mapProps, map) {
-    map.data.addGeoJson(this.props.features)
-    if (this.props.kml && this.props.kml.url) {
-      new mapProps.google.maps.KmlLayer({
-        url: this.props.kml.url,
-        map: map,
-      })
-    }
-  }
-
-  render() {
-    const { zoom, center } = this.props
-
-    return (
-      <MapWrapper>
-        <Map
-          google={this.props.google}
-          zoom={zoom}
-          initialCenter={center}
-          onReady={this.onReady.bind(this)}
-        />
-      </MapWrapper>
-    )
-  }
+const BlockMap = ({ zoom, center, features, kml }) => {
+  return (
+    <MapWrapper>
+      <Map
+        google={this.props.google}
+        zoom={zoom}
+        initialCenter={center}
+        onReady={(mapProps, map) => {
+          map.data.addGeoJson(features)
+          if (kml && kml.url) {
+            new mapProps.google.maps.KmlLayer({
+              url: kml.url,
+              map: map,
+            })
+          }
+        }}
+      />
+    </MapWrapper>
+  )
 }
 
 export default GoogleApiWrapper({

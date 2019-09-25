@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { colors, bp } from '../../../style'
 import LinkInspect from '../../../components/utilities/link-inspect'
@@ -28,20 +28,15 @@ const RelatedContentTitle = styled.h5`
 
 const RelatedContentDescription = styled.p``
 
-class BlockRelated extends Component {
-  render() {
-    const { source, title, description, url } = this.props
-    return (
-      <RelatedContent>
-        <VisuallyHidden>Related content</VisuallyHidden>
-        <RelatedContentSource>{source}</RelatedContentSource>
-        <RelatedContentTitle>
-          <LinkInspect to={url}>{title}</LinkInspect>
-        </RelatedContentTitle>
-        <RelatedContentDescription>{description}</RelatedContentDescription>
-      </RelatedContent>
-    )
-  }
-}
+const BlockRelated = ({ source, title, description, url }) => (
+  <RelatedContent>
+    <VisuallyHidden>Related content</VisuallyHidden>
+    <RelatedContentSource>{source}</RelatedContentSource>
+    <RelatedContentTitle>
+      <LinkInspect to={url}>{title}</LinkInspect>
+    </RelatedContentTitle>
+    <RelatedContentDescription>{description}</RelatedContentDescription>
+  </RelatedContent>
+)
 
 export default BlockRelated

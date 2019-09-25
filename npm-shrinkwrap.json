@@ -33062,14 +33062,13 @@
       }
     },
     "react": {
-      "version": "16.6.3",
-      "resolved": "https://registry.npmjs.org/react/-/react-16.6.3.tgz",
-      "integrity": "sha512-zCvmH2vbEolgKxtqXL2wmGCUxUyNheYn/C+PD1YAjfxHC54+MhdruyhO7QieQrYsYeTxrn93PM2y0jRH1zEExw==",
+      "version": "16.9.0",
+      "resolved": "https://registry.npmjs.org/react/-/react-16.9.0.tgz",
+      "integrity": "sha512-+7LQnFBwkiw+BobzOF6N//BdoNw0ouwmSJTEm9cglOOmsg/TMiFHZLe2sEoN5M7LgJTj9oHH0gxklfnQe66S1w==",
       "requires": {
         "loose-envify": "^1.1.0",
         "object-assign": "^4.1.1",
-        "prop-types": "^15.6.2",
-        "scheduler": "^0.11.2"
+        "prop-types": "^15.6.2"
       }
     },
     "react-addons-create-fragment": {
@@ -33338,14 +33337,25 @@
       }
     },
     "react-dom": {
-      "version": "16.6.3",
-      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-16.6.3.tgz",
-      "integrity": "sha512-8ugJWRCWLGXy+7PmNh8WJz3g1TaTUt1XyoIcFN+x0Zbkoz+KKdUyx1AQLYJdbFXjuF41Nmjn5+j//rxvhFjgSQ==",
+      "version": "16.9.0",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-16.9.0.tgz",
+      "integrity": "sha512-YFT2rxO9hM70ewk9jq0y6sQk8cL02xm4+IzYBz75CQGlClQQ1Bxq0nhHF6OtSbit+AIahujJgb/CPRibFkMNJQ==",
       "requires": {
         "loose-envify": "^1.1.0",
         "object-assign": "^4.1.1",
         "prop-types": "^15.6.2",
-        "scheduler": "^0.11.2"
+        "scheduler": "^0.15.0"
+      },
+      "dependencies": {
+        "scheduler": {
+          "version": "0.15.0",
+          "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.15.0.tgz",
+          "integrity": "sha512-xAefmSfN6jqAa7Kuq7LIJY0bwAPG3xlCj0HMEBQk1lxYiDKZscY2xJ5U/61ZTrYbmNQbXa+gc7czPkVo11tnCg==",
+          "requires": {
+            "loose-envify": "^1.1.0",
+            "object-assign": "^4.1.1"
+          }
+        }
       }
     },
     "react-dom-core": {
@@ -35299,6 +35309,7 @@
       "version": "0.11.2",
       "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.11.2.tgz",
       "integrity": "sha512-+WCP3s3wOaW4S7C1tl3TEXp4l9lJn0ZK8G3W3WKRWmw77Z2cIFUW2MiNTMHn5sCjxN+t7N43HAOOgMjyAg5hlg==",
+      "dev": true,
       "requires": {
         "loose-envify": "^1.1.0",
         "object-assign": "^4.1.1"

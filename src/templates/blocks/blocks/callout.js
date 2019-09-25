@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from '../../../style'
 import VisuallyHidden from '../../../components/utilities/visually-hidden'
@@ -14,21 +14,16 @@ const CalloutHeader = styled.h3`
   color: ${colors.white};
 `
 
-class BlockCallout extends Component {
-  render() {
-    const { title, text, url } = this.props
-    return (
-      <Callout>
-        <CalloutHeader>{title}</CalloutHeader>
-        <p>{text}</p>
-        {url && (
-          <Link to={url}>
-            Read more <VisuallyHidden>about this message</VisuallyHidden>
-          </Link>
-        )}
-      </Callout>
-    )
-  }
-}
+const BlockCallout = ({ title, text, url }) => (
+  <Callout>
+    <CalloutHeader>{title}</CalloutHeader>
+    <p>{text}</p>
+    {url && (
+      <Link to={url}>
+        Read more <VisuallyHidden>about this message</VisuallyHidden>
+      </Link>
+    )}
+  </Callout>
+)
 
 export default BlockCallout

@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { EventFeedItem } from '../../../components/events'
 import styled from '@emotion/styled'
 import { colors } from '../../../style'
+import moment from 'moment'
 
 const EventFeedWrapper = styled.section`
   background: ${colors.primary.lightest};
@@ -21,27 +22,41 @@ const displayEvent = item => {
   return display
 }
 
-class BlockEventFeed extends Component {
-  render() {
-    const { events, title, limit } = this.props
-    const displayEvents = []
-    events.forEach(event => {
-      if (displayEvent(event) && displayEvents.length <= limit) {
-        displayEvents.push(event)
-      }
-    })
-    if (!displayEvents.length) {
-      return null
+const BlockEventFeed = ({ events, title, limit }) => {
+  const displayEvents = []
+  events.forEach(event => {
+    if (displayEvent(event) && displayEvents.length <= limit) {
+      displayEvents.push(event)
     }
-    return (
-      <EventFeedWrapper>
-        {title && <h3>{title}</h3>}
-        {displayEvents.map((event, index) => (
-          <EventFeedItem {...event} key={index} />
-        ))}
-      </EventFeedWrapper>
-    )
+  })
+  if (!displayEvents.length) {
+    return null
   }
+  displayEvents.sort((a, b) => {
+    if (
+      typeof a.dates[0] === 'undefined' ||
+      typeof b.dates[0] === 'undefined'
+    ) {
+      return 0
+    }
+    if (
+      moment(a.dates[0].start, 'YYYY-MM-DD').isAfter(
+        moment(b.dates[0].start, 'YYYY-MM-DD')
+      )
+    ) {
+      return 1
+    }
+    return -1
+  })
+
+  return (
+    <EventFeedWrapper>
+      {title && <h3>{title}</h3>}
+      {displayEvents.map((event, index) => (
+        <EventFeedItem {...event} key={index} />
+      ))}
+    </EventFeedWrapper>
+  )
 }
 
 export default BlockEventFeed

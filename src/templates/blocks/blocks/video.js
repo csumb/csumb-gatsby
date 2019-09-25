@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { bp } from '../../../style'
 
@@ -24,26 +24,21 @@ const VideoIframe = styled.iframe`
   height: 100%;
 `
 
-class BlockVideo extends Component {
-  render() {
-    const { provider } = this.props
-    return (
-      <VideoWrapper>
-        {provider.provider === 'vimeo' ? (
-          <VideoIframe
-            src={`//player.vimeo.com/video/${provider.id}?title=0&byline=0`}
-            title="Video"
-          />
-        ) : (
-          <VideoIframe
-            src={`https://www.youtube.com/embed/${provider.id}`}
-            title="Video"
-            allowFullScreen
-          />
-        )}
-      </VideoWrapper>
-    )
-  }
-}
+const BlockVideo = ({ provider }) => (
+  <VideoWrapper>
+    {provider.provider === 'vimeo' ? (
+      <VideoIframe
+        src={`//player.vimeo.com/video/${provider.id}?title=0&byline=0`}
+        title="Video"
+      />
+    ) : (
+      <VideoIframe
+        src={`https://www.youtube.com/embed/${provider.id}`}
+        title="Video"
+        allowFullScreen
+      />
+    )}
+  </VideoWrapper>
+)
 
 export default BlockVideo
