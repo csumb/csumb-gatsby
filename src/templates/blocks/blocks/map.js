@@ -7,11 +7,11 @@ const MapWrapper = styled.div`
   position: relative !important;
   height: 500px;
 `
-const BlockMap = ({ zoom, center, features, kml }) => {
+const BlockMap = ({ zoom, center, features, kml, google }) => {
   return (
     <MapWrapper>
       <Map
-        google={this.props.google}
+        google={google}
         zoom={zoom}
         initialCenter={center}
         onReady={(mapProps, map) => {
