@@ -104,7 +104,7 @@ const Event = ({ event, linkToEvent }) => (
                 <br />
                 {event.location.address.premise && (
                   <>
-                    event.location.address.premise}
+                    {event.location.address.premise}
                     <br />
                   </>
                 )}
