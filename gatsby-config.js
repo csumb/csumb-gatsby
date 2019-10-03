@@ -22,10 +22,6 @@ const gatsbyConfig = {
       { site: 'mist', code: '3836-896-10-1757' },
       { site: 'scd', code: '5896-465-10-2924' },
     ],
-    schedule: {
-      currentTerm: 2194,
-      currentTermName: '2019fall',
-    },
     labs: {
       customerId: '200b96ee-10c7-4355-83a4-3ded9ab6e845',
       labs: [1001, 1002, 1003, 1005, 1006, 1010, 1009, 1008],
