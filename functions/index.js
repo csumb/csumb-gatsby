@@ -12,7 +12,6 @@ const profileGet = require('./lib/profile/get')
 const profileUpdate = require('./lib/profile/update')
 const profileUpdateBio = require('./lib/profile/bio')
 const feedback = require('./lib/feedback')
-const nameBadge = require('./lib/name-badge')
 const login = require('./lib/login')
 
 const client = new oktaClient.Client({
@@ -65,8 +64,6 @@ exports.profileUpdateBio = functions.https.onRequest((request, response) => {
 })
 
 exports.feedback = functions.https.onRequest(feedback)
-
-exports.nameBadge = functions.https.onRequest(nameBadge)
 
 exports.login = functions.https.onRequest(login)
 
