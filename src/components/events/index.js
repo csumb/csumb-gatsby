@@ -47,6 +47,53 @@ const EventWrapper = styled.div`
   margin: 1rem 0;
 `
 
+const EventLocation = ({ location }) => (
+  <>
+    {location.type === 'on-campus' && (
+      <p>
+        <Link
+          to={`/directory/building/${location.building.code
+            .toLowerCase()
+            .trim()}`}
+        >
+          {location.building.name}
+        </Link>
+        {location.room && (
+          <>
+            <br />
+            Room {location.room}
+          </>
+        )}
+      </p>
+    )}
+    {location.type === 'off-campus' && (
+      <address>
+        {location.address.organisation && (
+          <>
+            {location.address.organisation}
+            <br />
+          </>
+        )}
+        {location.address.street}
+        <br />
+        {location.address.premise && (
+          <>
+            {location.address.premise}
+            <br />
+          </>
+        )}
+        {location.address.city}, {location.address.state}
+        {'  '}
+        {location.address.zip}
+      </address>
+    )}
+    {location.type === 'online' && (
+      <ButtonLink to={location.url}>Go to event</ButtonLink>
+    )}
+    {location.description && <p>{location.description}</p>}
+  </>
+)
+
 const Event = ({ event, linkToEvent }) => (
   <>
     {event && event.times && (
@@ -75,48 +122,7 @@ const Event = ({ event, linkToEvent }) => (
             <EventDateItem>
               {event.times.start} — {event.times.end}
             </EventDateItem>
-            {event.location.type === 'on-campus' && (
-              <p>
-                <Link
-                  to={`/directory/building/${event.location.building.code
-                    .toLowerCase()
-                    .trim()}`}
-                >
-                  {event.location.building.name}
-                </Link>
-                {event.location.room && (
-                  <>
-                    <br />
-                    {event.location.room}
-                  </>
-                )}
-              </p>
-            )}
-            {event.location.type === 'off-campus' && (
-              <address>
-                {event.location.address.organisation && (
-                  <>
-                    {event.location.address.organisation}
-                    <br />
-                  </>
-                )}
-                {event.location.address.street}
-                <br />
-                {event.location.address.premise && (
-                  <>
-                    {event.location.address.premise}
-                    <br />
-                  </>
-                )}
-                {event.location.address.city}, {event.location.address.state}
-                {'  '}
-                {event.location.address.zip}
-              </address>
-            )}
-            {event.location.type === 'online' && (
-              <ButtonLink to={event.location.url}>Go to event</ButtonLink>
-            )}
-            {event.location.description && <p>{event.location.description}</p>}
+            <EventLocation {...event} />
             {event.cost_message && <p>{event.cost_message}</p>}
             {event.ticket && (
               <ButtonLink to={event.ticket.url}>
@@ -153,7 +159,15 @@ const EventFeedItemTitle = styled.h3`
   margin-bottom: 0.5rem;
 `
 
-const EventFeedItem = ({ title, link, times, dates, image, description }) => (
+const EventFeedItem = ({
+  title,
+  link,
+  times,
+  dates,
+  location,
+  image,
+  description,
+}) => (
   <Flex>
     <Box width={[1, 3 / 4]} pr={[0, 2]}>
       <Link to={`/${link}`}>
@@ -162,6 +176,7 @@ const EventFeedItem = ({ title, link, times, dates, image, description }) => (
       <EventFeedItemDate>
         {getNextEventDate(dates)} {times.start} — {times.end}
       </EventFeedItemDate>
+      <EventLocation location={location} />
       <p>{description}</p>
     </Box>
     <Box width={[1, 1 / 4]}>

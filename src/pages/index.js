@@ -61,12 +61,6 @@ const IndexPage = ({ data }) => {
           </Flex>
         ))}
       </Container>
-      <Container topPadding>
-        <MoreItemsButton style={{ marginRight: '1rem' }} to="/events">
-          View more events
-        </MoreItemsButton>
-        <MoreItemsButton to="/news">Read more news</MoreItemsButton>
-      </Container>
     </Layout>
   )
 }
