@@ -116,10 +116,6 @@ const NavigationImage = styled.img`
   margin-bottom: 0.2rem;
 `
 
-const MoreItemsButton = styled(ButtonLink)`
-  margin: 1rem 1.5rem;
-`
-
 const HomepageHeroWrapper = styled.div``
 
 const HomepageImageNavigation = ({ navigation }) => {
@@ -252,5 +248,4 @@ export {
   HomepageNavigation,
   HomepageStory,
   HomepageImageNavigation,
-  MoreItemsButton,
 }
