@@ -61,7 +61,7 @@ const EventLocation = ({ location }) => (
         {location.room && (
           <>
             <br />
-            {location.room}
+            Room {location.room}
           </>
         )}
       </p>
