@@ -7,7 +7,6 @@ import HeroImage from '../common/hero-image'
 import { LeadParagraph } from '../common/type'
 import LinkInspect from '../utilities/link-inspect'
 import Container from '../common/container'
-import { ButtonLink } from '../common/button'
 import anniversaryBanner from '../../assets/images/25-banner.png'
 import Link from 'gatsby-link'
 import BreakpointContext from '../contexts/breakpoint'
@@ -114,10 +113,6 @@ const NavigationImage = styled.img`
     display: ['none', 'block'],
   })}
   margin-bottom: 0.2rem;
-`
-
-const MoreItemsButton = styled(ButtonLink)`
-  margin: 1rem 1.5rem;
 `
 
 const HomepageHeroWrapper = styled.div``
@@ -252,5 +247,4 @@ export {
   HomepageNavigation,
   HomepageStory,
   HomepageImageNavigation,
-  MoreItemsButton,
 }

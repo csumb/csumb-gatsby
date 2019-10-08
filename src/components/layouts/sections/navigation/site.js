@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from '@emotion/styled'
@@ -58,6 +58,21 @@ const SiteNavigationMenuButton = styled(MenuButton)`
   border: none;
   cursor: pointer;
   padding: 1rem 1rem 1rem 0;
+  &[aria-expanded="true"] {
+    .site-navigation-is-expanded {
+      display: inline-block;
+    }
+    .site-navigation-is-hidden {
+      display: none;
+    }
+  }
+  &[aria-expanded="false"] {
+    .site-navigation-is-expanded {
+      display: none;
+    }
+    .site-navigation-is-hidden {
+      display:inline-block;
+  }
 `
 
 const SiteNavigationBar = styled.nav`
@@ -99,44 +114,27 @@ const SiteNavigationItem = ({ to, children, navigationChildren, first }) => {
   )
 }
 
-class SiteNavigationSubMenu extends Component {
-  state = {
-    isExpanded: false,
-  }
-
-  render() {
-    const { children, navigationChildren } = this.props
-    const { isExpanded } = this.state
-    return (
-      <Menu buttonId={`site-menu-${slugify(children).toLowerCase()}`}>
-        <SiteNavigationMenuButton
-          onClick={() => {
-            this.setState({
-              isExpanded: !isExpanded,
-            })
-          }}
-        >
-          {children}{' '}
-          {isExpanded ? (
-            <SiteNavigationArrow>
-              <FontAwesomeIcon icon={faChevronUp} />
-            </SiteNavigationArrow>
-          ) : (
-            <SiteNavigationArrow>
-              <FontAwesomeIcon icon={faChevronDown} />
-            </SiteNavigationArrow>
-          )}
-        </SiteNavigationMenuButton>
-        <SiteNavigationSubList>
-          {navigationChildren.map((child, key) => (
-            <MenuLink key={key} component="a" href={child.url}>
-              {child.name}
-            </MenuLink>
-          ))}
-        </SiteNavigationSubList>
-      </Menu>
-    )
-  }
+const SiteNavigationSubMenu = ({ children, navigationChildren }) => {
+  return (
+    <Menu buttonId={`site-menu-${slugify(children).toLowerCase()}`}>
+      <SiteNavigationMenuButton>
+        {children}{' '}
+        <SiteNavigationArrow className="site-navigation-is-expanded">
+          <FontAwesomeIcon icon={faChevronUp} />
+        </SiteNavigationArrow>
+        <SiteNavigationArrow className="site-navigation-is-hidden">
+          <FontAwesomeIcon icon={faChevronDown} />
+        </SiteNavigationArrow>
+      </SiteNavigationMenuButton>
+      <SiteNavigationSubList>
+        {navigationChildren.map((child, key) => (
+          <MenuLink key={key} component="a" href={child.url}>
+            {child.name}
+          </MenuLink>
+        ))}
+      </SiteNavigationSubList>
+    </Menu>
+  )
 }
 
 const SiteNavigation = ({ navigation, overrideNavigation }) => {

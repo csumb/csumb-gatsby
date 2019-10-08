@@ -7,7 +7,6 @@ import moment from 'moment'
 import {
   HomepageStory,
   HomepageImageNavigation,
-  MoreItemsButton,
   HomepageHero,
 } from '../components/homepage'
 
