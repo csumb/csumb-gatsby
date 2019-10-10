@@ -94,7 +94,7 @@ const EventLocation = ({ location }) => (
   </>
 )
 
-const Event = ({ event, linkToEvent }) => (
+const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => (
   <>
     {event && event.times && (
       <EventWrapper>
@@ -131,7 +131,7 @@ const Event = ({ event, linkToEvent }) => (
             )}
           </Box>
           <Box width={[1, 3 / 12]}>
-            {event.dates.length > 1 && (
+            {event.dates.length > 1 && displayOnlyFirstDate !== true && (
               <>
                 <h4>All dates</h4>
                 <UnstyledList>
