@@ -259,11 +259,16 @@ class ApplicationTranscripts extends Component {
                                         )}
                                       </span>{' '}
                                       Received{' '}
-                                      {moment(
-                                        transcriptHistory[id].items[itemId]
-                                          .received_date,
-                                        'MM/DD/YYYY'
-                                      ).format('MMMM DD, YYYY')}
+                                      {transcriptHistory[id].items[itemId]
+                                        .received_date && (
+                                        <>
+                                          {moment(
+                                            transcriptHistory[id].items[itemId]
+                                              .received_date,
+                                            'MM/DD/YYYY'
+                                          ).format('MMMM DD, YYYY')}
+                                        </>
+                                      )}
                                     </li>
                                   )}
                               </Fragment>
