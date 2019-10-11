@@ -126,7 +126,11 @@ const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => (
             {event.cost_message && <p>{event.cost_message}</p>}
             {event.ticket && (
               <ButtonLink to={event.ticket.url}>
-                {event.ticket.title}
+                {event.ticket.title ? (
+                  <>{event.ticket.title}</>
+                ) : (
+                  <>{'Go to event'}</>
+                )}
               </ButtonLink>
             )}
           </Box>
