@@ -93,7 +93,11 @@ const PersonListing = props => {
             _publicProfile.buildingCode &&
             buildings[_publicProfile.buildingCode] && (
               <>
-                <Link to={`/directory/building/${_publicProfile.location.split('-').shift()}`}>
+                <Link
+                  to={`/directory/building/${_publicProfile.location
+                    .split('-')
+                    .shift()}`}
+                >
                   {buildings[_publicProfile.location.split('-').shift()]}
                 </Link>
                 <>
@@ -209,7 +213,11 @@ class DirectorySearchResults extends Component {
     departments.forEach(department => {
       if (
         department.node.name &&
-        department.node.name.toLowerCase().search(query.toLowerCase()) > -1
+        (department.node.name.toLowerCase().search(query.toLowerCase()) > -1 ||
+          (department.node.also_known_as &&
+            department.node.also_known_as
+              .toLowerCase()
+              .search(query.toLowerCase()) > -1))
       ) {
         search.departments.push(department.node)
       }
@@ -383,6 +391,7 @@ export const query = graphql`
           short_name
           building_code
           building_name
+          also_known_as
         }
       }
     }
