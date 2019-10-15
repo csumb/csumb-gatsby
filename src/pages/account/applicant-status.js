@@ -53,9 +53,11 @@ class AccountApplicantStatusPage extends Component {
                       </p>
                     </Well>
                   ) : (
-                    <>
-                      <ApplicantStatus user={context.user} />
-                    </>
+                    <p>
+                      The Dashboard is currently down for maintenance and will
+                      be back up shortly. We appreciate your patience during
+                      this time.
+                    </p>
                   )}
                 </>
               )}
