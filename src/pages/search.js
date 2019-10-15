@@ -49,7 +49,12 @@ const ListResults = ({ results }) => {
             </Link>
           </div>
           <SearchDescription
-            dangerouslySetInnerHTML={{ __html: result.highlight.body }}
+            dangerouslySetInnerHTML={{
+              __html: result.highlight.body.replace(
+                'This app works best with JavaScript enabled. ',
+                ''
+              ),
+            }}
           />
         </SearchResult>
       ))}
