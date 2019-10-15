@@ -38,10 +38,9 @@ class CashnetRedirect extends Component {
       )}`
       return
     }
-    /*window.location = `https://api.csumb.edu/cashnet/${
+    window.location = `https://api.csumb.edu/cashnet/${
       user.profile.employeeNumber
-    }${category}`*/
-    window.location = 'https://csumb.edu/oasis/make-online-payments'
+    }${category}`
   }
 
   render() {
