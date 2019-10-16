@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "csv-parse": "^4.4.3",
+    "csv-parse": "^4.4.6",
     "fs-extra": "^8.0.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
