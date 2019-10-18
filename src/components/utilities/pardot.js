@@ -8,6 +8,7 @@ class Pardot extends Component {
     ) {
       return
     }
+    window.__pardotLoaded = true
     const script = document.createElement('script')
     script.setAttribute('type', 'text/javascript')
     script.setAttribute('async', true)
