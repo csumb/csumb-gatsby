@@ -18,6 +18,9 @@ const SearchDescription = styled.p`
 
 const SearchResult = styled.div`
   margin-top: 1rem;
+  h3 {
+    margin-bottom: 0.5rem;
+  }
 `
 
 const SearchNoResults = () => (
