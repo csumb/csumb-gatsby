@@ -18,6 +18,9 @@ const SearchDescription = styled.p`
 
 const SearchResult = styled.div`
   margin-top: 1rem;
+  h3 {
+    margin-bottom: 0.5rem;
+  }
 `
 
 const SearchNoResults = () => (
@@ -48,13 +51,15 @@ const ListResults = ({ results }) => {
               {result.url}
             </Link>
           </div>
-          <SearchDescription
-            dangerouslySetInnerHTML={{
-              __html: result.highlight.body
-                .replace('This app works best with JavaScript enabled.', '')
-                .replace('Skip to content', ''),
-            }}
-          />
+          {result.highlight && result.highlight.body && (
+            <SearchDescription
+              dangerouslySetInnerHTML={{
+                __html: result.highlight.body
+                  .replace('This app works best with JavaScript enabled.', '')
+                  .replace('Skip to content', ''),
+              }}
+            />
+          )}
         </SearchResult>
       ))}
     </>
