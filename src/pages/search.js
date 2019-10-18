@@ -51,7 +51,7 @@ const ListResults = ({ results }) => {
               {result.url}
             </Link>
           </div>
-          {result.highlight.body && (
+          {result.highlight && result.highlight.body && (
             <SearchDescription
               dangerouslySetInnerHTML={{
                 __html: result.highlight.body
