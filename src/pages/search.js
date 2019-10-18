@@ -50,10 +50,9 @@ const ListResults = ({ results }) => {
           </div>
           <SearchDescription
             dangerouslySetInnerHTML={{
-              __html: result.highlight.body.replace(
-                'This app works best with JavaScript enabled. ',
-                ''
-              ),
+              __html: result.highlight.body
+                .replace('This app works best with JavaScript enabled.', '')
+                .replace('Skip to content', ''),
             }}
           />
         </SearchResult>
