@@ -45,7 +45,9 @@ class Layout extends Component {
 
     return (
       <>
-        <SkipNavLink href="#csumb-skip-nav">Skip to content</SkipNavLink>
+        <SkipNavLink href="#csumb-skip-nav" data-swiftype-index="false">
+          Skip to content
+        </SkipNavLink>
         <Helmet>
           <html lang="en" />
           <meta charset="utf-8" />
@@ -117,7 +119,7 @@ class Layout extends Component {
           )}
         />
         <div id="csumb-skip-nav" />
-        {this.props.children}
+        <div data-swiftype-index="true">{this.props.children}</div>
         <Footer noFooterMargin={noFooterMargin ? true : false} />
         <Emergency />
         <Pardot />
