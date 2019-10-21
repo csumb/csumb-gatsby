@@ -2,6 +2,13 @@ import React from 'react'
 import { InputTextElement, FormGroup } from './common'
 import FormElement from './form-element'
 import Label from './label'
+import styled from '@emotion/styled'
+
+const HelpText = styled.p`
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+`
 
 class InputText extends FormElement {
   render() {
@@ -30,6 +37,7 @@ class InputText extends FormElement {
           id={this.htmlId}
           innerRef={forwardedRef}
         />
+        {this.props.helpText && <HelpText>{this.props.helpText}</HelpText>}
       </FormGroup>
     )
   }

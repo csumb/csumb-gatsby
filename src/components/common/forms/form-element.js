@@ -26,6 +26,7 @@ FormElement.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string,
+  helpText: PropTypes.string,
   isRequired: PropTypes.bool,
   hideLabel: PropTypes.bool,
   forwardedRef: PropTypes.func,

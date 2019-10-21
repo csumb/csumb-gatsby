@@ -4,7 +4,10 @@ import Container from '../../../common/container'
 import { Flex, Box } from '../../../common/grid'
 import styled from '@emotion/styled'
 import { colors, bp } from '../../../../style'
+import PageFeedbackContext from '../../../contexts/page-feedback'
+import PageFeedbackForm from '../../../user-tools/page-feedback'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { DialogOverlay, DialogContent } from '../../../common/dialog'
 import {
   faFacebook,
   faTwitter,
@@ -13,6 +16,10 @@ import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons'
 import VisuallyHidden from '../../../utilities/visually-hidden'
+
+const FeedbackDialogContent = styled(DialogContent)`
+  width: 75%;
+`
 
 const FooterGiftButton = styled.a`
   color: ${colors.white};
@@ -88,6 +95,20 @@ const LegalLink = styled(LinkInspect)`
   color: ${colors.white};
   padding-top: 1rem;
   font-size: 0.8rem;
+`
+
+const LegalButtonLink = styled.button`
+  color: ${colors.white};
+  font-size: 0.8rem;
+  text-decoration: underline;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  padding: 1rem 0 0 0;
+`
+
+const LegalWrapper = styled.div`
+  text-align: right;
 `
 
 const FooterSocialIcon = ({ href, name, icon }) => (
@@ -195,20 +216,72 @@ class Footer extends Component {
                   Make a gift
                 </FooterGiftButton>
               </div>
-              <LegalLink to="https://cm.maxient.com/reportingform.php?CSUMontereyBay&layout_id=0">
-                Report concerning behavior
-              </LegalLink>{' '}
-              | <LegalLink to="/clery">Security report</LegalLink> |{' '}
-              <LegalLink to="/legal">Legal information</LegalLink>
-              <VisuallyHidden>
-                <LinkInspect to="/document-readers">
-                  Some links may require a Document Reader
-                </LinkInspect>
-              </VisuallyHidden>
             </RightFooter>
           </Flex>
+          <LegalWrapper>
+            <PageFeedbackContext.Consumer>
+              {context => (
+                <>
+                  {context && context.email && (
+                    <FooterPageFeedback {...context} />
+                  )}
+                </>
+              )}
+            </PageFeedbackContext.Consumer>
+            <LegalLink to="https://cm.maxient.com/reportingform.php?CSUMontereyBay&layout_id=0">
+              Report concerning behavior
+            </LegalLink>{' '}
+            | <LegalLink to="/clery">Security report</LegalLink> |{' '}
+            <LegalLink to="/legal">Legal information</LegalLink>
+            <VisuallyHidden>
+              <LinkInspect to="/document-readers">
+                Some links may require a Document Reader
+              </LinkInspect>
+            </VisuallyHidden>
+          </LegalWrapper>
         </Container>
       </FooterElement>
+    )
+  }
+}
+
+class FooterPageFeedback extends Component {
+  state = {
+    isOpen: false,
+  }
+
+  render() {
+    const { isOpen } = this.state
+    return (
+      <>
+        <DialogOverlay
+          style={{ background: 'rgba(0, 0, 0, 0.7)' }}
+          isOpen={isOpen}
+        >
+          <FeedbackDialogContent>
+            <PageFeedbackForm
+              {...this.props}
+              closeAction={event => {
+                event.preventDefault()
+                this.setState({
+                  isOpen: false,
+                })
+              }}
+            />
+          </FeedbackDialogContent>
+        </DialogOverlay>
+        <LegalButtonLink
+          onClick={event => {
+            event.preventDefault()
+            this.setState({
+              isOpen: !isOpen,
+            })
+          }}
+        >
+          Report website issue
+        </LegalButtonLink>{' '}
+        |{' '}
+      </>
     )
   }
 }
