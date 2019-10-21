@@ -19,7 +19,7 @@ const FormPreamble = () => (
 class PageFeedbackForm extends Component {
   state = {
     feedbackSent: false,
-    action: '',
+    name: '',
     problem: '',
     email: '',
   }
@@ -31,6 +31,7 @@ class PageFeedbackForm extends Component {
       feedbackEmail: this.props.email,
       title: this.props.title,
       problem: this.state.problem,
+      name: this.state.name,
       email: this.state.email,
       link: `https://csumb.edu/${this.props.url}`,
     }
@@ -51,6 +52,12 @@ class PageFeedbackForm extends Component {
   handleEmail(event) {
     this.setState({
       email: event.target.value,
+    })
+  }
+
+  handleName(event) {
+    this.setState({
+      name: event.target.value,
     })
   }
 
@@ -79,7 +86,14 @@ class PageFeedbackForm extends Component {
               name="problem"
               onChange={this.handleProblem.bind(this)}
               label="What went wrong"
-              required
+              rows="5"
+            />
+
+            <InputText
+              name="name"
+              onChange={this.handleName.bind(this)}
+              label="Your name"
+              helpText="Your name is optional."
             />
             <InputText
               name="email"
