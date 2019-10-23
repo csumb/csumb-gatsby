@@ -65,7 +65,7 @@ class DashboardAlumni extends Component {
     if (
       this.props.user &&
       this.props.user.profile &&
-      this.props.user.profile.roles.indexOf('csumb_aa_life_member') > 100
+      this.props.user.profile.roles.indexOf('csumb_aa_life_member') > -1
     ) {
       return null
     }
