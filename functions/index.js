@@ -12,6 +12,7 @@ const profileGet = require('./lib/profile/get')
 const profileUpdate = require('./lib/profile/update')
 const profileUpdateBio = require('./lib/profile/bio')
 const feedback = require('./lib/feedback')
+const alumni = require('./lib/alumni')
 const login = require('./lib/login')
 
 const client = new oktaClient.Client({
@@ -21,6 +22,10 @@ const client = new oktaClient.Client({
 
 exports.oktaSecondaryEmail = functions.https.onRequest((request, response) => {
   oktaSecondaryEmail(client, request, response)
+})
+
+exports.alumni = functions.https.onRequest((request, response) => {
+  alumni(client, request, response)
 })
 
 exports.oktaSessionEnd = functions.https.onRequest((request, response) => {

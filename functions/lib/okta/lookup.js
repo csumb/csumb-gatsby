@@ -28,20 +28,4 @@ module.exports = (client, request, response) => {
       response.send(JSON.stringify({ error: true }))
       response.end()
     })
-  /*
-  okta.user.filter(filter, function(results) {
-    var user = {}
-    if (!results) {
-      response.send(JSON.stringify({ error: 'not found' }))
-      response.end()
-      return
-    }
-    _.each(results, function(result) {
-      if (result.profile.birthdate == request.query.dob) {
-        user = { id: result.profile.login.split('@').shift() }
-      }
-    })
-    response.send(JSON.stringify(user))
-    response.end()
-  })*/
 }
