@@ -110,7 +110,6 @@ class DashboardContent extends Component {
             <DashboardMessageWrapper>
               <DashboardSecondary user={this.props.user} />
               <h2>Messages</h2>
-              <DashboardAlumni user={this.props.user} />
               <DashboardMessages
                 messages={messages}
                 archive={id => {
@@ -165,7 +164,6 @@ class DashboardContent extends Component {
           <Box width={[1, 1, 1 / 2, 1 / 2]}>
             <DashboardMessageWrapper>
               <h2>Messages</h2>
-              <DashboardAlumni user={this.props.user} />
               {ready ? (
                 <DashboardMessages
                   messages={messages}
