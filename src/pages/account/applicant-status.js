@@ -294,15 +294,15 @@ const ApplicationMultipleMessage = ({ applications }) => (
       <LeadParagraph>
         You have more than one application:{' '}
         {applications.map(application => (
-          <Link
+          <a
             key={application.application.application_number}
-            to={`account/applicant-status?app=${
+            href={`account/applicant-status?app=${
               application.application.application_number
             }`}
           >
             {application.term.gsx$name}{' '}
-          </Link>
-        ))}
+          </a>
+        ))}{' '}
       </LeadParagraph>
     )}
   </>
