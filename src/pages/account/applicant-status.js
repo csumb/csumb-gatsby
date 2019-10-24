@@ -296,11 +296,11 @@ const ApplicationMultipleMessage = ({ applications }) => (
         {applications.map(application => (
           <a
             key={application.application.application_number}
-            href={`account/applicant-status?app=${
+            href={`/account/applicant-status?app=${
               application.application.application_number
             }`}
           >
-            {application.term.gsx$name}{' '}
+            {application.term.gsx$name}
           </a>
         ))}{' '}
       </LeadParagraph>
