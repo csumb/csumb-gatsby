@@ -8,6 +8,7 @@ import DashboardApps from './apps'
 import { DashboardEvents } from './events'
 import { DashboardMessages } from './messages'
 import DashboardSecondary from './secondary-email'
+import DashboardAlumni from './alumni'
 
 const dashboardWrapperStyle = `
   padding: 1rem;

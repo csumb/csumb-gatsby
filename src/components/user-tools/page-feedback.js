@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-import Container from '../common/container'
 import { LinkyButton } from '../common/button'
-import { InputText, Submit } from '../common/forms'
+import { InputText, Submit, InputTextarea } from '../common/forms'
 import { AlertSuccess } from '../common/alert'
 import Well from '../common/well'
 import querystring from 'querystring'
 
 const FormPreamble = () => (
   <>
-    <h3>Help us improve csumb.edu</h3>
+    <h3>Help us improve the CSUMB website</h3>
     <p>
-      Thanks for helping us improve csumb.edu Spot a broken link, typo, or
-      didn't find something where you expected to? Let us know. We'll use your
-      feedback to improve this page, and the site overall.
+      If you found a broken link, typo, or are having an issue with assistive
+      technology on this page, please let us know. We'll use your comments to
+      improve this page and the site overall.
     </p>
   </>
 )
@@ -20,7 +19,7 @@ const FormPreamble = () => (
 class PageFeedbackForm extends Component {
   state = {
     feedbackSent: false,
-    action: '',
+    name: '',
     problem: '',
     email: '',
   }
@@ -31,8 +30,8 @@ class PageFeedbackForm extends Component {
     const data = {
       feedbackEmail: this.props.email,
       title: this.props.title,
-      action: this.state.action,
       problem: this.state.problem,
+      name: this.state.name,
       email: this.state.email,
       link: `https://csumb.edu/${this.props.url}`,
     }
@@ -41,12 +40,6 @@ class PageFeedbackForm extends Component {
 
     this.setState({
       feedbackSent: true,
-    })
-  }
-
-  handleAction(event) {
-    this.setState({
-      action: event.target.value,
     })
   }
 
@@ -62,6 +55,12 @@ class PageFeedbackForm extends Component {
     })
   }
 
+  handleName(event) {
+    this.setState({
+      name: event.target.value,
+    })
+  }
+
   render() {
     const { feedbackSent } = this.state
 
@@ -74,21 +73,27 @@ class PageFeedbackForm extends Component {
               The person responsible for fixing this page will get an email with
               your feedback.
             </p>
+            <p>
+              <LinkyButton onClick={this.props.closeAction}>
+                Close this window
+              </LinkyButton>
+            </p>
           </AlertSuccess>
         ) : (
           <form onSubmit={this.handleSubmit.bind(this)}>
             <FormPreamble />
-            <InputText
-              name="action"
-              onChange={this.handleAction.bind(this)}
-              label="What you were doing"
-              required
-            />
-            <InputText
+            <InputTextarea
               name="problem"
               onChange={this.handleProblem.bind(this)}
               label="What went wrong"
-              required
+              rows="5"
+            />
+
+            <InputText
+              name="name"
+              onChange={this.handleName.bind(this)}
+              label="Your name"
+              helpText="Your name is optional."
             />
             <InputText
               name="email"
@@ -97,6 +102,9 @@ class PageFeedbackForm extends Component {
               helpText="Your email address is optional."
             />
             <Submit value="Send feedback" />
+            <p>
+              <LinkyButton onClick={this.props.closeAction}>Cancel</LinkyButton>
+            </p>
           </form>
         )}
       </Well>
@@ -104,29 +112,4 @@ class PageFeedbackForm extends Component {
   }
 }
 
-class PageFeedback extends Component {
-  state = {
-    isOpen: false,
-  }
-
-  handleClick(event) {
-    event.preventDefault()
-    this.setState({
-      isOpen: !this.state.isOpen,
-    })
-  }
-
-  render() {
-    const { isOpen } = this.state
-    return (
-      <Container topPadding>
-        <LinkyButton onClick={this.handleClick.bind(this)}>
-          Is there something wrong with this page?
-        </LinkyButton>
-        {isOpen && <PageFeedbackForm {...this.props} />}
-      </Container>
-    )
-  }
-}
-
-export default PageFeedback
+export default PageFeedbackForm

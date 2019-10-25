@@ -8,6 +8,8 @@ const loginUrls = {
 const gatsbyConfig = {
   siteMetadata: {
     title: 'Cal State Monterey Bay',
+    disableAlumni: false,
+    disableApplicant: false,
     fileStack: process.env.GATSBY_CSUMB_FILESTACK_KEY,
     okta: {
       login:

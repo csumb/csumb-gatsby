@@ -10,13 +10,17 @@ import url from 'url'
 import { colors } from '../../style'
 import { AlertWarning } from '../../components/common/alert'
 import { LeadParagraph } from '../../components/common/type'
-import Link from 'gatsby-link'
 import Well from '../../components/common/well'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle, faBan, faInfo } from '@fortawesome/free-solid-svg-icons'
 import VisuallyHidden from '../../components/utilities/visually-hidden'
 import moment from 'moment'
 import Loading from '../../components/common/loading'
+
+const OtherApplicationLink = styled.a`
+  display: inline-block;
+  margin-right: 1rem;
+`
 
 class AccountApplicantStatusPage extends Component {
   render() {
@@ -294,14 +298,14 @@ const ApplicationMultipleMessage = ({ applications }) => (
       <LeadParagraph>
         You have more than one application:{' '}
         {applications.map(application => (
-          <Link
+          <OtherApplicationLink
             key={application.application.application_number}
-            to={`account/applicant-status?app=${
+            href={`/account/applicant-status?app=${
               application.application.application_number
             }`}
           >
-            {application.term.gsx$name}{' '}
-          </Link>
+            {application.term.gsx$name}
+          </OtherApplicationLink>
         ))}
       </LeadParagraph>
     )}
