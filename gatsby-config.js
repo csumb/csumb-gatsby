@@ -137,7 +137,7 @@ const gatsbyConfig = {
         apiKey: process.env.AIRTABLE_KEY,
         tables: [
           // Science illustration
-          /*{
+          {
             baseId: 'appW5yp8SpOvxD3Al',
             tableName: 'Graduates',
             queryName: 'ScienceIllustrationGraduates',
@@ -146,7 +146,7 @@ const gatsbyConfig = {
             baseId: 'appW5yp8SpOvxD3Al',
             tableName: 'Images',
             queryName: 'ScienceIllustrationImages',
-          },*/
+          },
           //Undersea archive
           {
             baseId: 'appzX0a9ppEdDZl1P',
@@ -164,7 +164,7 @@ const gatsbyConfig = {
             queryName: 'UnderseaMPA',
           },
           //Study abroad
-          /*{
+          {
             baseId: 'appXrkUdaBbX4kxG5',
             tableName: 'Partners',
             queryName: 'StudyAbroadPartners',
@@ -226,7 +226,7 @@ const gatsbyConfig = {
             tableName: 'Countries',
             queryName: 'StudyAbroadCountries',
             tableLinks: ['Countries', 'Partners'],
-          },*/
+          },
         ],
       },
     },
