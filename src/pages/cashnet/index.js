@@ -38,9 +38,12 @@ class CashnetRedirect extends Component {
       )}`
       return
     }
+    const cacheTime = new Date().getTime()
     window.location = `https://csumbcashnet.csumb.edu/?username=${
       user._username
-    }&key=${user.session}&id=${user.profile.employeeNumber}${category}`
+    }&_=${cacheTime}&key=${user.session}&id=${
+      user.profile.employeeNumber
+    }${category}`
   }
 
   render() {
