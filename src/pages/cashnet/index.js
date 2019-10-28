@@ -38,7 +38,7 @@ class CashnetRedirect extends Component {
       )}`
       return
     }
-    window.location = `https://csumbcashnet.csumb.edu/username?=${
+    window.location = `https://csumbcashnet.csumb.edu/?username=${
       user._username
     }&key=${user.session}&id=${user.profile.employeeNumber}${category}`
   }
