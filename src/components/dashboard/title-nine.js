@@ -29,42 +29,17 @@ const DashboardTitleNine = ({ user }) => {
     [user]
   )
 
-  return (
-    <>
-      {holds && (
-        <StaticQuery
-          query={graphql`
-            query SettingQuery {
-              site {
-                siteMetadata {
-                  titleNineMessage {
-                    termCode
-                  }
-                }
-              }
-            }
-          `}
-          render={data => (
-            <TitleNineMessage
-              holds={holds}
-              termCode={data.site.siteMetadata.titleNineMessage.termCode}
-            />
-          )}
-        />
-      )}
-    </>
-  )
+  return <>{holds && <TitleNineMessage holds={holds} />}</>
 }
 
 const TitleNineMessage = ({ holds, termCode }) => {
   let showT9 = false
   let showTIX = false
   holds.forEach(hold => {
-    if (hold.active_term >= termCode && hold.srvc_ind_cd === 'T9') {
+    if (hold.srvc_ind_cd === 'T9') {
       showT9 = true
     }
     if (
-      hold.active_term >= termCode &&
       hold.srvc_ind_cd === 'TIX' &&
       (hold.srvc_ind_reason === 'T9' ||
         hold.srvc_ind_reason === 'T9C' ||
