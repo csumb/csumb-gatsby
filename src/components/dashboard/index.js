@@ -107,7 +107,7 @@ class DashboardContent extends Component {
       return (
         <StaticQuery
           query={graphql`
-            query SettingQuery {
+            query Title9SettingQueryMobile {
               site {
                 siteMetadata {
                   showTitleNineMessage
@@ -155,7 +155,7 @@ class DashboardContent extends Component {
     return (
       <StaticQuery
         query={graphql`
-          query SettingQuery {
+          query Title9SettingQuery {
             site {
               siteMetadata {
                 showTitleNineMessage
