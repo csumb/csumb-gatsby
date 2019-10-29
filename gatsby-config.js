@@ -11,6 +11,9 @@ const gatsbyConfig = {
     disableAlumni: false,
     disableApplicant: false,
     fileStack: process.env.GATSBY_CSUMB_FILESTACK_KEY,
+    titleNineMessage: {
+      termCode: 2192,
+    },
     okta: {
       login:
         typeof process.env.TRAVIS_BRANCH !== 'undefined' &&
