@@ -23,7 +23,7 @@ module.exports = async (client, request, response) => {
       oktaUser.profile.studentServiceIndicators.forEach(hold => {
         holds.push(JSON.parse(hold))
       })
-      response.write({ success: true, holds: JSON.stringify(holds) })
+      response.write(JSON.stringify({ success: true, holds: holds }))
       response.end()
     })
 }
