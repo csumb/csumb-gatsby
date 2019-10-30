@@ -57,20 +57,27 @@ const TitleNineMessage = ({ holds, termCode }) => {
 
 const TitleNineT9 = () => (
   <AlertDanger>
-    You need to complete sexual misconduct prevention training. If you do not
-    complete this training, it could impact registering for classes in the
-    future. <a href="mailto:agessler@csumb.edu">Contact the Title IX office</a>{' '}
-    if you have any questions.{' '}
-    <a href="https://www.campusclarity.com/signup">Take the training</a>
+    <p>
+      You need to complete sexual misconduct prevention training. If you do not
+      complete this training, it could impact registering for classes in the
+      future.{' '}
+      <a href="mailto:agessler@csumb.edu">Contact the Title IX office</a> if you
+      have any questions.{' '}
+      <a href="https://www.campusclarity.com/signup">Take the training</a>
+    </p>
+    <p>This message will go away a day after you complete training.</p>
   </AlertDanger>
 )
 
 const TitleNineTIX = () => (
   <AlertDanger>
-    You have a hold that will prevent you from registering for future classes.
-    To remove this hold, you must take sexual misconduct prevention training,
-    which takes about 45 minutes to complete.{' '}
-    <a href="https://www.campusclarity.com/signup">Take the training</a>
+    <p>
+      You have a hold that will prevent you from registering for future classes.
+      To remove this hold, you must take sexual misconduct prevention training,
+      which takes about 45 minutes to complete.{' '}
+      <a href="https://www.campusclarity.com/signup">Take the training</a>
+    </p>
+    <p>This message will go away a day after you complete training.</p>
   </AlertDanger>
 )
 
