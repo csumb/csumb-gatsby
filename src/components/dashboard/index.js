@@ -100,9 +100,16 @@ class DashboardContent extends Component {
     )
   }
 
-  render({ showTitleNineMessage }) {
+  render() {
     const { ready, events, messages } = this.state
-    const { user, isMobile, mobileTab, moreApps, archivedContent } = this.props
+    const {
+      user,
+      isMobile,
+      mobileTab,
+      moreApps,
+      archivedContent,
+      showTitleNineMessage,
+    } = this.props
     if (isMobile && ready) {
       return (
         <>
