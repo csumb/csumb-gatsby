@@ -100,7 +100,7 @@ class DashboardContent extends Component {
     )
   }
 
-  render() {
+  render({ showTitleNineMessage }) {
     const { ready, events, messages } = this.state
     const { user, isMobile, mobileTab, moreApps, archivedContent } = this.props
     if (isMobile && ready) {
@@ -111,7 +111,9 @@ class DashboardContent extends Component {
               <DashboardSecondary user={this.props.user} />
               <h2>Messages</h2>
 
-              <DashboardTitleNine user={this.props.user} />
+              {showTitleNineMessage && (
+                <DashboardTitleNine user={this.props.user} />
+              )}
               <DashboardMessages
                 messages={messages}
                 archive={id => {
@@ -140,7 +142,7 @@ class DashboardContent extends Component {
     return (
       <>
         <DashboardSecondary user={this.props.user} />
-        <DashboardTitleNine user={this.props.user} />
+        {showTitleNineMessage && <DashboardTitleNine user={this.props.user} />}
         <Flex>
           <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
             <DashboardEventWrapper>

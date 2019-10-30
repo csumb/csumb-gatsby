@@ -100,6 +100,9 @@ class DashboardPage extends Component {
                               mobileTab={activeTab}
                               isMobile={true}
                               moreApps={data.allCsumbApp.edges}
+                              showTitleNineMessage={
+                                data.site.siteMetadata.showTitleNineMessage
+                              }
                             />
                           </>
                         ) : (
@@ -148,6 +151,7 @@ export const query = graphql`
   {
     site {
       siteMetadata {
+        showTitleNineMessage
         okta {
           login
         }
