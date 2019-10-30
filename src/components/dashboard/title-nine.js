@@ -6,8 +6,14 @@ const DashboardTitleNine = ({ user }) => {
 
   useEffect(
     () => {
+      if (
+        typeof user.profile.roles === 'undefined' ||
+        user.profile.roles.indexOf('student_matriculated') === -1
+      ) {
+        return null
+      }
       fetch(
-        `/cloud-functions/okta/holds?username=${user._username}&token=${
+        `/cloud-functions/okta/holds?user=${user._username}&token=${
           user.session
         }`
       )
