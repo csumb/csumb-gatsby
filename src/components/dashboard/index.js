@@ -9,7 +9,6 @@ import { DashboardEvents } from './events'
 import { DashboardMessages } from './messages'
 import DashboardTitleNine from './title-nine'
 import DashboardSecondary from './secondary-email'
-import { StaticQuery, graphql } from 'gatsby'
 
 const dashboardWrapperStyle = `
   padding: 1rem;
@@ -106,118 +105,88 @@ class DashboardContent extends Component {
     const { user, isMobile, mobileTab, moreApps, archivedContent } = this.props
     if (isMobile && ready) {
       return (
-        <StaticQuery
-          query={graphql`
-            query Title9SettingQueryMobile {
-              site {
-                siteMetadata {
-                  showTitleNineMessage
-                }
-              }
-            }
-          `}
-          render={data => (
-            <>
-              {mobileTab === 'messages' && (
-                <DashboardMessageWrapper>
-                  <DashboardSecondary user={this.props.user} />
-                  <h2>Messages</h2>
+        <>
+          {mobileTab === 'messages' && (
+            <DashboardMessageWrapper>
+              <DashboardSecondary user={this.props.user} />
+              <h2>Messages</h2>
 
-                  {data.site.siteMetadata.showTitleNineMessage && (
-                    <DashboardTitleNine user={this.props.user} />
-                  )}
-                  <DashboardMessages
-                    messages={messages}
-                    archive={id => {
-                      this.archive(id)
-                    }}
-                  />
-                </DashboardMessageWrapper>
-              )}
-              {mobileTab === 'events' && (
-                <DashboardEventWrapper>
-                  <h2>Events</h2>
-                  <DashboardEvents
-                    events={events}
-                    archive={id => {
-                      this.archive(id)
-                    }}
-                  />
-                </DashboardEventWrapper>
-              )}
-              {mobileTab === 'apps' && (
-                <DashboardApps isMobile={true} user={user} apps={moreApps} />
-              )}
-            </>
+              <DashboardTitleNine user={this.props.user} />
+              <DashboardMessages
+                messages={messages}
+                archive={id => {
+                  this.archive(id)
+                }}
+              />
+            </DashboardMessageWrapper>
           )}
-        />
+          {mobileTab === 'events' && (
+            <DashboardEventWrapper>
+              <h2>Events</h2>
+              <DashboardEvents
+                events={events}
+                archive={id => {
+                  this.archive(id)
+                }}
+              />
+            </DashboardEventWrapper>
+          )}
+          {mobileTab === 'apps' && (
+            <DashboardApps isMobile={true} user={user} apps={moreApps} />
+          )}
+        </>
       )
     }
     return (
-      <StaticQuery
-        query={graphql`
-          query Title9SettingQuery {
-            site {
-              siteMetadata {
-                showTitleNineMessage
-              }
-            }
-          }
-        `}
-        render={data => (
-          <>
-            <DashboardSecondary user={this.props.user} />
-            {data.site.siteMetadata.showTitleNineMessage && (
-              <DashboardTitleNine user={this.props.user} />
-            )}
-            <Flex>
-              <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
-                <DashboardEventWrapper>
-                  <h2>Events</h2>
+      <>
+        <DashboardSecondary user={this.props.user} />
+        <DashboardTitleNine user={this.props.user} />
+        <Flex>
+          <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
+            <DashboardEventWrapper>
+              <h2>Events</h2>
 
-                  {ready ? (
-                    <DashboardEvents
-                      events={events}
-                      archive={id => {
-                        this.archive(id)
-                      }}
-                      archivedContent={archivedContent}
-                    />
-                  ) : (
-                    <>
-                      <PlaceholderCard />
-                      <PlaceholderCard />
-                      <PlaceholderCard />
-                      <PlaceholderCard />
-                    </>
-                  )}
-                </DashboardEventWrapper>
-              </Box>
-              <Box width={[1, 1, 1 / 2, 1 / 2]}>
-                <DashboardMessageWrapper>
-                  <h2>Messages</h2>
-                  {ready ? (
-                    <DashboardMessages
-                      messages={messages}
-                      archive={id => {
-                        this.archive(id)
-                      }}
-                      archivedContent={archivedContent}
-                    />
-                  ) : (
-                    <>
-                      <PlaceholderCard />
-                      <PlaceholderCard />
-                      <PlaceholderCard />
-                      <PlaceholderCard />
-                    </>
-                  )}
-                </DashboardMessageWrapper>
-              </Box>
-            </Flex>
-          </>
-        )}
-      />
+              {ready ? (
+                <DashboardEvents
+                  events={events}
+                  archive={id => {
+                    this.archive(id)
+                  }}
+                  archivedContent={archivedContent}
+                />
+              ) : (
+                <>
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                </>
+              )}
+            </DashboardEventWrapper>
+          </Box>
+          <Box width={[1, 1, 1 / 2, 1 / 2]}>
+            <DashboardMessageWrapper>
+              <h2>Messages</h2>
+              {ready ? (
+                <DashboardMessages
+                  messages={messages}
+                  archive={id => {
+                    this.archive(id)
+                  }}
+                  archivedContent={archivedContent}
+                />
+              ) : (
+                <>
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                  <PlaceholderCard />
+                </>
+              )}
+            </DashboardMessageWrapper>
+          </Box>
+        </Flex>
+      </>
     )
   }
 }
