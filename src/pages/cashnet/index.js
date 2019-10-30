@@ -24,7 +24,7 @@ class CashnetRedirect extends Component {
     const category =
       typeof location.query !== 'undefined' &&
       typeof location.query.category !== 'undefined'
-        ? `?category=${location.query.category}`
+        ? `&category=${location.query.category}`
         : ''
 
     if (this.props.user.anonymous) {
