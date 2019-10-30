@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { StaticQuery, graphql } from 'gatsby'
 import { AlertDanger } from '../common/alert'
 
 const DashboardTitleNine = ({ user }) => {

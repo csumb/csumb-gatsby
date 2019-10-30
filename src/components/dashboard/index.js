@@ -9,6 +9,7 @@ import { DashboardEvents } from './events'
 import { DashboardMessages } from './messages'
 import DashboardTitleNine from './title-nine'
 import DashboardSecondary from './secondary-email'
+import { StaticQuery, graphql } from 'gatsby'
 
 const dashboardWrapperStyle = `
   padding: 1rem;
