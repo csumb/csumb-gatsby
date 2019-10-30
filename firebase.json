@@ -43,6 +43,11 @@
     ],
     "redirects": [
       {
+        "source": "/cashnet/pay/:category",
+        "destination": "/cashnet?category=:category",
+        "type": 301
+      },
+      {
         "source": "/schedule{,/**}",
         "destination": "/class-schedule",
         "type": 301
