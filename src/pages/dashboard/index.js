@@ -100,6 +100,9 @@ class DashboardPage extends Component {
                               mobileTab={activeTab}
                               isMobile={true}
                               moreApps={data.allCsumbApp.edges}
+                              showTitleNineMessage={
+                                data.site.siteMetadata.showTitleNineMessage
+                              }
                             />
                           </>
                         ) : (
@@ -110,7 +113,12 @@ class DashboardPage extends Component {
                             />
                             <section>
                               <Container topPadding>
-                                <DashboardContent user={context.user} />
+                                <DashboardContent
+                                  user={context.user}
+                                  showTitleNineMessage={
+                                    data.site.siteMetadata.showTitleNineMessage
+                                  }
+                                />
                                 <ArchivedMessages>
                                   <Link to="/dashboard/archive">
                                     View archived messages &amp; events
@@ -148,6 +156,7 @@ export const query = graphql`
   {
     site {
       siteMetadata {
+        showTitleNineMessage
         okta {
           login
         }

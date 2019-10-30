@@ -11,6 +11,7 @@ const gatsbyConfig = {
     disableAlumni: false,
     disableApplicant: false,
     fileStack: process.env.GATSBY_CSUMB_FILESTACK_KEY,
+    showTitleNineMessage: true,
     okta: {
       login:
         typeof process.env.TRAVIS_BRANCH !== 'undefined' &&

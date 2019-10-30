@@ -43,6 +43,11 @@
     ],
     "redirects": [
       {
+        "source": "/cashnet/pay/:category",
+        "destination": "/cashnet?category=:category",
+        "type": 301
+      },
+      {
         "source": "/schedule{,/**}",
         "destination": "/class-schedule",
         "type": 301
@@ -94,6 +99,10 @@
       {
         "source": "/cloud-functions/okta/secondary-email",
         "function": "oktaSecondaryEmail"
+      },
+      {
+        "source": "/cloud-functions/okta/holds",
+        "function": "oktaHolds"
       },
       {
         "source": "/cloud-functions/okta/session-end",
