@@ -42,14 +42,14 @@ const ListResults = ({ results }) => {
       {results.records.page.map(result => (
         <SearchResult key={result.id}>
           <h3>
-            <Link to={result.url.replace('https://csumb.edu/', '/')}>
+            <a href={result.url.replace('https://csumb.edu/', '/')}>
               {result.title}
-            </Link>
+            </a>
           </h3>
           <div>
-            <Link to={result.url.replace('https://csumb.edu/', '/')}>
+            <a href={result.url.replace('https://csumb.edu/', '/')}>
               {result.url}
-            </Link>
+            </a>
           </div>
           {result.highlight && result.highlight.body && (
             <SearchDescription
