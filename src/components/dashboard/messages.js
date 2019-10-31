@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { AlertEmpty } from '../common/alert'
-import Link from 'gatsby-link'
 import { DashboardCard, DashboardCardHeader } from './shared-styles'
 
 class DashboardMessages extends Component {
@@ -48,9 +47,9 @@ class DashboardMessage extends Component {
       <>
         {!archived && (
           <DashboardCard>
-            <Link to={link}>
+            <a href={link}>
               <DashboardCardHeader>{headline}</DashboardCardHeader>
-            </Link>
+            </a>
             <p>{message}</p>
           </DashboardCard>
         )}
