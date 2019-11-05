@@ -20,6 +20,7 @@ const LibrarySearchWrapper = styled.form`
 `
 
 const AdvancedSearchLink = styled.a`
+  color: rgb(32, 84, 147);
   ${bp({
     float: ['none', 'right'],
   })}
