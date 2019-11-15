@@ -23,7 +23,7 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return contentPages(graphql, actions)
-      }) /*
+      })
       .then(() => {
         return everythingPages(graphql, actions)
       })
@@ -38,7 +38,7 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return redirects(graphql, actions)
-      })*/
+      })
       .then(() => {
         resolve()
       })
