@@ -15,19 +15,19 @@ require(`gatsby-source-filesystem`)
 exports.createPages = ({ stage, graphql, actions }) => {
   return new Promise((resolve, reject) => {
     coursePages(graphql, actions)
-      .then(() => {
+      /*.then(() => {
         return scienceIllustrationPages(graphql, actions)
       })
       .then(() => {
         return educationAbroadPages(graphql, actions)
-      })
+      })*/
       .then(() => {
         return contentPages(graphql, actions)
       })
       .then(() => {
         return everythingPages(graphql, actions)
       })
-      .then(() => {
+      /*.then(() => {
         return eventPages(graphql, actions)
       })
       .then(() => {
@@ -38,7 +38,7 @@ exports.createPages = ({ stage, graphql, actions }) => {
       })
       .then(() => {
         return redirects(graphql, actions)
-      })
+      })*/
       .then(() => {
         resolve()
       })
