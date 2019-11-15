@@ -1,6 +1,6 @@
 {
   "projects": {
-    "master": "csumb-website-staging",
+    "master": "csumb-edu",
     "develop": "csumb-gatsby-develop",
     "staging": "csumb-website-staging"
   }
