@@ -21,13 +21,13 @@ exports.createPages = ({ stage, graphql, actions }) => {
       .then(() => {
         return educationAbroadPages(graphql, actions)
       })*/
-      .then(() => {
+      /*.then(() => {
         return contentPages(graphql, actions)
       })
       .then(() => {
         return everythingPages(graphql, actions)
       })
-      /*.then(() => {
+      .then(() => {
         return eventPages(graphql, actions)
       })
       .then(() => {
