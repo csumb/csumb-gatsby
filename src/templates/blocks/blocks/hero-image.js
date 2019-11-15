@@ -14,13 +14,18 @@ const background = color(colors.primary.dark)
 
 const HeroButton = styled(LinkInspect)`
   color: ${colors.white};
-  border: 3px solid ${colors.white};
+  border: 2px solid ${colors.white};
+  border-radius: 3px;
   display: inline-block;
   padding: 0.5rem;
   font-weight: bold;
   text-decoration: none;
   &:visited {
     color: ${colors.white};
+  }
+  &:hover {
+    color: ${colors.white};
+    background: ${colors.primary.dark};
   }
 `
 

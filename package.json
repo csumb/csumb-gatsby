@@ -141,7 +141,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-preset-gatsby": "^0.1.7",
-    "firebase-tools": "^7.0.0",
+    "firebase-tools": "^7.7.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.0.0",
     "prettier": "^1.15.2",
