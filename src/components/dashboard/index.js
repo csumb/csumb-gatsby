@@ -7,7 +7,6 @@ import { PlaceholderCard } from './placeholders'
 import DashboardApps from './apps'
 import { DashboardEvents } from './events'
 import { DashboardMessages } from './messages'
-import DashboardTitleNine from './title-nine'
 import DashboardSecondary from './secondary-email'
 
 const dashboardWrapperStyle = `
@@ -119,9 +118,6 @@ class DashboardContent extends Component {
                 <DashboardSecondary user={this.props.user} />
                 <h2>Messages</h2>
 
-                {showTitleNineMessage && (
-                  <DashboardTitleNine user={this.props.user} />
-                )}
                 <DashboardMessages
                   messages={messages}
                   archive={id => {
@@ -148,9 +144,6 @@ class DashboardContent extends Component {
         ) : (
           <>
             <DashboardSecondary user={this.props.user} />
-            {showTitleNineMessage && (
-              <DashboardTitleNine user={this.props.user} />
-            )}
             <Flex>
               <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
                 <DashboardEventWrapper>
