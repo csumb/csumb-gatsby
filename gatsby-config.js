@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const loginUrls = {
   develop:
     'https://csumb.okta.com/app/csumb_csumbwebsitedevremote_1/exkmey914mz0RN9060x7/sso/saml',

@@ -16,3 +16,4 @@ website-data/
 .firebase
 firebase-debug.log
 style-guide
+.env

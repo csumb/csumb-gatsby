@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Layout, PageTitle } from '../components/layouts/default'
-import Link from 'gatsby-link'
 import { navigate } from '@reach/router'
 import url from 'url'
 import { Flex, Box } from '../components/common/grid'
