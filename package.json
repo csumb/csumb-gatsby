@@ -3,6 +3,9 @@
   "description": "Static CSUMB website",
   "version": "0.1.0",
   "author": "Kevin Miller <kevin@csumb.edu>",
+  "resolutions": {
+    "minipass": "2.7.0"
+  },
   "dependencies": {
     "@contentful/gatsby-transformer-contentful-richtext": "^13.0.0",
     "@contentful/rich-text-types": "^13.0.0",
@@ -28,6 +31,7 @@
     "color": "^3.1.0",
     "csv-parse": "^4.4.6",
     "del": "^3.0.0",
+    "dotenv": "^8.2.0",
     "draft-js": "^0.10.5",
     "emotion": "^9.2.12",
     "emotion-server": "^9.2.12",
