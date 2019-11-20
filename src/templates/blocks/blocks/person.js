@@ -171,10 +171,9 @@ const BlockPerson = ({ email, compact }) => {
               <Box width={[1, 1 / 4]}>
                 {person._publicProfile && person._publicProfile.photo && (
                   <PersonPhoto
-                    src={person._publicProfile.photo.replace(
-                      '/csumb.edu/',
-                      '/edit.csumb.edu/'
-                    )}
+                    src={person._publicProfile.photo
+                      .replace('/csumb.edu/', '/edit.csumb.edu/')
+                      .replace('http://', 'https://')}
                     alt=""
                   />
                 )}

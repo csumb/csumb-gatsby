@@ -43,10 +43,9 @@ const BlockFeed = ({ items, title, displayShort, showMore, limit }) => {
                     <Box width={[1, 1 / 4]}>
                       {item.image && (
                         <img
-                          src={item.image.replace(
-                            'csumb.edu',
-                            'edit.csumb.edu'
-                          )}
+                          src={item.image
+                            .replace('csumb.edu', 'edit.csumb.edu')
+                            .replace('http://', 'https://')}
                           alt=""
                         />
                       )}
