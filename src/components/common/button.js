@@ -7,17 +7,16 @@ const ButtonStyle = props => {
     props.buttonType = 'default'
   }
   return `
-  border-radius: 3px;
+  border-radius: 0;
   display: inline-block;
-  padding: .35em 0.65em;
-  font-size: .9em;
+  padding: 0.75rem;
   text-decoration: none;
   cursor: pointer;
   border: none;
   color: ${colors.white} !important;
-  background: ${colors.primary.default};
+  background: ${colors.buttons.default};
   &:hover {
-    background: ${colors.primary.dark};
+    color: ${colors.white};
   }
   ${props.disabled &&
     `
@@ -47,6 +46,10 @@ const ButtonStyle = props => {
     props.buttonType === 'default'
       ? `
       color: ${colors.white};
+      background: ${colors.buttons.default};
+      &:hover {
+        
+      }
     `
       : ``
   } 
