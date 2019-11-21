@@ -1,6 +1,7 @@
 const client = require('./lib/okta-client')
 
 exports.handler = (event, context, callback) => {
+  console.log(event.queryStringParameters)
   const filter = `profile.firstName eq "${
     event.queryStringParameters.firstName
   }" and profile.lastName eq "${event.queryStringParameters.lastName}"`

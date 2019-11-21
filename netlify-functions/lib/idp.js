@@ -2,8 +2,7 @@ module.exports = {
   sso_login_url:
     'https://csumb.okta.com/app/csumb_csumbnetlify_1/exknh9wep5PqjVpi40x7/sso/saml',
   sso_logout_url: 'https://idp.example.com/logout',
-  certificates: `-----BEGIN CERTIFICATE-----
-  MIIDmjCCAoKgAwIBAgIGAV2mkQFeMA0GCSqGSIb3DQEBCwUAMIGNMQswCQYDVQQGEwJVUzETMBEG
+  certificates: `MIIDmjCCAoKgAwIBAgIGAV2mkQFeMA0GCSqGSIb3DQEBCwUAMIGNMQswCQYDVQQGEwJVUzETMBEG
   A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU
   MBIGA1UECwwLU1NPUHJvdmlkZXIxDjAMBgNVBAMMBWNzdW1iMRwwGgYJKoZIhvcNAQkBFg1pbmZv
   QG9rdGEuY29tMB4XDTE3MDgwMzA1MjcyN1oXDTI3MDgwMzA1MjgyNlowgY0xCzAJBgNVBAYTAlVT
@@ -19,8 +18,7 @@ module.exports = {
   GWu97pfvmMatwWAbUNoOFqIamngNGkIcgduHTPi1Ys77+C+0zteDg2XYtwcBOmRNHlDUoavqS/X1
   PGwG+QRi3DYgnjXVAAZ1UmyY1wLQJWhGkhKZdvQI3cE41a56AhETD1Fc7SzFmnCHnJ1Y9KMTSEaH
   c7olpGogULQ+NjAS5xxik975CHGM9b0vgIBcz+ZAqc1YyvLbjhb0vRRiYqPXUwu+9QnhRQYioY/W
-  /q3zEqy4at4mq5+HM8w=
-  -----END CERTIFICATE-----`,
+  /q3zEqy4at4mq5+HM8w=`,
   force_authn: false,
   sign_get_request: false,
   allow_unencrypted_assertion: true,
