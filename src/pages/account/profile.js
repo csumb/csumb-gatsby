@@ -111,7 +111,7 @@ class AccountProfilePage extends Component {
                   </Flex>
                 </Container>
               ) : (
-                <AccountPlaceholder />
+                <AccountPlaceholder uniquekey="account-profile" />
               )}
             </>
           )}

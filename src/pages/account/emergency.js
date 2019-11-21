@@ -211,7 +211,7 @@ class AccountEmergencyPage extends Component {
                   </Flex>
                 </Container>
               ) : (
-                <AccountPlaceholder />
+                <AccountPlaceholder uniquekey="account-emergency" />
               )}
             </>
           )}
