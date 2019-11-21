@@ -15,7 +15,7 @@ import { Flex, Box } from '../../components/common/grid'
 import { ButtonLink } from '../../components/common/button'
 import { UnstyledList } from '../../components/common/type'
 
-const OptionsHeaderWrapper = styled.div`
+const OptionsHeaderWrapper = styled('div')`
   position: sticky;
 `
 
@@ -24,17 +24,17 @@ const OptionsHeader = styled(Flex)`
   color: ${colors.white};
 `
 
-const OptionsRow = styled.div`
+const OptionsRow = styled('div')`
   border-bottom: 1px solid ${colors.gray.light};
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
 `
 
-const CategoryName = styled.h4`
+const CategoryName = styled('h4')`
   margin: 0.5rem 0;
 `
 
-const MobileLabel = styled.strong`
+const MobileLabel = styled('strong')`
   display: inline-block;
   margin-right: 1rem;
 `

@@ -8,7 +8,7 @@ import Brand from '../../components/layouts/sections/header/brand'
 import { UserContext } from '../../components/contexts/user'
 import { graphql } from 'gatsby'
 
-const CashnetContainer = styled.div`
+const CashnetContainer = styled('div')`
   max-width: 60ch;
   margin: 3rem auto;
 `

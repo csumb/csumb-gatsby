@@ -26,7 +26,7 @@ const PathwayItem = styled(Box)`
   }
 `
 
-const MobileHeader = styled.div`
+const MobileHeader = styled('div')`
   ${bp({
     display: ['block', 'none', 'none'],
   })};

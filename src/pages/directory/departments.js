@@ -15,7 +15,7 @@ const Letter = styled(LinkyButton)`
   margin-right: 0.5rem;
 `
 
-const DepartmentListingItem = styled.div`
+const DepartmentListingItem = styled('div')`
   margin-bottom: 1rem;
   h3 {
     margin-bottom: 0.3rem;
@@ -25,7 +25,7 @@ const DepartmentListingItem = styled.div`
   }
 `
 
-const DepartmentSearchResults = styled.div`
+const DepartmentSearchResults = styled('div')`
   margin-top: 1rem;
 `
 

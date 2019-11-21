@@ -4,7 +4,7 @@ import FormElement from './form-element'
 import Label from './label'
 import styled from '@emotion/styled'
 
-const Radio = styled.input`
+const Radio = styled('input')`
   margin-right: 1rem;
 `
 

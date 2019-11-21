@@ -15,7 +15,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import VisuallyHidden from '../../../utilities/visually-hidden'
 
-const SiteFooterWrapper = styled.footer`
+const SiteFooterWrapper = styled('footer')`
   padding: 2rem 0;
   background: ${colors.muted.light};
   border-top: 2px solid ${colors.muted.dark};
@@ -26,7 +26,7 @@ const SiteFooterWrapper = styled.footer`
   }
 `
 
-const SiteFooterItems = styled.dl`
+const SiteFooterItems = styled('dl')`
   dt,
   dd {
     display: inline;
@@ -39,7 +39,7 @@ const SiteFooterItems = styled.dl`
   }
 `
 
-const SiteFooterSocialIconLink = styled.a`
+const SiteFooterSocialIconLink = styled('a')`
   font-size: 1.5rem;
   display: inline-block;
   margin-right: 1rem;

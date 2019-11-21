@@ -5,23 +5,23 @@ import Link from 'gatsby-link'
 import LinkInspect from '../../../components/utilities/link-inspect'
 import ContentLoader from 'react-content-loader'
 
-const Person = styled.div`
+const Person = styled('div')`
   margin: 0.5rem 0;
   padding: 0.5rem;
 `
 
-const PersonPosition = styled.p``
+const PersonPosition = styled('p')``
 
-const PersonPositionTitle = styled.span`
+const PersonPositionTitle = styled('span')`
   display: block;
   font-weight: bold;
 `
 
-const PersonPhoto = styled.img`
+const PersonPhoto = styled('img')`
   width: 100%;
 `
 
-const BlockPerson = ({ email, compact }) => {
+const BlockPerson = ({ email, uuid, compact }) => {
   const [person, setPerson] = useState(false)
   const [didLoad, setDidLoad] = useState(false)
   const [building, setBuilding] = useState(false)
@@ -63,6 +63,7 @@ const BlockPerson = ({ email, compact }) => {
           speed={2}
           primaryColor="#f3f3f3"
           secondaryColor="#ecebeb"
+          uniquekey={`person-placeholder-${uuid}`}
         >
           <rect x="10" y="5" rx="4" ry="4" width="266" height="20" />
           <rect x="10" y="38" rx="3" ry="3" width="245" height="14" />

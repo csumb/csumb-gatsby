@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 
-const ScheduleTerms = styled.ul`
+const ScheduleTerms = styled('ul')`
   list-style-type: none;
   margin: 0;
   li {

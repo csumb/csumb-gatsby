@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-const ClearFix = styled.div`
+const ClearFix = styled('div')`
   clear: both;
 `
 

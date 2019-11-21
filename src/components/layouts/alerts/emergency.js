@@ -12,7 +12,7 @@ const EmergencyDialog = styled(Dialog)`
   box-shadow: rgba(0, 0, 0, 0.12) 0px 20px 30px 0px;
 `
 
-const EmergencyDialogClose = styled.button`
+const EmergencyDialogClose = styled('button')`
   float: right;
   color: ${colors.black};
   font-size: 1.5rem;

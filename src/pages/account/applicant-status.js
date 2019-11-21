@@ -17,7 +17,7 @@ import VisuallyHidden from '../../components/utilities/visually-hidden'
 import moment from 'moment'
 import Loading from '../../components/common/loading'
 
-const OtherApplicationLink = styled.a`
+const OtherApplicationLink = styled('a')`
   display: inline-block;
   margin-right: 1rem;
 `

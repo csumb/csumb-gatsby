@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const ImageContainer = styled.div`
+const ImageContainer = styled('div')`
   ${props => props.container} ${props =>
     props.pullRight
       ? `
@@ -15,7 +15,7 @@ const ImageContainer = styled.div`
   }
 `
 
-const Caption = styled.div`
+const Caption = styled('div')`
   font-style: italic;
   font-size: 0.8rem;
 `

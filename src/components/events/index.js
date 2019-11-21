@@ -37,13 +37,13 @@ const getNextEventDate = dates => {
   return null
 }
 
-const EventDateItem = styled.p`
+const EventDateItem = styled('p')`
   font-weight: bold;
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
 `
 
-const EventWrapper = styled.div`
+const EventWrapper = styled('div')`
   margin: 1rem 0;
 `
 
@@ -154,12 +154,12 @@ const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => (
   </>
 )
 
-const EventFeedItemDate = styled.p`
+const EventFeedItemDate = styled('p')`
   margin-bottom: 0.5rem;
   font-weight: bold;
 `
 
-const EventFeedItemTitle = styled.h3`
+const EventFeedItemTitle = styled('h3')`
   margin-bottom: 0.5rem;
 `
 
@@ -202,7 +202,7 @@ const EventPage = ({ event }) => (
   </Container>
 )
 
-const PublicEventWrapper = styled.div`
+const PublicEventWrapper = styled('div')`
   margin-bottom: 1.5rem;
   padding: 1rem;
   ${props =>
@@ -228,11 +228,11 @@ const PublicEventWrapper = styled.div`
   }
 `
 
-const PublicEventLocation = styled.p`
+const PublicEventLocation = styled('p')`
   font-weight: bold;
 `
 
-const PublicEventDate = styled.span`
+const PublicEventDate = styled('span')`
   display: inline-block;
   margin-right: 1.5rem;
 `

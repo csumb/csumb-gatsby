@@ -10,12 +10,12 @@ import { InputText, Submit } from '../components/common/forms'
 import { EverythingContent } from '../components/pages/everything'
 import { graphql } from 'gatsby'
 
-const PageNotFoundContainer = styled.div`
+const PageNotFoundContainer = styled('div')`
   max-width: 60ch;
   margin: 3rem auto;
 `
 
-const EverythingItems = styled.div`
+const EverythingItems = styled('div')`
   margin-top: 2rem;
 `
 

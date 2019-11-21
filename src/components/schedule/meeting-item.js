@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 import moment from 'moment'
 import weekDays from './week-days'
 
-const MeetingItemDate = styled.h4`
+const MeetingItemDate = styled('h4')`
   margin: 0;
 `
 
