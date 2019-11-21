@@ -6,12 +6,12 @@ transition:all 100ms;
   outline: 0.25rem solid ${colors.primary.default}
 `
 
-const FormGroup = styled.div`
+const FormGroup = styled('div')`
   ${props => (props.noMargin ? `` : `margin-bottom: 0.5rem;`)}
   ${props => (props.inline ? `display: inline-block;` : ``)};
 `
 
-const InputTextElement = styled.input`
+const InputTextElement = styled('input')`
   &:focus {
     ${focusStyle};
   }

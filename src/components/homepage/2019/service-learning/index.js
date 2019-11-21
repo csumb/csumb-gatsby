@@ -11,7 +11,7 @@ import Container from 'components/common/container'
 const MapContainer = styled(Container)`
   position: relative;
 `
-const InfoWindowContent = styled.div`
+const InfoWindowContent = styled('div')`
   max-width: 350px;
   margin-bottom: 0;
   p {
@@ -19,7 +19,7 @@ const InfoWindowContent = styled.div`
   }
 `
 
-const MobileFloatBox = styled.div`
+const MobileFloatBox = styled('div')`
   padding: 0 1rem 1rem 1rem;
   h1 {
     a {
@@ -35,14 +35,14 @@ const MobileFloatBox = styled.div`
   }
 `
 
-const FloatBox = styled.div`
+const FloatBox = styled('div')`
   position: absolute;
   top: 40px;
   max-width: 400px;
   z-index: 10000;
 `
 
-const FloatText = styled.div`
+const FloatText = styled('div')`
   max-width: 300px;
   h1 {
     a {
@@ -58,7 +58,7 @@ const FloatText = styled.div`
   }
 `
 
-const LoadingContainer = styled.div`
+const LoadingContainer = styled('div')`
   height: 500px;
   background: ${colors.primary.light};
 `
@@ -68,7 +68,7 @@ const mapStyle = {
   width: '100%',
 }
 
-const MapWrapper = styled.div`
+const MapWrapper = styled('div')`
   ${css(mapStyle)};
   position: relative;
 `

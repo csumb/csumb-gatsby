@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 
-const ScheduleListItemElement = styled.li`
+const ScheduleListItemElement = styled('li')`
   margin-bottom: 0.5rem;
   a {
     font-weight: bold;

@@ -4,13 +4,13 @@ import VisuallyHidden from '../../../components/utilities/visually-hidden'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
 
-const Document = styled.a`
+const Document = styled('a')`
   display: block;
   ${props => props.container} font-weight: bold;
   margin: 1rem 0;
 `
 
-const DocumentIconWrapper = styled.span`
+const DocumentIconWrapper = styled('span')`
   display: inline-block;
   max-width: 1rem;
   font-size: 1.2rem;

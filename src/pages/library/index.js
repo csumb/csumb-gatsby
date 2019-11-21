@@ -13,13 +13,13 @@ import { colors, bp } from '../../style'
 import { InputText, InputSelect, Submit } from '../../components/common/forms'
 import oneSearchLogo from '../../assets/images/library-one-search.png'
 
-const LibrarySearchWrapper = styled.form`
+const LibrarySearchWrapper = styled('form')`
   background: ${colors.muted.highlight};
   padding: 1rem;
   margin: 1rem;
 `
 
-const AdvancedSearchLink = styled.a`
+const AdvancedSearchLink = styled('a')`
   color: rgb(32, 84, 147);
   ${bp({
     float: ['none', 'right'],

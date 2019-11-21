@@ -4,7 +4,7 @@ import FormElement from './form-element'
 import Label from './label'
 import styled from '@emotion/styled'
 
-const HelpText = styled.p`
+const HelpText = styled('p')`
   font-size: 0.8rem;
   margin-top: 0.5rem;
   margin-bottom: 0;

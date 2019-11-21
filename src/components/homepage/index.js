@@ -14,7 +14,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const dateFormat = 'MMMM D, YYYY'
 
-const Story = styled.div`
+const Story = styled('div')`
   ${props =>
     props.featured ? `margin-bottom: 2rem` : `margin-bottom: 1.5rem`};
   a {
@@ -23,7 +23,7 @@ const Story = styled.div`
   }
 `
 
-const StoryHeader = styled.h2`
+const StoryHeader = styled('h2')`
   text-decoration: none;
   font-size: 1.6rem;
   font-family: ${fonts.body};
@@ -37,7 +37,7 @@ const StoryImage = styled(LazyLoadImage)`
   object-fit: cover;
 `
 
-const EventDate = styled.div`
+const EventDate = styled('div')`
   color: ${colors.muted.dark};
 `
 
@@ -45,7 +45,7 @@ const NavigationWrap = styled(Flex)`
   margin-bottom: 1rem;
 `
 
-const NavigationHeader = styled.h3`
+const NavigationHeader = styled('h3')`
   font-family: ${fonts.body};
   margin-bottom: 0;
 `
@@ -69,7 +69,7 @@ const NavigationItem = styled(Box)`
     }
   }
 `
-const HeroItem = styled.div`
+const HeroItem = styled('div')`
   ${props => props.darkImage && `color: ${colors.white};`}
   h2 {
     margin: 0;
@@ -86,13 +86,13 @@ const HeroItem = styled.div`
   }
 `
 
-const StoryLabel = styled.p`
+const StoryLabel = styled('p')`
   color: ${colors.primary.dark};
   font-weight: bold;
   margin-bottom: 0.2rem;
 `
 
-const HomepageImageNavigationWrapper = styled.div`
+const HomepageImageNavigationWrapper = styled('div')`
   background: ${colors.primary.dark};
   padding: 1.5rem 0;
   h3 {
@@ -109,14 +109,14 @@ const HomepageImageNavigationWrapper = styled.div`
   }
 `
 
-const NavigationImage = styled.img`
+const NavigationImage = styled('img')`
   ${bp({
     display: ['none', 'block'],
   })}
   margin-bottom: 0.2rem;
 `
 
-const HomepageHeroWrapper = styled.div``
+const HomepageHeroWrapper = styled('div')``
 
 const HomepageImageNavigation = ({ navigation }) => {
   const titles = navigation.childContentfulHomepageImageNavigationDisplayNamesTextNode.childMarkdownRemark.rawMarkdownBody.split(
@@ -151,7 +151,7 @@ const StoryType = ({ isEvent }) => (
   <StoryLabel>{isEvent ? <>Event</> : <>News</>}</StoryLabel>
 )
 
-const AnniversaryBanner = styled.div`
+const AnniversaryBanner = styled('div')`
   position: absolute;
   top: 0;
   img {

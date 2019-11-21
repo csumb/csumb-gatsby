@@ -2,12 +2,12 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 
-const GEListElement = styled.ul`
+const GEListElement = styled('ul')`
   list-style-type: none;
   margin: 0 0 2rem 0;
 `
 
-const GEListItemElement = styled.li`
+const GEListItemElement = styled('li')`
   margin-bottom: 0.5rem;
 `
 

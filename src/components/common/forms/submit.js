@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { focusStyle } from './common'
 import { colors } from '../../../style'
 
-const SubmitButton = styled.input`
+const SubmitButton = styled('input')`
 &:focus {
   ${focusStyle};
 }

@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { colors } from '../../style'
 import ContentLoader from 'react-content-loader'
 
-const PlaceholderCardWrapper = styled.div`
+const PlaceholderCardWrapper = styled('div')`
   background: ${colors.white};
   margin-bottom: 1rem;
   padding: 0.5rem;

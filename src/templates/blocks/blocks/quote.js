@@ -5,11 +5,11 @@ import parseHtml from '../parse-html'
 import { Flex, Box } from '../../../components/common/grid'
 import quoteIcon from '../../../assets/images/quote.svg'
 
-const Quote = styled.blockquote`
+const Quote = styled('blockquote')`
   font-size: 1.3rem;
 `
 
-const Cite = styled.cite`
+const Cite = styled('cite')`
   display: block;
   margin-top: 1rem;
   font-size: 1rem;
@@ -17,7 +17,7 @@ const Cite = styled.cite`
   font-style: normal;
 `
 
-const QuoteIcon = styled.img`
+const QuoteIcon = styled('img')`
   max-width: 50px;
 `
 

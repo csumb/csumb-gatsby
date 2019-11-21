@@ -30,17 +30,17 @@ class DashboardEvents extends Component {
   }
 }
 
-const DashboardEventDate = styled.h4`
+const DashboardEventDate = styled('h4')`
   font-family: ${fonts.body};
 `
 
-const DashboardImage = styled.img`
+const DashboardImage = styled('img')`
   float: right;
   width: 150px;
   margin-left: 0.5rem;
 `
 
-const DashboardEventCalendarLink = styled.div`
+const DashboardEventCalendarLink = styled('div')`
   with: 100%;
   clear: both;
   margin-top: 0.5rem;

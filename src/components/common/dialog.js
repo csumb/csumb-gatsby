@@ -7,7 +7,7 @@ import { RemoveScroll } from 'react-remove-scroll'
 import { func, bool } from 'prop-types'
 import styled from '@emotion/styled'
 
-const DialogOverlayElement = styled.div`
+const DialogOverlayElement = styled('div')`
   background: hsla(0, 0%, 0%, 0.33);
   position: fixed;
   top: 0;
@@ -17,7 +17,7 @@ const DialogOverlayElement = styled.div`
   overflow: auto;
 `
 
-const DialogContentElement = styled.div`
+const DialogContentElement = styled('div')`
   width: 50vw;
   margin: 10vh auto;
   background: white;

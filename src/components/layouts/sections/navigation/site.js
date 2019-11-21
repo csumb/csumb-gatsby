@@ -10,7 +10,7 @@ import BreakpointContext from '../../../contexts/breakpoint'
 
 const navigationFontSize = '0.92rem'
 
-const SiteNavigationList = styled.ul`
+const SiteNavigationList = styled('ul')`
   list-style-type: none;
   margin: 0;
   font-size: ${navigationFontSize};
@@ -26,7 +26,7 @@ const SiteNavigationList = styled.ul`
   }
 `
 
-const SiteNavigationLink = styled.a`
+const SiteNavigationLink = styled('a')`
   text-decoration: none;
   padding: 1rem 1rem 1rem 0;
   display: inline-block;
@@ -75,7 +75,7 @@ const SiteNavigationMenuButton = styled(MenuButton)`
   }
 `
 
-const SiteNavigationBar = styled.nav`
+const SiteNavigationBar = styled('nav')`
   background: ${colors.primary.darkest};
   padding-bottom: 0.5rem;
   overflow: hidden;
@@ -84,7 +84,7 @@ const SiteNavigationBar = styled.nav`
   })}
 `
 
-const SiteNavigationArrow = styled.span`
+const SiteNavigationArrow = styled('span')`
   font-size: 0.6rem;
   display: inline-block;
   margin-left: 0.25rem;

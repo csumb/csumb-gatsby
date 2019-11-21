@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import VisuallyHidden from '../../utilities/visually-hidden'
 import { colors } from '../../../style'
 
-const LabelElement = styled.label`
+const LabelElement = styled('label')`
   margin-bottom: 0.5rem;
   display: block;
   ${props =>
@@ -17,7 +17,7 @@ const LabelElement = styled.label`
     font-size: 1.5rem;`};
 `
 
-const Required = styled.strong`
+const Required = styled('strong')`
   font-size: 1rem;
   display: inline-block;
   margin-left: 1rem;

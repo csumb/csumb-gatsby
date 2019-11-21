@@ -7,7 +7,7 @@ import Loading from '../common/loading'
 
 const displayUpdownTokens = ['dnhg', 'mus6', 'c9e7', 'paxe']
 
-const ITSystemStatusWrapper = styled.div`
+const ITSystemStatusWrapper = styled('div')`
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   p {

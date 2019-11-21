@@ -7,7 +7,7 @@ const spacingValues = value => {
     : value * 4 + 'px'
 }
 
-const Flex = styled.div`
+const Flex = styled('div')`
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -18,7 +18,7 @@ const Flex = styled.div`
   flex-wrap: wrap;
 `
 
-const Box = styled.div`
+const Box = styled('div')`
   box-sizing: border-box;
   ${props => props.pr && bp({ paddingRight: spacingValues(props.pr) })}
   ${props => props.pl && bp({ paddingRight: spacingValues(props.pl) })}

@@ -5,19 +5,19 @@ import Link from 'gatsby-link'
 import LinkInspect from '../../../components/utilities/link-inspect'
 import ContentLoader from 'react-content-loader'
 
-const Person = styled.div`
+const Person = styled('div')`
   margin: 0.5rem 0;
   padding: 0.5rem;
 `
 
-const PersonPosition = styled.p``
+const PersonPosition = styled('p')``
 
-const PersonPositionTitle = styled.span`
+const PersonPositionTitle = styled('span')`
   display: block;
   font-weight: bold;
 `
 
-const PersonPhoto = styled.img`
+const PersonPhoto = styled('img')`
   width: 100%;
 `
 

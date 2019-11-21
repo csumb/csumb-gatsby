@@ -5,7 +5,7 @@ import { PageTitle } from '../../components/layouts/default'
 import { LeadParagraph } from '../../components/common/type'
 import Brand from '../../components/layouts/sections/header/brand'
 
-const OktaDeniedContainer = styled.div`
+const OktaDeniedContainer = styled('div')`
   max-width: 60ch;
   margin: 3rem auto;
 `

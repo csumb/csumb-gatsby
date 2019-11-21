@@ -21,11 +21,11 @@ import Well from '../common/well'
 import Blocks from '../../templates/blocks'
 import { InputText, InputSelect, Submit } from '../common/forms'
 
-const EducationAbroadWrapper = styled.div`
+const EducationAbroadWrapper = styled('div')`
   margin-bottom: 1rem;
 `
 
-const EducationAbroadChildren = styled.div`
+const EducationAbroadChildren = styled('div')`
   margin-left: 1.5rem;
 `
 
@@ -34,7 +34,7 @@ const CollapsibleIcon = styled(FontAwesomeIcon)`
   font-size: 1rem;
 `
 
-const EducationExpandButton = styled.button`
+const EducationExpandButton = styled('button')`
   padding: 0 0 0.3rem 0;
   cursor: pointer;
   border: 0;

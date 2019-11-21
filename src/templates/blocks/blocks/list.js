@@ -5,7 +5,7 @@ import parseHtml from '../parse-html'
 const BlockList = ({ type, uuid, list }) => {
   const ListTag =
     type === 'list-unstyled'
-      ? styled.ul`
+      ? styled('ul')`
           list-style-type: none;
           margin-left: 0;
         `

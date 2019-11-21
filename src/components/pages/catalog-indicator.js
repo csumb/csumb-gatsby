@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { colors } from '../../style'
 
-const CatalogIndicatorElement = styled.div`
+const CatalogIndicatorElement = styled('div')`
   background: ${colors.primary.dark};
   color: ${colors.white};
   padding: 0.5rem;

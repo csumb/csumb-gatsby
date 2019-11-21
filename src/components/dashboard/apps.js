@@ -15,12 +15,12 @@ import {
 import { DialogOverlay, DialogContent } from '../common/dialog'
 import { CloseDialog } from './shared-styles'
 
-const DashboardAppsWrapper = styled.div`
+const DashboardAppsWrapper = styled('div')`
   background: ${colors.primary.dark};
   padding: 0.5rem 0 0.4rem 0;
 `
 
-const DashboardApp = styled.a`
+const DashboardApp = styled('a')`
   ${props =>
     props.isMobile
       ? `
@@ -62,16 +62,16 @@ const appToolsStyle = `
   }
 `
 
-const EditOrderButton = styled.button`
+const EditOrderButton = styled('button')`
   ${appToolsStyle};
   text-decoration: none;
 `
 
-const MoreAppsButton = styled.button`
+const MoreAppsButton = styled('button')`
   ${appToolsStyle};
 `
 
-const DasbhoardAppToggle = styled.button`
+const DasbhoardAppToggle = styled('button')`
   float: right;
   margin-left: 1rem;
   background: transparent;
@@ -85,7 +85,7 @@ const MoreAppsDialog = styled(DialogContent)`
   width: 75vw;
 `
 
-const MoreAppsList = styled.ul`
+const MoreAppsList = styled('ul')`
   list-style-type: none;
   margin: 0;
   columns: 2;
@@ -96,7 +96,7 @@ const MoreAppsList = styled.ul`
   }
 `
 
-const MoreAppsMessage = styled.p`
+const MoreAppsMessage = styled('p')`
   font-size: 0.8rem;
   text-align: right;
 `
@@ -207,7 +207,7 @@ class DashboardOtherApps extends Component {
   }
 }
 
-const DashboardPlaceholderApp = styled.span`
+const DashboardPlaceholderApp = styled('span')`
   display: inline-block;
   width: 80px;
   margin-right: 1rem;
