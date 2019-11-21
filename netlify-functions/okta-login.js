@@ -8,7 +8,7 @@ const serviceProvider = new saml2.ServiceProvider(sp)
 const identityProvider = new saml2.IdentityProvider(idp)
 
 exports.handler = (event, context, callback) => {
-  const body = querystring(event.body)
+  const body = querystring.parse(event.body)
   serviceProvider.post_assert(
     identityProvider,
     {
