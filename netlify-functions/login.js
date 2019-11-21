@@ -20,6 +20,7 @@ exports.handler = (event, context, callback) => {
       }
       const user = saml_response.user.attributes
       user.token = md5(user.login.split('@').shift() + salt)
+      console.log(user)
       const cookie = `csumbUser=${JSON.stringify(
         user
       )}; Secure; Domain=csumb-edu.netlify.com`
