@@ -7,7 +7,7 @@ import Link from 'gatsby-link'
 import { graphql } from 'gatsby'
 import { DirectoryNavigation } from '../../components/pages/directory'
 
-const BuildingList = styled.ul`
+const BuildingList = styled('ul')`
   margin: 0;
   list-style-type: none;
 `

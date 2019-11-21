@@ -5,7 +5,7 @@ const baseWidth = 1100
 
 const mq = facepaint([`@media (min-width: ${baseWidth}px)`])
 
-const Container = styled.div`
+const Container = styled('div')`
   ${props =>
     props.topPadding &&
     `

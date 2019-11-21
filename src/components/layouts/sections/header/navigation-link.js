@@ -3,7 +3,7 @@ import { colors, fonts } from '../../../../style'
 import Link from 'gatsby-link'
 import styled from '@emotion/styled'
 
-const NavigationLinkList = styled.li`
+const NavigationLinkList = styled('li')`
   margin-left: 0.5rem;
   margin-bottom: 0;
   display: inline-block;
@@ -25,7 +25,7 @@ const NavigationLinkList = styled.li`
   }
 `
 
-const MobileNavigationLinkList = styled.li`
+const MobileNavigationLinkList = styled('li')`
   margin: 0;
   a {
     padding: 0.5rem 1rem;

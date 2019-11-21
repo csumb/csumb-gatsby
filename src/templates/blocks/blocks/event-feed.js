@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import { colors } from '../../../style'
 import moment from 'moment'
 
-const EventFeedWrapper = styled.section`
+const EventFeedWrapper = styled('section')`
   background: ${colors.primary.lightest};
   padding: 1.5rem;
   margin: 2rem 0;

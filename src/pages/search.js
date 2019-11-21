@@ -8,14 +8,14 @@ import { InputText, Submit } from '../components/common/forms'
 import Container from '../components/common/container'
 import styled from '@emotion/styled'
 
-const SearchDescription = styled.p`
+const SearchDescription = styled('p')`
   em {
     font-weight: bold;
     font-style: normal;
   }
 `
 
-const SearchResult = styled.div`
+const SearchResult = styled('div')`
   margin-top: 1rem;
   h3 {
     margin-bottom: 0.5rem;

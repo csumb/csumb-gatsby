@@ -15,7 +15,7 @@ import { navigate } from '@reach/router'
 import Link from 'gatsby-link'
 import BreakpointContext from '../../components/contexts/breakpoint'
 
-const ArchivedMessages = styled.p`
+const ArchivedMessages = styled('p')`
   text-align: right;
   margin: 1.5rem 0;
 `

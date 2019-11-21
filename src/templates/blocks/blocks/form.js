@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const FormIframe = styled.iframe`
+const FormIframe = styled('iframe')`
   width: 100%;
   height: 400px;
   border: 0;

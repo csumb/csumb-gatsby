@@ -5,7 +5,7 @@ import Label from './label'
 import styled from '@emotion/styled'
 import { colors } from '../../../style'
 
-const InputTextareaElement = styled.textarea`
+const InputTextareaElement = styled('textarea')`
   &:focus {
     ${focusStyle};
   }

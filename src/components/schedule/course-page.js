@@ -8,9 +8,9 @@ import PageTitle from '../layouts/sections/header/page-title'
 import Well from '../common/well'
 import MeetingItem from './meeting-item'
 
-const CourseSectionElement = styled.div``
+const CourseSectionElement = styled('div')``
 
-const CourseSectionLegend = styled.h3`
+const CourseSectionLegend = styled('h3')`
   font-size: 1.3rem;
 `
 
@@ -21,12 +21,12 @@ const CourseSection = ({ legend, children }) => (
   </CourseSectionElement>
 )
 
-const CourseMeetingList = styled.ul`
+const CourseMeetingList = styled('ul')`
   list-style-type: none;
   margin-left: 0;
 `
 
-const EnrollmentList = styled.dl`
+const EnrollmentList = styled('dl')`
   dt,
   dd {
     display: inline-block;
@@ -35,11 +35,11 @@ const EnrollmentList = styled.dl`
   }
 `
 
-const CourseTitle = styled.h2`
+const CourseTitle = styled('h2')`
   margin-top: 0;
 `
 
-const CourseNumber = styled.pre`
+const CourseNumber = styled('p')re`
   font-size: 1.5rem;
 `
 

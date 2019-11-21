@@ -4,12 +4,12 @@ import ClearFix from '../../utilities/clearfix'
 import PropTypes from 'prop-types'
 import { colors } from '../../../style'
 
-const FieldsetElement = styled.fieldset`
+const FieldsetElement = styled('fieldset')`
   border: 1px solid ${colors.gray.light};
   padding: 1rem;
 `
 
-const LegendElement = styled.legend`
+const LegendElement = styled('legend')`
   float: left;
   font-size: 1.51572rem;
   font-weight: 700;

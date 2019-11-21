@@ -11,7 +11,7 @@ import PageNavigation from './sections/navigation/page'
 import SiteHeader from './sections/header/site-header'
 import Emergency from './alerts/emergency'
 
-const SkipNavLink = styled.a`
+const SkipNavLink = styled('a')`
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;

@@ -21,7 +21,7 @@ const FeedbackDialogContent = styled(DialogContent)`
   width: 75%;
 `
 
-const FooterGiftButton = styled.a`
+const FooterGiftButton = styled('a')`
   color: ${colors.white};
   border: 2px solid white;
   display: inline-block;
@@ -30,7 +30,7 @@ const FooterGiftButton = styled.a`
   text-decoration: none;
 `
 
-const FooterSocialIconLink = styled.a`
+const FooterSocialIconLink = styled('a')`
   color: ${colors.white};
   text-decoration: none;
   display: inline-block;
@@ -41,11 +41,11 @@ const FooterSocialIconLink = styled.a`
   })};
 `
 
-const SocialIconWrapper = styled.div`
+const SocialIconWrapper = styled('div')`
   margin: 1rem 0;
 `
 
-const FooterElement = styled.footer`
+const FooterElement = styled('footer')`
   background: ${colors.primary.darkest};
   ${props => (props.noFooterMargin ? `` : `margin-top: 1rem;`)}
   padding: 1rem 0;
@@ -69,19 +69,19 @@ const FooterElement = styled.footer`
   }
 `
 
-const FooterList = styled.ul`
+const FooterList = styled('ul')`
   margin: 0;
   li {
     margin-bottom: 0.5rem;
   }
 `
 
-const FooterAddressList = styled.ul`
+const FooterAddressList = styled('ul')`
   margin: 0;
   list-style-type: none;
 `
 
-const FooterAddressListItem = styled.li`
+const FooterAddressListItem = styled('li')`
   margin-bottom: 0;
 `
 
@@ -97,7 +97,7 @@ const LegalLink = styled(LinkInspect)`
   font-size: 0.8rem;
 `
 
-const LegalButtonLink = styled.button`
+const LegalButtonLink = styled('button')`
   color: ${colors.white};
   font-size: 0.8rem;
   text-decoration: underline;
@@ -107,7 +107,7 @@ const LegalButtonLink = styled.button`
   padding: 1rem 0 0 0;
 `
 
-const LegalWrapper = styled.div`
+const LegalWrapper = styled('div')`
   text-align: right;
 `
 

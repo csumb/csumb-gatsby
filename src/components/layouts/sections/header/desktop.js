@@ -8,11 +8,11 @@ import Applicant from './applicant'
 import { NavigationLink } from './navigation-link'
 import { Flex, Box } from '../../../common/grid'
 
-const DesktopHeaderWrapper = styled.div`
+const DesktopHeaderWrapper = styled('div')`
   padding-top: 0.75rem;
 `
 
-const NavigationList = styled.ul`
+const NavigationList = styled('ul')`
   margin-left: 0;
   margin-top: 1rem;
   list-style: none;

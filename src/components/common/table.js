@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colors } from '../../style'
 
-const Table = styled.table`
+const Table = styled('table')`
   th,
   td {
     padding: 0.4rem;
@@ -28,12 +28,12 @@ const Table = styled.table`
   `};
 `
 
-const TableHeader = styled.th`
+const TableHeader = styled('th')`
   background: ${colors.muted.bright};
 `
 
-const TableCell = styled.td``
+const TableCell = styled('td')``
 
-const TableRow = styled.tr``
+const TableRow = styled('tr')``
 
 export { Table, TableRow, TableHeader, TableCell }

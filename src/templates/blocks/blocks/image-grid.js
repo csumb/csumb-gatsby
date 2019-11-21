@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import styled from '@emotion/styled'
 import { Flex, Box } from '../../../components/common/grid'
 
-const ImageGridHeader = styled.h3`
+const ImageGridHeader = styled('h3')`
   margin-top: 0;
 `
 
-const ImageGridImage = styled.img`
+const ImageGridImage = styled('img')`
   margin-bottom: 0.5rem;
 `
 

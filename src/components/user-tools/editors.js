@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie'
 import { UserContext } from '../contexts/user'
 import { colors } from '../../style'
 
-const EditButtonLink = styled.a`
+const EditButtonLink = styled('a')`
   margin: 0 0 0.5rem 0.5rem;
   color: ${colors.white};
   background: ${colors.primary.dark};
@@ -16,7 +16,7 @@ const EditButtonLink = styled.a`
   }
 `
 
-const EditButtonWrapper = styled.div`
+const EditButtonWrapper = styled('div')`
   margin-bottom: 0.5rem;
   text-align: right;
 `

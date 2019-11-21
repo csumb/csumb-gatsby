@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import ReactLoading from 'react-loading'
 import VisuallyHidden from '../utilities/visually-hidden'
 
-const LoadingWrapper = styled.div`
+const LoadingWrapper = styled('div')`
   text-align: center;
   margin: 2rem; 0;
   span {

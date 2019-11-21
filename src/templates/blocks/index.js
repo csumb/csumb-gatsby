@@ -30,7 +30,7 @@ import BlockHtml from './blocks/html'
 import BlockGe from './blocks/ge'
 import BlockCourses from './blocks/courses'
 
-const CollapsePadding = styled.div`
+const CollapsePadding = styled('div')`
   ${props => props.level && `margin-left: ${props.level}rem;`}
 `
 

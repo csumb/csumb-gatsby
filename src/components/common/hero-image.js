@@ -51,7 +51,7 @@ function resizeToCover(dimensions, maxDimensions) {
   )
 }
 
-const Cover = styled.div`
+const Cover = styled('div')`
   position: absolute;
   top: 0;
   right: 0;
@@ -59,7 +59,7 @@ const Cover = styled.div`
   left: 0;
 `
 
-const Root = styled.div`
+const Root = styled('div')`
   position: relative;
   min-height: ${props => props.minHeight};
 `

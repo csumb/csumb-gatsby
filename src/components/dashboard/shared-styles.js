@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colors, fonts } from '../../style'
 
-const CloseDialog = styled.button`
+const CloseDialog = styled('button')`
   cursor: pointer;
   background: transparent;
   float: right;
@@ -11,7 +11,7 @@ const CloseDialog = styled.button`
   margin-right: -1rem;
 `
 
-const DashboardCard = styled.div`
+const DashboardCard = styled('div')`
   background: ${colors.white};
   padding: 0.5rem;
   margin-bottom: 1rem;
@@ -19,7 +19,7 @@ const DashboardCard = styled.div`
   overflow: hidden;
 `
 
-const DashboardCardHeader = styled.h3`
+const DashboardCardHeader = styled('h3')`
   font-family: ${fonts.body};
   padding-right: 1rem;
   ${props =>
@@ -29,7 +29,7 @@ const DashboardCardHeader = styled.h3`
   `};
 `
 
-const DashboardMessageClose = styled.button`
+const DashboardMessageClose = styled('button')`
   border: 0;
   background: transparent;
   position: absolute;

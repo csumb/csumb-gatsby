@@ -11,7 +11,7 @@ import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()
 
-const SecondaryEmailError = styled.p`
+const SecondaryEmailError = styled('p')`
   color: ${colors.indicators.high};
   margin: 0.5rem 0;
   font-weight: bold;

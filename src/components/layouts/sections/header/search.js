@@ -5,7 +5,7 @@ import { navigate } from '@reach/router'
 import Autocomplete from 'react-autocomplete'
 import VisuallyHidden from '../../../utilities/visually-hidden'
 
-const SearchResultsAutocomplete = styled.div`
+const SearchResultsAutocomplete = styled('div')`
   background: ${colors.white};
   border: 1px solid ${colors.black};
   text-align: left;
@@ -13,7 +13,7 @@ const SearchResultsAutocomplete = styled.div`
   z-index: 1000;
 `
 
-const SearchAutocompleteItemSite = styled.span`
+const SearchAutocompleteItemSite = styled('span')`
   font-size: 0.6rem;
   font-weight: normal;
   color: ${colors.muted.dark};
@@ -25,7 +25,7 @@ const SearchAutocompleteItemSite = styled.span`
   `}
 `
 
-const SearchAutocompleteItem = styled.div`
+const SearchAutocompleteItem = styled('div')`
   color: ${colors.black};
   cursor: pointer;
   text-decoration: none;
@@ -42,7 +42,7 @@ const SearchAutocompleteItem = styled.div`
   `}
 `
 
-const SearchInput = styled.input`
+const SearchInput = styled('input')`
   border: 1px solid ${colors.gray.deafult};
   padding: 0.3rem;
   width: 100%;
