@@ -39,7 +39,7 @@ const CourseTitle = styled('h2')`
   margin-top: 0;
 `
 
-const CourseNumber = styled('p')re`
+const CourseNumber = styled('pre')`
   font-size: 1.5rem;
 `
 
