@@ -38,7 +38,7 @@ exports.handler = (event, context, callback) => {
     } else {
       repo.updateContents(
         path,
-        `Updated ${request.query.field} value for ${login[0]}`,
+        `Updated ${event.queryStringParameters.field} value for ${login[0]}`,
         JSON.stringify(userData),
         data.sha,
         error => {

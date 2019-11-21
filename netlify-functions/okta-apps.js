@@ -11,7 +11,7 @@ exports.handler = (event, context, callback) => {
   }
 
   const apps = []
-  await client.listAppLinks(request.query.user).each(app => {
+  await client.listAppLinks(event.queryStringParameters.user).each(app => {
     apps.push({
       id: app.id,
       label: app.label,

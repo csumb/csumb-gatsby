@@ -10,9 +10,9 @@ exports.handler = (event, context, callback) => {
     return
   }
   client
-    .getUser(request.query.user)
+    .getUser(event.queryStringParameters.user)
     .then(oktaUser => {
-      oktaUser.profile.secondEmail = request.query.email
+      oktaUser.profile.secondEmail = event.queryStringParameters.email
       return oktaUser
         .update()
         .catch(error => {

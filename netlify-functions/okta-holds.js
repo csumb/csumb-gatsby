@@ -11,7 +11,7 @@ exports.handler = (event, context, callback) => {
   }
 
   client
-    .getUser(request.query.user)
+    .getUser(event.queryStringParameters.user)
     .catch(error => {
       callback(null, {
         statusCode: 404,
