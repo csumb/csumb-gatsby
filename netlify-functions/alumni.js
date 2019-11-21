@@ -1,17 +1,22 @@
-const checkHash = require('../checkHash')
+const checkHash = require('./lib/check-hash')
+const client = require('./lib/check-hash')
 
-module.exports = (client, request, response) => {
-  if (!checkHash(request)) {
-    response.write(JSON.stringify({ error: true }))
-    response.end()
+exports.handler = (event, context, callback) => {
+  if (!checkHash(event)) {
+    callback(null, {
+      statusCode: 403,
+      body: JSON.stringify({ error: true }),
+    })
     return
   }
 
   client
-    .getUser(request.query.user)
+    .getUser(event.queryStringParameters.user)
     .catch(error => {
-      response.send(JSON.stringify({ success: false }))
-      response.end()
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({ success: false }),
+      })
     })
     .then(oktaUser => {
       if (
@@ -34,7 +39,9 @@ module.exports = (client, request, response) => {
       return true
     })
     .catch(error => {
-      response.send(JSON.stringify({ error: true }))
-      response.end()
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({ success: false }),
+      })
     })
 }

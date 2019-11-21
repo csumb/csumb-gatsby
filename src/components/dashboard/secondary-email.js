@@ -30,7 +30,7 @@ class DashboardSecondaryEmail extends Component {
     })
     event.preventDefault()
     fetch(
-      `/cloud-functions/okta/secondary-email?token=${
+      `/.netlify/functions/okta-secondary-email?token=${
         this.props.user.session
       }&user=${this.props.user._username}&email=${this.state.secondaryEmail}`
     )

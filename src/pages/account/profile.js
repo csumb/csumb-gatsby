@@ -36,7 +36,7 @@ const AccountPhoto = styled.img`
 
 const updateProfileField = (user, field, value) => {
   fetch(
-    `/cloud-functions/profile/update?token=${user.session}&user=${
+    `/.netlify/functions/profile-update?token=${user.session}&user=${
       user._username
     }&field=${field}&value=${value}`
   )
@@ -131,7 +131,7 @@ class UserAccountProfileForm extends Component {
     const now = new Date()
     const { user } = this.props
     fetch(
-      `/cloud-functions/profile/get?token=${user.session}&user=${
+      `/.netlify/functions/profile-get?token=${user.session}&user=${
         user._username
       }&_=${now.getTime()}`
     )
@@ -600,7 +600,7 @@ class UserAccountProfileBioForm extends Component {
     event.preventDefault()
     const { user } = this.props
     fetch(
-      `/cloud-functions/profile/bio?token=${user.session}&user=${
+      `/.netlify/functions/profile-bio?token=${user.session}&user=${
         user._username
       }`,
       {

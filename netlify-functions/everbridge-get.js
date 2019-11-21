@@ -1,26 +1,28 @@
-const functions = require('firebase-functions')
 const base64 = require('base-64')
 const fetch = require('node-fetch')
-const checkHash = require('../checkHash')
+const checkHash = require('./lib/check-hash')
+const client = require('./lib/okta-client')
 
-module.exports = (client, request, response) => {
-  if (!checkHash(request)) {
-    response.write(JSON.stringify({ error: true }))
-    response.end()
+exports.handler = (event, context, callback) => {
+  if (!checkHash(event)) {
+    callback(null, {
+      statusCode: 403,
+      body: JSON.stringify({ error: true }),
+    })
     return
   }
   const auth = base64.encode(
-    `${functions.config().everbridge.user}:${
-      functions.config().everbridge.pass
+    `${process.env.CSUMB_FUNCTIONS_EVERBRIDGE_USER}:${
+      process.env.CSUMB_FUNCTIONS_EVERBRIDGE_PASS
     }`
   )
   client
-    .getUser(request.query.user)
+    .getUser(event.queryStringParameters.user)
     .then(oktaUser => {
       const login = oktaUser.profile.login.split('@').shift()
       fetch(
         `https://api.everbridge.net/rest/contacts/${
-          functions.config().everbridge.org
+          process.env.CSUMB_FUNCTIONS_EVERBRIDGE_ORG
         }?externalIds=${login}`,
         {
           headers: {
@@ -33,8 +35,10 @@ module.exports = (client, request, response) => {
         })
         .then(everbridgeUser => {
           if (typeof everbridgeUser.page.data[0] === 'undefined') {
-            response.send(JSON.stringify({ error: true }))
-            response.end()
+            callback(null, {
+              statusCode: 200,
+              body: JSON.stringify({ error: true }),
+            })
             return
           }
           const evUser = everbridgeUser.page.data[0]
@@ -49,25 +53,31 @@ module.exports = (client, request, response) => {
               }
             })
           }
-          return response.send(
-            JSON.stringify({
+
+          callback(null, {
+            statusCode: 200,
+            body: JSON.stringify({
               error: false,
               user: {
                 paths: evUser.paths,
                 id: evUser.id,
                 optOut: optOut,
               },
-            })
-          )
+            }),
+          })
         })
         .catch(error => {
-          response.send(JSON.stringify({ error: true }))
-          return response.end()
+          callback(null, {
+            statusCode: 200,
+            body: JSON.stringify({ error: true }),
+          })
         })
       return true
     })
     .catch(error => {
-      response.send(JSON.stringify({ error: true }))
-      return response.end()
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({ error: true }),
+      })
     })
 }

@@ -237,7 +237,7 @@ class DashboardApps extends Component {
       return
     }
     fetch(
-      `/cloud-functions/okta/apps?token=${this.props.user.session}&user=${
+      `/.netlify/functions/okta-apps?token=${this.props.user.session}&user=${
         this.props.user._username
       }`
     )

@@ -34,9 +34,9 @@ class UserEmergencyForm extends Component {
 
     const time = new Date()
     fetch(
-      `/cloud-functions/everbridge/get?token=${this.props.user.session}&user=${
-        this.props.user._username
-      }&_t=${time.getTime()}`
+      `/.netlify/functions/everbridge-get?token=${
+        this.props.user.session
+      }&user=${this.props.user._username}&_t=${time.getTime()}`
     )
       .then(response => {
         NProgress.inc()
@@ -133,7 +133,7 @@ class UserEmergencyPhoneForm extends Component {
     event.preventDefault()
     const phone = phoneFormatter.normalize(this.state.number)
     fetch(
-      `/cloud-functions/everbridge/phone?token=${
+      `/.netlify/functions/everbridge-phone?token=${
         this.props.user.session
       }&user=${this.props.user._username}&phone=${phone}`
     )

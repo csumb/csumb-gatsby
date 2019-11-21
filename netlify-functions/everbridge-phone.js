@@ -1,24 +1,26 @@
-const functions = require('firebase-functions')
 const base64 = require('base-64')
 const fetch = require('node-fetch')
-const checkHash = require('../checkHash')
+const checkHash = require('./lib/check-hash')
 
-module.exports = (client, request, response) => {
-  if (!checkHash(request)) {
-    response.write(JSON.stringify({ error: true }))
-    response.end()
+const auth = base64.encode(
+  `${process.env.CSUMB_FUNCTIONS_EVERBRIDGE_USER}:${
+    process.env.CSUMB_FUNCTIONS_EVERBRIDGE_PASS
+  }`
+)
+
+exports.handler = (event, context, callback) => {
+  if (!checkHash(event)) {
+    callback(null, {
+      statusCode: 403,
+      body: JSON.stringify({ error: true }),
+    })
     return
   }
-  const auth = base64.encode(
-    `${functions.config().everbridge.user}:${
-      functions.config().everbridge.pass
-    }`
-  )
-  const phone = request.query.phone.replace(/[^0-9,.]/g, '')
+  const phone = event.queryStringParameters.phone.replace(/[^0-9,.]/g, '')
   fetch(
     `https://api.everbridge.net/rest/contacts/${
-      functions.config().everbridge.org
-    }?externalIds=${request.query.user}`,
+      process.env.CSUMB_FUNCTIONS_EVERBRIDGE_ORG
+    }?externalIds=${event.queryStringParameters.user}`,
     {
       headers: {
         Authorization: `Basic ${auth}`,
@@ -52,7 +54,7 @@ module.exports = (client, request, response) => {
       }
       fetch(
         `https://api.everbridge.net/rest/contacts/${
-          functions.config().everbridge.org
+          process.env.CSUMB_FUNCTIONS_EVERBRIDGE_ORG
         }/${user.id}`,
         {
           method: 'PUT',
@@ -67,18 +69,25 @@ module.exports = (client, request, response) => {
           return res.json()
         })
         .then(result => {
-          response.send(JSON.stringify({ error: false }))
-          return response.end()
+          callback(null, {
+            statusCode: 200,
+            body: JSON.stringify({ error: false }),
+          })
+          return
         })
         .catch(error => {
-          response.send(JSON.stringify({ error: true }))
-          response.end()
+          callback(null, {
+            statusCode: 200,
+            body: JSON.stringify({ error: true }),
+          })
         })
       return true
     })
     .catch(error => {
-      response.send(JSON.stringify({ error: true }))
-      return response.end()
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({ error: true }),
+      })
     })
   return true
 }

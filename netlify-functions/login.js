@@ -1,6 +1,5 @@
 const saml = require('samlify')
-const metadata = require('./metadata')
-const functions = require('firebase-functions')
+const metadata = require('./lib/saml-metadata')
 const md5 = require('md5')
 
 const hosts = {
@@ -17,8 +16,13 @@ const hosts = {
     redirect: 'https://csumb.edu/dashboard',
     domain: 'https://csumb.edu',
   },
+  netlify: {
+    redirect: 'https://csumb-edu.netlify.com/dashboard',
+    domain: 'https://csumb-edu.netlify.com',
+  },
 }
-const { instance, salt } = functions.config().login
+const salt = process.env.CSUMB_FUNCTIONS_USER_SALT
+const instance = process.env.CSUMB_FUNCTIONS_LOGIN_INSTANCE
 const host = hosts[instance]
 const idp = saml.IdentityProvider({
   metadata: metadata.idp[instance],
@@ -28,27 +32,39 @@ const sp = saml.ServiceProvider({
   metadata: metadata.sp[instance],
 })
 
-module.exports = (request, response) => {
-  sp.parseLoginResponse(idp, 'post', request)
+exports.handler = (event, context, callback) => {
+  const body = JSON.parse(event.body)
+  sp.parseLoginResponse(idp, 'post', event)
     .then(parseResult => {
       const user = parseResult.extract.attributes
       user.token = md5(user.login.split('@').shift() + salt)
       response.cookie('csumbUser', JSON.stringify(user), {
         path: '/',
       })
-      if (
-        typeof request.body.RelayState !== 'undefined' &&
-        request.body.RelayState
-      ) {
-        response.redirect(host.domain + request.body.RelayState)
+      if (typeof body.RelayState !== 'undefined' && body.RelayState) {
+        callback(null, {
+          statusCode: 301,
+          headers: {
+            Location: host.domain + body.RelayState,
+          },
+        })
       } else {
-        response.redirect(host.redirect)
+        callback(null, {
+          statusCode: 301,
+          headers: {
+            Location: host.redirect,
+          },
+        })
       }
       response.end()
     })
     .catch(error => {
       console.log(error)
-      response.redirect(host.redirect)
-      response.end()
+      callback(null, {
+        statusCode: 301,
+        headers: {
+          Location: host.redirect,
+        },
+      })
     })
 }

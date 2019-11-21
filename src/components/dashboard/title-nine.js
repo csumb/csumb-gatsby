@@ -13,7 +13,7 @@ const DashboardTitleNine = ({ user }) => {
         return null
       }
       fetch(
-        `/cloud-functions/okta/holds?user=${user._username}&token=${
+        `/.netlify/functions/okta-holds?user=${user._username}&token=${
           user.session
         }`
       )

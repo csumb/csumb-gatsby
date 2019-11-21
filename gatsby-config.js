@@ -312,7 +312,7 @@ const gatsbyConfig = {
         sv: 6,
       },
     },
-    'gatsby-plugin-meta-redirect',
+    'gatsby-plugin-netlify',
     'gatsby-plugin-csumb-post-build',
   ],
 }

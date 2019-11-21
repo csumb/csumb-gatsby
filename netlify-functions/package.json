@@ -1,0 +1,24 @@
+{
+  "name": "csumb-netlify-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "okta-apps.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@okta/okta-sdk-nodejs": "^3.1.0",
+    "@sendgrid/mail": "^6.4.0",
+    "base-64": "^0.1.0",
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
+    "octonode": "^0.9.5",
+    "samlify": "^2.6.2"
+  }
+}

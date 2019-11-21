@@ -54,6 +54,7 @@
     "gatsby-plugin-hotjar": "^1.0.1",
     "gatsby-plugin-manifest": "^2.0.11",
     "gatsby-plugin-meta-redirect": "^1.1.1",
+    "gatsby-plugin-netlify": "^2.1.25",
     "gatsby-plugin-nprogress": "^2.0.8",
     "gatsby-plugin-polyfill-io": "^1.1.0",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.2",
@@ -124,17 +125,11 @@
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybookbuild": "build-storybook -c .storybook -o ./style-guide",
     "test": "jest",
-    "directoryJson": "node src/custom-build/directory-json.js",
-    "scheduleJson": "node src/custom-build/schedule-json.js",
-    "catalogJson": "node src/custom-build/catalog-json.js",
-    "buildJson": "node src/custom-build/build-json.js",
-    "eventJson": "node src/custom-build/event-json.js",
-    "configFirebase": "node src/custom-build/firebase.js",
     "cleanup": "jest -u; prettier --write 'src/**/**.js';",
     "buildTrace": "gatsby build --open-tracing-config-file node_modules/gatsby/dist/utils/tracer/zipkin-local.js",
     "canary": "jest --testPathIgnorePatterns node_modules,.cache -- src/custom-build/__tests__/canary.js",
     "ghPages": "gh-pages -b $TRAVIS_BRANCH -d public -r https://$GITHUB_TOKEN@github.com/csumb-edu/csumb-edu.github.io.git",
-    "postinstall": "patch-package"
+    "preinstall": "cd netlify-functions && npm install"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
