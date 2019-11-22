@@ -41,7 +41,7 @@ exports.handler = (event, context, callback) => {
       })
       fields.array.forEach(field => {
         if (typeof attributes[field] !== 'undefined') {
-          user[field] = attributes[field]
+          user[field] = attributes[field].join(',')
         }
       })
       user.token = md5(user.login.split('@').shift() + salt)
