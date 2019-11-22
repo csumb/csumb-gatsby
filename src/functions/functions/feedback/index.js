@@ -1,5 +1,5 @@
-const feedbackTemplate = require('./lib/feedback-template')
-const sgMail = require('@sendgrid/mail')
+import feedbackTemplate from './template.js'
+import sgMail from '@sendgrid/mail'
 
 sgMail.setApiKey(process.env.CSUMB_FUNCTIONS_SENDGRID)
 

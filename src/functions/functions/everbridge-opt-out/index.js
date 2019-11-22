@@ -1,19 +1,6 @@
-const base64 = require('base-64')
-const fetch = require('node-fetch')
-const md5 = require('md5')
-
-const salt = process.env.CSUMB_FUNCTIONS_USER_SALT
-
-const checkHash = event => {
-  const user =
-    typeof event.queryStringParameters.user !== 'undefined'
-      ? event.queryStringParameters.user
-      : false
-  if (!user) {
-    return false
-  }
-  return event.queryStringParameters.token === md5(user + salt)
-}
+import base64 from 'base-64'
+import fetch from 'node-fetch'
+import checkHash from '../../common/check-hash'
 
 const auth = base64.encode(
   `${process.env.CSUMB_FUNCTIONS_EVERBRIDGE_USER}:${
@@ -29,7 +16,6 @@ exports.handler = (event, context, callback) => {
     })
     return
   }
-  const phone = event.queryStringParameters.phone.replace(/[^0-9,.]/g, '')
   fetch(
     `https://api.everbridge.net/rest/contacts/${
       process.env.CSUMB_FUNCTIONS_EVERBRIDGE_ORG
@@ -45,26 +31,9 @@ exports.handler = (event, context, callback) => {
     })
     .then(everbridgeUser => {
       let user = everbridgeUser.page.data[0]
-      let hasPhone = false
       user.contactAttributes = [
-        { values: ['No'], orgAttrId: 333156318183509, name: 'optout' },
+        { values: ['Yes'], orgAttrId: 333156318183509, name: 'optout' },
       ]
-
-      user.paths.forEach((path, key) => {
-        if (path.pathId === 241901148045324) {
-          user.paths[key].value = phone
-          hasPhone = true
-        }
-      })
-      if (!hasPhone) {
-        user.paths.push({
-          waitTime: 0,
-          pathId: 241901148045324,
-          countryCode: 'US',
-          value: phone,
-          skipValidation: false,
-        })
-      }
       fetch(
         `https://api.everbridge.net/rest/contacts/${
           process.env.CSUMB_FUNCTIONS_EVERBRIDGE_ORG
@@ -102,5 +71,4 @@ exports.handler = (event, context, callback) => {
         body: JSON.stringify({ error: true }),
       })
     })
-  return true
 }
