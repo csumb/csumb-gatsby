@@ -47,10 +47,10 @@ exports.handler = (event, context, callback) => {
       user.token = md5(user.login.split('@').shift() + salt)
       const cookie = `csumbUser=${encodeURIComponent(
         JSON.stringify(user)
-      )}; Secure; Domain=csumb-edu.netlify.com`
+      )}; Secure; Domain=csumb-edu.netlify.com; Path=/`
       if (typeof body.RelayState !== 'undefined' && body.RelayState) {
         callback(null, {
-          status: 301,
+          statusCode: 301,
           headers: {
             Location: `https://csumb-edu.netlify.com/${
               request.body.RelayState
@@ -60,7 +60,7 @@ exports.handler = (event, context, callback) => {
         })
       } else {
         callback(null, {
-          status: 301,
+          statusCode: 301,
           headers: {
             Location: 'https://csumb-edu.netlify.com/',
             'Set-cookie': cookie,

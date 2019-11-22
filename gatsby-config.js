@@ -16,10 +16,7 @@ const gatsbyConfig = {
     showTitleNineMessage: true,
     okta: {
       login:
-        typeof process.env.TRAVIS_BRANCH !== 'undefined' &&
-        typeof loginUrls[process.env.TRAVIS_BRANCH] !== 'undefined'
-          ? loginUrls[process.env.TRAVIS_BRANCH]
-          : 'https://csumb.okta.com/',
+        'https://csumb.okta.com/home/csumb_csumbnetlify_1/0oanh9wep6JjS3Dl50x7/alnnh9z96oZ4ijHTY0x7',
     },
     swiftypeId: process.env.GATSBY_CSUMB_SWIFTYPE_ID,
     perSiteOlarkIds: [
