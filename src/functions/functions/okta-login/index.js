@@ -22,7 +22,6 @@ const fields = {
 
 exports.handler = (event, context, callback) => {
   const body = querystring.parse(event.body)
-  console.log('Login request made')
   serviceProvider.post_assert(
     identityProvider,
     {
@@ -46,15 +45,16 @@ exports.handler = (event, context, callback) => {
         }
       })
       user.token = md5(user.login.split('@').shift() + salt)
-      console.log(user)
-      const cookie = `csumbUser=${JSON.stringify(
-        user
+      const cookie = `csumbUser=${encodeURIComponent(
+        JSON.stringify(user)
       )}; Secure; Domain=csumb-edu.netlify.com`
       if (typeof body.RelayState !== 'undefined' && body.RelayState) {
         callback(null, {
           status: 301,
           headers: {
-            Location: request.body.RelayState,
+            Location: `https://csumb-edu.netlify.com/${
+              request.body.RelayState
+            }`,
             'Set-cookie': cookie,
           },
         })
@@ -62,7 +62,7 @@ exports.handler = (event, context, callback) => {
         callback(null, {
           status: 301,
           headers: {
-            Location: '/',
+            Location: 'https://csumb-edu.netlify.com/',
             'Set-cookie': cookie,
           },
         })
