@@ -22,6 +22,7 @@ const fields = {
 
 exports.handler = (event, context, callback) => {
   const body = querystring.parse(event.body)
+  console.log('Login request made')
   serviceProvider.post_assert(
     identityProvider,
     {
