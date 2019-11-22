@@ -2,7 +2,12 @@ const md5 = require('md5')
 const github = require('octonode')
 const ghClient = github.client(process.env.GITHUB_TOKEN)
 const repo = ghClient.repo('csumb/website-data')
-const client = require('./lib/okta-client')
+const oktaClient = require('@okta/okta-sdk-nodejs')
+
+const client = new oktaClient.Client({
+  orgUrl: 'csumb.okta.com',
+  token: process.env.CSUMB_FUNCTIONS_OKTA_KEY,
+})
 
 const salt = process.env.CSUMB_FUNCTIONS_USER_SALT
 
