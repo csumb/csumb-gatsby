@@ -1,6 +1,3 @@
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
-import json from 'rollup-plugin-json'
 import { readdirSync } from 'fs'
 
 const functions = []
@@ -10,11 +7,18 @@ readdirSync('./src/functions/functions', { withFileTypes: true })
     const { name } = directoryEntry
     functions.push({
       input: `./src/functions/functions/${name}/index.js`,
+      external: [
+        '@okta/okta-sdk-nodejs',
+        'octonode',
+        'md5',
+        'querystring',
+        'saml2-js',
+      ],
       output: {
         file: `./functions/${name}.js`,
         format: 'cjs',
       },
     })
   })
-console.log(functions)
+
 export default functions
