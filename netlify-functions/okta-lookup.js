@@ -34,6 +34,7 @@ exports.handler = (event, context, callback) => {
       return foundUser
     })
     .catch(error => {
+      console.log(error)
       callback(null, {
         statusCode: 200,
         body: JSON.stringify({ error: true }),
