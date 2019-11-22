@@ -31,7 +31,8 @@ exports.handler = (event, context, callback) => {
       if (err != null) {
         console.log(err)
       }
-      const { attributes } = saml_response.user.attributes
+      const { attributes } = saml_response.user
+
       const user = {}
       fields.single.forEach(field => {
         if (typeof attributes[field] !== 'undefined') {
