@@ -45,6 +45,7 @@ exports.handler = (event, context, callback) => {
         }
       })
       user.token = md5(user.login.split('@').shift() + salt)
+      console.log(user)
       const cookie = `csumbUser=${JSON.stringify(
         user
       )}; Secure; Domain=csumb-edu.netlify.com`
