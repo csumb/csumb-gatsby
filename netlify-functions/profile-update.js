@@ -1,8 +1,21 @@
-const checkHash = require('./lib/check-hash')
+const md5 = require('md5')
 const github = require('octonode')
 const ghClient = github.client(process.env.GITHUB_TOKEN)
 const repo = ghClient.repo('csumb/website-data')
 const client = require('./lib/okta-client')
+
+const salt = process.env.CSUMB_FUNCTIONS_USER_SALT
+
+const checkHash = event => {
+  const user =
+    typeof event.queryStringParameters.user !== 'undefined'
+      ? event.queryStringParameters.user
+      : false
+  if (!user) {
+    return false
+  }
+  return event.queryStringParameters.token === md5(user + salt)
+}
 
 exports.handler = (event, context, callback) => {
   if (!checkHash(event)) {

@@ -1,6 +1,20 @@
 const base64 = require('base-64')
 const fetch = require('node-fetch')
-const checkHash = require('./lib/check-hash')
+const md5 = require('md5')
+
+const salt = process.env.CSUMB_FUNCTIONS_USER_SALT
+
+const checkHash = event => {
+  const user =
+    typeof event.queryStringParameters.user !== 'undefined'
+      ? event.queryStringParameters.user
+      : false
+  if (!user) {
+    return false
+  }
+  return event.queryStringParameters.token === md5(user + salt)
+}
+
 const oktaClient = require('@okta/okta-sdk-nodejs')
 
 const client = new oktaClient.Client({

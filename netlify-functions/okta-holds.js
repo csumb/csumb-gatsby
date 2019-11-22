@@ -1,5 +1,18 @@
-const checkHash = require('./lib/check-hash')
+const md5 = require('md5')
 const oktaClient = require('@okta/okta-sdk-nodejs')
+
+const salt = process.env.CSUMB_FUNCTIONS_USER_SALT
+
+const checkHash = event => {
+  const user =
+    typeof event.queryStringParameters.user !== 'undefined'
+      ? event.queryStringParameters.user
+      : false
+  if (!user) {
+    return false
+  }
+  return event.queryStringParameters.token === md5(user + salt)
+}
 
 const client = new oktaClient.Client({
   orgUrl: 'csumb.okta.com',
