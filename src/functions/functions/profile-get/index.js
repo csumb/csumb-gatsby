@@ -1,5 +1,6 @@
 import github from 'octonode'
 import checkHash from '../../common/check-hash'
+import client from '../../common/okta-client'
 
 const ghClient = github.client(process.env.GITHUB_TOKEN)
 const repo = ghClient.repo('csumb/website-data')
