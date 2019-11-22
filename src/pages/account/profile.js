@@ -151,10 +151,10 @@ class UserAccountProfileForm extends Component {
     const { user, buildings } = this.props
     const { profile } = this.state
     const directoryTitle = user.profile.directoryTitle
-      ? user.profile.directoryTitle.split(',')
+      ? user.profile.directoryTitle
       : false
     const directoryDepartment = user.profile.directoryDepartment
-      ? user.profile.directoryDepartment.split(',')
+      ? user.profile.directoryDepartment
       : false
     return (
       <>

@@ -37,8 +37,8 @@ class UserComponent extends React.Component {
       profile: profile,
       session: profile.token,
     }
-    if (typeof user.profile.roles !== 'undefined') {
-      user.profile.roles = user.profile.roles.split(',')
+    if (typeof user.profile.roles == 'undefined') {
+      user.profile.roles = []
     }
     user._username = user.profile.login.split('@').shift()
     user.anonymous = false

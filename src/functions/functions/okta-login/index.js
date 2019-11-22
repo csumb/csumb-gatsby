@@ -18,7 +18,7 @@ const fields = {
     'secondEmail',
     'employeeNumber',
   ],
-  array: ['roles'],
+  array: ['roles', 'directoryTitle', 'directoryDepartment'],
 }
 
 exports.handler = (event, context, callback) => {
@@ -42,7 +42,7 @@ exports.handler = (event, context, callback) => {
       })
       fields.array.forEach(field => {
         if (typeof attributes[field] !== 'undefined') {
-          user[field] = attributes[field].join(',')
+          user[field] = attributes[field]
         }
       })
       user.token = md5(user.login.split('@').shift() + salt)
