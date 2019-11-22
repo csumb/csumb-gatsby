@@ -10,6 +10,7 @@ exports.handler = (event, context, callback) => {
       filter: filter,
     })
     .each(user => {
+      console.log(user.profile.birthdate)
       if (user.profile.birthdate === dob) {
         foundUser = true
         callback(null, {
