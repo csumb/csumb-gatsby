@@ -1,5 +1,11 @@
 const checkHash = require('./lib/check-hash')
-const client = require('./lib/okta-client')
+
+const oktaClient = require('@okta/okta-sdk-nodejs')
+
+const client = new oktaClient.Client({
+  orgUrl: 'csumb.okta.com',
+  token: process.env.CSUMB_FUNCTIONS_OKTA_KEY,
+})
 
 exports.handler = (event, context, callback) => {
   if (!checkHash(event)) {

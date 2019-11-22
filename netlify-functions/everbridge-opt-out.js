@@ -1,7 +1,6 @@
 const base64 = require('base-64')
 const fetch = require('node-fetch')
 const checkHash = require('./lib/check-hash')
-const client = require('./lib/okta-client')
 
 const auth = base64.encode(
   `${process.env.CSUMB_FUNCTIONS_EVERBRIDGE_USER}:${
