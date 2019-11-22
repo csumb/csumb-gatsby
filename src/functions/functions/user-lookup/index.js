@@ -3,14 +3,12 @@ import client from '../../common/okta-client'
 exports.handler = (event, context, callback) => {
   const { firstName, lastName, dob } = event.queryStringParameters
   const filter = `profile.firstName eq "${firstName}" and profile.lastName eq "${lastName}"`
-  console.log(filter)
   let foundUser = false
   client
     .listUsers({
       filter: filter,
     })
     .each(user => {
-      console.log(user.profile.birthdate)
       if (user.profile.birthdate === dob) {
         foundUser = true
         callback(null, {
