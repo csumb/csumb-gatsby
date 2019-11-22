@@ -1,7 +1,7 @@
 import client from '../../common/okta-client'
 import checkHash from '../../common/check-hash'
 
-exports.handler = (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
   if (!checkHash(event)) {
     callback(null, {
       statusCode: 403,
