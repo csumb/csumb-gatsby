@@ -1,3 +1,2 @@
 [build]
 functions = "./functions"
-environment = { CSUMB_WEB_DOMAIN = "csumb-edu.netlify.com"}

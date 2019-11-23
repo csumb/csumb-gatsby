@@ -5,7 +5,7 @@ import idp from './idp'
 import sp from './sp'
 
 const salt = process.env.CSUMB_FUNCTIONS_USER_SALT
-const domain = process.env.CSUMB_WEB_DOMAIN
+const domain = 'csumb-edu.netlify.com'
 const serviceProvider = new saml2.ServiceProvider(sp)
 const identityProvider = new saml2.IdentityProvider(idp)
 
@@ -33,7 +33,7 @@ exports.handler = (event, context, callback) => {
         console.log(err)
       }
       const { attributes } = saml_response.user
-      console.log(attributes)
+
       const user = {}
       fields.single.forEach(field => {
         if (typeof attributes[field] !== 'undefined') {
@@ -42,7 +42,7 @@ exports.handler = (event, context, callback) => {
       })
       fields.array.forEach(field => {
         if (typeof attributes[field] !== 'undefined') {
-          user[field] = attributes[field]
+          user[field] = attributes[field].split(',')
         }
       })
       user.token = md5(user.login.split('@').shift() + salt)
