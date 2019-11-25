@@ -26,6 +26,7 @@ exports.handler = (event, context, callback) => {
         })
         return
       }
+
       const holds = []
       oktaUser.profile.studentServiceIndicators.forEach(hold => {
         holds.push(JSON.parse(hold))
