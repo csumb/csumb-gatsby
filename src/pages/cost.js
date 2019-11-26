@@ -375,7 +375,7 @@ class CostPage extends Component {
           )}
         <Container>
           <PageTitle layout="page">Cost calculator</PageTitle>
-          <LeadParagraph>Effective Fall 2019</LeadParagraph>
+          <LeadParagraph>Effective Fall 2019 and Spring 2020</LeadParagraph>
           <CostPageForm />
         </Container>
       </Layout>
