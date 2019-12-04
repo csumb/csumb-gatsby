@@ -6,7 +6,7 @@ import {
   SiteNavigation,
 } from '../components/layouts/default'
 import Container from '../components/common/container'
-import { LeadParagraph, HeroParagraph } from '../components/common/type'
+import { HeroParagraph } from '../components/common/type'
 import { graphql } from 'gatsby'
 import { Button, LinkyButton } from '../components/common/button'
 import { Flex, Box } from '../components/common/grid'
@@ -379,7 +379,13 @@ class CostPage extends Component {
             )}
           <Container>
             <PageTitle layout="page">Cost calculator</PageTitle>
-            <LeadParagraph>Effective Fall 2019</LeadParagraph>
+            <p>
+              Effective Fall 2019,
+              <a href="https://csumb.github.io/net-price.html">
+                view full net price calculator
+              </a>
+              .
+            </p>
             <CostPageForm />
           </Container>
         </Layout>
