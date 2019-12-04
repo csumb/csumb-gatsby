@@ -380,7 +380,7 @@ class CostPage extends Component {
           <Container>
             <PageTitle layout="page">Cost calculator</PageTitle>
             <p>
-              Effective Fall 2019,
+              Effective Fall 2019,{' '}
               <a href="https://csumb.github.io/net-price.html">
                 view full net price calculator
               </a>
