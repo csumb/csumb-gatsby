@@ -20,6 +20,7 @@ import {
   TableCell,
   TableHeader,
 } from '../components/common/table'
+import PageFeedbackContext from '../components/contexts/page-feedback'
 
 const CostButton = styled(Button)`
   width: 80%;
@@ -364,21 +365,25 @@ class CostPage extends Component {
   render() {
     const { data } = this.props
     return (
-      <Layout>
-        <SiteHeader path="/cost">Costs &amp; Aid</SiteHeader>
-        {data.allCsumbNavigation &&
-          data.allCsumbNavigation.edges &&
-          data.allCsumbNavigation.edges[0] && (
-            <SiteNavigation
-              navigation={data.allCsumbNavigation.edges[0].node.navigation}
-            />
-          )}
-        <Container>
-          <PageTitle layout="page">Cost calculator</PageTitle>
-          <LeadParagraph>Effective Fall 2019</LeadParagraph>
-          <CostPageForm />
-        </Container>
-      </Layout>
+      <PageFeedbackContext.Provider
+        value={{ email: 'webservices@csumb.edu', title: 'Cost', url: '/cost' }}
+      >
+        <Layout>
+          <SiteHeader path="/cost">Costs &amp; Aid</SiteHeader>
+          {data.allCsumbNavigation &&
+            data.allCsumbNavigation.edges &&
+            data.allCsumbNavigation.edges[0] && (
+              <SiteNavigation
+                navigation={data.allCsumbNavigation.edges[0].node.navigation}
+              />
+            )}
+          <Container>
+            <PageTitle layout="page">Cost calculator</PageTitle>
+            <LeadParagraph>Effective Fall 2019</LeadParagraph>
+            <CostPageForm />
+          </Container>
+        </Layout>
+      </PageFeedbackContext.Provider>
     )
   }
 }
