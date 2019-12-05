@@ -105,6 +105,7 @@ const LegalButtonLink = styled('button')`
   border: 0;
   background: transparent;
   padding: 1rem 0 0 0;
+  cursor: pointer;
 `
 
 const LegalWrapper = styled('div')`
