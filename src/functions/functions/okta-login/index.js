@@ -5,7 +5,7 @@ import idp from './idp'
 import sp from './sp'
 
 const salt = process.env.CSUMB_FUNCTIONS_USER_SALT
-const domain = 'csumb-edu.netlify.com'
+const domain = 'csumb.edu'
 const serviceProvider = new saml2.ServiceProvider(sp)
 const identityProvider = new saml2.IdentityProvider(idp)
 
