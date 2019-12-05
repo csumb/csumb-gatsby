@@ -34,6 +34,7 @@ const StoryHeader = styled('h2')`
 const StoryImage = styled(LazyLoadImage)`
   width: 100%;
   margin-bottom: 0;
+  object-fit: cover;
 `
 
 const EventDate = styled('div')`
