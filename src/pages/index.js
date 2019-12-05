@@ -9,6 +9,7 @@ import {
   HomepageImageNavigation,
   HomepageHero,
 } from '../components/homepage'
+import PageFeedbackContext from '../components/contexts/page-feedback'
 
 const sortItems = ({
   allContentfulHomepageEvent,
@@ -44,23 +45,27 @@ const IndexPage = ({ data }) => {
   const stories = sortItems(data)
 
   return (
-    <Layout noFooterMargin={true}>
-      <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
-      <HomepageImageNavigation
-        navigation={allContentfulHomepageImageNavigation.edges[0].node}
-      />
-      <Container topPadding>
-        {stories.map((storyPair, index) => (
-          <Flex id={`storypair-${index}`}>
-            {storyPair.map((story, index) => (
-              <Box id={`story-${index}`} width={[1, 1, 1 / 2]} px={[0, 0, 4]}>
-                <HomepageStory {...story} />
-              </Box>
-            ))}
-          </Flex>
-        ))}
-      </Container>
-    </Layout>
+    <PageFeedbackContext.Provider
+      value={{ email: 'webservices@csumb.edu', title: 'Homepage', url: '/' }}
+    >
+      <Layout noFooterMargin={true}>
+        <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
+        <HomepageImageNavigation
+          navigation={allContentfulHomepageImageNavigation.edges[0].node}
+        />
+        <Container topPadding>
+          {stories.map((storyPair, index) => (
+            <Flex id={`storypair-${index}`}>
+              {storyPair.map((story, index) => (
+                <Box id={`story-${index}`} width={[1, 1, 1 / 2]} px={[0, 0, 4]}>
+                  <HomepageStory {...story} />
+                </Box>
+              ))}
+            </Flex>
+          ))}
+        </Container>
+      </Layout>
+    </PageFeedbackContext.Provider>
   )
 }
 

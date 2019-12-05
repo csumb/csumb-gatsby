@@ -6,13 +6,14 @@ import {
   SiteNavigation,
 } from '../components/layouts/default'
 import Container from '../components/common/container'
-import { LeadParagraph, HeroParagraph } from '../components/common/type'
+import { HeroParagraph } from '../components/common/type'
 import { graphql } from 'gatsby'
 import { Button, LinkyButton } from '../components/common/button'
 import { Flex, Box } from '../components/common/grid'
 import Link from 'gatsby-link'
 import { InputText, Submit } from '../components/common/forms'
 import styled from '@emotion/styled'
+import PageFeedbackContext from '../components/contexts/page-feedback'
 import VisuallyHidden from '../components/utilities/visually-hidden'
 import {
   Table,
@@ -364,21 +365,31 @@ class CostPage extends Component {
   render() {
     const { data } = this.props
     return (
-      <Layout>
-        <SiteHeader path="/cost">Costs &amp; Aid</SiteHeader>
-        {data.allCsumbNavigation &&
-          data.allCsumbNavigation.edges &&
-          data.allCsumbNavigation.edges[0] && (
-            <SiteNavigation
-              navigation={data.allCsumbNavigation.edges[0].node.navigation}
-            />
-          )}
-        <Container>
-          <PageTitle layout="page">Cost calculator</PageTitle>
-          <LeadParagraph>Effective Fall 2019</LeadParagraph>
-          <CostPageForm />
-        </Container>
-      </Layout>
+      <PageFeedbackContext.Provider
+        value={{ email: 'webservices@csumb.edu', title: 'Cost', url: '/cost' }}
+      >
+        <Layout>
+          <SiteHeader path="/cost">Costs &amp; Aid</SiteHeader>
+          {data.allCsumbNavigation &&
+            data.allCsumbNavigation.edges &&
+            data.allCsumbNavigation.edges[0] && (
+              <SiteNavigation
+                navigation={data.allCsumbNavigation.edges[0].node.navigation}
+              />
+            )}
+          <Container>
+            <PageTitle layout="page">Cost calculator</PageTitle>
+            <p>
+              Effective Fall 2019 and Spring 2020,{' '}
+              <a href="https://csumb.github.io/net-price.html">
+                view full net price calculator
+              </a>
+              .
+            </p>
+            <CostPageForm />
+          </Container>
+        </Layout>
+      </PageFeedbackContext.Provider>
     )
   }
 }

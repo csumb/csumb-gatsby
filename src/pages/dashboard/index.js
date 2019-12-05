@@ -6,6 +6,7 @@ import { graphql } from 'gatsby'
 import Olark from '../../components/utilities/olark'
 import styled from '@emotion/styled'
 import { ButtonLink } from '../../components/common/button'
+import PageFeedbackContext from '../components/contexts/page-feedback'
 import {
   DashboardApps,
   DashboardContent,
@@ -55,97 +56,106 @@ class DashboardPage extends Component {
       })
     }
     return (
-      <Layout pageTitle="Dashboard">
-        {siteOlarkId && <Olark siteId={siteOlarkId} />}
-        <SiteHeader path="/dashboard">Dashboard</SiteHeader>
-        <UserContext.Consumer>
-          {context => (
-            <>
-              {context.user && !context.user.anonymous && (
-                <>
-                  {this.redirectApplicant(context.user)}
-                  <BreakpointContext.Consumer>
-                    {({ isMobile }) => (
-                      <>
-                        {isMobile ? (
-                          <>
-                            <DashboardMobileToolbar>
-                              <Container>
-                                <button
-                                  onClick={() => {
-                                    this.setState({ activeTab: 'messages' })
-                                  }}
-                                >
-                                  Messages
-                                </button>
-                                <button
-                                  onClick={() => {
-                                    this.setState({ activeTab: 'events' })
-                                  }}
-                                >
-                                  Events
-                                </button>
-                                <button
-                                  onClick={() => {
-                                    this.setState({ activeTab: 'apps' })
-                                  }}
-                                >
-                                  Apps
-                                </button>
-                              </Container>
-                            </DashboardMobileToolbar>
+      <PageFeedbackContext.Provider
+        value={{
+          email: 'webservices@csumb.edu',
+          title: 'Dashboard',
+          url: '/dashboard',
+        }}
+      >
+        <Layout pageTitle="Dashboard">
+          {siteOlarkId && <Olark siteId={siteOlarkId} />}
+          <SiteHeader path="/dashboard">Dashboard</SiteHeader>
+          <UserContext.Consumer>
+            {context => (
+              <>
+                {context.user && !context.user.anonymous && (
+                  <>
+                    {this.redirectApplicant(context.user)}
+                    <BreakpointContext.Consumer>
+                      {({ isMobile }) => (
+                        <>
+                          {isMobile ? (
+                            <>
+                              <DashboardMobileToolbar>
+                                <Container>
+                                  <button
+                                    onClick={() => {
+                                      this.setState({ activeTab: 'messages' })
+                                    }}
+                                  >
+                                    Messages
+                                  </button>
+                                  <button
+                                    onClick={() => {
+                                      this.setState({ activeTab: 'events' })
+                                    }}
+                                  >
+                                    Events
+                                  </button>
+                                  <button
+                                    onClick={() => {
+                                      this.setState({ activeTab: 'apps' })
+                                    }}
+                                  >
+                                    Apps
+                                  </button>
+                                </Container>
+                              </DashboardMobileToolbar>
 
-                            <DashboardContent
-                              user={context.user}
-                              mobileTab={activeTab}
-                              isMobile={true}
-                              moreApps={data.allCsumbApp.edges}
-                              showTitleNineMessage={
-                                data.site.siteMetadata.showTitleNineMessage
-                              }
-                            />
-                          </>
-                        ) : (
-                          <>
-                            <DashboardApps
-                              apps={data.allCsumbApp.edges}
-                              user={context.user}
-                            />
-                            <section>
-                              <Container topPadding>
-                                <DashboardContent
-                                  user={context.user}
-                                  showTitleNineMessage={
-                                    data.site.siteMetadata.showTitleNineMessage
-                                  }
-                                />
-                                <ArchivedMessages>
-                                  <Link to="/dashboard/archive">
-                                    View archived messages &amp; events
-                                  </Link>
-                                </ArchivedMessages>
-                              </Container>
-                            </section>
-                          </>
-                        )}
-                      </>
-                    )}
-                  </BreakpointContext.Consumer>
-                </>
-              )}
-              {context.user && context.user.anonymous && (
-                <Container>
-                  {this.login(data.site.siteMetadata.okta.login)}
-                  <p>You are not logged in</p>
-                  <ButtonLink to={data.site.siteMetadata.okta.login}>
-                    Log in
-                  </ButtonLink>
-                </Container>
-              )}
-            </>
-          )}
-        </UserContext.Consumer>
-      </Layout>
+                              <DashboardContent
+                                user={context.user}
+                                mobileTab={activeTab}
+                                isMobile={true}
+                                moreApps={data.allCsumbApp.edges}
+                                showTitleNineMessage={
+                                  data.site.siteMetadata.showTitleNineMessage
+                                }
+                              />
+                            </>
+                          ) : (
+                            <>
+                              <DashboardApps
+                                apps={data.allCsumbApp.edges}
+                                user={context.user}
+                              />
+                              <section>
+                                <Container topPadding>
+                                  <DashboardContent
+                                    user={context.user}
+                                    showTitleNineMessage={
+                                      data.site.siteMetadata
+                                        .showTitleNineMessage
+                                    }
+                                  />
+                                  <ArchivedMessages>
+                                    <Link to="/dashboard/archive">
+                                      View archived messages &amp; events
+                                    </Link>
+                                  </ArchivedMessages>
+                                </Container>
+                              </section>
+                            </>
+                          )}
+                        </>
+                      )}
+                    </BreakpointContext.Consumer>
+                  </>
+                )}
+                {context.user && context.user.anonymous && (
+                  <Container>
+                    {this.login(data.site.siteMetadata.okta.login)}
+                    <p>You are not logged in</p>
+                    <ButtonLink to={data.site.siteMetadata.okta.login}>
+                      Log in
+                    </ButtonLink>
+                  </Container>
+                )}
+              </>
+            )}
+          </UserContext.Consumer>
+        </Layout>
+      </PageFeedbackContext.Provider>
     )
   }
 }
