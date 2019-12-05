@@ -29,12 +29,28 @@ class DashboardAlumni extends Component {
       })
       return null
     } else {
-      this.setState({
-        isReady: true,
-        alumniData: {
-          showMessage: true,
-        },
-      })
+      fetch(`/_alumni/json/${this.props.user._username}.json`)
+        .then(response => {
+          return response.json()
+        })
+        .then(user => {
+          if (user) {
+            this.setState({
+              isReady: true,
+              alumniData: {
+                showMessage: true,
+              },
+            })
+          }
+        })
+        .error(e => {
+          this.setState({
+            isReady: true,
+            alumniData: {
+              showMessage: false,
+            },
+          })
+        })
     }
   }
 
@@ -44,7 +60,7 @@ class DashboardAlumni extends Component {
       success: true,
     })
     fetch(
-      `/coud-functions/alumni?token=${this.props.user.session}&user=${
+      `/.netlify/functions/alumni?token=${this.props.user.session}&user=${
         this.props.user._username
       }`
     )

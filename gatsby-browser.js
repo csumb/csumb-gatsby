@@ -26,7 +26,7 @@ class UserComponent extends React.Component {
 
     window.addEventListener('resize', setWindowSize)
     setWindowSize()
-    const profile = cookies.get('csumbUser')
+    const profile = cookies.get('csumbWebUser')
     if (!profile) {
       this.setState({
         user: { anonymous: true },

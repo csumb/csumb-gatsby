@@ -5,7 +5,7 @@ import idp from './idp'
 import sp from './sp'
 
 const salt = process.env.CSUMB_FUNCTIONS_USER_SALT
-const domain = 'csumb.edu'
+const domain = 'csumb-edu.netlify.com'
 const serviceProvider = new saml2.ServiceProvider(sp)
 const identityProvider = new saml2.IdentityProvider(idp)
 
@@ -49,7 +49,7 @@ exports.handler = (event, context, callback) => {
         }
       })
       user.token = md5(user.login.split('@').shift() + salt)
-      const cookie = `csumbUser=${encodeURIComponent(
+      const cookie = `csumbWebUser=${encodeURIComponent(
         JSON.stringify(user)
       )}; Secure; Domain=${domain}; Path=/`
       if (typeof body.RelayState !== 'undefined' && body.RelayState) {
