@@ -9,6 +9,8 @@ readdirSync('./src/functions/functions', { withFileTypes: true })
       input: `./src/functions/functions/${name}/index.js`,
       external: [
         '@okta/okta-sdk-nodejs',
+        'moment',
+        '@sendgrid/mail',
         'octonode',
         'md5',
         'querystring',
