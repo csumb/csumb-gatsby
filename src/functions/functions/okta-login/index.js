@@ -18,7 +18,12 @@ const fields = {
     'secondEmail',
     'employeeNumber',
   ],
-  array: ['roles', 'directoryTitle', 'directoryDepartment'],
+  array: [
+    'roles',
+    'directoryTitle',
+    'directoryDepartment',
+    'provisionalServices',
+  ],
 }
 
 exports.handler = (event, context, callback) => {

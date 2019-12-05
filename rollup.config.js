@@ -13,6 +13,8 @@ readdirSync('./src/functions/functions', { withFileTypes: true })
         '@sendgrid/mail',
         'octonode',
         'md5',
+        'base-64',
+        'node-fetch',
         'querystring',
         'saml2-js',
       ],
