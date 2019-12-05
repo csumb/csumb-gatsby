@@ -8,6 +8,7 @@ import DashboardApps from './apps'
 import { DashboardEvents } from './events'
 import { DashboardMessages } from './messages'
 import DashboardSecondary from './secondary-email'
+import DashboardTitleNine from './title-nine'
 
 const dashboardWrapperStyle = `
   padding: 1rem;
@@ -117,7 +118,9 @@ class DashboardContent extends Component {
               <DashboardMessageWrapper>
                 <DashboardSecondary user={this.props.user} />
                 <h2>Messages</h2>
-
+                {showTitleNineMessage && (
+                  <DashboardTitleNine user={this.props.user} />
+                )}
                 <DashboardMessages
                   messages={messages}
                   archive={id => {
@@ -171,13 +174,18 @@ class DashboardContent extends Component {
                 <DashboardMessageWrapper>
                   <h2>Messages</h2>
                   {ready ? (
-                    <DashboardMessages
-                      messages={messages}
-                      archive={id => {
-                        this.archive(id)
-                      }}
-                      archivedContent={archivedContent}
-                    />
+                    <>
+                      {showTitleNineMessage && (
+                        <DashboardTitleNine user={this.props.user} />
+                      )}
+                      <DashboardMessages
+                        messages={messages}
+                        archive={id => {
+                          this.archive(id)
+                        }}
+                        archivedContent={archivedContent}
+                      />
+                    </>
                   ) : (
                     <>
                       <PlaceholderCard />
