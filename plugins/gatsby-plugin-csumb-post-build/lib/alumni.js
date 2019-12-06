@@ -18,7 +18,7 @@ module.exports = (reporter, graphql) => {
         const alumni = list.split('\n')
         alumni.forEach(user => {
           fs.outputJSONSync(
-            `${publicPath}/_alumni/json/${user.toLowerCase()}.json`,
+            `${publicPath}/dashboard/alumni/${user.toLowerCase()}.json`,
             { user: user.toLowerCase() }
           )
         })

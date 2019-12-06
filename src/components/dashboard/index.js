@@ -9,6 +9,7 @@ import { DashboardEvents } from './events'
 import { DashboardMessages } from './messages'
 import DashboardSecondary from './secondary-email'
 import DashboardTitleNine from './title-nine'
+import DashboardAlumni from './alumni'
 
 const dashboardWrapperStyle = `
   padding: 1rem;
@@ -116,11 +117,10 @@ class DashboardContent extends Component {
           <>
             {mobileTab === 'messages' && (
               <DashboardMessageWrapper>
-                <DashboardSecondary user={this.props.user} />
+                <DashboardSecondary user={user} />
                 <h2>Messages</h2>
-                {showTitleNineMessage && (
-                  <DashboardTitleNine user={this.props.user} />
-                )}
+                {showTitleNineMessage && <DashboardTitleNine user={user} />}
+                <DashboardAlumni user={user} />
                 <DashboardMessages
                   messages={messages}
                   archive={id => {
@@ -146,7 +146,7 @@ class DashboardContent extends Component {
           </>
         ) : (
           <>
-            <DashboardSecondary user={this.props.user} />
+            <DashboardSecondary user={user} />
             <Flex>
               <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
                 <DashboardEventWrapper>
@@ -176,8 +176,9 @@ class DashboardContent extends Component {
                   {ready ? (
                     <>
                       {showTitleNineMessage && (
-                        <DashboardTitleNine user={this.props.user} />
+                        <DashboardTitleNine user={user} />
                       )}
+                      <DashboardAlumni user={user} />
                       <DashboardMessages
                         messages={messages}
                         archive={id => {

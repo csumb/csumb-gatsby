@@ -29,7 +29,7 @@ class DashboardAlumni extends Component {
       })
       return null
     } else {
-      fetch(`/_alumni/json/${this.props.user._username}.json`)
+      fetch(`/dashboard/alumni/${this.props.user._username}.json`)
         .then(response => {
           return response.json()
         })
@@ -43,7 +43,7 @@ class DashboardAlumni extends Component {
             })
           }
         })
-        .error(e => {
+        .catch(e => {
           this.setState({
             isReady: true,
             alumniData: {
