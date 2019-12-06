@@ -57,6 +57,7 @@ exports.handler = (event, context, callback) => {
       const cookie = `csumbWebUser=${encodeURIComponent(
         JSON.stringify(user)
       )}; Secure; Domain=${domain}; Path=/`
+      console.log(cookie)
       if (typeof body.RelayState !== 'undefined' && body.RelayState) {
         callback(null, {
           statusCode: 301,
