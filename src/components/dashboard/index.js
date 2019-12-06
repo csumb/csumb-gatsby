@@ -9,7 +9,6 @@ import { DashboardEvents } from './events'
 import { DashboardMessages } from './messages'
 import DashboardSecondary from './secondary-email'
 import DashboardTitleNine from './title-nine'
-import DashboardAlumni from './alumni'
 
 const dashboardWrapperStyle = `
   padding: 1rem;
@@ -120,7 +119,6 @@ class DashboardContent extends Component {
                 <DashboardSecondary user={user} />
                 <h2>Messages</h2>
                 {showTitleNineMessage && <DashboardTitleNine user={user} />}
-                <DashboardAlumni user={user} />
                 <DashboardMessages
                   messages={messages}
                   archive={id => {
@@ -178,7 +176,6 @@ class DashboardContent extends Component {
                       {showTitleNineMessage && (
                         <DashboardTitleNine user={user} />
                       )}
-                      <DashboardAlumni user={user} />
                       <DashboardMessages
                         messages={messages}
                         archive={id => {
