@@ -17,10 +17,10 @@ module.exports = (reporter, graphql) => {
       .then(list => {
         const alumni = list.split('\n')
         alumni.forEach(user => {
-          fs.outputJSONSync(
-            `${publicPath}/dashboard/alumni/${user.toLowerCase()}.json`,
-            { user: user.toLowerCase() }
-          )
+          user = user.toLowerCase().trim()
+          fs.outputJSONSync(`${publicPath}/dashboard/alumni/${user}.json`, {
+            user: user,
+          })
         })
         reporter.log(`Saved ${alumni.length} eligible alumni records`)
         resolve()
