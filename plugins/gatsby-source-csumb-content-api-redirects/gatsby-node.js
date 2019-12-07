@@ -21,8 +21,8 @@ exports.sourceNodes = async (
       id: createNodeId(`${source} >>> CsumbContentRedirect`),
       children: [],
       redirect: {
-        source: source,
-        target: redirects.redirects[source],
+        source: `/${source}`,
+        target: `/${redirects.redirects[source]}`,
       },
       parent: null,
       internal: {
