@@ -4,6 +4,7 @@ import { colors } from '../../../../style'
 
 const PageTitleHeader = styled('h1')`
   margin-top: 1rem;
+  color: #ab8846;
 `
 
 const PageTitleSubHeader = styled('small')`

@@ -78,7 +78,9 @@ const HeroItem = styled('div')`
   }
   a {
     ${props =>
-      props.darkImage ? `color: ${colors.white};` : `color: ${colors.black};`}
+      props.darkImage
+        ? `color: ${colors.white};`
+        : `color: ${colors.primary.darkest};`}
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -196,7 +198,7 @@ const HomepageHero = ({ item }) => (
           minHeight={item.fixedHeight ? `${item.imageHeight}px` : '75vh'}
         >
           {item.showAnniversaryBanner && <HeroImageAnniversaryBanner />}
-          <HeroItem darkImage={item.darkImage}>
+          <HeroItem darkImage={item.darkImage} style={{ alignSelf: 'center' }}>
             <h2>
               <LinkInspect to={item.link}>{item.title}</LinkInspect>
             </h2>

@@ -28,10 +28,39 @@ const SiteNavigationList = styled('ul')`
 
 const SiteNavigationLink = styled('a')`
   text-decoration: none;
-  padding: 1rem 1rem 1rem 0;
+  transition: all 0.5s;
+  padding: 0.5em;
   display: inline-block;
+  position: relative;
+  z-index: 1;
   &[aria-current='page'] {
     text-decoration: underline;
+  }
+  &:hover {
+    transition: all 0.5s;
+  }
+  &:after {
+    display: block;
+    transition: all 0.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 1px;
+    content: '.';
+    color: transparent;
+    background: ${colors.primary.dark};
+    visibility: none;
+    opacity: 0;
+    z-index: -1;
+  }
+  &:hover:after {
+    opacity: 1;
+    visibility: visible;
+    height: 100%;
   }
 `
 
@@ -57,7 +86,9 @@ const SiteNavigationMenuButton = styled(MenuButton)`
   color: ${colors.white};
   border: none;
   cursor: pointer;
-  padding: 1rem 1rem 1rem 0;
+  padding: .5rem;
+  position:relative;
+  z-index: 1;
   &[aria-expanded="true"] {
     .site-navigation-is-expanded {
       display: inline-block;
@@ -72,6 +103,32 @@ const SiteNavigationMenuButton = styled(MenuButton)`
     }
     .site-navigation-is-hidden {
       display:inline-block;
+  }
+  &:hover {
+    transition: all 0.5s;
+  }
+  &:after {
+    display: block;
+    transition: all 0.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 1px;
+    content: '.';
+    color: transparent;
+    background: ${colors.primary.dark};
+    visibility: none;
+    opacity: 0;
+    z-index: -1;
+  }
+  &:hover:after {
+    opacity: 1;
+    visibility: visible;
+    height: 100%;
   }
 `
 

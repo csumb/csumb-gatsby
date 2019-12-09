@@ -10,7 +10,7 @@ const siteHeaderSize = bp({
 
 const SiteHeaderWrapper = styled('div')`
   background: ${colors.primary.darkest};
-  padding: 1rem 0;
+  padding: 1rem 0.5rem;
   h2 {
     margin: 0;
     ${siteHeaderSize};
