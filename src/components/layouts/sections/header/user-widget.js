@@ -77,7 +77,7 @@ class UserDropdown extends Component {
 
   handleLogout() {
     cookies.remove('csumb-sites')
-    cookies.remove('csumbUser')
+    cookies.remove('csumbWebUser')
     cookies.remove('csumbSession')
   }
 

@@ -10,10 +10,10 @@ const DashboardTitleNine = ({ user }) => {
         typeof user.profile.roles === 'undefined' ||
         user.profile.roles.indexOf('student_matriculated') === -1
       ) {
-        return null
+        return
       }
       fetch(
-        `/cloud-functions/okta/holds?user=${user._username}&token=${
+        `/.netlify/functions/okta-holds?user=${user._username}&token=${
           user.session
         }`
       )
