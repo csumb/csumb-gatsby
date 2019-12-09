@@ -34,7 +34,7 @@ const BlockImage = ({
     return null
   }
   const imageSource = image.key
-    ? `https://s3.amazonaws.com/csumb-uploads/${image.key}`
+    ? `https://d2jtc9c99zuy7w.cloudfront.net/${image.key}`
     : image.url
         .replace('http://', 'https://')
         .replace('/csumb.edu/', '/edit.csumb.edu/')

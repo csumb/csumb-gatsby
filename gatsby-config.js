@@ -5,6 +5,7 @@ const gatsbyConfig = {
     title: 'Cal State Monterey Bay',
     disableAlumni: false,
     disableApplicant: false,
+    cloudFrontDomain: 'd2jtc9c99zuy7w.cloudfront.net',
     fileStack: process.env.GATSBY_CSUMB_FILESTACK_KEY,
     showTitleNineMessage: true,
     okta: {

@@ -27,7 +27,7 @@ const BlockDocument = ({ document, name }) => {
     return null
   }
   const url = document.key
-    ? `https://s3.amazonaws.com/csumb-uploads/${document.key}`
+    ? `https://d2jtc9c99zuy7w.cloudfront.net/${document.key}`
     : document.url.replace('/csumb.edu/', '/edit.csumb.edu/')
   return (
     <Document href={url}>
