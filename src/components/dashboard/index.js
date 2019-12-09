@@ -8,6 +8,7 @@ import DashboardApps from './apps'
 import { DashboardEvents } from './events'
 import { DashboardMessages } from './messages'
 import DashboardSecondary from './secondary-email'
+import DashboardTitleNine from './title-nine'
 
 const dashboardWrapperStyle = `
   padding: 1rem;
@@ -115,9 +116,9 @@ class DashboardContent extends Component {
           <>
             {mobileTab === 'messages' && (
               <DashboardMessageWrapper>
-                <DashboardSecondary user={this.props.user} />
+                <DashboardSecondary user={user} />
                 <h2>Messages</h2>
-
+                {showTitleNineMessage && <DashboardTitleNine user={user} />}
                 <DashboardMessages
                   messages={messages}
                   archive={id => {
@@ -143,7 +144,7 @@ class DashboardContent extends Component {
           </>
         ) : (
           <>
-            <DashboardSecondary user={this.props.user} />
+            <DashboardSecondary user={user} />
             <Flex>
               <Box width={[1, 1, 1 / 2, 1 / 2]} pr={[0, 4]}>
                 <DashboardEventWrapper>
@@ -171,13 +172,18 @@ class DashboardContent extends Component {
                 <DashboardMessageWrapper>
                   <h2>Messages</h2>
                   {ready ? (
-                    <DashboardMessages
-                      messages={messages}
-                      archive={id => {
-                        this.archive(id)
-                      }}
-                      archivedContent={archivedContent}
-                    />
+                    <>
+                      {showTitleNineMessage && (
+                        <DashboardTitleNine user={user} />
+                      )}
+                      <DashboardMessages
+                        messages={messages}
+                        archive={id => {
+                          this.archive(id)
+                        }}
+                        archivedContent={archivedContent}
+                      />
+                    </>
                   ) : (
                     <>
                       <PlaceholderCard />

@@ -36,7 +36,7 @@ class PageFeedbackForm extends Component {
       link: `https://csumb.edu/${this.props.url}`,
     }
 
-    fetch(`/cloud-functions/feedback?${querystring.stringify(data)}`)
+    fetch(`/.netlify/functions/feedback?${querystring.stringify(data)}`)
 
     this.setState({
       feedbackSent: true,

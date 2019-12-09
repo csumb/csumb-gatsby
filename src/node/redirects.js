@@ -4,16 +4,6 @@ module.exports = (graphql, actions) => {
     resolve(
       graphql(`
         {
-          allCsumbRedirect {
-            edges {
-              node {
-                redirect {
-                  source
-                  target
-                }
-              }
-            }
-          }
           allCsumbContentRedirect {
             edges {
               node {
@@ -30,13 +20,6 @@ module.exports = (graphql, actions) => {
           reject(result.errors)
           return
         }
-        result.data.allCsumbRedirect.edges.forEach(({ node }) => {
-          createRedirect({
-            fromPath: node.redirect.source,
-            toPath: node.redirect.target,
-            isPermanent: true,
-          })
-        })
 
         result.data.allCsumbContentRedirect.edges.forEach(({ node }) => {
           createRedirect({

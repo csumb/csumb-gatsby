@@ -75,7 +75,7 @@ AccountGroup.propTypes = {
   legend: PropTypes.string.isRequired,
 }
 
-const AccountPlaceholder = () => (
+const AccountPlaceholder = ({ uniquekey }) => (
   <Flex>
     <Box width={[1, 1, 1 / 4, 1 / 4]} pr={[0, 4]}>
       <ContentLoader
@@ -84,6 +84,7 @@ const AccountPlaceholder = () => (
         speed={2}
         primaryColor="#f3f3f3"
         secondaryColor="#ecebeb"
+        uniquekey={`account-placeholder-${uniquekey}`}
       >
         <rect x="10" y="5" rx="4" ry="4" width="266" height="20" />
         <rect x="10" y="40" rx="4" ry="4" width="266" height="20" />

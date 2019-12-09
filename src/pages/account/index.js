@@ -51,7 +51,7 @@ class AccountPage extends Component {
                   </Flex>
                 </Container>
               ) : (
-                <AccountPlaceholder />
+                <AccountPlaceholder uniquekey="account-index" />
               )}
             </>
           )}

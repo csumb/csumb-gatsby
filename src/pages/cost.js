@@ -13,6 +13,7 @@ import { Flex, Box } from '../components/common/grid'
 import Link from 'gatsby-link'
 import { InputText, Submit } from '../components/common/forms'
 import styled from '@emotion/styled'
+import PageFeedbackContext from '../components/contexts/page-feedback'
 import VisuallyHidden from '../components/utilities/visually-hidden'
 import {
   Table,
@@ -380,7 +381,7 @@ class CostPage extends Component {
           <Container>
             <PageTitle layout="page">Cost calculator</PageTitle>
             <p>
-              Effective Fall 2019,{' '}
+              Effective Fall 2019 and Spring 2020,{' '}
               <a href="https://csumb.github.io/net-price.html">
                 view full net price calculator
               </a>

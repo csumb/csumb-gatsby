@@ -36,7 +36,7 @@ const AccountPhoto = styled('img')`
 
 const updateProfileField = (user, field, value) => {
   fetch(
-    `/cloud-functions/profile/update?token=${user.session}&user=${
+    `/.netlify/functions/profile-update?token=${user.session}&user=${
       user._username
     }&field=${field}&value=${value}`
   )
@@ -111,7 +111,7 @@ class AccountProfilePage extends Component {
                   </Flex>
                 </Container>
               ) : (
-                <AccountPlaceholder />
+                <AccountPlaceholder uniquekey="account-profile" />
               )}
             </>
           )}
@@ -131,7 +131,7 @@ class UserAccountProfileForm extends Component {
     const now = new Date()
     const { user } = this.props
     fetch(
-      `/cloud-functions/profile/get?token=${user.session}&user=${
+      `/.netlify/functions/profile-get?token=${user.session}&user=${
         user._username
       }&_=${now.getTime()}`
     )
@@ -151,10 +151,10 @@ class UserAccountProfileForm extends Component {
     const { user, buildings } = this.props
     const { profile } = this.state
     const directoryTitle = user.profile.directoryTitle
-      ? user.profile.directoryTitle.split(',')
+      ? user.profile.directoryTitle
       : false
     const directoryDepartment = user.profile.directoryDepartment
-      ? user.profile.directoryDepartment.split(',')
+      ? user.profile.directoryDepartment
       : false
     return (
       <>
@@ -600,7 +600,7 @@ class UserAccountProfileBioForm extends Component {
     event.preventDefault()
     const { user } = this.props
     fetch(
-      `/cloud-functions/profile/bio?token=${user.session}&user=${
+      `/.netlify/functions/profile-bio?token=${user.session}&user=${
         user._username
       }`,
       {

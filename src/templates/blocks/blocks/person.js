@@ -63,7 +63,7 @@ const BlockPerson = ({ email, uuid, compact }) => {
           speed={2}
           primaryColor="#f3f3f3"
           secondaryColor="#ecebeb"
-          uniquekey={`person-placeholder-${uuid}`}
+          uniquekey={`person-loader-${uuid}`}
         >
           <rect x="10" y="5" rx="4" ry="4" width="266" height="20" />
           <rect x="10" y="38" rx="3" ry="3" width="245" height="14" />
@@ -172,10 +172,9 @@ const BlockPerson = ({ email, uuid, compact }) => {
               <Box width={[1, 1 / 4]}>
                 {person._publicProfile && person._publicProfile.photo && (
                   <PersonPhoto
-                    src={person._publicProfile.photo.replace(
-                      '/csumb.edu/',
-                      '/edit.csumb.edu/'
-                    )}
+                    src={person._publicProfile.photo
+                      .replace('/csumb.edu/', '/edit.csumb.edu/')
+                      .replace('http://', 'https://')}
                     alt=""
                   />
                 )}

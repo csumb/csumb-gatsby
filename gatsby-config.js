@@ -1,12 +1,5 @@
 require('dotenv').config()
 
-const loginUrls = {
-  develop:
-    'https://csumb.okta.com/app/csumb_csumbwebsitedevremote_1/exkmey914mz0RN9060x7/sso/saml',
-  master:
-    'https://csumb.okta.com/app/csumb_csumbwebsitestaging_1/exkmflkimsu80ciSD0x7/sso/saml',
-}
-
 const gatsbyConfig = {
   siteMetadata: {
     title: 'Cal State Monterey Bay',
@@ -16,10 +9,7 @@ const gatsbyConfig = {
     showTitleNineMessage: true,
     okta: {
       login:
-        typeof process.env.TRAVIS_BRANCH !== 'undefined' &&
-        typeof loginUrls[process.env.TRAVIS_BRANCH] !== 'undefined'
-          ? loginUrls[process.env.TRAVIS_BRANCH]
-          : 'https://csumb.okta.com/',
+        'https://csumb.okta.com/home/csumb_csumbnetlify_1/0oanh9wep6JjS3Dl50x7/alnnh9z96oZ4ijHTY0x7',
     },
     swiftypeId: process.env.GATSBY_CSUMB_SWIFTYPE_ID,
     perSiteOlarkIds: [
@@ -312,7 +302,7 @@ const gatsbyConfig = {
         sv: 6,
       },
     },
-    'gatsby-plugin-meta-redirect',
+    'gatsby-plugin-netlify',
     'gatsby-plugin-csumb-post-build',
   ],
 }
