@@ -16,7 +16,7 @@ const ImageGridItem = ({ item }) => (
       <ImageGridImage
         src={
           item.image.key
-            ? `https://d2jtc9c99zuy7w.cloudfront.net/${item.image.key}`
+            ? `https://${process.env.GATSBY_CLOUDFRONT_DOMAIN}/${item.image.key}`
             : item.image.url
                 .replace('/csumb.edu/', '/edit.csumb.edu/')
                 .replace('http://', 'https://')
