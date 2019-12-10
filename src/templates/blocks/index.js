@@ -91,12 +91,14 @@ class Block extends Component {
         level={block._collapsedHeaderLevel}
         data-swiftype-index="true"
       >
-        <BlockType
-          {...block.data}
-          uuid={block.uuid}
-          headerHandler={headerHandler}
-          inColumn={inColumn}
-        />
+        <span className={`content-type content-type-${type}`}>
+          <BlockType
+            {...block.data}
+            uuid={block.uuid}
+            headerHandler={headerHandler}
+            inColumn={inColumn}
+          />
+        </span>
       </CollapseWrapper>
     )
   }
@@ -199,7 +201,7 @@ class Blocks extends Component {
     super(props)
     let { blocks } = props
     this.blocks = JSON.parse(blocks)
-    this.addBlockHeaderRelationships(this.blocks.layout)
+    //this.addBlockHeaderRelationships(this.blocks.layout)
   }
 
   addBlockHeaderRelationships(blockList) {

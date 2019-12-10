@@ -53,6 +53,19 @@ const PageTemplate = ({ pageContext }) => {
         {olarkSite && <Olark siteId={olarkSite} />}
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
+        <div className="page-metadata">
+          <h3>Page metadata</h3>
+          <ul>
+            <li>
+              <strong>Site name</strong>{' '}
+              <span className="metadata-site-name">{site.site}</span>
+            </li>
+            <li>
+              <strong>Site title</strong>{' '}
+              <span className="metadata-site-title">{site.title}</span>
+            </li>
+          </ul>
+        </div>
         <main>
           {topHero && <BlockHero {...topHero} />}
           <Container>
