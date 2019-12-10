@@ -1,5 +1,4 @@
 import { readdirSync } from 'fs'
-import replace from '@rollup/plugin-replace'
 
 const functions = []
 readdirSync('./src/functions/functions', { withFileTypes: true })
@@ -23,13 +22,6 @@ readdirSync('./src/functions/functions', { withFileTypes: true })
         file: `./functions/${name}.js`,
         format: 'cjs',
       },
-      plugins: [
-        replace({
-          'process.env.CSUMB_FUNCTIONS_USER_SALT': `'${
-            process.env.CSUMB_FUNCTIONS_USER_SALT
-          }'`,
-        }),
-      ],
     })
   })
 
