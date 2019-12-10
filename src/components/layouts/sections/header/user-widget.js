@@ -142,7 +142,7 @@ class UserDropdown extends Component {
           <UserDropdownMenuLink
             onClick={this.handleLogout.bind(this)}
             component="a"
-            href="/log-out"
+            href="/.netlify/functions/logout"
           >
             Log out
           </UserDropdownMenuLink>

@@ -70,7 +70,7 @@ class UserEmergencyForm extends Component {
     const { user } = this.props
     let everbridgePhone = false
     if (!error && everbridgeUser) {
-      everbridgeUser.user.paths.forEach(path => {
+      everbridgeUser.paths.forEach(path => {
         if (path.pathId === 241901148045324) {
           everbridgePhone = path.value
         }
