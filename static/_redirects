@@ -1,4 +1,3 @@
-/cashnet/pay/*      /cashnet/pay?category=*
 /schedule           /class-schedule
 /planning/schedule  /class-schedule
 
