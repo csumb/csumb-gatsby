@@ -45,6 +45,7 @@ const BlockImage = ({
           <img
             src={imageSource}
             alt={description.replace(/image/gi, '')}
+            data-pull-right={pullRight}
             style={{
               height: height && parseInt(height) > 10 ? `${height}px` : 'auto',
               width: 'auto',

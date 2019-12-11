@@ -53,21 +53,46 @@ const PageTemplate = ({ pageContext }) => {
         {olarkSite && <Olark siteId={olarkSite} />}
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
-        <div className="page-metadata">
+        <Container className="page-metadata">
           <h3>Page metadata</h3>
           <ul>
             <li>
+              <strong>Page title</strong>{' '}
+              <span className="page-metadata-page-title">{title}</span>
+            </li>
+            <li>
+              <strong>Page url</strong>{' '}
+              <span className="page-metadata-page-url">{pageUrl}</span>
+            </li>
+            <li>
               <strong>Site name</strong>{' '}
-              <span className="metadata-site-name">{site.site}</span>
+              <span className="page-metadata-site-name">{site.site}</span>
             </li>
             <li>
               <strong>Site title</strong>{' '}
-              <span className="metadata-site-title">{site.title}</span>
+              <span className="page-metadata-site-title">{site.title}</span>
+            </li>
+            <li>
+              <strong>Drupal node ID</strong>{' '}
+              <span className="page-metadata-site-title">{drupalNid}</span>
+            </li>
+            <li>
+              <strong>Is an event</strong>{' '}
+              <span
+                className="metadata-is-event"
+                data-is-event={event ? 'true ' : 'false'}
+              >
+                {event ? 'Yes' : 'No'}
+              </span>
             </li>
           </ul>
-        </div>
-        <main>
-          {topHero && <BlockHero {...topHero} />}
+        </Container>
+        <main id="main-content">
+          {topHero && (
+            <div className="page-top-hero">
+              <BlockHero {...topHero} />
+            </div>
+          )}
           <Container>
             <Breadcrumbs breadcrumbs={breadcrumbs} />
             <PageEditorTools site={site} pageId={drupalNid} />

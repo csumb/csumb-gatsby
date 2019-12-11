@@ -41,7 +41,11 @@ const BlockHeading = ({
 
   let HeadingTag = styled(`h${level}`)``
   return (
-    <HeadingTag id={`heading-${uuid}`} collapsible={collapsible}>
+    <HeadingTag
+      id={`heading-${uuid}`}
+      collapsible={collapsible}
+      data-is-collapsible={collapsible}
+    >
       {collapsible ? (
         <CollapsibleHeading
           onClick={() => {

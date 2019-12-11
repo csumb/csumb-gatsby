@@ -18,7 +18,19 @@ const BlockForm = ({ height, provider }) => {
     formUrl = `https://airtable.com/embed/${provider.form}`
   }
   return (
-    <FormIframe style={{ height: height + 'px' }} src={formUrl} title="Form" />
+    <>
+      <span className="content-type-form--provider-name">
+        {provider.provider}
+      </span>
+      <span className="content-type-form--provider-form">{provider.form}</span>
+      <span className="content-type-form--height">{height}</span>
+      <span className="content-type-form--form-url">{formUrl}</span>
+      <FormIframe
+        style={{ height: height + 'px' }}
+        src={formUrl}
+        title="Form"
+      />
+    </>
   )
 }
 

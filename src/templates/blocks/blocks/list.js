@@ -41,7 +41,7 @@ const BlockList = ({ type, uuid, list }) => {
     }
   })
   return (
-    <ListTag>
+    <ListTag data-list-type={type}>
       {listItems.map((item, key) => (
         <li key={`list-${uuid}-${key}`}>
           {parseHtml(item.text)}

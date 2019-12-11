@@ -48,7 +48,7 @@ const EventWrapper = styled('div')`
 `
 
 const EventLocation = ({ location }) => (
-  <>
+  <div className="event-location" data-location-type={location.type}>
     {location.type === 'on-campus' && (
       <p>
         <Link
@@ -56,18 +56,23 @@ const EventLocation = ({ location }) => (
             .toLowerCase()
             .trim()}`}
         >
-          {location.building.name}
+          <span className="event-location--building-name">
+            {location.building.name}
+          </span>
+          <span className="event-location--building-code">
+            {location.building.code}
+          </span>
         </Link>
         {location.room && (
           <>
             <br />
-            Room {location.room}
+            Room <span className="event-location--room">{location.room}</span>
           </>
         )}
       </p>
     )}
     {location.type === 'off-campus' && (
-      <address>
+      <address className="event-location--address">
         {location.address.organisation && (
           <>
             {location.address.organisation}
@@ -88,16 +93,18 @@ const EventLocation = ({ location }) => (
       </address>
     )}
     {location.type === 'online' && (
-      <ButtonLink to={location.url}>Go to event</ButtonLink>
+      <ButtonLink className="event-location--online" to={location.url}>
+        Go to event
+      </ButtonLink>
     )}
     {location.description && <p>{location.description}</p>}
-  </>
+  </div>
 )
 
 const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => (
   <>
     {event && event.times && (
-      <EventWrapper>
+      <EventWrapper className="event">
         {event.title && (
           <h2>
             {linkToEvent ? (
@@ -107,7 +114,9 @@ const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => (
             )}
           </h2>
         )}
-        <LeadParagraph>{event.description}</LeadParagraph>
+        <LeadParagraph className="event-description">
+          {event.description}
+        </LeadParagraph>
         <Flex>
           {event.image && (
             <Box width={[1, 4 / 12]} pr={[0, 4]}>
@@ -125,7 +134,7 @@ const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => (
             <EventLocation {...event} />
             {event.cost_message && <p>{event.cost_message}</p>}
             {event.ticket && (
-              <ButtonLink to={event.ticket.url}>
+              <ButtonLink className="event-ticket" to={event.ticket.url}>
                 {event.ticket.title ? (
                   <>{event.ticket.title}</>
                 ) : (
@@ -138,7 +147,7 @@ const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => (
             {event.dates.length > 1 && displayOnlyFirstDate !== true && (
               <>
                 <h4>All dates</h4>
-                <UnstyledList>
+                <UnstyledList className="event-dates">
                   {event.dates.map(date => (
                     <li key={date.start}>
                       {moment(date.start).format(dateFormat)}
@@ -172,12 +181,12 @@ const EventFeedItem = ({
   image,
   description,
 }) => (
-  <Flex>
+  <Flex className="content-type-event-feed--item">
     <Box width={[1, 3 / 4]} pr={[0, 2]}>
       <Link to={`/${link}`}>
         <EventFeedItemTitle>{title}</EventFeedItemTitle>
       </Link>
-      <EventFeedItemDate>
+      <EventFeedItemDate className="content-type-event-feed--date">
         {getNextEventDate(dates)} {times.start} — {times.end}
       </EventFeedItemDate>
       <EventLocation location={location} />

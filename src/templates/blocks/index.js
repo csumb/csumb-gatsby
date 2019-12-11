@@ -91,7 +91,10 @@ class Block extends Component {
         level={block._collapsedHeaderLevel}
         data-swiftype-index="true"
       >
-        <span className={`content-type content-type-${type}`}>
+        <span
+          className={`content-type content-type-${type}`}
+          data-content-type={type}
+        >
           <BlockType
             {...block.data}
             uuid={block.uuid}
@@ -259,7 +262,7 @@ class Blocks extends Component {
       return null
     }
     return (
-      <Container>
+      <Container className="main-content-blocks">
         {blocks.layout.map(layout => (
           <React.Fragment key={layout.id}>
             {blocks.blocks[layout.id] && (

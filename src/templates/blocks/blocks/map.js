@@ -9,22 +9,30 @@ const MapWrapper = styled('div')`
 `
 const BlockMap = ({ zoom, center, features, kml, google }) => {
   return (
-    <MapWrapper>
-      <Map
-        google={google}
-        zoom={zoom}
-        initialCenter={center}
-        onReady={(mapProps, map) => {
-          map.data.addGeoJson(features)
-          if (kml && kml.url) {
-            new mapProps.google.maps.KmlLayer({
-              url: kml.url,
-              map: map,
-            })
-          }
-        }}
-      />
-    </MapWrapper>
+    <>
+      <span className="content-type-map--zoom">{zoom}</span>
+      <span className="content-type-map--center-lat">{center.lat}</span>
+      <span className="content-type-map--center-lon">{center.lon}</span>
+      <pre className="content-type-map--features">
+        {JSON.stringify(features, null, 2)}
+      </pre>
+      <MapWrapper>
+        <Map
+          google={google}
+          zoom={zoom}
+          initialCenter={center}
+          onReady={(mapProps, map) => {
+            map.data.addGeoJson(features)
+            if (kml && kml.url) {
+              new mapProps.google.maps.KmlLayer({
+                url: kml.url,
+                map: map,
+              })
+            }
+          }}
+        />
+      </MapWrapper>
+    </>
   )
 }
 

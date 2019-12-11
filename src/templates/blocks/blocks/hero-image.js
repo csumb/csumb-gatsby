@@ -69,51 +69,59 @@ const BlockHeroImage = ({
   buttonUrl,
   buttonText,
 }) => (
-  <BreakpointContext.Consumer>
-    {({ isMobile }) => (
-      <>
-        {isMobile && (headline || text) && (
-          <MobileHeroTextWrapper>
-            <HeroText
-              text={text}
-              headline={headline}
-              buttonUrl={buttonUrl}
-              buttonText={buttonText}
-            />
-          </MobileHeroTextWrapper>
-        )}
-        <HeroImage
-          opacity={0}
-          parallaxOffset={0}
-          transitionDuration={0}
-          isCentered={false}
-          imageSrc={image.url}
-          minHeight={heroHeight}
-        >
-          {!isMobile && (
-            <HeroContainer>
-              <Container>
-                {(headline || text) && (
-                  <HeroImageTextWrapper
-                    position={
-                      ['ne', 'se'].indexOf(position) > -1 ? 'right' : 'left'
-                    }
-                  >
-                    <HeroText
-                      text={text}
-                      headline={headline}
-                      buttonUrl={buttonUrl}
-                      buttonText={buttonText}
-                    />
-                  </HeroImageTextWrapper>
-                )}
-              </Container>
-            </HeroContainer>
+  <>
+    <span className="content-type-hero-image--imge">{image.url}</span>
+    <span className="content-type-hero-image--position">{position}</span>
+    <span className="content-type-hero-image--headline">{headline}</span>
+    <span className="content-type-hero-image--text">{text}</span>
+    <span className="content-type-hero-image--button-text">{buttonText}</span>
+    <span className="content-type-hero-image--button-url">{buttonUrl}</span>
+    <BreakpointContext.Consumer>
+      {({ isMobile }) => (
+        <>
+          {isMobile && (headline || text) && (
+            <MobileHeroTextWrapper>
+              <HeroText
+                text={text}
+                headline={headline}
+                buttonUrl={buttonUrl}
+                buttonText={buttonText}
+              />
+            </MobileHeroTextWrapper>
           )}
-        </HeroImage>
-      </>
-    )}
-  </BreakpointContext.Consumer>
+          <HeroImage
+            opacity={0}
+            parallaxOffset={0}
+            transitionDuration={0}
+            isCentered={false}
+            imageSrc={image.url}
+            minHeight={heroHeight}
+          >
+            {!isMobile && (
+              <HeroContainer className="">
+                <Container>
+                  {(headline || text) && (
+                    <HeroImageTextWrapper
+                      position={
+                        ['ne', 'se'].indexOf(position) > -1 ? 'right' : 'left'
+                      }
+                    >
+                      <HeroText
+                        text={text}
+                        headline={headline}
+                        buttonUrl={buttonUrl}
+                        buttonText={buttonText}
+                      />
+                    </HeroImageTextWrapper>
+                  )}
+                </Container>
+              </HeroContainer>
+            )}
+          </HeroImage>
+        </>
+      )}
+    </BreakpointContext.Consumer>
+  </>
 )
 
 export default BlockHeroImage
