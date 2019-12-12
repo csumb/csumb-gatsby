@@ -101,6 +101,9 @@ class DashboardPage extends Component {
                                 mobileTab={activeTab}
                                 isMobile={true}
                                 moreApps={data.allCsumbApp.edges}
+                                disableAlumni={
+                                  data.site.siteMetadata.disableAlumni
+                                }
                                 showTitleNineMessage={
                                   data.site.siteMetadata.showTitleNineMessage
                                 }
@@ -116,6 +119,9 @@ class DashboardPage extends Component {
                                 <Container topPadding>
                                   <DashboardContent
                                     user={context.user}
+                                    disableAlumni={
+                                      data.site.siteMetadata.disableAlumni
+                                    }
                                     showTitleNineMessage={
                                       data.site.siteMetadata
                                         .showTitleNineMessage
@@ -155,6 +161,7 @@ export const query = graphql`
     site {
       siteMetadata {
         showTitleNineMessage
+        disableAlumni
         okta {
           login
         }

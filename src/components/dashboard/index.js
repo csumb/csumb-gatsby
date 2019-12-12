@@ -9,6 +9,7 @@ import { DashboardEvents } from './events'
 import { DashboardMessages } from './messages'
 import DashboardSecondary from './secondary-email'
 import DashboardTitleNine from './title-nine'
+import DashboardAlumni from './alumni'
 
 const dashboardWrapperStyle = `
   padding: 1rem;
@@ -109,6 +110,7 @@ class DashboardContent extends Component {
       moreApps,
       archivedContent,
       showTitleNineMessage,
+      disableAlumni,
     } = this.props
     return (
       <>
@@ -119,6 +121,7 @@ class DashboardContent extends Component {
                 <DashboardSecondary user={user} />
                 <h2>Messages</h2>
                 {showTitleNineMessage && <DashboardTitleNine user={user} />}
+                {!disableAlumni && <DashboardAlumni user={user} />}
                 <DashboardMessages
                   messages={messages}
                   archive={id => {
@@ -171,6 +174,7 @@ class DashboardContent extends Component {
               <Box width={[1, 1, 1 / 2, 1 / 2]}>
                 <DashboardMessageWrapper>
                   <h2>Messages</h2>
+                  {!disableAlumni && <DashboardAlumni user={user} />}
                   {ready ? (
                     <>
                       {showTitleNineMessage && (
