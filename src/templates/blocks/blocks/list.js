@@ -8,8 +8,15 @@ const BlockList = ({ type, uuid, list }) => {
       ? styled('ul')`
           list-style-type: none;
           margin-left: 0;
+          li {
+            margin-bottom: 0.55rem;
+          }
         `
-      : styled(type)``
+      : styled(type)`
+          li {
+            margin-bottom: 0.55rem;
+          }
+        `
 
   const listItems = []
   let priorLevel = 1
