@@ -8,33 +8,47 @@ import Container from '../../../components/common/container'
 import BreakpointContext from '../../../components/contexts/breakpoint'
 const heroHeight = '60vh'
 
-const background = color(colors.primary.dark)
+const background = color(colors.gray.dark)
   .rgb()
   .array()
 
 const HeroButton = styled(LinkInspect)`
   color: ${colors.white};
-  border: 3px solid ${colors.white};
-  display: inline-block;
-  padding: 0.5rem;
+  background: ${colors.buttons.default};
+  border-radius: 6px;
+  padding: 0.45rem 1rem;
   font-weight: bold;
   text-decoration: none;
+  text-align: center;
+  align-self: center;
   &:visited {
     color: ${colors.white};
+  }
+  &:hover {
+    background: ${colors.buttons.dark};
   }
 `
 
 const HeroImageTextWrapper = styled('div')`
   color: ${colors.white};
-  background: rgba(${background[0]}, ${background[1]}, ${background[2]}, 0.8);
+  background: rgba(${background[0]}, ${background[1]}, ${background[2]}, 0.5);
   position: absolute;
-  width: 33.33333333%;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
   max-height: ${heroHeight};
   padding: 2rem;
   ${props =>
-    props.position === 'right' &&
-    `
-    right: 0;`}
+    (props.position === 'right' &&
+      `
+    right: 0;
+    margin-right: 40px;
+    `) ||
+    (props.position === 'left' &&
+      `
+    left: 0;
+    margin-left: 40px;
+    `)}
 `
 
 const MobileHeroTextWrapper = styled('div')`
