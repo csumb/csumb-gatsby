@@ -59,6 +59,7 @@ const BlockFeed = ({ items, title, displayShort, showMore, limit }) => {
       </FeedList>
       {showMore && (
         <Button
+          style={{ marginBottom: '50px' }}
           onClick={event => {
             event.preventDefault()
             setShowAll(!showAll)
