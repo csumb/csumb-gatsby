@@ -4,7 +4,6 @@ import { Layout, SiteHeader } from '../../components/layouts/default'
 import { UserContext } from '../../components/contexts/user'
 import { graphql } from 'gatsby'
 import Olark from '../../components/utilities/olark'
-import styled from '@emotion/styled'
 import { ButtonLink } from '../../components/common/button'
 import {
   DashboardApps,
@@ -12,14 +11,8 @@ import {
   DashboardMobileToolbar,
 } from '../../components/dashboard'
 import { navigate } from '@reach/router'
-import Link from 'gatsby-link'
 import BreakpointContext from '../../components/contexts/breakpoint'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
-
-const ArchivedMessages = styled('p')`
-  text-align: right;
-  margin: 1.5rem 0;
-`
 
 class DashboardPage extends Component {
   state = {
@@ -108,6 +101,9 @@ class DashboardPage extends Component {
                                 mobileTab={activeTab}
                                 isMobile={true}
                                 moreApps={data.allCsumbApp.edges}
+                                disableAlumni={
+                                  data.site.siteMetadata.disableAlumni
+                                }
                                 showTitleNineMessage={
                                   data.site.siteMetadata.showTitleNineMessage
                                 }
@@ -123,16 +119,14 @@ class DashboardPage extends Component {
                                 <Container topPadding>
                                   <DashboardContent
                                     user={context.user}
+                                    disableAlumni={
+                                      data.site.siteMetadata.disableAlumni
+                                    }
                                     showTitleNineMessage={
                                       data.site.siteMetadata
                                         .showTitleNineMessage
                                     }
                                   />
-                                  <ArchivedMessages>
-                                    <Link to="/dashboard/archive">
-                                      View archived messages &amp; events
-                                    </Link>
-                                  </ArchivedMessages>
                                 </Container>
                               </section>
                             </>
@@ -167,6 +161,7 @@ export const query = graphql`
     site {
       siteMetadata {
         showTitleNineMessage
+        disableAlumni
         okta {
           login
         }

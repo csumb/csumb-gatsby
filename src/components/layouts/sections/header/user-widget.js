@@ -77,7 +77,7 @@ class UserDropdown extends Component {
 
   handleLogout() {
     cookies.remove('csumb-sites')
-    cookies.remove('csumbUser')
+    cookies.remove('csumbWebUser')
     cookies.remove('csumbSession')
   }
 
@@ -142,7 +142,7 @@ class UserDropdown extends Component {
           <UserDropdownMenuLink
             onClick={this.handleLogout.bind(this)}
             component="a"
-            href="/log-out"
+            href="/.netlify/functions/logout"
           >
             Log out
           </UserDropdownMenuLink>

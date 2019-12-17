@@ -29,12 +29,28 @@ class DashboardAlumni extends Component {
       })
       return null
     } else {
-      this.setState({
-        isReady: true,
-        alumniData: {
-          showMessage: true,
-        },
-      })
+      fetch(`/dashboard/alumni/${this.props.user._username}.json`)
+        .then(response => {
+          return response.json()
+        })
+        .then(user => {
+          if (user) {
+            this.setState({
+              isReady: true,
+              alumniData: {
+                showMessage: true,
+              },
+            })
+          }
+        })
+        .catch(e => {
+          this.setState({
+            isReady: true,
+            alumniData: {
+              showMessage: false,
+            },
+          })
+        })
     }
   }
 
@@ -44,7 +60,7 @@ class DashboardAlumni extends Component {
       success: true,
     })
     fetch(
-      `/coud-functions/alumni?token=${this.props.user.session}&user=${
+      `/.netlify/functions/alumni?token=${this.props.user.session}&user=${
         this.props.user._username
       }`
     )
@@ -62,10 +78,13 @@ class DashboardAlumni extends Component {
 
   render() {
     const { isReady, alumniData, showDialog, success, agreed } = this.state
+    const { user } = this.props
     if (
-      this.props.user &&
-      this.props.user.profile &&
-      this.props.user.profile.roles.indexOf('csumb_aa_life_member') > -1
+      user &&
+      user.profile &&
+      (user.profile.roles.indexOf('csumb_aa_life_member') > -1 ||
+        (user.profile.provisionalServices &&
+          user.profile.provisionalServices.indexOf('alumni') > -1))
     ) {
       return null
     }

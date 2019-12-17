@@ -58,7 +58,7 @@ class LookupForm extends Component {
     const { firstName, lastName, dob } = this.state
     event.preventDefault()
     fetch(
-      `/cloud-functions/okta/lookup?firstName=${firstName}&lastName=${lastName}&dob=${dob}`
+      `/.netlify/functions/user-lookup?firstName=${firstName}&lastName=${lastName}&dob=${dob}`
     )
       .then(response => {
         return response.json()

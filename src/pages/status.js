@@ -49,20 +49,18 @@ class StatusPage extends Component {
               website information after this time is not published yet.
             </p>
             <p>
-              The website is built <strong>every hour</strong>.
+              The website is built <strong>every half hour</strong>.
             </p>
             <p>
               Look like we're behind? Check{' '}
-              <a href="https://www.traviscistatus.com/">
+              <a href="https://www.netlifystatus.com/">
                 the status of our website build tool.
               </a>
               <br />
-              <a href="https://travis-ci.com/csumb/csumb-gatsby/builds#">
-                <img
-                  src="https://travis-ci.com/csumb/csumb-gatsby.svg?branch=master"
-                  alt="Travis build status"
-                />
-              </a>
+              <img
+                src="https://api.netlify.com/api/v1/badges/a6a05a8c-1aad-4f26-928f-375ac47c9b1e/deploy-status"
+                alt="Netlify build status"
+              />
             </p>
           </Well>
           <Well>
