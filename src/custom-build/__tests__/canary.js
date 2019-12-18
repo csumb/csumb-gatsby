@@ -2,7 +2,7 @@ const fs = require('fs-extra')
 
 describe('Canary', () => {
   it('has an academics page', () => {
-    const exists = fs.pathExistsSync('./public/academicss/index.html')
+    const exists = fs.pathExistsSync('./public/academics/index.html')
     expect(exists).toBe(true)
   })
 
