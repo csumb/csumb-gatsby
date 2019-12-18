@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import { colors } from '../../../style'
+import typography from '../../../style/typography'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faChevronDown,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
+
+typography.injectStyles()
 
 const CollapsibleIcon = styled('span')`
   display: inline-block;
@@ -39,7 +42,7 @@ const BlockHeading = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  let HeadingTag = styled(`h${level}`)``
+  let HeadingTag = `h${level}`
   return (
     <HeadingTag id={`heading-${uuid}`} collapsible={collapsible}>
       {collapsible ? (

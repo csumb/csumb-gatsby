@@ -37,6 +37,30 @@ const type = {
     form: {
       margin: 0,
     },
+    p: {
+      marginBottom: '1.25em',
+    },
+    'h2,h3,h4,h5,h6': {
+      margin: '1.75rem 0 1rem',
+      lineHeight: 1.15,
+      letterSpacing: '-1px',
+    },
+    h1: {
+      marginTop: 0,
+      fontSize: '2.488em',
+    },
+    h2: {
+      fontSize: '2.074em',
+    },
+    h3: {
+      fontSize: '1.728em',
+    },
+    h4: {
+      fontSize: '1.44em',
+    },
+    h5: {
+      fontSize: '1.2em',
+    },
   }),
 }
 

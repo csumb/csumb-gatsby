@@ -7,6 +7,7 @@ import Container from '../../../common/container'
 import { colors, fonts, bp } from '../../../../style'
 import { Menu, MenuList, MenuButton, MenuLink } from '../../../common/menu'
 import BreakpointContext from '../../../contexts/breakpoint'
+import { Link } from 'gatsby'
 
 const navigationFontSize = '0.92rem'
 
@@ -26,15 +27,15 @@ const SiteNavigationList = styled('ul')`
   }
 `
 
-const SiteNavigationLink = styled('a')`
+const SiteNavigationLink = styled(Link)`
   text-decoration: none;
   transition: all 0.5s;
-  padding: 0.5em;
+  padding: 0.35rem 0.5rem;
   display: inline-block;
   position: relative;
   z-index: 1;
   &[aria-current='page'] {
-    text-decoration: underline;
+    border-bottom: 3px solid ${colors.muted.mid} !important;
   }
   &:hover {
     transition: all 0.5s;
@@ -66,8 +67,7 @@ const SiteNavigationLink = styled('a')`
 
 const SiteNavigationSubList = styled(MenuList)`
   background: ${colors.primary.dark};
-  padding: 0.5rem 0;
-  margin-top: 10px;
+  padding: 0.75rem 0;
   font-weight: 300;
   a {
     padding: 5px 20px;
@@ -86,10 +86,11 @@ const SiteNavigationMenuButton = styled(MenuButton)`
   color: ${colors.white};
   border: none;
   cursor: pointer;
-  padding: .5rem;
+  padding: 0.35rem 0.5rem;
   position:relative;
   z-index: 1;
   &[aria-expanded="true"] {
+    background: ${colors.primary.dark};
     .site-navigation-is-expanded {
       display: inline-block;
     }
@@ -152,7 +153,7 @@ const SiteNavigationItem = ({ to, children, navigationChildren, first }) => {
   return (
     <>
       {to ? (
-        <SiteNavigationLink href={to} first={first}>
+        <SiteNavigationLink to={to} first={first}>
           {children}
         </SiteNavigationLink>
       ) : (
