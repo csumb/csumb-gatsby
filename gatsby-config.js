@@ -131,7 +131,7 @@ const gatsbyConfig = {
         tables: [
           // Science illustration
           {
-            baseId: 'appW5yp8SpOvxD3Al',
+            baseId: 'appW5yp8SpOvxD3AlTEST',
             tableName: 'Graduates',
             queryName: 'ScienceIllustrationGraduates',
           },
