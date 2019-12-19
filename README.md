@@ -12,12 +12,10 @@ Need help with your campus website? [Get in touch with web services.](https://cs
 - Download [Github Desktop](https://desktop.github.com/)
 - Make sure git is installed
 - In terminal, enter `npm i` to setup and install all the node dependencies.
-- Install global grunt by making sure you're in your local admin account, and enter `npm i -g grunt-cli`
-- Install global gatsby by making sure you're in your local admin accoutn and enter `npm install --global gatsby-cli`
+- Install global gatsby by making sure you're in your local admin account and enter `npm install --global gatsby-cli`
 - Login to Github. Visit the [personal access token](https://github.com/settings/tokens) page and generate a new token.
 - Enter a new line in the file `~/.bash_profile` (create it if you don't have it):
   - `export GITHUB_TOKEN='[github username]:[token]';`
-- Run `grunt local` to clone test web content to your local machine
 
 ## Running the site locally
 
@@ -28,7 +26,7 @@ Need help with your campus website? [Get in touch with web services.](https://cs
 
 ## Environment variables
 
-The environment variables defined in TravisCI are required for builds to work.
+The environment variables defined in Netlify are required for builds to work.
 
 ## Special URLs
 
