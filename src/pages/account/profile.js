@@ -681,7 +681,8 @@ class UserAccountProfilePhoto extends Component {
       <AccountGroup legend="Profile photo">
         <p>
           This photo is shown on the{' '}
-          <Link to="/directory">public campus directory.</Link>
+          <Link to="/directory">public campus directory.</Link> Refresh the page
+          to see your updated photo.
         </p>
         {profile.photo && (
           <AccountData>
