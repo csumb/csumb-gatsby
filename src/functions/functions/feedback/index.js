@@ -3,15 +3,15 @@ import sgMail from '@sendgrid/mail'
 
 sgMail.setApiKey(process.env.CSUMB_FUNCTIONS_SENDGRID)
 
-module.exports = (request, response) => {
-  const feedbackEmail = request.query.feedbackEmail
+exports.handler = (event, context, callback) => {
+  const feedbackEmail = event.queryStringParameters.feedbackEmail
 
-  const feedbackHTML = feedbackTemplate(request.query)
+  const feedbackHTML = feedbackTemplate(event.queryStringParameters)
   const msg = {
     to: feedbackEmail,
     from: 'webservices@csumb.edu',
     cc: 'webservices@csumb.edu',
-    subject: `Page feedback on ${request.query.title}`,
+    subject: `Page feedback on ${event.queryStringParameters.title}`,
     html: feedbackHTML,
   }
   sgMail.send(msg)
