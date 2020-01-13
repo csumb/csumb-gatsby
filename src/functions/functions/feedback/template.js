@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-module.exports = data => {
+export default data => {
   const date = moment().format('MMMM Do YYYY')
   return `<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
