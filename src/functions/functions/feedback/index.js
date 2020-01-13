@@ -27,6 +27,5 @@ exports.handler = (event, response) => {
       const { message, code, response } = error
       //Extract response msg
       const { headers, body } = response
-      response.end()
     })
 }
