@@ -56,7 +56,7 @@ exports.handler = (event, context, callback) => {
       user.token = md5(user.login.split('@').shift() + salt)
       const cookie = `csumbWebUser=${encodeURIComponent(
         JSON.stringify(user)
-      )}; SameSite=None Secure; Domain=${domain}; Path=/`
+      )}; SameSite=None; Secure; Domain=${domain}; Path=/`
       if (typeof body.RelayState !== 'undefined' && body.RelayState) {
         callback(null, {
           statusCode: 301,
