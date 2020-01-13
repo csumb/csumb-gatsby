@@ -3,7 +3,7 @@ import sgMail from '@sendgrid/mail'
 
 sgMail.setApiKey(process.env.CSUMB_FUNCTIONS_SENDGRID)
 
-exports.handler = (event, context, callback) => {
+exports.handler = (event, response) => {
   const feedbackEmail = event.queryStringParameters.feedbackEmail
 
   const feedbackHTML = feedbackTemplate(event.queryStringParameters)
