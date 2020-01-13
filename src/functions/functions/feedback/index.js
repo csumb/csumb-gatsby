@@ -1,21 +1,20 @@
-const feedbackTemplate = require('./template.js')
+const feedbackTemplate = require('./template')
 const sgMail = require('@sendgrid/mail')
 
 setApiKey(process.env.CSUMB_FUNCTIONS_SENDGRID)
 
-export default (event, response) => {
-  const feedbackEmail = event.queryStringParameters.feedbackEmail
+module.exports = (request, response) => {
+  const feedbackEmail = request.query.feedbackEmail
 
-  const feedbackHTML = feedbackTemplate(event.queryStringParameters)
+  const feedbackHTML = feedbackTemplate(request.query)
   const msg = {
     to: feedbackEmail,
     from: 'webservices@csumb.edu',
     cc: 'webservices@csumb.edu',
-    subject: `Page feedback on ${event.queryStringParameters.title}`,
+    subject: `Page feedback on ${request.query.title}`,
     html: feedbackHTML,
   }
-  sgMail
-    .send(msg)
+  sgMail.send(msg)
     .then(() => {
       response.send(JSON.stringify({ success: true, email: feedbackEmail }))
     })
