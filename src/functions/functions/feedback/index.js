@@ -18,6 +18,7 @@ exports.handler = (event, response) => {
     .send(msg)
     .then(() => {
       response.send(JSON.stringify({ success: true, email: feedbackEmail }))
+      response.end()
     })
     .catch(error => {
       //Log friendly error
@@ -26,6 +27,6 @@ exports.handler = (event, response) => {
       const { message, code, response } = error
       //Extract response msg
       const { headers, body } = response
+      response.end()
     })
-  response.end()
 }
