@@ -1,9 +1,9 @@
-const feedbackTemplate = require('./feedback-template')
+const feedbackTemplate = require('./template')
 const sgMail = require('@sendgrid/mail')
 
-sgMail.setApiKey(process.env.CSUMB_FUNCTIONS_SENDGRID)
+setApiKey(process.env.CSUMB_FUNCTIONS_SENDGRID)
 
-module.exports = (request, response) => {
+export default (request, response) => {
   const feedbackEmail = request.query.feedbackEmail
 
   const feedbackHTML = feedbackTemplate(request.query)
