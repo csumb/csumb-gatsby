@@ -14,7 +14,18 @@ exports.handler = (event, context, callback) => {
     subject: `Page feedback on ${event.queryStringParameters.title}`,
     html: feedbackHTML,
   }
-  sgMail.send(msg)
-  response.send(JSON.stringify({ success: true, email: feedbackEmail }))
+  sgMail
+    .send(msg)
+    .then(() => {
+      response.send(JSON.stringify({ success: true, email: feedbackEmail }))
+    })
+    .catch(error => {
+      //Log friendly error
+      console.error(error.toString())
+      //Extract error msg
+      const { message, code, response } = error
+      //Extract response msg
+      const { headers, body } = response
+    })
   response.end()
 }
