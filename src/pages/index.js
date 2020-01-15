@@ -43,10 +43,13 @@ const IndexPage = ({ data }) => {
   } = data
 
   const stories = sortItems(data)
+  const feedbackEmail = 'webservices@csumb.edu'
+  const title = 'Homepage'
+  const pageUrl = '/'
 
   return (
     <PageFeedbackContext.Provider
-      value={{ email: 'webservices@csumb.edu', title: 'Homepage', url: '/' }}
+      value={{ email: feedbackEmail, title: title, url: pageUrl }}
     >
       <Layout noFooterMargin={true}>
         <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
