@@ -2,8 +2,18 @@ import React from 'react'
 import { UserContext, setUserRole } from './src/components/contexts/user'
 import BreakpointContext from './src/components/contexts/breakpoint'
 import Cookies from 'universal-cookie'
+import { globalHistory } from '@reach/router'
 
 const cookies = new Cookies()
+
+export const onInitialClientRender = () => {
+  /**
+   * This is a workaround for a bug in Gatsby
+   *
+   * See https://github.com/gatsbyjs/gatsby/issues/8357 for more details
+   */
+  globalHistory._onTransitionComplete()
+}
 
 class UserComponent extends React.Component {
   state = {
