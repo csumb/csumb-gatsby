@@ -51,7 +51,7 @@ class DashboardPage extends Component {
     return (
       <PageFeedbackContext.Provider
         value={{
-          email: 'webservices@csumb.edu',
+          email: 'webfolk@csumb.edu',
           title: 'Dashboard',
           url: '/dashboard',
         }}

@@ -54,9 +54,7 @@ exports.sourceNodes = async (
       topHero: topHero,
       breadcrumbs: breadcrumbs,
       navigation: content.navigation ? content.navigation : [],
-      feedbackEmail: content.feedback_email
-        ? content.feedback_email
-        : 'webservices@csumb.edu',
+      feedbackEmail: content.feedback_email ? content.feedback_email : '',
       pageContent: JSON.stringify(content.pageContent),
       embedTargetSite:
         typeof content.embed_target_site !== 'undefined'
