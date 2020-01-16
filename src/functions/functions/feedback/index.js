@@ -17,6 +17,7 @@ exports.handler = (event, response) => {
   sgMail
     .send(msg)
     .then(() => {
+      console.log(response.toString())
       response.send(JSON.stringify({ success: true, email: feedbackEmail }))
       response.end()
     })
