@@ -12,6 +12,7 @@ import Blocks from '../../templates/blocks'
 import { colors, bp } from '../../style'
 import { InputText, InputSelect, Submit } from '../../components/common/forms'
 import oneSearchLogo from '../../assets/images/library-one-search.png'
+import PageFeedbackContext from '../../components/contexts/page-feedback'
 
 const LibrarySearchWrapper = styled('form')`
   background: ${colors.muted.highlight};
@@ -103,27 +104,35 @@ class LibraryPage extends Component {
   render() {
     const { data } = this.props
     return (
-      <Layout pageTitle="Library" siteTitle="Library" isSiteHomepage={true}>
-        <SiteHeader path="/library">Library</SiteHeader>
-        {data.allCsumbNavigation &&
-          data.allCsumbNavigation.edges &&
-          data.allCsumbNavigation.edges[0] && (
-            <SiteNavigation
-              navigation={data.allCsumbNavigation.edges[0].node.navigation}
-            />
-          )}
-        <Container>
-          <LibrarySearch />
-          <div ref={this.chatRef} />
-          <style>{`.libraryh3lp img { height: 44px !important;}`}</style>
-
-          {data.allCsumbPage &&
-            data.allCsumbPage.edges &&
-            data.allCsumbPage.edges[0] && (
-              <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+      <PageFeedbackContext.Provider
+        value={{
+          email: 'webfolk@csumb.edu',
+          title: 'Library',
+          url: '/library',
+        }}
+      >
+        <Layout pageTitle="Library" siteTitle="Library" isSiteHomepage={true}>
+          <SiteHeader path="/library">Library</SiteHeader>
+          {data.allCsumbNavigation &&
+            data.allCsumbNavigation.edges &&
+            data.allCsumbNavigation.edges[0] && (
+              <SiteNavigation
+                navigation={data.allCsumbNavigation.edges[0].node.navigation}
+              />
             )}
-        </Container>
-      </Layout>
+          <Container>
+            <LibrarySearch />
+            <div ref={this.chatRef} />
+            <style>{`.libraryh3lp img { height: 44px !important;}`}</style>
+
+            {data.allCsumbPage &&
+              data.allCsumbPage.edges &&
+              data.allCsumbPage.edges[0] && (
+                <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+              )}
+          </Container>
+        </Layout>
+      </PageFeedbackContext.Provider>
     )
   }
 }

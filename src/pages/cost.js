@@ -366,7 +366,7 @@ class CostPage extends Component {
     const { data } = this.props
     return (
       <PageFeedbackContext.Provider
-        value={{ email: 'webservices@csumb.edu', title: 'Cost', url: '/cost' }}
+        value={{ email: 'webfolk@csumb.edu', title: 'Cost', url: '/cost' }}
       >
         <Layout>
           <SiteHeader path="/cost">Costs &amp; Aid</SiteHeader>

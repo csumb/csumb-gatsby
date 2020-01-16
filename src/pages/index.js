@@ -46,7 +46,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <PageFeedbackContext.Provider
-      value={{ email: 'webservices@csumb.edu', title: 'Homepage', url: '/' }}
+      value={{ email: 'webfolk@csumb.edu', title: 'Homepage', url: '/' }}
     >
       <Layout noFooterMargin={true}>
         <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
