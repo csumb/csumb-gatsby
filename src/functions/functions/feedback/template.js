@@ -807,7 +807,7 @@ export default data => {
                             <td class="mcnImageContent" valign="top" style="padding-right: 0px;padding-left: 0px;padding-top: 0;padding-bottom: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
 
 
-                                        <img align="right" alt="" src="https://csumb.edu/sites/all/modules/csumb/csumb_feedback/img/otter.png" width="300" style="max-width: 498px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
+                                        <img align="right" alt="" src="https://s3.amazonaws.com/csumb-uploads/AKgelRpkTqeHuUY24Rcn_e7893b62-95d3-4a64-a53f-14c407e30235.png" width="300" style="max-width: 498px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
 
 
                             </td>
