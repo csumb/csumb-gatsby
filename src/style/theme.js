@@ -14,8 +14,7 @@ const colors = {
     lightest: '#eaf3f9',
   },
   buttons: {
-    default: '#1c8140',
-    dark: '#07633B',
+    default: '#07633B',
   },
   secondary: {
     highlight: {

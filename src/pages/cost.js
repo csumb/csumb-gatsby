@@ -381,7 +381,7 @@ class CostPage extends Component {
             <PageTitle layout="page">Cost calculator</PageTitle>
             <p>
               Effective Fall 2019 and Spring 2020,{' '}
-              <a href="https://csumb.github.io/net-price.html">
+              <a href="https://csumb.github.io/net-price-calculator.html">
                 view full net price calculator
               </a>
               .
