@@ -8,6 +8,7 @@ import Search from './search'
 import Container from '../../../common/container'
 import { UserContext } from '../../../contexts/user'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Flex, Box } from '../../../common/grid'
 import LinkInspect from '../../../utilities/link-inspect'
@@ -48,7 +49,7 @@ const MobileSiteNavigationLink = styled(LinkInspect)`
   text-decoration: none;
   color: ${colors.black};
   &:visited {
-    color: ${colors.black};
+    color: ${colors.black} !important;
   }
   &:hover {
     text-decoration: underline;
@@ -88,6 +89,9 @@ const SiteNavigationSubItem = styled('div')`
   background: ${colors.primary.dark};
   a {
     color: ${colors.white};
+  }
+  a:visited {
+    color: ${colors.white} !important;
   }
 `
 
@@ -238,7 +242,11 @@ class MobileSiteNavigationSubMenu extends Component {
     return (
       <>
         <MobileSiteNavigationMenuToggle onClick={this.handleClick.bind(this)}>
-          {children} <span aria-hidden>▾</span>
+          {children}{' '}
+          <FontAwesomeIcon
+            icon={isOpen ? faChevronUp : faChevronDown}
+            style={{ width: '0.75rem' }}
+          />
         </MobileSiteNavigationMenuToggle>
         {isOpen && (
           <SiteNavigationSubItem>
@@ -353,8 +361,10 @@ class HeaderMobile extends Component {
                       })
                     }}
                   >
-                    CSUMB main menu
-                    <span aria-hidden="true"> ▾</span>
+                    CSUMB Main Menu&nbsp;
+                    <FontAwesomeIcon
+                      icon={isMainMenuExpanded ? faChevronUp : faChevronDown}
+                    />
                   </HeaderMobileNavigationButton>
                 </Container>
               </HeaderMobileNavigationExpand>
