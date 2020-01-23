@@ -56,6 +56,17 @@ class Layout extends Component {
             pageTitle ? `${pageTitle} | ` : ''
           }Cal State Monterey Bay`}</title>
 
+          <script>
+            {`
+          /*<![CDATA[*/
+          (function() {
+          var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+          sz.src = '//siteimproveanalytics.com/js/siteanalyze_40230.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+          })();
+          /*]]>*/
+        `}
+          </script>
           <meta
             className="swiftype"
             name="csumbedu"
