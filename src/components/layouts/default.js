@@ -10,6 +10,7 @@ import SiteNavigation from './sections/navigation/site'
 import PageNavigation from './sections/navigation/page'
 import SiteHeader from './sections/header/site-header'
 import Emergency from './alerts/emergency'
+import SiteImprove from '../utilities/siteimprove'
 
 const SkipNavLink = styled('a')`
   border: 0;
@@ -56,17 +57,6 @@ class Layout extends Component {
             pageTitle ? `${pageTitle} | ` : ''
           }Cal State Monterey Bay`}</title>
 
-          <script>
-            {`
-          /*<![CDATA[*/
-          (function() {
-          var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
-          sz.src = '//siteimproveanalytics.com/js/siteanalyze_40230.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
-          })();
-          /*]]>*/
-        `}
-          </script>
           <meta
             className="swiftype"
             name="csumbedu"
@@ -134,6 +124,7 @@ class Layout extends Component {
         <Footer noFooterMargin={noFooterMargin ? true : false} />
         <Emergency />
         <Pardot />
+        <SiteImprove />
       </>
     )
   }
