@@ -11,7 +11,7 @@ const siteHeaderSize = bp({
 const SiteHeaderWrapper = styled('div')`
   background: ${colors.primary.darkest};
   padding: 1rem 0;
-  h2 {
+  h1 {
     margin: 0;
     ${siteHeaderSize};
     font-weight: 600;
@@ -33,9 +33,9 @@ const SiteHeaderWrapper = styled('div')`
 const SiteHeader = ({ path, children }) => (
   <SiteHeaderWrapper>
     <Container>
-      <h2>
+      <h1>
         <Link to={path}>{children}</Link>
-      </h2>
+      </h1>
     </Container>
   </SiteHeaderWrapper>
 )
