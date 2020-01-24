@@ -8,7 +8,7 @@ Need help with your campus website? [Get in touch with web services.](https://cs
 
 ## Setup
 
-- Make sure that you have [NodeJS](https://nodejs.org) installed, at least version `8.11` installed.
+- Make sure that you have [NodeJS](https://nodejs.org) installed. At least version `8.11`, and less than version `11`.
 - Download [Github Desktop](https://desktop.github.com/)
 - Make sure git is installed
 - In terminal, enter `npm i` to setup and install all the node dependencies.
