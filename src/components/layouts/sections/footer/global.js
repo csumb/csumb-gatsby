@@ -115,7 +115,7 @@ const LegalWrapper = styled('div')`
 const FooterSocialIcon = ({ href, name, icon }) => (
   <FooterSocialIconLink href={href}>
     <VisuallyHidden>{name}</VisuallyHidden>
-    <FontAwesomeIcon icon={icon} />
+    <FontAwesomeIcon icon={icon} role={`presentation`} />
   </FooterSocialIconLink>
 )
 
