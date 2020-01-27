@@ -120,10 +120,10 @@ const SiteNavigationSubMenu = ({ children, navigationChildren }) => {
       <SiteNavigationMenuButton>
         {children}{' '}
         <SiteNavigationArrow className="site-navigation-is-expanded">
-          <FontAwesomeIcon icon={faChevronUp} />
+          <FontAwesomeIcon icon={faChevronUp} role={`presentation`} />
         </SiteNavigationArrow>
         <SiteNavigationArrow className="site-navigation-is-hidden">
-          <FontAwesomeIcon icon={faChevronDown} />
+          <FontAwesomeIcon icon={faChevronDown} role={`presentation`} />
         </SiteNavigationArrow>
       </SiteNavigationMenuButton>
       <SiteNavigationSubList>
