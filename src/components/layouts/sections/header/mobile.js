@@ -336,7 +336,10 @@ class HeaderMobile extends Component {
                   this.navButtonRef = node
                 }}
               >
-                <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
+                <FontAwesomeIcon
+                  icon={isOpen ? faTimes : faBars}
+                  role={`presentation`}
+                />
                 <VisuallyHidden>Menu</VisuallyHidden>
               </HeaderMobileToggle>
             </Box>

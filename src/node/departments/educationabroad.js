@@ -79,6 +79,12 @@ module.exports = (graphql, actions) => {
                   Additional_Fees_May_Apply
                   Additional_Costs
                   Cost_Calculator
+                  About_Button_Text_1
+                  About_Button_Text_2
+                  About_Button_Text_3
+                  About_Button_1_Link
+                  About_Button_Link_2
+                  About_Button_Link_3
                   About_Paragraph_1
                   About_Paragraph_2
                   About_Paragraph_3

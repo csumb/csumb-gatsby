@@ -404,14 +404,19 @@ class ProgramTemplate extends Component {
           {data.About_Paragraph_2 && <p>{data.About_Paragraph_2}</p>}
           {data.About_Paragraph_3 && <p>{data.About_Paragraph_3}</p>}
           <div>
-            {partner.data.Campus_website && (
-              <ProgramWebsiteButton to={partner.data.Campus_website}>
-                Visit campus website
+            {data.About_Button_Text_1 && (
+              <ProgramWebsiteButton to={data.About_Button_1_Link[0]}>
+                {data.About_Button_Text_1}
               </ProgramWebsiteButton>
             )}
-            {partner.data.International_website && (
-              <ProgramWebsiteButton to={partner.data.International_website}>
-                Study Abroad Website
+            {data.About_Button_Text_2 && (
+              <ProgramWebsiteButton to={data.About_Button_Link_2}>
+                {data.About_Button_Text_2}
+              </ProgramWebsiteButton>
+            )}
+            {data.About_Button_Text_3 && (
+              <ProgramWebsiteButton to={data.About_Button_Link_3}>
+                {data.About_Button_Text_3}
               </ProgramWebsiteButton>
             )}
           </div>
