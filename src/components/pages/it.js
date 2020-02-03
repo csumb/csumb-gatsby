@@ -123,7 +123,7 @@ class ITAlerts extends Component {
     }
     return (
       <p ref={this.alertRef}>
-        {alerts && alerts.posts.length > 0 ? (
+        {alerts && alertCount > 0 ? (
           <Link to="/it/alerts">
             {alertCount > 1 ? (
               <>There are {alertCount} active alerts</>
