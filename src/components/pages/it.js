@@ -134,6 +134,8 @@ class ITAlerts extends Component {
         ) : (
           <>There are no active alerts.</>
         )}
+        <br />
+        <Link to="/it/archived-alerts">View resolved issues</Link>
       </p>
     )
   }
