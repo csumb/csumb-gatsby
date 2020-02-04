@@ -737,7 +737,7 @@ class UserAccountProfileResume extends Component {
         )}
         <ReactFilestack
           apikey={filestackApiKey}
-          onSuccess={this.saveResume}
+          onSuccess={this.saveResume.bind(this)}
           options={{
             accept: 'application/*',
             maxFiles: 1,
