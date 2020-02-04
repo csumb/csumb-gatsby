@@ -718,12 +718,20 @@ class UserAccountProfilePhoto extends Component {
 }
 
 class UserAccountProfileResume extends Component {
+  state = {
+    updatedResume: false,
+  }
+
   saveResume(file) {
     updateProfileField(this.props.user, 'resume', file.filesUploaded[0].url)
+    this.setState({
+      updatedResume: file.filesUploaded[0].url,
+    })
   }
 
   render() {
     const { profile } = this.props
+    const { updatedResume } = this.state
     return (
       <AccountGroup legend="Curriculum vitae or resume">
         <p>
@@ -732,7 +740,9 @@ class UserAccountProfileResume extends Component {
         </p>
         {profile.resume && (
           <AccountData>
-            <a href={profile.resume}>Your curriculum vitae or resume</a>
+            <a href={updatedResume ? updatedResume : profile.resume}>
+              Your curriculum vitae or resume
+            </a>
           </AccountData>
         )}
         <ReactFilestack
