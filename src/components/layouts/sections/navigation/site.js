@@ -115,15 +115,9 @@ const SiteNavigationItem = ({ to, children, navigationChildren, first }) => {
 }
 
 const SiteNavigationSubMenu = ({ children, navigationChildren }) => {
-  // get the current page for dropdown child item
-  navigationChildren.map(child =>
-    window.location.pathname === child.url + '/' ? '' : ''
-  )
   return (
     <Menu buttonId={`site-menu-${slugify(children).toLowerCase()}`}>
-      {/* change classname based on state of sublist */}
       <SiteNavigationMenuButton>
-        {' '}
         {children}{' '}
         <SiteNavigationArrow className="site-navigation-is-expanded">
           <FontAwesomeIcon icon={faChevronUp} role={`presentation`} />
