@@ -256,7 +256,10 @@ const PublicEvent = ({ event, showDate, showTime, showFeatured }) => (
               {showDate && (
                 <PublicEventDate>
                   {event.event.date_stamps.map(stamp => (
-                    <>{moment.unix(stamp.start_stamp).format(dateFormat)}</>
+                    <>
+                      {moment.unix(stamp.start_stamp).format(dateFormat)}
+                      {''}{' '}
+                    </>
                   ))}
                 </PublicEventDate>
               )}
