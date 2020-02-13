@@ -12,6 +12,9 @@ import Well from '../../components/common/well'
 class EventsPage extends Component {
   render() {
     const { events, category, categories } = this.props.pageContext
+    const sortedEvents = events
+      .slice()
+      .sort((a, b) => b.event.dates[0].start < a.event.dates[0].start)
     return (
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
@@ -19,9 +22,9 @@ class EventsPage extends Component {
           <PageTitle>{category} events</PageTitle>
           <Flex>
             <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>
-              {events && events.length ? (
+              {sortedEvents && sortedEvents.length > 1 ? (
                 <>
-                  {events.map(event => (
+                  {sortedEvents.map(event => (
                     <PublicEvent
                       event={event}
                       showDate={true}
