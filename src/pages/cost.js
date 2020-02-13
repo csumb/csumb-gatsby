@@ -108,7 +108,7 @@ const ResidencyQuestion = ({ handler }) => (
         </CostButton>
         <p>
           If you are unsure of your residency status, read the{' '}
-          <Link to="/catalog/residency-immigration-requirements#determination-residency">
+          <Link to="https://catalog.csumb.edu/content.php?catoid=1&navoid=46&hl=residency+immigration&returnto=search#residency-immigration-requirements">
             residency determination page
           </Link>{' '}
           in the catalog.
