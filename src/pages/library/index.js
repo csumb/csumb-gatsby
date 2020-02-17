@@ -111,7 +111,12 @@ class LibraryPage extends Component {
           url: '/library',
         }}
       >
-        <Layout pageTitle="Library" siteTitle="Library" isSiteHomepage={true}>
+        <Layout
+          pageTitle="Library"
+          siteTitle="Library"
+          isSiteHomepage={true}
+          siteNavigation={data.allCsumbNavigation.edges[0].node.navigation}
+        >
           <SiteHeader path="/library">Library</SiteHeader>
           {data.allCsumbNavigation &&
             data.allCsumbNavigation.edges &&

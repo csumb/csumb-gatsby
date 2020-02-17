@@ -66,6 +66,7 @@ class ITPage extends Component {
           pageTitle="Information Technology"
           siteTitle="Information Technology"
           isSiteHomepage={true}
+          siteNavigation={data.allCsumbNavigation.edges[0].node.navigation}
         >
           <SiteHeader path="/it">Information Technology</SiteHeader>
           {data.allCsumbNavigation &&
