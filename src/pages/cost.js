@@ -368,7 +368,9 @@ class CostPage extends Component {
       <PageFeedbackContext.Provider
         value={{ email: 'webfolk@csumb.edu', title: 'Cost', url: '/cost' }}
       >
-        <Layout>
+        <Layout
+          siteNavigation={data.allCsumbNavigation.edges[0].node.navigation}
+        >
           <SiteHeader path="/cost">Costs &amp; Aid</SiteHeader>
           {data.allCsumbNavigation &&
             data.allCsumbNavigation.edges &&
