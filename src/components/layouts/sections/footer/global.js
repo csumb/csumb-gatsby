@@ -162,7 +162,7 @@ class Footer extends Component {
                       <a href="/directory">Directory</a>
                     </li>
                     <li>
-                      <a href="/catalog">Catalog</a>
+                      <a href="https://catalog.csumb.edu/">Catalog</a>
                     </li>
                     <li>
                       <a href="/schedule">Class schedule</a>
