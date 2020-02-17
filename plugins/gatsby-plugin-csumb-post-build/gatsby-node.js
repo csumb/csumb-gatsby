@@ -1,17 +1,13 @@
 const buildTime = require('./lib/build-time')
-const catalog = require('./lib/catalog')
 const alumni = require('./lib/alumni')
 const events = require('./lib/events')
 
 exports.onPostBuild = ({ reporter, graphql }) => {
   return new Promise((resolve, reject) => {
     const postBuildTimer = reporter.activityTimer(
-      'Building JSON data files for catalog & directory'
+      'Building JSON data files for directory'
     )
     buildTime(reporter)
-      .then(() => {
-        return catalog(reporter, graphql)
-      })
       .then(() => {
         return alumni(reporter, graphql)
       })
