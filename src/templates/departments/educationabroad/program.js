@@ -112,6 +112,7 @@ class ProgramDetails extends Component {
               <CollapsibleIcon
                 size="1x"
                 icon={isOpen ? faChevronDown : faChevronRight}
+                role={`presentation`}
               />
             </CollapseIconWrapper>
             {title}
