@@ -53,6 +53,7 @@ const BlockHeading = ({
             <FontAwesomeIcon
               size="1x"
               icon={isOpen ? faChevronDown : faChevronRight}
+              role={`presentation`}
             />
           </CollapsibleIcon>
           <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>

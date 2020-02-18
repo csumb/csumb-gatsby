@@ -75,7 +75,11 @@ const SubItemArrowWrapper = styled('div')`
 
 const SubItemArrow = () => (
   <SubItemArrowWrapper>
-    <SubItemArrowElement size="lg" icon={faChevronRight} />
+    <SubItemArrowElement
+      size="lg"
+      icon={faChevronRight}
+      role={`presentation`}
+    />
   </SubItemArrowWrapper>
 )
 

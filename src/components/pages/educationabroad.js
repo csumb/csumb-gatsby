@@ -66,6 +66,7 @@ class EducationAbroadCountry extends Component {
             <CollapsibleIcon
               size="1x"
               icon={isOpen ? faChevronDown : faChevronRight}
+              role={`presentation`}
             />
             {country}
           </EducationExpandButton>
