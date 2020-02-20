@@ -14,8 +14,8 @@ const EverythingTopLevelPage = ({ pageContext }) => (
   <PageFeedbackContext.Provider
     value={{
       email: 'webfolk@csumb.edu',
-      title: 'IT',
-      url: '/it',
+      title: 'Everything else',
+      url: '/everything',
     }}
   >
     <Layout pageTitle="Everything else">
