@@ -13,7 +13,7 @@ Apps that do not integrate with campus systems, or were not set up to be visible
 
 To reorder your apps, expand your apps using the arrow on the right, and click the **Edit order** button. Apps that are towards the end of your list are hidden by default.
 
-If you use an app in the **More apps** section frequenlty, we suggest you bookmark it in your browser.
+If you use an app in the **More apps** section frequently, we suggest you bookmark it in your browser.
 
 ## Ottercard, print balance, and your account
 
