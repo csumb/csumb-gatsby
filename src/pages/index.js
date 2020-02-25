@@ -30,10 +30,7 @@ const sortItems = ({
     })
     return type
   })
-  return results.reduce(function(result, value, index, array) {
-    if (index % 2 === 0) result.push(array.slice(index, index + 2))
-    return result
-  }, [])
+  return results
 }
 
 const IndexPage = ({ data }) => {
@@ -55,16 +52,14 @@ const IndexPage = ({ data }) => {
           navigation={allContentfulHomepageImageNavigation.edges[0].node}
         />
         <Container topPadding>
-          {stories.map((storyPair, index) => (
-            <Flex id={`storypair-${index}`}>
-              {storyPair.map((story, index) => (
-                <Box id={`story-${index}`} width={[1, 1, 1 / 2]} px={[0, 0, 4]}>
-                  {console.log(story)}
-                  <HomepageStory {...story} />
-                </Box>
-              ))}
-            </Flex>
-          ))}
+          <Flex>
+            {stories.map((story, index) => (
+              <Box id={`story-${index}`} width={[1, 1, 1 / 2]} px={[0, 0, 4]}>
+                {console.log(story)}
+                <HomepageStory {...story} />
+              </Box>
+            ))}
+          </Flex>
         </Container>
       </Layout>
     </PageFeedbackContext.Provider>
