@@ -223,8 +223,8 @@ const HomepageNavigation = ({ items }) => (
 
 const HomepageStory = ({ link, image, title, eventDate }) => (
   <Story featured>
-    <div>
-      <a href={link}>
+    <a href={link}>
+      <div>
         <StoryImage
           alt=""
           aria-hidden
@@ -232,13 +232,13 @@ const HomepageStory = ({ link, image, title, eventDate }) => (
           src={image.highquality.src}
           width="100%"
         />
-      </a>
-    </div>
-    <StoryType isEvent={eventDate && true} />
-    <StoryHeader>
-      <a href={link}>{title}</a>
-    </StoryHeader>
-    {eventDate && <EventDate>{moment(eventDate).format(dateFormat)}</EventDate>}
+      </div>
+      <StoryType isEvent={eventDate && true} />
+      <StoryHeader>{title}</StoryHeader>
+      {eventDate && (
+        <EventDate>{moment(eventDate).format(dateFormat)}</EventDate>
+      )}
+    </a>
   </Story>
 )
 
