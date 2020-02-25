@@ -10,7 +10,6 @@ import Container from '../common/container'
 import anniversaryBanner from '../../assets/images/25-banner.png'
 import Link from 'gatsby-link'
 import BreakpointContext from '../contexts/breakpoint'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 const dateFormat = 'MMMM D, YYYY'
 
@@ -31,7 +30,7 @@ const StoryHeader = styled('h2')`
   margin: 0;
 `
 
-const StoryImage = styled(LazyLoadImage)`
+const StoryImage = styled('img')`
   width: 100%;
   margin-bottom: 0;
   object-fit: cover;
