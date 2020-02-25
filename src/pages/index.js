@@ -17,7 +17,7 @@ const sortItems = ({
 }) => {
   const results = []
   const stories = [allContentfulHomepageEvent, allContentfulHomepageStory]
-
+  console.log(stories)
   stories.forEach(type => {
     type.edges.forEach(item => {
       if (
@@ -43,6 +43,7 @@ const IndexPage = ({ data }) => {
   } = data
 
   const stories = sortItems(data)
+  console.log(stories)
 
   return (
     <PageFeedbackContext.Provider
@@ -58,6 +59,7 @@ const IndexPage = ({ data }) => {
             <Flex id={`storypair-${index}`}>
               {storyPair.map((story, index) => (
                 <Box id={`story-${index}`} width={[1, 1, 1 / 2]} px={[0, 0, 4]}>
+                  {console.log(story)}
                   <HomepageStory {...story} />
                 </Box>
               ))}
