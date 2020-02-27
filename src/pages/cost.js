@@ -10,7 +10,6 @@ import { HeroParagraph } from '../components/common/type'
 import { graphql } from 'gatsby'
 import { Button, LinkyButton } from '../components/common/button'
 import { Flex, Box } from '../components/common/grid'
-import Link from 'gatsby-link'
 import { InputText, Submit } from '../components/common/forms'
 import styled from '@emotion/styled'
 import PageFeedbackContext from '../components/contexts/page-feedback'
@@ -108,9 +107,9 @@ const ResidencyQuestion = ({ handler }) => (
         </CostButton>
         <p>
           If you are unsure of your residency status, read the{' '}
-          <Link to="https://catalog.csumb.edu/content.php?catoid=1&navoid=46&hl=residency+immigration&returnto=search#residency-immigration-requirements">
+          <a href="https://catalog.csumb.edu/content.php?catoid=1&navoid=46&hl=residency+immigration&returnto=search#residency-immigration-requirements">
             residency determination page
-          </Link>{' '}
+          </a>{' '}
           in the catalog.
         </p>
       </Box>
