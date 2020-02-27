@@ -66,7 +66,6 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
 
 <!-- FORM: BODY SECTION -->
 <div class="wFormContainer" >
-<div class="wFormHeader"></div>
 <style type="text/css">
             #tfa_307,
             *[id^="tfa_307["] {
@@ -121,10 +120,10 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
             *[id^="tfa_306["][class~="field-container-D"] {
                 width: auto !important;
             }
-        </style><div class=""><div class="wForm" id="3-WRPR" dir="ltr">
+        </style><div class=""><div class="wForm" style="background-color: transparent !important;" id="3-WRPR" dir="ltr">
 <div class="codesection" id="code-3"></div>
 <form method="post" action="https://csumb.tfaforms.net/responses/processor" class="hintsBelow labelsAbove" id="3" role="form">
-<div class="htmlSection" id="tfa_345"><div class="htmlContent" id="tfa_345-HTML"><div style="text-align: center;"><img style="font-size: 14.4px; word-spacing: normal; max-width: 80%;" src="//csumb.tfaforms.net/forms/get_image/1/2RazMb0p8UZvbG0WvV0YoCKXwLqldWgNfzPPOfMP0TIy0b3Daa3lPtMCMh9cexCk-CSUMBLogo540BayBlue.png" alt="Cal State Monterey Bay Logo"></div></div></div>
+<div class="htmlSection" id="tfa_345"><div class="htmlContent" id="tfa_345-HTML"></div></div>
 <div class="htmlSection" id="tfa_346"><div class="htmlContent" id="tfa_346-HTML"><h4 style="text-align: center;"><span style="color: rgb(64, 121, 212); font-size: 23.04px; font-weight: 400;">Cal State Monterey Bay Request Information Form&nbsp;</span></h4></div></div>
 <fieldset id="tfa_324" class="section">
 <legend id="tfa_324-L">What we need to know from you</legend>
