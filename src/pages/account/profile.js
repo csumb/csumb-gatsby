@@ -593,7 +593,7 @@ class UserAccountProfileBio extends Component {
 
 class UserAccountProfileBioForm extends Component {
   state = {
-    biography: false,
+    biography: '',
     updated: false,
   }
   handleSubmit(event) {
