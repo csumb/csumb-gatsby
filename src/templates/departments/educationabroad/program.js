@@ -23,6 +23,7 @@ import {
   TableHeader,
   TableCell,
 } from '../../../components/common/table'
+import { AlertDanger } from '../../../components/common/alert'
 
 const ApplyNowButton = styled(ButtonLink)`
   margin-left: 1rem;
@@ -145,6 +146,11 @@ class ProgramTemplate extends Component {
         <SiteHeader path="/educationabroad">Education Abroad</SiteHeader>
         {navigation && <SiteNavigation navigation={navigation} />}
         <Container>
+          {data.Alert && (
+            <AlertDanger>
+              <h4 style={{ margin: 'auto 0' }}>{data.Alert}</h4>
+            </AlertDanger>
+          )}
           <PageTitle>{data.Name}</PageTitle>
           {data.Program_Type === 'Semester' ? (
             <ReturnLink to="/educationabroad/programs/semester">

@@ -84,7 +84,9 @@ const AlertContent = ({ icon, children }) => (
     <AlertIconBox width={[0, 1 / 6, 1 / 10]} pr={6}>
       <AlertIcon icon={icon} />
     </AlertIconBox>
-    <Box width={[1, 5 / 6, 9 / 10]}>{children}</Box>
+    <Box style={{ display: 'flex' }} width={[1, 5 / 6, 9 / 10]}>
+      {children}
+    </Box>
   </Flex>
 )
 

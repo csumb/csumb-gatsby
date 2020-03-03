@@ -88,6 +88,7 @@ module.exports = (graphql, actions) => {
                   About_Paragraph_1
                   About_Paragraph_2
                   About_Paragraph_3
+                  Alert
                   Map_Coordinates
                   Summer_start_Date
                   Summer_End_Date
