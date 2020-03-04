@@ -148,7 +148,18 @@ class ProgramTemplate extends Component {
         <Container>
           {data.Alert && (
             <AlertDanger>
-              <h4 style={{ margin: 'auto 0' }}>{data.Alert}</h4>
+              <h4 style={{ margin: 'auto 0' }}>
+                {data.Alert}{' '}
+                {data.Alert_Link_Text && (
+                  <a
+                    href={data.Alert_Link_URL}
+                    style={{ fontstyle: 'underline' }}
+                  >
+                    {' '}
+                    {data.Alert_Link_Text}
+                  </a>
+                )}
+              </h4>
             </AlertDanger>
           )}
           <PageTitle>{data.Name}</PageTitle>
