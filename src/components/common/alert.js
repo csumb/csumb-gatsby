@@ -15,7 +15,7 @@ import { Flex, Box } from './grid'
 
 const baseStyle = `
   display: block;
-  padding: 0.5rem;
+  padding: 0.75rem;
   margin: 1rem 0;
   p {
     margin-bottom: 0;
@@ -23,13 +23,19 @@ const baseStyle = `
 `
 
 const AlertIcon = styled(FontAwesomeIcon)`
-  font-size: 2.8rem;
-  margin-top: 0.5rem;
+  font-size: 2rem;
+  margin: 0;
+  svg {
+    padding: 0;
+    height: 75%;
+  }
+  path {
+    color: #c83618;
 `
 
 const AlertIconBox = styled(Box)`
   ${bp({
-    display: ['none', 'block', 'block', 'block'],
+    display: ['none', 'flex', 'flex', 'flex'],
   })};
 `
 
@@ -38,7 +44,8 @@ const AlertDangerElement = styled(Alert)`
   background: ${color(colors.indicators.high)
     .lighten(0.8)
     .hex()};
-  border-left: 8px solid ${colors.indicators.high};
+  border-left: 8px solid #c83618;
+  }
 `
 
 const AlertWarningElement = styled(Alert)`
@@ -71,10 +78,10 @@ const AlertFyiElement = styled(Alert)`
 
 const AlertContent = ({ icon, children }) => (
   <Flex>
-    <AlertIconBox width={[0, 1 / 6, 1 / 10]} pr={6}>
+    <AlertIconBox width={[0, 1 / 6, 0.75 / 10]} pr={6}>
       <AlertIcon icon={icon} />
     </AlertIconBox>
-    <Box style={{ display: 'flex' }} width={[1, 5 / 6, 9 / 10]}>
+    <Box style={{ display: 'flex' }} width={[1, 5 / 6, 9.25 / 10]}>
       {children}
     </Box>
   </Flex>
