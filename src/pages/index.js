@@ -22,8 +22,12 @@ const sortItems = ({
   stories.forEach(type => {
     type.edges.forEach(item => {
       if (
-        moment(item.node.unpublishDate).unix() > moment().unix() &&
-        moment(item.node.goLiveDate).unix() <= moment().unix()
+        moment(item.node.unpublishDate)
+          .unix()
+          .valueOf() > moment().unix() &&
+        moment(item.node.goLiveDate)
+          .unix()
+          .valueOf() <= moment().unix()
       ) {
         results.push(item.node)
       }
