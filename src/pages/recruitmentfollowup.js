@@ -143,9 +143,12 @@ const inquiryForm = `
                     color: white !important;
                     background: #07633B;
                   }
-                  .wForm {
+               .wForm {
                     background: transparent !important;
-                  }
+                }
+                .wFormContainer form fieldset.section {
+                    margin-bottom: 0 !important;
+                }
 
             </style><div class=""><div class="wForm" style="padding: 0; margin: 0;" id="12-WRPR" dir="ltr">
 <div class="codesection" id="code-12"></div>
