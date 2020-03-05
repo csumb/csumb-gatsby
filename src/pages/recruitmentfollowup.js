@@ -71,9 +71,10 @@ const inquiryForm = `
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <!-- FORM: BODY SECTION -->
-<div class="wFormContainer" >
+<div class="wFormContainer" style="margin: 0; padding: 0;" >
     <div class="wFormHeader"></div>
-    <div class="errorMessage errMsg">Please review the error(s) below.<br/><ul><li><a href="#Salesforce &#40;Prefill&#41;" class="errMsg">Lookup returned no record and aborted connector execution.</a></li></ul></div><style type="text/css">
+    <div class="errorMessage errMsg">Please review the error(s) below.<br/><ul><li><a href="#Salesforce &#40;Prefill&#41;" class="errMsg">Lookup returned no record and aborted connector execution.</a></li></ul></div>
+    <style type="text/css">
                 #tfa_5,
                 *[id^="tfa_5["] {
                     width: 616px !important;
@@ -127,10 +128,28 @@ const inquiryForm = `
                 *[id^="tfa_306["][class~="field-container-D"] {
                     width: auto !important;
                 }
-            </style><div class=""><div class="wForm" id="12-WRPR" dir="ltr">
+                fieldset {
+                    border: none !important;
+                    padding: 0;
+                }
+                #submit_button {
+                    border-radius: 0;
+                    display: inline-block;
+                    padding: 0.75rem;
+                    font-size: 1rem;
+                    text-decoration: none;
+                    cursor: pointer;
+                    border: none;
+                    color: white !important;
+                    background: #07633B;
+                  }
+                  .wForm {
+                    background: transparent !important;
+                  }
+
+            </style><div class=""><div class="wForm" style="padding: 0; margin: 0;" id="12-WRPR" dir="ltr">
 <div class="codesection" id="code-12"></div>
 <form method="post" action="https://csumb.tfaforms.net/responses/processor" class="hintsBelow labelsAbove" id="12" role="form">
-<div class="htmlSection" id="tfa_345"><div class="htmlContent" id="tfa_345-HTML"><div style="text-align: center;"><img alt="Cal State Monterey Bay Logo" src="//csumb.tfaforms.net/forms/get_image/1/2RazMb0p8UZvbG0WvV0YoCKXwLqldWgNfzPPOfMP0TIy0b3Daa3lPtMCMh9cexCk-CSUMBLogo540BayBlue.png" style="font-size: 14.4px; word-spacing: normal; max-width: 80%;"></div></div></div>
 <div class="htmlSection" id="tfa_366"><div class="htmlContent" id="tfa_366-HTML"><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: #0B3751);"><i>We feel you are a good fit for our university. With that said, we just want to know a little bit more about you. Don't worry, we will not be sharing this information with anybody. This is so we can send you information regarding your specific areas of interest&nbsp;and keep you better informed.&nbsp;&nbsp;</i></span></div></div>
 <fieldset id="tfa_334" class="section">
 <legend id="tfa_334-L">Contact Information</legend>
@@ -461,7 +480,8 @@ const inquiryForm = `
                             }
                         }</script>
 </div>
-<div class="oneField field-container-D    " id="tfa_357-D" role="radiogroup" aria-labelledby="tfa_357-L" data-tfa-labelledby="-L tfa_357-L">
+<br>
+<div class="oneField field-container-D" id="tfa_357-D" role="radiogroup" aria-labelledby="tfa_357-L" data-tfa-labelledby="-L tfa_357-L">
 <label id="tfa_357-L" class="label preField reqMark"><span id="docs-internal-guid-546e33fc-7fff-a737-9858-a6049bae4f67"><span style="font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Can we send you text messages on occasion? (we do not text often)</span></span></label><br><div class="inputWrapper"><span id="tfa_357" class="choices vertical required"><span class="oneChoice"><input type="radio" value="tfa_358" class="" checked data-default-value="true" id="tfa_358" name="tfa_357" aria-required="true" aria-labelledby="tfa_358-L" data-tfa-labelledby="tfa_357-L tfa_358-L"><label class="label postField" id="tfa_358-L" for="tfa_358"><span class="input-radio-faux"></span>Yes</label></span><span class="oneChoice"><input type="radio" value="tfa_359" class="" id="tfa_359" name="tfa_357" aria-required="true" aria-labelledby="tfa_359-L" data-tfa-labelledby="tfa_357-L tfa_359-L"><label class="label postField" id="tfa_359-L" for="tfa_359"><span class="input-radio-faux"></span>No</label></span></span></div>
 </div>
 </div>
