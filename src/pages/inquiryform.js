@@ -1,5 +1,10 @@
 import React from 'react'
-import { Layout, PageTitle } from '../components/layouts/default'
+import {
+  Layout,
+  SiteHeader,
+  SiteNavigation,
+  PageTitle,
+} from '../components/layouts/default'
 import { graphql } from 'gatsby'
 import Container from '../components/common/container'
 
@@ -65,7 +70,7 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <!-- FORM: BODY SECTION -->
-<div class="wFormContainer" >
+<div class="wFormContainer" style="margin: 0;" >
 <style type="text/css">
             #tfa_307,
             *[id^="tfa_307["] {
@@ -120,11 +125,25 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
             *[id^="tfa_306["][class~="field-container-D"] {
                 width: auto !important;
             }
-        </style><div class=""><div class="wForm" style="background-color: transparent !important;" id="3-WRPR" dir="ltr">
+            fieldset {
+                border: none !important;
+                padding: 0;
+            }
+            #submit_button {
+                border-radius: 0;
+                display: inline-block;
+                padding: 0.75rem;
+                font-size: 1rem;
+                text-decoration: none;
+                cursor: pointer;
+                border: none;
+                color: white !important;
+                background: #07633B;
+            }
+        </style><div class=""><div class="wForm" style="background-color: transparent !important; padding: 0 !important" id="3-WRPR" dir="ltr">
 <div class="codesection" id="code-3"></div>
 <form method="post" action="https://csumb.tfaforms.net/responses/processor" class="hintsBelow labelsAbove" id="3" role="form">
 <div class="htmlSection" id="tfa_345"><div class="htmlContent" id="tfa_345-HTML"></div></div>
-<div class="htmlSection" id="tfa_346"><div class="htmlContent" id="tfa_346-HTML"><h4 style="text-align: center;"><span style="color: rgb(64, 121, 212); font-size: 23.04px; font-weight: 400;">Cal State Monterey Bay Request Information Form&nbsp;</span></h4></div></div>
 <fieldset id="tfa_324" class="section">
 <legend id="tfa_324-L">What we need to know from you</legend>
 <div class="oneField field-container-D    " id="tfa_1-D">
@@ -503,7 +522,7 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
 <input type="hidden" id="tfa_337" name="tfa_337" value="Webform" class=""><div class="oneField field-container-D     wf-acl-hidden" id="tfa_343-D">
 <label id="tfa_343-L" class="label preField " for="tfa_343">Lead Source (Hidden)</label><br><div class="inputWrapper"><input type="text" id="tfa_343" name="tfa_343" value="Inquiry Card - Website" default="Inquiry Card - Website" title="Lead Source (Hidden)" class=""></div>
 </div>
-<div class="htmlSection" id="tfa_347"><div class="htmlContent" id="tfa_347-HTML"><div style="text-align: center;"><span style="word-spacing: normal; color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: rgb(255, 255, 255);"><br></span></div><div style="text-align: center;">Are you an international student? If so, please refer to this <a target="_blank" href="https://csumb.edu/international/interest-form">web contact form</a>.&nbsp;</div></div></div>
+<div class="htmlSection" id="tfa_347"><div class="htmlContent" id="tfa_347-HTML"><div style="text-align: center;">Are you an international student? If so, please refer to this <a target="_blank" href="https://csumb.edu/international/interest-form">web contact form</a>.&nbsp;</<div></div></div>
 <div class="actions" id="3-A"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
 <div style="clear:both"></div>
 <input type="hidden" value="3" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="dad535b4dce9e29c43e31cc3ab40ead2" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="62" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
@@ -519,8 +538,10 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
 const InquiryPage = () => {
   return (
     <Layout pageTitle="Inquiry Form">
+      <SiteHeader path="/inquiryform">Inquiry Form</SiteHeader>
+      <SiteNavigation navigation={null} />
       <Container>
-        <PageTitle>Inquiry Form</PageTitle>
+        <PageTitle>Cal State Monterey Bay Request Information Form</PageTitle>
         <div dangerouslySetInnerHTML={{ __html: inquiryForm }} />
       </Container>
     </Layout>
