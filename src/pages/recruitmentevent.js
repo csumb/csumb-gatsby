@@ -58,14 +58,32 @@ const inquiryForm = `
     wFORMS.behaviors.prefill.skip = false;
 </script>
     <script type="text/javascript" src="https://csumb.tfaforms.net/wForms/3.11/js/localization-en_US.js?v=5110"></script>
+    <style type="text/css">
+    fieldset {
+      border: none !important;
+      padding: 0;
+    }
+    #submit_button {
+      border-radius: 0;
+      display: inline-block;
+      padding: 0.75rem;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      color: white !important;
+      background: #07633B;
+    }
+    .wForm {
+      background: transparent !important;
+    }
+    </style>
 
 <!-- FORM: BODY SECTION -->
-<div class="wFormContainer" >
-<div class="wFormHeader"></div>
-<style type="text/css"></style><div class=""><div class="wForm" id="11-WRPR" dir="ltr">
+<div class="wFormContainer" style="margin: 0;" >
+<style type="text/css"></style><div class=""><div style="padding: 0; margin: 0;" class="wForm" id="11-WRPR" dir="ltr">
 <div class="codesection" id="code-11"></div>
 <form method="post" action="https://csumb.tfaforms.net/responses/processor" class="hintsBelow labelsAbove" id="11" role="form">
-<div class="htmlSection" id="tfa_345"><div class="htmlContent" id="tfa_345-HTML"><div style="text-align: center;"><img style="font-size: 14.4px; word-spacing: normal; max-width: 80%;" src="//csumb.tfaforms.net/forms/get_image/1/2RazMb0p8UZvbG0WvV0YoCKXwLqldWgNfzPPOfMP0TIy0b3Daa3lPtMCMh9cexCk-CSUMBLogo540BayBlue.png" alt="Cal State Monterey Bay Logo"></div></div></div>
 <div class="htmlSection" id="tfa_346"><div class="htmlContent" id="tfa_346-HTML"><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: #fafafa;"><i>Thanks for your interest in Cal State Monterey Bay! Please provide us with some basic details so we can send you information regarding our university, important admissions advice, and more.&nbsp;</i></span></div></div>
 <fieldset id="tfa_324" class="section">
 <legend id="tfa_324-L">What we need to know from you</legend>
@@ -102,11 +120,11 @@ const inquiryForm = `
 
 const InquiryPage = () => {
   return (
-    <Layout pageTitle="Inquiry Form">
-      <SiteHeader path="/inquiryform">Inquiry Form</SiteHeader>
+    <Layout pageTitle="Recruitment Event">
+      <SiteHeader path="/admissions">Admissions</SiteHeader>
       <SiteNavigation navigation={null} />
       <Container>
-        <PageTitle>Cal State Monterey Bay Request Information Form</PageTitle>
+        <PageTitle>Cal State Monterey Bay Recruitment Event</PageTitle>
         <div dangerouslySetInnerHTML={{ __html: inquiryForm }} />
       </Container>
     </Layout>

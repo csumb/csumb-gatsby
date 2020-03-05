@@ -8,178 +8,140 @@ import {
 import { graphql } from 'gatsby'
 import Container from '../components/common/container'
 
-const inquiryForm = `<!-- FORM: HEAD SECTION -->
+const inquiryForm = `
+<!-- FORM: HEAD SECTION -->
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function(){
-        const FORM_TIME_START = Math.floor((new Date).getTime()/1000);
-        let formElement = document.getElementById("tfa_0");
-        if (null === formElement) {
-            formElement = document.getElementById("0");
-        }
-        let appendJsTimerElement = function(){
-            let formTimeDiff = Math.floor((new Date).getTime()/1000) - FORM_TIME_START;
-            let cumulatedTimeElement = document.getElementById("tfa_dbCumulatedTime");
-            if (null !== cumulatedTimeElement) {
-                let cumulatedTime = parseInt(cumulatedTimeElement.value);
-                if (null !== cumulatedTime && cumulatedTime > 0) {
-                    formTimeDiff += cumulatedTime;
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(){
+            const FORM_TIME_START = Math.floor((new Date).getTime()/1000);
+            let formElement = document.getElementById("tfa_0");
+            if (null === formElement) {
+                formElement = document.getElementById("0");
+            }
+            let appendJsTimerElement = function(){
+                let formTimeDiff = Math.floor((new Date).getTime()/1000) - FORM_TIME_START;
+                let cumulatedTimeElement = document.getElementById("tfa_dbCumulatedTime");
+                if (null !== cumulatedTimeElement) {
+                    let cumulatedTime = parseInt(cumulatedTimeElement.value);
+                    if (null !== cumulatedTime && cumulatedTime > 0) {
+                        formTimeDiff += cumulatedTime;
+                    }
+                }
+                let jsTimeInput = document.createElement("input");
+                jsTimeInput.setAttribute("type", "hidden");
+                jsTimeInput.setAttribute("value", formTimeDiff.toString());
+                jsTimeInput.setAttribute("name", "tfa_dbElapsedJsTime");
+                jsTimeInput.setAttribute("id", "tfa_dbElapsedJsTime");
+                jsTimeInput.setAttribute("autocomplete", "off");
+                if (null !== formElement) {
+                    formElement.appendChild(jsTimeInput);
+                }
+            };
+            if (null !== formElement) {
+                if(formElement.addEventListener){
+                    formElement.addEventListener('submit', appendJsTimerElement, false);
+                } else if(formElement.attachEvent){
+                    formElement.attachEvent('onsubmit', appendJsTimerElement);
                 }
             }
-            let jsTimeInput = document.createElement("input");
-            jsTimeInput.setAttribute("type", "hidden");
-            jsTimeInput.setAttribute("value", formTimeDiff.toString());
-            jsTimeInput.setAttribute("name", "tfa_dbElapsedJsTime");
-            jsTimeInput.setAttribute("id", "tfa_dbElapsedJsTime");
-            jsTimeInput.setAttribute("autocomplete", "off");
-            if (null !== formElement) {
-                formElement.appendChild(jsTimeInput);
-            }
-        };
-        if (null !== formElement) {
-            if(formElement.addEventListener){
-                formElement.addEventListener('submit', appendJsTimerElement, false);
-            } else if(formElement.attachEvent){
-                formElement.attachEvent('onsubmit', appendJsTimerElement);
-            }
-        }
-    });
-</script>
+        });
+    </script>
 
-<link href="https://csumb.tfaforms.net/dist/form-builder/5.0.0/wforms-layout.css?v=5110" rel="stylesheet" type="text/css" />
+    <link href="https://csumb.tfaforms.net/dist/form-builder/5.0.0/wforms-layout.css?v=5110" rel="stylesheet" type="text/css" />
 
-<link href="https://csumb.tfaforms.net/uploads/themes/theme-2.css" rel="stylesheet" type="text/css" />
-<link href="https://csumb.tfaforms.net/dist/form-builder/5.0.0/wforms-jsonly.css?v=5110" rel="alternate stylesheet" title="This stylesheet activated by javascript" type="text/css" />
-<script type="text/javascript" src="https://csumb.tfaforms.net/wForms/3.11/js/wforms.js?v=5110"></script>
-<script type="text/javascript">
-    wFORMS.behaviors.prefill.skip = false;
-</script>
-    <script type="text/javascript" src="https://csumb.tfaforms.net/wForms/3.11/js/localization-en_US.js?v=5110"></script>
-<script>
-    var FAoldJQ;
-    if (typeof $ != 'undefined' && $.noConflict) FAoldJQ = $.noConflict(true);
-</script>
-<script src="https://csumb.tfaforms.net/js/jquery/jquery-2.1.4.min.js"></script>
-<script src="https://csumb.tfaforms.net/js/typeahead/v1.2.0/typeahead.bundle.js"></script>
-<script>
-    var FA$ = $.noConflict(true);
-    if (FAoldJQ) $ = FAoldJQ;
-</script>
+    <link href="https://csumb.tfaforms.net/uploads/themes/theme-2.css" rel="stylesheet" type="text/css" />
+    <link href="https://csumb.tfaforms.net/dist/form-builder/5.0.0/wforms-jsonly.css?v=5110" rel="alternate stylesheet" title="This stylesheet activated by javascript" type="text/css" />
+    <script type="text/javascript" src="https://csumb.tfaforms.net/wForms/3.11/js/wforms.js?v=5110"></script>
+    <script type="text/javascript">
+        wFORMS.behaviors.prefill.skip = false;
+    </script>
+        <script type="text/javascript" src="https://csumb.tfaforms.net/wForms/3.11/js/localization-en_US.js?v=5110"></script>
+    <script>
+        var FAoldJQ;
+        if (typeof $ != 'undefined' && $.noConflict) FAoldJQ = $.noConflict(true);
+    </script>
+    <script src="https://csumb.tfaforms.net/js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="https://csumb.tfaforms.net/js/typeahead/v1.2.0/typeahead.bundle.js"></script>
+    <script>
+        var FA$ = $.noConflict(true);
+        if (FAoldJQ) $ = FAoldJQ;
+    </script>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <!-- FORM: BODY SECTION -->
-<div class="wFormContainer" style="margin: 0;" >
-<style type="text/css">
-            #tfa_307,
-            *[id^="tfa_307["] {
-                width: 200px !important;
-            }
-            #tfa_307-D,
-            *[id^="tfa_307["][class~="field-container-D"] {
-                width: auto !important;
-            }
-       
-            #tfa_5,
-            *[id^="tfa_5["] {
-                width: 616px !important;
-            }
-            #tfa_5-D,
-            *[id^="tfa_5["][class~="field-container-D"] {
-                width: auto !important;
-            }
-       
-            #tfa_304,
-            *[id^="tfa_304["] {
-                width: 100px !important;
-            }
-            #tfa_304-D,
-            *[id^="tfa_304["][class~="field-container-D"] {
-                width: auto !important;
-            }
-       
-            #tfa_305,
-            *[id^="tfa_305["] {
-                width: 150px !important;
-            }
-            #tfa_305-D,
-            *[id^="tfa_305["][class~="field-container-D"] {
-                width: auto !important;
-            }
-       
-            #tfa_316,
-            *[id^="tfa_316["] {
-                width: 250px !important;
-            }
-            #tfa_316-D,
-            *[id^="tfa_316["][class~="field-container-D"] {
-                width: auto !important;
-            }
-       
-            #tfa_306,
-            *[id^="tfa_306["] {
-                width: 150px !important;
-            }
-            #tfa_306-D,
-            *[id^="tfa_306["][class~="field-container-D"] {
-                width: auto !important;
-            }
-            fieldset {
-                border: none !important;
-                padding: 0;
-            }
-            #submit_button {
-                border-radius: 0;
-                display: inline-block;
-                padding: 0.75rem;
-                font-size: 1rem;
-                text-decoration: none;
-                cursor: pointer;
-                border: none;
-                color: white !important;
-                background: #07633B;
-            }
-        </style><div class=""><div class="wForm" style="background-color: transparent !important; padding: 0 !important" id="3-WRPR" dir="ltr">
-<div class="codesection" id="code-3"></div>
-<form method="post" action="https://csumb.tfaforms.net/responses/processor" class="hintsBelow labelsAbove" id="3" role="form">
-<div class="htmlSection" id="tfa_345"><div class="htmlContent" id="tfa_345-HTML"></div></div>
-<fieldset id="tfa_324" class="section">
-<legend id="tfa_324-L">What we need to know from you</legend>
-<div class="oneField field-container-D    " id="tfa_1-D">
-<label id="tfa_1-L" class="label preField reqMark" for="tfa_1">First Name</label><br><div class="inputWrapper"><input type="text" id="tfa_1" name="tfa_1" value="" aria-required="true" title="First Name" class="required"></div>
-</div>
-<div class="oneField field-container-D    " id="tfa_2-D">
-<label id="tfa_2-L" class="label preField reqMark" for="tfa_2">Last Name</label><br><div class="inputWrapper"><input type="text" id="tfa_2" name="tfa_2" value="" aria-required="true" title="Last Name" class="required"></div>
-</div>
-<div class="oneField field-container-D    " id="tfa_4-D">
-<label id="tfa_4-L" class="label preField reqMark" for="tfa_4">Email Address</label><br><div class="inputWrapper"><input type="text" id="tfa_4" name="tfa_4" value="" aria-required="true" title="Email Address" class="validate-email required"></div>
-</div>
-<div class="oneField field-container-D    " id="tfa_307-D">
-<label id="tfa_307-L" class="label preField reqMark" for="tfa_307">Year you plan to start college</label><br><div class="inputWrapper"><select id="tfa_307" name="tfa_307" title="Year you plan to start college" aria-required="true" class="required"><option value="">Please select...</option>
-<option value="tfa_340" id="tfa_340" class="">Fall 2020</option>
-<option value="tfa_342" id="tfa_342" class="">Spring 2021</option>
-<option value="tfa_341" id="tfa_341" class="">Fall 2021</option>
-<option value="tfa_348" id="tfa_348" class="">Spring 2022</option>
-<option value="tfa_349" id="tfa_349" class="">Fall 2022</option>
-<option value="tfa_350" id="tfa_350" class="">Spring 2023</option>
-<option value="tfa_351" id="tfa_351" class="">Fall 2023</option>
-<option value="tfa_352" id="tfa_352" class="">Spring 2024</option>
-<option value="tfa_353" id="tfa_353" class="">Fall 2024</option>
-<option value="tfa_354" id="tfa_354" class="">Spring 2025</option>
-<option value="tfa_355" id="tfa_355" class="">Fall 2025</option></select></div>
-</div>
-</fieldset>
+<div class="wFormContainer" >
+    <div class="wFormHeader"></div>
+    <div class="errorMessage errMsg">Please review the error(s) below.<br/><ul><li><a href="#Salesforce &#40;Prefill&#41;" class="errMsg">Lookup returned no record and aborted connector execution.</a></li></ul></div><style type="text/css">
+                #tfa_5,
+                *[id^="tfa_5["] {
+                    width: 616px !important;
+                }
+                #tfa_5-D,
+                *[id^="tfa_5["][class~="field-container-D"] {
+                    width: auto !important;
+                }
+           
+                #tfa_304,
+                *[id^="tfa_304["] {
+                    width: 100px !important;
+                }
+                #tfa_304-D,
+                *[id^="tfa_304["][class~="field-container-D"] {
+                    width: auto !important;
+                }
+           
+                #tfa_305,
+                *[id^="tfa_305["] {
+                    width: 150px !important;
+                }
+                #tfa_305-D,
+                *[id^="tfa_305["][class~="field-container-D"] {
+                    width: auto !important;
+                }
+           
+                #tfa_307,
+                *[id^="tfa_307["] {
+                    width: 200px !important;
+                }
+                #tfa_307-D,
+                *[id^="tfa_307["][class~="field-container-D"] {
+                    width: auto !important;
+                }
+           
+                #tfa_316,
+                *[id^="tfa_316["] {
+                    width: 350px !important;
+                }
+                #tfa_316-D,
+                *[id^="tfa_316["][class~="field-container-D"] {
+                    width: auto !important;
+                }
+           
+                #tfa_306,
+                *[id^="tfa_306["] {
+                    width: 150px !important;
+                }
+                #tfa_306-D,
+                *[id^="tfa_306["][class~="field-container-D"] {
+                    width: auto !important;
+                }
+            </style><div class=""><div class="wForm" id="12-WRPR" dir="ltr">
+<div class="codesection" id="code-12"></div>
+<form method="post" action="https://csumb.tfaforms.net/responses/processor" class="hintsBelow labelsAbove" id="12" role="form">
+<div class="htmlSection" id="tfa_345"><div class="htmlContent" id="tfa_345-HTML"><div style="text-align: center;"><img alt="Cal State Monterey Bay Logo" src="//csumb.tfaforms.net/forms/get_image/1/2RazMb0p8UZvbG0WvV0YoCKXwLqldWgNfzPPOfMP0TIy0b3Daa3lPtMCMh9cexCk-CSUMBLogo540BayBlue.png" style="font-size: 14.4px; word-spacing: normal; max-width: 80%;"></div></div></div>
+<div class="htmlSection" id="tfa_366"><div class="htmlContent" id="tfa_366-HTML"><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: #0B3751);"><i>We feel you are a good fit for our university. With that said, we just want to know a little bit more about you. Don't worry, we will not be sharing this information with anybody. This is so we can send you information regarding your specific areas of interest&nbsp;and keep you better informed.&nbsp;&nbsp;</i></span></div></div>
 <fieldset id="tfa_334" class="section">
 <legend id="tfa_334-L">Contact Information</legend>
 <div class="oneField field-container-D    " id="tfa_5-D">
 <label id="tfa_5-L" class="label preField " for="tfa_5">Home Address</label><br><div class="inputWrapper"><input type="text" id="tfa_5" name="tfa_5" value="" title="Home Address" class=""></div>
 </div>
 <div class="oneField field-container-D    " id="tfa_6-D">
-<label id="tfa_6-L" class="label preField " for="tfa_6">City&nbsp;</label><br><div class="inputWrapper"><input type="text" id="tfa_6" name="tfa_6" value="" title="City " class=""></div>
+<label id="tfa_6-L" class="label preField reqMark" for="tfa_6">City&nbsp;</label><br><div class="inputWrapper"><input type="text" id="tfa_6" name="tfa_6" value="" aria-required="true" title="City " class="required"></div>
 </div>
 <div class="oneField field-container-D    " id="tfa_7-D">
-<label id="tfa_7-L" class="label preField " for="tfa_7">State</label><br><div class="inputWrapper"><select id="tfa_7" name="tfa_7" title="State" class=""><option value="">Please select...</option>
+<label id="tfa_7-L" class="label preField reqMark" for="tfa_7">State</label><br><div class="inputWrapper"><select id="tfa_7" name="tfa_7" title="State" aria-required="true" class="required"><option value="">Please select...</option>
 <option value="tfa_8" id="tfa_8" class="">Alabama</option>
 <option value="tfa_9" id="tfa_9" class="">Alaska</option>
 <option value="tfa_10" id="tfa_10" class="">Arizona</option>
@@ -239,14 +201,14 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
 <option value="tfa_64" id="tfa_64" class="">Palau</option></select></div>
 </div>
 <div class="oneField field-container-D    " id="tfa_304-D">
-<label id="tfa_304-L" class="label preField " for="tfa_304">Zip Code</label><br><div class="inputWrapper"><input type="text" id="tfa_304" name="tfa_304" value="" maxlength="5" title="Zip Code" class="validate-custom ^([0-9]{5})([-]{1}[0-9]{4})?$"></div>
+<label id="tfa_304-L" class="label preField reqMark" for="tfa_304">Zip Code</label><br><div class="inputWrapper"><input type="text" id="tfa_304" name="tfa_304" value="" maxlength="5" aria-required="true" title="Zip Code" class="validate-custom ^([0-9]{5})([\-]{1}[0-9]{4})?$ required"></div>
 <script type="text/javascript">
-                    if(typeof wFORMS != 'undefined') {
-                        if(wFORMS.behaviors.validation) {
-                            wFORMS.behaviors.validation.rules['customtfa_304'] =  { selector: '*[id="tfa_304"]', check: 'validateCustom'};
-                            wFORMS.behaviors.validation.messages['customtfa_304'] = "Please enter a 5 digit zip code";
-                        }
-                    }</script>
+                        if(typeof wFORMS != 'undefined') {
+                            if(wFORMS.behaviors.validation) {
+                                wFORMS.behaviors.validation.rules['customtfa_304'] =  { selector: '*[id="tfa_304"]', check: 'validateCustom'};
+                                wFORMS.behaviors.validation.messages['customtfa_304'] = "Please enter a 5 digit zip code";
+                            }
+                        }</script>
 </div>
 <div class="oneField field-container-D    " id="tfa_66-D">
 <label id="tfa_66-L" class="label preField " for="tfa_66">Country</label><br><div class="inputWrapper"><select id="tfa_66" name="tfa_66" title="Country" class=""><option value="">Please select...</option>
@@ -488,60 +450,87 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
 <option value="tfa_302" id="tfa_302" class="">Zambia</option>
 <option value="tfa_303" id="tfa_303" class="">Zimbabwe</option></select></div>
 </div>
+<div id="tfa_360" class="section inline group">
 <div class="oneField field-container-D    " id="tfa_305-D">
-<label id="tfa_305-L" class="label preField " for="tfa_305">Phone Number</label><br><div class="inputWrapper"><input type="text" id="tfa_305" name="tfa_305" value="" maxlength="10" autoformat="(###) ###-####" title="Phone Number" class="validate-custom ^([(]{1}[0-9]{3}[)]{1}[.| |-]{0,1}|^[0-9]{3}[.|-| ]?)?[0-9]{3}(.|-| )?[0-9]{4}$"></div>
+<label id="tfa_305-L" class="label preField " for="tfa_305">Mobile Phone Number</label><br><div class="inputWrapper"><input type="text" id="tfa_305" name="tfa_305" value="" maxlength="10" autoformat="(###) ###-####" title="Mobile Phone Number" class="validate-custom ^([\(]{1}[0-9]{3}[\)]{1}[\.| |\-]{0,1}|^[0-9]{3}[\.|\-| ]?)?[0-9]{3}(\.|\-| )?[0-9]{4}$"></div>
 <script type="text/javascript">
-                    if(typeof wFORMS != 'undefined') {
-                        if(wFORMS.behaviors.validation) {
-                            wFORMS.behaviors.validation.rules['customtfa_305'] =  { selector: '*[id="tfa_305"]', check: 'validateCustom'};
-                            wFORMS.behaviors.validation.messages['customtfa_305'] = "Please enter a phone number in the format of (###)###-####";
-                        }
-                    }</script>
+                        if(typeof wFORMS != 'undefined') {
+                            if(wFORMS.behaviors.validation) {
+                                wFORMS.behaviors.validation.rules['customtfa_305'] =  { selector: '*[id="tfa_305"]', check: 'validateCustom'};
+                                wFORMS.behaviors.validation.messages['customtfa_305'] = "Please enter a phone number in the format of (###)###-####";
+                            }
+                        }</script>
+</div>
+<div class="oneField field-container-D    " id="tfa_357-D" role="radiogroup" aria-labelledby="tfa_357-L" data-tfa-labelledby="-L tfa_357-L">
+<label id="tfa_357-L" class="label preField reqMark"><span id="docs-internal-guid-546e33fc-7fff-a737-9858-a6049bae4f67"><span style="font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Can we send you text messages on occasion? (we do not text often)</span></span></label><br><div class="inputWrapper"><span id="tfa_357" class="choices vertical required"><span class="oneChoice"><input type="radio" value="tfa_358" class="" checked data-default-value="true" id="tfa_358" name="tfa_357" aria-required="true" aria-labelledby="tfa_358-L" data-tfa-labelledby="tfa_357-L tfa_358-L"><label class="label postField" id="tfa_358-L" for="tfa_358"><span class="input-radio-faux"></span>Yes</label></span><span class="oneChoice"><input type="radio" value="tfa_359" class="" id="tfa_359" name="tfa_357" aria-required="true" aria-labelledby="tfa_359-L" data-tfa-labelledby="tfa_357-L tfa_359-L"><label class="label postField" id="tfa_359-L" for="tfa_359"><span class="input-radio-faux"></span>No</label></span></span></div>
+</div>
 </div>
 </fieldset>
 <div id="tfa_333" class="section group">
 <fieldset id="tfa_336" class="section">
 <legend id="tfa_336-L">Help us get to know you</legend>
+<div class="oneField field-container-D    " id="tfa_307-D">
+<label id="tfa_307-L" class="label preField reqMark" for="tfa_307">Year you plan to start college</label><br><div class="inputWrapper"><select id="tfa_307" name="tfa_307" title="Year you plan to start college" aria-required="true" class="required"><option value="">Please select...</option>
+<option value="tfa_340" id="tfa_340" class="">Fall 2020</option>
+<option value="tfa_342" id="tfa_342" class="">Spring 2021</option>
+<option value="tfa_341" id="tfa_341" class="">Fall 2021</option>
+<option value="tfa_348" id="tfa_348" class="">Spring 2022</option>
+<option value="tfa_349" id="tfa_349" class="">Fall 2022</option>
+<option value="tfa_350" id="tfa_350" class="">Spring 2023</option>
+<option value="tfa_351" id="tfa_351" class="">Fall 2023</option>
+<option value="tfa_352" id="tfa_352" class="">Spring 2024</option>
+<option value="tfa_353" id="tfa_353" class="">Fall 2024</option>
+<option value="tfa_354" id="tfa_354" class="">Spring 2025</option>
+<option value="tfa_355" id="tfa_355" class="">Fall 2025</option></select></div>
+</div>
 <div class="oneField field-container-D    " id="tfa_316-D">
 <label id="tfa_316-L" class="label preField " for="tfa_316">What is your academic interest?</label><br><div class="inputWrapper">
-<input type="text" id="tfa_316" name="tfa_316" value="" title="What is your academic interest?" data-dataset-allow-free-responses="0" data-dataset-json='[{"a":"Arts (Music, Film, etc.)"},{"a":"Business (Administration, Hospitality, etc.)"},{"a":"Communication (Writing, Journalism, etc.)"},{"a":"Education (Liberal Studies, Teaching, etc.)"},{"a":"Health Sciences (Kinesiology, Social Work, etc.)"},{"a":"Information Technology (Computer Science)"},{"a":"Language &amp; Cultures (Spanish, Japanese, etc.)"},{"a":"Math (Statistics, Mathematics, etc.)"},{"a":"Sciences (Biology, Marine Science, etc.)"},{"a":"Social Sciences (Psychology, Global Studies, etc.)"},{"a":"Undecided / Unknown"}]' autocomplete="off" class="wfAutosuggest"><i class="fa fa-spinner fa-pulse fa-fw tt-spinner"></i><i class="fa fa-search tt-search" aria-hidden="true"></i><i class="fa fa-times-circle tt-clear no-input" aria-hidden="true"></i>
+<input type="text" id="tfa_316" name="tfa_316" value="" title="What is your academic interest?" data-dataset-allow-free-responses="0" data-dataset-json='[{"a":"Arts (Music, Film, etc.)"},{"a":"Business (Administration, Hospitality, etc.)"},{"a":"Communication (Writing, Journalism, etc.)"},{"a":"Education (Liberal Studies, Teaching, etc.)"},{"a":"Health Sciences (Kinesiology, Social Work, etc.)"},{"a":"Information Technology (Computer Science)"},{"a":"Language &amp; Cultures (Spanish, Japanese, etc.)"},{"a":"Math (Statistics, Mathematics, etc.)"},{"a":"Sciences (Biology, Marine Science, etc.)"},{"a":"Social Sciences (Psychology, Global Studies, etc.)"},{"a":"Undecided \/ Unknown"}]' autocomplete="off" data-dataset-timestamp="1582567950" data-dataset-id="1ba6f548-0ed5-427d-8b14-314693131262" data-dataset-map="" data-dataset-url="https://csumb.tfaforms.net/api_v2/dataset" class="wfAutosuggest"><i class="fa fa-spinner fa-pulse fa-fw tt-spinner"></i><i class="fa fa-search tt-search" aria-hidden="true"></i><i class="fa fa-times-circle tt-clear no-input" aria-hidden="true"></i>
 </div>
 </div>
 <div class="oneField field-container-D    " id="tfa_306-D">
 <label id="tfa_306-L" class="label preField " for="tfa_306">Date of Birth</label><br><div class="inputWrapper"><input type="text" id="tfa_306" name="tfa_306" value="" max="-|1_Days{}" autoformat="##/##/####" title="Date of Birth" class="validate-date"></div>
 </div>
 <div class="oneField field-container-D   hintsSide " id="tfa_327-D" role="radiogroup" aria-labelledby="tfa_327-L" data-tfa-labelledby="-L tfa_327-L">
-<label id="tfa_327-L" class="label preField ">Are you a first generation college student?<br><i>(Your parent(s) do not possess a bachelor's degree)</i>&nbsp;</label><br><div class="inputWrapper"><span id="tfa_327" class="choices vertical "><span class="oneChoice"><input type="radio" value="tfa_328" class="" id="tfa_328" name="tfa_327" aria-labelledby="tfa_328-L" data-tfa-labelledby="tfa_327-L tfa_328-L"><label class="label postField" id="tfa_328-L" for="tfa_328"><span class="input-radio-faux"></span>Yes&nbsp;</label></span><span class="oneChoice"><input type="radio" value="tfa_329" class="" checked data-default-value="true" id="tfa_329" name="tfa_327" aria-labelledby="tfa_329-L" data-tfa-labelledby="tfa_327-L tfa_329-L"><label class="label postField" id="tfa_329-L" for="tfa_329"><span class="input-radio-faux"></span>No&nbsp;</label></span></span></div>
+<label id="tfa_327-L" class="label preField ">Are you a first generation college student?<br><i>(Your parent(s) do not possess a bachelor's degree)</i>&nbsp;</label><br><div class="inputWrapper"><span id="tfa_327" class="choices vertical "><span class="oneChoice"><input type="radio" value="tfa_328" class="" id="tfa_328" name="tfa_327" aria-labelledby="tfa_328-L" data-tfa-labelledby="tfa_327-L tfa_328-L"><label class="label postField" id="tfa_328-L" for="tfa_328"><span class="input-radio-faux"></span>Yes&nbsp;</label></span><span class="oneChoice"><input type="radio" value="tfa_329" class="" id="tfa_329" name="tfa_327" aria-labelledby="tfa_329-L" data-tfa-labelledby="tfa_327-L tfa_329-L"><label class="label postField" id="tfa_329-L" for="tfa_329"><span class="input-radio-faux"></span>No&nbsp;</label></span></span></div>
 </div>
 <div class="oneField field-container-D    " id="tfa_330-D" role="radiogroup" aria-labelledby="tfa_330-L" data-tfa-labelledby="-L tfa_330-L">
-<label id="tfa_330-L" class="label preField ">Are you entering CSUMB as:&nbsp;</label><br><div class="inputWrapper"><span id="tfa_330" class="choices vertical "><span class="oneChoice"><input type="radio" value="tfa_331" class="" id="tfa_331" name="tfa_330" aria-labelledby="tfa_331-L" data-tfa-labelledby="tfa_330-L tfa_331-L"><label class="label postField" id="tfa_331-L" for="tfa_331"><span class="input-radio-faux"></span>First Time Freshman&nbsp;</label></span><span class="oneChoice"><input type="radio" value="tfa_332" class="" id="tfa_332" name="tfa_330" aria-labelledby="tfa_332-L" data-tfa-labelledby="tfa_330-L tfa_332-L"><label class="label postField" id="tfa_332-L" for="tfa_332"><span class="input-radio-faux"></span>Transfer Student</label></span><span class="oneChoice"><input type="radio" value="tfa_339" class="" id="tfa_339" name="tfa_330" aria-labelledby="tfa_339-L" data-tfa-labelledby="tfa_330-L tfa_339-L"><label class="label postField" id="tfa_339-L" for="tfa_339"><span class="input-radio-faux"></span>Masters or Credential</label></span></span></div>
+<label id="tfa_330-L" class="label preField reqMark">Are you entering CSUMB as:&nbsp;</label><br><div class="inputWrapper"><span id="tfa_330" class="choices vertical required"><span class="oneChoice"><input type="radio" value="tfa_331" class="" id="tfa_331" name="tfa_330" aria-required="true" aria-labelledby="tfa_331-L" data-tfa-labelledby="tfa_330-L tfa_331-L"><label class="label postField" id="tfa_331-L" for="tfa_331"><span class="input-radio-faux"></span>First Time Freshman&nbsp;</label></span><span class="oneChoice"><input type="radio" value="tfa_332" class="" id="tfa_332" name="tfa_330" aria-required="true" aria-labelledby="tfa_332-L" data-tfa-labelledby="tfa_330-L tfa_332-L"><label class="label postField" id="tfa_332-L" for="tfa_332"><span class="input-radio-faux"></span>Transfer Student</label></span><span class="oneChoice"><input type="radio" value="tfa_339" class="" id="tfa_339" name="tfa_330" aria-required="true" aria-labelledby="tfa_339-L" data-tfa-labelledby="tfa_330-L tfa_339-L"><label class="label postField" id="tfa_339-L" for="tfa_339"><span class="input-radio-faux"></span>Masters or Credential</label></span></span></div>
+</div>
+<div class="oneField field-container-D    " id="tfa_361-D">
+<label id="tfa_361-L" class="label preField reqMark" for="tfa_361"><span id="docs-internal-guid-f75a7417-7fff-88c2-7428-6b9b20150612"><span style="font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">How did you interact with us?</span></span></label><br><div class="inputWrapper"><select id="tfa_361" name="tfa_361" title="How did you interact with us?" aria-required="true" class="required"><option value="">Please select...</option>
+<option value="tfa_362" id="tfa_362" class="">College Fair</option>
+<option value="tfa_363" id="tfa_363" class="">School Visit - High School</option>
+<option value="tfa_364" id="tfa_364" class="">School Visit - Junior College</option>
+<option value="tfa_365" id="tfa_365" class="">Other</option></select></div>
 </div>
 </fieldset>
-<input type="hidden" id="tfa_320" name="tfa_320" value="Inquiry Form - Website" class=""><input type="hidden" id="tfa_322" name="tfa_322" value="New" class="">
+<input type="hidden" id="tfa_320" name="tfa_320" value="Counselor Recruitment Event (i" class="">
 </div>
-<input type="hidden" id="tfa_337" name="tfa_337" value="Webform" class=""><div class="oneField field-container-D     wf-acl-hidden" id="tfa_343-D">
-<label id="tfa_343-L" class="label preField " for="tfa_343">Lead Source (Hidden)</label><br><div class="inputWrapper"><input type="text" id="tfa_343" name="tfa_343" value="Inquiry Card - Website" default="Inquiry Card - Website" title="Lead Source (Hidden)" class=""></div>
+<input type="hidden" id="tfa_322" name="tfa_322" value="New" class=""><input type="hidden" id="tfa_337" name="tfa_337" value="Webform" class=""><div class="oneField field-container-D     wf-acl-hidden" id="tfa_343-D">
+<label id="tfa_343-L" class="label preField " for="tfa_343">Lead Source (Hidden)</label><br><div class="inputWrapper"><input type="text" id="tfa_343" name="tfa_343" value="Recruitment Event" default="Recruitment Event" title="Lead Source (Hidden)" class=""></div>
 </div>
-<div class="htmlSection" id="tfa_347"><div class="htmlContent" id="tfa_347-HTML"><div style="text-align: center;">Are you an international student? If so, please refer to this <a target="_blank" href="https://csumb.edu/international/interest-form">web contact form</a>.&nbsp;</<div></div></div>
-<div class="actions" id="3-A"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
+<input type="hidden" id="tfa_356" name="tfa_356" value="" class=""><input type="hidden" id="tfa_1" name="tfa_1" value="" class=""><input type="hidden" id="tfa_2" name="tfa_2" value="" class=""><input type="hidden" id="tfa_4" name="tfa_4" value="" class=""><div class="actions" id="12-A"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
 <div style="clear:both"></div>
-<input type="hidden" value="3" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="dad535b4dce9e29c43e31cc3ab40ead2" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="62" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
+<input type="hidden" value="12" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="24d382e1ddc5bffb9374a3cac1d0899a" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="18" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
 </form>
 </div></div><div class="wFormFooter"><p class="supportInfo"><br></p></div>
-<p class="supportInfo" >
+  <p class="supportInfo" >
+   
+
+      </p>
+ </div>
 
 
-  </p>
-</div>
 `
 
 const InquiryPage = () => {
   return (
-    <Layout pageTitle="Inquiry Form">
+    <Layout pageTitle="Recruitment Follow Up">
       <SiteHeader path="/admissions">Admissions</SiteHeader>
       <SiteNavigation navigation={null} />
       <Container>
-        <PageTitle>Cal State Monterey Bay Request Information Form</PageTitle>
+        <PageTitle>Cal State Monterey Bay Follow Up</PageTitle>
         <div dangerouslySetInnerHTML={{ __html: inquiryForm }} />
       </Container>
     </Layout>
@@ -553,7 +542,7 @@ export default InquiryPage
 export const query = graphql`
   {
     allMarkdownRemark(
-      filter: { frontmatter: { name: { eq: "inquiryform" } } }
+      filter: { frontmatter: { name: { eq: "recruitmentFollowup" } } }
     ) {
       edges {
         node {
