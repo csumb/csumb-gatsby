@@ -10,6 +10,7 @@ import {
   HomepageHero,
 } from '../components/homepage'
 import PageFeedbackContext from '../components/contexts/page-feedback'
+import { AlertTop } from '../components/common/alert'
 
 const sortItems = ({
   allContentfulHomepageEvent,
@@ -49,6 +50,9 @@ const IndexPage = ({ data }) => {
       value={{ email: 'webfolk@csumb.edu', title: 'Homepage', url: '/' }}
     >
       <Layout noFooterMargin={true}>
+        <AlertTop>
+          <a href="/health/coronavirus-information">COVID-19 Information</a>
+        </AlertTop>
         <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
         <HomepageImageNavigation
           navigation={allContentfulHomepageImageNavigation.edges[0].node}

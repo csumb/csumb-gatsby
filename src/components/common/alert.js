@@ -76,6 +76,16 @@ const AlertFyiElement = styled(Alert)`
   font-weight: bold;
 `
 
+const AlertTopElement = styled(Alert)`
+  ${baseStyle};
+  margin: 0;
+  background: ${colors.primary.darkest};
+  text-align: center;
+  a {
+    color: ${colors.white} !important;
+  }
+`
+
 const AlertContent = ({ icon, children }) => (
   <Flex>
     <AlertIconBox width={[0, 1 / 6, 0.75 / 10]} pr={6}>
@@ -119,4 +129,15 @@ const AlertFyi = props => (
   <AlertFyiElement {...props}>{props.children}</AlertFyiElement>
 )
 
-export { AlertDanger, AlertSuccess, AlertWarning, AlertEmpty, AlertFyi }
+const AlertTop = props => (
+  <AlertTopElement {...props}>{props.children}</AlertTopElement>
+)
+
+export {
+  AlertDanger,
+  AlertSuccess,
+  AlertWarning,
+  AlertEmpty,
+  AlertFyi,
+  AlertTop,
+}
