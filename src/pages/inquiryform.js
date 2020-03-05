@@ -239,7 +239,7 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
 <option value="tfa_64" id="tfa_64" class="">Palau</option></select></div>
 </div>
 <div class="oneField field-container-D    " id="tfa_304-D">
-<label id="tfa_304-L" class="label preField " for="tfa_304">Zip Code</label><br><div class="inputWrapper"><input type="text" id="tfa_304" name="tfa_304" value="" maxlength="5" title="Zip Code" class="validate-custom ^([0-9]{5})([\-]{1}[0-9]{4})?$"></div>
+<label id="tfa_304-L" class="label preField " for="tfa_304">Zip Code</label><br><div class="inputWrapper"><input type="text" id="tfa_304" name="tfa_304" value="" maxlength="5" title="Zip Code" class="validate-custom ^([0-9]{5})([-]{1}[0-9]{4})?$"></div>
 <script type="text/javascript">
                     if(typeof wFORMS != 'undefined') {
                         if(wFORMS.behaviors.validation) {
@@ -489,7 +489,7 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
 <option value="tfa_303" id="tfa_303" class="">Zimbabwe</option></select></div>
 </div>
 <div class="oneField field-container-D    " id="tfa_305-D">
-<label id="tfa_305-L" class="label preField " for="tfa_305">Phone Number</label><br><div class="inputWrapper"><input type="text" id="tfa_305" name="tfa_305" value="" maxlength="10" autoformat="(###) ###-####" title="Phone Number" class="validate-custom ^([\(]{1}[0-9]{3}[\)]{1}[\.| |\-]{0,1}|^[0-9]{3}[\.|\-| ]?)?[0-9]{3}(\.|\-| )?[0-9]{4}$"></div>
+<label id="tfa_305-L" class="label preField " for="tfa_305">Phone Number</label><br><div class="inputWrapper"><input type="text" id="tfa_305" name="tfa_305" value="" maxlength="10" autoformat="(###) ###-####" title="Phone Number" class="validate-custom ^([(]{1}[0-9]{3}[)]{1}[.| |-]{0,1}|^[0-9]{3}[.|-| ]?)?[0-9]{3}(.|-| )?[0-9]{4}$"></div>
 <script type="text/javascript">
                     if(typeof wFORMS != 'undefined') {
                         if(wFORMS.behaviors.validation) {
@@ -504,7 +504,7 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
 <legend id="tfa_336-L">Help us get to know you</legend>
 <div class="oneField field-container-D    " id="tfa_316-D">
 <label id="tfa_316-L" class="label preField " for="tfa_316">What is your academic interest?</label><br><div class="inputWrapper">
-<input type="text" id="tfa_316" name="tfa_316" value="" title="What is your academic interest?" data-dataset-allow-free-responses="0" data-dataset-json='[{"a":"Arts (Music, Film, etc.)"},{"a":"Business (Administration, Hospitality, etc.)"},{"a":"Communication (Writing, Journalism, etc.)"},{"a":"Education (Liberal Studies, Teaching, etc.)"},{"a":"Health Sciences (Kinesiology, Social Work, etc.)"},{"a":"Information Technology (Computer Science)"},{"a":"Language &amp; Cultures (Spanish, Japanese, etc.)"},{"a":"Math (Statistics, Mathematics, etc.)"},{"a":"Sciences (Biology, Marine Science, etc.)"},{"a":"Social Sciences (Psychology, Global Studies, etc.)"},{"a":"Undecided \/ Unknown"}]' autocomplete="off" class="wfAutosuggest"><i class="fa fa-spinner fa-pulse fa-fw tt-spinner"></i><i class="fa fa-search tt-search" aria-hidden="true"></i><i class="fa fa-times-circle tt-clear no-input" aria-hidden="true"></i>
+<input type="text" id="tfa_316" name="tfa_316" value="" title="What is your academic interest?" data-dataset-allow-free-responses="0" data-dataset-json='[{"a":"Arts (Music, Film, etc.)"},{"a":"Business (Administration, Hospitality, etc.)"},{"a":"Communication (Writing, Journalism, etc.)"},{"a":"Education (Liberal Studies, Teaching, etc.)"},{"a":"Health Sciences (Kinesiology, Social Work, etc.)"},{"a":"Information Technology (Computer Science)"},{"a":"Language &amp; Cultures (Spanish, Japanese, etc.)"},{"a":"Math (Statistics, Mathematics, etc.)"},{"a":"Sciences (Biology, Marine Science, etc.)"},{"a":"Social Sciences (Psychology, Global Studies, etc.)"},{"a":"Undecided / Unknown"}]' autocomplete="off" class="wfAutosuggest"><i class="fa fa-spinner fa-pulse fa-fw tt-spinner"></i><i class="fa fa-search tt-search" aria-hidden="true"></i><i class="fa fa-times-circle tt-clear no-input" aria-hidden="true"></i>
 </div>
 </div>
 <div class="oneField field-container-D    " id="tfa_306-D">
