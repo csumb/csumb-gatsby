@@ -94,15 +94,6 @@ exports.sourceNodes = async (
     return new Promise((resolve, reject) => {
       fetch(link)
         .then(response => {
-          if (response.status !== 200) {
-            console.log(
-              'Looks like there was a problem. Status Code: ' +
-                response.statusText +
-                ' Response: ' +
-                JSON.stringify(response)
-            )
-            return
-          }
           return response.json()
         })
         .then(pages => {
