@@ -146,7 +146,7 @@ class ProgramTemplate extends Component {
         <SiteHeader path="/educationabroad">Education Abroad</SiteHeader>
         {navigation && <SiteNavigation navigation={navigation} />}
         <Container>
-          {data.Alert && (
+          {data.Alert.length > 0 && (
             <AlertDanger>
               <h4 style={{ margin: 'auto 0' }}>
                 {data.Alert}{' '}

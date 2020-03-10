@@ -213,6 +213,12 @@ const gatsbyConfig = {
               'Campus_services',
               'Summer_Program_Dates',
             ],
+            defaultValues: {
+              // set default values so GraphQL knows these fields exist
+              Alert: '',
+              Alert_Link_Text: '',
+              Alert_Link_URL: '',
+            },
           },
           {
             baseId: 'appXrkUdaBbX4kxG5',
