@@ -90,7 +90,7 @@ const inquiryForm = `
 <style type="text/css"></style><div class=""><div style="padding: 0; margin: 0;" class="wForm" id="11-WRPR" dir="ltr">
 <div class="codesection" id="code-11"></div>
 <form method="post" action="https://csumb.tfaforms.net/responses/processor" class="hintsBelow labelsAbove" id="11" role="form">
-<div class="htmlSection" id="tfa_346"><div class="htmlContent" id="tfa_346-HTML"><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: #fafafa;"><i>Thanks for your interest in Cal State Monterey Bay! Please provide us with some basic details so we can send you information regarding our university, important admissions advice, and more.&nbsp;</i></span></div></div>
+<div class="htmlSection" id="tfa_346"><div class="htmlContent" id="tfa_346-HTML"><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small;"><i>Thanks for your interest in Cal State Monterey Bay! Please provide us with some basic details so we can send you information regarding our university, important admissions advice, and more.&nbsp;</i></span></div></div>
 <fieldset id="tfa_324" class="section">
 <legend id="tfa_324-L">What we need to know from you</legend>
 <div class="oneField field-container-D    " id="tfa_1-D">
