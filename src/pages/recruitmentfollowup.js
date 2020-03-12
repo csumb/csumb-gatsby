@@ -150,7 +150,7 @@ const inquiryForm = `
                     margin-bottom: 0 !important;
                 }
 
-            </style><div class=""><div class="wForm" style="padding: 0; margin: 0;" id="12-WRPR" dir="ltr">
+            </style><div class=""><div class="wForm" style="padding: 0; margin: 0; id="12-WRPR" dir="ltr">
 <div class="codesection" id="code-12"></div>
 <form method="post" action="https://csumb.tfaforms.net/responses/processor" class="hintsBelow labelsAbove" id="12" role="form">
 <div class="htmlSection" id="tfa_366"><div class="htmlContent" id="tfa_366-HTML"><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: #0B3751);"><i>We feel you are a good fit for our university. With that said, we just want to know a little bit more about you. Don't worry, we will not be sharing this information with anybody. This is so we can send you information regarding your specific areas of interest&nbsp;and keep you better informed.&nbsp;&nbsp;</i></span></div></div>
@@ -472,8 +472,7 @@ const inquiryForm = `
 <option value="tfa_302" id="tfa_302" class="">Zambia</option>
 <option value="tfa_303" id="tfa_303" class="">Zimbabwe</option></select></div>
 </div>
-<div id="tfa_360" class="section inline group">
-<div class="oneField field-container-D    " id="tfa_305-D">
+<div id="tfa_360" class="section group"><div class="oneField field-container-D    " id="tfa_305-D">
 <label id="tfa_305-L" class="label preField " for="tfa_305">Mobile Phone Number</label><br><div class="inputWrapper"><input type="text" id="tfa_305" name="tfa_305" value="" maxlength="10" autoformat="(###) ###-####" title="Mobile Phone Number" class="validate-custom ^([\(]{1}[0-9]{3}[\)]{1}[\.| |\-]{0,1}|^[0-9]{3}[\.|\-| ]?)?[0-9]{3}(\.|\-| )?[0-9]{4}$"></div>
 <script type="text/javascript">
                         if(typeof wFORMS != 'undefined') {
@@ -482,12 +481,7 @@ const inquiryForm = `
                                 wFORMS.behaviors.validation.messages['customtfa_305'] = "Please enter a phone number in the format of (###)###-####";
                             }
                         }</script>
-</div>
-<br>
-<div class="oneField field-container-D" id="tfa_357-D" role="radiogroup" aria-labelledby="tfa_357-L" data-tfa-labelledby="-L tfa_357-L">
-<label id="tfa_357-L" class="label preField reqMark"><span id="docs-internal-guid-546e33fc-7fff-a737-9858-a6049bae4f67"><span style="font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Can we send you text messages on occasion? (we do not text often)</span></span></label><br><div class="inputWrapper"><span id="tfa_357" class="choices vertical required"><span class="oneChoice"><input type="radio" value="tfa_358" class="" checked data-default-value="true" id="tfa_358" name="tfa_357" aria-required="true" aria-labelledby="tfa_358-L" data-tfa-labelledby="tfa_357-L tfa_358-L"><label class="label postField" id="tfa_358-L" for="tfa_358"><span class="input-radio-faux"></span>Yes</label></span><span class="oneChoice"><input type="radio" value="tfa_359" class="" id="tfa_359" name="tfa_357" aria-required="true" aria-labelledby="tfa_359-L" data-tfa-labelledby="tfa_357-L tfa_359-L"><label class="label postField" id="tfa_359-L" for="tfa_359"><span class="input-radio-faux"></span>No</label></span></span></div>
-</div>
-</div>
+</div></div>
 </fieldset>
 <div id="tfa_333" class="section group">
 <fieldset id="tfa_336" class="section">
@@ -535,7 +529,7 @@ const inquiryForm = `
 </div>
 <input type="hidden" id="tfa_356" name="tfa_356" value="" class=""><input type="hidden" id="tfa_1" name="tfa_1" value="" class=""><input type="hidden" id="tfa_2" name="tfa_2" value="" class=""><input type="hidden" id="tfa_4" name="tfa_4" value="" class=""><div class="actions" id="12-A"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
 <div style="clear:both"></div>
-<input type="hidden" value="12" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="24d382e1ddc5bffb9374a3cac1d0899a" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="18" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
+<input type="hidden" value="12" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="24d382e1ddc5bffb9374a3cac1d0899a" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="20" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
 </form>
 </div></div><div class="wFormFooter"><p class="supportInfo"><br></p></div>
   <p class="supportInfo" >
