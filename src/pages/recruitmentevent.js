@@ -63,6 +63,9 @@ const inquiryForm = `
       border: none !important;
       padding: 0;
     }
+    fieldset#tfa_324 {
+      margin-bottom: 0;
+    }
     #submit_button {
       border-radius: 0;
       display: inline-block;
@@ -76,6 +79,9 @@ const inquiryForm = `
     }
     .wForm {
       background: transparent !important;
+    }
+    .supportInfo {
+      margin-top: 35px;
     }
     </style>
 
@@ -105,13 +111,13 @@ const inquiryForm = `
 <label id="tfa_343-L" class="label preField " for="tfa_343">Lead Source (Hidden)</label><br><div class="inputWrapper"><input type="text" id="tfa_343" name="tfa_343" value="Recruitment Event" default="Recruitment Event" title="Lead Source (Hidden)" class=""></div>
 </div>
 </div>
-<div class="actions" id="11-A"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
+<div style="padding-top: 0 !important; margin-top: 0 !important;" class="actions" id="11-A"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
 <div style="clear:both"></div>
 <input type="hidden" value="11" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="4d443e20bd7802ccd7ff0064a53d4ef1" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="8" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
 </form>
-</div></div><div class="wFormFooter"><p class="supportInfo"><br></p></div>
+</div></div>
 <p class="supportInfo" >
-
+By submitting this form you are granting CSUMB permission to email you information regarding the University. 
 
   </p>
 </div>

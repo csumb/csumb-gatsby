@@ -129,6 +129,9 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
                 border: none !important;
                 padding: 0;
             }
+            .supportInfo {
+                margin-top: 35px;
+              }
             #submit_button {
                 border-radius: 0;
                 display: inline-block;
@@ -527,9 +530,9 @@ const inquiryForm = `<!-- FORM: HEAD SECTION -->
 <div style="clear:both"></div>
 <input type="hidden" value="3" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="dad535b4dce9e29c43e31cc3ab40ead2" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="62" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
 </form>
-</div></div><div class="wFormFooter"><p class="supportInfo"><br></p></div>
+</div></div>
 <p class="supportInfo" >
-
+By submitting this form you are granting CSUMB permission to email you information regarding the University. 
 
   </p>
 </div>
