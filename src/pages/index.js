@@ -56,7 +56,7 @@ const IndexPage = ({ data }) => {
       <Layout noFooterMargin={true}>
         <AlertTop>
           <a href="/health/coronavirus-information">
-            CSUMB to transition instruction - No class March 13-19
+            CSUMB to transition instruction - No class March 13-20
           </a>
         </AlertTop>
         <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
