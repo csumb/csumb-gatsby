@@ -9,9 +9,10 @@ import { graphql } from 'gatsby'
 import Container from '../components/common/container'
 import queryString from 'query-string'
 
-if (typeof window !== 'undefined') {
-  const value = queryString.parse(window.location.search)
-}
+let value = ''
+typeof window !== 'undefined'
+  ? (value = queryString.parse(window.location.search))
+  : (value = '')
 
 const inquiryForm = `
 <!-- FORM: HEAD SECTION -->
