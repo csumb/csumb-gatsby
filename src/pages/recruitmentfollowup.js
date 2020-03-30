@@ -9,11 +9,9 @@ import { graphql } from 'gatsby'
 import Container from '../components/common/container'
 import queryString from 'query-string'
 
-const value = queryString.parse(window.location.search)
-// const pid = value.pid
-// console.log('pid', pid) //123
-
-console.log(value.pid)
+if (typeof window !== 'undefined') {
+  const value = queryString.parse(window.location.search)
+}
 
 const inquiryForm = `
 <!-- FORM: HEAD SECTION -->
