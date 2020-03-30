@@ -7,6 +7,13 @@ import {
 } from '../components/layouts/default'
 import { graphql } from 'gatsby'
 import Container from '../components/common/container'
+import queryString from 'query-string'
+
+const value = queryString.parse(window.location.search)
+// const pid = value.pid
+// console.log('pid', pid) //123
+
+console.log(value.pid)
 
 const inquiryForm = `
 <!-- FORM: HEAD SECTION -->
@@ -72,7 +79,7 @@ const inquiryForm = `
 
 <!-- FORM: BODY SECTION -->
 <div class="wFormContainer" style="margin: 0; padding: 0;" >
-    <div class="wFormHeader"></div>
+    <div class="wFormHeader">pid: ${value.pid}</div>
     <div class="errorMessage errMsg">Please review the error(s) below.<br/><ul><li><a href="#Salesforce &#40;Prefill&#41;" class="errMsg">Lookup returned no record and aborted connector execution.</a></li></ul></div>
     <style type="text/css">
                 #tfa_5,

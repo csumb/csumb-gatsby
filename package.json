@@ -82,6 +82,7 @@
     "patch-package": "^6.1.2",
     "phone-formatter": "0.0.2",
     "prop-types": "^15.6.2",
+    "query-string": "^6.11.1",
     "react": "^16.11.0",
     "react-autocomplete": "^1.8.1",
     "react-calendar": "^2.18.1",
