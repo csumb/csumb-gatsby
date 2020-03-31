@@ -13,6 +13,7 @@ let value = ''
 typeof window !== 'undefined'
   ? (value = queryString.parse(window.location.search))
   : (value = '')
+console.log(`pid: ${value.pid}`)
 
 const inquiryForm = `
 <!-- FORM: HEAD SECTION -->
@@ -78,7 +79,7 @@ const inquiryForm = `
 
 <!-- FORM: BODY SECTION -->
 <div class="wFormContainer" style="margin: 0; padding: 0;" >
-    <div class="wFormHeader">pid: ${value.pid}</div>
+    <div class="wFormHeader"></div>
     <div class="errorMessage errMsg">Please review the error(s) below.<br/><ul><li><a href="#Salesforce &#40;Prefill&#41;" class="errMsg">Lookup returned no record and aborted connector execution.</a></li></ul></div>
     <style type="text/css">
                 #tfa_5,
