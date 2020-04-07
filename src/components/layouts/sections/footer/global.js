@@ -133,26 +133,16 @@ class Footer extends Component {
                 <Box width={[1, 1 / 3]}>
                   <FooterList>
                     <li>
-                      <a href="/jobs">Jobs</a>
+                      <a href="https://otterathletics.com/">Athletics</a>
                     </li>
                     <li>
-                      <a href="/admissions/visit">Tours</a>
+                      <a href="/mastercalendar">Calendars</a>
                     </li>
                     <li>
-                      <a href="/parking">Parking</a>
-                    </li>
-                  </FooterList>
-                </Box>
-                <Box width={[1, 1 / 3]}>
-                  <FooterList>
-                    <li>
-                      <a href="/library">Library</a>
+                      <a href="https://catalog.csumb.edu/">Catalog</a>
                     </li>
                     <li>
-                      <a href="/map">Map</a>
-                    </li>
-                    <li>
-                      <a href="/mastercalendar">Calendar</a>
+                      <a href="/schedule">Class schedule</a>
                     </li>
                   </FooterList>
                 </Box>
@@ -162,10 +152,28 @@ class Footer extends Component {
                       <a href="/directory">Directory</a>
                     </li>
                     <li>
-                      <a href="https://catalog.csumb.edu/">Catalog</a>
+                      <a href="/jobs">Jobs</a>
                     </li>
                     <li>
-                      <a href="/schedule">Class schedule</a>
+                      <a href="/library">Library</a>
+                    </li>
+                    <li>
+                      <a href="/map">Map</a>
+                    </li>
+
+
+                  </FooterList>
+                </Box>
+                <Box width={[1, 1 / 3]}>
+                  <FooterList>
+                    <li>
+                      <a href="/news">News</a>
+                    </li>
+                    <li>
+                      <a href="/parking">Parking</a>
+                    </li>
+                    <li>
+                      <a href="/admissions/visit">Tours</a>
                     </li>
                   </FooterList>
                 </Box>
