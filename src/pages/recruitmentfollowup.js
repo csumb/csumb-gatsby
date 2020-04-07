@@ -8,6 +8,15 @@ import {
 import { graphql } from 'gatsby'
 import Container from '../components/common/container'
 
+const iFrame = `                     
+    <iframe
+    src="https://csumb.tfaforms.net/12"
+    height="2000"
+    width="100%"
+    frameborder="0"
+    />
+    <script src="//csumb.tfaforms.net/js/iframe_resize_helper.js" />`
+
 const InquiryPage = () => {
   return (
     <Layout pageTitle="Recruitment Follow Up">
@@ -15,11 +24,7 @@ const InquiryPage = () => {
       <SiteNavigation navigation={null} />
       <Container>
         <PageTitle>Cal State Monterey Bay Follow Up</PageTitle>
-        <div>
-        <iframe src="https://csumb.tfaforms.net/12" height="2000" width="100%"
-        frameborder="0" ></iframe>
-        <script src="//csumb.tfaforms.net/js/iframe_resize_helper.js"></script>
-        </div>
+        <div dangerouslySetInnerHTML={{ __html: iFrame }} />
       </Container>
     </Layout>
   )
