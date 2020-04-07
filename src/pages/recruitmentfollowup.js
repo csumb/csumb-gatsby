@@ -9,11 +9,6 @@ import { graphql } from 'gatsby'
 import Container from '../components/common/container'
 import queryString from 'query-string'
 
-let value = ''
-typeof window !== 'undefined'
-  ? (value = queryString.parse(window.location.search))
-  : (value = '')
-console.log(`pid: ${value.pid}`)
 
 const inquiryForm = `
 <!-- FORM: HEAD SECTION -->
@@ -55,15 +50,15 @@ const inquiryForm = `
         });
     </script>
 
-    <link href="https://csumb.tfaforms.net/dist/form-builder/5.0.0/wforms-layout.css?v=5110" rel="stylesheet" type="text/css" />
+    <link href="https://csumb.tfaforms.net/dist/form-builder/5.0.0/wforms-layout.css?v=53176edc91fbc541f67f1d8d3ad6b5dd" rel="stylesheet" type="text/css" />
 
-    <link href="https://csumb.tfaforms.net/uploads/themes/theme-2.css" rel="stylesheet" type="text/css" />
-    <link href="https://csumb.tfaforms.net/dist/form-builder/5.0.0/wforms-jsonly.css?v=5110" rel="alternate stylesheet" title="This stylesheet activated by javascript" type="text/css" />
-    <script type="text/javascript" src="https://csumb.tfaforms.net/wForms/3.11/js/wforms.js?v=5110"></script>
+    <link href="https://csumb.tfaforms.net/uploads/themes/theme-18.css" rel="stylesheet" type="text/css" />
+    <link href="https://csumb.tfaforms.net/dist/form-builder/5.0.0/wforms-jsonly.css?v=53176edc91fbc541f67f1d8d3ad6b5dd" rel="alternate stylesheet" title="This stylesheet activated by javascript" type="text/css" />
+    <script type="text/javascript" src="https://csumb.tfaforms.net/wForms/3.11/js/wforms.js?v=53176edc91fbc541f67f1d8d3ad6b5dd"></script>
     <script type="text/javascript">
         wFORMS.behaviors.prefill.skip = false;
     </script>
-        <script type="text/javascript" src="https://csumb.tfaforms.net/wForms/3.11/js/localization-en_US.js?v=5110"></script>
+        <script type="text/javascript" src="https://csumb.tfaforms.net/wForms/3.11/js/localization-en_US.js?v=53176edc91fbc541f67f1d8d3ad6b5dd"></script>
     <script>
         var FAoldJQ;
         if (typeof $ != 'undefined' && $.noConflict) FAoldJQ = $.noConflict(true);
@@ -78,10 +73,9 @@ const inquiryForm = `
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <!-- FORM: BODY SECTION -->
-<div class="wFormContainer" style="margin: 0; padding: 0;" >
+<div class="wFormContainer" >
     <div class="wFormHeader"></div>
-    <div class="errorMessage errMsg">Please review the error(s) below.<br/><ul><li><a href="#Salesforce &#40;Prefill&#41;" class="errMsg">Lookup returned no record and aborted connector execution.</a></li></ul></div>
-    <style type="text/css">
+    <div class="errorMessage errMsg">Please review the error(s) below.<br/><ul><li><a href="#Salesforce &#40;Prefill&#41;" class="errMsg">Lookup returned no record and aborted connector execution.</a></li></ul></div><style type="text/css">
                 #tfa_5,
                 *[id^="tfa_5["] {
                     width: 616px !important;
@@ -135,31 +129,10 @@ const inquiryForm = `
                 *[id^="tfa_306["][class~="field-container-D"] {
                     width: auto !important;
                 }
-                fieldset {
-                    border: none !important;
-                    padding: 0;
-                }
-                #submit_button {
-                    border-radius: 0;
-                    display: inline-block;
-                    padding: 0.75rem;
-                    font-size: 1rem;
-                    text-decoration: none;
-                    cursor: pointer;
-                    border: none;
-                    color: white !important;
-                    background: #07633B;
-                  }
-               .wForm {
-                    background: transparent !important;
-                }
-                .wFormContainer form fieldset.section {
-                    margin-bottom: 0 !important;
-                }
-
-            </style><div class=""><div class="wForm" style="padding: 0; margin: 0; id="12-WRPR" dir="ltr">
+            </style><div class=""><div class="wForm" id="12-WRPR" dir="ltr">
 <div class="codesection" id="code-12"></div>
 <form method="post" action="https://csumb.tfaforms.net/responses/processor" class="hintsBelow labelsAbove" id="12" role="form">
+<div class="htmlSection" id="tfa_345"><div class="htmlContent" id="tfa_345-HTML"><div style="text-align: center;"><img style="font-size: 14.4px; word-spacing: normal; max-width: 80%;" src="//csumb.tfaforms.net/forms/get_image/1/2RazMb0p8UZvbG0WvV0YoCKXwLqldWgNfzPPOfMP0TIy0b3Daa3lPtMCMh9cexCk-CSUMBLogo540BayBlue.png" alt="Cal State Monterey Bay Logo"></div></div></div>
 <div class="htmlSection" id="tfa_366"><div class="htmlContent" id="tfa_366-HTML"><span style="color: rgb(34, 34, 34); font-family: Arial, Helvetica, sans-serif; font-size: small; background-color: #0B3751);"><i>We feel you are a good fit for our university. With that said, we just want to know a little bit more about you. Don't worry, we will not be sharing this information with anybody. This is so we can send you information regarding your specific areas of interest&nbsp;and keep you better informed.&nbsp;&nbsp;</i></span></div></div>
 <fieldset id="tfa_334" class="section">
 <legend id="tfa_334-L">Contact Information</legend>
@@ -536,7 +509,7 @@ const inquiryForm = `
 </div>
 <input type="hidden" id="tfa_356" name="tfa_356" value="" class=""><input type="hidden" id="tfa_1" name="tfa_1" value="" class=""><input type="hidden" id="tfa_2" name="tfa_2" value="" class=""><input type="hidden" id="tfa_4" name="tfa_4" value="" class=""><div class="actions" id="12-A"><input type="submit" data-label="Submit" class="primaryAction" id="submit_button" value="Submit"></div>
 <div style="clear:both"></div>
-<input type="hidden" value="12" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="24d382e1ddc5bffb9374a3cac1d0899a" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="20" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
+<input type="hidden" value="12" name="tfa_dbFormId" id="tfa_dbFormId"><input type="hidden" value="" name="tfa_dbResponseId" id="tfa_dbResponseId"><input type="hidden" value="24d382e1ddc5bffb9374a3cac1d0899a" name="tfa_dbControl" id="tfa_dbControl"><input type="hidden" value="21" name="tfa_dbVersionId" id="tfa_dbVersionId"><input type="hidden" value="" name="tfa_switchedoff" id="tfa_switchedoff">
 </form>
 </div></div><div class="wFormFooter"><p class="supportInfo"><br></p></div>
   <p class="supportInfo" >
@@ -544,7 +517,6 @@ const inquiryForm = `
 
       </p>
  </div>
-
 
 `
 
