@@ -66,12 +66,16 @@ const TitleNineT9 = () => (
     <p>
       You need to complete sexual misconduct prevention training. If you do not
       complete this training, it could impact your ability to register for
-      classes in the future. Check your CSUMB email account for a message
-      containing information and link to this online training.{' '}
+      classes in the future.{' '}
+      <a href="https://studentsuccess.org/SSO/csumb">
+        Click here to access the course
+      </a>
+      . In addition, check your CSUMB email account for a message containing
+      additional information about this online training.{' '}
       <a href="mailto:agessler@csumb.edu">Contact the Title IX office</a> if you
-      have any questions.{' '}
+      have any questions. This message will be removed a day after you complete
+      training.
     </p>
-    <p>This message will be removed a day after you complete training.</p>
   </AlertDanger>
 )
 
