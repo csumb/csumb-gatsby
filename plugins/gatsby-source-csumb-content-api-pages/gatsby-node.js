@@ -2,6 +2,7 @@ const crypto = require('crypto')
 const request = require('sync-request')
 const fetch = require('node-fetch')
 const asyncPool = require('tiny-async-pool')
+const moment = require('moment')
 
 const today = new Date()
 
@@ -65,13 +66,20 @@ exports.sourceNodes = async (
         contentDigest: digest,
       },
     }
-
     if (content.event) {
       content.event._passedEvent = true
       content.event._sortDate = 0
       if (typeof content.event.date_stamps !== 'undefined') {
-        content.event.date_stamps.forEach(date => {
-          if (date.start_stamp >= today.getTime() / 1000) {
+        let endTime = "0" + content.event.times.end
+        let currentTime = moment()
+        
+        // console.log(content.event.title + "current time: " + currentTime + " end time: " + endTime)
+        content.event.dates.forEach(date => {
+          paddedEndTime = endTime.slice(-7);
+          endDateTime = date.end + " " + paddedEndTime;
+          unixEndDateTime = moment(endDateTime, "YYYY-MM-DD HH:mma")
+          console.log(unixEndDateTime + " vs " + currentTime)
+          if (unixEndDateTime >= currentTime) {
             content.event._passedEvent = false
             content.event._sortDate = date.start_stamp
           }
