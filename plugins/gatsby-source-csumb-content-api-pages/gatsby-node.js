@@ -70,15 +70,12 @@ exports.sourceNodes = async (
       content.event._passedEvent = true
       content.event._sortDate = 0
       if (typeof content.event.date_stamps !== 'undefined') {
-        let endTime = "0" + content.event.times.end
-        let currentTime = moment()
-        
-        // console.log(content.event.title + "current time: " + currentTime + " end time: " + endTime)
         content.event.dates.forEach(date => {
-          paddedEndTime = endTime.slice(-7);
-          endDateTime = date.end + " " + paddedEndTime;
-          unixEndDateTime = moment(endDateTime, "YYYY-MM-DD HH:mma")
-          console.log(unixEndDateTime + " vs " + currentTime)
+          let currentTime = moment()
+          let endTime = '0' + content.event.times.end
+          let paddedEndTime = endTime.slice(-7)
+          let endDateTime = date.end + ' ' + paddedEndTime
+          let unixEndDateTime = moment(endDateTime, 'YYYY-MM-DD HH:mma')
           if (unixEndDateTime >= currentTime) {
             content.event._passedEvent = false
             content.event._sortDate = date.start_stamp
