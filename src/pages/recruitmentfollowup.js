@@ -10,7 +10,7 @@ import Container from '../components/common/container'
 
 const iFrame = `                     
     <iframe
-    src="https://csumb.tfaforms.net/12"
+    src="https://csumb.tfaforms.net/12/${window.location.search}"
     height="2000"
     width="100%"
     frameborder="0"
