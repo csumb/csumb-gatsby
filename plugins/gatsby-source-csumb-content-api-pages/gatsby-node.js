@@ -71,7 +71,7 @@ exports.sourceNodes = async (
       content.event._sortDate = 0
       if (typeof content.event.date_stamps !== 'undefined') {
         content.event.date_stamps.forEach(date => {
-          if (date.start_stamp >= today.getTime() / 1000) {
+          if (date.end_stamp + 86400 >= today.getTime() / 1000) {
             content.event._passedEvent = false
             content.event._sortDate = date.start_stamp
           }
