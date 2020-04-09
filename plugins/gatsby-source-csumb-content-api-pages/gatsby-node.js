@@ -70,13 +70,8 @@ exports.sourceNodes = async (
       content.event._passedEvent = true
       content.event._sortDate = 0
       if (typeof content.event.date_stamps !== 'undefined') {
-        content.event.dates.forEach(date => {
-          let currentTime = moment()
-          let endTime = '0' + content.event.times.end
-          let paddedEndTime = endTime.slice(-7)
-          let endDateTime = date.end + ' ' + paddedEndTime
-          let unixEndDateTime = moment(endDateTime, 'YYYY-MM-DD HH:mma')
-          if (unixEndDateTime >= currentTime) {
+        content.event.date_stamps.forEach(date => {
+          if (date.end_stamp + 86400 >= today.getTime() / 1000) {
             content.event._passedEvent = false
             content.event._sortDate = date.start_stamp
           }
