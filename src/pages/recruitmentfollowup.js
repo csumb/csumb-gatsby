@@ -8,9 +8,12 @@ import {
 import { graphql } from 'gatsby'
 import Container from '../components/common/container'
 
+let param = ''
+typeof window !== 'undefined' ? (param = window.location.search) : (param = '')
+
 const iFrame = `                     
     <iframe
-    src="https://csumb.tfaforms.net/12/${window.location.search}"
+    src="https://csumb.tfaforms.net/12${param}"
     height="2000"
     width="100%"
     frameborder="0"
