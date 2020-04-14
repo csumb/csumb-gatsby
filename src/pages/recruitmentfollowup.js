@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Layout,
   SiteHeader,
@@ -7,27 +7,29 @@ import {
 } from '../components/layouts/default'
 import { graphql } from 'gatsby'
 import Container from '../components/common/container'
+import Iframe from 'react-iframe'
 
-let param = ''
-typeof window !== 'undefined' ? (param = window.location.search) : (param = '')
-
-const iFrame = `                     
-    <iframe
-    src="https://csumb.tfaforms.net/12${param}"
-    height="2000"
-    width="100%"
-    frameborder="0"
-    />
-    <script src="//csumb.tfaforms.net/js/iframe_resize_helper.js" />`
-
-const InquiryPage = () => {
+const InquiryPage = ({ location }) => {
+  const [pid, setPid] = useState()
+  useEffect(
+    () => {
+      setPid(location.search)
+    },
+    [location]
+  )
   return (
     <Layout pageTitle="Recruitment Follow Up">
       <SiteHeader path="/admissions">Admissions</SiteHeader>
       <SiteNavigation navigation={null} />
       <Container>
         <PageTitle>Cal State Monterey Bay Follow Up</PageTitle>
-        <div dangerouslySetInnerHTML={{ __html: iFrame }} />
+        <Iframe
+          src={`https://csumb.tfaforms.net/12${pid}`}
+          height="2000"
+          width="100%"
+          frameborder="0"
+        />
+        <script src="//csumb.tfaforms.net/js/iframe_resize_helper.js" />
       </Container>
     </Layout>
   )

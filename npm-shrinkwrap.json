@@ -32144,6 +32144,14 @@
       "resolved": "https://registry.npmjs.org/react-id-generator/-/react-id-generator-0.1.6.tgz",
       "integrity": "sha512-GBAlrLH1twYihtCi9HO6ceL7rf5HP/GK+ZMXxCF47Y5uu/l0JJbzFh7vSQ03RdBDm8+Iw3xYxpP5zJ+cHnGQgA=="
     },
+    "react-iframe": {
+      "version": "1.8.0",
+      "resolved": "https://registry.npmjs.org/react-iframe/-/react-iframe-1.8.0.tgz",
+      "integrity": "sha512-NYi89+rEqREwQxW9sDf+akh6/dtwWd3bOjByoVEIQ7SicOxVawRMer3pLdWjFaHXpuxTB9NqobPf/Ohj2iAKkg==",
+      "requires": {
+        "object-assign": "^4.1.1"
+      }
+    },
     "react-images": {
       "version": "0.5.19",
       "resolved": "https://registry.npmjs.org/react-images/-/react-images-0.5.19.tgz",
