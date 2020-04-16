@@ -13,7 +13,7 @@ const dateFormat = 'MMMM D, YYYY'
 const getNextEventDate = dates => {
   let nextDate = false
   let lastDate = false
-  let now = moment()
+  let now = moment().valueOf()
   dates.map(date => {
     const start = moment(date.start)
     if (!nextDate) {
