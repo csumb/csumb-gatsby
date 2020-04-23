@@ -10,7 +10,7 @@ import Container from '../components/common/container'
 import Iframe from 'react-iframe'
 
 const InquiryPage = ({ location }) => {
-  const [pid, setPid] = useState()
+  const [pid, setPid] = useState('')
   useEffect(
     () => {
       setPid(location.search)
@@ -23,13 +23,16 @@ const InquiryPage = ({ location }) => {
       <SiteNavigation navigation={null} />
       <Container>
         <PageTitle>Cal State Monterey Bay Follow Up</PageTitle>
-        <Iframe
-          src={`https://csumb.tfaforms.net/12${pid}`}
-          id="followUp"
-          height="2000"
-          width="100%"
-          frameBorder="0"
-        />
+        <div id="iFrameWrapper">
+          <Iframe
+            src={`https://csumb.tfaforms.net/12${pid}`}
+            id="followUp"
+            height="2000"
+            width="100%"
+            frameBorder="0"
+            onLoad={console.log('Loaded!')}
+          />
+        </div>
         <script src="//csumb.tfaforms.net/js/iframe_resize_helper.js" />
       </Container>
     </Layout>
