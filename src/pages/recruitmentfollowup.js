@@ -30,7 +30,6 @@ const InquiryPage = ({ location }) => {
             height="2000"
             width="100%"
             frameBorder="0"
-            onLoad={console.log('Loaded!')}
           />
         </div>
         <script src="//csumb.tfaforms.net/js/iframe_resize_helper.js" />
