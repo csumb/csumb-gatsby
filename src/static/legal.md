@@ -17,5 +17,5 @@ Notices, policies, guidelines, and standards for the university website.
   <dt><a href="/clery">Security report</a></dt>
   <dd>Statistics regarding crimes committed on and around our campus, as well as important information about crime reporting, crime prevention, victims’ rights, and information campaigns.</dd>
   <dt><a href="/hr/form-801">Form 801</a></dt>
-  <dd>Required reporting on payments recieved by the university or affiliates in compliance with  Fair Political Practices Commission requirements.</dd>
+  <dd>Required reporting on payments received by the university or affiliates in compliance with  Fair Political Practices Commission requirements.</dd>
 </dl>
