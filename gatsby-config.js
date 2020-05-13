@@ -16,6 +16,7 @@ const gatsbyConfig = {
       { site: 'dashboard', code: '1001-610-10-3640' },
       { site: 'mist', code: '3836-896-10-1757' },
       { site: 'csonline', code: '5896-465-10-2924' },
+      { site: 'business', code: '5564-506-10-6160'},
     ],
     labs: {
       customerId: '200b96ee-10c7-4355-83a4-3ded9ab6e845',
