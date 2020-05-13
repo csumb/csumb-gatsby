@@ -32,27 +32,22 @@ const BlockEventFeed = ({ events, title, limit }) => {
   if (!displayEvents.length) {
     return null
   }
-  displayEvents.sort((a, b) => {
+  let sortedEvents = displayEvents.sort((a, b) => {
     if (
       typeof a.dates[0] === 'undefined' ||
       typeof b.dates[0] === 'undefined'
     ) {
       return 0
     }
-    if (
-      moment(a.dates[0].start, 'YYYY-MM-DD').isAfter(
-        moment(b.dates[0].start, 'YYYY-MM-DD')
-      )
-    ) {
-      return 1
-    }
-    return -1
+    let aStart = moment(a.dates[0].start, 'YYYY-MM-DD').valueOf()
+    let bStart = moment(b.dates[0].start, 'YYYY-MM-DD').valueOf()
+    return aStart < bStart ? -1 : aStart > bStart ? 1 : 0
   })
 
   return (
     <EventFeedWrapper>
       {title && <h3>{title}</h3>}
-      {displayEvents.map((event, index) => (
+      {sortedEvents.map((event, index) => (
         <EventFeedItem {...event} key={index} />
       ))}
     </EventFeedWrapper>
