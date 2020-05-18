@@ -53,7 +53,6 @@ const AccountSidebar = ({ user }) => (
     <AccountSidebarLink to="https://get.cbord.com/csumb">
       Otter Card
     </AccountSidebarLink>
-    <AccountSidebarLink to="/account/print">Printer paper</AccountSidebarLink>
     <AccountSidebarLink to="/account/emergency">
       Emergency alerts
     </AccountSidebarLink>

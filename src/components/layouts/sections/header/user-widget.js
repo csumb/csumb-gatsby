@@ -133,9 +133,6 @@ class UserDropdown extends Component {
           <UserDropdownMenuLink component="a" href="/account/labs">
             Computer labs
           </UserDropdownMenuLink>
-          <UserDropdownMenuLink component="a" href="/account/print">
-            Print balance
-          </UserDropdownMenuLink>
           <UserDropdownMenuLink component="a" href="/account/emergency">
             Emergency alerts
           </UserDropdownMenuLink>
