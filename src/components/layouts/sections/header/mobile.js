@@ -218,7 +218,6 @@ const YourAccountList = ({ user }) => (
         Laundry
       </YourAccountAnchor>
     )}
-    <YourAccountLink to="/account/print">Print balance</YourAccountLink>
     <YourAccountLink to="/account/emergency">Emergency alerts</YourAccountLink>
     <YourAccountLink>Log out</YourAccountLink>
   </YourAccountWrapper>
