@@ -19614,6 +19614,32 @@
         }
       }
     },
+    "gatsby-plugin-sitemap": {
+      "version": "2.4.3",
+      "resolved": "https://registry.npmjs.org/gatsby-plugin-sitemap/-/gatsby-plugin-sitemap-2.4.3.tgz",
+      "integrity": "sha512-XwtXRkUo1tFnr5PzwLlQqAD/Dbnrv0G9HjuUL24UhhCy0e5vqByohcewARUtySK0vSY1dr3msTO+UEKKuGWrFQ==",
+      "requires": {
+        "@babel/runtime": "^7.9.6",
+        "minimatch": "^3.0.4",
+        "pify": "^3.0.0",
+        "sitemap": "^1.13.0"
+      },
+      "dependencies": {
+        "@babel/runtime": {
+          "version": "7.10.1",
+          "resolved": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.10.1.tgz",
+          "integrity": "sha512-nQbbCbQc9u/rpg1XCxoMYQTbSMVZjCDxErQ1ClCn9Pvcmv1lGads19ep0a2VsEiIJeHqjZley6EQGEC3Yo1xMA==",
+          "requires": {
+            "regenerator-runtime": "^0.13.4"
+          }
+        },
+        "regenerator-runtime": {
+          "version": "0.13.5",
+          "resolved": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.5.tgz",
+          "integrity": "sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA=="
+        }
+      }
+    },
     "gatsby-plugin-styled-components": {
       "version": "3.0.4",
       "resolved": "https://registry.npmjs.org/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-3.0.4.tgz",
@@ -34447,6 +34473,15 @@
       "resolved": "https://registry.npmjs.org/sisteransi/-/sisteransi-1.0.3.tgz",
       "integrity": "sha512-SbEG75TzH8G7eVXFSN5f9EExILKfly7SUvVY5DhhYLvfhKqhDFY0OzevWa/zwak0RLRfWS5AvfMWpd9gJvr5Yg=="
     },
+    "sitemap": {
+      "version": "1.13.0",
+      "resolved": "https://registry.npmjs.org/sitemap/-/sitemap-1.13.0.tgz",
+      "integrity": "sha1-Vpy+IYAgKSamKiZs094Jyc60P4M=",
+      "requires": {
+        "underscore": "^1.7.0",
+        "url-join": "^1.1.0"
+      }
+    },
     "slash": {
       "version": "1.0.0",
       "resolved": "https://registry.npmjs.org/slash/-/slash-1.0.0.tgz",
@@ -36940,6 +36975,11 @@
           "integrity": "sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0="
         }
       }
+    },
+    "url-join": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/url-join/-/url-join-1.1.0.tgz",
+      "integrity": "sha1-dBxsL0WWxIMNZxhGCSDQySIC3Hg="
     },
     "url-loader": {
       "version": "1.1.2",

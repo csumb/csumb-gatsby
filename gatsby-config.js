@@ -73,6 +73,7 @@ const gatsbyConfig = {
       },
     },
     'gatsby-plugin-emotion',
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-csv',
     'gatsby-transformer-remark',
