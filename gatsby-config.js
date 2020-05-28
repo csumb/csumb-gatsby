@@ -3,6 +3,7 @@ require('dotenv').config()
 const gatsbyConfig = {
   siteMetadata: {
     title: 'Cal State Monterey Bay',
+    siteUrl: 'https://csumb.edu',
     disableAlumni: false,
     disableApplicant: false,
     fileStack: process.env.GATSBY_CSUMB_FILESTACK_KEY,
