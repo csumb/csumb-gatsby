@@ -64,7 +64,7 @@ const tuition = [
 const fees = [
   {
     name: 'Materials, services, and facilities fee',
-    fee: 157.5,
+    fee: 82.5,
   },
   {
     name: 'Student health services',
@@ -317,44 +317,44 @@ class CostPageForm extends Component {
         {!resident ? (
           <ResidencyQuestion handler={this.handleResidency.bind(this)} />
         ) : (
-          <>
-            {!undergraduate ? (
-              <UndergraduateQuestion
-                handler={this.handleUndergraduates.bind(this)}
-              />
-            ) : (
-              <>
-                {!(moreThanSixUnits || units) ? (
+            <>
+              {!undergraduate ? (
+                <UndergraduateQuestion
+                  handler={this.handleUndergraduates.bind(this)}
+                />
+              ) : (
                   <>
-                    {resident !== 'no' ? (
+                    {!(moreThanSixUnits || units) ? (
                       <>
-                        <UnitsQuestion handler={this.handleUnits.bind(this)} />
+                        {resident !== 'no' ? (
+                          <>
+                            <UnitsQuestion handler={this.handleUnits.bind(this)} />
+                          </>
+                        ) : (
+                            <>
+                              <SpecificUnitsQuestion
+                                handleChange={this.handleSpecificUnitsChange.bind(
+                                  this
+                                )}
+                                handler={this.handleSpecificUnits.bind(this)}
+                              />
+                            </>
+                          )}
                       </>
                     ) : (
-                      <>
-                        <SpecificUnitsQuestion
-                          handleChange={this.handleSpecificUnitsChange.bind(
-                            this
-                          )}
-                          handler={this.handleSpecificUnits.bind(this)}
-                        />
-                      </>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <CostResults {...this.state} />
+                        <>
+                          <CostResults {...this.state} />
+                        </>
+                      )}
                   </>
                 )}
-              </>
-            )}
-            <p>
-              <LinkyButton onClick={this.startOver.bind(this)}>
-                ← Start over
+              <p>
+                <LinkyButton onClick={this.startOver.bind(this)}>
+                  ← Start over
               </LinkyButton>
-            </p>
-          </>
-        )}
+              </p>
+            </>
+          )}
       </>
     )
   }
