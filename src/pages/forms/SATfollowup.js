@@ -4,10 +4,18 @@ import {
   SiteHeader,
   SiteNavigation,
   PageTitle,
-} from '../components/layouts/default'
+} from '../../components/layouts/default'
 import { graphql } from 'gatsby'
-import Container from '../components/common/container'
+import Container from '../../components/common/container'
 import Iframe from 'react-iframe'
+import styled from '@emotion/styled'
+
+const Disclaimer = styled('div')`
+  min-width: 80%;
+  p {
+    font-size: 0.75rem;
+  }
+`
 
 const InquiryPage = ({ location }) => {
   const [pid, setPid] = useState('')
@@ -25,12 +33,18 @@ const InquiryPage = ({ location }) => {
         <PageTitle>Cal State Monterey Bay Follow Up</PageTitle>
         <div id="iFrameWrapper">
           <Iframe
-            src={`https://csumb.tfaforms.net/12${pid}`}
+            src={`https://csumb.tfaforms.net/15${pid}`}
             id="followUp"
-            height="2000"
+            height="auto"
             width="100%"
             frameBorder="0"
           />
+          <Disclaimer>
+            <p>
+              By submitting this form you are granting CSUMB permission to email
+              you information regarding the university.
+            </p>
+          </Disclaimer>
         </div>
         <script src="//csumb.tfaforms.net/js/iframe_resize_helper.js" />
       </Container>

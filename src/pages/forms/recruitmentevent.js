@@ -4,9 +4,9 @@ import {
   SiteHeader,
   SiteNavigation,
   PageTitle,
-} from '../components/layouts/default'
+} from '../../components/layouts/default'
 import { graphql } from 'gatsby'
-import Container from '../components/common/container'
+import Container from '../../components/common/container'
 
 const inquiryForm = `
 <!-- FORM: HEAD SECTION -->
