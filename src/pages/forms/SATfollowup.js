@@ -12,8 +12,10 @@ import styled from '@emotion/styled'
 
 const Disclaimer = styled('div')`
   min-width: 80%;
+  margin-bottom: 1.5rem;
   p {
     font-size: 0.75rem;
+    text-align: center;
   }
 `
 
@@ -34,7 +36,7 @@ const InquiryPage = ({ location }) => {
         <IframeResizer
           src={`https://csumb.tfaforms.net/15${pid}`}
           frameBorder="0"
-          style={{ width: '1px', minWidth: '100%' }}
+          style={{ width: '1px', minWidth: '100%', marginBottom: 0 }}
         />
         <Disclaimer>
           <p>
