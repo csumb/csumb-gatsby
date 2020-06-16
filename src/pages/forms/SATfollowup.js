@@ -8,16 +8,6 @@ import {
 import { graphql } from 'gatsby'
 import Container from '../../components/common/container'
 import IframeResizer from 'iframe-resizer-react'
-import styled from '@emotion/styled'
-
-const Disclaimer = styled('div')`
-  min-width: 80%;
-  margin-bottom: 1.5rem;
-  p {
-    font-size: 0.75rem;
-    text-align: center;
-  }
-`
 
 const InquiryPage = ({ location }) => {
   const [pid, setPid] = useState('')
@@ -38,12 +28,6 @@ const InquiryPage = ({ location }) => {
           frameBorder="0"
           style={{ width: '1px', minWidth: '100%', marginBottom: 0 }}
         />
-        <Disclaimer>
-          <p>
-            By submitting this form you are granting CSUMB permission to email
-            you information regarding the university.
-          </p>
-        </Disclaimer>
       </Container>
     </Layout>
   )
