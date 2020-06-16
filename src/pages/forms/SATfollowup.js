@@ -7,7 +7,7 @@ import {
 } from '../../components/layouts/default'
 import { graphql } from 'gatsby'
 import Container from '../../components/common/container'
-import Iframe from 'react-iframe'
+import IframeResizer from 'iframe-resizer-react'
 import styled from '@emotion/styled'
 
 const Disclaimer = styled('div')`
@@ -31,22 +31,19 @@ const InquiryPage = ({ location }) => {
       <SiteNavigation navigation={null} />
       <Container>
         <PageTitle>Cal State Monterey Bay Follow Up</PageTitle>
-        <div id="iFrameWrapper">
-          <Iframe
-            src={`https://csumb.tfaforms.net/15${pid}`}
-            id="followUp"
-            height="auto"
-            width="100%"
-            frameBorder="0"
-          />
-          <Disclaimer>
-            <p>
-              By submitting this form you are granting CSUMB permission to email
-              you information regarding the university.
-            </p>
-          </Disclaimer>
-        </div>
-        <script src="//csumb.tfaforms.net/js/iframe_resize_helper.js" />
+        <IframeResizer
+          log
+          heightCalculationMethod="lowestElement"
+          src={`https://csumb.tfaforms.net/15${pid}`}
+          frameBorder="0"
+          style={{ width: '1px', minWidth: '100%' }}
+        />
+        <Disclaimer>
+          <p>
+            By submitting this form you are granting CSUMB permission to email
+            you information regarding the university.
+          </p>
+        </Disclaimer>
       </Container>
     </Layout>
   )
