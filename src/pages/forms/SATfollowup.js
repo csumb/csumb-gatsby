@@ -32,8 +32,6 @@ const InquiryPage = ({ location }) => {
       <Container>
         <PageTitle>Cal State Monterey Bay Follow Up</PageTitle>
         <IframeResizer
-          log
-          heightCalculationMethod="lowestElement"
           src={`https://csumb.tfaforms.net/15${pid}`}
           frameBorder="0"
           style={{ width: '1px', minWidth: '100%' }}
