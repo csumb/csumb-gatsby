@@ -7,7 +7,7 @@ import {
 } from '../../components/layouts/default'
 import { graphql } from 'gatsby'
 import Container from '../../components/common/container'
-import Iframe from 'react-iframe'
+import IframeResizer from 'iframe-resizer-react'
 
 const InquiryPage = ({ location }) => {
   const [pid, setPid] = useState('')
@@ -23,16 +23,11 @@ const InquiryPage = ({ location }) => {
       <SiteNavigation navigation={null} />
       <Container>
         <PageTitle>Cal State Monterey Bay Follow Up</PageTitle>
-        <div id="iFrameWrapper">
-          <Iframe
-            src={`https://csumb.tfaforms.net/12${pid}`}
-            id="followUp"
-            height="2000"
-            width="100%"
-            frameBorder="0"
-          />
-        </div>
-        <script src="//csumb.tfaforms.net/js/iframe_resize_helper.js" />
+        <IframeResizer
+          src={`https://csumb.tfaforms.net/12${pid}`}
+          frameBorder="0"
+          style={{ width: '1px', minWidth: '100%', marginBottom: 0 }}
+        />
       </Container>
     </Layout>
   )
