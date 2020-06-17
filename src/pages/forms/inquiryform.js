@@ -8,8 +8,8 @@ import {
 import { graphql } from 'gatsby'
 import Container from '../../components/common/container'
 
-const inquiryForm = `<!-- FORM: HEAD SECTION -->
-
+const inquiryForm = `
+<!-- FORM: HEAD SECTION -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function(){
