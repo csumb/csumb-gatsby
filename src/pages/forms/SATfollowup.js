@@ -27,6 +27,7 @@ const InquiryPage = ({ location }) => {
           src={`https://csumb.tfaforms.net/15${pid}`}
           frameBorder="0"
           style={{ width: '1px', minWidth: '100%', marginBottom: 0 }}
+          target="_parent"
         />
       </Container>
     </Layout>
