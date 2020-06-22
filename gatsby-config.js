@@ -315,10 +315,9 @@ const gatsbyConfig = {
       resolve: 'gatsby-plugin-netlify',
       options: {
         headers: {
-          'Content-Security-Policy': [
+          'Content-Security-Policy':
             'frame-ancestors https://csumb.tfaforms.net',
-          ],
-          'X-Frame-Options': ['ALLOW-FROM https://csumb.tfaforms.net'],
+          'X-Frame-Options': 'ALLOW-FROM https://csumb.tfaforms.net',
         },
       },
     },
