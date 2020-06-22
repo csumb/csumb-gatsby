@@ -1,3 +1,0 @@
-/*
-  Content-Security-Policy: frame-ancestors https://csumb.tfaforms.net;
-  X-Frame-Options: ALLOW-FROM https://csumb.tfaforms.net;
