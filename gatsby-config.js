@@ -315,7 +315,7 @@ const gatsbyConfig = {
       resolve: 'gatsby-plugin-netlify',
       options: {
         allPageHeaders: [
-          `Content-Security-Policy: frame-ancestors https://csumb.tfaforms.net`,
+          `Content-Security-Policy: frame-ancestors 'self' https://csumb.tfaforms.net`,
           `X-Frame-Options: ALLOW-FROM https://csumb.tfaforms.net`,
         ],
       },
