@@ -5,6 +5,7 @@ import Footer from './sections/footer/global'
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
 import Pardot from '../utilities/pardot'
+import IFrameRedirect from '../utilities/iframe-redirect'
 import PageTitle from './sections/header/page-title'
 import SiteNavigation from './sections/navigation/site'
 import PageNavigation from './sections/navigation/page'
@@ -123,6 +124,16 @@ class Layout extends Component {
         <div data-swiftype-index="true">{this.props.children}</div>
         <Footer noFooterMargin={noFooterMargin ? true : false} />
         <Emergency />
+        <IFrameRedirect />
+        <script type="text/javascript">
+          {`
+          console.log('top: ' + top + ' self: ' + self)
+          console.log('hello')
+          if (top !=self) {
+            top.location = self.location;
+          }
+          `}
+        </script>
         <Pardot />
         <SiteImprove />
       </>
