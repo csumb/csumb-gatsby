@@ -125,15 +125,6 @@ class Layout extends Component {
         <Footer noFooterMargin={noFooterMargin ? true : false} />
         <Emergency />
         <IFrameRedirect />
-        <script type="text/javascript">
-          {`
-          console.log('top: ' + top + ' self: ' + self)
-          console.log('hello')
-          if (top !=self) {
-            top.location = self.location;
-          }
-          `}
-        </script>
         <Pardot />
         <SiteImprove />
       </>
