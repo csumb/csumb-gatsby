@@ -27,7 +27,10 @@ const InquiryPage = ({ location }) => {
           src={`https://csumb.tfaforms.net/15${pid}`}
           frameBorder="0"
           style={{ width: '1px', minWidth: '100%', marginBottom: 0 }}
+          sandbox="allow-top-navigation allow-same-origin allow-forms allow-popups allow-scripts"
+          target="_top"
         />
+        <script src="https://csumb.tfaforms.net/js/iframe_resize_helper.js" />
       </Container>
     </Layout>
   )
