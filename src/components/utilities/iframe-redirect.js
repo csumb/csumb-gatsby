@@ -12,10 +12,8 @@ class IFrameRedirect extends Component {
     script.setAttribute('type', 'text/javascript')
     script.setAttribute('async', true)
     script.innerHTML = `
-    console.log('top: ' + window.top.location + ' self: ' + window.self.location);
-    if (window.top != window.self) {
-        console.log(window.top.location + window.self.location)
-        window.top.location = window.self.location;
+    if (top != self) {
+        top.location = self.location;
     }`
     document.body.appendChild(script)
   }
