@@ -97,7 +97,7 @@ class LibraryPage extends Component {
       return
     }
     const script = window.document.createElement('script')
-    script.src = '//us.libraryh3lp.com/js/libraryh3lp.js?8169'
+    script.src = 'https://v2.libanswers.com/load_chat.php?hash=eeeaabbd6b1739014e7e8fe4e6db5bed'
     this.chatRef.current.parentNode.insertBefore(script, this.chatRef.current)
   }
 
@@ -128,6 +128,7 @@ class LibraryPage extends Component {
           <Container>
             <LibrarySearch />
             <div ref={this.chatRef} />
+            <div id="libchat_eeeaabbd6b1739014e7e8fe4e6db5bed"></div>
             <style>{`.libraryh3lp img { height: 44px !important;}`}</style>
 
             {data.allCsumbPage &&
