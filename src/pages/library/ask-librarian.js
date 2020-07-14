@@ -35,8 +35,6 @@ class LibraryPage extends Component {
           )}
         <Container>
           <PageTitle>Ask a librarian</PageTitle>
-
-          <div id="libchat_addeae1f890e28920bfda5ac4c0a6e26"></div>
           <div ref={this.chatRef} />
 
           {data.allCsumbPage &&
