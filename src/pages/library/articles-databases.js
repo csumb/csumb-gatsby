@@ -24,7 +24,7 @@ class LibraryPage extends Component {
   render() {
     const { data } = this.props
     return (
-      <Layout pageTitle="Ask a librarian">
+      <Layout pageTitle="Articles & Databases">
         <SiteHeader path="/library">Library</SiteHeader>
         {data.allCsumbNavigation &&
           data.allCsumbNavigation.edges &&
@@ -35,9 +35,7 @@ class LibraryPage extends Component {
           )}
         <Container>
           <PageTitle>Articles & Databases</PageTitle>
-
-          <div id="libchat_addeae1f890e28920bfda5ac4c0a6e26"></div>
-          <div ref={this.chatRef} />
+          <div id="libchat_addeae1f890e28920bfda5ac4c0a6e26" ref={this.chatRef} />
 
           {data.allCsumbPage &&
             data.allCsumbPage.edges &&
