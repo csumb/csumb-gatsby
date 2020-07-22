@@ -110,6 +110,15 @@ class ITPage extends Component {
             </HelpFlex>
             <Flex>
               <Box width={[1, 2 / 3]} pr={[0, 4]}>
+                <h2>Information for Remote Teaching/Learning</h2>
+                <ITServiceHeader>
+                  <a href="https://csumb.teamdynamix.com/TDClient/1846/Portal/KB/ArticleDet?ID=112284">
+                    Student Technology Resources
+                  </a>
+                </ITServiceHeader>
+                <p>
+                  View a list of technology resources available to students.
+                </p>
                 <h2>Popular Services</h2>
                 <ITServiceHeader>
                   <Link to="it/accounts-and-passwords">Your account</Link>
