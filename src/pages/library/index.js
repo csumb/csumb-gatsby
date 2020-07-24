@@ -64,10 +64,11 @@ class LibrarySearch extends Component {
               name="search_scope"
               label="Limit search"
               hideLabel={true}
-              defaultValue="EVERYTHING"
-              placeholder="Everything"
+              defaultValue="E-01CALS_UMB"
+              placeholder="Available Online"
               options={[
-                { value: 'EVERYTHING', label: 'Everything', selected: true },
+                { value: 'E-01CALS_UMB', label: 'Available Online', selected: true },
+                { value: 'EVERYTHING', label: 'Everything' },
                 { value: 'PRIMO_CENTRAL', label: 'Articles' },
                 { value: '01CALS_UMB', label: 'Books & media (CSUMB)' },
                 { value: '01CALS', label: 'Books & media (All CSU)' },
@@ -97,7 +98,7 @@ class LibraryPage extends Component {
       return
     }
     const script = window.document.createElement('script')
-    script.src = '//us.libraryh3lp.com/js/libraryh3lp.js?8169'
+    script.src = 'https://v2.libanswers.com/load_chat.php?hash=addeae1f890e28920bfda5ac4c0a6e26'
     this.chatRef.current.parentNode.insertBefore(script, this.chatRef.current)
   }
 
@@ -126,9 +127,8 @@ class LibraryPage extends Component {
               />
             )}
           <Container>
-            <LibrarySearch />
+            <LibrarySearch />        
             <div ref={this.chatRef} />
-            <style>{`.libraryh3lp img { height: 44px !important;}`}</style>
 
             {data.allCsumbPage &&
               data.allCsumbPage.edges &&

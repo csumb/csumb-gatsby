@@ -17,14 +17,14 @@ class LibraryPage extends Component {
       return
     }
     const script = window.document.createElement('script')
-    script.src = 'https://v2.libanswers.com/load_chat.php?hash=addeae1f890e28920bfda5ac4c0a6e26'
+    script.src = 'https://v2.libanswers.com/load_chat.php?hash=eeeaabbd6b1739014e7e8fe4e6db5bed'
     this.chatRef.current.parentNode.insertBefore(script, this.chatRef.current)
   }
 
   render() {
     const { data } = this.props
     return (
-      <Layout pageTitle="Ask a librarian">
+      <Layout pageTitle="Articles & Databases">
         <SiteHeader path="/library">Library</SiteHeader>
         {data.allCsumbNavigation &&
           data.allCsumbNavigation.edges &&
@@ -34,8 +34,10 @@ class LibraryPage extends Component {
             />
           )}
         <Container>
-          <PageTitle>Ask a librarian</PageTitle>
-          <div ref={this.chatRef} />
+          <PageTitle>Articles & Databases</PageTitle>
+          <div ref={this.chatRef}/>
+          <div id="libchat_eeeaabbd6b1739014e7e8fe4e6db5bed" style={{marginLeft: '8px'}}>
+          </div>
 
           {data.allCsumbPage &&
             data.allCsumbPage.edges &&
@@ -61,7 +63,7 @@ export const query = graphql`
     }
     allCsumbPage(
       filter: {
-        pagePath: { eq: "library/ask-librarian" }
+        pagePath: { eq: "library/articles-databases" }
         site: { eq: "library" }
       }
     ) {
