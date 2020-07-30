@@ -64,11 +64,10 @@ class LibrarySearch extends Component {
               name="search_scope"
               label="Limit search"
               hideLabel={true}
-              defaultValue="E-01CALS_UMB"
-              placeholder="Available Online"
+              defaultValue="EVERYTHING"
+              placeholder="Everything"
               options={[
-                { value: 'E-01CALS_UMB', label: 'Available Online', selected: true },
-                { value: 'EVERYTHING', label: 'Everything' },
+                { value: 'EVERYTHING', label: 'Everything', selected: true },
                 { value: 'PRIMO_CENTRAL', label: 'Articles' },
                 { value: '01CALS_UMB', label: 'Books & media (CSUMB)' },
                 { value: '01CALS', label: 'Books & media (All CSU)' },
