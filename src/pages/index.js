@@ -55,7 +55,9 @@ const IndexPage = ({ data }) => {
     >
       <Layout noFooterMargin={true}>
         <AlertTop>
-          <a href="/health/coronavirus-information">COVID-19 Information</a>
+          <a href="/health/coronavirus-information">
+            COVID-19 Information
+          </a>
         </AlertTop>
         <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
         <HomepageImageNavigation

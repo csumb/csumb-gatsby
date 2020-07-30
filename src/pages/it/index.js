@@ -56,11 +56,7 @@ class ITPage extends Component {
     const { data } = this.props
     return (
       <PageFeedbackContext.Provider
-        value={{
-          email: 'webfolk@csumb.edu',
-          title: 'IT',
-          url: '/it',
-        }}
+        value={{ email: 'webfolk@csumb.edu', title: 'IT', url: '/it' }}
       >
         <Layout
           pageTitle="Information Technology"
@@ -110,6 +106,19 @@ class ITPage extends Component {
             </HelpFlex>
             <Flex>
               <Box width={[1, 2 / 3]} pr={[0, 4]}>
+                <h2>Information for Remote Teaching/Learning</h2>
+                <ITServiceHeader>
+                  <a href="https://csumb.teamdynamix.com/TDClient/1846/Portal/KB/ArticleDet?ID=112284">
+                    Student Technology Resources
+                  </a>
+                </ITServiceHeader>
+                <p>View common technology resources available to students.</p>
+                <ITServiceHeader>
+                  <a href="https://csumb.teamdynamix.com/TDClient/1846/Portal/KB/ArticleDet?ID=112431">
+                    Faculty Technology Resources
+                  </a>
+                </ITServiceHeader>
+                <p>View common technology resources available to faculty.</p>
                 <h2>Popular Services</h2>
                 <ITServiceHeader>
                   <Link to="it/accounts-and-passwords">Your account</Link>
