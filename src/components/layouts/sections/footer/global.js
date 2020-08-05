@@ -160,8 +160,6 @@ class Footer extends Component {
                     <li>
                       <a href="/map">Map</a>
                     </li>
-
-
                   </FooterList>
                 </Box>
                 <Box width={[1, 1 / 3]}>
@@ -238,7 +236,7 @@ class Footer extends Component {
               )}
             </PageFeedbackContext.Consumer>
             <LegalLink to="https://cm.maxient.com/reportingform.php?CSUMontereyBay&layout_id=0">
-              Report concerning behavior
+              Report concerning/discriminating behavior
             </LegalLink>{' '}
             | <LegalLink to="/clery">Security report</LegalLink> |{' '}
             <LegalLink to="/legal">Legal information</LegalLink>
