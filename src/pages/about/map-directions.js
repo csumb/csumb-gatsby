@@ -77,7 +77,11 @@ const CsumbMapWrapped = GoogleApiWrapper({
 
 const MapPage = ({ data }) => (
   <PageFeedbackContext.Provider
-    value={{ email: 'webfolk@csumb.edu', title: 'IT', url: '/it' }}
+    value={{
+      email: 'webfolk@csumb.edu',
+      title: 'Map and Directions',
+      url: '/about/map-directions',
+    }}
   >
     <Layout>
       <SiteHeader path="/about">About</SiteHeader>
