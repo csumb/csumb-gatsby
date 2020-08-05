@@ -9,6 +9,7 @@ import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import { graphql } from 'gatsby'
 import { colors } from '../../style'
+import PageFeedbackContext from '../../components/contexts/page-feedback'
 
 const MapMap = styled(Map)`
   width: 100%;
@@ -75,22 +76,26 @@ const CsumbMapWrapped = GoogleApiWrapper({
 })(CsumbMap)
 
 const MapPage = ({ data }) => (
-  <Layout>
-    <SiteHeader path="/about">About</SiteHeader>
-    {data.allCsumbNavigation &&
-      data.allCsumbNavigation.edges &&
-      data.allCsumbNavigation.edges[0] && (
-        <SiteNavigation
-          navigation={data.allCsumbNavigation.edges[0].node.navigation}
-        />
-      )}
-    <CsumbMapWrapped buildings={data.allCsumbBuilding} />
-    {data.allCsumbPage &&
-      data.allCsumbPage.edges &&
-      data.allCsumbPage.edges[0] && (
-        <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-      )}
-  </Layout>
+  <PageFeedbackContext.Provider
+    value={{ email: 'webfolk@csumb.edu', title: 'IT', url: '/it' }}
+  >
+    <Layout>
+      <SiteHeader path="/about">About</SiteHeader>
+      {data.allCsumbNavigation &&
+        data.allCsumbNavigation.edges &&
+        data.allCsumbNavigation.edges[0] && (
+          <SiteNavigation
+            navigation={data.allCsumbNavigation.edges[0].node.navigation}
+          />
+        )}
+      <CsumbMapWrapped buildings={data.allCsumbBuilding} />
+      {data.allCsumbPage &&
+        data.allCsumbPage.edges &&
+        data.allCsumbPage.edges[0] && (
+          <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+        )}
+    </Layout>
+  </PageFeedbackContext.Provider>
 )
 
 export default MapPage
