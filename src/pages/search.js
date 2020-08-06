@@ -27,10 +27,6 @@ const Feedback = styled('p')`
   font-size: 0.85rem;
 `
 
-const SearchNoResults = () => (
-  <LeadParagraph>Sorry, no pages were found</LeadParagraph>
-)
-
 const ListResults = ({ results }) => {
   if (
     typeof results.records === 'undefined' ||
@@ -39,7 +35,7 @@ const ListResults = ({ results }) => {
     return null
   }
   if (results.records.page && results.records.page.length === 0) {
-    return <SearchNoResults />
+    return <LeadParagraph>Sorry, no pages were found</LeadParagraph>
   }
   return (
     <>
