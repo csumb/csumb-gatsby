@@ -142,12 +142,14 @@ class SearchPage extends Component {
               </Box>
             </Flex>
           </form>
-          <Feedback>
-            Results not what you expected?{' '}
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdD1Lr509xObwDuJO-54KxRKClvyY5rViFFmbvPAxEJ5Mc4Ag/viewform">
-              Leave us feedback
-            </a>
-          </Feedback>
+          {this.state.search && (
+            <Feedback>
+              Results not what you expected?{' '}
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdD1Lr509xObwDuJO-54KxRKClvyY5rViFFmbvPAxEJ5Mc4Ag/viewform">
+                Leave us feedback
+              </a>
+            </Feedback>
+          )}
           <ListResults results={this.state.search} />
         </Container>
       </Layout>
