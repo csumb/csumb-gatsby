@@ -16,7 +16,9 @@ import { Flex, Box } from './grid'
 const baseStyle = `
   display: block;
   padding: 0.75rem;
-  margin: 1rem 0;
+  ${bp({
+    margin: [0, 0, '1rem 0', '1rem 0'],
+  })}
   p {
     margin-bottom: 0;
   }
@@ -91,7 +93,13 @@ const AlertContent = ({ icon, children }) => (
     <AlertIconBox width={[0, 1 / 6, 0.75 / 10]} pr={6}>
       <AlertIcon icon={icon} />
     </AlertIconBox>
-    <Box style={{ display: 'flex' }} width={[1, 5 / 6, 9.25 / 10]}>
+    <Box
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      width={[1, 5 / 6, 9.25 / 10]}
+    >
       {children}
     </Box>
   </Flex>
