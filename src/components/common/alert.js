@@ -91,7 +91,10 @@ const AlertContent = ({ icon, children }) => (
     <AlertIconBox width={[0, 1 / 6, 0.75 / 10]} pr={6}>
       <AlertIcon icon={icon} />
     </AlertIconBox>
-    <Box style={{ display: 'flex' }} width={[1, 5 / 6, 9.25 / 10]}>
+    <Box
+      style={{ display: 'flex', flexDirection: ['column', 'column', '', ''] }}
+      width={[1, 5 / 6, 9.25 / 10]}
+    >
       {children}
     </Box>
   </Flex>
