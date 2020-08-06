@@ -16,7 +16,9 @@ import { Flex, Box } from './grid'
 const baseStyle = `
   display: block;
   padding: 0.75rem;
-  margin: 1rem 0;
+  ${bp({
+    margin: [0, 0, '1rem 0', '1rem 0'],
+  })}
   p {
     margin-bottom: 0;
   }
