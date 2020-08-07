@@ -27,10 +27,6 @@ const Feedback = styled('p')`
   font-size: 0.85rem;
 `
 
-const SearchNoResults = () => (
-  <LeadParagraph>Sorry, no pages were found</LeadParagraph>
-)
-
 const ListResults = ({ results }) => {
   if (
     typeof results.records === 'undefined' ||
@@ -39,7 +35,7 @@ const ListResults = ({ results }) => {
     return null
   }
   if (results.records.page && results.records.page.length === 0) {
-    return <SearchNoResults />
+    return <LeadParagraph>Sorry, no pages were found</LeadParagraph>
   }
   return (
     <>
@@ -146,12 +142,14 @@ class SearchPage extends Component {
               </Box>
             </Flex>
           </form>
-          <Feedback>
-            Results not what you expected?{' '}
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdD1Lr509xObwDuJO-54KxRKClvyY5rViFFmbvPAxEJ5Mc4Ag/viewform">
-              Leave us feedback
-            </a>
-          </Feedback>
+          {this.state.search && (
+            <Feedback>
+              Results not what you expected?{' '}
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdD1Lr509xObwDuJO-54KxRKClvyY5rViFFmbvPAxEJ5Mc4Ag/viewform">
+                Leave us feedback
+              </a>
+            </Feedback>
+          )}
           <ListResults results={this.state.search} />
         </Container>
       </Layout>
