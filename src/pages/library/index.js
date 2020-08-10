@@ -68,6 +68,7 @@ class LibrarySearch extends Component {
               placeholder="Everything"
               options={[
                 { value: 'EVERYTHING', label: 'Everything', selected: true },
+                { value: 'available_online', label: 'Available online' },
                 { value: 'PRIMO_CENTRAL', label: 'Articles' },
                 { value: '01CALS_UMB', label: 'Books & media (CSUMB)' },
                 { value: '01CALS', label: 'Books & media (All CSU)' },
@@ -97,7 +98,8 @@ class LibraryPage extends Component {
       return
     }
     const script = window.document.createElement('script')
-    script.src = 'https://v2.libanswers.com/load_chat.php?hash=addeae1f890e28920bfda5ac4c0a6e26'
+    script.src =
+      'https://v2.libanswers.com/load_chat.php?hash=addeae1f890e28920bfda5ac4c0a6e26'
     this.chatRef.current.parentNode.insertBefore(script, this.chatRef.current)
   }
 
@@ -126,7 +128,7 @@ class LibraryPage extends Component {
               />
             )}
           <Container>
-            <LibrarySearch />        
+            <LibrarySearch />
             <div ref={this.chatRef} />
 
             {data.allCsumbPage &&
