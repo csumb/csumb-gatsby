@@ -5,6 +5,7 @@ import Container from '../common/container'
 import PageTitle from '../layouts/sections/header/page-title'
 import Link from 'gatsby-link'
 
+
 const CouseListWrapper = styled('div')`
   margin-bottom: 1rem;
 `
