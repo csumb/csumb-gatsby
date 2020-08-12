@@ -1,6 +1,5 @@
 const path = require(`path`)
 const fs = require(`fs-extra`)
-const coursePages = require(`./src/node/courses`)
 const redirects = require('./src/node/redirects')
 const contentPages = require(`./src/node/pages`)
 const buildingPages = require(`./src/node/buildings`)
