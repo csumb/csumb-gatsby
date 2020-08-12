@@ -1,5 +1,4 @@
 const buildTime = require('./lib/build-time')
-const catalog = require('./lib/catalog')
 const alumni = require('./lib/alumni')
 const events = require('./lib/events')
 
@@ -9,9 +8,6 @@ exports.onPostBuild = ({ reporter, graphql }) => {
       'Building JSON data files for catalog & directory'
     )
     buildTime(reporter)
-      .then(() => {
-        return catalog(reporter, graphql)
-      })
       .then(() => {
         return alumni(reporter, graphql)
       })

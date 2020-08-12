@@ -21,27 +21,7 @@ const processAttributes = attributes => {
 module.exports = (reporter, graphql) => {
   return new Promise((resolve, reject) => {
     resolve(
-      graphql(`
-        {
-          allCatalogCsv {
-            edges {
-              node {
-                CRSE_ID
-                SUBJECT
-                CATALOG_NBR
-                COURSE_TITLE_LONG
-                DESCRLONG
-                UNITS_MINIMUM
-                UNITS_MAXIMUM
-                CRSE_OFFER_NBR
-                TERM
-                CRSE_ATTR_LIST
-                GRADING_BASIS
-              }
-            }
-          }
-        }
-      `).then(result => {
+      graphql(``).then(result => {
         if (result.errors) {
           reject(result.errors)
           return
