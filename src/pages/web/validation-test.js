@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import {
   Layout,
   SiteHeader,
@@ -14,32 +14,45 @@ import styled from '@emotion/styled'
 import Blocks from '../../templates/blocks'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
 
-class CredentialSearch extends Component {
-  render() {
-    return (
-      <Well>
-        <form
-          method="GET"
-          action="https://csumb.teamdynamix.com/TDClient/Shared/Search/?c=sc"
-        >
-          <h2>Search our services</h2>
-          <Flex>
-            <Box width={[1, 8 / 12]} pr={[0, 2]}>
-              <InputText
-                name="s"
-                label="Search our services"
-                placeholder="Search"
-                hideLabel={true}
-              />
-            </Box>
-            <Box width={[1, 4 / 12]}>
-              <Submit value="Search" nomargin={true} small />
-            </Box>
-          </Flex>
-        </form>
-      </Well>
-    )
+const initialFormData = Object.freeze({
+  username: '',
+  password: '',
+})
+
+const endpoint = process.env.GATSBY_CSUMB_CEDIPLOMA_TEST_ENDPOINT
+console.log(endpoint)
+
+const CredentialForm = () => {
+  const [formData, updateFormData] = React.useState(initialFormData)
+
+  const handleChange = e => {
+    updateFormData({
+      ...formData,
+    })
   }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(formData)
+    console.log(`${endpoint}/${formData.id}/${formData.name}`)
+  }
+
+  return (
+    <>
+      <h1>Hello</h1>
+      <label>
+        ID
+        <input name="id" onChange={handleChange} />
+      </label>
+      <br />
+      <label>
+        First two of name
+        <input name="name" onChange={handleChange} />
+      </label>
+      <br />
+      <button onClick={handleSubmit}>Submit</button>
+    </>
+  )
 }
 
 class ITPage extends Component {
@@ -53,12 +66,7 @@ class ITPage extends Component {
           url: '/web/validation-test',
         }}
       >
-        <Layout
-          pageTitle="Credential Validation"
-          siteTitle="Credential Validation"
-          isSiteHomepage={true}
-          siteNavigation={data.allCsumbNavigation.edges[0].node.navigation}
-        >
+        <Layout>
           <SiteHeader path="/web/validation-test">
             Credential Validation
           </SiteHeader>
@@ -70,12 +78,12 @@ class ITPage extends Component {
               />
             )}
           <Container topPadding>
-            <CredentialSearch />
-            {data.allCsumbPage &&
+            <CredentialForm />
+            {/* {data.allCsumbPage &&
               data.allCsumbPage.edges &&
               data.allCsumbPage.edges[0] && (
                 <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-              )}
+              )} */}
           </Container>
         </Layout>
       </PageFeedbackContext.Provider>
