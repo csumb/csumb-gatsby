@@ -15,12 +15,9 @@ import Blocks from '../../templates/blocks'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
 
 const initialFormData = Object.freeze({
-  username: '',
-  password: '',
+  id: '',
+  name: '',
 })
-
-const endpoint = process.env.GATSBY_CSUMB_CEDIPLOMA_TEST_ENDPOINT
-console.log(endpoint)
 
 const CredentialForm = () => {
   const [formData, updateFormData] = React.useState(initialFormData)
@@ -28,18 +25,37 @@ const CredentialForm = () => {
   const handleChange = e => {
     updateFormData({
       ...formData,
+
+      // Trimming any whitespace
+      [e.target.name]: e.target.value.trim(),
     })
   }
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(formData)
-    console.log(`${endpoint}/${formData.id}/${formData.name}`)
+    if (formData) {
+      fetch(
+        `${process.env.GATSBY_CSUMB_CEDIPLOMA_TEST_ENDPOINT}/${formData.id}/${
+          formData.name
+        }`,
+        {
+          method: 'GET',
+          dataType: 'JSON',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        }
+      )
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          // this.setState({ reports: data.list })
+        })
+    }
   }
 
   return (
     <>
-      <h1>Hello</h1>
       <label>
         ID
         <input name="id" onChange={handleChange} />
@@ -79,11 +95,11 @@ class ITPage extends Component {
             )}
           <Container topPadding>
             <CredentialForm />
-            {/* {data.allCsumbPage &&
+            {data.allCsumbPage &&
               data.allCsumbPage.edges &&
               data.allCsumbPage.edges[0] && (
                 <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-              )} */}
+              )}
           </Container>
         </Layout>
       </PageFeedbackContext.Provider>
