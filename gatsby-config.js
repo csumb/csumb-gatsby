@@ -36,6 +36,7 @@ const gatsbyConfig = {
       'search',
       'scienceillustration/graduate-gallery',
       'undersea/imagery-database',
+      'web/validation-test',
     ],
     eventCategories: [
       {
