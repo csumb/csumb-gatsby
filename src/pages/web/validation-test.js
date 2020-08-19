@@ -45,11 +45,11 @@ const resultTable = credential => {
               </TableRow>
               <TableRow>
                 <TableCell>Credential:</TableCell>
-                <TableCell>{credential.Degree1}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell />
-                <TableCell>{credential.Major1}</TableCell>
+                <TableCell>
+                  {credential.Degree1}
+                  <br />
+                  {credential.Major1}
+                </TableCell>
               </TableRow>
             </tbody>
           </Table>
