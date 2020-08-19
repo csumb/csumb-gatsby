@@ -19,6 +19,23 @@ const initialFormData = Object.freeze({
   name: '',
 })
 
+const resultTable = credential => {
+  return credential.ValidStatus === 'VALID' ? (
+    <div>
+      <h5>This is a Valid Credential</h5>
+      <ul>
+        <li>CeDiD: {credential.CeDiplomaID}</li>
+        <li>Name: {credential.Name}</li>
+        <li>Conferral Date: {credential.ConferralDate}</li>
+        <li>Credential: {credential.Degree1}</li>
+        <li>{credential.Major1}</li>
+      </ul>
+    </div>
+  ) : (
+    <h5>This is not a valid credential.</h5>
+  )
+}
+
 const CredentialForm = () => {
   const [formData, updateFormData] = useState(initialFormData)
   const [data, setData] = useState({ credential: {} })
@@ -54,7 +71,7 @@ const CredentialForm = () => {
         })
     }
   }
-  console.log(data.credential)
+  console.log(Object.keys(data.credential))
 
   return (
     <>
@@ -69,16 +86,8 @@ const CredentialForm = () => {
       </label>
       <br />
       <button onClick={handleSubmit}>Submit</button>
-      {data.credential.validStatus === 'Valid' && (
-        <h5>This is a Valid Credential</h5>
-      )}
-      <ul>
-        <li>CeDiD: {data.credential.CeDiplomaID}</li>
-        <li>Name: {data.credential.Name}</li>
-        <li>Conferral Date: {data.credential.ConferralDate}</li>
-        <li>Credential: {data.credential.Degree1}</li>
-        <li>{data.credential.Major1}</li>
-      </ul>
+      {Object.keys(data.credential).length !== 0 &&
+        resultTable(data.credential)}
     </>
   )
 }
