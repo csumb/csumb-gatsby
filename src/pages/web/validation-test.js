@@ -20,7 +20,8 @@ const initialFormData = Object.freeze({
 })
 
 const CredentialForm = () => {
-  const [formData, updateFormData] = React.useState(initialFormData)
+  const [formData, updateFormData] = useState(initialFormData)
+  const [data, setData] = useState({ credential: {} })
 
   const handleChange = e => {
     updateFormData({
@@ -48,11 +49,12 @@ const CredentialForm = () => {
       )
         .then(response => response.json())
         .then(data => {
-          console.log(data)
-          // this.setState({ reports: data.list })
+          // console.log(data[0])
+          setData({ credential: data[0] })
         })
     }
   }
+  console.log(data.credential)
 
   return (
     <>
@@ -67,6 +69,16 @@ const CredentialForm = () => {
       </label>
       <br />
       <button onClick={handleSubmit}>Submit</button>
+      {data.credential.validStatus === 'Valid' && (
+        <h5>This is a Valid Credential</h5>
+      )}
+      <ul>
+        <li>CeDiD: {data.credential.CeDiplomaID}</li>
+        <li>Name: {data.credential.Name}</li>
+        <li>Conferral Date: {data.credential.ConferralDate}</li>
+        <li>Credential: {data.credential.Degree1}</li>
+        <li>{data.credential.Major1}</li>
+      </ul>
     </>
   )
 }
