@@ -39,6 +39,8 @@ const AlertIconBox = styled(Box)`
   ${bp({
     display: ['none', 'flex', 'flex', 'flex'],
   })};
+  justify-content: center;
+  align-items: center;
 `
 
 const AlertDangerElement = styled(Alert)`
