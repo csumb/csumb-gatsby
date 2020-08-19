@@ -15,6 +15,7 @@ import { AlertWarning } from '../../components/common/alert'
 import { Button } from '../../components/common/button'
 import { colors } from '../../style'
 import credentialLogo from '../../assets/images/cecredential-logo.png'
+import moment from 'moment'
 
 const initialFormData = Object.freeze({
   id: '',
@@ -26,7 +27,8 @@ const resultTable = credential => {
     <div style={{ marginBottom: '50px' }}>
       {credential.ValidStatus === 'VALID' ? (
         <div>
-          <h5>This is a Valid Credential</h5>
+          <h4>This is a Valid Credential</h4>
+          <h6>Validated: {moment().format('LLLL')}</h6>
           <Table alternateRows={true}>
             <tbody>
               <TableRow>
