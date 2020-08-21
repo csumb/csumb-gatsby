@@ -35,7 +35,10 @@ class DiplomaPage extends Component {
           <Container topPadding>
             <UserContext.Consumer>
               {context => (
-                <h2>UserContext.Consumer: {JSON.stringify(context.user)}</h2>
+                <h2>
+                  context.user.profile.employeeNumber:{' '}
+                  {context.user.profile.employeeNumber}
+                </h2>
               )}
             </UserContext.Consumer>
             {data.allCsumbPage &&
