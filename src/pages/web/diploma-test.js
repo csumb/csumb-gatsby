@@ -7,10 +7,12 @@ import {
 } from '../../components/layouts/default'
 import { graphql } from 'gatsby'
 import Container from '../../components/common/container'
+import Blocks from '../../templates/blocks'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
 import { UserContext } from '../../components/contexts/user'
 
 const DiplomaPage = props => {
+  const data = props
   console.log(`Props: ${JSON.stringify(props)}`)
   return (
     <PageFeedbackContext.Provider
@@ -22,12 +24,15 @@ const DiplomaPage = props => {
         <Container>
           <PageTitle>This page is for testing purposes only</PageTitle>
           <UserContext.Consumer>
-            {context =>
-              console.log(
-                `UserContext.Consumer: ${JSON.stringify(context.user)}`
-              )
-            }
+            {context => (
+              <h2>UserContext.Consumer: {JSON.stringify(context.user)}</h2>
+            )}
           </UserContext.Consumer>
+          {data.allCsumbPage &&
+            data.allCsumbPage.edges &&
+            data.allCsumbPage.edges[0] && (
+              <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+            )}
         </Container>
       </Layout>
     </PageFeedbackContext.Provider>
@@ -38,14 +43,18 @@ export default DiplomaPage
 
 export const query = graphql`
   {
-    allMarkdownRemark(filter: { frontmatter: { name: { eq: "diploma" } } }) {
+    allCsumbNavigation(filter: { site: { eq: "web" } }) {
       edges {
         node {
-          frontmatter {
-            name
-            title
-          }
-          html
+          navigation
+        }
+      }
+    }
+    allCsumbPage(filter: { pagePath: { eq: "web/diploma-test" } }) {
+      edges {
+        node {
+          pageContent
+          layout
         }
       }
     }
