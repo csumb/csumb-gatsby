@@ -34,9 +34,17 @@ class DiplomaPage extends Component {
             )}
           <Container topPadding>
             <UserContext.Consumer>
-              {context => (
-                <h2>UserContext.Consumer: {JSON.stringify(context.user)}</h2>
-              )}
+              {context =>
+                context.user.profile !== undefined &&
+                context.user.profile.employeeNumber ? (
+                  <p>
+                    context.user.profile.employeeNumber:{' '}
+                    {context.user.profile.employeeNumber}
+                  </p>
+                ) : (
+                  <p>You must be logged in to register</p>
+                )
+              }
             </UserContext.Consumer>
             {data.allCsumbPage &&
               data.allCsumbPage.edges &&
