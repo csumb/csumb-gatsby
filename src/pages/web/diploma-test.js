@@ -35,6 +35,7 @@ class DiplomaPage extends Component {
           <Container topPadding>
             <UserContext.Consumer>
               {context =>
+                context.user.profile !== undefined &&
                 context.user.profile.employeeNumber ? (
                   <p>
                     context.user.profile.employeeNumber:{' '}
