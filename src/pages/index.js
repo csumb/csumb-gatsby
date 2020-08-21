@@ -55,9 +55,16 @@ const IndexPage = ({ data }) => {
     >
       <Layout noFooterMargin={true}>
         <AlertTop>
-          <a href="/health/coronavirus-information">
-            COVID-19 Information
-          </a>
+          <h4 style={{ color: 'white', marginBottom: '10px' }}>
+            Air quality and area{' '}
+            <a href="/news/river-carmel-and-dolan-fire-information">
+              wildfire update.
+            </a>
+          </h4>
+          <h6 style={{ marginBottom: '5px', color: 'white', fontWeight: 100 }}>
+            Visit the <a href="/health/coronavirus-information">COVID-19</a>{' '}
+            webpage for pandemic health and safety information.
+          </h6>
         </AlertTop>
         <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
         <HomepageImageNavigation
