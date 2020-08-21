@@ -16,7 +16,7 @@ const InputTextElement = styled('input')`
     ${focusStyle};
   }
   border-radius: 0;
-  border: 1px solid ${colors.gray.deafult};
+  border: 1px solid ${colors.gray.default};
   padding: 0.3rem;
   width: ${props => (props.small ? '30%' : '100%')};
   ${props =>
