@@ -4,11 +4,11 @@ import {
   SiteHeader,
   SiteNavigation,
   PageTitle,
-} from '../../../components/layouts/default'
+} from '../../components/layouts/default'
 import { graphql } from 'gatsby'
-import Container from '../../../components/common/container'
-import PageFeedbackContext from '../../../components/contexts/page-feedback'
-import { UserContext } from '../../../components/contexts/user'
+import Container from '../../components/common/container'
+import PageFeedbackContext from '../../components/contexts/page-feedback'
+import { UserContext } from '../../components/contexts/user'
 
 const DiplomaPage = props => {
   console.log(`Props: ${JSON.stringify(props)}`)
