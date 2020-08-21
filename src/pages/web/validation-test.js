@@ -6,7 +6,7 @@ import {
 } from '../../components/layouts/default'
 import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
-import { Flex, Box } from '../../components/common/grid'
+import { Flex } from '../../components/common/grid'
 import styled from '@emotion/styled'
 import Blocks from '../../templates/blocks'
 import { Table, TableRow, TableCell } from '../../components/common/table'
@@ -214,7 +214,7 @@ export default ValidationPage
 
 export const query = graphql`
   {
-    allCsumbNavigation(filter: { site: { eq: "it" } }) {
+    allCsumbNavigation(filter: { site: { eq: "web" } }) {
       edges {
         node {
           navigation
