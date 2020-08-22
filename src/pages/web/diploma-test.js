@@ -18,7 +18,8 @@ function EncryptedLink(props) {
   const employeeNumber = props.context.user.profile.employeeNumber
   const utcDateTime = moment('yyyy-MM-dd HH:mm:ss”')
   // Only use the first 16 chars (16 bytes) of MASK1 for AES128
-  const privateKey16String = process.env.GATSBY_CEDIPLOMA_MASK1.substring(0, 16)
+  const mask = process.env.GATSBY_CEDIPLOMA_MASK1
+  const privateKey16String = mask.substring(0, 16)
   const cipher = employeeNumber + '|' + utcDateTime
   //this line needs to be changed - node version of encrypt_openssl?
   const encryptedHexString = CryptoJS.AES.decrypt(cipher, privateKey16String)
