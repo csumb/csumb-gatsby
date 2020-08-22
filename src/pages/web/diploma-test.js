@@ -18,11 +18,7 @@ function EncryptedLink(props) {
   const employeeNumber = props.context.user.profile.employeeNumber
   const utcDateTime = moment('yyyy-MM-dd HH:mm:ss”')
   // Only use the first 16 chars (16 bytes) of MASK1 for AES128
-  const privateKey16String = substring(
-    process.env.GATSBY_CEDIPLOMA_MASK1,
-    0,
-    16
-  )
+  const privateKey16String = process.env.GATSBY_CEDIPLOMA_MASK1.substring(0, 16)
   const cipher = employeeNumber + '|' + utcDateTime
   //this line needs to be changed - node version of encrypt_openssl?
   const encryptedHexString = CryptoJS.AES.decrypt(cipher, privateKey16String)
@@ -36,7 +32,7 @@ function EncryptedLink(props) {
     '/' +
     process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER
   // Build example anchor tag to be used for testing
-  return <a href={encryptedURL} />
+  return <a href={encryptedURL}>{props.context.user.profile.employeeNumber}</a>
 }
 
 class DiplomaPage extends Component {
