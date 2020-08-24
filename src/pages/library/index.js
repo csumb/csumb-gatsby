@@ -99,7 +99,7 @@ class LibraryPage extends Component {
     }
     const script = window.document.createElement('script')
     script.src =
-      'https://v2.libanswers.com/load_chat.php?hash=addeae1f890e28920bfda5ac4c0a6e26'
+      'https://v2.libanswers.com/load_chat.php?hash=eeeaabbd6b1739014e7e8fe4e6db5bed'
     this.chatRef.current.parentNode.insertBefore(script, this.chatRef.current)
   }
 
