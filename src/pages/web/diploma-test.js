@@ -14,7 +14,8 @@ import crypto from 'crypto'
 
 function EncryptedLink(props) {
   // StudentId + pipe symbol + UTC DateTime is used to prevent "replay attacks"
-  const employeeNumber = process.env.GATSBY_TEST_RECIPIENT_ID
+  // const employeeNumber = process.env.GATSBY_TEST_RECIPIENT_ID
+  const employeeNumber = '859103625'
   const utcDateTime = moment().format('YYYY-MM-DD HH:mm:ss')
   const mask = process.env.GATSBY_CEDIPLOMA_MASK2
   // Only use the first 16 chars (16 bytes) of MASK1 for AES128
@@ -26,7 +27,7 @@ function EncryptedLink(props) {
     const iv = crypto.randomBytes(8)
     const ivString = iv.toString('hex')
     const cipher = crypto.createCipheriv(
-      process.env.GATSBY_CEDIPLOMA_ENCRYPTION_STANDARD,
+      'aes-128-cbc',
       privateKey16String,
       ivString
     )
@@ -59,7 +60,7 @@ function EncryptedLink(props) {
     '|P'
 
   //DISPLAY URLS
-  const encryptedURL = `${
+  const encryptedPostURL = `${
     process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
   }/Account/ERLSSO?hexkey=${hexKey}&cid=${
     process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER
@@ -76,7 +77,7 @@ function EncryptedLink(props) {
   return (
     <>
       <a href={anchorURL}>AnchorURL</a>
-      <form action={encryptedURL} method="post">
+      <form action={encryptedPostURL} method="post">
         <input type="submit" value="Order/Register for my CeCredential" />
       </form>
     </>
