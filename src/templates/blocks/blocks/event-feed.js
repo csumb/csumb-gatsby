@@ -22,8 +22,6 @@ const displayEvent = item => {
   return display
 }
 
-const dateFormat = 'MMMM D, YYYY'
-
 const getNextEventDate = dates => {
   let nextDate = false
   let lastDate = false
@@ -56,7 +54,6 @@ const BlockEventFeed = ({ events, title, limit }) => {
   events.forEach(event => {
     if (displayEvent(event) && displayEvents.length <= limit) {
       event.nextEventDate = getNextEventDate(event.dates)
-      console.log(event)
       displayEvents.push(event)
     }
   })
