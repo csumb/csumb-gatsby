@@ -10,27 +10,55 @@ import Blocks from '../../templates/blocks'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
 import { UserContext } from '../../components/contexts/user'
 import moment from 'moment'
-import CryptoJS from 'crypto-js'
-const crypto = require('crypto')
+import crypto from 'crypto'
 
 function EncryptedLink(props) {
   // StudentId + pipe symbol + UTC DateTime is used to prevent "replay attacks"
   const employeeNumber = process.env.GATSBY_TEST_RECIPIENT_ID
   const utcDateTime = moment().format('YYYY-MM-DD HH:mm:ss')
-  console.log(utcDateTime)
-  const mask = process.env.GATSBY_CEDIPLOMA_MASK1
+  const mask = process.env.GATSBY_CEDIPLOMA_MASK2
   // Only use the first 16 chars (16 bytes) of MASK1 for AES128
   const privateKey16String = mask.substring(0, 16)
   const value = employeeNumber + '|' + utcDateTime
 
-  let cipher = crypto.createCipher('aes128', privateKey16String)
-  const crypted = cipher.update(value, 'utf-8', 'hex') + cipher.final('hex')
+  function aesEncrypt(text) {
+    // const _text = text
+    const iv = crypto.randomBytes(8)
+    const ivString = iv.toString('hex')
+    const cipher = crypto.createCipheriv(
+      process.env.GATSBY_CEDIPLOMA_ENCRYPTION_STANDARD,
+      privateKey16String,
+      ivString
+    )
+    let encrypted = cipher.update(text, 'utf8', 'hex')
+    encrypted += cipher.final('hex')
+    return ivString + encrypted.toString('hex')
+  }
 
-  let uncipher = crypto.createDecipher('aes128', privateKey16String)
-  const decrypted =
-    uncipher.update(crypted, 'hex', 'utf-8') + uncipher.final('utf-8')
+  function decrypt(text) {
+    let iv = text.substring(0, 16)
+    let encryptedText = Buffer.from(text.substring(16), 'hex')
+    let decipher = crypto.createDecipheriv(
+      process.env.GATSBY_CEDIPLOMA_ENCRYPTION_STANDARD,
+      Buffer.from(privateKey16String),
+      iv
+    )
+    let decrypted = decipher.update(encryptedText)
+    decrypted = Buffer.concat([decrypted, decipher.final()])
 
-  const hexKey = process.env.GATSBY_CEDIPLOMA_CLIENTID + crypted + '|P'
+    return decrypted.toString()
+  }
+
+  console.log('original: ' + value)
+  console.log('encrypted: ' + aesEncrypt(value, privateKey16String))
+  console.log('decrypted: ' + decrypt(aesEncrypt(value, privateKey16String)))
+
+  const hexKey =
+    process.env.GATSBY_CEDIPLOMA_CLIENTID +
+    aesEncrypt(value, privateKey16String) +
+    '|P'
+
+  //DISPLAY URLS
   const encryptedURL = `${
     process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
   }/Account/ERLSSO?hexkey=${hexKey}&cid=${
@@ -38,15 +66,20 @@ function EncryptedLink(props) {
   }`
   const getURL = `${
     process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
-  }/Account/ERLSSO/${hexKey}/${
-    process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER
-  }|D/1334`
-  // Build example anchor tag to be used for testing
+  }/Account/ERLSSO/${hexKey}/${process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER}`
   console.log(getURL)
+
+  const anchorURL = `${
+    process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
+  }/Account/ERLSSO/${hexKey}/${process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER}`
+  // Build example anchor tag to be used for testing
   return (
-    <form action={encryptedURL} method="post">
-      <input type="submit" value="Order/Register for my CeCredential" />
-    </form>
+    <>
+      <a href={anchorURL}>AnchorURL</a>
+      <form action={encryptedURL} method="post">
+        <input type="submit" value="Order/Register for my CeCredential" />
+      </form>
+    </>
   )
 }
 
