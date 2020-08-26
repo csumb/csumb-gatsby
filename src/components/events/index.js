@@ -94,65 +94,72 @@ const EventLocation = ({ location }) => (
   </>
 )
 
-const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => (
-  <>
-    {event && event.times && (
-      <EventWrapper>
-        {event.title && (
-          <h2>
-            {linkToEvent ? (
-              <Link to={event.link}>{event.title}</Link>
-            ) : (
-              <>{event.title}</>
-            )}
-          </h2>
-        )}
-        <LeadParagraph>{event.description}</LeadParagraph>
-        <Flex>
-          {event.image && (
-            <Box width={[1, 4 / 12]} pr={[0, 4]}>
-              <img
-                src={event.image.replace('/csumb.edu/', '/edit.csumb.edu/')}
-                alt=""
-              />
-            </Box>
+const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => {
+  let sortedDates = event.dates.sort((a, b) => {
+    let dateA = a.start
+    let dateB = b.start
+    return dateA < dateB ? -1 : dateA > dateB ? 1 : 0
+  })
+  return (
+    <>
+      {event && event.times && (
+        <EventWrapper>
+          {event.title && (
+            <h2>
+              {linkToEvent ? (
+                <Link to={event.link}>{event.title}</Link>
+              ) : (
+                <>{event.title}</>
+              )}
+            </h2>
           )}
-          <Box width={[1, 5 / 12]} pr={[0, 4]}>
-            <EventDateItem>{getNextEventDate(event.dates)}</EventDateItem>
-            <EventDateItem>
-              {event.times.start} — {event.times.end}
-            </EventDateItem>
-            <EventLocation {...event} />
-            {event.cost_message && <p>{event.cost_message}</p>}
-            {event.ticket && (
-              <ButtonLink to={event.ticket.url}>
-                {event.ticket.title ? (
-                  <>{event.ticket.title}</>
-                ) : (
-                  <>{'Go to event'}</>
-                )}
-              </ButtonLink>
+          <LeadParagraph>{event.description}</LeadParagraph>
+          <Flex>
+            {event.image && (
+              <Box width={[1, 4 / 12]} pr={[0, 4]}>
+                <img
+                  src={event.image.replace('/csumb.edu/', '/edit.csumb.edu/')}
+                  alt=""
+                />
+              </Box>
             )}
-          </Box>
-          <Box width={[1, 3 / 12]}>
-            {event.dates.length > 1 && displayOnlyFirstDate !== true && (
-              <>
-                <h4>All dates</h4>
-                <UnstyledList>
-                  {event.dates.map(date => (
-                    <li key={date.start}>
-                      {moment(date.start).format(dateFormat)}
-                    </li>
-                  ))}
-                </UnstyledList>
-              </>
-            )}
-          </Box>
-        </Flex>
-      </EventWrapper>
-    )}
-  </>
-)
+            <Box width={[1, 5 / 12]} pr={[0, 4]}>
+              <EventDateItem>{getNextEventDate(event.dates)}</EventDateItem>
+              <EventDateItem>
+                {event.times.start} — {event.times.end}
+              </EventDateItem>
+              <EventLocation {...event} />
+              {event.cost_message && <p>{event.cost_message}</p>}
+              {event.ticket && (
+                <ButtonLink to={event.ticket.url}>
+                  {event.ticket.title ? (
+                    <>{event.ticket.title}</>
+                  ) : (
+                    <>{'Go to event'}</>
+                  )}
+                </ButtonLink>
+              )}
+            </Box>
+            <Box width={[1, 3 / 12]}>
+              {event.dates.length > 1 && displayOnlyFirstDate !== true && (
+                <>
+                  <h4>All dates</h4>
+                  <UnstyledList>
+                    {sortedDates.map(date => (
+                      <li key={date.start}>
+                        {moment(date.start).format(dateFormat)}
+                      </li>
+                    ))}
+                  </UnstyledList>
+                </>
+              )}
+            </Box>
+          </Flex>
+        </EventWrapper>
+      )}
+    </>
+  )
+}
 
 const EventFeedItemDate = styled('p')`
   margin-bottom: 0.5rem;
