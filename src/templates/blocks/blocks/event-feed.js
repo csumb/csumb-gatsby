@@ -22,10 +22,41 @@ const displayEvent = item => {
   return display
 }
 
+const dateFormat = 'MMMM D, YYYY'
+
+const getNextEventDate = dates => {
+  let nextDate = false
+  let lastDate = false
+  let now = moment()
+  dates.map(date => {
+    const start = moment(date.start)
+    if (!nextDate) {
+      nextDate = start
+    }
+    const diff = start.diff(now)
+    if (!lastDate || lastDate.diff(now) < diff) {
+      lastDate = start
+    }
+    if (diff > -1 && (nextDate.diff(now) < -1 || diff < nextDate.diff(now))) {
+      nextDate = start
+    }
+    return nextDate
+  })
+  if (!nextDate) {
+    nextDate = lastDate
+  }
+  if (nextDate) {
+    return nextDate
+  }
+  return null
+}
+
 const BlockEventFeed = ({ events, title, limit }) => {
   const displayEvents = []
   events.forEach(event => {
     if (displayEvent(event) && displayEvents.length <= limit) {
+      event.nextEventDate = getNextEventDate(event.dates)
+      console.log(event)
       displayEvents.push(event)
     }
   })
@@ -39,8 +70,8 @@ const BlockEventFeed = ({ events, title, limit }) => {
     ) {
       return 0
     }
-    let aStart = moment(a.dates[0].start, 'YYYY-MM-DD').valueOf()
-    let bStart = moment(b.dates[0].start, 'YYYY-MM-DD').valueOf()
+    let aStart = a.nextEventDate
+    let bStart = b.nextEventDate
     return aStart < bStart ? -1 : aStart > bStart ? 1 : 0
   })
 
