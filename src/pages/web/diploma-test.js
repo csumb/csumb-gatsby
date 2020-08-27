@@ -17,7 +17,7 @@ function EncryptedLink(props) {
   // const employeeNumber = process.env.GATSBY_TEST_RECIPIENT_ID
   const employeeNumber = '859103625'
   const utcDateTime = moment().format('YYYY-MM-DD HH:mm:ss')
-  const mask = process.env.GATSBY_CEDIPLOMA_MASK2
+  const mask = process.env.GATSBY_CEDIPLOMA_MASK1
   // Only use the first 16 chars (16 bytes) of MASK1 for AES128
   const privateKey16String = mask.substring(0, 16)
   const value = employeeNumber + '|' + utcDateTime
