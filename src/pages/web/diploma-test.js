@@ -47,6 +47,8 @@ function aesDecrypt(text, key) {
 }
 
 function EncryptedLink(context) {
+  console.log('context: ' + context)
+  console.log('employeeNumber: ' + context.user.profile.employeeNumber)
   const employeeNumber = context.user ? context.user.profile.employeeNumber : ''
   const utcDateTime = moment()
     .utc()
