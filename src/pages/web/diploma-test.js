@@ -46,9 +46,11 @@ function aesDecrypt(text, key) {
   return decrypted.toString()
 }
 
-function EncryptedLink(context) {
-  console.log('context: ' + context)
-  const employeeNumber = context.user ? context.user.profile.employeeNumber : ''
+function EncryptedLink(props) {
+  console.log('context: ' + props.context)
+  const employeeNumber = props.context.user
+    ? props.context.user.profile.employeeNumber
+    : ''
   console.log('employeeNumber: ' + employeeNumber)
   const utcDateTime = moment()
     .utc()
@@ -77,7 +79,7 @@ function EncryptedLink(context) {
   return (
     <>
       <h3>
-        <a href={context ? anchorURL : '#'}>Register/Download now</a>
+        <a href={props.context.user ? anchorURL : '#'}>Register/Download now</a>
       </h3>
       {/* <form action={encryptedPostURL} method="post">
         <input type="submit" value="Order/Register for my CeCredential" />
