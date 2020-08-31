@@ -85,6 +85,30 @@ function EncryptedLink(props) {
   )
 }
 
+export const DiplomaSidebar = () => (
+  <Box width={[1, 4 / 12]} pr={[0, 4]}>
+    <h2>Related Pages</h2>
+    <h3>
+      <a href="https://secure.cecredentialtrust.com/cecredential/overview/">
+        CeDiploma Features
+      </a>
+    </h3>
+    <p>
+      Learn more about the security features of a CeDiploma or CeCertificate
+    </p>
+    <h3>
+      <a href="/web/validation-test">Credential Validation</a>
+    </h3>
+    <p>Validate the authenticity of a CeDiploma or CeCertificate</p>
+    <h3>
+      <a href="https://secure.cecredentialtrust.com/cecredential/faq/">
+        CeCredential Frequently Asked Questions
+      </a>
+    </h3>
+    <p>View commonly asked questions about the CeDiploma or CeCertificate</p>
+  </Box>
+)
+
 class DiplomaPage extends Component {
   render() {
     const { data } = this.props
@@ -108,31 +132,7 @@ class DiplomaPage extends Component {
             )}
           <Container topPadding>
             <Flex>
-              <Box width={[1, 4 / 12]} pr={[0, 4]}>
-                <h2>Related Pages</h2>
-                <h3>
-                  <a href="https://secure.cecredentialtrust.com/cecredential/overview/">
-                    CeDiploma Features
-                  </a>
-                </h3>
-                <p>
-                  Learn more about the security features of a CeDiploma or
-                  CeCertificate
-                </p>
-                <h3>
-                  <a href="/web/validation-test">Credential Validation</a>
-                </h3>
-                <p>Validate the authenticity of a CeDiploma or CeCertificate</p>
-                <h3>
-                  <a href="https://secure.cecredentialtrust.com/cecredential/faq/">
-                    CeCredential Frequently Asked Questions
-                  </a>
-                </h3>
-                <p>
-                  View commonly asked questions about the CeDiploma or
-                  CeCertificate
-                </p>
-              </Box>
+              <DiplomaSidebar />
               <Box width={[1, 8 / 12]}>
                 <h2>Certified Electronic Credential Overview</h2>
                 <p>
