@@ -8,9 +8,10 @@ import { graphql } from 'gatsby'
 import Container from '../../components/common/container'
 import Blocks from '../../templates/blocks'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
-import { UserContext } from '../../components/contexts/user'
 import moment from 'moment'
 import crypto from 'crypto'
+
+const IVLength = 16
 
 function aesEncrypt(text, key) {
   if (process.versions.openssl <= '1.0.1f') {
@@ -43,14 +44,15 @@ function aesDecrypt(text, key) {
 }
 
 function EncryptedLink(props) {
-  const employeeNumber = process.env.GATSBY_TEST_RECIPIENT_ID
+  const employeeNumber = props.context
+    ? props.context.user.profile.employeeNumber
+    : ''
   const utcDateTime = moment()
     .utc()
     .format('YYYY-MM-DD HH:mm:ss')
   const value = employeeNumber + '|' + utcDateTime
 
   const mask = process.env.GATSBY_CEDIPLOMA_MASK1
-  const IVLength = 16
   const privateKey16String = mask.substring(0, IVLength)
 
   const hexKey =
@@ -64,21 +66,19 @@ function EncryptedLink(props) {
   }/Account/ERLSSO?hexkey=${hexKey}&cid=${
     process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER
   }`
-  const getURL = `${
-    process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
-  }/Account/ERLSSO/${hexKey}/${process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER}`
-  console.log(getURL)
 
   const anchorURL = `${
     process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
   }/Account/ERLSSO/${hexKey}/${process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER}`
-  // Build example anchor tag to be used for testing
+
   return (
     <>
-      <a href={anchorURL}>AnchorURL</a>
-      <form action={encryptedPostURL} method="post">
+      <h3>
+        <a href={props.context ? anchorURL : '#'}>Register/Download now</a>
+      </h3>
+      {/* <form action={encryptedPostURL} method="post">
         <input type="submit" value="Order/Register for my CeCredential" />
-      </form>
+      </form> */}
     </>
   )
 }
@@ -105,14 +105,14 @@ class DiplomaPage extends Component {
               />
             )}
           <Container topPadding>
-            <UserContext.Consumer>
-              {context => (
-                <>
-                  <EncryptedLink />
-                  <p>You must be logged in to register</p>
-                </>
-              )}
-            </UserContext.Consumer>
+            <EncryptedLink />
+            {!data.context && (
+              <h6>
+                You must be{' '}
+                <a href={data.site.siteMetadata.okta.login}>logged in</a> to
+                order/register
+              </h6>
+            )}
             {data.allCsumbPage &&
               data.allCsumbPage.edges &&
               data.allCsumbPage.edges[0] && (
@@ -141,6 +141,13 @@ export const query = graphql`
         node {
           pageContent
           layout
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        okta {
+          login
         }
       }
     }
