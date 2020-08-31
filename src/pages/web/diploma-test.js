@@ -12,47 +12,46 @@ import { UserContext } from '../../components/contexts/user'
 import moment from 'moment'
 import crypto from 'crypto'
 
+function aesEncrypt(text, key) {
+  if (process.versions.openssl <= '1.0.1f') {
+    throw new Error('OpenSSL Version too old, vulnerability to Heartbleed')
+  }
+  const iv = crypto.randomBytes(IVLength)
+
+  const cipher = crypto.createCipheriv('aes-128-cbc', Buffer.from(key), iv)
+  let encrypted = cipher.update(text)
+  encrypted = Buffer.concat([encrypted, cipher.final()])
+
+  return iv.toString('hex') + encrypted.toString('hex')
+}
+
+function aesDecrypt(text, key) {
+  let iv32 = text.substring(0, IVLength * 2)
+  let s32 = text.substring(IVLength * 2)
+  let iv = new Buffer.from(iv32, 'hex')
+  let encryptedText = Buffer.from(s32, 'hex')
+
+  let decipher = crypto.createDecipheriv(
+    process.env.GATSBY_CEDIPLOMA_ENCRYPTION_STANDARD,
+    Buffer.from(key),
+    iv
+  )
+  let decrypted = decipher.update(encryptedText)
+  decrypted = Buffer.concat([decrypted, decipher.final()])
+
+  return decrypted.toString()
+}
+
 function EncryptedLink(props) {
-  // StudentId + pipe symbol + UTC DateTime is used to prevent "replay attacks"
-  // const employeeNumber = process.env.GATSBY_TEST_RECIPIENT_ID
-  const employeeNumber = '859103625'
-  const utcDateTime = moment().format('YYYY-MM-DD HH:mm:ss')
-  const mask = process.env.GATSBY_CEDIPLOMA_MASK1
-  // Only use the first 16 chars (16 bytes) of MASK1 for AES128
-  const privateKey16String = mask.substring(0, 16)
+  const employeeNumber = process.env.GATSBY_TEST_RECIPIENT_ID
+  const utcDateTime = moment()
+    .utc()
+    .format('YYYY-MM-DD HH:mm:ss')
   const value = employeeNumber + '|' + utcDateTime
 
-  function aesEncrypt(text) {
-    // const _text = text
-    const iv = crypto.randomBytes(8)
-    const ivString = iv.toString('hex')
-    const cipher = crypto.createCipheriv(
-      'aes-128-cbc',
-      privateKey16String,
-      ivString
-    )
-    let encrypted = cipher.update(text, 'utf8', 'hex')
-    encrypted += cipher.final('hex')
-    return ivString + encrypted.toString('hex')
-  }
-
-  function decrypt(text) {
-    let iv = text.substring(0, 16)
-    let encryptedText = Buffer.from(text.substring(16), 'hex')
-    let decipher = crypto.createDecipheriv(
-      process.env.GATSBY_CEDIPLOMA_ENCRYPTION_STANDARD,
-      Buffer.from(privateKey16String),
-      iv
-    )
-    let decrypted = decipher.update(encryptedText)
-    decrypted = Buffer.concat([decrypted, decipher.final()])
-
-    return decrypted.toString()
-  }
-
-  console.log('original: ' + value)
-  console.log('encrypted: ' + aesEncrypt(value, privateKey16String))
-  console.log('decrypted: ' + decrypt(aesEncrypt(value, privateKey16String)))
+  const mask = process.env.GATSBY_CEDIPLOMA_MASK1
+  const IVLength = 16
+  const privateKey16String = mask.substring(0, IVLength)
 
   const hexKey =
     process.env.GATSBY_CEDIPLOMA_CLIENTID +
