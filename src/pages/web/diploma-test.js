@@ -48,7 +48,7 @@ function aesDecrypt(text, key) {
 
 function EncryptedLink(props) {
   console.log('context: ' + props.context)
-  const employeeNumber = props.context.user
+  const employeeNumber = props.context
     ? props.context.user.profile.employeeNumber
     : ''
   console.log('employeeNumber: ' + employeeNumber)
@@ -79,7 +79,7 @@ function EncryptedLink(props) {
   return (
     <>
       <h3>
-        <a href={props.context.user ? anchorURL : '#'}>Register/Download now</a>
+        <a href={props.context ? anchorURL : '#'}>Register/Download now</a>
       </h3>
       {/* <form action={encryptedPostURL} method="post">
         <input type="submit" value="Order/Register for my CeCredential" />
