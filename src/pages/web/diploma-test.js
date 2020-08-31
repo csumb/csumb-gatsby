@@ -48,8 +48,8 @@ function aesDecrypt(text, key) {
 
 function EncryptedLink(context) {
   console.log('context: ' + context)
-  console.log('employeeNumber: ' + context.user.profile.employeeNumber)
   const employeeNumber = context.user ? context.user.profile.employeeNumber : ''
+  console.log('employeeNumber: ' + employeeNumber)
   const utcDateTime = moment()
     .utc()
     .format('YYYY-MM-DD HH:mm:ss')
