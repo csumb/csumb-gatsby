@@ -49,6 +49,7 @@ function EncryptedLink(props) {
   const employeeNumber = props.context
     ? props.context.user.profile.employeeNumber
     : ''
+  console.log(props)
   const utcDateTime = moment()
     .utc()
     .format('YYYY-MM-DD HH:mm:ss')
@@ -63,11 +64,11 @@ function EncryptedLink(props) {
     '|P'
 
   //DISPLAY URLS
-  const encryptedPostURL = `${
-    process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
-  }/Account/ERLSSO?hexkey=${hexKey}&cid=${
-    process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER
-  }`
+  // const encryptedPostURL = `${
+  //   process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
+  // }/Account/ERLSSO?hexkey=${hexKey}&cid=${
+  //   process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER
+  // }`
 
   const anchorURL = `${
     process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
@@ -141,7 +142,7 @@ class DiplomaPage extends Component {
                   with (Start date) and forward!
                 </p>
                 <img src={cediplomaTablet} alt="" />
-                <EncryptedLink />
+                <EncryptedLink props={data} />
                 {!data.context && (
                   <p style={{ color: 'red' }}>
                     You must be logged in to order/register.
