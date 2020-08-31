@@ -6,7 +6,7 @@ import {
 } from '../../components/layouts/default'
 import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
-import { Flex } from '../../components/common/grid'
+import { Flex, Box } from '../../components/common/grid'
 import styled from '@emotion/styled'
 import Blocks from '../../templates/blocks'
 import { Table, TableRow, TableCell } from '../../components/common/table'
@@ -15,6 +15,7 @@ import { AlertWarning } from '../../components/common/alert'
 import { Button } from '../../components/common/button'
 import { colors } from '../../style'
 import credentialLogo from '../../assets/images/cecredential-logo.png'
+import { DiplomaSidebar } from './diploma-test'
 import moment from 'moment'
 
 const initialFormData = Object.freeze({
@@ -140,7 +141,7 @@ const CredentialValidation = () => {
 
   return (
     <>
-      <Flex style={{ maxWidth: '500px', marginBottom: '20px' }}>
+      <Flex style={{ margin: '0 1rem 20px 1rem' }}>
         <LabelInputWrapper>
           <Label htmlFor="id">
             Please enter CeDiD <br />
@@ -169,7 +170,11 @@ const CredentialValidation = () => {
         </LabelInputWrapper>
         <Button onClick={handleSubmit}>Validate</Button>
       </Flex>
-      <img src={credentialLogo} alt="Powered by CeCredential Trust" />
+      <img
+        src={credentialLogo}
+        alt="Powered by CeCredential Trust"
+        style={{ margin: '1rem' }}
+      />
       {Object.keys(data.credential).length !== 0 &&
         resultTable(data.credential)}
     </>
@@ -197,12 +202,19 @@ class ValidationPage extends Component {
               />
             )}
           <Container topPadding>
-            <CredentialValidation />
-            {data.allCsumbPage &&
-              data.allCsumbPage.edges &&
-              data.allCsumbPage.edges[0] && (
-                <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-              )}
+            <Flex>
+              <DiplomaSidebar />
+              <Box width={[1, 8 / 12]}>
+                <CredentialValidation />
+                {data.allCsumbPage &&
+                  data.allCsumbPage.edges &&
+                  data.allCsumbPage.edges[0] && (
+                    <Blocks
+                      blocks={data.allCsumbPage.edges[0].node.pageContent}
+                    />
+                  )}
+              </Box>
+            </Flex>
           </Container>
         </Layout>
       </PageFeedbackContext.Provider>
