@@ -7,7 +7,9 @@ import {
 import { graphql } from 'gatsby'
 import Container from '../../components/common/container'
 import Blocks from '../../templates/blocks'
+import { Flex, Box } from '../../components/common/grid'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
+import cediplomaTablet from '../../assets/images/cediploma-tablet.png'
 import moment from 'moment'
 import crypto from 'crypto'
 
@@ -105,19 +107,56 @@ class DiplomaPage extends Component {
               />
             )}
           <Container topPadding>
-            <EncryptedLink />
-            {!data.context && (
-              <h6>
-                You must be{' '}
-                <a href={data.site.siteMetadata.okta.login}>logged in</a> to
-                order/register
-              </h6>
-            )}
-            {data.allCsumbPage &&
-              data.allCsumbPage.edges &&
-              data.allCsumbPage.edges[0] && (
-                <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-              )}
+            <Flex>
+              <Box width={[1, 4 / 12]} pr={[0, 4]}>
+                <h2>Related Pages</h2>
+                <h3>
+                  <a href="https://secure.cecredentialtrust.com/cecredential/overview/">
+                    CeDiploma Features
+                  </a>
+                </h3>
+                <p>
+                  Learn more about the security features of a CeDiploma or
+                  CeCertificate
+                </p>
+                <h3>
+                  <a href="/web/validation-test">Credential Validation</a>
+                </h3>
+                <p>Validate the authenticity of a CeDiploma or CeCertificate</p>
+                <h3>
+                  <a href="https://secure.cecredentialtrust.com/cecredential/faq/">
+                    CeCredential Frequently Asked Questions
+                  </a>
+                </h3>
+                <p>
+                  View commonly asked questions about the CeDiploma or
+                  CeCertificate
+                </p>
+              </Box>
+              <Box width={[1, 8 / 12]}>
+                <h2>Certified Electronic Credential Overview</h2>
+                <p>
+                  CSUMB now offers Certified Electronic Diplomas and
+                  Certificates (CeDiploma/CeCertificate) to graduates starting
+                  with (Start date) and forward!
+                </p>
+                <img src={cediplomaTablet} alt="" />
+                <EncryptedLink />
+                {!data.context && (
+                  <p style={{ color: 'red' }}>
+                    You must be logged in to order/register.
+                  </p>
+                )}
+                <p>(There is a $10.95 charge for this service.)</p>
+                {data.allCsumbPage &&
+                  data.allCsumbPage.edges &&
+                  data.allCsumbPage.edges[0] && (
+                    <Blocks
+                      blocks={data.allCsumbPage.edges[0].node.pageContent}
+                    />
+                  )}
+              </Box>
+            </Flex>
           </Container>
         </Layout>
       </PageFeedbackContext.Provider>
