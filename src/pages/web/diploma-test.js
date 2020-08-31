@@ -8,6 +8,7 @@ import { graphql } from 'gatsby'
 import Container from '../../components/common/container'
 import Blocks from '../../templates/blocks'
 import { Flex, Box } from '../../components/common/grid'
+import { UserContext } from '../../components/contexts/user'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
 import cediplomaTablet from '../../assets/images/cediploma-tablet.png'
 import moment from 'moment'
@@ -45,11 +46,8 @@ function aesDecrypt(text, key) {
   return decrypted.toString()
 }
 
-function EncryptedLink(props) {
-  const employeeNumber = props.context
-    ? props.context.user.profile.employeeNumber
-    : ''
-  console.log(props)
+function EncryptedLink(context) {
+  const employeeNumber = context.user ? context.user.profile.employeeNumber : ''
   const utcDateTime = moment()
     .utc()
     .format('YYYY-MM-DD HH:mm:ss')
@@ -77,7 +75,7 @@ function EncryptedLink(props) {
   return (
     <>
       <h3>
-        <a href={props.context ? anchorURL : '#'}>Register/Download now</a>
+        <a href={context ? anchorURL : '#'}>Register/Download now</a>
       </h3>
       {/* <form action={encryptedPostURL} method="post">
         <input type="submit" value="Order/Register for my CeCredential" />
@@ -142,12 +140,21 @@ class DiplomaPage extends Component {
                   with (Start date) and forward!
                 </p>
                 <img src={cediplomaTablet} alt="" />
-                <EncryptedLink props={data} />
-                {!data.context && (
-                  <p style={{ color: 'red' }}>
-                    You must be logged in to order/register.
-                  </p>
-                )}
+                <UserContext.Consumer>
+                  {context =>
+                    context.user.profile !== undefined &&
+                    context.user.profile.employeeNumber ? (
+                      <EncryptedLink context={context} />
+                    ) : (
+                      <>
+                        <EncryptedLink context={null} />
+                        <p style={{ color: 'red' }}>
+                          You must be logged in to order/register.
+                        </p>
+                      </>
+                    )
+                  }
+                </UserContext.Consumer>
                 <p>(There is a $10.95 charge for this service.)</p>
                 {data.allCsumbPage &&
                   data.allCsumbPage.edges &&
