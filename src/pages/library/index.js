@@ -129,7 +129,7 @@ class LibraryPage extends Component {
             )}
           <Container>
             <LibrarySearch />
-            <div ref={this.chatRef} />
+            <div id="chatRef" ref={this.chatRef} />
 
             {data.allCsumbPage &&
               data.allCsumbPage.edges &&
