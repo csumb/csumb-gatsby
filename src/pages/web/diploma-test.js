@@ -141,7 +141,7 @@ class DiplomaPage extends Component {
                 <p>
                   CSUMB now offers Certified Electronic Diplomas and
                   Certificates (CeDiploma/CeCertificate) to graduates starting
-                  with (Start date) and forward!
+                  with Spring 2020 and forward!
                 </p>
                 <img src={cediplomaTablet} alt="" />
                 <UserContext.Consumer>
@@ -159,7 +159,7 @@ class DiplomaPage extends Component {
                     )
                   }
                 </UserContext.Consumer>
-                <p>(There is a $10.95 charge for this service.)</p>
+                <p>(There is a $15.95 charge for this service.)</p>
                 {data.allCsumbPage &&
                   data.allCsumbPage.edges &&
                   data.allCsumbPage.edges[0] && (
