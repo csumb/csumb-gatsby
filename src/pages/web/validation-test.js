@@ -64,7 +64,7 @@ const resultTable = credential => {
             The information provided does not match the information on record,
             or there was a connection error.
             <br />
-            Please contact *REGISTRAR@SAMPLEUNIVERSITY.EDU* for assistance. When
+            Please contact <a href="mailto:graduation@csumb.edu" target="_blank">graduation@csumb.edu</a> for assistance. When
             you do, please provide the student name and CeDiD.
           </p>
         </AlertWarning>
