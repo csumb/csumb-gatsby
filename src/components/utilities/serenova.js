@@ -24,11 +24,11 @@ class Serenova extends Component {
     )
     headScript.setAttribute(
       'data-cxengage-prechat-capture-greeting-text',
-      greetingText
+      'greetingText'
     )
     headScript.setAttribute(
       'data-cxengage-prechat-capture-confirmation-text',
-      confirmationText
+      'confirmationText'
     )
     document.head.appendChild(headScript)
 
