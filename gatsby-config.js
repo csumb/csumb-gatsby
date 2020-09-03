@@ -29,7 +29,7 @@ const gatsbyConfig = {
         site: 'it',
         code: '5f3533d47cf37f000ee14e41',
         greetingText: `Hi, welcome to the CSUMB Technology Support Services chat. We are here to help you with your technology questions. To start off we'd like to know a little bit more about you`,
-        confirmationText: `Thanks for your name`,
+        confirmationText: `Thanks for your name `,
       },
       {
         site: 'csc',
