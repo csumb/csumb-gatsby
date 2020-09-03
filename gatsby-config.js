@@ -37,6 +37,12 @@ const gatsbyConfig = {
         greetingText: `Hello, You have reached the Campus Service Center`,
         confirmationText: `Thanks for your name`,
       },
+      {
+        site: 'cost',
+        code: '5f3533e9cdb903000d95fd43',
+        greetingText: `Hello, You have reached the Campus Service Center`,
+        confirmationText: `Thanks for your name`,
+      },
     ],
     labs: {
       customerId: '200b96ee-10c7-4355-83a4-3ded9ab6e845',
