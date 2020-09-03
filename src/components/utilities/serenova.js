@@ -2,7 +2,10 @@ import { Component } from 'react'
 
 class Serenova extends Component {
   componentDidMount() {
-    if (typeof window === 'undefined' || typeof window.olark !== 'undefined') {
+    if (
+      typeof window === 'undefined' ||
+      typeof window.serenova !== 'undefined'
+    ) {
       return
     }
     const { siteId, greetingText, confirmationText } = this.props

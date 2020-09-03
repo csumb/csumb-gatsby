@@ -18,6 +18,12 @@ module.exports = (graphql, actions) => {
                   site
                   code
                 }
+                perSiteSerenovaIds {
+                  site
+                  code
+                  greetingText
+                  confirmationText
+                }
               }
             }
 
