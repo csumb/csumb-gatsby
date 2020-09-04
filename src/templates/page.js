@@ -35,8 +35,17 @@ const PageTemplate = ({ pageContext }) => {
     drupalNid,
     embedTargetSite,
     olarkSite,
-    serenovaSite,
+    serenovaId,
+    serenovaGreeting,
+    serenovaConfirmation,
   } = pageContext
+
+  console.log(pageContext)
+  const serenovaProps = {
+    siteId: serenovaId,
+    greetingText: serenovaGreeting,
+    confirmationText: serenovaConfirmation,
+  }
 
   const showNavigation = pageNavigation && pageNavigation.length
   const showCatalogIndicator = embedTargetSite && embedTargetSite === 'catalog'
@@ -53,7 +62,7 @@ const PageTemplate = ({ pageContext }) => {
         noFooterMargin={site.contact || site.staffPage ? true : false}
       >
         {olarkSite && <Olark siteId={olarkSite} />}
-        {serenovaSite && <Serenova siteId={serenovaSite} />}
+        {serenovaId && <Serenova {...serenovaProps} />}
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
         <main>

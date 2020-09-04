@@ -9,6 +9,7 @@ class Serenova extends Component {
       return
     }
     const { siteId, greetingText, confirmationText } = this.props
+    console.log(this.props)
     const headScript = document.createElement('script')
     headScript.setAttribute('id', 'serenova-react-snippet')
     headScript.setAttribute('type', 'text/javascript')
@@ -24,11 +25,11 @@ class Serenova extends Component {
     )
     headScript.setAttribute(
       'data-cxengage-prechat-capture-greeting-text',
-      'greetingText'
+      greetingText
     )
     headScript.setAttribute(
       'data-cxengage-prechat-capture-confirmation-text',
-      'confirmationText'
+      confirmationText
     )
     document.head.appendChild(headScript)
 
