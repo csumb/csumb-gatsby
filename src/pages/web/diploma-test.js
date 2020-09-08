@@ -29,23 +29,6 @@ function aesEncrypt(text, key) {
   return iv.toString('hex') + encrypted.toString('hex')
 }
 
-function aesDecrypt(text, key) {
-  let iv32 = text.substring(0, IVLength * 2)
-  let s32 = text.substring(IVLength * 2)
-  let iv = new Buffer.from(iv32, 'hex')
-  let encryptedText = Buffer.from(s32, 'hex')
-
-  let decipher = crypto.createDecipheriv(
-    process.env.GATSBY_CEDIPLOMA_ENCRYPTION_STANDARD,
-    Buffer.from(key),
-    iv
-  )
-  let decrypted = decipher.update(encryptedText)
-  decrypted = Buffer.concat([decrypted, decipher.final()])
-
-  return decrypted.toString()
-}
-
 function EncryptedLink(props) {
   console.log('context: ' + props.context)
   const employeeNumber = props.context
