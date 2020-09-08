@@ -13,7 +13,6 @@ import { Table, TableRow, TableCell } from '../../components/common/table'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
 import { AlertWarning } from '../../components/common/alert'
 import { Button } from '../../components/common/button'
-import { UserContext } from '../../components/contexts/user'
 import { colors } from '../../style'
 import credentialLogo from '../../assets/images/cecredential-logo.png'
 import { DiplomaSidebar } from './diploma-test'
@@ -64,8 +63,16 @@ const resultTable = credential => {
             The information provided does not match the information on record,
             or there was a connection error.
             <br />
-            Please contact <a href="mailto:graduation@csumb.edu" target="_blank">graduation@csumb.edu</a> for assistance. When
-            you do, please provide the student name and CeDiD.
+            Please contact{' '}
+            <a
+              href="mailto:graduation@csumb.edu"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              graduation@csumb.edu
+            </a>{' '}
+            for assistance. When you do, please provide the student name and
+            CeDiD.
           </p>
         </AlertWarning>
       )}
@@ -121,18 +128,18 @@ const CredentialValidation = () => {
   const handleSubmit = e => {
     e.preventDefault()
     if (formData) {
-      fetch(
-        `${process.env.GATSBY_CSUMB_CEDIPLOMA_TEST_ENDPOINT}/${formData.id}/${
-          formData.name
-        }`,
-        {
-          method: 'GET',
-          dataType: 'JSON',
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-          },
-        }
-      )
+      const endpoint = `${
+        process.env.GATSBY_CEDIPLOMA_VALIDATE_TEST_ENDPOINT
+      }/${process.env.GATSBY_CEDIPLOMA_CLIENTID}/${formData.id}/${
+        formData.name
+      }`
+      fetch(endpoint, {
+        method: 'GET',
+        dataType: 'JSON',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+      })
         .then(response => response.json())
         .then(data => {
           setData({ credential: data[0] })
