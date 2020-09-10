@@ -53,7 +53,8 @@ const BlockEventFeed = ({ events, title, limit }) => {
   const displayEvents = []
   events.forEach(event => {
     if (displayEvent(event) && displayEvents.length <= limit) {
-      event.nextEventDate = getNextEventDate(event.dates)
+      const momentDate = getNextEventDate(event.dates)
+      event.nextEventDate = momentDate.valueOf()
       displayEvents.push(event)
     }
   })
@@ -62,8 +63,8 @@ const BlockEventFeed = ({ events, title, limit }) => {
   }
   let sortedEvents = displayEvents.sort((a, b) => {
     if (
-      typeof a.dates[0] === 'undefined' ||
-      typeof b.dates[0] === 'undefined'
+      typeof a.nextEventDate === 'undefined' ||
+      typeof b.nextEventDate === 'undefined'
     ) {
       return 0
     }
