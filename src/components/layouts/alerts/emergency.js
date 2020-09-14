@@ -30,7 +30,7 @@ class Emergency extends Component {
     body: false,
   }
   componentDidMount() {
-    fetch('https://csumb-emergency-pub.herokuapp.com/emergency.json')
+    fetch('https://csumb-emergency-pub.herokuapp.com/test.json')
       .then(response => {
         return response.json()
       })
