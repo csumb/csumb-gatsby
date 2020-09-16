@@ -79,19 +79,17 @@ export const DiplomaSidebar = () => (
         CeDiploma Features
       </a>
     </h3>
-    <p>
-      Learn more about the security features of a CeDiploma or CeCertificate
-    </p>
+    <p>Learn more about the security features of a CeDiploma</p>
     <h3>
       <a href="/web/validation-test">Credential Validation</a>
     </h3>
-    <p>Validate the authenticity of a CeDiploma or CeCertificate</p>
+    <p>Validate the authenticity of a CeDiploma</p>
     <h3>
       <a href="https://secure.cecredentialtrust.com/cecredential/faq/">
         CeCredential Frequently Asked Questions
       </a>
     </h3>
-    <p>View commonly asked questions about the CeDiploma or CeCertificate</p>
+    <p>View commonly asked questions about the CeDiploma</p>
   </Box>
 )
 
@@ -123,8 +121,8 @@ class DiplomaPage extends Component {
                 <h2>Certified Electronic Credential Overview</h2>
                 <p>
                   CSUMB now offers Certified Electronic Diplomas and
-                  Certificates (CeDiploma/CeCertificate) to graduates starting
-                  with Spring 2020 and forward!
+                  Certificates (CeDiploma) to graduates starting with Spring
+                  2020 and forward!
                 </p>
                 <img src={cediplomaTablet} alt="" />
                 <UserContext.Consumer>
