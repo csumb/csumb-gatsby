@@ -150,6 +150,7 @@ const CredentialValidation = () => {
   return (
     <>
       <Flex style={{ margin: '0 1rem 20px 1rem' }}>
+        <h2>Credential Validation</h2>
         <LabelInputWrapper>
           <Label htmlFor="id">
             Please enter CeDiD <br />
