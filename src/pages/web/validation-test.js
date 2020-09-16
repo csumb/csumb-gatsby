@@ -29,7 +29,13 @@ const resultTable = credential => {
       {credential.ValidStatus === 'VALID' ? (
         <div>
           <h4>This is a Valid Credential</h4>
-          <h6>Validated: {moment().format('LLLL')}</h6>
+          <h6>
+            Validated:{' '}
+            {moment()
+              .utc()
+              .format('ddd, D MMMM YYYY HH:mm:ss')}
+            {' GMT'}
+          </h6>
           <Table alternateRows={true}>
             <tbody>
               <TableRow>
