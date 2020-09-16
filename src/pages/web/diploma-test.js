@@ -71,7 +71,7 @@ function EncryptedLink(props) {
   )
 }
 
-export const DiplomaSidebar = () => (
+const DiplomaSidebar = () => (
   <Box width={[1, 4 / 12]} pr={[0, 4]}>
     <h2>Related Pages</h2>
     <h3>

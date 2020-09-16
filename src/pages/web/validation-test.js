@@ -15,8 +15,29 @@ import { AlertWarning } from '../../components/common/alert'
 import { Button } from '../../components/common/button'
 import { colors } from '../../style'
 import credentialLogo from '../../assets/images/cecredential-logo.png'
-import { DiplomaSidebar } from './diploma-test'
 import moment from 'moment'
+
+const DiplomaSidebar = () => (
+  <Box width={[1, 4 / 12]} pr={[0, 4]}>
+    <h2>Related Pages</h2>
+    <h3>
+      <a href="https://secure.cecredentialtrust.com/cecredential/overview/">
+        CeDiploma Features
+      </a>
+    </h3>
+    <p>Learn more about the security features of a CeDiploma</p>
+    <h3>
+      <a href="/web/diploma-test">Credential Overview</a>
+    </h3>
+    <p>Validate the authenticity of a CeDiploma</p>
+    <h3>
+      <a href="https://secure.cecredentialtrust.com/cecredential/faq/">
+        CeCredential Frequently Asked Questions
+      </a>
+    </h3>
+    <p>View commonly asked questions about the CeDiploma</p>
+  </Box>
+)
 
 const initialFormData = Object.freeze({
   id: '',
