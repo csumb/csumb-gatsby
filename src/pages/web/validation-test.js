@@ -29,7 +29,7 @@ const DiplomaSidebar = () => (
     <h3>
       <a href="/web/diploma-test">Credential Overview</a>
     </h3>
-    <p>Validate the authenticity of a CeDiploma</p>
+    <p>Learn more about CeDiploma and register</p>
     <h3>
       <a href="https://secure.cecredentialtrust.com/cecredential/faq/">
         CeCredential Frequently Asked Questions
