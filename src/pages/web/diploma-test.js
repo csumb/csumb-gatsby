@@ -4,10 +4,11 @@ import {
   SiteNavigation,
   SiteHeader,
 } from '../../components/layouts/default'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Container from '../../components/common/container'
 import Blocks from '../../templates/blocks'
 import { Flex, Box } from '../../components/common/grid'
+import { colors } from '../../style'
 import { UserContext } from '../../components/contexts/user'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
 import cediplomaTablet from '../../assets/images/cediploma-tablet.png'
@@ -61,8 +62,14 @@ function EncryptedLink(props) {
 
   return (
     <>
-      <h3>
-        <a href={props.context ? anchorURL : '#'}>Register/Download now</a>
+      <h3 style={{ marginBottom: '0.5rem' }}>
+        <a
+          href={
+            props.context ? anchorURL : props.data.site.siteMetadata.okta.login
+          }
+        >
+          Register/Download now
+        </a>
       </h3>
       {/* <form action={encryptedPostURL} method="post">
         <input type="submit" value="Order/Register for my CeCredential" />
@@ -132,9 +139,14 @@ class DiplomaPage extends Component {
                       <EncryptedLink context={context} />
                     ) : (
                       <>
-                        <EncryptedLink context={null} />
-                        <p style={{ color: 'red' }}>
-                          You must be logged in to order/register.
+                        <EncryptedLink context={null} data={data} />
+                        <p style={{ color: colors.indicators.high }}>
+                          In order to use the Register/Download link you must be{' '}
+                          <a href={data.site.siteMetadata.okta.login}>
+                            logged in
+                          </a>{' '}
+                          to your CSUMB Account. Once logged in please revisit{' '}
+                          <Link to="/diploma">csumb.edu/diploma.</Link>
                         </p>
                       </>
                     )

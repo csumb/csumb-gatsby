@@ -281,6 +281,7 @@ class DashboardApps extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { apps, isMobile } = this.props
     const { oktaApps, isExpanded } = this.state
     if (!oktaApps) {
@@ -291,6 +292,7 @@ class DashboardApps extends Component {
         <Container topPadding>
           <DashboardOktaAppList apps={oktaApps.top} isMobile={true} />
           <DashboardOktaAppList apps={oktaApps.bottom} isMobile={true} />
+          <DashboardOtherApps apps={apps} />
         </Container>
       )
     }
