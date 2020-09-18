@@ -164,44 +164,69 @@ class DashboardOtherApps extends Component {
   }
 
   render() {
-    const { apps } = this.props
+    const { apps, isMobile } = this.props
     return (
       <>
-        <MoreAppsButton onClick={() => this.setState({ showDialog: true })}>
-          More apps
-        </MoreAppsButton>
-        <DialogOverlay
-          style={{ background: 'rgba(0, 0, 0, 0.7)' }}
-          isOpen={this.state.showDialog}
-        >
-          <MoreAppsDialog>
-            <CloseDialog onClick={() => this.setState({ showDialog: false })}>
-              <VisuallyHidden>Close dialog</VisuallyHidden>
-              <FontAwesomeIcon icon={faTimes} />
-            </CloseDialog>
-            <h2>More apps</h2>
-            <MoreAppsList>
-              {apps.map(app => (
-                <li key={app.node.name}>
-                  <a
-                    component="a"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={app.node.url}
-                  >
-                    {app.node.name}
-                  </a>
-                </li>
-              ))}
-            </MoreAppsList>
-            <Button onClick={() => this.setState({ showDialog: false })}>
-              Close
-            </Button>
-            <MoreAppsMessage>
-              <Link to="/dashboard/new">Why are these apps here?</Link>
-            </MoreAppsMessage>
-          </MoreAppsDialog>
-        </DialogOverlay>
+        {isMobile ? (
+          <MoreAppsList>
+            {apps.map(app => (
+              <li key={app.node.name}>
+                <a
+                  component="a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={app.node.url}
+                >
+                  {app.node.name}
+                </a>
+              </li>
+            ))}
+          </MoreAppsList>
+        ) : (
+          <>
+            <MoreAppsButton onClick={() => this.setState({ showDialog: true })}>
+              More apps
+            </MoreAppsButton>
+            <DialogOverlay
+              style={{ background: 'rgba(0, 0, 0, 0.7)' }}
+              isOpen={this.state.showDialog}
+            >
+              <MoreAppsDialog>
+                <CloseDialog
+                  onClick={() =>
+                    this.setState({
+                      showDialog: false,
+                    })
+                  }
+                >
+                  <VisuallyHidden>Close dialog</VisuallyHidden>
+                  <FontAwesomeIcon icon={faTimes} />
+                </CloseDialog>
+                <h2>More apps</h2>
+                <MoreAppsList>
+                  {apps.map(app => (
+                    <li key={app.node.name}>
+                      <a
+                        component="a"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={app.node.url}
+                      >
+                        {app.node.name}
+                      </a>
+                    </li>
+                  ))}
+                </MoreAppsList>
+                <Button onClick={() => this.setState({ showDialog: false })}>
+                  Close
+                </Button>
+                <MoreAppsMessage>
+                  <Link to="/dashboard/new">Why are these apps here?</Link>
+                </MoreAppsMessage>
+              </MoreAppsDialog>
+            </DialogOverlay>
+          </>
+        )}
       </>
     )
   }
@@ -292,7 +317,7 @@ class DashboardApps extends Component {
         <Container topPadding>
           <DashboardOktaAppList apps={oktaApps.top} isMobile={true} />
           <DashboardOktaAppList apps={oktaApps.bottom} isMobile={true} />
-          <DashboardOtherApps apps={apps} />
+          <DashboardOtherApps apps={apps} isMobile={true} />
         </Container>
       )
     }
@@ -313,7 +338,7 @@ class DashboardApps extends Component {
               </Box>
               <Box width={[1, 2 / 12, 2 / 12]}>
                 <DashboardEditOrderApps />
-                <DashboardOtherApps apps={apps} />
+                <DashboardOtherApps apps={apps} isMobile={false} />
               </Box>
             </Flex>
           </Container>
