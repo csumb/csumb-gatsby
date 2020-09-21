@@ -111,8 +111,8 @@ class DiplomaPage extends Component {
           url: '/diploma',
         }}
       >
-        <Layout pageTitle="Test">
-          <SiteHeader path="/web">Web Services</SiteHeader>
+        <Layout pageTitle="Diploma">
+          <SiteHeader path="/planning">Classes & Planning</SiteHeader>
 
           {data.allCsumbNavigation &&
             data.allCsumbNavigation.edges &&
@@ -173,14 +173,14 @@ export default DiplomaPage
 
 export const query = graphql`
   {
-    allCsumbNavigation(filter: { site: { eq: "web" } }) {
+    allCsumbNavigation(filter: { site: { eq: "planning" } }) {
       edges {
         node {
           navigation
         }
       }
     }
-    allCsumbPage(filter: { pagePath: { eq: "web/diploma-test" } }) {
+    allCsumbPage(filter: { pagePath: { eq: "planning/diploma" } }) {
       edges {
         node {
           pageContent
