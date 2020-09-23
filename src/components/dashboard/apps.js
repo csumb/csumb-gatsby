@@ -168,20 +168,20 @@ class DashboardOtherApps extends Component {
     return (
       <>
         {isMobile ? (
-          <MoreAppsList>
-            {apps.map(app => (
-              <li key={app.node.name}>
-                <a
-                  component="a"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={app.node.url}
-                >
-                  {app.node.name}
-                </a>
-              </li>
-            ))}
-          </MoreAppsList>
+          <>
+            <h4>More Apps</h4>
+              {apps.map(app => (
+                  <a
+                    component="a"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={app.node.url}
+                    style={{ display: 'block', margin: '1rem 0px' }}
+                  >
+                    {app.node.name}
+                  </a>
+              ))}
+            </>
         ) : (
           <>
             <MoreAppsButton onClick={() => this.setState({ showDialog: true })}>
