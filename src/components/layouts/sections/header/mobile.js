@@ -77,6 +77,7 @@ const SiteNavigationList = styled('ul')`
 
 const MobileSiteNavigationMenuToggle = styled('button')`
   background: transparent;
+  text-align: left;
   border: none;
   cursor: pointer;
   padding: 0;
