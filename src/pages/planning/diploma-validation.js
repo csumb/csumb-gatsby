@@ -228,8 +228,8 @@ class ValidationPage extends Component {
           url: '/web/validation-test',
         }}
       >
-        <Layout>
-          <SiteHeader path="/web">Web Services</SiteHeader>
+        <Layout pageTitle="Diploma Validation">
+          <SiteHeader path="/planning">Classes & Planning</SiteHeader>
           {data.allCsumbNavigation &&
             data.allCsumbNavigation.edges &&
             data.allCsumbNavigation.edges[0] && (
@@ -262,14 +262,14 @@ export default ValidationPage
 
 export const query = graphql`
   {
-    allCsumbNavigation(filter: { site: { eq: "web" } }) {
+    allCsumbNavigation(filter: { site: { eq: "planning" } }) {
       edges {
         node {
           navigation
         }
       }
     }
-    allCsumbPage(filter: { pagePath: { eq: "web/validation-test" } }) {
+    allCsumbPage(filter: { pagePath: { eq: "planning/diploma-validation" } }) {
       edges {
         node {
           pageContent
