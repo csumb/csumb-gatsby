@@ -81,6 +81,8 @@ const MobileSiteNavigationMenuToggle = styled('button')`
   border: none;
   cursor: pointer;
   padding: 0;
+  display: flex;
+  align-items: center;
 `
 
 const SiteNavigationSubItem = styled('div')`
@@ -245,7 +247,7 @@ class MobileSiteNavigationSubMenu extends Component {
           {children}{' '}
           <FontAwesomeIcon
             icon={isOpen ? faChevronUp : faChevronDown}
-            style={{ width: '0.75rem' }}
+            style={{ width: '0.75rem', marginLeft: '0.25rem' }}
           />
         </MobileSiteNavigationMenuToggle>
         {isOpen && (
