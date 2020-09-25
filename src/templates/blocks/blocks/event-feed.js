@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, useState } from 'react'
 import { EventFeedItem } from '../../../components/events'
 import styled from '@emotion/styled'
 import { colors } from '../../../style'
@@ -23,6 +23,7 @@ const displayEvent = item => {
 }
 
 const BlockEventFeed = ({ events, title, limit }) => {
+  const [sortedEvents, setSortedEvents] = useState([])
   const displayEvents = []
   events.forEach(event => {
     if (displayEvent(event) && displayEvents.length <= limit) {
@@ -32,7 +33,7 @@ const BlockEventFeed = ({ events, title, limit }) => {
   if (!displayEvents.length) {
     return null
   }
-  let sortedEvents = displayEvents.sort((a, b) => {
+  let sorted = displayEvents.sort((a, b) => {
     if (
       typeof a.dates[0] === 'undefined' ||
       typeof b.dates[0] === 'undefined'
@@ -43,6 +44,8 @@ const BlockEventFeed = ({ events, title, limit }) => {
     let bStart = moment(b.dates[0].start, 'YYYY-MM-DD').valueOf()
     return aStart < bStart ? -1 : aStart > bStart ? 1 : 0
   })
+
+  setSortedEvents([...sorted])
 
   return (
     <EventFeedWrapper>
