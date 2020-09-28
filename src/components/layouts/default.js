@@ -85,8 +85,9 @@ class Layout extends Component {
           <meta
             className="swiftype"
             name="is_site"
-            data-type="string"
+            data-type="integer"
             content={isSiteHomepage ? '1' : '0'}
+            data-react-helmet="true"
           />
           {isSiteHomepage && !siteTitle && (
             <meta
