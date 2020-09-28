@@ -87,6 +87,7 @@ class Layout extends Component {
             name="is_site"
             data-type="integer"
             content={isSiteHomepage ? '1' : '0'}
+            data-react-helmet="true"
           />
           {isSiteHomepage && !siteTitle && (
             <meta
