@@ -2,10 +2,46 @@ import styled from '@emotion/styled'
 import { colors } from '../../style'
 
 const Table = styled('table')`
+  ${props =>
+    props.isMobile &&
+    `
+    display: block;
+    table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+  
+  
+  `}
   th,
   td {
     padding: 0.4rem;
   }
+
   ${props =>
     props.alternateRows &&
     `
