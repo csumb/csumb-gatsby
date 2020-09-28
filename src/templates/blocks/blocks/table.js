@@ -9,8 +9,6 @@ import parseHtml from '../parse-html'
 import BreakpointContext from '../../../components/contexts/breakpoint'
 
 const BlockTable = ({ layout, tableData }) => {
-  console.log(tableData)
-  console.log(layout.headers)
   return (
     <BreakpointContext.Consumer>
       {context => (

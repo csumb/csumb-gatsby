@@ -170,18 +170,18 @@ class DashboardOtherApps extends Component {
         {isMobile ? (
           <>
             <h4>More Apps</h4>
-              {apps.map(app => (
-                  <a
-                    component="a"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={app.node.url}
-                    style={{ display: 'block', margin: '1rem 0px' }}
-                  >
-                    {app.node.name}
-                  </a>
-              ))}
-            </>
+            {apps.map(app => (
+              <a
+                component="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={app.node.url}
+                style={{ display: 'block', margin: '1rem 0px' }}
+              >
+                {app.node.name}
+              </a>
+            ))}
+          </>
         ) : (
           <>
             <MoreAppsButton onClick={() => this.setState({ showDialog: true })}>
@@ -306,7 +306,6 @@ class DashboardApps extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { apps, isMobile } = this.props
     const { oktaApps, isExpanded } = this.state
     if (!oktaApps) {
