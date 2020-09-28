@@ -3,6 +3,27 @@ import { colors } from '../../style'
 
 const Table = styled('table')`
   ${props =>
+    props.alternateRows &&
+    `
+    tbody tr:nth-child(even) {
+      background: ${colors.muted.light};
+    }
+  `}
+  ${props =>
+    props.bordered
+      ? `
+    border-bottom: 1px solid ${colors.primary.dark};
+td,th {
+  border: 1px solid ${colors.primary.dark};
+} 
+`
+      : `
+tr {
+  border-bottom: 1px solid ${colors.primary.dark};
+}    
+`};
+
+  ${props =>
     props.isMobile &&
     `
     display: block;
@@ -17,13 +38,15 @@ const Table = styled('table')`
 		left: -9999px;
 	}
 	
-	tr { border: 1px solid #ccc; }
+	tr { 
+    border: 1px solid ${colors.muted.mid}; 
+    margin-bottom: 0.5rem;
+  }
 	
 	td { 
 		border: none;
-		border-bottom: 1px solid #eee; 
 		position: relative;
-		padding-left: 50%; 
+    padding-left: 50%; 
 	}
 	
 	td:before { 
@@ -41,27 +64,6 @@ const Table = styled('table')`
   td {
     padding: 0.4rem;
   }
-
-  ${props =>
-    props.alternateRows &&
-    `
-      tbody tr:nth-child(even) {
-        background: ${colors.muted.light};
-      }
-    `}
-  ${props =>
-    props.bordered
-      ? `
-      border-bottom: 1px solid ${colors.primary.dark};
-  td,th {
-    border: 1px solid ${colors.primary.dark};
-  } 
-  `
-      : `
-  tr {
-    border-bottom: 1px solid ${colors.primary.dark};
-  }    
-  `};
 `
 
 const TableHeader = styled('th')`
