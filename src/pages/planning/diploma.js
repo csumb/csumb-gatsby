@@ -47,15 +47,8 @@ function EncryptedLink(props) {
     aesEncrypt(value, privateKey16String) +
     '|P'
 
-  //DISPLAY URLS
-  // const encryptedPostURL = `${
-  //   process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
-  // }/Account/ERLSSO?hexkey=${hexKey}&cid=${
-  //   process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER
-  // }`
-
   const anchorURL = `${
-    process.env.GATSBY_CEDIPLOMA_TEST_ENDPOINT
+    process.env.GATSBY_CEDIPLOMA_ENDPOINT
   }/Account/ERLSSO/${hexKey}/${process.env.GATSBY_CEDIPLOMA_CLIENTNUMBER}`
 
   return (
