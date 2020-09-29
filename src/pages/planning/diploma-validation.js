@@ -13,7 +13,7 @@ import { Table, TableRow, TableCell } from '../../components/common/table'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
 import { AlertWarning } from '../../components/common/alert'
 import { Button } from '../../components/common/button'
-import { colors } from '../../style'
+import { colors, bp } from '../../style'
 import credentialLogo from '../../assets/images/cecredential-logo.png'
 import moment from 'moment'
 
@@ -109,28 +109,35 @@ const resultTable = credential => {
 
 const LabelInputWrapper = styled('div')`
   display: flex;
+  ${bp({
+    flexDirection: ['column', 'column', 'row', 'row'],
+  })};
   justify-content: space-between;
   width: 100%;
   padding-bottom: 20px;
-`
 
-const Label = styled('label')`
-  width: 50%;
-  font-size: 0.9rem;
-  border-radius: 2px;
-  padding: 5px;
-  background: ${colors.muted.light};
-`
+  label {
+    ${bp({
+      width: ['75%', '75%', '50%', '50%'],
+    })};
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 2px;
+    padding: 5px;
+    background: ${colors.muted.light};
+  }
 
-const ValidateInput = styled('input')`
-  max-width: 50%;
-  max-height: 3rem;
-  border-radius: 2px;
-  border: 1px solid ${colors.gray.default};
-  padding: 0.5rem;
-  &:focus {
-    transition: all 100ms;
-    outline: 0.15rem solid ${colors.primary.default};
+  input {
+    max-width: 75%;
+    max-height: 3rem;
+    border-radius: 2px;
+    border: 1px solid ${colors.gray.default};
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    &:focus {
+      transition: all 100ms;
+      outline: 0.15rem solid ${colors.primary.default};
+    }
   }
 `
 
@@ -177,11 +184,11 @@ const CredentialValidation = () => {
       <Flex style={{ margin: '0 1rem 20px 1rem' }}>
         <h2>Credential Validation</h2>
         <LabelInputWrapper>
-          <Label htmlFor="id">
+          <label htmlFor="id">
             Please enter CeDiD <br />
             <span>(not case sensitive)</span>
-          </Label>
-          <ValidateInput
+          </label>
+          <input
             maxLength="14"
             size="14"
             name="id"
@@ -190,11 +197,11 @@ const CredentialValidation = () => {
           />
         </LabelInputWrapper>
         <LabelInputWrapper>
-          <Label htmlFor="name">
+          <label htmlFor="name">
             Enter the first two letters of the name as it appears on the
             credential
-          </Label>
-          <ValidateInput
+          </label>
+          <input
             maxLength="2"
             size="2"
             name="name"
