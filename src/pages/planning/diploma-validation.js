@@ -155,11 +155,9 @@ const CredentialValidation = () => {
   const handleSubmit = e => {
     e.preventDefault()
     if (formData) {
-      const endpoint = `${
-        process.env.GATSBY_CEDIPLOMA_VALIDATE_TEST_ENDPOINT
-      }/${process.env.GATSBY_CEDIPLOMA_CLIENTID}/${formData.id}/${
-        formData.name
-      }`
+      const endpoint = `${process.env.GATSBY_CEDIPLOMA_VALIDATE_ENDPOINT}/${
+        process.env.GATSBY_CEDIPLOMA_CLIENTID
+      }/${formData.id}/${formData.name}`
       fetch(endpoint, {
         method: 'GET',
         dataType: 'JSON',
