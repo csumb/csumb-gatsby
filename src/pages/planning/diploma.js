@@ -31,11 +31,9 @@ function aesEncrypt(text, key) {
 }
 
 function EncryptedLink(props) {
-  console.log('context: ' + props.context)
   const employeeNumber = props.context
     ? props.context.user.profile.employeeNumber
     : ''
-  console.log('employeeNumber: ' + employeeNumber)
   const utcDateTime = moment()
     .utc()
     .format('YYYY-MM-DD HH:mm:ss')
