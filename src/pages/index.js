@@ -53,7 +53,7 @@ const IndexPage = ({ data }) => {
     <PageFeedbackContext.Provider
       value={{ email: 'webfolk@csumb.edu', title: 'Homepage', url: '/' }}
     >
-      <Layout noFooterMargin={true}>
+      <Layout noFooterMargin={true} pageTitle="Homepage">
         <AlertTop>
           <h5 style={{ color: 'white', margin: '7px', fontWeight: '500' }}>
             Visit the <a href="/health/coronavirus-information">COVID-19</a>{' '}
