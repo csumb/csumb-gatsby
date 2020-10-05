@@ -25,6 +25,12 @@ const serenovaValues = {
     greetingText: `Hello, You have reached the Campus Service Center`,
     confirmationText: `Thanks for your name`,
   },
+  dashboard: {
+    site: 'dashboard',
+    code: '5f3533e9cdb903000d95fd43',
+    greetingText: `Hello, You have reached the Campus Service Center`,
+    confirmationText: `Thanks for your name`,
+  },
 }
 
 class Serenova extends Component {
