@@ -20,6 +20,7 @@ import {
   TableCell,
   TableHeader,
 } from '../components/common/table'
+import Serenova from '../components/utilities/serenova'
 
 const CostButton = styled(Button)`
   width: 80%;
@@ -317,44 +318,44 @@ class CostPageForm extends Component {
         {!resident ? (
           <ResidencyQuestion handler={this.handleResidency.bind(this)} />
         ) : (
-            <>
-              {!undergraduate ? (
-                <UndergraduateQuestion
-                  handler={this.handleUndergraduates.bind(this)}
-                />
-              ) : (
+          <>
+            {!undergraduate ? (
+              <UndergraduateQuestion
+                handler={this.handleUndergraduates.bind(this)}
+              />
+            ) : (
+              <>
+                {!(moreThanSixUnits || units) ? (
                   <>
-                    {!(moreThanSixUnits || units) ? (
+                    {resident !== 'no' ? (
                       <>
-                        {resident !== 'no' ? (
-                          <>
-                            <UnitsQuestion handler={this.handleUnits.bind(this)} />
-                          </>
-                        ) : (
-                            <>
-                              <SpecificUnitsQuestion
-                                handleChange={this.handleSpecificUnitsChange.bind(
-                                  this
-                                )}
-                                handler={this.handleSpecificUnits.bind(this)}
-                              />
-                            </>
-                          )}
+                        <UnitsQuestion handler={this.handleUnits.bind(this)} />
                       </>
                     ) : (
-                        <>
-                          <CostResults {...this.state} />
-                        </>
-                      )}
+                      <>
+                        <SpecificUnitsQuestion
+                          handleChange={this.handleSpecificUnitsChange.bind(
+                            this
+                          )}
+                          handler={this.handleSpecificUnits.bind(this)}
+                        />
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <CostResults {...this.state} />
                   </>
                 )}
-              <p>
-                <LinkyButton onClick={this.startOver.bind(this)}>
-                  ← Start over
+              </>
+            )}
+            <p>
+              <LinkyButton onClick={this.startOver.bind(this)}>
+                ← Start over
               </LinkyButton>
-              </p>
-            </>
-          )}
+            </p>
+          </>
+        )}
       </>
     )
   }
@@ -370,6 +371,8 @@ class CostPage extends Component {
         <Layout
           siteNavigation={data.allCsumbNavigation.edges[0].node.navigation}
         >
+          <Serenova site="cost" />
+
           <SiteHeader path="/cost">Costs &amp; Aid</SiteHeader>
           {data.allCsumbNavigation &&
             data.allCsumbNavigation.edges &&

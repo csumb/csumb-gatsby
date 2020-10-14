@@ -3,7 +3,7 @@ import Container from '../../components/common/container'
 import { Layout, SiteHeader } from '../../components/layouts/default'
 import { UserContext } from '../../components/contexts/user'
 import { graphql } from 'gatsby'
-import Olark from '../../components/utilities/olark'
+import Serenova from '../../components/utilities/serenova'
 import { ButtonLink } from '../../components/common/button'
 import {
   DashboardApps,
@@ -40,14 +40,7 @@ class DashboardPage extends Component {
   render() {
     const { data } = this.props
     const { activeTab } = this.state
-    let siteOlarkId = ''
-    if (data.site.siteMetadata.perSiteOlarkIds) {
-      data.site.siteMetadata.perSiteOlarkIds.forEach(({ site, code }) => {
-        if (site === 'dashboard') {
-          siteOlarkId = code
-        }
-      })
-    }
+
     return (
       <PageFeedbackContext.Provider
         value={{
@@ -57,7 +50,7 @@ class DashboardPage extends Component {
         }}
       >
         <Layout pageTitle="Dashboard">
-          {siteOlarkId && <Olark siteId={siteOlarkId} />}
+          <Serenova site="dashboard" />
           <SiteHeader path="/dashboard">Dashboard</SiteHeader>
           <UserContext.Consumer>
             {context => (
@@ -164,10 +157,6 @@ export const query = graphql`
         disableAlumni
         okta {
           login
-        }
-        perSiteOlarkIds {
-          site
-          code
         }
       }
     }

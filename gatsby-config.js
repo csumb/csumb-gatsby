@@ -13,10 +13,41 @@ const gatsbyConfig = {
     },
     swiftypeId: process.env.GATSBY_CSUMB_SWIFTYPE_ID,
     perSiteOlarkIds: [
-      { site: 'dashboard', code: '1001-610-10-3640' },
       { site: 'mist', code: '3836-896-10-1757' },
       { site: 'csonline', code: '5896-465-10-2924' },
       { site: 'business', code: '5564-506-10-6160' },
+    ],
+    perSiteSerenovaIds: [
+      {
+        site: 'admissions',
+        code: '5f3533b7b95b53000cd78fc2',
+        greetingText: `Hi, thank you for reaching out the office of Admissions. To start off we'd like to know a little bit more about you`,
+        confirmationText: `Thanks for your email`,
+      },
+      {
+        site: 'it',
+        code: '5f3533d47cf37f000ee14e41',
+        greetingText: `Hi, welcome to the CSUMB Technology Support Services chat. We are here to help you with your technology questions. To start off we'd like to know a little bit more about you`,
+        confirmationText: `Thanks for your name `,
+      },
+      {
+        site: 'csc',
+        code: '5f3533e9cdb903000d95fd43',
+        greetingText: `Hello, You have reached the Campus Service Center`,
+        confirmationText: `Thanks for your name`,
+      },
+      {
+        site: 'cost',
+        code: '5f3533e9cdb903000d95fd43',
+        greetingText: `Hello, You have reached the Campus Service Center`,
+        confirmationText: `Thanks for your name`,
+      },
+      {
+        site: 'dashboard',
+        code: '5f3533e9cdb903000d95fd43',
+        greetingText: `Hello, You have reached the Campus Service Center`,
+        confirmationText: `Thanks for your name`,
+      },
     ],
     labs: {
       customerId: '200b96ee-10c7-4355-83a4-3ded9ab6e845',

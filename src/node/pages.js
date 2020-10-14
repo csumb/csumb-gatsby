@@ -18,6 +18,12 @@ module.exports = (graphql, actions) => {
                   site
                   code
                 }
+                perSiteSerenovaIds {
+                  site
+                  code
+                  greetingText
+                  confirmationText
+                }
               }
             }
 
@@ -133,9 +139,14 @@ module.exports = (graphql, actions) => {
         const overridePages = result.data.site.siteMetadata.overridePages
         let count = 0
         const olarkSites = {}
+        const serenovaSites = {}
 
         result.data.site.siteMetadata.perSiteOlarkIds.forEach(site => {
           olarkSites[site.site] = site.code
+        })
+
+        result.data.site.siteMetadata.perSiteSerenovaIds.forEach(site => {
+          serenovaSites[site.site] = site.site
         })
 
         result.data.allCsumbSite.edges.forEach(({ node }) => {
@@ -178,6 +189,10 @@ module.exports = (graphql, actions) => {
                 olarkSite:
                   typeof olarkSites[node.site] !== 'undefined'
                     ? olarkSites[node.site]
+                    : '',
+                serenovaSite:
+                  typeof serenovaSites[node.site] !== 'undefined'
+                    ? serenovaSites[node.site]
                     : '',
               },
             }

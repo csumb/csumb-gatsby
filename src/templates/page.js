@@ -16,6 +16,7 @@ import SiteFooter from '../components/layouts/sections/footer/site'
 import PageEditorTools from '../components/user-tools/editors'
 import CatalogIndicator from '../components/pages/catalog-indicator'
 import Olark from '../components/utilities/olark'
+import Serenova from '../components/utilities/serenova'
 import PageFeedbackContext from '../components/contexts/page-feedback'
 
 const PageTemplate = ({ pageContext }) => {
@@ -34,6 +35,7 @@ const PageTemplate = ({ pageContext }) => {
     drupalNid,
     embedTargetSite,
     olarkSite,
+    serenovaSite,
   } = pageContext
 
   const showNavigation = pageNavigation && pageNavigation.length
@@ -51,6 +53,7 @@ const PageTemplate = ({ pageContext }) => {
         noFooterMargin={site.contact || site.staffPage ? true : false}
       >
         {olarkSite && <Olark siteId={olarkSite} />}
+        {serenovaSite && <Serenova site={serenovaSite} />}
         <SiteHeader path={site.site}>{site.title}</SiteHeader>
         <SiteNavigation navigation={navigation} />
         <main>

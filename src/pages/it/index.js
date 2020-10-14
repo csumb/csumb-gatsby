@@ -14,6 +14,7 @@ import { InputText, Submit } from '../../components/common/forms'
 import styled from '@emotion/styled'
 import Blocks from '../../templates/blocks'
 import PageFeedbackContext from '../../components/contexts/page-feedback'
+import Serenova from '../../components/utilities/serenova'
 
 const ITServiceHeader = styled('h3')`
   margin-bottom: 0.4rem;
@@ -64,6 +65,7 @@ class ITPage extends Component {
           isSiteHomepage={true}
           siteNavigation={data.allCsumbNavigation.edges[0].node.navigation}
         >
+          <Serenova site="it" />
           <SiteHeader path="/it">Information Technology</SiteHeader>
           {data.allCsumbNavigation &&
             data.allCsumbNavigation.edges &&
