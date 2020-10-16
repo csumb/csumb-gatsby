@@ -82,7 +82,10 @@ const UnderseaArchive = ({ data }) => {
                     ))}
                   </ul>
                   {archive.data.Zip_File && (
-                    <ButtonLink to={archive.data.Zip_File[0].url}>
+                    <ButtonLink
+                      className="button"
+                      to={archive.data.Zip_File[0].url}
+                    >
                       Download imagery
                     </ButtonLink>
                   )}

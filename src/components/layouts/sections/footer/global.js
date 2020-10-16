@@ -272,6 +272,7 @@ class FooterPageFeedback extends Component {
           </FeedbackDialogContent>
         </DialogOverlay>
         <LegalButtonLink
+          className="button"
           onClick={event => {
             event.preventDefault()
             this.setState({

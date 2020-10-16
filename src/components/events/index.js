@@ -93,7 +93,7 @@ const EventLocation = ({ location }) => (
       </address>
     )}
     {location.type === 'online' && (
-      <ButtonLink className="event-location--online" to={location.url}>
+      <ButtonLink className="button event-location--online" to={location.url}>
         Go to event
       </ButtonLink>
     )}
@@ -134,7 +134,7 @@ const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => (
             <EventLocation {...event} />
             {event.cost_message && <p>{event.cost_message}</p>}
             {event.ticket && (
-              <ButtonLink className="event-ticket" to={event.ticket.url}>
+              <ButtonLink className="button event-ticket" to={event.ticket.url}>
                 {event.ticket.title ? (
                   <>{event.ticket.title}</>
                 ) : (

@@ -15,7 +15,7 @@ const DashboardNotLoggedIn = () => (
   <>
     <NotLoggedIn>
       <p>You aren't logged in</p>
-      <ButtonLink to={loginUrl} huge>
+      <ButtonLink to={loginUrl} className="button" huge>
         Log in
       </ButtonLink>
     </NotLoggedIn>
