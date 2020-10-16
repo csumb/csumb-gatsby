@@ -64,7 +64,13 @@ const BlockHeading = ({
       ) : (
         <>
           {url ? (
-            <a href={url.replace(`https://csumb.edu/`, '')}>{text}</a>
+            <a
+              href={url
+                .replace(`https://csumb.edu/`, '')
+                .replace(`http://csumb.edu/`, '')}
+            >
+              {text}
+            </a>
           ) : (
             <>{text}</>
           )}

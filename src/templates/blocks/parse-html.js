@@ -15,6 +15,7 @@ const cleanHref = href => {
       '/edit.csumb.edu/sites/default/files/'
     )
     .replace(`https://csumb.edu/`, '')
+    .replace(`http://csumb.edu/`, '')
 }
 
 const parserOptions = {
