@@ -62,7 +62,13 @@ const BlockHeading = ({
           <CollapsibleTextWrapper>{text}</CollapsibleTextWrapper>
         </CollapsibleHeading>
       ) : (
-        <>{url ? <a href={url}>{text}</a> : <>{text}</>}</>
+        <>
+          {url ? (
+            <a href={url.replace(`https://csumb.edu/`, '')}>{text}</a>
+          ) : (
+            <>{text}</>
+          )}
+        </>
       )}
     </HeadingTag>
   )
