@@ -23,6 +23,9 @@ const Breadcrumbs = ({ breadcrumbs }) => {
     return null
   }
   const breadcrumbList = JSON.parse(breadcrumbs)
+  breadcrumbList.forEach(breadcrumb =>
+    breadcrumb.href.replace(/^(?:\/\/|[^/]+)*\//, '')
+  )
   return (
     <BreadcrumbList>
       {breadcrumbList.map(crumb => (
