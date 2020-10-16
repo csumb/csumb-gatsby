@@ -94,7 +94,7 @@ const PageTemplate = ({ pageContext }) => {
             </div>
           )}
           <Container>
-            <Breadcrumbs breadcrumbs={breadcrumbs} />
+            <Breadcrumbs breadcrumbs={breadcrumbs} currentPage={title} />
             <PageEditorTools site={site} pageId={drupalNid} />
             {layout !== 'site' && (
               <PageTitle layout={layout}>{title}</PageTitle>

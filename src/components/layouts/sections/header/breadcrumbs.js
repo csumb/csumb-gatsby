@@ -18,7 +18,7 @@ const BreadcrumbList = styled('ul')`
   padding: 0;
 `
 
-const Breadcrumbs = ({ breadcrumbs }) => {
+const Breadcrumbs = ({ breadcrumbs, currentPage }) => {
   if (!breadcrumbs.length) {
     return null
   }
@@ -33,6 +33,9 @@ const Breadcrumbs = ({ breadcrumbs }) => {
           <Link to={crumb.href}>{crumb.title}</Link>
         </BreadcrumbItem>
       ))}
+      <BreadcrumbItem key={currentPage}>
+        <Link to={currentPage}>{currentPage}</Link>
+      </BreadcrumbItem>
     </BreadcrumbList>
   )
 }
