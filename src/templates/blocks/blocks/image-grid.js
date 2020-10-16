@@ -38,7 +38,11 @@ class BlockImageGrid extends Component {
         {images.map((item, key) => (
           <Box width={[1, columnWidth / 12]} px={2} key={key}>
             {item.link ? (
-              <a href={item.link}>
+              <a
+                href={item.link
+                  .replace(`https://csumb.edu/`, '')
+                  .replace(`http://csumb.edu/`, '')}
+              >
                 <ImageGridItem item={item} />
               </a>
             ) : (

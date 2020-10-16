@@ -44,7 +44,11 @@ const BlockImage = ({
       className={`image ${pullRight && !inColumn ? 'float-right' : ''}`}
     >
       {url ? (
-        <a href={url}>
+        <a
+          href={url
+            .replace(`https://csumb.edu/`, '')
+            .replace(`http://csumb.edu/`, '')}
+        >
           <img
             src={imageSource}
             alt={description.replace(/image/gi, '')}
