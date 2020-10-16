@@ -11,6 +11,7 @@ const BlockButton = ({ url, text }) => (
   <Button
     href={url.replace('/edit.csumb.edu/', '/csumb.edu/')}
     buttonType="default"
+    className="button"
   >
     {text}
   </Button>

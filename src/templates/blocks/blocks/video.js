@@ -25,7 +25,7 @@ const VideoIframe = styled('iframe')`
 `
 
 const BlockVideo = ({ provider }) => (
-  <VideoWrapper>
+  <VideoWrapper className="video">
     <span className="content-type-video--provider">{provider.provider}</span>
     <span className="content-type-video--id">{provider.id}</span>
     {provider.provider === 'vimeo' ? (

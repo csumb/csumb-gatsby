@@ -17,7 +17,7 @@ const BlockFeed = ({ items, title, displayShort, showMore, limit }) => {
   const [showAll, setShowAll] = useState(false)
   let feedLimit = limit ? limit : 5
   return (
-    <>
+    <span className="feed">
       {title && <h3>{title}</h3>}
       <FeedList>
         {items.map((item, key) => (
@@ -67,7 +67,7 @@ const BlockFeed = ({ items, title, displayShort, showMore, limit }) => {
           {showAll ? <>Hide items</> : <>Show more</>}
         </Button>
       )}
-    </>
+    </span>
   )
 }
 

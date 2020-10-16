@@ -16,7 +16,9 @@ const ImageGridItem = ({ item }) => (
       <ImageGridImage
         src={
           item.image.key
-            ? `https://${process.env.GATSBY_CLOUDFRONT_DOMAIN}/${item.image.key}`
+            ? `https://${process.env.GATSBY_CLOUDFRONT_DOMAIN}/${
+                item.image.key
+              }`
             : item.image.url
                 .replace('/csumb.edu/', '/edit.csumb.edu/')
                 .replace('http://', 'https://')
@@ -32,7 +34,7 @@ class BlockImageGrid extends Component {
   render() {
     const { images, columnWidth } = this.props
     return (
-      <Flex>
+      <Flex className="image-grid">
         {images.map((item, key) => (
           <Box width={[1, columnWidth / 12]} px={2} key={key}>
             {item.link ? (

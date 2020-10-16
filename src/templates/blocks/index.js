@@ -90,6 +90,7 @@ class Block extends Component {
         inCollapsedHeader={inCollapsedHeader}
         level={block._collapsedHeaderLevel}
         data-swiftype-index="true"
+        className="accordion"
       >
         <span
           className={`content-type content-type-${type}`}
@@ -181,6 +182,7 @@ class Columns extends Component {
                                 blocks[blockId.id]._collapsedHeader
                               ) === -1)
                           }
+                          className={blocks[blockId.id].type}
                         />
                       )}
                     </React.Fragment>

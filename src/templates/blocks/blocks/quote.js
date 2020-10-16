@@ -22,7 +22,7 @@ const QuoteIcon = styled('img')`
 `
 
 const BlockQuote = ({ quote, source, url }) => (
-  <Quote>
+  <Quote className="blockquote">
     <Flex>
       <Box width={2 / 12} pr={2}>
         <QuoteIcon src={quoteIcon} alt="" />

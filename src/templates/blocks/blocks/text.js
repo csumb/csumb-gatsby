@@ -15,7 +15,14 @@ const BlockText = ({ lead, text }) => {
   if (!text) {
     return null
   }
-  return <Paragraph lead={lead}>{parseHtml(text)}</Paragraph>
+  return (
+    <Paragraph
+      lead={lead}
+      className={`paragraph ${lead ? 'paragraph-lead' : ''}`}
+    >
+      {parseHtml(text)}
+    </Paragraph>
+  )
 }
 
 export default BlockText

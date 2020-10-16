@@ -50,7 +50,7 @@ const BlockEventFeed = ({ events, title, limit }) => {
   })
 
   return (
-    <EventFeedWrapper>
+    <EventFeedWrapper className="event-feed">
       {title && <h3>{title}</h3>}
       {displayEvents.map((event, index) => (
         <EventFeedItem {...event} key={index} />

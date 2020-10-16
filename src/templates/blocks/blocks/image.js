@@ -39,7 +39,10 @@ const BlockImage = ({
         .replace('http://', 'https://')
         .replace('/csumb.edu/', '/edit.csumb.edu/')
   return (
-    <ImageContainer pullRight={pullRight && !inColumn}>
+    <ImageContainer
+      pullRight={pullRight && !inColumn}
+      className={`image ${pullRight && !inColumn ? 'float-right' : ''}`}
+    >
       {url ? (
         <a href={url}>
           <img

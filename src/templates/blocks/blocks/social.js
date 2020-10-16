@@ -24,7 +24,7 @@ const SocialIcon = styled(FontAwesomeIcon)`
 `
 
 const BlockSocial = ({ provider, url }) => (
-  <a href={url} data-provider={provider}>
+  <a href={url} data-provider={provider} className="social-block">
     <SocialIcon icon={providers[provider]} />
     <VisuallyHidden>{provider}</VisuallyHidden>
   </a>

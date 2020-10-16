@@ -29,7 +29,7 @@ const RelatedContentTitle = styled('h5')`
 const RelatedContentDescription = styled('p')``
 
 const BlockRelated = ({ source, title, description, url }) => (
-  <RelatedContent>
+  <RelatedContent className="related-content">
     <VisuallyHidden>Related content</VisuallyHidden>
     <RelatedContentSource>{source}</RelatedContentSource>
     <RelatedContentTitle>

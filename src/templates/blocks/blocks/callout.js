@@ -15,7 +15,7 @@ const CalloutHeader = styled('h3')`
 `
 
 const BlockCallout = ({ title, text, url }) => (
-  <Callout>
+  <Callout className="callout">
     <CalloutHeader>{title}</CalloutHeader>
     <p>{text}</p>
     {url && (
