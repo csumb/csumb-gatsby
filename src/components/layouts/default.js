@@ -57,7 +57,13 @@ class Layout extends Component {
           <title>{`${
             pageTitle ? `${pageTitle} | ` : ''
           }Cal State Monterey Bay`}</title>
-
+          {pageTitle === 'Homepage' && (
+            <meta
+              name="description"
+              content="CSUMB is one of the most affordable universities.
+               Students enjoy living and studying just one mile from the beach!"
+            />
+          )}
           <meta
             className="swiftype"
             name="csumbedu"
