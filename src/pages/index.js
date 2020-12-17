@@ -4,6 +4,7 @@ import Container from '../components/common/container'
 import { Flex, Box } from '../components/common/grid'
 import { graphql } from 'gatsby'
 import moment from 'moment'
+import styled from '@emotion/styled'
 import {
   HomepageStory,
   HomepageImageNavigation,
@@ -41,6 +42,17 @@ const sortItems = ({
   }, [])
 }
 
+const HomepageHeading = styled('div')`
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+`
+
 const IndexPage = ({ data }) => {
   const {
     allContentfulHomepageImageNavigation,
@@ -60,6 +72,9 @@ const IndexPage = ({ data }) => {
             webpage for pandemic health and safety information.
           </h5>
         </AlertTop>
+        <HomepageHeading>
+          <h1>CSUMB Homepage</h1>
+        </HomepageHeading>
         <HomepageHero item={allContentfulHomepageHeroImage.edges[0].node} />
         <HomepageImageNavigation
           navigation={allContentfulHomepageImageNavigation.edges[0].node}

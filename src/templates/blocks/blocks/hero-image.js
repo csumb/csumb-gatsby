@@ -53,7 +53,7 @@ const HeroContainer = styled('div')`
 
 const HeroText = ({ headline, text, buttonUrl, buttonText }) => (
   <>
-    <h3>{headline}</h3>
+    <h2>{headline}</h2>
     <p>{text}</p>
     {buttonUrl && buttonText && (
       <HeroButton to={buttonUrl}>{buttonText}</HeroButton>
