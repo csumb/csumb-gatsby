@@ -38,7 +38,11 @@ const CollapseWrapper = ({ inCollapsedHeader, children, level }) => {
   if (!inCollapsedHeader) {
     return <>{children}</>
   }
-  return <CollapsePadding level={level}>{children}</CollapsePadding>
+  return (
+    <CollapsePadding className="accordion-content" level={level}>
+      {children}
+    </CollapsePadding>
+  )
 }
 
 class Block extends Component {
@@ -90,19 +94,13 @@ class Block extends Component {
         inCollapsedHeader={inCollapsedHeader}
         level={block._collapsedHeaderLevel}
         data-swiftype-index="true"
-        className="accordion"
       >
-        <span
-          className={`content-type content-type-${type}`}
-          data-content-type={type}
-        >
-          <BlockType
-            {...block.data}
-            uuid={block.uuid}
-            headerHandler={headerHandler}
-            inColumn={inColumn}
-          />
-        </span>
+        <BlockType
+          {...block.data}
+          uuid={block.uuid}
+          headerHandler={headerHandler}
+          inColumn={inColumn}
+        />
       </CollapseWrapper>
     )
   }
@@ -182,7 +180,6 @@ class Columns extends Component {
                                 blocks[blockId.id]._collapsedHeader
                               ) === -1)
                           }
-                          className={blocks[blockId.id].type}
                         />
                       )}
                     </React.Fragment>
@@ -206,7 +203,7 @@ class Blocks extends Component {
     super(props)
     let { blocks } = props
     this.blocks = JSON.parse(blocks)
-    //this.addBlockHeaderRelationships(this.blocks.layout)
+    this.addBlockHeaderRelationships(this.blocks.layout)
   }
 
   addBlockHeaderRelationships(blockList) {
@@ -264,7 +261,7 @@ class Blocks extends Component {
       return null
     }
     return (
-      <Container className="main-content-blocks">
+      <Container>
         {blocks.layout.map(layout => (
           <React.Fragment key={layout.id}>
             {blocks.blocks[layout.id] && (

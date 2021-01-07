@@ -45,6 +45,7 @@ const BlockHeading = ({
       id={`heading-${uuid}`}
       collapsible={collapsible}
       data-is-collapsible={collapsible}
+      className={collapsible ? 'accordion' : ''}
     >
       {collapsible ? (
         <CollapsibleHeading
