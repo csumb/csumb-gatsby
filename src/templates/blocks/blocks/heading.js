@@ -37,7 +37,7 @@ const BlockHeading = ({
   collapsible,
   headerHandler,
 }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   let HeadingTag = styled(`h${level}`)``
   return (
@@ -67,8 +67,8 @@ const BlockHeading = ({
           {url ? (
             <a
               href={url
-                .replace(`https://csumb.edu/`, '')
-                .replace(`http://csumb.edu/`, '')}
+                .replace(`https://csumb.edu/`, '/')
+                .replace(`http://csumb.edu/`, '/')}
             >
               {text}
             </a>

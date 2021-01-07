@@ -46,8 +46,8 @@ const BlockImage = ({
       {url ? (
         <a
           href={url
-            .replace(`https://csumb.edu/`, '')
-            .replace(`http://csumb.edu/`, '')}
+            .replace(`https://csumb.edu/`, '/')
+            .replace(`http://csumb.edu/`, '/')}
         >
           <img
             src={imageSource}

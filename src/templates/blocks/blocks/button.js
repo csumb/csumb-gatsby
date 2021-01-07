@@ -10,9 +10,9 @@ const Button = styled(ButtonLinkAnchor)`
 const BlockButton = ({ url, text }) => (
   <Button
     href={url
-      .replace(`https://csumb.edu/`, '')
-      .replace(`http://csumb.edu/`, '')
-      .replace('/edit.csumb.edu/', '/csumb.edu/')}
+      .replace(`https://csumb.edu`, '')
+      .replace(`http://csumb.edu`, '')
+      .replace('https://edit.csumb.edu', '')}
     buttonType="default"
     className="button"
   >

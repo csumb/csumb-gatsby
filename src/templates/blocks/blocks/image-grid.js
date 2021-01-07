@@ -40,8 +40,8 @@ class BlockImageGrid extends Component {
             {item.link ? (
               <a
                 href={item.link
-                  .replace(`https://csumb.edu/`, '')
-                  .replace(`http://csumb.edu/`, '')}
+                  .replace(`https://csumb.edu/`, '/')
+                  .replace(`http://csumb.edu/`, '/')}
               >
                 <ImageGridItem item={item} />
               </a>
