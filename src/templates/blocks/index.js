@@ -173,13 +173,7 @@ class Columns extends Component {
                               expandedBlocks: expandedBlocks,
                             })
                           }}
-                          hidden={
-                            blocks[blockId.id]._collapsedHeader &&
-                            (!expandedBlocks.length ||
-                              expandedBlocks.indexOf(
-                                blocks[blockId.id]._collapsedHeader
-                              ) === -1)
-                          }
+                          hidden={false}
                         />
                       )}
                     </React.Fragment>
@@ -273,13 +267,7 @@ class Blocks extends Component {
                     inCollapsedHeader={
                       blocks.blocks[layout.id]._collapsedHeader
                     }
-                    hidden={
-                      blocks.blocks[layout.id]._collapsedHeader &&
-                      (!expandedBlocks.length ||
-                        expandedBlocks.indexOf(
-                          blocks.blocks[layout.id]._collapsedHeader
-                        ) === -1)
-                    }
+                    hidden={false}
                   />
                 ) : (
                   <Block
@@ -317,13 +305,7 @@ class Blocks extends Component {
                         expandedBlocks: expandedBlocks,
                       })
                     }}
-                    hidden={
-                      blocks.blocks[layout.id]._collapsedHeader &&
-                      (!expandedBlocks.length ||
-                        expandedBlocks.indexOf(
-                          blocks.blocks[layout.id]._collapsedHeader
-                        ) === -1)
-                    }
+                    hidden={false}
                   />
                 )}
               </>
