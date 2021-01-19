@@ -272,9 +272,10 @@ class ProgramTemplate extends Component {
           <ProgramDetails title="Academics">
             {data.Program_Type === 'Semester' ? (
               <ul>
-                {data.Areas.map(({ data }) => (
-                  <li key={data.Subject_Area}>{data.Subject_Area}</li>
-                ))}
+                {data.Areas &&
+                  data.Areas.map(({ data }) => (
+                    <li key={data.Subject_Area}>{data.Subject_Area}</li>
+                  ))}
               </ul>
             ) : (
               <ul>
