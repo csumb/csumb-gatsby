@@ -338,6 +338,7 @@ const gatsbyConfig = {
       resolve: 'gatsby-plugin-netlify',
       options: {
         allPageHeaders: [
+          `Referrer-Policy: strict-origin-when-cross-origin`
           `Content-Security-Policy: frame-ancestors 'self' https://csumb.tfaforms.net`,
           `X-Frame-Options: ALLOW-FROM https://csumb.tfaforms.net`,
         ],
