@@ -77,7 +77,7 @@ class ITPage extends Component {
           <Container topPadding>
             <ITSearch />
             <HelpFlex>
-              <Box width={[1, 1 / 3]} pr={[0, 3]}>
+              <Box width={[1, 1 / 2]} pr={[0, 3]}>
                 <ITServiceHeader>Call us</ITServiceHeader>
                 <p>
                   Call 831-582-4357 (HELP)
@@ -85,16 +85,7 @@ class ITPage extends Component {
                   Monday - Friday 8 a.m. to 5 p.m.
                 </p>
               </Box>
-              <Box width={[1, 1 / 3]} pr={[0, 3]}>
-                <ITServiceHeader>Visit us </ITServiceHeader>
-                <p>
-                  <Link to="it/library-it-service-desk">
-                    Drop by our service desk
-                  </Link>{' '}
-                  at the Library.
-                </p>
-              </Box>
-              <Box width={[1, 1 / 3]}>
+              <Box width={[1, 1 / 2]}>
                 <ITServiceHeader>Alerts</ITServiceHeader>
                 <ITAlerts />
               </Box>
