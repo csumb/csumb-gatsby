@@ -9,6 +9,7 @@ import Gallery from 'react-photo-gallery'
 import Lightbox from 'react-images'
 import Link from 'gatsby-link'
 import { SiteNavigation } from '../../../components/layouts/sections/navigation'
+import Breadcrumbs from '../../../components/layouts/sections/header/breadcrumbs'
 
 class GraduateTemplate extends Component {
   state = {
@@ -43,6 +44,10 @@ class GraduateTemplate extends Component {
   render() {
     const { graduate, images, navigation } = this.props.pageContext
     const pageTitle = `${graduate.data.first_name} ${graduate.data.last_name}`
+    const breadcrumbs =
+      '[{ "href": "/", "title": "CSUMB Home" }, {"href": "/scienceillustration", "title": "Science Illustration"}]'
+    const currentPage = pageTitle
+    const currentUrl = this.props.location.pathname
     const galleryImages = []
     images.forEach(image => {
       if (image.data.image) {
@@ -61,6 +66,11 @@ class GraduateTemplate extends Component {
         </SiteHeader>
         {navigation && <SiteNavigation navigation={navigation} />}
         <Container>
+          <Breadcrumbs
+            breadcrumbs={breadcrumbs}
+            currentPage={currentPage}
+            currentUrl={currentUrl}
+          />
           <PageTitle>{pageTitle}</PageTitle>
           <p>
             <Link to="/scienceillustration/graduate-gallery">

@@ -6,6 +6,7 @@ import {
   SiteNavigation,
 } from '../../components/layouts/default'
 import Container from '../../components/common/container'
+import Breadcrumbs from '../../components/layouts/sections/header/breadcrumbs'
 import { LeadParagraph } from '../../components/common/type'
 import { graphql } from 'gatsby'
 import { Flex, Box } from '../../components/common/grid'
@@ -106,6 +107,10 @@ class ScienceIllustrationGallerySearch extends Component {
 class ScienceIllustrationGalleryPage extends Component {
   render() {
     const { data } = this.props
+    const breadcrumbs =
+      '[{ "href": "/", "title": "CSUMB Home" }, {"href": "/scienceillustration", "title": "Science Illustration"}]'
+    const currentPage = 'Graduate Gallery'
+    const currentUrl = this.props.location.pathname
     return (
       <Layout>
         <SiteHeader path="/scienceillustration">
@@ -119,6 +124,11 @@ class ScienceIllustrationGalleryPage extends Component {
             />
           )}
         <Container>
+          <Breadcrumbs
+            breadcrumbs={breadcrumbs}
+            currentPage={currentPage}
+            currentUrl={currentUrl}
+          />
           <PageTitle layout="page">Graduate gallery</PageTitle>
           <LeadParagraph>
             Explore the breadth of work that graduates of the program produce
