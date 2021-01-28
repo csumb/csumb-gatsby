@@ -21,6 +21,7 @@ import {
   TableCell,
   TableHeader,
 } from '../components/common/table'
+import Breadcrumbs from '../components/layouts/sections/header/breadcrumbs'
 
 const CostButton = styled(Button)`
   width: 80%;
@@ -364,6 +365,9 @@ class CostPageForm extends Component {
 class CostPage extends Component {
   render() {
     const { data } = this.props
+    const breadcrumbs = '[{ "href": "/", "title": "CSUMB Home" }]'
+    const currentPage = 'Cost calculator'
+    const currentUrl = this.props.location.pathname
     return (
       <PageFeedbackContext.Provider
         value={{ email: 'webservices@csumb.edu', title: 'Cost', url: '/cost' }}
@@ -378,7 +382,12 @@ class CostPage extends Component {
               />
             )}
           <Container>
-            <PageTitle layout="page">Cost calculator</PageTitle>
+            <Breadcrumbs
+              breadcrumbs={breadcrumbs}
+              currentPage={currentPage}
+              currentUrl={currentUrl}
+            />
+            <PageTitle layout="page">{currentPage}</PageTitle>
             <p>
               Effective Fall 2019 and Spring 2020,{' '}
               <a href="https://csumb.github.io/net-price.html">
