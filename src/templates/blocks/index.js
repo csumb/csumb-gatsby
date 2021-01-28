@@ -246,7 +246,6 @@ class Blocks extends Component {
 
   render() {
     const blocks = this.blocks
-    const { expandedBlocks } = this.state
 
     if (
       typeof blocks.layout === 'undefined' ||
