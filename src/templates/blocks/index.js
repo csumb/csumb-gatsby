@@ -114,7 +114,7 @@ class Columns extends Component {
     const { layout, blocks, hidden, inCollapsedHeader } = this.props
     const block = blocks[layout.id]
 
-    const { expandedBlocks } = this.state
+    // const { expandedBlocks } = this.state
     if (typeof block.data.columns === 'undefined' || hidden) {
       return <></>
     }
