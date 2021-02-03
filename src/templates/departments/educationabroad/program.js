@@ -91,7 +91,7 @@ const ProgramMap = GoogleApiWrapper({
 
 class ProgramDetails extends Component {
   state = {
-    isOpen: false,
+    isOpen: true,
   }
 
   render() {
@@ -103,9 +103,9 @@ class ProgramDetails extends Component {
           <ProgramDetailsHeader
             onClick={event => {
               event.preventDefault()
-              this.setState({
-                isOpen: !isOpen,
-              })
+              // this.setState({
+              //   isOpen: !isOpen,
+              // })
             }}
           >
             <CollapseIconWrapper>
