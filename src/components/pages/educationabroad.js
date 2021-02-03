@@ -145,7 +145,9 @@ const EducationAbroadProgramList = ({ programs }) => {
       countryPrograms[countryName] = []
       continents[continent].push(countryName)
     }
-    countryPrograms[countryName].push(node)
+    if (countryPrograms[countryName]) {
+      countryPrograms[countryName].push(node)
+    }
   })
   Object.keys(continents).forEach(continentName => {
     continents[continentName].sort()
