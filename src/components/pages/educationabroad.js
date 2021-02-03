@@ -46,11 +46,11 @@ const EducationExpandButton = styled('button')`
 
 class EducationAbroadCountry extends Component {
   state = {
-    isOpen: false,
+    isOpen: true,
   }
 
   render() {
-    const { isOpen } = this.state
+    const { isOpen } = true
     const { country, programs } = this.props
     return (
       <EducationAbroadWrapper>
@@ -59,7 +59,7 @@ class EducationAbroadCountry extends Component {
             onClick={event => {
               event.preventDefault()
               this.setState({
-                isOpen: !isOpen,
+                // isOpen: !isOpen,
               })
             }}
           >
@@ -70,21 +70,19 @@ class EducationAbroadCountry extends Component {
             {country}
           </EducationExpandButton>
         </h3>
-        {isOpen && (
-          <ul>
-            {programs.map(program => (
-              <li key={program.recordId}>
-                <Link
-                  to={`/educationabroad/program/${slugify(
-                    program.recordId.replace('rec', '')
-                  )}`}
-                >
-                  {program.data.Name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul>
+          {programs.map(program => (
+            <li key={program.recordId}>
+              <Link
+                to={`/educationabroad/program/${slugify(
+                  program.recordId.replace('rec', '')
+                )}`}
+              >
+                {program.data.Name}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </EducationAbroadWrapper>
     )
   }
@@ -97,7 +95,7 @@ class EducationAbroadContinent extends Component {
 
   render() {
     const { name, children } = this.props
-    const { isOpen } = this.state
+    const { isOpen } = true
     return (
       <EducationAbroadWrapper>
         <h2>
@@ -105,7 +103,7 @@ class EducationAbroadContinent extends Component {
             onClick={event => {
               event.preventDefault()
               this.setState({
-                isOpen: !isOpen,
+                // isOpen: !isOpen,
               })
             }}
           >
@@ -116,9 +114,7 @@ class EducationAbroadContinent extends Component {
             {name}
           </EducationExpandButton>
         </h2>
-        {isOpen && (
-          <EducationAbroadChildren>{children}</EducationAbroadChildren>
-        )}
+        <EducationAbroadChildren>{children}</EducationAbroadChildren>
       </EducationAbroadWrapper>
     )
   }
