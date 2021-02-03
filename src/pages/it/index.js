@@ -13,6 +13,7 @@ import { ITSystemStatus, ITAlerts } from '../../components/pages/it'
 import { InputText, Submit } from '../../components/common/forms'
 import styled from '@emotion/styled'
 import Blocks from '../../templates/blocks'
+import Breadcrumbs from '../../components/layouts/sections/header/breadcrumbs'
 
 const ITServiceHeader = styled('h3')`
   margin-bottom: 0.4rem;
@@ -53,6 +54,9 @@ class ITSearch extends Component {
 class ITPage extends Component {
   render() {
     const { data } = this.props
+    const breadcrumbs = '[{ "href": "/", "title": "CSUMB Home" }]'
+    const currentPage = 'Information Technology'
+    const currentUrl = this.props.location.pathname
     return (
       <Layout
         pageTitle="Information Technology"
@@ -68,6 +72,11 @@ class ITPage extends Component {
             />
           )}
         <Container topPadding>
+          <Breadcrumbs
+            breadcrumbs={breadcrumbs}
+            currentPage={currentPage}
+            currentUrl={currentUrl}
+          />
           <ITSearch />
           <HelpFlex>
             <Box width={[1, 1 / 4]} pr={[0, 3]}>
@@ -90,8 +99,8 @@ class ITPage extends Component {
             <Box width={[1, 1 / 4]} pr={[0, 3]}>
               <ITServiceHeader>Web Workshops</ITServiceHeader>
               <p>
-                Come by our monthly{' '}
-                <Link to="/web">Web editing workshops</Link>.
+                Come by our monthly <Link to="/web">Web editing workshops</Link>
+                .
               </p>
             </Box>
             <Box width={[1, 1 / 4]}>

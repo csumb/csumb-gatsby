@@ -9,6 +9,7 @@ import styled from '@emotion/styled'
 import { Map, GoogleApiWrapper } from 'google-maps-react'
 import { graphql } from 'gatsby'
 import { colors } from '../../style'
+import Breadcrumbs from '../../components/layouts/sections/header/breadcrumbs'
 
 const MapMap = styled(Map)`
   width: 100%;
@@ -74,24 +75,35 @@ const CsumbMapWrapped = GoogleApiWrapper({
   apiKey: process.env.GATSBY_CSUMB_GOOGLE_MAPS_KEY,
 })(CsumbMap)
 
-const MapPage = ({ data }) => (
-  <Layout>
-    <SiteHeader path="/about">About</SiteHeader>
-    {data.allCsumbNavigation &&
-      data.allCsumbNavigation.edges &&
-      data.allCsumbNavigation.edges[0] && (
-        <SiteNavigation
-          navigation={data.allCsumbNavigation.edges[0].node.navigation}
-        />
-      )}
-    <CsumbMapWrapped buildings={data.allCsumbBuilding} />
-    {data.allCsumbPage &&
-      data.allCsumbPage.edges &&
-      data.allCsumbPage.edges[0] && (
-        <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
-      )}
-  </Layout>
-)
+function MapPage({ data }) {
+  const breadcrumbs =
+    '[{ "href": "/", "title": "CSUMB Home" }, {"href": "/about", "title": "About"}]'
+  const currentPage = 'Map Directions'
+  const currentUrl = '/about/map-directions'
+  return (
+    <Layout>
+      <SiteHeader path="/about">About</SiteHeader>
+      {data.allCsumbNavigation &&
+        data.allCsumbNavigation.edges &&
+        data.allCsumbNavigation.edges[0] && (
+          <SiteNavigation
+            navigation={data.allCsumbNavigation.edges[0].node.navigation}
+          />
+        )}
+      <Breadcrumbs
+        breadcrumbs={breadcrumbs}
+        currentPage={currentPage}
+        currentUrl={currentUrl}
+      />
+      <CsumbMapWrapped buildings={data.allCsumbBuilding} />
+      {data.allCsumbPage &&
+        data.allCsumbPage.edges &&
+        data.allCsumbPage.edges[0] && (
+          <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+        )}
+    </Layout>
+  )
+}
 
 export default MapPage
 

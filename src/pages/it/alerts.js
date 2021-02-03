@@ -8,6 +8,7 @@ import {
 import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
 import Loading from '../../components/common/loading'
+import Breadcrumbs from '../../components/layouts/sections/header/breadcrumbs'
 
 class ITAlertsPage extends Component {
   alertRef = React.createRef()
@@ -47,6 +48,10 @@ class ITAlertsPage extends Component {
         }
       })
     }
+    const breadcrumbs =
+      '[{ "href": "/", "title": "CSUMB Home" }, {"href": "/it", "title": "Information Technology"}]'
+    const currentPage = 'Alerts'
+    const currentUrl = this.props.location.pathname
     return (
       <Layout pageTitle="Alerts">
         <SiteHeader path="/it">Information Technology</SiteHeader>
@@ -58,6 +63,11 @@ class ITAlertsPage extends Component {
             />
           )}
         <Container topPadding>
+          <Breadcrumbs
+            breadcrumbs={breadcrumbs}
+            currentPage={currentPage}
+            currentUrl={currentUrl}
+          />
           <PageTitle>Alerts</PageTitle>
           <p>
             Below are the <strong>active</strong> alerts currently affecting
