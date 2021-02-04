@@ -23,6 +23,7 @@ import {
   TableHeader,
   TableCell,
 } from '../../../components/common/table'
+import Breadcrumbs from '../../../components/layouts/sections/header/breadcrumbs'
 
 const ApplyNowButton = styled(ButtonLink)`
   margin-left: 1rem;
@@ -138,12 +139,20 @@ class ProgramTemplate extends Component {
         })
       })
     }
-
     return (
       <Layout pageTitle={data.Name}>
         <SiteHeader path="/educationabroad">Education Abroad</SiteHeader>
         {navigation && <SiteNavigation navigation={navigation} />}
         <Container>
+          <Breadcrumbs
+            breadcrumbs={
+              data.Program_Type === 'Semester'
+                ? `[{ "href": "/", "title": "CSUMB Home" }, {"href": "/educationabroad", "title": "Education Abroad"}, {"href": "/educationabroad/programs/semester", "title": "Semester"}]`
+                : `[{ "href": "/", "title": "CSUMB Home" }, {"href": "/educationabroad", "title": "Education Abroad"}, {"href": "/educationabroad/programs/semester", "title": "Summer"}]`
+            }
+            currentPage={data.Name}
+            currentUrl={this.props.location.pathname}
+          />
           <PageTitle>{data.Name}</PageTitle>
           {data.Program_Type === 'Semester' ? (
             <ReturnLink to="/educationabroad/programs/semester">
