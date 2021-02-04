@@ -9,28 +9,40 @@ import Container from '../../../components/common/container'
 import { graphql } from 'gatsby'
 import Blocks from '../../../templates/blocks'
 import { EducationAbroadProgramList } from '../../../components/pages/educationabroad'
+import Breadcrumbs from '../../../components/layouts/sections/header/breadcrumbs'
 
-const EducationAbroadProgramsSummer = ({ data }) => (
-  <Layout pageTitle="Summer programs">
-    <SiteHeader path="/educationabroad">Education Abroad</SiteHeader>
-    {data.allCsumbNavigation &&
-      data.allCsumbNavigation.edges &&
-      data.allCsumbNavigation[0] && (
-        <SiteNavigation
-          navigation={data.allCsumbNavigation.edges[0].node.navigation}
-        />
-      )}
-    <Container>
-      <PageTitle>Summer programs</PageTitle>
-      {data.allCsumbPage &&
-        data.allCsumbPage.edges &&
-        data.allCsumbPage.edges[0] && (
-          <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+const EducationAbroadProgramsSummer = function({ data }) {
+  const breadcrumbs =
+    '[{ "href": "/", "title": "CSUMB Home" }, {"href": "/educationabroad", "title": "Education Abroad"}]'
+  const currentPage = 'Summer'
+  const currentUrl = '/educationabroad/programs/summer'
+  return (
+    <Layout pageTitle="Summer programs">
+      <SiteHeader path="/educationabroad">Education Abroad</SiteHeader>
+      {data.allCsumbNavigation &&
+        data.allCsumbNavigation.edges &&
+        data.allCsumbNavigation[0] && (
+          <SiteNavigation
+            navigation={data.allCsumbNavigation.edges[0].node.navigation}
+          />
         )}
-      <EducationAbroadProgramList programs={data.allAirtable.edges} />
-    </Container>
-  </Layout>
-)
+      <Container>
+        <Breadcrumbs
+          breadcrumbs={breadcrumbs}
+          currentPage={currentPage}
+          currentUrl={currentUrl}
+        />
+        <PageTitle>Summer programs</PageTitle>
+        {data.allCsumbPage &&
+          data.allCsumbPage.edges &&
+          data.allCsumbPage.edges[0] && (
+            <Blocks blocks={data.allCsumbPage.edges[0].node.pageContent} />
+          )}
+        <EducationAbroadProgramList programs={data.allAirtable.edges} />
+      </Container>
+    </Layout>
+  )
+}
 
 export default EducationAbroadProgramsSummer
 
