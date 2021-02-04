@@ -20,6 +20,7 @@ import { UnstyledList } from '../common/type'
 import Well from '../common/well'
 import Blocks from '../../templates/blocks'
 import { InputText, InputSelect, Submit } from '../common/forms'
+import Breadcrumbs from '../layouts/sections/header/breadcrumbs'
 
 const EducationAbroadWrapper = styled('div')`
   margin-bottom: 1rem;
@@ -364,6 +365,11 @@ const EducationAbroadSearchAreaPage = ({ data, title, programType }) => {
           />
         )}
       <Container>
+        <Breadcrumbs
+          breadcrumbs={`[{ "href": "/", "title": "CSUMB Home" }, {"href": "/educationabroad", "title": "Education Abroad"}]`}
+          currentUrl={window.location.pathname}
+          currentPage={title}
+        />
         <PageTitle>{title}</PageTitle>
         {data.allCsumbPage &&
           data.allCsumbPage.edges &&

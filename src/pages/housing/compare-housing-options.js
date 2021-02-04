@@ -14,6 +14,7 @@ import BreakpointContext from '../../components/contexts/breakpoint'
 import { Flex, Box } from '../../components/common/grid'
 import { ButtonLink } from '../../components/common/button'
 import { UnstyledList } from '../../components/common/type'
+import Breadcrumbs from '../../components/layouts/sections/header/breadcrumbs'
 
 const OptionsHeaderWrapper = styled('div')`
   position: sticky;
@@ -136,7 +137,11 @@ const HousingOptionsPage = ({ data }) => (
       )}
     <Container topPadding>
       <PageTitle>Compare Housing Options</PageTitle>
-
+      <Breadcrumbs
+        breadcrumbs={`[{ "href": "/", "title": "CSUMB Home" }, {"href": "/housing", "title": "Housing"}]`}
+        currentUrl="/housing/compare-housing-options"
+        currentPage="Compare Housing Options"
+      />
       <BreakpointContext.Consumer>
         {context => (
           <>

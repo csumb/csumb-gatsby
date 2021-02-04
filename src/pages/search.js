@@ -7,6 +7,7 @@ import { LeadParagraph } from '../components/common/type'
 import { InputText, Submit } from '../components/common/forms'
 import Container from '../components/common/container'
 import styled from '@emotion/styled'
+import Breadcrumbs from '../components/layouts/sections/header/breadcrumbs'
 
 const SearchDescription = styled('p')`
   em {
@@ -122,6 +123,11 @@ class SearchPage extends Component {
     return (
       <Layout pageTitle="Search">
         <Container>
+          <Breadcrumbs
+            breadcrumbs={`[{ "href": "/", "title": "CSUMB Home" }]`}
+            currentUrl="/search"
+            currentPage="Search"
+          />
           <PageTitle>Search</PageTitle>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <Flex>

@@ -8,6 +8,7 @@ import {
 import Container from '../../components/common/container'
 import { graphql } from 'gatsby'
 import Blocks from '../../templates/blocks'
+import Breadcrumbs from '../../components/layouts/sections/header/breadcrumbs'
 
 class LibraryPage extends Component {
   chatRef = React.createRef()
@@ -34,6 +35,11 @@ class LibraryPage extends Component {
             />
           )}
         <Container>
+          <Breadcrumbs
+            breadcrumbs={`[{ "href": "/", "title": "CSUMB Home" }]`}
+            currentUrl="/library/ask-librarian"
+            currentPage="Ask a librarian"
+          />
           <PageTitle>Ask a librarian</PageTitle>
 
           <div ref={this.chatRef} />

@@ -12,6 +12,7 @@ import Blocks from '../../templates/blocks'
 import { colors, bp } from '../../style'
 import { InputText, InputSelect, Submit } from '../../components/common/forms'
 import oneSearchLogo from '../../assets/images/library-one-search.png'
+import Breadcrumbs from '../../components/layouts/sections/header/breadcrumbs'
 
 const LibrarySearchWrapper = styled('form')`
   background: ${colors.muted.highlight};
@@ -113,6 +114,11 @@ class LibraryPage extends Component {
             />
           )}
         <Container>
+          <Breadcrumbs
+            breadcrumbs={`[{ "href": "/", "title": "CSUMB Home" }]`}
+            currentUrl="/library"
+            currentPage="Library"
+          />
           <LibrarySearch />
           <div ref={this.chatRef} />
           <style>{`.libraryh3lp img { height: 44px !important;}`}</style>

@@ -5,6 +5,7 @@ import { Flex, Box } from '../components/common/grid'
 import Container from '../components/common/container'
 import { PublicEvent } from '../components/events'
 import EventsSidebar from '../components/events/sidebar'
+import Breadcrumbs from '../components/layouts/sections/header/breadcrumbs'
 
 class EventsPage extends Component {
   render() {
@@ -22,6 +23,11 @@ class EventsPage extends Component {
       <Layout>
         <SiteHeader path="/events">Events</SiteHeader>
         <Container topPadding>
+          <Breadcrumbs
+            breadcrumbs={`[{ "href": "/", "title": "CSUMB Home" }]`}
+            currentUrl="/events"
+            currentPage="Events"
+          />
           <PageTitle>Campus events</PageTitle>
           <Flex>
             <Box width={[1, 3 / 4, 3 / 4]} pr={[0, 4, 4]}>

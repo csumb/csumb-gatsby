@@ -11,6 +11,7 @@ import Blocks from '../../templates/blocks'
 import { Flex, Box } from '../../components/common/grid'
 import { ButtonLink, LinkyButton } from '../../components/common/button'
 import Lightbox from 'react-images'
+import Breadcrumbs from '../../components/layouts/sections/header/breadcrumbs'
 
 const UnderseaArchive = ({ data }) => {
   const regions = {}
@@ -170,6 +171,11 @@ class UnderseaImageryDatabasePage extends Component {
             />
           )}
         <Container>
+          <Breadcrumbs
+            breadcrumbs='[{ "href": "/", "title": "CSUMB Home" }, {"href": "/undersea", "title": "Undersea"}]'
+            currentPage="Imagery database"
+            currentUrl={window.location.pathname}
+          />
           <PageTitle>Imagery database</PageTitle>
           {data.allCsumbPage &&
             data.allCsumbPage.edges &&
