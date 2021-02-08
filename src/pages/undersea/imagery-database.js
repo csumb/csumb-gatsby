@@ -174,7 +174,7 @@ class UnderseaImageryDatabasePage extends Component {
           <Breadcrumbs
             breadcrumbs='[{ "href": "/", "title": "CSUMB Home" }, {"href": "/undersea", "title": "Undersea"}]'
             currentPage="Imagery database"
-            currentUrl={window.location.pathname}
+            currentUrl={this.props.location.pathname}
           />
           <PageTitle>Imagery database</PageTitle>
           {data.allCsumbPage &&
