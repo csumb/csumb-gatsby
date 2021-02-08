@@ -7,6 +7,7 @@ const EducationAbroadSearchAreaSemesterPage = ({ data }) => (
     data={data}
     programType="Semester"
     title="Semester Programs by subject area"
+    slug="/educationabroad/programs/by-area/semester"
   />
 )
 export default EducationAbroadSearchAreaSemesterPage

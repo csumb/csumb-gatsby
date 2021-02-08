@@ -7,6 +7,7 @@ const EducationAbroadSearchAreaSummerPage = ({ data }) => (
     data={data}
     programType="Summer"
     title="Summer programs by subject area"
+    slug="/educationabroad/programs/by-area/summer"
   />
 )
 

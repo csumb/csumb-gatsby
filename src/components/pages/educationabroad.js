@@ -340,7 +340,7 @@ class SubjectAreas extends Component {
   }
 }
 
-const EducationAbroadSearchAreaPage = ({ data, title, programType }) => {
+const EducationAbroadSearchAreaPage = ({ data, title, programType, slug }) => {
   const areas = []
   const majors = []
   data.allAirtable.edges.forEach(({ node }) => {
@@ -367,7 +367,7 @@ const EducationAbroadSearchAreaPage = ({ data, title, programType }) => {
       <Container>
         <Breadcrumbs
           breadcrumbs={`[{ "href": "/", "title": "CSUMB Home" }, {"href": "/educationabroad", "title": "Education Abroad"}]`}
-          currentUrl={window.location.pathname}
+          currentUrl={slug}
           currentPage={title}
         />
         <PageTitle>{title}</PageTitle>
