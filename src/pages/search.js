@@ -119,27 +119,17 @@ class SearchPage extends Component {
   }
 
   render() {
-    const { query } = this.state
     return (
       <Layout pageTitle="Search">
         <Container>
           <PageTitle>Search</PageTitle>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <Flex>
-              <Box width={[1, 2 / 3]} px={2}>
-                <InputText
-                  name="search"
-                  label="Search"
-                  huge
-                  hideLabel
-                  placeholder="Search"
-                  onChange={this.handleChange.bind(this)}
-                  value={query ? query : null}
-                />
-              </Box>
-              <Box width={[1, 1 / 3]} px={2}>
-                <Submit value="Search" huge nomargin />
-              </Box>
+              <script
+                async
+                src="https://cse.google.com/cse.js?cx=017752867313261290055:qexsyyoilns"
+              />
+              <div class="gcse-search" />
             </Flex>
           </form>
           {this.state.search && (
@@ -150,7 +140,6 @@ class SearchPage extends Component {
               </a>
             </Feedback>
           )}
-          <ListResults results={this.state.search} />
         </Container>
       </Layout>
     )
