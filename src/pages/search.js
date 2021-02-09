@@ -129,7 +129,7 @@ class SearchPage extends Component {
                 async
                 src="https://cse.google.com/cse.js?cx=017752867313261290055:qexsyyoilns"
               />
-              <div class="gcse-search" />
+              <div className="gcse-search" />
             </Flex>
           </form>
           {this.state.search && (
