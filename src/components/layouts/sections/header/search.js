@@ -49,86 +49,34 @@ const SearchInput = styled('input')`
   border-radius: 0;
 `
 class Search extends Component {
-  state = {
-    value: '',
-    results: [],
-    error: false,
-  }
   render() {
-    const { results, value } = this.state
     return (
-      <>
-        <VisuallyHidden>
-          <label htmlFor="csumb-search">Search campus website</label>
-        </VisuallyHidden>
-        <Autocomplete
-          items={results}
-          value={value}
-          getItemValue={item => item.title}
-          renderItem={(item, isHighlighted) => (
-            <SearchAutocompleteItem
-              key={item.url}
-              isHighlighted={isHighlighted}
-            >
-              {item.title}
-              <SearchAutocompleteItemSite isHighlighted={isHighlighted}>
-                {Array.isArray(item.site_name) ? (
-                  <>{item.site_name[0]}</>
-                ) : (
-                  <>{item.site_name}</>
-                )}
-              </SearchAutocompleteItemSite>
-            </SearchAutocompleteItem>
-          )}
-          renderMenu={(items, value, style) => {
-            if (value === '') {
-              return <span />
-            }
-            return <SearchResultsAutocomplete children={items} />
-          }}
-          onSelect={(value, item) => {
-            navigate(item.url.replace('https://csumb.edu', ''))
-          }}
-          renderInput={props => {
-            return (
-              <SearchInput
-                placeholder="Search CSUMB"
-                id="csumb-search"
-                {...props}
-                onKeyDown={event => {
-                  if (event.key === 'Enter') {
-                    navigate(`/search?q=${event.target.value}`)
-                  }
-                }}
-              />
-            )
-          }}
-          onChange={(event, value) => {
-            this.setState({
-              value: value,
-            })
-            fetch(
-              `https://api.swiftype.com/api/v1/public/engines/suggest?engine_key=${
-                process.env.GATSBY_CSUMB_SWIFTYPE_ID
-              }&q=${value.trim().toLowerCase()}`
-            )
-              .then(response => {
-                return response.json()
-              })
-              .then(search => {
-                this.setState({
-                  results: search.records.page,
-                })
-              })
-              .catch(error => {
-                this.setState({
-                  results: [],
-                  error: true,
-                })
-              })
-          }}
-        />
-      </>
+      <form method="get" title="Search Form" action="/search">
+        <div>
+          <input
+            type="text"
+            id="q"
+            name="q"
+            title="Search this site"
+            alt="Search Text"
+            maxlength="256"
+          />
+          <input
+            type="hidden"
+            id="cx"
+            name="cx"
+            value="017752867313261290055:qexsyyoilns"
+          />
+          <input
+            type="image"
+            id="searchSubmit"
+            name="submit"
+            src="https://www.flaticon.com/free-icon/active-search-symbol_34148"
+            alt="Go"
+            title="Submit Search Query"
+          />
+        </div>
+      </form>
     )
   }
 }
