@@ -16,7 +16,7 @@ class GoogleSearch extends Component {
       'src',
       'https://cse.google.com/cse.js?cx=017752867313261290055:qexsyyoilns'
     )
-    document.body.prepend(script)
+    document.head.prepend(script)
   }
 
   render() {
