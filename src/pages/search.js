@@ -3,6 +3,7 @@ import { Layout, PageTitle } from '../components/layouts/default'
 import { Flex } from '../components/common/grid'
 import Container from '../components/common/container'
 import styled from '@emotion/styled'
+import GoogleSearch from '../components/utilities/google-search'
 
 const Feedback = styled('p')`
   padding: 0 8px;
@@ -15,10 +16,7 @@ class SearchPage extends Component {
         <Container>
           <PageTitle>Search</PageTitle>
           <Flex>
-            <script
-              async
-              src="https://cse.google.com/cse.js?cx=017752867313261290055:qexsyyoilns"
-            />
+            <GoogleSearch />
             <div className="gcse-search" />
           </Flex>
           <Feedback>

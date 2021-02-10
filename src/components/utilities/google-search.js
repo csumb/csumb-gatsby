@@ -10,13 +10,11 @@ class GoogleSearch extends Component {
     }
     window.__googleLoaded = true
     const script = document.createElement('script')
-    script.setAttribute('type', 'text/javascript')
-    script.setAttribute('async', true)
     script.setAttribute(
       'src',
       'https://cse.google.com/cse.js?cx=017752867313261290055:qexsyyoilns'
     )
-    document.head.prepend(script)
+    document.body.prepend(script)
   }
 
   render() {

@@ -5,7 +5,6 @@ import Footer from './sections/footer/global'
 import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
 import Pardot from '../utilities/pardot'
-import GoogleSearch from '../utilities/google-search'
 import IFrameRedirect from '../utilities/iframe-redirect'
 import PageTitle from './sections/header/page-title'
 import SiteNavigation from './sections/navigation/site'
@@ -135,7 +134,6 @@ class Layout extends Component {
         <IFrameRedirect />
         <Pardot />
         <SiteImprove />
-        <GoogleSearch />
       </>
     )
   }
