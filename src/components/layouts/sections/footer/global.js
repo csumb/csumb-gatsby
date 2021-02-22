@@ -239,6 +239,7 @@ class Footer extends Component {
               Report concerning/discriminating behavior
             </LegalLink>{' '}
             | <LegalLink to="/clery">Security report</LegalLink> |{' '}
+            <LegalLink to="/titleix">Title IX</LegalLink> |{' '}
             <LegalLink to="/legal">Legal information</LegalLink>
             <VisuallyHidden>
               <LinkInspect to="/document-readers">
