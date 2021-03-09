@@ -269,9 +269,10 @@ class ProgramTemplate extends Component {
               </ul>
             ) : (
               <ul>
-                {data.Summer_Academics.map(({ data }) => (
-                  <li key={data.Name}>{data.Name}</li>
-                ))}
+                {data.Summer_Academics &&
+                  data.Summer_Academics.map(({ data }) => (
+                    <li key={data.Name}>{data.Name}</li>
+                  ))}
               </ul>
             )}
             {data.Notes_Area && <p>{data.Notes_Area}</p>}
