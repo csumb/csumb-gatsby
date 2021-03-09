@@ -53,95 +53,94 @@ class TestDashboardPage extends Component {
           <Serenova site="dashboard" />
           <SiteHeader path="/dashboard">Dashboard</SiteHeader>
           <UserContext.Consumer>
-            {context => {
-              console.log(context.user)(
-                <>
-                  {context.user && !context.user.anonymous && (
-                    <>
-                      {this.redirectApplicant(context.user)}
-                      <BreakpointContext.Consumer>
-                        {({ isMobile }) => (
-                          <>
-                            {isMobile ? (
-                              <>
-                                <DashboardMobileToolbar>
-                                  <Container>
-                                    <button
-                                      onClick={() => {
-                                        this.setState({ activeTab: 'messages' })
-                                      }}
-                                    >
-                                      Messages
-                                    </button>
-                                    <button
-                                      onClick={() => {
-                                        this.setState({ activeTab: 'events' })
-                                      }}
-                                    >
-                                      Events
-                                    </button>
-                                    <button
-                                      onClick={() => {
-                                        this.setState({ activeTab: 'apps' })
-                                      }}
-                                    >
-                                      Apps
-                                    </button>
-                                  </Container>
-                                </DashboardMobileToolbar>
+            {context => (
+              <>
+                {console.log(context.user)}
+                {context.user && !context.user.anonymous && (
+                  <>
+                    {this.redirectApplicant(context.user)}
+                    <BreakpointContext.Consumer>
+                      {({ isMobile }) => (
+                        <>
+                          {isMobile ? (
+                            <>
+                              <DashboardMobileToolbar>
+                                <Container>
+                                  <button
+                                    onClick={() => {
+                                      this.setState({ activeTab: 'messages' })
+                                    }}
+                                  >
+                                    Messages
+                                  </button>
+                                  <button
+                                    onClick={() => {
+                                      this.setState({ activeTab: 'events' })
+                                    }}
+                                  >
+                                    Events
+                                  </button>
+                                  <button
+                                    onClick={() => {
+                                      this.setState({ activeTab: 'apps' })
+                                    }}
+                                  >
+                                    Apps
+                                  </button>
+                                </Container>
+                              </DashboardMobileToolbar>
 
-                                <DashboardContent
-                                  user={context.user}
-                                  mobileTab={activeTab}
-                                  isMobile={true}
-                                  moreApps={data.allCsumbApp.edges}
-                                  disableAlumni={
-                                    data.site.siteMetadata.disableAlumni
-                                  }
-                                  showTitleNineMessage={
-                                    data.site.siteMetadata.showTitleNineMessage
-                                  }
-                                />
-                              </>
-                            ) : (
-                              <>
-                                <DashboardApps
-                                  apps={data.allCsumbApp.edges}
-                                  user={context.user}
-                                />
-                                <section>
-                                  <Container topPadding>
-                                    <DashboardContent
-                                      user={context.user}
-                                      disableAlumni={
-                                        data.site.siteMetadata.disableAlumni
-                                      }
-                                      showTitleNineMessage={
-                                        data.site.siteMetadata
-                                          .showTitleNineMessage
-                                      }
-                                    />
-                                  </Container>
-                                </section>
-                              </>
-                            )}
-                          </>
-                        )}
-                      </BreakpointContext.Consumer>
-                    </>
-                  )}
-                  {context.user && context.user.anonymous && (
-                    <Container>
-                      {this.login(data.site.siteMetadata.okta.login)}
-                      <p>You are not logged in</p>
-                      <ButtonLink to={data.site.siteMetadata.okta.login}>
-                        Log in
-                      </ButtonLink>
-                    </Container>
-                  )}
-                </>
-              )
-            }}
+                              <DashboardContent
+                                user={context.user}
+                                mobileTab={activeTab}
+                                isMobile={true}
+                                moreApps={data.allCsumbApp.edges}
+                                disableAlumni={
+                                  data.site.siteMetadata.disableAlumni
+                                }
+                                showTitleNineMessage={
+                                  data.site.siteMetadata.showTitleNineMessage
+                                }
+                              />
+                            </>
+                          ) : (
+                            <>
+                              <DashboardApps
+                                apps={data.allCsumbApp.edges}
+                                user={context.user}
+                              />
+                              <section>
+                                <Container topPadding>
+                                  <DashboardContent
+                                    user={context.user}
+                                    disableAlumni={
+                                      data.site.siteMetadata.disableAlumni
+                                    }
+                                    showTitleNineMessage={
+                                      data.site.siteMetadata
+                                        .showTitleNineMessage
+                                    }
+                                  />
+                                </Container>
+                              </section>
+                            </>
+                          )}
+                        </>
+                      )}
+                    </BreakpointContext.Consumer>
+                  </>
+                )}
+                {context.user && context.user.anonymous && (
+                  <Container>
+                    {this.login(data.site.siteMetadata.okta.login)}
+                    <p>You are not logged in</p>
+                    <ButtonLink to={data.site.siteMetadata.okta.login}>
+                      Log in
+                    </ButtonLink>
+                  </Container>
+                )}
+              </>
+            )}
           </UserContext.Consumer>
         </Layout>
       </PageFeedbackContext.Provider>
