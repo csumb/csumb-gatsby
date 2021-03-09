@@ -168,7 +168,6 @@ class UserWidget extends Component {
                       <UserDashboardLink to="/dashboard">
                         Dashboard
                       </UserDashboardLink>
-                      )
                       <UserDropdown user={context.user} />
                     </>
                   )}
