@@ -165,9 +165,12 @@ class UserWidget extends Component {
                     <UserLoginLink href={loginLink}>Log in</UserLoginLink>
                   ) : (
                     <>
-                      <UserDashboardLink to="/dashboard">
-                        Dashboard
-                      </UserDashboardLink>
+                      {(context.user._isStudent ||
+                        context.user._isEmployee) && (
+                        <UserDashboardLink to="/dashboard">
+                          Dashboard
+                        </UserDashboardLink>
+                      )}
                       <UserDropdown user={context.user} />
                     </>
                   )}
