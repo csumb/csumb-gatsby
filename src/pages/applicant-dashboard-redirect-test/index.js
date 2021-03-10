@@ -27,7 +27,9 @@ class TestDashboardPage extends Component {
       !user._isEmployee &&
       !user._isStudent
     ) {
-      navigate('https://scratchy-csumb.cs92.force.com/login?so=00D3F000000FWRw')
+      navigate(
+        'https://csumb.okta.com/home/csumb_erxformbuilder_1/0oaqlclh7epJ6yfsb0x7/alnqlcrok6lP2UUbT0x7'
+      )
     }
   }
 
