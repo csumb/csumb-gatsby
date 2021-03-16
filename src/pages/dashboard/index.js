@@ -27,7 +27,7 @@ class DashboardPage extends Component {
       !user._isEmployee &&
       !user._isStudent
     ) {
-      navigate('/account/applicant-status')
+      navigate('https://csumb.okta.com/home/csumb_applicantdashboard_1/0oaqxen8h1rSRu0dK0x7/alnqxeqj9dQGDKBXP0x7')
     }
   }
 
