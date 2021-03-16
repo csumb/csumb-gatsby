@@ -23,6 +23,17 @@ const AccountSidebarLink = styled(LinkInspect)`
     color: ${colors.white};
   }
 `
+const ApplicantDashboardLink = styled('a')`
+  display: block;
+  padding: 0.5rem;
+  border-bottom: 1px solid ${colors.black};
+  text-decoration: none;
+  color: ${colors.primary.dark};
+  &[aria-current='page'] {
+    background: ${colors.primary.dark};
+    color: ${colors.white};
+  }
+`
 
 const AccountTitle = styled('h2')`
   margin-top: 0;
@@ -45,9 +56,9 @@ const AccountSidebar = ({ user }) => (
       </>
     )}
     {user._isApplicant && (
-      <AccountSidebarLink to="https://csumb.okta.com/home/csumb_applicantdashboard_1/0oaqxen8h1rSRu0dK0x7/alnqxeqj9dQGDKBXP0x7">
+      <ApplicantDashboardLink to="https://csumb.okta.com/home/csumb_applicantdashboard_1/0oaqxen8h1rSRu0dK0x7/alnqxeqj9dQGDKBXP0x7">
         Your application status
-      </AccountSidebarLink>
+      </ApplicantDashboardLink>
     )}
     <AccountSidebarLink to="/account/labs">Computer labs</AccountSidebarLink>
     <AccountSidebarLink to="https://get.cbord.com/csumb">
