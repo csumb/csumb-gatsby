@@ -45,7 +45,7 @@ const AccountSidebar = ({ user }) => (
       </>
     )}
     {user._isApplicant && (
-      <AccountSidebarLink to="/account/applicant-status">
+      <AccountSidebarLink to="https://csumb.okta.com/home/csumb_applicantdashboard_1/0oaqxen8h1rSRu0dK0x7/alnqxeqj9dQGDKBXP0x7">
         Your application status
       </AccountSidebarLink>
     )}
