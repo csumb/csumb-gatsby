@@ -30,7 +30,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "base-64": "^0.1.0",
-    "chart.js": "^1.1.1",
+    "chart.js": "^2.9.4",
     "color": "^3.1.0",
     "csv-parse": "^4.4.6",
     "del": "^3.0.0",
