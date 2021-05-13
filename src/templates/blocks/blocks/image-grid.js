@@ -24,6 +24,11 @@ const ImageGridItem = ({ item }) => (
                 .replace('http://', 'https://')
         }
         alt=""
+        style={{
+          border: item.image.url.includes('edit.csumb.edu')
+            ? '6px solid red'
+            : 'none',
+        }}
       />
     )}
     <ImageGridHeader>{item.headline}</ImageGridHeader>

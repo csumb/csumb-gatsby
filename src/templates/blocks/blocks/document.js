@@ -14,7 +14,17 @@ const BlockDocument = ({ document, name }) => {
   const url = document.key
     ? `https://${process.env.GATSBY_CLOUDFRONT_DOMAIN}/${document.key}`
     : document.url.replace('/csumb.edu/', '/edit.csumb.edu/')
-  return <Document href={url}>{name}</Document>
+  return (
+    <Document href={url}>
+      <span
+        style={{
+          color: document.url.includes('csumb.edu') ? 'red' : '#0071bc',
+        }}
+      >
+        {name}
+      </span>
+    </Document>
+  )
 }
 
 export default BlockDocument

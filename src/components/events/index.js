@@ -123,6 +123,13 @@ const Event = ({ event, linkToEvent, displayOnlyFirstDate }) => (
               <img
                 src={event.image.replace('/csumb.edu/', '/edit.csumb.edu/')}
                 alt=""
+                style={{
+                  border: event.image.includes(
+                    '/edit.csumb.edu/' || '/csumb.edu/'
+                  )
+                    ? '6px solid red'
+                    : 'none',
+                }}
               />
             </Box>
           )}
