@@ -38,6 +38,7 @@ const BlockImage = ({
     : image.url
         .replace('http://', 'https://')
         .replace('/csumb.edu/', '/edit.csumb.edu/')
+
   return (
     <ImageContainer
       pullRight={pullRight && !inColumn}
@@ -56,6 +57,9 @@ const BlockImage = ({
             style={{
               height: height && parseInt(height) > 10 ? `${height}px` : 'auto',
               width: 'auto',
+              border: imageSource.includes('edit.csumb.edu')
+                ? '6px solid red'
+                : 'none',
             }}
           />
         </a>
@@ -66,6 +70,9 @@ const BlockImage = ({
           style={{
             height: height && parseInt(height) > 10 ? `${height}px` : 'auto',
             width: 'auto',
+            border: imageSource.includes('edit.csumb.edu')
+              ? '6px solid red'
+              : 'none',
           }}
         />
       )}
