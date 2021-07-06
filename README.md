@@ -1,3 +1,5 @@
+Update: As of June 2021 this codebase is now retired. The campus has since moved to an all in one CMS solution from Terminal Four.
+
 # 🏄‍♀️ CSUMB website
 
 The CSUMB website is made up of lots of little pieces. This repository includes all the code we use to pull those pieces together into a single, cohesive site using Gatsby.
