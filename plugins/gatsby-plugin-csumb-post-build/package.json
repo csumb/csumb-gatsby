@@ -12,7 +12,7 @@
     "csv-parse": "^4.4.3",
     "fs-extra": "^8.0.1",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.25",
+    "moment-timezone": "^0.5.35",
     "walk": "^2.3.14"
   }
 }
